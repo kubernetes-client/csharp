@@ -19,13 +19,13 @@ namespace KubernetesGenerator
         public static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                context.Write(GetKind(arguments[0] as JsonSchema4));
+                context.Write(GetKind(arguments[0] as JsonSchema));
             }
         }
 
-        private static string GetKind(JsonSchema4 definition)
+        private static string GetKind(JsonSchema definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
@@ -36,13 +36,13 @@ namespace KubernetesGenerator
         public static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                context.Write(GetGroup(arguments[0] as JsonSchema4));
+                context.Write(GetGroup(arguments[0] as JsonSchema));
             }
         }
 
-        private static string GetGroup(JsonSchema4 definition)
+        private static string GetGroup(JsonSchema definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
@@ -54,13 +54,13 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                context.Write(GetApiVersion(arguments[0] as JsonSchema4));
+                context.Write(GetApiVersion(arguments[0] as JsonSchema));
             }
         }
 
-        private static string GetApiVersion(JsonSchema4 definition)
+        private static string GetApiVersion(JsonSchema definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
@@ -72,14 +72,14 @@ namespace KubernetesGenerator
             IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
         {
             if (arguments != null && arguments.Count > 0 && arguments[0] != null &&
-                arguments[0] is SwaggerOperationDescription)
+                arguments[0] is OpenApiOperationDescription)
             {
-                var operation = arguments[0] as SwaggerOperationDescription;
+                var operation = arguments[0] as OpenApiOperationDescription;
                 context.Write(GetPathExpression(operation));
             }
         }
 
-        private static string GetPathExpression(SwaggerOperationDescription operation)
+        private static string GetPathExpression(OpenApiOperationDescription operation)
         {
             var pathExpression = operation.Path;
 

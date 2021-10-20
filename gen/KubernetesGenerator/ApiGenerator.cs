@@ -8,10 +8,10 @@ namespace KubernetesGenerator
 {
     public class ApiGenerator
     {
-        public void Generate(SwaggerDocument swagger, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, string outputDirectory)
         {
             var data = swagger.Operations
-                .Where(o => o.Method != SwaggerOperationMethod.Options)
+                .Where(o => o.Method != OpenApiOperationMethod.Options)
                 .GroupBy(o => o.Operation.OperationId)
                 .Select(g =>
                 {
@@ -50,6 +50,7 @@ namespace KubernetesGenerator
                 .Select(o =>
                 {
                     o.Path = o.Path.TrimStart('/');
+                    o.Method = char.ToUpper(o.Method[0]) + o.Method.Substring(1);
                     return o;
                 })
                 .ToArray();

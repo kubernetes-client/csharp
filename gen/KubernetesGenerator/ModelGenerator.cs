@@ -13,7 +13,7 @@ namespace KubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(SwaggerDocument swaggercooked, string outputDirectory)
+        public void Generate(OpenApiDocument swaggercooked, string outputDirectory)
         {
             Directory.CreateDirectory(Path.Combine(outputDirectory, "Models"));
 

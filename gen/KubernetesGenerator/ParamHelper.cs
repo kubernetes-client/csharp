@@ -27,7 +27,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
             if (operation != null)
             {
                 string name = null;
@@ -59,7 +59,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var schema = arguments[0] as JsonSchema4;
+            var schema = arguments[0] as JsonSchema;
 
             if (schema != null)
             {

@@ -27,13 +27,13 @@ namespace KubernetesGenerator
         public void GetInterfaceName(RenderContext context, IList<object> arguments,
             IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                context.Write(GetInterfaceName(arguments[0] as JsonSchema4));
+                context.Write(GetInterfaceName(arguments[0] as JsonSchema));
             }
         }
 
-        private string GetInterfaceName(JsonSchema4 definition)
+        private string GetInterfaceName(JsonSchema definition)
         {
             var interfaces = new List<string>();
             if (definition.Properties.TryGetValue("metadata", out var metadataProperty))
@@ -71,7 +71,7 @@ namespace KubernetesGenerator
         public void GetMethodName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiOperation)
             {
                 string suffix = null;
                 if (arguments.Count > 1)
@@ -79,16 +79,16 @@ namespace KubernetesGenerator
                     suffix = arguments[1] as string;
                 }
 
-                context.Write(GetMethodName(arguments[0] as SwaggerOperation, suffix));
+                context.Write(GetMethodName(arguments[0] as OpenApiOperation, suffix));
             }
         }
 
         public void GetDotNetName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiParameter)
             {
-                var parameter = arguments[0] as SwaggerParameter;
+                var parameter = arguments[0] as OpenApiParameter;
                 context.Write(GetDotNetName(parameter.Name));
 
                 if (arguments.Count > 1 && arguments[1] as string == "true" && !parameter.IsRequired)
@@ -133,7 +133,7 @@ namespace KubernetesGenerator
                     {
                         return "continueProperty";
                     }
-                    else if (jsonName == "__referencePath")
+                    else if (jsonName == "$ref")
                     {
                         return "refProperty";
                     }
@@ -179,7 +179,7 @@ namespace KubernetesGenerator
             return jsonName.ToCamelCase();
         }
 
-        public static string GetMethodName(SwaggerOperation watchOperation, string suffix)
+        public static string GetMethodName(OpenApiOperation watchOperation, string suffix)
         {
             var tag = watchOperation.Tags[0];
             tag = tag.Replace("_", string.Empty);

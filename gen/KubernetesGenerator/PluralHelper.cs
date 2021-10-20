@@ -12,7 +12,7 @@ namespace KubernetesGenerator
         private readonly Dictionary<string, string> _classNameToPluralMap;
         private readonly ClassNameHelper classNameHelper;
 
-        public PluralHelper(ClassNameHelper classNameHelper, SwaggerDocument swagger)
+        public PluralHelper(ClassNameHelper classNameHelper, OpenApiDocument swagger)
         {
             this.classNameHelper = classNameHelper;
             _classNameToPluralMap = InitClassNameToPluralMap(swagger);
@@ -26,9 +26,9 @@ namespace KubernetesGenerator
         public void GetPlural(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                var plural = GetPlural(arguments[0] as JsonSchema4);
+                var plural = GetPlural(arguments[0] as JsonSchema);
                 if (plural != null)
                 {
                     context.Write($"\"{plural}\"");
@@ -40,13 +40,13 @@ namespace KubernetesGenerator
             }
         }
 
-        public string GetPlural(JsonSchema4 definition)
+        public string GetPlural(JsonSchema definition)
         {
             var className = classNameHelper.GetClassNameForSchemaDefinition(definition);
             return _classNameToPluralMap.GetValueOrDefault(className, null);
         }
 
-        private Dictionary<string, string> InitClassNameToPluralMap(SwaggerDocument swagger)
+        private Dictionary<string, string> InitClassNameToPluralMap(OpenApiDocument swagger)
         {
             var classNameToPluralMap = swagger.Operations
                 .Where(x => x.Operation.OperationId.StartsWith("list", StringComparison.InvariantCulture))
@@ -54,7 +54,7 @@ namespace KubernetesGenerator
                 {
                     PluralName = x.Path.Split("/").Last(),
                     ClassName = classNameHelper.GetClassNameForSchemaDefinition(x.Operation.Responses["200"]
-                        .ActualResponseSchema),
+                        .ActualResponse.Schema.ActualSchema),
                 })
                 .Distinct()
                 .ToDictionary(x => x.ClassName, x => x.PluralName);

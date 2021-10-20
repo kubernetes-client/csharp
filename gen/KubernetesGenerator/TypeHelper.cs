@@ -28,9 +28,9 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerParameter)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiParameter)
             {
-                var parameter = arguments[0] as SwaggerParameter;
+                var parameter = arguments[0] as OpenApiParameter;
 
                 if (parameter.Schema?.Reference != null)
                 {
@@ -47,9 +47,9 @@ namespace KubernetesGenerator
                         parameter.Format));
                 }
             }
-            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonProperty)
+            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchemaProperty)
             {
-                var property = arguments[0] as JsonProperty;
+                var property = arguments[0] as JsonSchemaProperty;
                 context.Write(GetDotNetType(property));
             }
             else if (arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null &&
@@ -61,11 +61,11 @@ namespace KubernetesGenerator
             }
             else if (arguments != null && arguments.Count > 0 && arguments[0] != null)
             {
-                context.Write($"ERROR: Expected SwaggerParameter but got {arguments[0].GetType().FullName}");
+                context.Write($"ERROR: Expected OpenApiParameter but got {arguments[0].GetType().FullName}");
             }
             else
             {
-                context.Write("ERROR: Expected a SwaggerParameter argument but got none.");
+                context.Write("ERROR: Expected a OpenApiParameter argument but got none.");
             }
         }
 
@@ -147,7 +147,7 @@ namespace KubernetesGenerator
             }
         }
 
-        private string GetDotNetType(JsonSchema4 schema, JsonProperty parent)
+        private string GetDotNetType(JsonSchema schema, JsonSchemaProperty parent)
         {
             if (schema != null)
             {
@@ -176,11 +176,11 @@ namespace KubernetesGenerator
             return GetDotNetType(parent.Type, parent.Name, parent.IsRequired, parent.Format);
         }
 
-        public string GetDotNetType(JsonProperty p)
+        public string GetDotNetType(JsonSchemaProperty p)
         {
-            if (p.SchemaReference != null)
+            if (p.Reference != null)
             {
-                return classNameHelper.GetClassNameForSchemaDefinition(p.SchemaReference);
+                return classNameHelper.GetClassNameForSchemaDefinition(p.Reference);
             }
 
             if (p.IsArray)
@@ -201,7 +201,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
             if (operation != null)
             {
                 string style = null;
@@ -214,9 +214,9 @@ namespace KubernetesGenerator
             }
         }
 
-        private string GetReturnType(SwaggerOperation operation, string sytle)
+        private string GetReturnType(OpenApiOperation operation, string sytle)
         {
-            SwaggerResponse response;
+            OpenApiResponse response;
 
             if (!operation.Responses.TryGetValue("200", out response))
             {
@@ -292,7 +292,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
             if (operation != null)
             {
                 string type = null;
@@ -320,7 +320,7 @@ namespace KubernetesGenerator
         public static void IfType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var property = arguments?.FirstOrDefault() as JsonProperty;
+            var property = arguments?.FirstOrDefault() as JsonSchemaProperty;
             if (property != null)
             {
                 string type = null;

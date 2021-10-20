@@ -11,10 +11,10 @@ namespace KubernetesGenerator
     {
         private readonly Dictionary<string, string> classNameMap;
         private readonly HashSet<string> schemaDefinitionsInMultipleGroups;
-        private readonly Dictionary<JsonSchema4, string> schemaToNameMapCooked;
-        private readonly Dictionary<JsonSchema4, string> schemaToNameMapUnprocessed;
+        private readonly Dictionary<JsonSchema, string> schemaToNameMapCooked;
+        private readonly Dictionary<JsonSchema, string> schemaToNameMapUnprocessed;
 
-        public ClassNameHelper(SwaggerDocument swaggerCooked, SwaggerDocument swaggerUnprocessed)
+        public ClassNameHelper(OpenApiDocument swaggerCooked, OpenApiDocument swaggerUnprocessed)
         {
             classNameMap = InitClassNameMap(swaggerCooked);
 
@@ -28,19 +28,19 @@ namespace KubernetesGenerator
             Helpers.Register(nameof(GetClassName), GetClassName);
         }
 
-        private static Dictionary<JsonSchema4, string> GenerateSchemaToNameMapUnprocessed(
-            SwaggerDocument swaggerUnprocessed)
+        private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapUnprocessed(
+            OpenApiDocument swaggerUnprocessed)
         {
             return swaggerUnprocessed.Definitions.ToDictionary(x => x.Value, x => x.Key);
         }
 
-        private static Dictionary<JsonSchema4, string> GenerateSchemaToNameMapCooked(SwaggerDocument swaggerCooked)
+        private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapCooked(OpenApiDocument swaggerCooked)
         {
             return swaggerCooked.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
         }
 
         private static HashSet<string> InitSchemaDefinitionsInMultipleGroups(
-            Dictionary<JsonSchema4, string> schemaToNameMap)
+            Dictionary<JsonSchema, string> schemaToNameMap)
         {
             return schemaToNameMap.Values.Select(x =>
                 {
@@ -60,7 +60,7 @@ namespace KubernetesGenerator
                 .ToHashSet();
         }
 
-        private Dictionary<string, string> InitClassNameMap(SwaggerDocument doc)
+        private Dictionary<string, string> InitClassNameMap(OpenApiDocument doc)
         {
             var map = new Dictionary<string, string>();
             foreach (var (k, v) in doc.Definitions)
@@ -83,17 +83,17 @@ namespace KubernetesGenerator
         public void GetClassName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is SwaggerOperation)
+            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiOperation)
             {
-                context.Write(GetClassName(arguments[0] as SwaggerOperation));
+                context.Write(GetClassName(arguments[0] as OpenApiOperation));
             }
-            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema4)
+            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
             {
-                context.Write(GetClassNameForSchemaDefinition(arguments[0] as JsonSchema4));
+                context.Write(GetClassNameForSchemaDefinition(arguments[0] as JsonSchema));
             }
         }
 
-        public string GetClassName(SwaggerOperation operation)
+        public string GetClassName(OpenApiOperation operation)
         {
             var groupVersionKind =
                 (Dictionary<string, object>)operation.ExtensionData["x-kubernetes-group-version-kind"];
@@ -109,7 +109,7 @@ namespace KubernetesGenerator
             return classNameMap[$"{group}_{kind}_{version}"];
         }
 
-        public string GetClassName(JsonSchema4 definition)
+        public string GetClassName(JsonSchema definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
@@ -117,7 +117,7 @@ namespace KubernetesGenerator
             return GetClassName(groupVersionKind);
         }
 
-        public string GetClassNameForSchemaDefinition(JsonSchema4 definition)
+        public string GetClassNameForSchemaDefinition(JsonSchema definition)
         {
             if (definition.ExtensionData != null &&
                 definition.ExtensionData.ContainsKey("x-kubernetes-group-version-kind"))
@@ -144,7 +144,7 @@ namespace KubernetesGenerator
             return $"{group}{version}{entityName}".ToPascalCase();
         }
 
-        private static Dictionary<JsonSchema4, string> InitSchemaToNameCooked(SwaggerDocument swaggercooked)
+        private static Dictionary<JsonSchema, string> InitSchemaToNameCooked(OpenApiDocument swaggercooked)
         {
             return swaggercooked.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
         }
