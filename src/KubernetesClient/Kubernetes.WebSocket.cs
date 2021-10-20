@@ -295,9 +295,17 @@ namespace k8s
             }
 
             // Set Credentials
-            foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
+            if (this.ClientCert != null)
             {
-                webSocketBuilder.AddClientCertificate(cert);
+                webSocketBuilder.AddClientCertificate(this.ClientCert);
+            }
+
+            if (this.HttpClientHandler != null)
+            {
+                foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
+                {
+                    webSocketBuilder.AddClientCertificate(cert);
+                }
             }
 
             if (Credentials != null)

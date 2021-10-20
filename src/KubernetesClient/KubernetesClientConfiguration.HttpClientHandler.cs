@@ -41,14 +41,10 @@ namespace k8s
                 throw new ArgumentNullException(nameof(handler));
             }
 
-            if ((!string.IsNullOrWhiteSpace(ClientCertificateData) ||
-                 !string.IsNullOrWhiteSpace(ClientCertificateFilePath)) &&
-                (!string.IsNullOrWhiteSpace(ClientCertificateKeyData) ||
-                 !string.IsNullOrWhiteSpace(ClientKeyFilePath)))
+            var clientCert = CertUtils.GetClientCert(this);
+            if (clientCert != null)
             {
-                var cert = CertUtils.GeneratePfx(this);
-
-                handler.ClientCertificates.Add(cert);
+                handler.ClientCertificates.Add(clientCert);
             }
         }
     }

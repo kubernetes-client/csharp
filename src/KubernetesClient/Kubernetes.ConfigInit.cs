@@ -57,6 +57,7 @@ namespace k8s
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
+            ClientCert = CertUtils.GetClientCert(config);
             SetCredentials(config);
         }
 
@@ -133,7 +134,7 @@ namespace k8s
         }
 
         private X509Certificate2Collection CaCerts { get; }
-
+        private X509Certificate2 ClientCert { get; }
         private bool SkipTlsVerify { get; }
 
         partial void CustomInitialize()
@@ -261,6 +262,8 @@ namespace k8s
                 Timeout = Timeout.InfiniteTimeSpan,
             };
         }
+
+
 
         /// <summary>
         ///     Set credentials for the Client
