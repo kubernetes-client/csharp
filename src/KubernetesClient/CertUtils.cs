@@ -1,12 +1,15 @@
 using k8s.Exceptions;
+#if !NET5_0_OR_GREATER
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+#endif
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace k8s
 {
@@ -22,6 +25,9 @@ namespace k8s
             var certCollection = new X509Certificate2Collection();
             using (var stream = FileUtils.FileSystem().File.OpenRead(file))
             {
+#if NET5_0_OR_GREATER
+                certCollection.ImportFromPem(new StreamReader(stream).ReadToEnd());
+#else
                 var certs = new X509CertificateParser().ReadCertificates(stream);
 
                 // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
@@ -31,6 +37,7 @@ namespace k8s
                 {
                     certCollection.Add(new X509Certificate2(cert.GetEncoded()));
                 }
+#endif
             }
 
             return certCollection;
@@ -47,6 +54,44 @@ namespace k8s
             {
                 throw new ArgumentNullException(nameof(config));
             }
+
+#if NET5_0_OR_GREATER
+            string keyData = null;
+            string certData = null;
+
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData))
+            {
+                keyData = Encoding.UTF8.GetString(Convert.FromBase64String(config.ClientCertificateKeyData));
+            }
+
+            if (!string.IsNullOrWhiteSpace(config.ClientKeyFilePath))
+            {
+                keyData = File.ReadAllText(config.ClientKeyFilePath);
+            }
+
+            if (keyData == null)
+            {
+                throw new KubeConfigException("keyData is empty");
+            }
+
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateData))
+            {
+                certData = Encoding.UTF8.GetString(Convert.FromBase64String(config.ClientCertificateData));
+            }
+
+            if (!string.IsNullOrWhiteSpace(config.ClientCertificateFilePath))
+            {
+                certData = File.ReadAllText(config.ClientCertificateFilePath);
+            }
+
+            if (certData == null)
+            {
+                throw new KubeConfigException("certData is empty");
+            }
+
+
+            return X509Certificate2.CreateFromPem(certData, keyData);
+#else
 
             byte[] keyData = null;
             byte[] certData = null;
@@ -121,6 +166,7 @@ namespace k8s
                     return new X509Certificate2(pkcs.ToArray());
                 }
             }
+#endif
         }
 
         /// <summary>
