@@ -5,7 +5,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class WatchGenerator
+    internal class WatchGenerator
     {
         public void Generate(OpenApiDocument swagger, string outputDirectory)
         {

@@ -4,7 +4,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class ModelGenerator
+    internal class ModelGenerator
     {
         private readonly ClassNameHelper classNameHelper;
 
@@ -20,7 +20,8 @@ namespace KubernetesGenerator
             foreach (var (_, def) in swaggercooked.Definitions)
             {
                 var clz = classNameHelper.GetClassNameForSchemaDefinition(def);
-                Render.FileToFile(Path.Combine("templates", "Model.cs.template"),
+                Render.FileToFile(
+                    Path.Combine("templates", "Model.cs.template"),
                     new { clz, def, properties = def.Properties.Values },
                     Path.Combine(outputDirectory, "Models", $"{clz}.cs"));
             }

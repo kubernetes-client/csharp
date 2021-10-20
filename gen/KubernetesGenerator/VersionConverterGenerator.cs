@@ -7,7 +7,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class VersionConverterGenerator
+    internal class VersionConverterGenerator
     {
         public void GenerateFromModels(string outputDirectory)
         {

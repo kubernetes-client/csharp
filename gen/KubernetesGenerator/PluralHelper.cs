@@ -7,7 +7,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class PluralHelper : INustacheHelper
+    internal class PluralHelper : INustacheHelper
     {
         private readonly Dictionary<string, string> _classNameToPluralMap;
         private readonly ClassNameHelper classNameHelper;

@@ -3,6 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5</TargetFramework>
+        <NoWarn>CA1812</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
