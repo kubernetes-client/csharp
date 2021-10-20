@@ -137,7 +137,7 @@ namespace k8s
         private X509Certificate2 ClientCert { get; }
         private bool SkipTlsVerify { get; }
 
-        partial void CustomInitialize()
+        private void CustomInitialize()
         {
             DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
             SerializationSettings.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";

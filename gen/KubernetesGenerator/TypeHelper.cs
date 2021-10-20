@@ -306,7 +306,7 @@ namespace KubernetesGenerator
                 {
                     fn(null);
                 }
-                else if (type.ToLower() == rt.ToLower())
+                else if (string.Equals(type, rt.ToLower(), StringComparison.OrdinalIgnoreCase))
                 {
                     fn(null);
                 }
