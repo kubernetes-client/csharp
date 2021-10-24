@@ -7,7 +7,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class ClassNameHelper : INustacheHelper
+    internal class ClassNameHelper : INustacheHelper
     {
         private readonly Dictionary<string, string> classNameMap;
         private readonly HashSet<string> schemaDefinitionsInMultipleGroups;

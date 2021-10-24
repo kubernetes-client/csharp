@@ -6,7 +6,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class ModelExtGenerator
+    internal class ModelExtGenerator
     {
         private readonly ClassNameHelper classNameHelper;
 

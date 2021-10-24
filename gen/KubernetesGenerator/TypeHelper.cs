@@ -7,7 +7,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class TypeHelper : INustacheHelper
+    internal class TypeHelper : INustacheHelper
     {
         private readonly ClassNameHelper classNameHelper;
 

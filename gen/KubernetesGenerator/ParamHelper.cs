@@ -6,7 +6,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class ParamHelper : INustacheHelper
+    internal class ParamHelper : INustacheHelper
     {
         private readonly GeneralNameHelper generalNameHelper;
         private readonly TypeHelper typeHelper;
@@ -59,7 +59,7 @@ namespace KubernetesGenerator
             IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var operation = arguments?.FirstOrDefault() as SwaggerOperation;
+            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
             if (operation != null)
             {
                 string name = null;

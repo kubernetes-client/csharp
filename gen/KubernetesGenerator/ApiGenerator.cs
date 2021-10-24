@@ -6,7 +6,7 @@ using Nustache.Core;
 
 namespace KubernetesGenerator
 {
-    public class ApiGenerator
+    internal class ApiGenerator
     {
         public void Generate(OpenApiDocument swagger, string outputDirectory)
         {
