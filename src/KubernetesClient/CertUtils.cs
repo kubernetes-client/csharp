@@ -8,12 +8,13 @@ using Org.BouncyCastle.X509;
 #endif
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace k8s
 {
-    public static class CertUtils
+    internal static class CertUtils
     {
         /// <summary>
         /// Load pem encoded cert file
@@ -90,7 +91,15 @@ namespace k8s
             }
 
 
-            return X509Certificate2.CreateFromPem(certData, keyData);
+            var cert = X509Certificate2.CreateFromPem(certData, keyData);
+
+            // see https://github.com/kubernetes-client/csharp/issues/737
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
+            }
+
+            return cert;
 #else
 
             byte[] keyData = null;
