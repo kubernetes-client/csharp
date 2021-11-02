@@ -61,12 +61,12 @@ namespace k8s
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{{path}}").ToString();
-            _url = _url.Replace("/apis//", "/api/");
             {{#operation.parameters}}
             {{#IfKindIs . "path"}}
             _url = _url.Replace("{{AddCurly name}}", {{GetDotNetName name}});
             {{/IfKindIs . "path"}}
             {{/operation.parameters}}
+            _url = _url.Replace("/apis//", "/api/");
             List<string> _queryParameters = new List<string>();
             {{#operation.parameters}}
             {{#IfKindIs . "query"}}
