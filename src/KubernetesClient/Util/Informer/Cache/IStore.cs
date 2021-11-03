@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using k8s.Models;
 
@@ -61,5 +62,10 @@ namespace k8s.Util.Informer.Cache
         /// </summary>
         /// <returns>list of all the items</returns>
         IEnumerable<TApiType> List();
+
+        /// <summary>
+        /// Empty the store
+        /// </summary>
+        void Clear();
     }
 }

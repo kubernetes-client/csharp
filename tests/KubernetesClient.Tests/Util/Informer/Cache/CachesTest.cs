@@ -12,14 +12,14 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Check for default DeletedFinalStateUnknown")]
         public void CheckDefaultDeletedFinalStateUnknown()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             Caches.DeletionHandlingMetaNamespaceKeyFunc(aPod).Should().Be($"{aPod.Metadata.NamespaceProperty}/{aPod.Metadata.Name}");
         }
 
         [Fact(DisplayName = "Check for obj DeletedFinalStateUnknown")]
         public void CheckObjDeletedFinalStateUnknown()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             var key = "a-key";
             var deletedPod = new DeletedFinalStateUnknown<V1Pod>(key, aPod);
 
@@ -37,7 +37,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get default namespace key success")]
         public void GetDefaultNamespaceKeySuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             Caches.MetaNamespaceKeyFunc(aPod).Should().Be($"{aPod.Metadata.NamespaceProperty}/{aPod.Metadata.Name}");
         }
 
@@ -50,7 +50,7 @@ namespace k8s.Tests.Util.Informer.Cache
         [Fact(DisplayName = "Get default namespace index success")]
         public void GetDefaultNamespaceIndexSuccess()
         {
-            var aPod = Util.CreatePods(1).First();
+            var aPod = Helpers.CreatePods(1).First();
             var indexes = Caches.MetaNamespaceIndexFunc(aPod);
 
             indexes.Should().NotBeNull();
