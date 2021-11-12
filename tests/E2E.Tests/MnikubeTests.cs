@@ -532,7 +532,7 @@ namespace k8s.E2E
                         break;
                     }
 
-                    await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                    await Task.Delay(TimeSpan.FromSeconds(2.5)).ConfigureAwait(false);
                 }
 
                 Assert.DoesNotContain(pods.Items, p => p.Metadata.Name == podName);
