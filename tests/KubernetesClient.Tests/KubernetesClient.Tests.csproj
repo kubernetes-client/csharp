@@ -4,7 +4,7 @@
     <LangVersion>8</LangVersion>
     <SignAssembly>true</SignAssembly>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFrameworks>net5;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5;net6</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
