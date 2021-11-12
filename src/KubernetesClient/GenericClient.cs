@@ -33,45 +33,59 @@ namespace k8s
             this.kubernetes = kubernetes;
         }
 
-        public async Task<T> ListAsync<T>(CancellationToken cancel = default(CancellationToken))
+        public async Task<T> CreateAsync<T>(T obj, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.ListClusterCustomObjectWithHttpMessagesAsync(this.group, this.version, this.plural, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.CreateClusterCustomObjectWithHttpMessagesAsync(obj, group, version, plural, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
-        public async Task<T> ListNamespacedAsync<T>(string ns, CancellationToken cancel = default(CancellationToken))
+        public async Task<T> CreateNamespacedAsync<T>(T obj, string ns, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.ListNamespacedCustomObjectWithHttpMessagesAsync(this.group, this.version, ns, this.plural, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.CreateNamespacedCustomObjectWithHttpMessagesAsync(obj, group, version, ns, plural, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
-        public async Task<T> ReadNamespacedAsync<T>(string ns, string name, CancellationToken cancel = default(CancellationToken))
+        public async Task<T> ListAsync<T>(CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.GetNamespacedCustomObjectWithHttpMessagesAsync(this.group, this.version, ns, this.plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.ListClusterCustomObjectWithHttpMessagesAsync(group, version, plural, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
-        public async Task<T> ReadAsync<T>(string name, CancellationToken cancel = default(CancellationToken))
+        public async Task<T> ListNamespacedAsync<T>(string ns, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.GetClusterCustomObjectWithHttpMessagesAsync(this.group, this.version, this.plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.ListNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
-        public async Task<T> DeleteAsync<T>(string name, CancellationToken cancel = default(CancellationToken))
+        public async Task<T> ReadNamespacedAsync<T>(string ns, string name, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.DeleteClusterCustomObjectWithHttpMessagesAsync(this.group, this.version, this.plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.GetNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, name, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
-        public async Task<T> DeleteNamespacedAsync<T>(string ns, string name, CancellationToken cancel = default(CancellationToken))
+        public async Task<T> ReadAsync<T>(string name, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await this.kubernetes.DeleteNamespacedCustomObjectWithHttpMessagesAsync(this.group, this.version, ns, this.plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.GetClusterCustomObjectWithHttpMessagesAsync(group, version, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> DeleteAsync<T>(string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.DeleteClusterCustomObjectWithHttpMessagesAsync(group, version, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> DeleteNamespacedAsync<T>(string ns, string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.DeleteNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, name, cancellationToken: cancel).ConfigureAwait(false);
             return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
         }
 
@@ -83,7 +97,7 @@ namespace k8s
 
         protected virtual void Dispose(bool disposing)
         {
-            this.kubernetes.Dispose();
+            kubernetes.Dispose();
         }
     }
 }

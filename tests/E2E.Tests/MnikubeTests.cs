@@ -465,6 +465,85 @@ namespace k8s.E2E
                     reportingInstance: "38"), "default").ConfigureAwait(false);
         }
 
+        [MinikubeFact]
+        public async void GenericTest()
+        {
+            var namespaceParameter = "default";
+            var podName = "k8scsharp-e2e-generic-pod";
+
+            var client = CreateClient();
+            var genericPods = new GenericClient(client, "", "v1", "pods");
+
+            void Cleanup()
+            {
+                var pods = client.ListNamespacedPod(namespaceParameter);
+                while (pods.Items.Any(p => p.Metadata.Name == podName))
+                {
+                    try
+                    {
+                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                    }
+                    catch (HttpOperationException e)
+                    {
+                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                Cleanup();
+
+                await genericPods.CreateNamespacedAsync(
+                    new V1Pod()
+                    {
+                        Metadata = new V1ObjectMeta { Name = podName, },
+                        Spec = new V1PodSpec
+                        {
+                            Containers = new[] { new V1Container() { Name = "k8scsharp-e2e", Image = "nginx", }, },
+                        },
+                    },
+                    namespaceParameter).ConfigureAwait(false);
+
+                var pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
+                Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
+
+                int retry = 5;
+                while (retry-- > 0)
+                {
+                    try
+                    {
+                        await genericPods.DeleteNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                    }
+                    catch (HttpOperationException e)
+                    {
+                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return;
+                        }
+                    }
+
+                    pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
+                    if (!pods.Items.Any(p => p.Metadata.Name == podName))
+                    {
+                        break;
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(2.5)).ConfigureAwait(false);
+                }
+
+                Assert.DoesNotContain(pods.Items, p => p.Metadata.Name == podName);
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+
         private static IKubernetes CreateClient()
         {
             return new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());

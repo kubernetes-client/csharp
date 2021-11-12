@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B70AFB57-57C9-46DC-84BE-11B7DDD34B40}"
 EndProject
@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "customResource", "examples\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesGenerator", "gen\KubernetesGenerator\KubernetesGenerator.csproj", "{79BA7C4A-98AA-467E-80D4-0E4F03EE6DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericKubernetesApi", "examples\GenericKubernetesApi\GenericKubernetesApi.csproj", "{F81AE4C4-E044-4225-BD76-385A0DE621FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericKubernetesApi", "examples\GenericKubernetesApi\GenericKubernetesApi.csproj", "{F81AE4C4-E044-4225-BD76-385A0DE621FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "generic", "examples\generic\generic.csproj", "{F06D4C3A-7825-43A8-832B-6BDE3D355486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +261,18 @@ Global
 		{F81AE4C4-E044-4225-BD76-385A0DE621FD}.Release|x64.Build.0 = Release|Any CPU
 		{F81AE4C4-E044-4225-BD76-385A0DE621FD}.Release|x86.ActiveCfg = Release|Any CPU
 		{F81AE4C4-E044-4225-BD76-385A0DE621FD}.Release|x86.Build.0 = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|x64.Build.0 = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Debug|x86.Build.0 = Debug|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|x64.ActiveCfg = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|x64.Build.0 = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|x86.ActiveCfg = Release|Any CPU
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -281,6 +295,7 @@ Global
 		{95672061-5799-4454-ACDB-D6D330DB1EC4} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
 		{79BA7C4A-98AA-467E-80D4-0E4F03EE6DDE} = {879F8787-C3BB-43F3-A92D-6D4C7D3A5285}
 		{F81AE4C4-E044-4225-BD76-385A0DE621FD} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
+		{F06D4C3A-7825-43A8-832B-6BDE3D355486} = {B70AFB57-57C9-46DC-84BE-11B7DDD34B40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {049A763A-C891-4E8D-80CF-89DD3E22ADC7}
