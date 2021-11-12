@@ -3,7 +3,7 @@
     <IsPackable>false</IsPackable>
     <SignAssembly>true</SignAssembly>
     <RootNamespace>k8s.E2E</RootNamespace>
-    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5;net6</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
