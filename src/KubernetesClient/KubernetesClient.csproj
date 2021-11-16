@@ -10,7 +10,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
 
-    <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net5;net6</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

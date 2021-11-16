@@ -24,6 +24,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
 
+    - name: .NET 6.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
     - name: dotnet restore
       run: dotnet restore --verbosity minimal --configfile nuget.config
 

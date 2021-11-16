@@ -11,10 +11,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Setup dotnet SDK 2.1
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '2.1.x'
       - name: Setup dotnet SDK 3.1
         uses: actions/setup-dotnet@v1
         with:
@@ -23,12 +19,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'          
-      - name: Setup Format
-        run: dotnet tool install -g dotnet-format
+      - name: Setup dotnet SDK 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'          
       - name: Check Format
         # don't check formatting on Windows b/c of CRLF issues.
-        if: matrix.os != 'windows-latest'
-        run: dotnet format --check --exclude ./src/KubernetesClient/generated/
+        if: matrix.os == 'ubuntu-latest'
+        run: dotnet format --severity error --verify-no-changes --exclude ./src/KubernetesClient/generated/
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
@@ -52,6 +50,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'                
+      - name: Setup dotnet SDK 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'          
       - name: Minikube
         run: minikube start
       - name: Test
