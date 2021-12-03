@@ -559,5 +559,40 @@ data:
             Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
             Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
         }
+
+        [Fact]
+        public void DeserializeWithJsonPropertyName()
+        {
+            var kManifest = @"
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: test-crd
+spec:
+  group: test.crd
+  names:
+    kind: Crd
+    listKind: CrdList
+    plural: crds
+    singular: crd
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: This is a test crd.
+        x-kubernetes-int-or-string: true
+        required:
+        - metadata
+        - spec
+        type: object
+    served: true
+    storage: true
+";
+            var result = Yaml.LoadFromString<V1CustomResourceDefinition>(kManifest);
+            Assert.Single(result?.Spec?.Versions);
+            var ver = result.Spec.Versions[0];
+            Assert.Equal(true, ver?.Schema?.OpenAPIV3Schema?.XKubernetesIntOrString);
+        }
     }
 }
