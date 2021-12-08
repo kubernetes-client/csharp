@@ -28,14 +28,13 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1StatefulSetStatus class.
         /// </summary>
-        /// <param name="replicas">
-        /// replicas is the number of Pods created by the StatefulSet controller.
-        /// </param>
         /// <param name="availableReplicas">
         /// Total number of available pods (ready for at least minReadySeconds) targeted by
-        /// this statefulset. This is an alpha field and requires enabling
-        /// StatefulSetMinReadySeconds feature gate. Remove omitempty when graduating to
-        /// beta
+        /// this statefulset. This is a beta field and enabled/disabled by
+        /// StatefulSetMinReadySeconds feature gate.
+        /// </param>
+        /// <param name="replicas">
+        /// replicas is the number of Pods created by the StatefulSet controller.
         /// </param>
         /// <param name="collisionCount">
         /// collisionCount is the count of hash collisions for the StatefulSet. The
@@ -59,8 +58,8 @@ namespace k8s.Models
         /// the API Server.
         /// </param>
         /// <param name="readyReplicas">
-        /// readyReplicas is the number of Pods created by the StatefulSet controller that
-        /// have a Ready Condition.
+        /// readyReplicas is the number of pods created for this StatefulSet with a Ready
+        /// Condition.
         /// </param>
         /// <param name="updateRevision">
         /// updateRevision, if not empty, indicates the version of the StatefulSet used to
@@ -70,7 +69,7 @@ namespace k8s.Models
         /// updatedReplicas is the number of Pods created by the StatefulSet controller from
         /// the StatefulSet version indicated by updateRevision.
         /// </param>
-        public V1StatefulSetStatus(int replicas, int? availableReplicas = null, int? collisionCount = null, IList<V1StatefulSetCondition> conditions = null, int? currentReplicas = null, string currentRevision = null, long? observedGeneration = null, int? readyReplicas = null, string updateRevision = null, int? updatedReplicas = null)
+        public V1StatefulSetStatus(int availableReplicas, int replicas, int? collisionCount = null, IList<V1StatefulSetCondition> conditions = null, int? currentReplicas = null, string currentRevision = null, long? observedGeneration = null, int? readyReplicas = null, string updateRevision = null, int? updatedReplicas = null)
         {
             AvailableReplicas = availableReplicas;
             CollisionCount = collisionCount;
@@ -92,12 +91,11 @@ namespace k8s.Models
 
         /// <summary>
         /// Total number of available pods (ready for at least minReadySeconds) targeted by
-        /// this statefulset. This is an alpha field and requires enabling
-        /// StatefulSetMinReadySeconds feature gate. Remove omitempty when graduating to
-        /// beta
+        /// this statefulset. This is a beta field and enabled/disabled by
+        /// StatefulSetMinReadySeconds feature gate.
         /// </summary>
         [JsonProperty(PropertyName = "availableReplicas")]
-        public int? AvailableReplicas { get; set; }
+        public int AvailableReplicas { get; set; }
 
         /// <summary>
         /// collisionCount is the count of hash collisions for the StatefulSet. The
@@ -136,8 +134,8 @@ namespace k8s.Models
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// readyReplicas is the number of Pods created by the StatefulSet controller that
-        /// have a Ready Condition.
+        /// readyReplicas is the number of pods created for this StatefulSet with a Ready
+        /// Condition.
         /// </summary>
         [JsonProperty(PropertyName = "readyReplicas")]
         public int? ReadyReplicas { get; set; }

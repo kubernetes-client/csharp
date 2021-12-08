@@ -245,7 +245,12 @@ namespace k8s.Models
         /// properties or additionalProperties are specified in the schema. This can either
         /// be true or undefined. False is forbidden.
         /// </param>
-        public V1JSONSchemaProps(string refProperty = null, string schema = null, object additionalItems = null, object additionalProperties = null, IList<V1JSONSchemaProps> allOf = null, IList<V1JSONSchemaProps> anyOf = null, object defaultProperty = null, IDictionary<string, V1JSONSchemaProps> definitions = null, IDictionary<string, object> dependencies = null, string description = null, IList<object> enumProperty = null, object example = null, bool? exclusiveMaximum = null, bool? exclusiveMinimum = null, V1ExternalDocumentation externalDocs = null, string format = null, string id = null, object items = null, long? maxItems = null, long? maxLength = null, long? maxProperties = null, double? maximum = null, long? minItems = null, long? minLength = null, long? minProperties = null, double? minimum = null, double? multipleOf = null, V1JSONSchemaProps not = null, bool? nullable = null, IList<V1JSONSchemaProps> oneOf = null, string pattern = null, IDictionary<string, V1JSONSchemaProps> patternProperties = null, IDictionary<string, V1JSONSchemaProps> properties = null, IList<string> required = null, string title = null, string type = null, bool? uniqueItems = null, bool? xKubernetesEmbeddedResource = null, bool? xKubernetesIntOrString = null, IList<string> xKubernetesListMapKeys = null, string xKubernetesListType = null, string xKubernetesMapType = null, bool? xKubernetesPreserveUnknownFields = null)
+        /// <param name="xKubernetesValidations">
+        /// x-kubernetes-validations describes a list of validation rules written in the CEL
+        /// expression language. This field is an alpha-level. Using this field requires the
+        /// feature gate `CustomResourceValidationExpressions` to be enabled.
+        /// </param>
+        public V1JSONSchemaProps(string refProperty = null, string schema = null, object additionalItems = null, object additionalProperties = null, IList<V1JSONSchemaProps> allOf = null, IList<V1JSONSchemaProps> anyOf = null, object defaultProperty = null, IDictionary<string, V1JSONSchemaProps> definitions = null, IDictionary<string, object> dependencies = null, string description = null, IList<object> enumProperty = null, object example = null, bool? exclusiveMaximum = null, bool? exclusiveMinimum = null, V1ExternalDocumentation externalDocs = null, string format = null, string id = null, object items = null, long? maxItems = null, long? maxLength = null, long? maxProperties = null, double? maximum = null, long? minItems = null, long? minLength = null, long? minProperties = null, double? minimum = null, double? multipleOf = null, V1JSONSchemaProps not = null, bool? nullable = null, IList<V1JSONSchemaProps> oneOf = null, string pattern = null, IDictionary<string, V1JSONSchemaProps> patternProperties = null, IDictionary<string, V1JSONSchemaProps> properties = null, IList<string> required = null, string title = null, string type = null, bool? uniqueItems = null, bool? xKubernetesEmbeddedResource = null, bool? xKubernetesIntOrString = null, IList<string> xKubernetesListMapKeys = null, string xKubernetesListType = null, string xKubernetesMapType = null, bool? xKubernetesPreserveUnknownFields = null, IList<V1ValidationRule> xKubernetesValidations = null)
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -290,6 +295,7 @@ namespace k8s.Models
             XKubernetesListType = xKubernetesListType;
             XKubernetesMapType = xKubernetesMapType;
             XKubernetesPreserveUnknownFields = xKubernetesPreserveUnknownFields;
+            XKubernetesValidations = xKubernetesValidations;
             CustomInit();
         }
 
@@ -301,7 +307,7 @@ namespace k8s.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "__referencePath")]
+        [JsonProperty(PropertyName = "$ref")]
         public string RefProperty { get; set; }
 
         /// <summary>
@@ -644,6 +650,14 @@ namespace k8s.Models
         public bool? XKubernetesPreserveUnknownFields { get; set; }
 
         /// <summary>
+        /// x-kubernetes-validations describes a list of validation rules written in the CEL
+        /// expression language. This field is an alpha-level. Using this field requires the
+        /// feature gate `CustomResourceValidationExpressions` to be enabled.
+        /// </summary>
+        [JsonProperty(PropertyName = "x-kubernetes-validations")]
+        public IList<V1ValidationRule> XKubernetesValidations { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -667,6 +681,12 @@ namespace k8s.Models
             Not?.Validate();
             if (OneOf != null){
                 foreach(var obj in OneOf)
+                {
+                    obj.Validate();
+                }
+            }
+            if (XKubernetesValidations != null){
+                foreach(var obj in XKubernetesValidations)
                 {
                     obj.Validate();
                 }

@@ -111,8 +111,7 @@ namespace k8s.Models
         /// being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If
         /// this field is unset, the Job won&apos;t be automatically deleted. If this field is
         /// set to zero, the Job becomes eligible to be deleted immediately after it
-        /// finishes. This field is alpha-level and is only honored by servers that enable
-        /// the TTLAfterFinished feature.
+        /// finishes.
         /// </param>
         public V1JobSpec(V1PodTemplateSpec template, long? activeDeadlineSeconds = null, int? backoffLimit = null, string completionMode = null, int? completions = null, bool? manualSelector = null, int? parallelism = null, V1LabelSelector selector = null, bool? suspend = null, int? ttlSecondsAfterFinished = null)
         {
@@ -244,8 +243,7 @@ namespace k8s.Models
         /// being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If
         /// this field is unset, the Job won&apos;t be automatically deleted. If this field is
         /// set to zero, the Job becomes eligible to be deleted immediately after it
-        /// finishes. This field is alpha-level and is only honored by servers that enable
-        /// the TTLAfterFinished feature.
+        /// finishes.
         /// </summary>
         [JsonProperty(PropertyName = "ttlSecondsAfterFinished")]
         public int? TtlSecondsAfterFinished { get; set; }

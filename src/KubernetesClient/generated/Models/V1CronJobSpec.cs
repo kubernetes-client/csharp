@@ -40,6 +40,12 @@ namespace k8s.Models
         /// &quot;Allow&quot; (default): allows CronJobs to run concurrently; - &quot;Forbid&quot;: forbids
         /// concurrent runs, skipping next run if previous run hasn&apos;t finished yet; -
         /// &quot;Replace&quot;: cancels currently running job and replaces it with a new one
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Allow&quot;` allows CronJobs to run concurrently.
+        /// - `&quot;Forbid&quot;` forbids concurrent runs, skipping next run if previous hasn&apos;t
+        /// finished yet.
+        /// - `&quot;Replace&quot;` cancels currently running job and replaces it with a new one.
         /// </param>
         /// <param name="failedJobsHistoryLimit">
         /// The number of failed finished jobs to retain. Value must be non-negative
@@ -79,6 +85,12 @@ namespace k8s.Models
         /// &quot;Allow&quot; (default): allows CronJobs to run concurrently; - &quot;Forbid&quot;: forbids
         /// concurrent runs, skipping next run if previous run hasn&apos;t finished yet; -
         /// &quot;Replace&quot;: cancels currently running job and replaces it with a new one
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Allow&quot;` allows CronJobs to run concurrently.
+        /// - `&quot;Forbid&quot;` forbids concurrent runs, skipping next run if previous hasn&apos;t
+        /// finished yet.
+        /// - `&quot;Replace&quot;` cancels currently running job and replaces it with a new one.
         /// </summary>
         [JsonProperty(PropertyName = "concurrencyPolicy")]
         public string ConcurrencyPolicy { get; set; }

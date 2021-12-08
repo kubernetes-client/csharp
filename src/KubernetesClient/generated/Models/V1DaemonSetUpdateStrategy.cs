@@ -35,6 +35,11 @@ namespace k8s.Models
         /// <param name="type">
         /// Type of daemon set update. Can be &quot;RollingUpdate&quot; or &quot;OnDelete&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;OnDelete&quot;` Replace the old daemons only when it&apos;s killed
+        /// - `&quot;RollingUpdate&quot;` Replace the old daemons by new ones using rolling update i.e
+        /// replace them on each node one after the other.
         /// </param>
         public V1DaemonSetUpdateStrategy(V1RollingUpdateDaemonSet rollingUpdate = null, string type = null)
         {
@@ -57,6 +62,11 @@ namespace k8s.Models
         /// <summary>
         /// Type of daemon set update. Can be &quot;RollingUpdate&quot; or &quot;OnDelete&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;OnDelete&quot;` Replace the old daemons only when it&apos;s killed
+        /// - `&quot;RollingUpdate&quot;` Replace the old daemons by new ones using rolling update i.e
+        /// replace them on each node one after the other.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

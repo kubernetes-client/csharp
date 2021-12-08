@@ -48,7 +48,8 @@ namespace k8s.Models
         /// ReplicaSet.
         /// </param>
         /// <param name="readyReplicas">
-        /// The number of ready replicas for this replica set.
+        /// readyReplicas is the number of pods targeted by this ReplicaSet with a Ready
+        /// Condition.
         /// </param>
         public V1ReplicaSetStatus(int replicas, int? availableReplicas = null, IList<V1ReplicaSetCondition> conditions = null, int? fullyLabeledReplicas = null, long? observedGeneration = null, int? readyReplicas = null)
         {
@@ -94,7 +95,8 @@ namespace k8s.Models
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// The number of ready replicas for this replica set.
+        /// readyReplicas is the number of pods targeted by this ReplicaSet with a Ready
+        /// Condition.
         /// </summary>
         [JsonProperty(PropertyName = "readyReplicas")]
         public int? ReadyReplicas { get; set; }

@@ -52,6 +52,15 @@ namespace k8s.Models
         /// (pod will be considered available as soon as it is ready) This is an alpha field
         /// and requires enabling StatefulSetMinReadySeconds feature gate.
         /// </param>
+        /// <param name="persistentVolumeClaimRetentionPolicy">
+        /// persistentVolumeClaimRetentionPolicy describes the lifecycle of persistent
+        /// volume claims created from volumeClaimTemplates. By default, all persistent
+        /// volume claims are created as needed and retained until manually deleted. This
+        /// policy allows the lifecycle to be altered, for example by deleting persistent
+        /// volume claims when their stateful set is deleted, or when their pod is scaled
+        /// down. This requires the StatefulSetAutoDeletePVC feature gate to be enabled,
+        /// which is alpha.  +optional
+        /// </param>
         /// <param name="podManagementPolicy">
         /// podManagementPolicy controls how pods are created during initial scale up, when
         /// replacing pods on nodes, or when scaling down. The default policy is
@@ -60,6 +69,14 @@ namespace k8s.Models
         /// When scaling down, the pods are removed in the opposite order. The alternative
         /// policy is `Parallel` which will create pods in parallel to match the desired
         /// scale without waiting, and on scale down will delete all pods at once.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;OrderedReady&quot;` will create pods in strictly increasing order on scale up and
+        /// strictly decreasing order on scale down, progressing only when the previous pod
+        /// is ready or terminated. At most one pod will be changed at any time.
+        /// - `&quot;Parallel&quot;` will create and delete pods as soon as the stateful set replica
+        /// count is changed, and will not wait for pods to be ready or complete
+        /// termination.
         /// </param>
         /// <param name="replicas">
         /// replicas is the desired number of replicas of the given Template. These are
@@ -85,9 +102,10 @@ namespace k8s.Models
         /// template. A claim in this list takes precedence over any volumes in the
         /// template, with the same name.
         /// </param>
-        public V1StatefulSetSpec(V1LabelSelector selector, string serviceName, V1PodTemplateSpec template, int? minReadySeconds = null, string podManagementPolicy = null, int? replicas = null, int? revisionHistoryLimit = null, V1StatefulSetUpdateStrategy updateStrategy = null, IList<V1PersistentVolumeClaim> volumeClaimTemplates = null)
+        public V1StatefulSetSpec(V1LabelSelector selector, string serviceName, V1PodTemplateSpec template, int? minReadySeconds = null, V1StatefulSetPersistentVolumeClaimRetentionPolicy persistentVolumeClaimRetentionPolicy = null, string podManagementPolicy = null, int? replicas = null, int? revisionHistoryLimit = null, V1StatefulSetUpdateStrategy updateStrategy = null, IList<V1PersistentVolumeClaim> volumeClaimTemplates = null)
         {
             MinReadySeconds = minReadySeconds;
+            PersistentVolumeClaimRetentionPolicy = persistentVolumeClaimRetentionPolicy;
             PodManagementPolicy = podManagementPolicy;
             Replicas = replicas;
             RevisionHistoryLimit = revisionHistoryLimit;
@@ -114,6 +132,18 @@ namespace k8s.Models
         public int? MinReadySeconds { get; set; }
 
         /// <summary>
+        /// persistentVolumeClaimRetentionPolicy describes the lifecycle of persistent
+        /// volume claims created from volumeClaimTemplates. By default, all persistent
+        /// volume claims are created as needed and retained until manually deleted. This
+        /// policy allows the lifecycle to be altered, for example by deleting persistent
+        /// volume claims when their stateful set is deleted, or when their pod is scaled
+        /// down. This requires the StatefulSetAutoDeletePVC feature gate to be enabled,
+        /// which is alpha.  +optional
+        /// </summary>
+        [JsonProperty(PropertyName = "persistentVolumeClaimRetentionPolicy")]
+        public V1StatefulSetPersistentVolumeClaimRetentionPolicy PersistentVolumeClaimRetentionPolicy { get; set; }
+
+        /// <summary>
         /// podManagementPolicy controls how pods are created during initial scale up, when
         /// replacing pods on nodes, or when scaling down. The default policy is
         /// `OrderedReady`, where pods are created in increasing order (pod-0, then pod-1,
@@ -121,6 +151,14 @@ namespace k8s.Models
         /// When scaling down, the pods are removed in the opposite order. The alternative
         /// policy is `Parallel` which will create pods in parallel to match the desired
         /// scale without waiting, and on scale down will delete all pods at once.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;OrderedReady&quot;` will create pods in strictly increasing order on scale up and
+        /// strictly decreasing order on scale down, progressing only when the previous pod
+        /// is ready or terminated. At most one pod will be changed at any time.
+        /// - `&quot;Parallel&quot;` will create and delete pods as soon as the stateful set replica
+        /// count is changed, and will not wait for pods to be ready or complete
+        /// termination.
         /// </summary>
         [JsonProperty(PropertyName = "podManagementPolicy")]
         public string PodManagementPolicy { get; set; }
@@ -204,6 +242,7 @@ namespace k8s.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Template");    
             }
+            PersistentVolumeClaimRetentionPolicy?.Validate();
             Selector?.Validate();
             Template?.Validate();
             UpdateStrategy?.Validate();

@@ -44,8 +44,7 @@ namespace k8s.Models
         /// <param name="fsGroupPolicy">
         /// Defines if the underlying volume supports changing ownership and permission of
         /// the volume before being mounted. Refer to the specific FSGroupPolicy values for
-        /// additional details. This field is beta, and is only honored by servers that
-        /// enable the CSIVolumeFSGroupPolicy feature gate.
+        /// additional details.
         /// 
         /// This field is immutable.
         /// 
@@ -99,7 +98,7 @@ namespace k8s.Models
         /// Alternatively, the driver can be deployed with the field unset or false and it
         /// can be flipped later when storage capacity information has been published.
         /// 
-        /// This field is immutable.
+        /// This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.
         /// 
         /// This is a beta field and only available when the CSIStorageCapacity feature is
         /// enabled. The default is false.
@@ -172,8 +171,7 @@ namespace k8s.Models
         /// <summary>
         /// Defines if the underlying volume supports changing ownership and permission of
         /// the volume before being mounted. Refer to the specific FSGroupPolicy values for
-        /// additional details. This field is beta, and is only honored by servers that
-        /// enable the CSIVolumeFSGroupPolicy feature gate.
+        /// additional details.
         /// 
         /// This field is immutable.
         /// 
@@ -236,7 +234,7 @@ namespace k8s.Models
         /// Alternatively, the driver can be deployed with the field unset or false and it
         /// can be flipped later when storage capacity information has been published.
         /// 
-        /// This field is immutable.
+        /// This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.
         /// 
         /// This is a beta field and only available when the CSIStorageCapacity feature is
         /// enabled. The default is false.

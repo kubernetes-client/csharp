@@ -33,6 +33,33 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// Node address type, one of Hostname, ExternalIP or InternalIP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ExternalDNS&quot;` identifies a DNS name which resolves to an IP address which
+        /// has the characteristics of a NodeExternalIP. The IP it resolves to may or may
+        /// not be a listed NodeExternalIP address.
+        /// - `&quot;ExternalIP&quot;` identifies an IP address which is, in some way, intended to be
+        /// more usable from outside the cluster then an internal IP, though no specific
+        /// semantics are defined. It may be a globally routable IP, though it is not
+        /// required to be. External IPs may be assigned directly to an interface on the
+        /// node, like a NodeInternalIP, or alternatively, packets sent to the external IP
+        /// may be NAT&apos;ed to an internal node IP rather than being delivered directly
+        /// (making the IP less efficient for node-to-node traffic than a NodeInternalIP).
+        /// - `&quot;Hostname&quot;` identifies a name of the node. Although every node can be assumed
+        /// to have a NodeAddress of this type, its exact syntax and semantics are not
+        /// defined, and are not consistent between different clusters.
+        /// - `&quot;InternalDNS&quot;` identifies a DNS name which resolves to an IP address which
+        /// has the characteristics of a NodeInternalIP. The IP it resolves to may or may
+        /// not be a listed NodeInternalIP address.
+        /// - `&quot;InternalIP&quot;` identifies an IP address which is assigned to one of the node&apos;s
+        /// network interfaces. Every node should have at least one address of this type. An
+        /// internal IP is normally expected to be reachable from every other node, but may
+        /// not be visible to hosts outside the cluster. By default it is assumed that
+        /// kube-apiserver can reach node internal IPs, though it is possible to configure
+        /// clusters where this is not the case. NodeInternalIP is the default type of node
+        /// IP, and does not necessarily imply that the IP is ONLY reachable internally. If
+        /// a node has multiple internal IPs, no specific semantics are assigned to the
+        /// additional IPs.
         /// </param>
         public V1NodeAddress(string address, string type)
         {
@@ -54,6 +81,33 @@ namespace k8s.Models
 
         /// <summary>
         /// Node address type, one of Hostname, ExternalIP or InternalIP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ExternalDNS&quot;` identifies a DNS name which resolves to an IP address which
+        /// has the characteristics of a NodeExternalIP. The IP it resolves to may or may
+        /// not be a listed NodeExternalIP address.
+        /// - `&quot;ExternalIP&quot;` identifies an IP address which is, in some way, intended to be
+        /// more usable from outside the cluster then an internal IP, though no specific
+        /// semantics are defined. It may be a globally routable IP, though it is not
+        /// required to be. External IPs may be assigned directly to an interface on the
+        /// node, like a NodeInternalIP, or alternatively, packets sent to the external IP
+        /// may be NAT&apos;ed to an internal node IP rather than being delivered directly
+        /// (making the IP less efficient for node-to-node traffic than a NodeInternalIP).
+        /// - `&quot;Hostname&quot;` identifies a name of the node. Although every node can be assumed
+        /// to have a NodeAddress of this type, its exact syntax and semantics are not
+        /// defined, and are not consistent between different clusters.
+        /// - `&quot;InternalDNS&quot;` identifies a DNS name which resolves to an IP address which
+        /// has the characteristics of a NodeInternalIP. The IP it resolves to may or may
+        /// not be a listed NodeInternalIP address.
+        /// - `&quot;InternalIP&quot;` identifies an IP address which is assigned to one of the node&apos;s
+        /// network interfaces. Every node should have at least one address of this type. An
+        /// internal IP is normally expected to be reachable from every other node, but may
+        /// not be visible to hosts outside the cluster. By default it is assumed that
+        /// kube-apiserver can reach node internal IPs, though it is possible to configure
+        /// clusters where this is not the case. NodeInternalIP is the default type of node
+        /// IP, and does not necessarily imply that the IP is ONLY reachable internally. If
+        /// a node has multiple internal IPs, no specific semantics are assigned to the
+        /// additional IPs.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

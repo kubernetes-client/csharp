@@ -90,9 +90,6 @@ namespace k8s.Models
         /// 
         /// A pod can use both types of ephemeral volumes and persistent volumes at the same
         /// time.
-        /// 
-        /// This is a beta feature and only available when the GenericEphemeralVolume
-        /// feature gate is enabled.
         /// </param>
         /// <param name="fc">
         /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
@@ -300,9 +297,6 @@ namespace k8s.Models
         /// 
         /// A pod can use both types of ephemeral volumes and persistent volumes at the same
         /// time.
-        /// 
-        /// This is a beta feature and only available when the GenericEphemeralVolume
-        /// feature gate is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "ephemeral")]
         public V1EphemeralVolumeSource Ephemeral { get; set; }

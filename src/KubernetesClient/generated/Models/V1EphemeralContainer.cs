@@ -13,15 +13,17 @@ namespace k8s.Models
     using System.Linq;
 
     /// <summary>
-    /// An EphemeralContainer is a container that may be added temporarily to an
-        /// existing pod for user-initiated activities such as debugging. Ephemeral
-        /// containers have no resource or scheduling guarantees, and they will not be
-        /// restarted when they exit or when a pod is removed or restarted. If an ephemeral
-        /// container causes a pod to exceed its resource allocation, the pod may be
-        /// evicted. Ephemeral containers may not be added by directly updating the pod
-        /// spec. They must be added via the pod&apos;s ephemeralcontainers subresource, and they
-        /// will appear in the pod spec once added. This is an alpha feature enabled by the
-        /// EphemeralContainers feature flag.
+    /// An EphemeralContainer is a temporary container that you may add to an existing
+        /// Pod for user-initiated activities such as debugging. Ephemeral containers have
+        /// no resource or scheduling guarantees, and they will not be restarted when they
+        /// exit or when a Pod is removed or restarted. The kubelet may evict a Pod if an
+        /// ephemeral container causes the Pod to exceed its resource allocation.
+        /// 
+        /// To add an ephemeral container, use the ephemeralcontainers subresource of an
+        /// existing Pod. Ephemeral containers may not be removed or restarted.
+        /// 
+        /// This is a beta feature available on clusters that haven&apos;t disabled the
+        /// EphemeralContainers feature gate.
     /// </summary>
     public partial class V1EphemeralContainer
     {
@@ -79,6 +81,14 @@ namespace k8s.Models
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </param>
         /// <param name="lifecycle">
         /// Lifecycle is not allowed for ephemeral containers.
@@ -122,9 +132,12 @@ namespace k8s.Models
         /// <param name="targetContainerName">
         /// If set, the name of the container from PodSpec that this ephemeral container
         /// targets. The ephemeral container will be run in the namespaces (IPC, PID, etc)
-        /// of this container. If not set then the ephemeral container is run in whatever
-        /// namespaces are shared for the pod. Note that the container runtime must support
-        /// this feature.
+        /// of this container. If not set then the ephemeral container uses the namespaces
+        /// configured in the Pod spec.
+        /// 
+        /// The container runtime must implement support for this feature. If the runtime
+        /// does not support namespace targeting then the result of setting this field is
+        /// undefined.
         /// </param>
         /// <param name="terminationMessagePath">
         /// Optional: Path at which the file to which the container&apos;s termination message
@@ -141,6 +154,13 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </param>
         /// <param name="tty">
         /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
@@ -150,7 +170,8 @@ namespace k8s.Models
         /// volumeDevices is the list of block devices to be used by the container.
         /// </param>
         /// <param name="volumeMounts">
-        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Subpath mounts are not
+        /// allowed for ephemeral containers. Cannot be updated.
         /// </param>
         /// <param name="workingDir">
         /// Container&apos;s working directory. If not specified, the container runtime&apos;s default
@@ -244,6 +265,14 @@ namespace k8s.Models
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </summary>
         [JsonProperty(PropertyName = "imagePullPolicy")]
         public string ImagePullPolicy { get; set; }
@@ -324,9 +353,12 @@ namespace k8s.Models
         /// <summary>
         /// If set, the name of the container from PodSpec that this ephemeral container
         /// targets. The ephemeral container will be run in the namespaces (IPC, PID, etc)
-        /// of this container. If not set then the ephemeral container is run in whatever
-        /// namespaces are shared for the pod. Note that the container runtime must support
-        /// this feature.
+        /// of this container. If not set then the ephemeral container uses the namespaces
+        /// configured in the Pod spec.
+        /// 
+        /// The container runtime must implement support for this feature. If the runtime
+        /// does not support namespace targeting then the result of setting this field is
+        /// undefined.
         /// </summary>
         [JsonProperty(PropertyName = "targetContainerName")]
         public string TargetContainerName { get; set; }
@@ -349,6 +381,13 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </summary>
         [JsonProperty(PropertyName = "terminationMessagePolicy")]
         public string TerminationMessagePolicy { get; set; }
@@ -367,7 +406,8 @@ namespace k8s.Models
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
 
         /// <summary>
-        /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
+        /// Pod volumes to mount into the container&apos;s filesystem. Subpath mounts are not
+        /// allowed for ephemeral containers. Cannot be updated.
         /// </summary>
         [JsonProperty(PropertyName = "volumeMounts")]
         public IList<V1VolumeMount> VolumeMounts { get; set; }

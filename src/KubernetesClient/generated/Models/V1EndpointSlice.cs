@@ -36,6 +36,11 @@ namespace k8s.Models
         /// creation. The following address types are currently supported: * IPv4:
         /// Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
         /// Represents a Fully Qualified Domain Name.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FQDN&quot;` represents a FQDN.
+        /// - `&quot;IPv4&quot;` represents an IPv4 Address.
+        /// - `&quot;IPv6&quot;` represents an IPv6 Address.
         /// </param>
         /// <param name="endpoints">
         /// endpoints is a list of unique endpoints in this slice. Each slice may include a
@@ -84,6 +89,11 @@ namespace k8s.Models
         /// creation. The following address types are currently supported: * IPv4:
         /// Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
         /// Represents a Fully Qualified Domain Name.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FQDN&quot;` represents a FQDN.
+        /// - `&quot;IPv4&quot;` represents an IPv4 Address.
+        /// - `&quot;IPv6&quot;` represents an IPv6 Address.
         /// </summary>
         [JsonProperty(PropertyName = "addressType")]
         public string AddressType { get; set; }

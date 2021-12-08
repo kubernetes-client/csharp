@@ -73,6 +73,14 @@ namespace k8s.Models
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </param>
         /// <param name="lifecycle">
         /// Actions that the management system should take in response to container
@@ -145,6 +153,13 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </param>
         /// <param name="tty">
         /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
@@ -249,6 +264,14 @@ namespace k8s.Models
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </summary>
         [JsonProperty(PropertyName = "imagePullPolicy")]
         public string ImagePullPolicy { get; set; }
@@ -361,6 +384,13 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </summary>
         [JsonProperty(PropertyName = "terminationMessagePolicy")]
         public string TerminationMessagePolicy { get; set; }

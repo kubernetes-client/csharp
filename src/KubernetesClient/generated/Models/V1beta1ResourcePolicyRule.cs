@@ -17,8 +17,10 @@ namespace k8s.Models
         /// the request&apos;s verb and the target resource. A ResourcePolicyRule matches a
         /// resource request if and only if: (a) at least one member of verbs matches the
         /// request, (b) at least one member of apiGroups matches the request, (c) at least
-        /// one member of resources matches the request, and (d) least one member of
-        /// namespaces matches the request.
+        /// one member of resources matches the request, and (d) either (d1) the request
+        /// does not specify a namespace (i.e., `Namespace==&quot;&quot;`) and clusterScope is true or
+        /// (d2) the request specifies a namespace and least one member of namespaces
+        /// matches the request&apos;s namespace.
     /// </summary>
     public partial class V1beta1ResourcePolicyRule
     {

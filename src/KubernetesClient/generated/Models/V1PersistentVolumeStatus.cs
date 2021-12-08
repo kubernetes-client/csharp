@@ -36,6 +36,18 @@ namespace k8s.Models
         /// Phase indicates if a volume is available, bound to a claim, or released by a
         /// claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Available&quot;` used for PersistentVolumes that are not yet bound Available
+        /// volumes are held by the binder and matched to PersistentVolumeClaims
+        /// - `&quot;Bound&quot;` used for PersistentVolumes that are bound
+        /// - `&quot;Failed&quot;` used for PersistentVolumes that failed to be correctly recycled or
+        /// deleted after being released from a claim
+        /// - `&quot;Pending&quot;` used for PersistentVolumes that are not available
+        /// - `&quot;Released&quot;` used for PersistentVolumes where the bound PersistentVolumeClaim
+        /// was deleted released volumes must be recycled before becoming available again
+        /// this phase is used by the persistent volume claim binder to signal to another
+        /// process to reclaim the resource
         /// </param>
         /// <param name="reason">
         /// Reason is a brief CamelCase string that describes any failure and is meant for
@@ -65,6 +77,18 @@ namespace k8s.Models
         /// Phase indicates if a volume is available, bound to a claim, or released by a
         /// claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Available&quot;` used for PersistentVolumes that are not yet bound Available
+        /// volumes are held by the binder and matched to PersistentVolumeClaims
+        /// - `&quot;Bound&quot;` used for PersistentVolumes that are bound
+        /// - `&quot;Failed&quot;` used for PersistentVolumes that failed to be correctly recycled or
+        /// deleted after being released from a claim
+        /// - `&quot;Pending&quot;` used for PersistentVolumes that are not available
+        /// - `&quot;Released&quot;` used for PersistentVolumes where the bound PersistentVolumeClaim
+        /// was deleted released volumes must be recycled before becoming available again
+        /// this phase is used by the persistent volume claim binder to signal to another
+        /// process to reclaim the resource
         /// </summary>
         [JsonProperty(PropertyName = "phase")]
         public string Phase { get; set; }

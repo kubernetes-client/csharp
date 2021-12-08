@@ -63,7 +63,8 @@ namespace k8s.Models
         /// stringData field is never output when reading from the API.
         /// </param>
         /// <param name="type">
-        /// Used to facilitate programmatic handling of secret data.
+        /// Used to facilitate programmatic handling of secret data. More info:
+        /// https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
         /// </param>
         public V1Secret(string apiVersion = null, IDictionary<string, byte[]> data = null, bool? immutable = null, string kind = null, V1ObjectMeta metadata = null, IDictionary<string, string> stringData = null, string type = null)
         {
@@ -134,7 +135,8 @@ namespace k8s.Models
         public IDictionary<string, string> StringData { get; set; }
 
         /// <summary>
-        /// Used to facilitate programmatic handling of secret data.
+        /// Used to facilitate programmatic handling of secret data. More info:
+        /// https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

@@ -35,6 +35,14 @@ namespace k8s.Models
         /// <param name="type">
         /// Type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </param>
         /// <param name="lastProbeTime">
         /// Last time we probed the condition.
@@ -98,6 +106,14 @@ namespace k8s.Models
         /// <summary>
         /// Type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

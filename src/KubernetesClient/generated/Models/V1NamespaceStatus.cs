@@ -34,6 +34,10 @@ namespace k8s.Models
         /// <param name="phase">
         /// Phase is the current lifecycle phase of the namespace. More info:
         /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Active&quot;` means the namespace is available for use in the system
+        /// - `&quot;Terminating&quot;` means the namespace is undergoing graceful termination
         /// </param>
         public V1NamespaceStatus(IList<V1NamespaceCondition> conditions = null, string phase = null)
         {
@@ -56,6 +60,10 @@ namespace k8s.Models
         /// <summary>
         /// Phase is the current lifecycle phase of the namespace. More info:
         /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Active&quot;` means the namespace is available for use in the system
+        /// - `&quot;Terminating&quot;` means the namespace is undergoing graceful termination
         /// </summary>
         [JsonProperty(PropertyName = "phase")]
         public string Phase { get; set; }

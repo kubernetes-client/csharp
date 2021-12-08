@@ -121,6 +121,15 @@ namespace k8s.Models
         /// dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle
         /// must be supported by the volume plugin underlying this PersistentVolume. More
         /// info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Delete&quot;` means the volume will be deleted from Kubernetes on release from
+        /// its claim. The volume plugin must support Deletion.
+        /// - `&quot;Recycle&quot;` means the volume will be recycled back into the pool of unbound
+        /// persistent volumes on release from its claim. The volume plugin must support
+        /// Recycling.
+        /// - `&quot;Retain&quot;` means the volume will be left in its current phase (Released) for
+        /// manual reclamation by the administrator. The default policy is Retain.
         /// </param>
         /// <param name="photonPersistentDisk">
         /// PhotonPersistentDisk represents a PhotonController persistent disk attached and
@@ -352,6 +361,15 @@ namespace k8s.Models
         /// dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle
         /// must be supported by the volume plugin underlying this PersistentVolume. More
         /// info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Delete&quot;` means the volume will be deleted from Kubernetes on release from
+        /// its claim. The volume plugin must support Deletion.
+        /// - `&quot;Recycle&quot;` means the volume will be recycled back into the pool of unbound
+        /// persistent volumes on release from its claim. The volume plugin must support
+        /// Recycling.
+        /// - `&quot;Retain&quot;` means the volume will be left in its current phase (Released) for
+        /// manual reclamation by the administrator. The default policy is Retain.
         /// </summary>
         [JsonProperty(PropertyName = "persistentVolumeReclaimPolicy")]
         public string PersistentVolumeReclaimPolicy { get; set; }

@@ -29,10 +29,6 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V2beta1HorizontalPodAutoscalerStatus class.
         /// </summary>
-        /// <param name="conditions">
-        /// conditions is the set of conditions required for this autoscaler to scale its
-        /// target, and indicates whether or not those conditions are met.
-        /// </param>
         /// <param name="currentReplicas">
         /// currentReplicas is current number of replicas of pods managed by this
         /// autoscaler, as last seen by the autoscaler.
@@ -40,6 +36,10 @@ namespace k8s.Models
         /// <param name="desiredReplicas">
         /// desiredReplicas is the desired number of replicas of pods managed by this
         /// autoscaler, as last calculated by the autoscaler.
+        /// </param>
+        /// <param name="conditions">
+        /// conditions is the set of conditions required for this autoscaler to scale its
+        /// target, and indicates whether or not those conditions are met.
         /// </param>
         /// <param name="currentMetrics">
         /// currentMetrics is the last read state of the metrics used by this autoscaler.
@@ -51,7 +51,7 @@ namespace k8s.Models
         /// <param name="observedGeneration">
         /// observedGeneration is the most recent generation observed by this autoscaler.
         /// </param>
-        public V2beta1HorizontalPodAutoscalerStatus(IList<V2beta1HorizontalPodAutoscalerCondition> conditions, int currentReplicas, int desiredReplicas, IList<V2beta1MetricStatus> currentMetrics = null, System.DateTime? lastScaleTime = null, long? observedGeneration = null)
+        public V2beta1HorizontalPodAutoscalerStatus(int currentReplicas, int desiredReplicas, IList<V2beta1HorizontalPodAutoscalerCondition> conditions = null, IList<V2beta1MetricStatus> currentMetrics = null, System.DateTime? lastScaleTime = null, long? observedGeneration = null)
         {
             Conditions = conditions;
             CurrentMetrics = currentMetrics;

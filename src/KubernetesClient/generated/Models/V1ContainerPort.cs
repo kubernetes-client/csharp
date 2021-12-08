@@ -47,6 +47,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="protocol">
         /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         public V1ContainerPort(int containerPort, string hostIP = null, int? hostPort = null, string name = null, string protocol = null)
         {
@@ -94,6 +99,11 @@ namespace k8s.Models
 
         /// <summary>
         /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

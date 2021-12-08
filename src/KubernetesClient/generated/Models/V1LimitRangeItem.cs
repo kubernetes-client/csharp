@@ -31,6 +31,12 @@ namespace k8s.Models
         /// </summary>
         /// <param name="type">
         /// Type of resource that this limit applies to.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Container&quot;` Limit that applies to all containers in a namespace
+        /// - `&quot;PersistentVolumeClaim&quot;` Limit that applies to all persistent volume claims
+        /// in a namespace
+        /// - `&quot;Pod&quot;` Limit that applies to all pods in a namespace
         /// </param>
         /// <param name="defaultProperty">
         /// Default resource requirement limit value by resource name if resource limit is
@@ -105,6 +111,12 @@ namespace k8s.Models
 
         /// <summary>
         /// Type of resource that this limit applies to.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Container&quot;` Limit that applies to all containers in a namespace
+        /// - `&quot;PersistentVolumeClaim&quot;` Limit that applies to all persistent volume claims
+        /// in a namespace
+        /// - `&quot;Pod&quot;` Limit that applies to all pods in a namespace
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

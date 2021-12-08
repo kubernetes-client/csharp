@@ -65,6 +65,13 @@ namespace k8s.Models
         /// NodePhase is the recently observed lifecycle phase of the node. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never
         /// populated, and now is deprecated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Pending&quot;` means the node has been created/added by the system, but not
+        /// configured.
+        /// - `&quot;Running&quot;` means the node has been configured and has Kubernetes components
+        /// running.
+        /// - `&quot;Terminated&quot;` means the node has been removed from the cluster.
         /// </param>
         /// <param name="volumesAttached">
         /// List of volumes that are attached to the node.
@@ -154,6 +161,13 @@ namespace k8s.Models
         /// NodePhase is the recently observed lifecycle phase of the node. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never
         /// populated, and now is deprecated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Pending&quot;` means the node has been created/added by the system, but not
+        /// configured.
+        /// - `&quot;Running&quot;` means the node has been configured and has Kubernetes components
+        /// running.
+        /// - `&quot;Terminated&quot;` means the node has been removed from the cluster.
         /// </summary>
         [JsonProperty(PropertyName = "phase")]
         public string Phase { get; set; }

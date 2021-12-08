@@ -35,6 +35,14 @@ namespace k8s.Models
         /// <param name="operatorProperty">
         /// Represents a key&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist. Gt, and Lt.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;Gt&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;Lt&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </param>
         /// <param name="values">
         /// An array of string values. If the operator is In or NotIn, the values array must
@@ -65,6 +73,14 @@ namespace k8s.Models
         /// <summary>
         /// Represents a key&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist. Gt, and Lt.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;Gt&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;Lt&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
         public string OperatorProperty { get; set; }

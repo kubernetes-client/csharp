@@ -33,6 +33,12 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// 
+        /// 
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FileSystemResizePending&quot;` - controller resize is finished and a file system
+        /// resize is pending on node
+        /// - `&quot;Resizing&quot;` - a user trigger resize of pvc has been started
         /// </param>
         /// <param name="lastProbeTime">
         /// Last time we probed the condition.
@@ -98,6 +104,12 @@ namespace k8s.Models
 
         /// <summary>
         /// 
+        /// 
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FileSystemResizePending&quot;` - controller resize is finished and a file system
+        /// resize is pending on node
+        /// - `&quot;Resizing&quot;` - a user trigger resize of pvc has been started
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

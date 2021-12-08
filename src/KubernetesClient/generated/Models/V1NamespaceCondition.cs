@@ -33,6 +33,18 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// Type of namespace controller condition.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NamespaceContentRemaining&quot;` contains information about resources remaining
+        /// in a namespace.
+        /// - `&quot;NamespaceDeletionContentFailure&quot;` contains information about namespace
+        /// deleter errors during deletion of resources.
+        /// - `&quot;NamespaceDeletionDiscoveryFailure&quot;` contains information about namespace
+        /// deleter errors during resource discovery.
+        /// - `&quot;NamespaceDeletionGroupVersionParsingFailure&quot;` contains information about
+        /// namespace deleter errors parsing GV for legacy types.
+        /// - `&quot;NamespaceFinalizersRemaining&quot;` contains information about which finalizers
+        /// are on resources remaining in a namespace.
         /// </param>
         /// <param name="lastTransitionTime">
         /// Time is a wrapper around time.Time which supports correct marshaling to YAML and
@@ -88,6 +100,18 @@ namespace k8s.Models
 
         /// <summary>
         /// Type of namespace controller condition.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NamespaceContentRemaining&quot;` contains information about resources remaining
+        /// in a namespace.
+        /// - `&quot;NamespaceDeletionContentFailure&quot;` contains information about namespace
+        /// deleter errors during deletion of resources.
+        /// - `&quot;NamespaceDeletionDiscoveryFailure&quot;` contains information about namespace
+        /// deleter errors during resource discovery.
+        /// - `&quot;NamespaceDeletionGroupVersionParsingFailure&quot;` contains information about
+        /// namespace deleter errors parsing GV for legacy types.
+        /// - `&quot;NamespaceFinalizersRemaining&quot;` contains information about which finalizers
+        /// are on resources remaining in a namespace.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

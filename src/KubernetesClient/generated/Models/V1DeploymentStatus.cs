@@ -44,7 +44,8 @@ namespace k8s.Models
         /// The generation observed by the deployment controller.
         /// </param>
         /// <param name="readyReplicas">
-        /// Total number of ready pods targeted by this deployment.
+        /// readyReplicas is the number of pods targeted by this Deployment with a Ready
+        /// Condition.
         /// </param>
         /// <param name="replicas">
         /// Total number of non-terminated pods targeted by this deployment (their labels
@@ -106,7 +107,8 @@ namespace k8s.Models
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// Total number of ready pods targeted by this deployment.
+        /// readyReplicas is the number of pods targeted by this Deployment with a Ready
+        /// Condition.
         /// </summary>
         [JsonProperty(PropertyName = "readyReplicas")]
         public int? ReadyReplicas { get; set; }

@@ -1403,6 +1403,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -1416,6 +1425,7 @@ namespace k8s
             V1Namespace body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -1440,6 +1450,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -1454,6 +1473,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -1722,6 +1742,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -1736,6 +1765,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -1850,6 +1880,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -1870,6 +1909,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -1898,6 +1938,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -1913,6 +1962,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -2181,6 +2231,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -2195,6 +2254,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -2309,6 +2369,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -2329,6 +2398,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -2357,6 +2427,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -2372,6 +2451,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3128,6 +3208,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -3142,6 +3231,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3165,6 +3255,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -3180,6 +3279,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3204,6 +3304,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -3218,6 +3327,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3502,6 +3612,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -3522,6 +3641,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -3551,6 +3671,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -3572,6 +3701,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -3602,6 +3732,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -3622,6 +3761,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -3650,6 +3790,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -3665,6 +3814,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3691,6 +3841,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -3707,6 +3866,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -3734,6 +3894,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -3749,6 +3918,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -4017,6 +4187,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -4031,6 +4210,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -4145,6 +4325,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -4165,6 +4354,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -4193,6 +4383,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -4208,6 +4407,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -4476,6 +4676,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -4490,6 +4699,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -4604,6 +4814,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -4624,6 +4843,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -4652,6 +4872,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -4667,6 +4896,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -4721,6 +4951,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -4741,6 +4980,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -4769,6 +5009,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -4784,6 +5033,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5052,6 +5302,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -5066,6 +5325,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5180,6 +5440,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -5200,6 +5469,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -5228,6 +5498,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -5243,6 +5522,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5364,6 +5644,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -5379,6 +5668,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5433,6 +5723,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -5453,6 +5752,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -5481,6 +5781,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -5496,6 +5805,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5523,6 +5833,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -5538,6 +5857,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -5560,13 +5880,13 @@ namespace k8s
         /// is only one container in the pod.
         /// </param>
         /// <param name="stderr">
-        /// Redirect the standard error stream of the pod for this call. Defaults to true.
+        /// Redirect the standard error stream of the pod for this call.
         /// </param>
         /// <param name="stdin">
         /// Redirect the standard input stream of the pod for this call. Defaults to false.
         /// </param>
         /// <param name="stdout">
-        /// Redirect the standard output stream of the pod for this call. Defaults to true.
+        /// Redirect the standard output stream of the pod for this call.
         /// </param>
         /// <param name="tty">
         /// TTY if true indicates that a tty will be allocated for the exec call. Defaults
@@ -5608,13 +5928,13 @@ namespace k8s
         /// is only one container in the pod.
         /// </param>
         /// <param name="stderr">
-        /// Redirect the standard error stream of the pod for this call. Defaults to true.
+        /// Redirect the standard error stream of the pod for this call.
         /// </param>
         /// <param name="stdin">
         /// Redirect the standard input stream of the pod for this call. Defaults to false.
         /// </param>
         /// <param name="stdout">
-        /// Redirect the standard output stream of the pod for this call. Defaults to true.
+        /// Redirect the standard output stream of the pod for this call.
         /// </param>
         /// <param name="tty">
         /// TTY if true indicates that a tty will be allocated for the exec call. Defaults
@@ -6134,6 +6454,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -6154,6 +6483,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -6182,6 +6512,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -6197,6 +6536,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -6465,6 +6805,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -6479,6 +6828,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -6593,6 +6943,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -6613,6 +6972,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -6641,6 +7001,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -6656,6 +7025,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -6924,6 +7294,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -6938,6 +7317,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7052,6 +7432,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -7072,6 +7461,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -7100,6 +7490,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7115,6 +7514,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7169,6 +7569,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -7189,6 +7598,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -7217,6 +7627,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7232,6 +7651,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7286,6 +7706,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -7306,6 +7735,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -7334,6 +7764,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7349,6 +7788,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7617,6 +8057,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7631,6 +8080,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7745,6 +8195,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -7765,6 +8224,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -7793,6 +8253,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7808,6 +8277,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -7862,6 +8332,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -7882,6 +8361,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -7910,6 +8390,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -7925,6 +8414,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -8193,6 +8683,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -8207,6 +8706,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -8321,6 +8821,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -8341,6 +8850,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -8369,6 +8879,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -8384,6 +8903,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -8652,6 +9172,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -8666,6 +9195,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -8780,6 +9310,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -8800,6 +9339,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -8828,6 +9368,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -8843,6 +9392,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -8870,6 +9420,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -8885,6 +9444,140 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// delete collection of Service
+        /// </summary>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceWithHttpMessagesAsync(
+            string namespaceParameter,
+            V1DeleteOptions body = null,
+            string continueParameter = null,
+            string dryRun = null,
+            string fieldSelector = null,
+            int? gracePeriodSeconds = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9020,6 +9713,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -9034,6 +9736,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9086,7 +9789,7 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedServiceWithHttpMessagesAsync(
+        Task<HttpOperationResponse<V1Service>> DeleteNamespacedServiceWithHttpMessagesAsync(
             string name,
             string namespaceParameter,
             V1DeleteOptions body = null,
@@ -9148,6 +9851,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -9168,6 +9880,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -9196,6 +9909,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -9211,6 +9933,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9637,6 +10360,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -9657,6 +10389,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -9685,6 +10418,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -9700,6 +10442,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9803,6 +10546,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -9822,6 +10574,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -9847,6 +10600,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -9861,6 +10623,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9885,6 +10648,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -9899,6 +10671,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -9946,6 +10719,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -9965,6 +10747,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -9990,6 +10773,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -10004,6 +10796,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -10261,6 +11054,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -10274,6 +11076,7 @@ namespace k8s
             V1Node body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -10377,6 +11180,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -10396,6 +11208,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -10421,6 +11234,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -10435,6 +11257,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -10758,6 +11581,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -10777,6 +11609,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -10802,6 +11635,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -10816,6 +11658,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -11180,6 +12023,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -11193,6 +12045,7 @@ namespace k8s
             V1PersistentVolume body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -11296,6 +12149,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -11315,6 +12177,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -11340,6 +12203,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -11354,6 +12226,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -11401,6 +12274,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -11420,6 +12302,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -11445,6 +12328,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -11459,6 +12351,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -12725,6 +13618,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -12738,6 +13640,7 @@ namespace k8s
             V1MutatingWebhookConfiguration body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -12841,6 +13744,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -12860,6 +13772,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -12885,6 +13798,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -12899,6 +13821,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -13156,6 +14079,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -13169,6 +14101,7 @@ namespace k8s
             V1ValidatingWebhookConfiguration body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -13272,6 +14205,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -13291,6 +14233,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -13316,6 +14259,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -13330,6 +14282,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -13587,6 +14540,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -13600,6 +14562,7 @@ namespace k8s
             V1CustomResourceDefinition body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -13703,6 +14666,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -13722,6 +14694,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -13747,6 +14720,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -13761,6 +14743,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -13808,6 +14791,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -13827,6 +14819,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -13852,6 +14845,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -13866,6 +14868,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -14123,6 +15126,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -14136,6 +15148,7 @@ namespace k8s
             V1APIService body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -14239,6 +15252,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -14258,6 +15280,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -14283,6 +15306,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -14297,6 +15329,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -14344,6 +15377,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -14363,6 +15405,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -14388,6 +15431,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -14402,6 +15454,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -14991,6 +16044,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -15005,6 +16067,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -15119,6 +16182,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -15139,6 +16211,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -15167,6 +16240,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -15182,6 +16264,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -15450,6 +16533,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -15464,6 +16556,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -15578,6 +16671,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -15598,6 +16700,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -15626,6 +16729,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -15641,6 +16753,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -15695,6 +16808,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -15715,6 +16837,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -15743,6 +16866,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -15758,6 +16890,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16026,6 +17159,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16040,6 +17182,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16154,6 +17297,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -16174,6 +17326,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -16202,6 +17355,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16217,6 +17379,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16271,6 +17434,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -16291,6 +17463,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -16319,6 +17492,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16334,6 +17516,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16388,6 +17571,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -16408,6 +17600,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -16436,6 +17629,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16451,6 +17653,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16719,6 +17922,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16733,6 +17945,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16847,6 +18060,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -16867,6 +18089,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -16895,6 +18118,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -16910,6 +18142,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -16964,6 +18197,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -16984,6 +18226,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -17012,6 +18255,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17027,6 +18279,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -17081,6 +18334,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -17101,6 +18363,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -17129,6 +18392,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17144,6 +18416,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -17412,6 +18685,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17426,6 +18708,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -17540,6 +18823,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -17560,6 +18852,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -17588,6 +18881,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17603,6 +18905,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -17657,6 +18960,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -17677,6 +18989,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -17705,6 +19018,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17720,6 +19042,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -17774,6 +19097,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -17794,6 +19126,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -17822,6 +19155,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -17837,6 +19179,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18072,6 +19415,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -18085,6 +19437,7 @@ namespace k8s
             V1TokenReview body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18109,6 +19462,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -18123,6 +19485,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18144,6 +19507,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -18157,6 +19529,7 @@ namespace k8s
             V1SelfSubjectAccessReview body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18178,6 +19551,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -18191,6 +19573,7 @@ namespace k8s
             V1SelfSubjectRulesReview body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18212,6 +19595,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -18225,6 +19617,7 @@ namespace k8s
             V1SubjectAccessReview body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -18429,7 +19822,7 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
             string continueParameter = null,
             string fieldSelector = null,
@@ -18536,7 +19929,114 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
+        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
+        /// specific interval, nor may they assume the server will send any BOOKMARK event
+        /// during a session. If this is not a watch, this field is ignored.
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add,
+        /// update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces3WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
             string continueParameter = null,
             string fieldSelector = null,
@@ -18950,6 +20450,139 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete collection of HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
+            string namespaceParameter,
+            V1DeleteOptions body = null,
+            string continueParameter = null,
+            string dryRun = null,
+            string fieldSelector = null,
+            int? gracePeriodSeconds = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
         /// </summary>
         /// <param name="namespaceParameter">
@@ -19156,7 +20789,7 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string namespaceParameter,
             bool? allowWatchBookmarks = null,
             string continueParameter = null,
@@ -19267,7 +20900,118 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+            string namespaceParameter,
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// list or watch objects of kind HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
+        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
+        /// specific interval, nor may they assume the server will send any BOOKMARK event
+        /// during a session. If this is not a watch, this field is ignored.
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add,
+        /// update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string namespaceParameter,
             bool? allowWatchBookmarks = null,
             string continueParameter = null,
@@ -19302,6 +21046,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -19316,6 +21069,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19340,6 +21094,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -19349,11 +21112,60 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+            V2HorizontalPodAutoscaler body,
+            string namespaceParameter,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19378,6 +21190,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -19387,11 +21208,12 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19577,6 +21399,66 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete a HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
+            string name,
+            string namespaceParameter,
+            V1DeleteOptions body = null,
+            string dryRun = null,
+            int? gracePeriodSeconds = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// read the specified HorizontalPodAutoscaler
         /// </summary>
         /// <param name="name">
@@ -19619,7 +21501,7 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string name,
             string namespaceParameter,
             bool? pretty = null,
@@ -19644,7 +21526,32 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+            string name,
+            string namespaceParameter,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string name,
             string namespaceParameter,
             bool? pretty = null,
@@ -19675,6 +21582,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -19696,6 +21612,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -19726,6 +21643,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -19740,12 +21666,13 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             V1Patch body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -19776,6 +21703,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -19790,12 +21726,73 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V1Patch body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string namespaceParameter,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -19823,6 +21820,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -19839,6 +21845,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19866,6 +21873,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -19875,12 +21891,65 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
+            V2HorizontalPodAutoscaler body,
+            string name,
+            string namespaceParameter,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19908,6 +21977,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -19917,12 +21995,13 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -19970,7 +22049,7 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
             string name,
             string namespaceParameter,
             bool? pretty = null,
@@ -19995,7 +22074,32 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
+            string name,
+            string namespaceParameter,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
             string name,
             string namespaceParameter,
             bool? pretty = null,
@@ -20026,6 +22130,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -20047,6 +22160,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -20077,6 +22191,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -20091,12 +22214,13 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
             V1Patch body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -20127,6 +22251,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -20141,12 +22274,73 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
             V1Patch body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string namespaceParameter,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -20174,6 +22368,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -20190,6 +22393,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -20217,6 +22421,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -20226,12 +22439,65 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
+            V2HorizontalPodAutoscaler body,
+            string name,
+            string namespaceParameter,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified HorizontalPodAutoscaler
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the HorizontalPodAutoscaler
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// object name and auth scope, such as for teams and projects
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -20259,6 +22525,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -20268,12 +22543,13 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
+        Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
             string name,
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21107,6 +23383,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21121,6 +23406,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21145,6 +23431,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21159,6 +23454,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21358,6 +23654,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -21378,6 +23683,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -21408,6 +23714,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -21428,6 +23743,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -21456,6 +23772,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21471,6 +23796,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21498,6 +23824,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21513,6 +23848,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21592,6 +23928,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -21612,6 +23957,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -21642,6 +23988,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -21662,6 +24017,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -21690,6 +24046,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21705,6 +24070,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -21732,6 +24098,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -21747,6 +24122,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22015,6 +24391,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22029,6 +24414,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22143,6 +24529,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -22163,6 +24558,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -22191,6 +24587,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22206,6 +24611,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22260,6 +24666,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -22280,6 +24695,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -22308,6 +24724,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22323,6 +24748,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22580,6 +25006,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22593,6 +25028,7 @@ namespace k8s
             V1CertificateSigningRequest body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22696,6 +25132,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -22715,6 +25160,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -22740,6 +25186,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22754,6 +25209,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22801,6 +25257,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -22820,6 +25285,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -22845,6 +25311,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22859,6 +25334,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -22906,6 +25382,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -22925,6 +25410,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -22950,6 +25436,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -22964,6 +25459,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -23339,6 +25835,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -23353,6 +25858,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -23467,6 +25973,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -23487,6 +26002,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -23515,6 +26031,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -23530,6 +26055,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24256,6 +26782,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -24270,6 +26805,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24294,6 +26830,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -24308,6 +26853,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24507,6 +27053,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -24527,6 +27082,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -24557,6 +27113,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -24577,6 +27142,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -24605,6 +27171,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -24620,6 +27195,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24647,6 +27223,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -24662,6 +27247,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24796,6 +27382,135 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete collection of FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchema1WithHttpMessagesAsync(
+            V1DeleteOptions body = null,
+            string continueParameter = null,
+            string dryRun = null,
+            string fieldSelector = null,
+            int? gracePeriodSeconds = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// list or watch objects of kind FlowSchema
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -24903,6 +27618,113 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// list or watch objects of kind FlowSchema
+        /// </summary>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
+        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
+        /// specific interval, nor may they assume the server will send any BOOKMARK event
+        /// during a session. If this is not a watch, this field is ignored.
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add,
+        /// update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchemaList>> ListFlowSchema1WithHttpMessagesAsync(
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// create a FlowSchema
         /// </summary>
         /// <param name="body">
@@ -24919,6 +27741,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -24932,6 +27763,51 @@ namespace k8s
             V1beta1FlowSchema body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> CreateFlowSchema1WithHttpMessagesAsync(
+            V1beta2FlowSchema body,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -24993,6 +27869,62 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete a FlowSchema
+        /// </summary>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteFlowSchema1WithHttpMessagesAsync(
+            string name,
+            V1DeleteOptions body = null,
+            string dryRun = null,
+            int? gracePeriodSeconds = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// read the specified FlowSchema
         /// </summary>
         /// <param name="name">
@@ -25008,6 +27940,27 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaWithHttpMessagesAsync(
+            string name,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified FlowSchema
+        /// </summary>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchema1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25035,6 +27988,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -25054,6 +28016,63 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> PatchFlowSchema1WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25079,6 +28098,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -25093,6 +28121,55 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> ReplaceFlowSchema1WithHttpMessagesAsync(
+            V1beta2FlowSchema body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -25113,6 +28190,27 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaStatusWithHttpMessagesAsync(
+            string name,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified FlowSchema
+        /// </summary>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchemaStatus1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25140,6 +28238,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -25159,6 +28266,63 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> PatchFlowSchemaStatus1WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25184,6 +28348,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -25198,6 +28371,55 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified FlowSchema
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the FlowSchema
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2FlowSchema>> ReplaceFlowSchemaStatus1WithHttpMessagesAsync(
+            V1beta2FlowSchema body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -25332,6 +28554,135 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete collection of PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfiguration1WithHttpMessagesAsync(
+            V1DeleteOptions body = null,
+            string continueParameter = null,
+            string dryRun = null,
+            string fieldSelector = null,
+            int? gracePeriodSeconds = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// list or watch objects of kind PriorityLevelConfiguration
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -25439,6 +28790,113 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// list or watch objects of kind PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
+        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
+        /// specific interval, nor may they assume the server will send any BOOKMARK event
+        /// during a session. If this is not a watch, this field is ignored.
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// resourceVersion sets a constraint on what resource versions a request may be
+        /// served from. See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add,
+        /// update, and remove notifications. Specify resourceVersion.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfigurationList>> ListPriorityLevelConfiguration1WithHttpMessagesAsync(
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// create a PriorityLevelConfiguration
         /// </summary>
         /// <param name="body">
@@ -25455,6 +28913,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -25468,6 +28935,51 @@ namespace k8s
             V1beta1PriorityLevelConfiguration body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// create a PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> CreatePriorityLevelConfiguration1WithHttpMessagesAsync(
+            V1beta2PriorityLevelConfiguration body,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -25529,6 +29041,62 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// delete a PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
+        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
+        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
+        /// foreground.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1Status>> DeletePriorityLevelConfiguration1WithHttpMessagesAsync(
+            string name,
+            V1DeleteOptions body = null,
+            string dryRun = null,
+            int? gracePeriodSeconds = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// read the specified PriorityLevelConfiguration
         /// </summary>
         /// <param name="name">
@@ -25544,6 +29112,27 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationWithHttpMessagesAsync(
+            string name,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfiguration1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25571,6 +29160,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -25590,6 +29188,63 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> PatchPriorityLevelConfiguration1WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25615,6 +29270,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -25629,6 +29293,55 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReplacePriorityLevelConfiguration1WithHttpMessagesAsync(
+            V1beta2PriorityLevelConfiguration body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -25649,6 +29362,27 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatusWithHttpMessagesAsync(
+            string name,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatus1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25676,6 +29410,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -25695,6 +29438,63 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? force = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatus1WithHttpMessagesAsync(
+            V1Patch body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -25720,6 +29520,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -25734,6 +29543,55 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace status of the specified PriorityLevelConfiguration
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="name">
+        /// name of the PriorityLevelConfiguration
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationStatus1WithHttpMessagesAsync(
+            V1beta2PriorityLevelConfiguration body,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -25991,6 +29849,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -26004,6 +29871,7 @@ namespace k8s
             V1alpha1StorageVersion body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -26107,6 +29975,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -26126,6 +30003,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -26151,6 +30029,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -26165,6 +30052,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -26212,6 +30100,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -26231,6 +30128,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -26256,6 +30154,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -26270,6 +30177,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -26527,6 +30435,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -26540,6 +30457,7 @@ namespace k8s
             V1IngressClass body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -26643,6 +30561,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -26662,6 +30589,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -26687,6 +30615,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -26701,6 +30638,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -27076,6 +31014,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -27090,6 +31037,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -27204,6 +31152,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -27224,6 +31181,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -27252,6 +31210,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -27267,6 +31234,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -27321,6 +31289,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -27341,6 +31318,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -27369,6 +31347,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -27384,6 +31371,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -27652,6 +31640,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -27666,6 +31663,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -27780,6 +31778,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -27800,6 +31807,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -27828,6 +31836,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -27843,6 +31860,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -28679,6 +32697,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -28692,6 +32719,7 @@ namespace k8s
             V1RuntimeClass body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -28712,6 +32740,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -28726,6 +32763,7 @@ namespace k8s
             V1alpha1RuntimeClass body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -28747,6 +32785,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -28760,6 +32807,7 @@ namespace k8s
             V1beta1RuntimeClass body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -29017,6 +33065,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -29036,6 +33093,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -29062,6 +33120,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -29082,6 +33149,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -29109,6 +33177,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -29128,6 +33205,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -29153,6 +33231,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -29167,6 +33254,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -29190,6 +33278,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -29205,6 +33302,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -29229,6 +33327,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -29243,6 +33350,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -29755,6 +33863,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -29769,6 +33886,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -29793,6 +33911,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -29807,6 +33934,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30006,6 +34134,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -30026,6 +34163,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -30056,6 +34194,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -30076,6 +34223,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -30104,6 +34252,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -30119,6 +34276,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30146,6 +34304,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -30161,6 +34328,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30240,6 +34408,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -30260,6 +34437,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -30290,6 +34468,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -30310,6 +34497,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -30338,6 +34526,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -30353,6 +34550,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30380,6 +34578,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -30395,6 +34602,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30866,6 +35074,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -30879,6 +35096,7 @@ namespace k8s
             V1beta1PodSecurityPolicy body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -30982,6 +35200,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -31001,6 +35228,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -31026,6 +35254,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -31040,6 +35277,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -31174,135 +35412,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of ClusterRoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBinding1WithHttpMessagesAsync(
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -31410,113 +35519,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind ClusterRoleBinding
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBindingList>> ListClusterRoleBinding1WithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a ClusterRoleBinding
         /// </summary>
         /// <param name="body">
@@ -31532,6 +35534,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -31546,40 +35557,7 @@ namespace k8s
             V1ClusterRoleBinding body,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ClusterRoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> CreateClusterRoleBinding1WithHttpMessagesAsync(
-            V1alpha1ClusterRoleBinding body,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -31641,62 +35619,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a ClusterRoleBinding
-        /// </summary>
-        /// <param name="name">
-        /// name of the ClusterRoleBinding
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBinding1WithHttpMessagesAsync(
-            string name,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified ClusterRoleBinding
         /// </summary>
         /// <param name="name">
@@ -31718,27 +35640,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified ClusterRoleBinding
-        /// </summary>
-        /// <param name="name">
-        /// name of the ClusterRoleBinding
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> ReadClusterRoleBinding1WithHttpMessagesAsync(
-            string name,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified ClusterRoleBinding
         /// </summary>
         /// <param name="body">
@@ -31759,6 +35660,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -31779,52 +35689,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ClusterRoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the ClusterRoleBinding
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> PatchClusterRoleBinding1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -31849,6 +35714,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -31864,44 +35738,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ClusterRoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the ClusterRoleBinding
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleBinding>> ReplaceClusterRoleBinding1WithHttpMessagesAsync(
-            V1alpha1ClusterRoleBinding body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -32036,135 +35873,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of ClusterRole
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRole1WithHttpMessagesAsync(
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind ClusterRole
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -32272,113 +35980,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind ClusterRole
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRoleList>> ListClusterRole1WithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a ClusterRole
         /// </summary>
         /// <param name="body">
@@ -32394,6 +35995,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -32408,40 +36018,7 @@ namespace k8s
             V1ClusterRole body,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a ClusterRole
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> CreateClusterRole1WithHttpMessagesAsync(
-            V1alpha1ClusterRole body,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -32503,62 +36080,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a ClusterRole
-        /// </summary>
-        /// <param name="name">
-        /// name of the ClusterRole
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteClusterRole1WithHttpMessagesAsync(
-            string name,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified ClusterRole
         /// </summary>
         /// <param name="name">
@@ -32580,27 +36101,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified ClusterRole
-        /// </summary>
-        /// <param name="name">
-        /// name of the ClusterRole
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> ReadClusterRole1WithHttpMessagesAsync(
-            string name,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified ClusterRole
         /// </summary>
         /// <param name="body">
@@ -32621,6 +36121,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -32641,52 +36150,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified ClusterRole
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the ClusterRole
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> PatchClusterRole1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -32711,6 +36175,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -32726,44 +36199,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified ClusterRole
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the ClusterRole
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1ClusterRole>> ReplaceClusterRole1WithHttpMessagesAsync(
-            V1alpha1ClusterRole body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -32902,139 +36338,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of RoleBinding
-        /// </summary>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBinding1WithHttpMessagesAsync(
-            string namespaceParameter,
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind RoleBinding
         /// </summary>
         /// <param name="namespaceParameter">
@@ -33146,117 +36449,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind RoleBinding
-        /// </summary>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListNamespacedRoleBinding1WithHttpMessagesAsync(
-            string namespaceParameter,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a RoleBinding
         /// </summary>
         /// <param name="body">
@@ -33275,6 +36467,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -33290,44 +36491,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a RoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> CreateNamespacedRoleBinding1WithHttpMessagesAsync(
-            V1alpha1RoleBinding body,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -33393,66 +36557,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a RoleBinding
-        /// </summary>
-        /// <param name="name">
-        /// name of the RoleBinding
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBinding1WithHttpMessagesAsync(
-            string name,
-            string namespaceParameter,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified RoleBinding
         /// </summary>
         /// <param name="name">
@@ -33478,31 +36582,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified RoleBinding
-        /// </summary>
-        /// <param name="name">
-        /// name of the RoleBinding
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> ReadNamespacedRoleBinding1WithHttpMessagesAsync(
-            string name,
-            string namespaceParameter,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified RoleBinding
         /// </summary>
         /// <param name="body">
@@ -33526,6 +36605,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -33547,56 +36635,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified RoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the RoleBinding
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> PatchNamespacedRoleBinding1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -33624,6 +36663,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -33640,48 +36688,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified RoleBinding
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the RoleBinding
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBinding>> ReplaceNamespacedRoleBinding1WithHttpMessagesAsync(
-            V1alpha1RoleBinding body,
-            string name,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -33820,139 +36827,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of Role
-        /// </summary>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRole1WithHttpMessagesAsync(
-            string namespaceParameter,
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind Role
         /// </summary>
         /// <param name="namespaceParameter">
@@ -34064,117 +36938,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind Role
-        /// </summary>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListNamespacedRole1WithHttpMessagesAsync(
-            string namespaceParameter,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a Role
         /// </summary>
         /// <param name="body">
@@ -34193,6 +36956,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -34208,44 +36980,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a Role
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> CreateNamespacedRole1WithHttpMessagesAsync(
-            V1alpha1Role body,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -34311,66 +37046,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a Role
-        /// </summary>
-        /// <param name="name">
-        /// name of the Role
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteNamespacedRole1WithHttpMessagesAsync(
-            string name,
-            string namespaceParameter,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified Role
         /// </summary>
         /// <param name="name">
@@ -34396,31 +37071,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified Role
-        /// </summary>
-        /// <param name="name">
-        /// name of the Role
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> ReadNamespacedRole1WithHttpMessagesAsync(
-            string name,
-            string namespaceParameter,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified Role
         /// </summary>
         /// <param name="body">
@@ -34444,6 +37094,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -34465,56 +37124,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified Role
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the Role
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> PatchNamespacedRole1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -34542,6 +37152,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -34558,48 +37177,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified Role
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the Role
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// object name and auth scope, such as for teams and projects
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1Role>> ReplaceNamespacedRole1WithHttpMessagesAsync(
-            V1alpha1Role body,
-            string name,
-            string namespaceParameter,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -34712,113 +37290,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind RoleBinding
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleBindingList>> ListRoleBindingForAllNamespaces1WithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind Role
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -34912,113 +37383,6 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// list or watch objects of kind Role
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1RoleList>> ListRoleForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
             string continueParameter = null,
             string fieldSelector = null,
@@ -35162,135 +37526,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of PriorityClass
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClass1WithHttpMessagesAsync(
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind PriorityClass
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -35398,113 +37633,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind PriorityClass
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClassList>> ListPriorityClass1WithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a PriorityClass
         /// </summary>
         /// <param name="body">
@@ -35520,6 +37648,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -35534,40 +37671,7 @@ namespace k8s
             V1PriorityClass body,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a PriorityClass
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> CreatePriorityClass1WithHttpMessagesAsync(
-            V1alpha1PriorityClass body,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -35629,62 +37733,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a PriorityClass
-        /// </summary>
-        /// <param name="name">
-        /// name of the PriorityClass
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeletePriorityClass1WithHttpMessagesAsync(
-            string name,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified PriorityClass
         /// </summary>
         /// <param name="name">
@@ -35706,27 +37754,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified PriorityClass
-        /// </summary>
-        /// <param name="name">
-        /// name of the PriorityClass
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> ReadPriorityClass1WithHttpMessagesAsync(
-            string name,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified PriorityClass
         /// </summary>
         /// <param name="body">
@@ -35747,6 +37774,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -35767,52 +37803,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified PriorityClass
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the PriorityClass
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> PatchPriorityClass1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -35837,6 +37828,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -35852,44 +37852,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified PriorityClass
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the PriorityClass
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1PriorityClass>> ReplacePriorityClass1WithHttpMessagesAsync(
-            V1alpha1PriorityClass body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -36147,6 +38110,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -36160,6 +38132,7 @@ namespace k8s
             V1CSIDriver body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -36263,6 +38236,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -36282,6 +38264,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -36307,6 +38290,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -36321,6 +38313,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -36578,6 +38571,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -36591,6 +38593,7 @@ namespace k8s
             V1CSINode body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -36694,6 +38697,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -36713,6 +38725,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -36738,6 +38751,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -36752,6 +38774,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -37009,6 +39032,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -37022,6 +39054,7 @@ namespace k8s
             V1StorageClass body,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -37125,6 +39158,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -37144,6 +39186,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -37169,6 +39212,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -37183,6 +39235,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -37317,135 +39370,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete collection of VolumeAttachment
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachment1WithHttpMessagesAsync(
-            V1DeleteOptions body = null,
-            string continueParameter = null,
-            string dryRun = null,
-            string fieldSelector = null,
-            int? gracePeriodSeconds = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// list or watch objects of kind VolumeAttachment
         /// </summary>
         /// <param name="allowWatchBookmarks">
@@ -37553,113 +39477,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch objects of kind VolumeAttachment
-        /// </summary>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// resourceVersion sets a constraint on what resource versions a request may be
-        /// served from. See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications. Specify resourceVersion.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachmentList>> ListVolumeAttachment1WithHttpMessagesAsync(
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// create a VolumeAttachment
         /// </summary>
         /// <param name="body">
@@ -37675,6 +39492,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -37689,40 +39515,7 @@ namespace k8s
             V1VolumeAttachment body,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// create a VolumeAttachment
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> CreateVolumeAttachment1WithHttpMessagesAsync(
-            V1alpha1VolumeAttachment body,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -37784,62 +39577,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// delete a VolumeAttachment
-        /// </summary>
-        /// <param name="name">
-        /// name of the VolumeAttachment
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy. Acceptable values are: &apos;Orphan&apos; - orphan the dependents;
-        /// &apos;Background&apos; - allow the garbage collector to delete the dependents in the
-        /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
-        /// foreground.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> DeleteVolumeAttachment1WithHttpMessagesAsync(
-            string name,
-            V1DeleteOptions body = null,
-            string dryRun = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// read the specified VolumeAttachment
         /// </summary>
         /// <param name="name">
@@ -37861,27 +39598,6 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read the specified VolumeAttachment
-        /// </summary>
-        /// <param name="name">
-        /// name of the VolumeAttachment
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> ReadVolumeAttachment1WithHttpMessagesAsync(
-            string name,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// partially update the specified VolumeAttachment
         /// </summary>
         /// <param name="body">
@@ -37902,6 +39618,15 @@ namespace k8s
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
@@ -37922,52 +39647,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? force = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update the specified VolumeAttachment
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the VolumeAttachment
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> PatchVolumeAttachment1WithHttpMessagesAsync(
-            V1Patch body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -37992,6 +39672,15 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -38007,44 +39696,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified VolumeAttachment
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="name">
-        /// name of the VolumeAttachment
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<V1alpha1VolumeAttachment>> ReplaceVolumeAttachment1WithHttpMessagesAsync(
-            V1alpha1VolumeAttachment body,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -38092,6 +39744,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -38111,6 +39772,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -38136,6 +39798,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -38150,6 +39821,7 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -38876,6 +40548,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -38890,6 +40571,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -38914,6 +40596,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -38928,6 +40619,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -39127,6 +40819,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -39147,6 +40848,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -39177,6 +40879,15 @@ namespace k8s
         /// This field is required for apply requests (application/apply-patch) but optional
         /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="force">
         /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
         /// conflicting fields owned by other people. Force flag must be unset for non-apply
@@ -39197,6 +40908,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
@@ -39225,6 +40937,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -39240,6 +40961,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -39267,6 +40989,15 @@ namespace k8s
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
         /// </param>
+        /// <param name="fieldValidation">
+        /// fieldValidation determines how the server should respond to unknown/duplicate
+        /// fields in the object in the request. Introduced as alpha in 1.23, older servers
+        /// or servers with the `ServerSideFieldValidation` feature disabled will discard
+        /// valid values specified in  this param and not perform any server side field
+        /// validation. Valid values are: - Ignore: ignores unknown/duplicate fields. -
+        /// Warn: responds with a warning for each unknown/duplicate field, but successfully
+        /// serves the request. - Strict: fails the request on unknown/duplicate fields.
+        /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
         /// </param>
@@ -39282,6 +41013,7 @@ namespace k8s
             string namespaceParameter,
             string dryRun = null,
             string fieldManager = null,
+            string fieldValidation = null,
             bool? pretty = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
@@ -39344,7 +41076,127 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Creates a namespace scoped Custom object
+        /// list or watch cluster scoped custom objects
+        /// </summary>
+        /// <param name="group">
+        /// The custom resource&apos;s group name
+        /// </param>
+        /// <param name="version">
+        /// The custom resource&apos;s version
+        /// </param>
+        /// <param name="plural">
+        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="allowWatchBookmarks">
+        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
+        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
+        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
+        /// specific interval, nor may they assume the server will send any BOOKMARK event
+        /// during a session. If this is not a watch, this field is ignored. If the feature
+        /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
+        /// </param>
+        /// <param name="continueParameter">
+        /// The continue option should be set when retrieving more results from the server.
+        /// Since this value is server defined, clients may only use the continue value from
+        /// a previous query result with identical query parameters (except for the value of
+        /// continue) and the server may reject a continue value it does not recognize. If
+        /// the specified continue value is no longer valid whether due to expiration
+        /// (generally five to fifteen minutes) or a configuration change on the server, the
+        /// server will respond with a 410 ResourceExpired error together with a continue
+        /// token. If the client needs a consistent list, it must restart their list without
+        /// the continue field. Otherwise, the client may send another list request with the
+        /// token received with the 410 error, the server will respond with a list starting
+        /// from the next key, but from the latest snapshot, which is inconsistent from the
+        /// previous list results - objects that are created, modified, or deleted after the
+        /// first list request will be included in the response, as long as their keys are
+        /// after the &quot;next key&quot;.
+        /// 
+        /// This field is not supported when watch is true. Clients may start a watch from
+        /// the last resourceVersion value returned by the server and not miss any
+        /// modifications.
+        /// </param>
+        /// <param name="fieldSelector">
+        /// A selector to restrict the list of returned objects by their fields. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="labelSelector">
+        /// A selector to restrict the list of returned objects by their labels. Defaults to
+        /// everything.
+        /// </param>
+        /// <param name="limit">
+        /// limit is a maximum number of responses to return for a list call. If more items
+        /// exist, the server will set the `continue` field on the list metadata to a value
+        /// that can be used with the same initial query to retrieve the next set of
+        /// results. Setting a limit may return fewer than the requested amount of items (up
+        /// to zero items) in the event all requested objects are filtered out and clients
+        /// should only use the presence of the continue field to determine whether more
+        /// results are available. Servers may choose not to support the limit argument and
+        /// will return all of the available results. If limit is specified and the continue
+        /// field is empty, clients may assume that no more results are available. This
+        /// field is not supported if watch is true.
+        /// 
+        /// The server guarantees that the objects returned when using continue will be
+        /// identical to issuing a single list call without a limit - that is, no objects
+        /// created, modified, or deleted after the first request is issued will be included
+        /// in any subsequent continued requests. This is sometimes referred to as a
+        /// consistent snapshot, and ensures that a client that is using limit to receive
+        /// smaller chunks of a very large result can ensure they see all possible objects.
+        /// If objects are updated during a chunked list the version of the object that was
+        /// present at the time the first list result was calculated is returned.
+        /// </param>
+        /// <param name="resourceVersion">
+        /// When specified with a watch call, shows changes that occur after that particular
+        /// version of a resource. Defaults to changes from the beginning of history. When
+        /// specified for list: - if unset, then the result is returned from remote storage
+        /// based on quorum-read flag; - if it&apos;s 0, then we simply return what we currently
+        /// have in cache, no guarantee; - if set to non zero, then the result is at least
+        /// as fresh as given rv.
+        /// </param>
+        /// <param name="resourceVersionMatch">
+        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
+        /// is highly recommended that resourceVersionMatch be set for list calls where
+        /// resourceVersion is set See
+        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
+        /// for details.
+        /// 
+        /// Defaults to unset
+        /// </param>
+        /// <param name="timeoutSeconds">
+        /// Timeout for the list/watch call. This limits the duration of the call,
+        /// regardless of any activity or inactivity.
+        /// </param>
+        /// <param name="watch">
+        /// Watch for changes to the described resources and return them as a stream of add,
+        /// update, and remove notifications.
+        /// </param>
+        /// <param name="pretty">
+        /// If &apos;true&apos;, then the output is pretty printed.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(
+            string group,
+            string version,
+            string plural,
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            bool? pretty = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Creates a cluster scoped Custom object
         /// </summary>
         /// <param name="body">
         /// The JSON schema of the Resource to create.
@@ -39354,9 +41206,6 @@ namespace k8s
         /// </param>
         /// <param name="version">
         /// The custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
         /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
@@ -39371,6 +41220,8 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -39381,11 +41232,10 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(
             object body,
             string group,
             string version,
-            string namespaceParameter,
             string plural,
             string dryRun = null,
             string fieldManager = null,
@@ -39394,16 +41244,13 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Delete collection of namespace scoped custom objects
+        /// Delete collection of cluster scoped custom objects
         /// </summary>
         /// <param name="group">
         /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
         /// The custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
         /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
@@ -39444,10 +41291,9 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteCollectionNamespacedCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> DeleteCollectionClusterCustomObjectWithHttpMessagesAsync(
             string group,
             string version,
-            string namespaceParameter,
             string plural,
             V1DeleteOptions body = null,
             int? gracePeriodSeconds = null,
@@ -39583,7 +41429,7 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Creates a cluster scoped Custom object
+        /// Creates a namespace scoped Custom object
         /// </summary>
         /// <param name="body">
         /// The JSON schema of the Resource to create.
@@ -39593,6 +41439,9 @@ namespace k8s
         /// </param>
         /// <param name="version">
         /// The custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
         /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
@@ -39607,8 +41456,6 @@ namespace k8s
         /// fieldManager is a name associated with the actor or entity that is making these
         /// changes. The value must be less than or 128 characters long, and only contain
         /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
         /// </param>
         /// <param name="pretty">
         /// If &apos;true&apos;, then the output is pretty printed.
@@ -39619,10 +41466,11 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(
             object body,
             string group,
             string version,
+            string namespaceParameter,
             string plural,
             string dryRun = null,
             string fieldManager = null,
@@ -39631,13 +41479,16 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Delete collection of cluster scoped custom objects
+        /// Delete collection of namespace scoped custom objects
         /// </summary>
         /// <param name="group">
         /// The custom resource&apos;s group name
         /// </param>
         /// <param name="version">
         /// The custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
         /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
@@ -39678,9 +41529,10 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteCollectionClusterCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> DeleteCollectionNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
             string version,
+            string namespaceParameter,
             string plural,
             V1DeleteOptions body = null,
             int? gracePeriodSeconds = null,
@@ -39692,101 +41544,19 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// list or watch cluster scoped custom objects
+        /// Returns a cluster scoped custom object
         /// </summary>
         /// <param name="group">
-        /// The custom resource&apos;s group name
+        /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
-        /// The custom resource&apos;s version
+        /// the custom resource&apos;s version
         /// </param>
         /// <param name="plural">
-        /// The custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
-        /// <param name="allowWatchBookmarks">
-        /// allowWatchBookmarks requests watch events with type &quot;BOOKMARK&quot;. Servers that do
-        /// not implement bookmarks may ignore this flag and bookmarks are sent at the
-        /// server&apos;s discretion. Clients should not assume bookmarks are returned at any
-        /// specific interval, nor may they assume the server will send any BOOKMARK event
-        /// during a session. If this is not a watch, this field is ignored. If the feature
-        /// gate WatchBookmarks is not enabled in apiserver, this field is ignored.
-        /// </param>
-        /// <param name="continueParameter">
-        /// The continue option should be set when retrieving more results from the server.
-        /// Since this value is server defined, clients may only use the continue value from
-        /// a previous query result with identical query parameters (except for the value of
-        /// continue) and the server may reject a continue value it does not recognize. If
-        /// the specified continue value is no longer valid whether due to expiration
-        /// (generally five to fifteen minutes) or a configuration change on the server, the
-        /// server will respond with a 410 ResourceExpired error together with a continue
-        /// token. If the client needs a consistent list, it must restart their list without
-        /// the continue field. Otherwise, the client may send another list request with the
-        /// token received with the 410 error, the server will respond with a list starting
-        /// from the next key, but from the latest snapshot, which is inconsistent from the
-        /// previous list results - objects that are created, modified, or deleted after the
-        /// first list request will be included in the response, as long as their keys are
-        /// after the &quot;next key&quot;.
-        /// 
-        /// This field is not supported when watch is true. Clients may start a watch from
-        /// the last resourceVersion value returned by the server and not miss any
-        /// modifications.
-        /// </param>
-        /// <param name="fieldSelector">
-        /// A selector to restrict the list of returned objects by their fields. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="labelSelector">
-        /// A selector to restrict the list of returned objects by their labels. Defaults to
-        /// everything.
-        /// </param>
-        /// <param name="limit">
-        /// limit is a maximum number of responses to return for a list call. If more items
-        /// exist, the server will set the `continue` field on the list metadata to a value
-        /// that can be used with the same initial query to retrieve the next set of
-        /// results. Setting a limit may return fewer than the requested amount of items (up
-        /// to zero items) in the event all requested objects are filtered out and clients
-        /// should only use the presence of the continue field to determine whether more
-        /// results are available. Servers may choose not to support the limit argument and
-        /// will return all of the available results. If limit is specified and the continue
-        /// field is empty, clients may assume that no more results are available. This
-        /// field is not supported if watch is true.
-        /// 
-        /// The server guarantees that the objects returned when using continue will be
-        /// identical to issuing a single list call without a limit - that is, no objects
-        /// created, modified, or deleted after the first request is issued will be included
-        /// in any subsequent continued requests. This is sometimes referred to as a
-        /// consistent snapshot, and ensures that a client that is using limit to receive
-        /// smaller chunks of a very large result can ensure they see all possible objects.
-        /// If objects are updated during a chunked list the version of the object that was
-        /// present at the time the first list result was calculated is returned.
-        /// </param>
-        /// <param name="resourceVersion">
-        /// When specified with a watch call, shows changes that occur after that particular
-        /// version of a resource. Defaults to changes from the beginning of history. When
-        /// specified for list: - if unset, then the result is returned from remote storage
-        /// based on quorum-read flag; - if it&apos;s 0, then we simply return what we currently
-        /// have in cache, no guarantee; - if set to non zero, then the result is at least
-        /// as fresh as given rv.
-        /// </param>
-        /// <param name="resourceVersionMatch">
-        /// resourceVersionMatch determines how resourceVersion is applied to list calls. It
-        /// is highly recommended that resourceVersionMatch be set for list calls where
-        /// resourceVersion is set See
-        /// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions
-        /// for details.
-        /// 
-        /// Defaults to unset
-        /// </param>
-        /// <param name="timeoutSeconds">
-        /// Timeout for the list/watch call. This limits the duration of the call,
-        /// regardless of any activity or inactivity.
-        /// </param>
-        /// <param name="watch">
-        /// Watch for changes to the described resources and return them as a stream of add,
-        /// update, and remove notifications.
-        /// </param>
-        /// <param name="pretty">
-        /// If &apos;true&apos;, then the output is pretty printed.
+        /// <param name="name">
+        /// the custom object&apos;s name
         /// </param>
         /// <param name="customHeaders">
         /// The headers that will be added to request.
@@ -39794,20 +41564,201 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectWithHttpMessagesAsync(
             string group,
             string version,
             string plural,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            bool? pretty = null,
+            string name,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified cluster scoped custom object
+        /// </summary>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="plural">
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="gracePeriodSeconds">
+        /// The duration in seconds before the object should be deleted. Value must be
+        /// non-negative integer. The value zero indicates delete immediately. If this value
+        /// is nil, the default grace period for the specified type will be used. Defaults
+        /// to a per object value if not specified. zero means delete immediately.
+        /// </param>
+        /// <param name="orphanDependents">
+        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
+        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
+        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
+        /// this field or PropagationPolicy may be set, but not both.
+        /// </param>
+        /// <param name="propagationPolicy">
+        /// Whether and how garbage collection will be performed. Either this field or
+        /// OrphanDependents may be set, but not both. The default policy is decided by the
+        /// existing finalizer set in the metadata.finalizers and the resource-specific
+        /// default policy.
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(
+            string group,
+            string version,
+            string plural,
+            string name,
+            V1DeleteOptions body = null,
+            int? gracePeriodSeconds = null,
+            bool? orphanDependents = null,
+            string propagationPolicy = null,
+            string dryRun = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// patch the specified cluster scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// The JSON schema of the Resource to patch.
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="plural">
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            bool? force = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified cluster scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// The JSON schema of the Resource to replace.
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="plural">
+        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified cluster scoped custom object
+        /// </summary>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="plural">
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectStatusWithHttpMessagesAsync(
+            string group,
+            string version,
+            string plural,
+            string name,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
@@ -39912,7 +41863,7 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read status of the specified cluster scoped custom object
+        /// read scale of the specified custom object
         /// </summary>
         /// <param name="group">
         /// the custom resource&apos;s group
@@ -39932,356 +41883,9 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> GetClusterCustomObjectStatusWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> GetClusterCustomObjectScaleWithHttpMessagesAsync(
             string group,
             string version,
-            string plural,
-            string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// The JSON schema of the Resource to replace.
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// patch the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// The JSON schema of the Resource to patch.
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="gracePeriodSeconds">
-        /// The duration in seconds before the object should be deleted. Value must be
-        /// non-negative integer. The value zero indicates delete immediately. If this value
-        /// is nil, the default grace period for the specified type will be used. Defaults
-        /// to a per object value if not specified. zero means delete immediately.
-        /// </param>
-        /// <param name="orphanDependents">
-        /// Deprecated: please use the PropagationPolicy, this field will be deprecated in
-        /// 1.7. Should the dependent objects be orphaned. If true/false, the &quot;orphan&quot;
-        /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
-        /// this field or PropagationPolicy may be set, but not both.
-        /// </param>
-        /// <param name="propagationPolicy">
-        /// Whether and how garbage collection will be performed. Either this field or
-        /// OrphanDependents may be set, but not both. The default policy is decided by the
-        /// existing finalizer set in the metadata.finalizers and the resource-specific
-        /// default policy.
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            V1DeleteOptions body = null,
-            int? gracePeriodSeconds = null,
-            bool? orphanDependents = null,
-            string propagationPolicy = null,
-            string dryRun = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Returns a namespace scoped custom object
-        /// </summary>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectWithHttpMessagesAsync(
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// replace scale of the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// partially update scale of the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// 
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string namespaceParameter,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// read scale of the specified namespace scoped custom object
-        /// </summary>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="namespaceParameter">
-        /// The custom resource&apos;s namespace
-        /// </param>
-        /// <param name="plural">
-        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectScaleWithHttpMessagesAsync(
-            string group,
-            string version,
-            string namespaceParameter,
             string plural,
             string name,
             Dictionary<string, List<string>> customHeaders = null,
@@ -40388,13 +41992,16 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read scale of the specified custom object
+        /// Returns a namespace scoped custom object
         /// </summary>
         /// <param name="group">
         /// the custom resource&apos;s group
         /// </param>
         /// <param name="version">
         /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
         /// </param>
         /// <param name="plural">
         /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
@@ -40408,116 +42015,17 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> GetClusterCustomObjectScaleWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
             string version,
+            string namespaceParameter,
             string plural,
             string name,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// replace the specified cluster scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// The JSON schema of the Resource to replace.
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="plural">
-        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// patch the specified cluster scoped custom object
-        /// </summary>
-        /// <param name="body">
-        /// The JSON schema of the Resource to patch.
-        /// </param>
-        /// <param name="group">
-        /// the custom resource&apos;s group
-        /// </param>
-        /// <param name="version">
-        /// the custom resource&apos;s version
-        /// </param>
-        /// <param name="plural">
-        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
-        /// </param>
-        /// <param name="name">
-        /// the custom object&apos;s name
-        /// </param>
-        /// <param name="dryRun">
-        /// When present, indicates that modifications should not be persisted. An invalid
-        /// or unrecognized dryRun directive will result in an error response and no further
-        /// processing of the request. Valid values are: - All: all dry run stages will be
-        /// processed
-        /// </param>
-        /// <param name="fieldManager">
-        /// fieldManager is a name associated with the actor or entity that is making these
-        /// changes. The value must be less than or 128 characters long, and only contain
-        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
-        /// This field is required for apply requests (application/apply-patch) but optional
-        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
-        /// </param>
-        /// <param name="force">
-        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
-        /// conflicting fields owned by other people. Force flag must be unset for non-apply
-        /// patch requests.
-        /// </param>
-        /// <param name="customHeaders">
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name="cancellationToken">
-        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
-        /// </param>
-        Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(
-            object body,
-            string group,
-            string version,
-            string plural,
-            string name,
-            string dryRun = null,
-            string fieldManager = null,
-            bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified cluster scoped custom object
+        /// Deletes the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
         /// the custom resource&apos;s group
@@ -40525,8 +42033,11 @@ namespace k8s
         /// <param name="version">
         /// the custom resource&apos;s version
         /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
         /// <param name="plural">
-        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
         /// the custom object&apos;s name
@@ -40564,9 +42075,10 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
             string version,
+            string namespaceParameter,
             string plural,
             string name,
             V1DeleteOptions body = null,
@@ -40578,7 +42090,115 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns a cluster scoped custom object
+        /// patch the specified namespace scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// The JSON schema of the Resource to patch.
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
+        /// <param name="plural">
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string namespaceParameter,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            bool? force = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace the specified namespace scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// The JSON schema of the Resource to replace.
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
+        /// <param name="plural">
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string namespaceParameter,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// read status of the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
         /// the custom resource&apos;s group
@@ -40586,8 +42206,11 @@ namespace k8s
         /// <param name="version">
         /// the custom resource&apos;s version
         /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
         /// <param name="plural">
-        /// the custom object&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
         /// </param>
         /// <param name="name">
         /// the custom object&apos;s name
@@ -40598,9 +42221,10 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> GetClusterCustomObjectWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectStatusWithHttpMessagesAsync(
             string group,
             string version,
+            string namespaceParameter,
             string plural,
             string name,
             Dictionary<string, List<string>> customHeaders = null,
@@ -40715,7 +42339,7 @@ namespace k8s
             CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// read status of the specified namespace scoped custom object
+        /// read scale of the specified namespace scoped custom object
         /// </summary>
         /// <param name="group">
         /// the custom resource&apos;s group
@@ -40738,12 +42362,120 @@ namespace k8s
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
-        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectStatusWithHttpMessagesAsync(
+        Task<HttpOperationResponse<object>> GetNamespacedCustomObjectScaleWithHttpMessagesAsync(
             string group,
             string version,
             string namespaceParameter,
             string plural,
             string name,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// replace scale of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
+        /// <param name="plural">
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string namespaceParameter,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// partially update scale of the specified namespace scoped custom object
+        /// </summary>
+        /// <param name="body">
+        /// 
+        /// </param>
+        /// <param name="group">
+        /// the custom resource&apos;s group
+        /// </param>
+        /// <param name="version">
+        /// the custom resource&apos;s version
+        /// </param>
+        /// <param name="namespaceParameter">
+        /// The custom resource&apos;s namespace
+        /// </param>
+        /// <param name="plural">
+        /// the custom resource&apos;s plural name. For TPRs this would be lowercase plural kind.
+        /// </param>
+        /// <param name="name">
+        /// the custom object&apos;s name
+        /// </param>
+        /// <param name="dryRun">
+        /// When present, indicates that modifications should not be persisted. An invalid
+        /// or unrecognized dryRun directive will result in an error response and no further
+        /// processing of the request. Valid values are: - All: all dry run stages will be
+        /// processed
+        /// </param>
+        /// <param name="fieldManager">
+        /// fieldManager is a name associated with the actor or entity that is making these
+        /// changes. The value must be less than or 128 characters long, and only contain
+        /// printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
+        /// This field is required for apply requests (application/apply-patch) but optional
+        /// for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
+        /// </param>
+        /// <param name="force">
+        /// Force is going to &quot;force&quot; Apply requests. It means user will re-acquire
+        /// conflicting fields owned by other people. Force flag must be unset for non-apply
+        /// patch requests.
+        /// </param>
+        /// <param name="customHeaders">
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(
+            object body,
+            string group,
+            string version,
+            string namespaceParameter,
+            string plural,
+            string name,
+            string dryRun = null,
+            string fieldManager = null,
+            bool? force = null,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken));
 

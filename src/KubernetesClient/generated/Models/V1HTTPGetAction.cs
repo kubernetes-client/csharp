@@ -44,6 +44,10 @@ namespace k8s.Models
         /// </param>
         /// <param name="scheme">
         /// Scheme to use for connecting to the host. Defaults to HTTP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;HTTP&quot;` means that the scheme used will be http://
+        /// - `&quot;HTTPS&quot;` means that the scheme used will be https://
         /// </param>
         public V1HTTPGetAction(IntstrIntOrString port, string host = null, IList<V1HTTPHeader> httpHeaders = null, string path = null, string scheme = null)
         {
@@ -88,6 +92,10 @@ namespace k8s.Models
 
         /// <summary>
         /// Scheme to use for connecting to the host. Defaults to HTTP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;HTTP&quot;` means that the scheme used will be http://
+        /// - `&quot;HTTPS&quot;` means that the scheme used will be https://
         /// </summary>
         [JsonProperty(PropertyName = "scheme")]
         public string Scheme { get; set; }

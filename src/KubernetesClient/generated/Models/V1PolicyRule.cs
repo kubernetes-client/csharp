@@ -31,8 +31,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1PolicyRule class.
         /// </summary>
         /// <param name="verbs">
-        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds and
-        /// AttributeRestrictions contained in this rule. &apos;*&apos; represents all verbs.
+        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this
+        /// rule. &apos;*&apos; represents all verbs.
         /// </param>
         /// <param name="apiGroups">
         /// APIGroups is the name of the APIGroup that contains the resources.  If multiple
@@ -104,8 +104,8 @@ namespace k8s.Models
         public IList<string> Resources { get; set; }
 
         /// <summary>
-        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds and
-        /// AttributeRestrictions contained in this rule. &apos;*&apos; represents all verbs.
+        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this
+        /// rule. &apos;*&apos; represents all verbs.
         /// </summary>
         [JsonProperty(PropertyName = "verbs")]
         public IList<string> Verbs { get; set; }

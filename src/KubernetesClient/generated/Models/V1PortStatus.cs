@@ -34,6 +34,11 @@ namespace k8s.Models
         /// <param name="protocol">
         /// Protocol is the protocol of the service port of which status is recorded here
         /// The supported values are: &quot;TCP&quot;, &quot;UDP&quot;, &quot;SCTP&quot;
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         /// <param name="error">
         /// Error is to record the problem with the service port The format of the error
@@ -76,6 +81,11 @@ namespace k8s.Models
         /// <summary>
         /// Protocol is the protocol of the service port of which status is recorded here
         /// The supported values are: &quot;TCP&quot;, &quot;UDP&quot;, &quot;SCTP&quot;
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

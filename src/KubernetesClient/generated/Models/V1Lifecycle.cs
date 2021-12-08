@@ -42,15 +42,14 @@ namespace k8s.Models
         /// PreStop is called immediately before a container is terminated due to an API
         /// request or management event such as liveness/startup probe failure, preemption,
         /// resource contention, etc. The handler is not called if the container crashes or
-        /// exits. The reason for termination is passed to the handler. The Pod&apos;s
-        /// termination grace period countdown begins before the PreStop hooked is executed.
-        /// Regardless of the outcome of the handler, the container will eventually
-        /// terminate within the Pod&apos;s termination grace period. Other management of the
-        /// container blocks until the hook completes or until the termination grace period
-        /// is reached. More info:
+        /// exits. The Pod&apos;s termination grace period countdown begins before the PreStop
+        /// hook is executed. Regardless of the outcome of the handler, the container will
+        /// eventually terminate within the Pod&apos;s termination grace period (unless delayed
+        /// by finalizers). Other management of the container blocks until the hook
+        /// completes or until the termination grace period is reached. More info:
         /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
         /// </param>
-        public V1Lifecycle(V1Handler postStart = null, V1Handler preStop = null)
+        public V1Lifecycle(V1LifecycleHandler postStart = null, V1LifecycleHandler preStop = null)
         {
             PostStart = postStart;
             PreStop = preStop;
@@ -70,22 +69,21 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
         /// </summary>
         [JsonProperty(PropertyName = "postStart")]
-        public V1Handler PostStart { get; set; }
+        public V1LifecycleHandler PostStart { get; set; }
 
         /// <summary>
         /// PreStop is called immediately before a container is terminated due to an API
         /// request or management event such as liveness/startup probe failure, preemption,
         /// resource contention, etc. The handler is not called if the container crashes or
-        /// exits. The reason for termination is passed to the handler. The Pod&apos;s
-        /// termination grace period countdown begins before the PreStop hooked is executed.
-        /// Regardless of the outcome of the handler, the container will eventually
-        /// terminate within the Pod&apos;s termination grace period. Other management of the
-        /// container blocks until the hook completes or until the termination grace period
-        /// is reached. More info:
+        /// exits. The Pod&apos;s termination grace period countdown begins before the PreStop
+        /// hook is executed. Regardless of the outcome of the handler, the container will
+        /// eventually terminate within the Pod&apos;s termination grace period (unless delayed
+        /// by finalizers). Other management of the container blocks until the hook
+        /// completes or until the termination grace period is reached. More info:
         /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
         /// </summary>
         [JsonProperty(PropertyName = "preStop")]
-        public V1Handler PreStop { get; set; }
+        public V1LifecycleHandler PreStop { get; set; }
 
         /// <summary>
         /// Validate the object.

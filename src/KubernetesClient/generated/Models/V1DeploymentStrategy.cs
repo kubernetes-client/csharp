@@ -35,6 +35,11 @@ namespace k8s.Models
         /// <param name="type">
         /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Recreate&quot;` Kill all existing pods before creating new ones.
+        /// - `&quot;RollingUpdate&quot;` Replace the old ReplicaSets by new one using rolling update
+        /// i.e gradually scale down the old ReplicaSets and scale up the new one.
         /// </param>
         public V1DeploymentStrategy(V1RollingUpdateDeployment rollingUpdate = null, string type = null)
         {
@@ -58,6 +63,11 @@ namespace k8s.Models
         /// <summary>
         /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Recreate&quot;` Kill all existing pods before creating new ones.
+        /// - `&quot;RollingUpdate&quot;` Replace the old ReplicaSets by new one using rolling update
+        /// i.e gradually scale down the old ReplicaSets and scale up the new one.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

@@ -43,6 +43,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="protocol">
         /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         public Corev1EndpointPort(int port, string appProtocol = null, string name = null, string protocol = null)
         {
@@ -82,6 +87,11 @@ namespace k8s.Models
 
         /// <summary>
         /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
         [JsonProperty(PropertyName = "protocol")]
         public string Protocol { get; set; }

@@ -47,8 +47,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="scope">
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
-        /// IngressClassNamespacedParams feature gate.
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;.
         /// </param>
         public V1IngressClassParametersReference(string kind, string name, string apiGroup = null, string namespaceProperty = null, string scope = null)
         {
@@ -95,8 +94,7 @@ namespace k8s.Models
 
         /// <summary>
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
-        /// IngressClassNamespacedParams feature gate.
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "scope")]
         public string Scope { get; set; }

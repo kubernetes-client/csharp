@@ -607,6 +607,30 @@ namespace k8s
         }
 
         /// <inheritdoc/>
+        public Task<Watcher<V2HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
+            string name,
+            string namespaceParameter,
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V2HorizontalPodAutoscaler> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/autoscaling/v2/watch/namespaces/{namespaceParameter}/horizontalpodautoscalers/{name}";
+            return WatchObjectAsync<V2HorizontalPodAutoscaler>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<Watcher<V2beta1HorizontalPodAutoscaler>> WatchNamespacedHorizontalPodAutoscalerAsync(
             string name,
             string namespaceParameter,
@@ -913,6 +937,52 @@ namespace k8s
         {
             string path = $"apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}";
             return WatchObjectAsync<V1beta1PriorityLevelConfiguration>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1beta2FlowSchema>> WatchFlowSchemaAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2FlowSchema> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}";
+            return WatchObjectAsync<V1beta2FlowSchema>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<Watcher<V1beta2PriorityLevelConfiguration>> WatchPriorityLevelConfigurationAsync(
+            string name,
+            bool? allowWatchBookmarks = null,
+            string continueParameter = null,
+            string fieldSelector = null,
+            string labelSelector = null,
+            int? limit = null,
+            bool? pretty = null,
+            string resourceVersion = null,
+            string resourceVersionMatch = null,
+            int? timeoutSeconds = null,
+            bool? watch = null,
+            Dictionary<string, List<string>> customHeaders = null,
+            Action<WatchEventType, V1beta2PriorityLevelConfiguration> onEvent = null,
+            Action<Exception> onError = null,
+            Action onClosed = null,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string path = $"apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}";
+            return WatchObjectAsync<V1beta2PriorityLevelConfiguration>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -1244,100 +1314,6 @@ namespace k8s
         }
 
         /// <inheritdoc/>
-        public Task<Watcher<V1alpha1ClusterRoleBinding>> WatchClusterRoleBindingAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1ClusterRoleBinding> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings/{name}";
-            return WatchObjectAsync<V1alpha1ClusterRoleBinding>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1ClusterRole>> WatchClusterRoleAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1ClusterRole> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles/{name}";
-            return WatchObjectAsync<V1alpha1ClusterRole>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1RoleBinding>> WatchNamespacedRoleBindingAsync(
-            string name,
-            string namespaceParameter,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1RoleBinding> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespaceParameter}/rolebindings/{name}";
-            return WatchObjectAsync<V1alpha1RoleBinding>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1Role>> WatchNamespacedRoleAsync(
-            string name,
-            string namespaceParameter,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1Role> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespaceParameter}/roles/{name}";
-            return WatchObjectAsync<V1alpha1Role>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
         public Task<Watcher<V1PriorityClass>> WatchPriorityClassAsync(
             string name,
             bool? allowWatchBookmarks = null,
@@ -1358,29 +1334,6 @@ namespace k8s
         {
             string path = $"apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}";
             return WatchObjectAsync<V1PriorityClass>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1PriorityClass>> WatchPriorityClassAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1PriorityClass> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/scheduling.k8s.io/v1alpha1/watch/priorityclasses/{name}";
-            return WatchObjectAsync<V1alpha1PriorityClass>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -1497,29 +1450,6 @@ namespace k8s
         {
             string path = $"apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespaceParameter}/csistoragecapacities/{name}";
             return WatchObjectAsync<V1alpha1CSIStorageCapacity>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public Task<Watcher<V1alpha1VolumeAttachment>> WatchVolumeAttachmentAsync(
-            string name,
-            bool? allowWatchBookmarks = null,
-            string continueParameter = null,
-            string fieldSelector = null,
-            string labelSelector = null,
-            int? limit = null,
-            bool? pretty = null,
-            string resourceVersion = null,
-            string resourceVersionMatch = null,
-            int? timeoutSeconds = null,
-            bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            Action<WatchEventType, V1alpha1VolumeAttachment> onEvent = null,
-            Action<Exception> onError = null,
-            Action onClosed = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = $"apis/storage.k8s.io/v1alpha1/watch/volumeattachments/{name}";
-            return WatchObjectAsync<V1alpha1VolumeAttachment>(path: path, @continue: continueParameter, fieldSelector: fieldSelector, labelSelector: labelSelector, limit: limit, pretty: pretty, timeoutSeconds: timeoutSeconds, resourceVersion: resourceVersion, customHeaders: customHeaders, onEvent: onEvent, onError: onError, onClosed: onClosed, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>

@@ -41,8 +41,8 @@ namespace k8s.Models
         /// </param>
         /// <param name="ephemeralContainerStatuses">
         /// Status for any ephemeral containers that have run in this pod. This field is
-        /// alpha-level and is only populated by servers that enable the EphemeralContainers
-        /// feature.
+        /// beta-level and available on clusters that haven&apos;t disabled the
+        /// EphemeralContainers feature gate.
         /// </param>
         /// <param name="hostIP">
         /// IP address of the host to which the pod is assigned. Empty if not yet scheduled.
@@ -87,6 +87,24 @@ namespace k8s.Models
         /// 
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Failed&quot;` means that all containers in the pod have terminated, and at least
+        /// one container has terminated in a failure (exited with a non-zero exit code or
+        /// was stopped by the system).
+        /// - `&quot;Pending&quot;` means the pod has been accepted by the system, but one or more of
+        /// the containers has not been started. This includes time before being bound to a
+        /// node, as well as time spent pulling images onto the host.
+        /// - `&quot;Running&quot;` means the pod has been bound to a node and all of the containers
+        /// have been started. At least one container is still running or is in the process
+        /// of being restarted.
+        /// - `&quot;Succeeded&quot;` means that all containers in the pod have voluntarily terminated
+        /// with a container exit code of 0, and the system is not going to restart any of
+        /// these containers.
+        /// - `&quot;Unknown&quot;` means that for some reason the state of the pod could not be
+        /// obtained, typically due to an error in communicating with the host of the pod.
+        /// Deprecated: It isn&apos;t being set since 2015
+        /// (74da3b14b0c0f658b3bb8d2def5094686d0e9095)
         /// </param>
         /// <param name="podIP">
         /// IP address allocated to the pod. Routable at least within the cluster. Empty if
@@ -101,6 +119,11 @@ namespace k8s.Models
         /// The Quality of Service (QOS) classification assigned to the pod based on
         /// resource requirements See PodQOSClass type for available QOS classes More info:
         /// https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md
+        /// 
+        /// Possible enum values:
+        /// - `&quot;BestEffort&quot;` is the BestEffort qos class.
+        /// - `&quot;Burstable&quot;` is the Burstable qos class.
+        /// - `&quot;Guaranteed&quot;` is the Guaranteed qos class.
         /// </param>
         /// <param name="reason">
         /// A brief CamelCase message indicating details about why the pod is in this state.
@@ -150,8 +173,8 @@ namespace k8s.Models
 
         /// <summary>
         /// Status for any ephemeral containers that have run in this pod. This field is
-        /// alpha-level and is only populated by servers that enable the EphemeralContainers
-        /// feature.
+        /// beta-level and available on clusters that haven&apos;t disabled the
+        /// EphemeralContainers feature gate.
         /// </summary>
         [JsonProperty(PropertyName = "ephemeralContainerStatuses")]
         public IList<V1ContainerStatus> EphemeralContainerStatuses { get; set; }
@@ -211,6 +234,24 @@ namespace k8s.Models
         /// 
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Failed&quot;` means that all containers in the pod have terminated, and at least
+        /// one container has terminated in a failure (exited with a non-zero exit code or
+        /// was stopped by the system).
+        /// - `&quot;Pending&quot;` means the pod has been accepted by the system, but one or more of
+        /// the containers has not been started. This includes time before being bound to a
+        /// node, as well as time spent pulling images onto the host.
+        /// - `&quot;Running&quot;` means the pod has been bound to a node and all of the containers
+        /// have been started. At least one container is still running or is in the process
+        /// of being restarted.
+        /// - `&quot;Succeeded&quot;` means that all containers in the pod have voluntarily terminated
+        /// with a container exit code of 0, and the system is not going to restart any of
+        /// these containers.
+        /// - `&quot;Unknown&quot;` means that for some reason the state of the pod could not be
+        /// obtained, typically due to an error in communicating with the host of the pod.
+        /// Deprecated: It isn&apos;t being set since 2015
+        /// (74da3b14b0c0f658b3bb8d2def5094686d0e9095)
         /// </summary>
         [JsonProperty(PropertyName = "phase")]
         public string Phase { get; set; }
@@ -234,6 +275,11 @@ namespace k8s.Models
         /// The Quality of Service (QOS) classification assigned to the pod based on
         /// resource requirements See PodQOSClass type for available QOS classes More info:
         /// https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md
+        /// 
+        /// Possible enum values:
+        /// - `&quot;BestEffort&quot;` is the BestEffort qos class.
+        /// - `&quot;Burstable&quot;` is the Burstable qos class.
+        /// - `&quot;Guaranteed&quot;` is the Guaranteed qos class.
         /// </summary>
         [JsonProperty(PropertyName = "qosClass")]
         public string QosClass { get; set; }

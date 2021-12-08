@@ -49,6 +49,13 @@ namespace k8s.Models
         /// Failed conditions cannot be removed once added.
         /// 
         /// Only one condition of a given type is allowed.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Approved&quot;` Approved indicates the request was approved and should be issued
+        /// by the signer.
+        /// - `&quot;Denied&quot;` Denied indicates the request was denied and should not be issued by
+        /// the signer.
+        /// - `&quot;Failed&quot;` Failed indicates the signer failed to issue the certificate.
         /// </param>
         /// <param name="lastTransitionTime">
         /// lastTransitionTime is the time the condition last transitioned from one status
@@ -129,6 +136,13 @@ namespace k8s.Models
         /// Failed conditions cannot be removed once added.
         /// 
         /// Only one condition of a given type is allowed.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Approved&quot;` Approved indicates the request was approved and should be issued
+        /// by the signer.
+        /// - `&quot;Denied&quot;` Denied indicates the request was denied and should not be issued by
+        /// the signer.
+        /// - `&quot;Failed&quot;` Failed indicates the signer failed to issue the certificate.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

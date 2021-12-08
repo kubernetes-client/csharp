@@ -33,6 +33,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// Type of job condition, Complete or Failed.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Complete&quot;` means the job has completed its execution.
+        /// - `&quot;Failed&quot;` means the job has failed its execution.
+        /// - `&quot;Suspended&quot;` means the job has been suspended.
         /// </param>
         /// <param name="lastProbeTime">
         /// Last time the condition was checked.
@@ -94,6 +99,11 @@ namespace k8s.Models
 
         /// <summary>
         /// Type of job condition, Complete or Failed.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Complete&quot;` means the job has completed its execution.
+        /// - `&quot;Failed&quot;` means the job has failed its execution.
+        /// - `&quot;Suspended&quot;` means the job has been suspended.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

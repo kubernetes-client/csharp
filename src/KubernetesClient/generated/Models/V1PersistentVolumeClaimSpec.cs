@@ -61,7 +61,10 @@ namespace k8s.Models
         /// enabled.
         /// </param>
         /// <param name="resources">
-        /// Resources represents the minimum resources the volume should have. More info:
+        /// Resources represents the minimum resources the volume should have. If
+        /// RecoverVolumeExpansionFailure feature is enabled users are allowed to specify
+        /// resource requirements that are lower than previous value but must still be
+        /// higher than capacity recorded in the status field of the claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </param>
         /// <param name="selector">
@@ -137,7 +140,10 @@ namespace k8s.Models
         public V1TypedLocalObjectReference DataSourceRef { get; set; }
 
         /// <summary>
-        /// Resources represents the minimum resources the volume should have. More info:
+        /// Resources represents the minimum resources the volume should have. If
+        /// RecoverVolumeExpansionFailure feature is enabled users are allowed to specify
+        /// resource requirements that are lower than previous value but must still be
+        /// higher than capacity recorded in the status field of the claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
         [JsonProperty(PropertyName = "resources")]

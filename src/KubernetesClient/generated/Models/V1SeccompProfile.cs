@@ -35,6 +35,12 @@ namespace k8s.Models
         /// Localhost - a profile defined in a file on the node should be used.
         /// RuntimeDefault - the container runtime default profile should be used.
         /// Unconfined - no profile should be applied.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Localhost&quot;` indicates a profile defined in a file on the node should be
+        /// used. The file&apos;s location relative to &lt;kubelet-root-dir&gt;/seccomp.
+        /// - `&quot;RuntimeDefault&quot;` represents the default container runtime seccomp profile.
+        /// - `&quot;Unconfined&quot;` indicates no seccomp profile is applied (A.K.A. unconfined).
         /// </param>
         /// <param name="localhostProfile">
         /// localhostProfile indicates a profile defined in a file on the node should be
@@ -69,6 +75,12 @@ namespace k8s.Models
         /// Localhost - a profile defined in a file on the node should be used.
         /// RuntimeDefault - the container runtime default profile should be used.
         /// Unconfined - no profile should be applied.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Localhost&quot;` indicates a profile defined in a file on the node should be
+        /// used. The file&apos;s location relative to &lt;kubelet-root-dir&gt;/seccomp.
+        /// - `&quot;RuntimeDefault&quot;` represents the default container runtime seccomp profile.
+        /// - `&quot;Unconfined&quot;` indicates no seccomp profile is applied (A.K.A. unconfined).
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

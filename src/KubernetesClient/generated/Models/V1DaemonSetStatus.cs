@@ -44,8 +44,8 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
         /// </param>
         /// <param name="numberReady">
-        /// The number of nodes that should be running the daemon pod and have one or more
-        /// of the daemon pod running and ready.
+        /// numberReady is the number of nodes that should be running the daemon pod and
+        /// have one or more of the daemon pod running with a Ready Condition.
         /// </param>
         /// <param name="collisionCount">
         /// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this
@@ -137,8 +137,8 @@ namespace k8s.Models
         public int NumberMisscheduled { get; set; }
 
         /// <summary>
-        /// The number of nodes that should be running the daemon pod and have one or more
-        /// of the daemon pod running and ready.
+        /// numberReady is the number of nodes that should be running the daemon pod and
+        /// have one or more of the daemon pod running with a Ready Condition.
         /// </summary>
         [JsonProperty(PropertyName = "numberReady")]
         public int NumberReady { get; set; }
