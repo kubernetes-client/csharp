@@ -478,10 +478,6 @@ namespace k8s.Versioning
 
             cfg.CreateMap<V1beta1EndpointPort, Discoveryv1EndpointPort>()
                 .ReverseMap();
-
-            //cfg.CreateMap<V1beta2Subject, V1Subject>()
-            //    .ReverseMap();
-
         }
     }
 }
