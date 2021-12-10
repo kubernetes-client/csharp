@@ -36,9 +36,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1EndpointHints, V1EndpointHints>().ReverseMap();
                 cfg.CreateMap<V1beta1EndpointSlice, V1EndpointSlice>().ReverseMap();
                 cfg.CreateMap<V1beta1EndpointSliceList, V1EndpointSliceList>().ReverseMap();
-                cfg.CreateMap<V2beta1ExternalMetricSource, V2ExternalMetricSource>().ReverseMap();
                 cfg.CreateMap<V2beta2ExternalMetricSource, V2ExternalMetricSource>().ReverseMap();
-                cfg.CreateMap<V2beta1ExternalMetricStatus, V2ExternalMetricStatus>().ReverseMap();
                 cfg.CreateMap<V2beta2ExternalMetricStatus, V2ExternalMetricStatus>().ReverseMap();
                 cfg.CreateMap<V1beta1FlowDistinguisherMethod, V1beta2FlowDistinguisherMethod>().ReverseMap();
                 cfg.CreateMap<V1beta1FlowSchema, V1beta2FlowSchema>().ReverseMap();
@@ -64,10 +62,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V2beta1HorizontalPodAutoscalerList, V2beta2HorizontalPodAutoscalerList>().ReverseMap();
                 cfg.CreateMap<V2beta1HorizontalPodAutoscalerList, V2HorizontalPodAutoscalerList>().ReverseMap();
                 cfg.CreateMap<V2beta2HorizontalPodAutoscalerList, V2HorizontalPodAutoscalerList>().ReverseMap();
-                cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>().ReverseMap();
-                cfg.CreateMap<V2beta1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>().ReverseMap();
                 cfg.CreateMap<V2beta2HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>().ReverseMap();
-                cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2HorizontalPodAutoscalerStatus>().ReverseMap();
                 cfg.CreateMap<V2beta1HorizontalPodAutoscalerStatus, V2beta2HorizontalPodAutoscalerStatus>().ReverseMap();
                 cfg.CreateMap<V2beta1HorizontalPodAutoscalerStatus, V2HorizontalPodAutoscalerStatus>().ReverseMap();
                 cfg.CreateMap<V2beta2HorizontalPodAutoscalerStatus, V2HorizontalPodAutoscalerStatus>().ReverseMap();
@@ -86,9 +81,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V2beta2MetricTarget, V2MetricTarget>().ReverseMap();
                 cfg.CreateMap<V2beta2MetricValueStatus, V2MetricValueStatus>().ReverseMap();
                 cfg.CreateMap<V1beta1NonResourcePolicyRule, V1beta2NonResourcePolicyRule>().ReverseMap();
-                cfg.CreateMap<V2beta1ObjectMetricSource, V2ObjectMetricSource>().ReverseMap();
                 cfg.CreateMap<V2beta2ObjectMetricSource, V2ObjectMetricSource>().ReverseMap();
-                cfg.CreateMap<V2beta1ObjectMetricStatus, V2ObjectMetricStatus>().ReverseMap();
                 cfg.CreateMap<V2beta2ObjectMetricStatus, V2ObjectMetricStatus>().ReverseMap();
                 cfg.CreateMap<V1alpha1Overhead, V1beta1Overhead>().ReverseMap();
                 cfg.CreateMap<V1alpha1Overhead, V1Overhead>().ReverseMap();
@@ -97,9 +90,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1PodDisruptionBudgetList, V1PodDisruptionBudgetList>().ReverseMap();
                 cfg.CreateMap<V1beta1PodDisruptionBudgetSpec, V1PodDisruptionBudgetSpec>().ReverseMap();
                 cfg.CreateMap<V1beta1PodDisruptionBudgetStatus, V1PodDisruptionBudgetStatus>().ReverseMap();
-                cfg.CreateMap<V2beta1PodsMetricSource, V2PodsMetricSource>().ReverseMap();
                 cfg.CreateMap<V2beta2PodsMetricSource, V2PodsMetricSource>().ReverseMap();
-                cfg.CreateMap<V2beta1PodsMetricStatus, V2PodsMetricStatus>().ReverseMap();
                 cfg.CreateMap<V2beta2PodsMetricStatus, V2PodsMetricStatus>().ReverseMap();
                 cfg.CreateMap<V1beta1PolicyRulesWithSubjects, V1beta2PolicyRulesWithSubjects>().ReverseMap();
                 cfg.CreateMap<V1beta1PriorityLevelConfiguration, V1beta2PriorityLevelConfiguration>().ReverseMap();
@@ -109,9 +100,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1PriorityLevelConfigurationSpec, V1beta2PriorityLevelConfigurationSpec>().ReverseMap();
                 cfg.CreateMap<V1beta1PriorityLevelConfigurationStatus, V1beta2PriorityLevelConfigurationStatus>().ReverseMap();
                 cfg.CreateMap<V1beta1QueuingConfiguration, V1beta2QueuingConfiguration>().ReverseMap();
-                cfg.CreateMap<V2beta1ResourceMetricSource, V2ResourceMetricSource>().ReverseMap();
                 cfg.CreateMap<V2beta2ResourceMetricSource, V2ResourceMetricSource>().ReverseMap();
-                cfg.CreateMap<V2beta1ResourceMetricStatus, V2ResourceMetricStatus>().ReverseMap();
                 cfg.CreateMap<V2beta2ResourceMetricStatus, V2ResourceMetricStatus>().ReverseMap();
                 cfg.CreateMap<V1beta1ResourcePolicyRule, V1beta2ResourcePolicyRule>().ReverseMap();
                 cfg.CreateMap<V1alpha1RuntimeClassList, V1beta1RuntimeClassList>().ReverseMap();
@@ -123,7 +112,6 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1ServiceAccountSubject, V1beta2ServiceAccountSubject>().ReverseMap();
                 cfg.CreateMap<V1beta1Subject, V1beta2Subject>().ReverseMap();
                 cfg.CreateMap<V1beta1Subject, V1Subject>().ReverseMap();
-                cfg.CreateMap<V1beta2Subject, V1Subject>().ReverseMap();
                 cfg.CreateMap<V1beta1UserSubject, V1beta2UserSubject>().ReverseMap();
         }
     }
