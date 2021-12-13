@@ -39,19 +39,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<string>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIVersions>> GetAPIVersionsWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -73,19 +68,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIVersions>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroupList>> GetAPIVersions1WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -107,19 +97,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroupList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResourcesWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -141,19 +126,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources1WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -175,19 +155,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources2WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -209,19 +184,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources3WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -243,19 +213,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources4WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -277,19 +242,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources5WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -311,19 +271,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources6WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -345,19 +300,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources7WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -379,19 +329,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources8WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -413,19 +358,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -447,19 +387,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -481,19 +416,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -515,19 +445,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -549,19 +474,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -583,19 +503,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -617,19 +532,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -651,19 +561,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -685,19 +590,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -719,19 +619,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -753,19 +648,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -787,19 +677,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -821,19 +706,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -855,19 +735,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -889,19 +764,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -923,19 +793,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -957,19 +822,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -991,19 +851,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1025,19 +880,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1059,19 +909,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1093,19 +938,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1127,19 +967,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1161,19 +996,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1195,19 +1025,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -1229,19 +1054,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIResourceList>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ComponentStatusList>> ListComponentStatusWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1317,19 +1137,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ComponentStatusList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ComponentStatus>> ReadComponentStatusWithHttpMessagesAsync(
             string name,
@@ -1362,19 +1177,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ComponentStatus>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMapList>> ListConfigMapForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1450,19 +1260,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMapList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointsList>> ListEndpointsForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1538,19 +1343,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointsList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1EventList>> ListEventForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1626,19 +1426,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1EventList>> ListEventForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1714,19 +1509,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EventList>> ListEventForAllNamespaces2WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1802,19 +1592,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRangeList>> ListLimitRangeForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1890,19 +1675,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRangeList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NamespaceList>> ListNamespaceWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -1978,19 +1758,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NamespaceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> CreateNamespaceWithHttpMessagesAsync(
             V1Namespace body,
@@ -2037,19 +1812,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Binding>> CreateNamespacedBindingWithHttpMessagesAsync(
             V1Binding body,
@@ -2102,19 +1872,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Binding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedConfigMapWithHttpMessagesAsync(
             string namespaceParameter,
@@ -2203,19 +1968,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMapList>> ListNamespacedConfigMapWithHttpMessagesAsync(
             string namespaceParameter,
@@ -2297,19 +2057,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMapList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMap>> CreateNamespacedConfigMapWithHttpMessagesAsync(
             V1ConfigMap body,
@@ -2362,19 +2117,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMap>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedConfigMapWithHttpMessagesAsync(
             string name,
@@ -2434,19 +2184,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMap>> ReadNamespacedConfigMapWithHttpMessagesAsync(
             string name,
@@ -2485,19 +2230,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMap>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMap>> PatchNamespacedConfigMapWithHttpMessagesAsync(
             V1Patch body,
@@ -2561,19 +2301,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMap>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ConfigMap>> ReplaceNamespacedConfigMapWithHttpMessagesAsync(
             V1ConfigMap body,
@@ -2632,19 +2367,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ConfigMap>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointsWithHttpMessagesAsync(
             string namespaceParameter,
@@ -2733,19 +2463,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointsList>> ListNamespacedEndpointsWithHttpMessagesAsync(
             string namespaceParameter,
@@ -2827,19 +2552,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointsList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Endpoints>> CreateNamespacedEndpointsWithHttpMessagesAsync(
             V1Endpoints body,
@@ -2892,19 +2612,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Endpoints>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEndpointsWithHttpMessagesAsync(
             string name,
@@ -2964,19 +2679,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Endpoints>> ReadNamespacedEndpointsWithHttpMessagesAsync(
             string name,
@@ -3015,19 +2725,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Endpoints>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Endpoints>> PatchNamespacedEndpointsWithHttpMessagesAsync(
             V1Patch body,
@@ -3091,19 +2796,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Endpoints>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Endpoints>> ReplaceNamespacedEndpointsWithHttpMessagesAsync(
             V1Endpoints body,
@@ -3162,19 +2862,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Endpoints>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEventWithHttpMessagesAsync(
             string namespaceParameter,
@@ -3263,19 +2958,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -3364,19 +3054,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEvent2WithHttpMessagesAsync(
             string namespaceParameter,
@@ -3465,19 +3150,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1EventList>> ListNamespacedEventWithHttpMessagesAsync(
             string namespaceParameter,
@@ -3559,19 +3239,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1EventList>> ListNamespacedEvent1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -3653,19 +3328,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EventList>> ListNamespacedEvent2WithHttpMessagesAsync(
             string namespaceParameter,
@@ -3747,19 +3417,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EventList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1Event>> CreateNamespacedEventWithHttpMessagesAsync(
             Corev1Event body,
@@ -3812,19 +3477,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1Event>> CreateNamespacedEvent1WithHttpMessagesAsync(
             Eventsv1Event body,
@@ -3877,19 +3537,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1Event>> CreateNamespacedEvent2WithHttpMessagesAsync(
             V1beta1Event body,
@@ -3942,19 +3597,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEventWithHttpMessagesAsync(
             string name,
@@ -4014,19 +3664,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEvent1WithHttpMessagesAsync(
             string name,
@@ -4086,19 +3731,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEvent2WithHttpMessagesAsync(
             string name,
@@ -4158,19 +3798,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1Event>> ReadNamespacedEventWithHttpMessagesAsync(
             string name,
@@ -4209,19 +3844,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1Event>> ReadNamespacedEvent1WithHttpMessagesAsync(
             string name,
@@ -4260,19 +3890,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1Event>> ReadNamespacedEvent2WithHttpMessagesAsync(
             string name,
@@ -4311,19 +3936,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1Event>> PatchNamespacedEventWithHttpMessagesAsync(
             V1Patch body,
@@ -4387,19 +4007,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1Event>> PatchNamespacedEvent1WithHttpMessagesAsync(
             V1Patch body,
@@ -4463,19 +4078,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1Event>> PatchNamespacedEvent2WithHttpMessagesAsync(
             V1Patch body,
@@ -4539,19 +4149,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Corev1Event>> ReplaceNamespacedEventWithHttpMessagesAsync(
             Corev1Event body,
@@ -4610,19 +4215,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Corev1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Eventsv1Event>> ReplaceNamespacedEvent1WithHttpMessagesAsync(
             Eventsv1Event body,
@@ -4681,19 +4281,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Eventsv1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1Event>> ReplaceNamespacedEvent2WithHttpMessagesAsync(
             V1beta1Event body,
@@ -4752,19 +4347,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1Event>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLimitRangeWithHttpMessagesAsync(
             string namespaceParameter,
@@ -4853,19 +4443,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRangeList>> ListNamespacedLimitRangeWithHttpMessagesAsync(
             string namespaceParameter,
@@ -4947,19 +4532,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRangeList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRange>> CreateNamespacedLimitRangeWithHttpMessagesAsync(
             V1LimitRange body,
@@ -5012,19 +4592,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRange>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedLimitRangeWithHttpMessagesAsync(
             string name,
@@ -5084,19 +4659,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRange>> ReadNamespacedLimitRangeWithHttpMessagesAsync(
             string name,
@@ -5135,19 +4705,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRange>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRange>> PatchNamespacedLimitRangeWithHttpMessagesAsync(
             V1Patch body,
@@ -5211,19 +4776,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRange>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LimitRange>> ReplaceNamespacedLimitRangeWithHttpMessagesAsync(
             V1LimitRange body,
@@ -5282,19 +4842,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LimitRange>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             string namespaceParameter,
@@ -5383,19 +4938,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             string namespaceParameter,
@@ -5477,19 +5027,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaimList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> CreateNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             V1PersistentVolumeClaim body,
@@ -5542,19 +5087,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> DeleteNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             string name,
@@ -5614,19 +5154,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> ReadNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             string name,
@@ -5665,19 +5200,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             V1Patch body,
@@ -5741,19 +5271,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> ReplaceNamespacedPersistentVolumeClaimWithHttpMessagesAsync(
             V1PersistentVolumeClaim body,
@@ -5812,19 +5337,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> ReadNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(
             string name,
@@ -5863,19 +5383,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> PatchNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -5939,19 +5454,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaim>> ReplaceNamespacedPersistentVolumeClaimStatusWithHttpMessagesAsync(
             V1PersistentVolumeClaim body,
@@ -6010,19 +5520,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaim>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodWithHttpMessagesAsync(
             string namespaceParameter,
@@ -6111,19 +5616,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodList>> ListNamespacedPodWithHttpMessagesAsync(
             string namespaceParameter,
@@ -6205,19 +5705,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> CreateNamespacedPodWithHttpMessagesAsync(
             V1Pod body,
@@ -6270,19 +5765,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> DeleteNamespacedPodWithHttpMessagesAsync(
             string name,
@@ -6342,19 +5832,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReadNamespacedPodWithHttpMessagesAsync(
             string name,
@@ -6393,19 +5878,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodWithHttpMessagesAsync(
             V1Patch body,
@@ -6469,19 +5949,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReplaceNamespacedPodWithHttpMessagesAsync(
             V1Pod body,
@@ -6540,19 +6015,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodAttachWithHttpMessagesAsync(
             string name,
@@ -6611,19 +6081,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodAttachWithHttpMessagesAsync(
             string name,
@@ -6682,19 +6147,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Binding>> CreateNamespacedPodBindingWithHttpMessagesAsync(
             V1Binding body,
@@ -6753,19 +6213,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Binding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReadNamespacedPodEphemeralcontainersWithHttpMessagesAsync(
             string name,
@@ -6804,19 +6259,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodEphemeralcontainersWithHttpMessagesAsync(
             V1Patch body,
@@ -6880,19 +6330,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReplaceNamespacedPodEphemeralcontainersWithHttpMessagesAsync(
             V1Pod body,
@@ -6951,19 +6396,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Eviction>> CreateNamespacedPodEvictionWithHttpMessagesAsync(
             V1Eviction body,
@@ -7022,19 +6462,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Eviction>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodExecWithHttpMessagesAsync(
             string name,
@@ -7098,19 +6533,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodExecWithHttpMessagesAsync(
             string name,
@@ -7174,19 +6604,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ReadNamespacedPodLogWithHttpMessagesAsync(
             string name,
@@ -7265,19 +6690,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodPortforwardWithHttpMessagesAsync(
             string name,
@@ -7316,19 +6736,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodPortforwardWithHttpMessagesAsync(
             string name,
@@ -7367,19 +6782,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7418,19 +6828,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7469,19 +6874,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7520,19 +6920,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7571,19 +6966,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7622,19 +7012,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNamespacedPodProxyWithHttpMessagesAsync(
             string name,
@@ -7673,19 +7058,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -7730,19 +7110,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -7787,19 +7162,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -7844,19 +7214,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -7901,19 +7266,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -7958,19 +7318,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNamespacedPodProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -8015,19 +7370,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReadNamespacedPodStatusWithHttpMessagesAsync(
             string name,
@@ -8066,19 +7416,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> PatchNamespacedPodStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -8142,19 +7487,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Pod>> ReplaceNamespacedPodStatusWithHttpMessagesAsync(
             V1Pod body,
@@ -8213,19 +7553,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Pod>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodTemplateWithHttpMessagesAsync(
             string namespaceParameter,
@@ -8314,19 +7649,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplateList>> ListNamespacedPodTemplateWithHttpMessagesAsync(
             string namespaceParameter,
@@ -8408,19 +7738,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplateList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplate>> CreateNamespacedPodTemplateWithHttpMessagesAsync(
             V1PodTemplate body,
@@ -8473,19 +7798,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplate>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplate>> DeleteNamespacedPodTemplateWithHttpMessagesAsync(
             string name,
@@ -8545,19 +7865,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplate>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplate>> ReadNamespacedPodTemplateWithHttpMessagesAsync(
             string name,
@@ -8596,19 +7911,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplate>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplate>> PatchNamespacedPodTemplateWithHttpMessagesAsync(
             V1Patch body,
@@ -8672,19 +7982,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplate>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplate>> ReplaceNamespacedPodTemplateWithHttpMessagesAsync(
             V1PodTemplate body,
@@ -8743,19 +8048,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplate>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicationControllerWithHttpMessagesAsync(
             string namespaceParameter,
@@ -8844,19 +8144,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationControllerList>> ListNamespacedReplicationControllerWithHttpMessagesAsync(
             string namespaceParameter,
@@ -8938,19 +8233,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationControllerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> CreateNamespacedReplicationControllerWithHttpMessagesAsync(
             V1ReplicationController body,
@@ -9003,19 +8293,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicationControllerWithHttpMessagesAsync(
             string name,
@@ -9075,19 +8360,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> ReadNamespacedReplicationControllerWithHttpMessagesAsync(
             string name,
@@ -9126,19 +8406,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerWithHttpMessagesAsync(
             V1Patch body,
@@ -9202,19 +8477,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> ReplaceNamespacedReplicationControllerWithHttpMessagesAsync(
             V1ReplicationController body,
@@ -9273,19 +8543,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReadNamespacedReplicationControllerScaleWithHttpMessagesAsync(
             string name,
@@ -9324,19 +8589,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicationControllerScaleWithHttpMessagesAsync(
             V1Patch body,
@@ -9400,19 +8660,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReplaceNamespacedReplicationControllerScaleWithHttpMessagesAsync(
             V1Scale body,
@@ -9471,19 +8726,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> ReadNamespacedReplicationControllerStatusWithHttpMessagesAsync(
             string name,
@@ -9522,19 +8772,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> PatchNamespacedReplicationControllerStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -9598,19 +8843,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationController>> ReplaceNamespacedReplicationControllerStatusWithHttpMessagesAsync(
             V1ReplicationController body,
@@ -9669,19 +8909,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationController>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedResourceQuotaWithHttpMessagesAsync(
             string namespaceParameter,
@@ -9770,19 +9005,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuotaList>> ListNamespacedResourceQuotaWithHttpMessagesAsync(
             string namespaceParameter,
@@ -9864,19 +9094,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuotaList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> CreateNamespacedResourceQuotaWithHttpMessagesAsync(
             V1ResourceQuota body,
@@ -9929,19 +9154,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> DeleteNamespacedResourceQuotaWithHttpMessagesAsync(
             string name,
@@ -10001,19 +9221,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> ReadNamespacedResourceQuotaWithHttpMessagesAsync(
             string name,
@@ -10052,19 +9267,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaWithHttpMessagesAsync(
             V1Patch body,
@@ -10128,19 +9338,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> ReplaceNamespacedResourceQuotaWithHttpMessagesAsync(
             V1ResourceQuota body,
@@ -10199,19 +9404,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> ReadNamespacedResourceQuotaStatusWithHttpMessagesAsync(
             string name,
@@ -10250,19 +9450,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> PatchNamespacedResourceQuotaStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -10326,19 +9521,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuota>> ReplaceNamespacedResourceQuotaStatusWithHttpMessagesAsync(
             V1ResourceQuota body,
@@ -10397,19 +9587,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuota>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedSecretWithHttpMessagesAsync(
             string namespaceParameter,
@@ -10498,19 +9683,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1SecretList>> ListNamespacedSecretWithHttpMessagesAsync(
             string namespaceParameter,
@@ -10592,19 +9772,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1SecretList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Secret>> CreateNamespacedSecretWithHttpMessagesAsync(
             V1Secret body,
@@ -10657,19 +9832,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Secret>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedSecretWithHttpMessagesAsync(
             string name,
@@ -10729,19 +9899,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Secret>> ReadNamespacedSecretWithHttpMessagesAsync(
             string name,
@@ -10780,19 +9945,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Secret>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Secret>> PatchNamespacedSecretWithHttpMessagesAsync(
             V1Patch body,
@@ -10856,19 +10016,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Secret>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Secret>> ReplaceNamespacedSecretWithHttpMessagesAsync(
             V1Secret body,
@@ -10927,19 +10082,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Secret>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceAccountWithHttpMessagesAsync(
             string namespaceParameter,
@@ -11028,19 +10178,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccountList>> ListNamespacedServiceAccountWithHttpMessagesAsync(
             string namespaceParameter,
@@ -11122,19 +10267,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccountList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccount>> CreateNamespacedServiceAccountWithHttpMessagesAsync(
             V1ServiceAccount body,
@@ -11187,19 +10327,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccount>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccount>> DeleteNamespacedServiceAccountWithHttpMessagesAsync(
             string name,
@@ -11259,19 +10394,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccount>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccount>> ReadNamespacedServiceAccountWithHttpMessagesAsync(
             string name,
@@ -11310,19 +10440,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccount>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccount>> PatchNamespacedServiceAccountWithHttpMessagesAsync(
             V1Patch body,
@@ -11386,19 +10511,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccount>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccount>> ReplaceNamespacedServiceAccountWithHttpMessagesAsync(
             V1ServiceAccount body,
@@ -11457,19 +10577,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccount>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Authenticationv1TokenRequest>> CreateNamespacedServiceAccountTokenWithHttpMessagesAsync(
             Authenticationv1TokenRequest body,
@@ -11528,19 +10643,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<Authenticationv1TokenRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedServiceWithHttpMessagesAsync(
             string namespaceParameter,
@@ -11629,19 +10739,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceList>> ListNamespacedServiceWithHttpMessagesAsync(
             string namespaceParameter,
@@ -11723,19 +10828,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> CreateNamespacedServiceWithHttpMessagesAsync(
             V1Service body,
@@ -11788,19 +10888,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> DeleteNamespacedServiceWithHttpMessagesAsync(
             string name,
@@ -11860,19 +10955,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> ReadNamespacedServiceWithHttpMessagesAsync(
             string name,
@@ -11911,19 +11001,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceWithHttpMessagesAsync(
             V1Patch body,
@@ -11987,19 +11072,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> ReplaceNamespacedServiceWithHttpMessagesAsync(
             V1Service body,
@@ -12058,19 +11138,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12109,19 +11184,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12160,19 +11230,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12211,19 +11276,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12262,19 +11322,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12313,19 +11368,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNamespacedServiceProxyWithHttpMessagesAsync(
             string name,
@@ -12364,19 +11414,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12421,19 +11466,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12478,19 +11518,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12535,19 +11570,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12592,19 +11622,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12649,19 +11674,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNamespacedServiceProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -12706,19 +11726,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> ReadNamespacedServiceStatusWithHttpMessagesAsync(
             string name,
@@ -12757,19 +11772,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> PatchNamespacedServiceStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -12833,19 +11843,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Service>> ReplaceNamespacedServiceStatusWithHttpMessagesAsync(
             V1Service body,
@@ -12904,19 +11909,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Service>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespaceWithHttpMessagesAsync(
             string name,
@@ -12970,19 +11970,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> ReadNamespaceWithHttpMessagesAsync(
             string name,
@@ -13015,19 +12010,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> PatchNamespaceWithHttpMessagesAsync(
             V1Patch body,
@@ -13085,19 +12075,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> ReplaceNamespaceWithHttpMessagesAsync(
             V1Namespace body,
@@ -13150,19 +12135,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> ReplaceNamespaceFinalizeWithHttpMessagesAsync(
             V1Namespace body,
@@ -13215,19 +12195,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> ReadNamespaceStatusWithHttpMessagesAsync(
             string name,
@@ -13260,19 +12235,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> PatchNamespaceStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -13330,19 +12300,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Namespace>> ReplaceNamespaceStatusWithHttpMessagesAsync(
             V1Namespace body,
@@ -13395,19 +12360,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Namespace>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNodeWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -13490,19 +12450,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NodeList>> ListNodeWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -13578,19 +12533,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NodeList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> CreateNodeWithHttpMessagesAsync(
             V1Node body,
@@ -13637,19 +12587,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNodeWithHttpMessagesAsync(
             string name,
@@ -13703,19 +12648,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> ReadNodeWithHttpMessagesAsync(
             string name,
@@ -13748,19 +12688,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> PatchNodeWithHttpMessagesAsync(
             V1Patch body,
@@ -13818,19 +12753,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> ReplaceNodeWithHttpMessagesAsync(
             V1Node body,
@@ -13883,19 +12813,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNodeProxyWithHttpMessagesAsync(
             string name,
@@ -13928,19 +12853,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNodeProxyWithHttpMessagesAsync(
             string name,
@@ -13973,19 +12893,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNodeProxyWithHttpMessagesAsync(
             string name,
@@ -14018,19 +12933,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNodeProxyWithHttpMessagesAsync(
             string name,
@@ -14063,19 +12973,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNodeProxyWithHttpMessagesAsync(
             string name,
@@ -14108,19 +13013,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNodeProxyWithHttpMessagesAsync(
             string name,
@@ -14153,19 +13053,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectDeleteNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14204,19 +13099,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectGetNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14255,19 +13145,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectHeadNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14306,19 +13191,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Head, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPatchNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14357,19 +13237,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPostNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14408,19 +13283,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<Stream>> ConnectPutNodeProxyWithPathWithHttpMessagesAsync(
             string name,
@@ -14459,19 +13329,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = new HttpOperationResponse<Stream>() {
                                 Request = _httpRequest,
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> ReadNodeStatusWithHttpMessagesAsync(
             string name,
@@ -14504,19 +13369,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> PatchNodeStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -14574,19 +13434,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Node>> ReplaceNodeStatusWithHttpMessagesAsync(
             V1Node body,
@@ -14639,19 +13494,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Node>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeClaimList>> ListPersistentVolumeClaimForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -14727,19 +13577,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeClaimList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionPersistentVolumeWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -14822,19 +13667,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolumeList>> ListPersistentVolumeWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -14910,19 +13750,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolumeList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> CreatePersistentVolumeWithHttpMessagesAsync(
             V1PersistentVolume body,
@@ -14969,19 +13804,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> DeletePersistentVolumeWithHttpMessagesAsync(
             string name,
@@ -15035,19 +13865,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> ReadPersistentVolumeWithHttpMessagesAsync(
             string name,
@@ -15080,19 +13905,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeWithHttpMessagesAsync(
             V1Patch body,
@@ -15150,19 +13970,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> ReplacePersistentVolumeWithHttpMessagesAsync(
             V1PersistentVolume body,
@@ -15215,19 +14030,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> ReadPersistentVolumeStatusWithHttpMessagesAsync(
             string name,
@@ -15260,19 +14070,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> PatchPersistentVolumeStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -15330,19 +14135,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PersistentVolume>> ReplacePersistentVolumeStatusWithHttpMessagesAsync(
             V1PersistentVolume body,
@@ -15395,19 +14195,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PersistentVolume>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodList>> ListPodForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15483,19 +14278,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodTemplateList>> ListPodTemplateForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15571,19 +14361,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodTemplateList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicationControllerList>> ListReplicationControllerForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15659,19 +14444,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicationControllerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ResourceQuotaList>> ListResourceQuotaForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15747,19 +14527,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ResourceQuotaList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1SecretList>> ListSecretForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15835,19 +14610,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1SecretList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceAccountList>> ListServiceAccountForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -15923,19 +14693,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceAccountList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ServiceList>> ListServiceForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -16011,19 +14776,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ServiceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroupWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16045,19 +14805,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup1WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16079,19 +14834,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup2WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16113,19 +14863,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup3WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16147,19 +14892,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup4WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16181,19 +14921,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup5WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16215,19 +14950,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup6WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16249,19 +14979,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup7WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16283,19 +15008,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup8WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16317,19 +15037,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup9WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16351,19 +15066,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16385,19 +15095,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16419,19 +15124,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16453,19 +15153,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16487,19 +15182,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16521,19 +15211,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16555,19 +15240,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16589,19 +15269,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16623,19 +15298,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16657,19 +15327,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -16691,19 +15356,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIGroup>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionMutatingWebhookConfigurationWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -16786,19 +15446,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1MutatingWebhookConfigurationList>> ListMutatingWebhookConfigurationWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -16874,19 +15529,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1MutatingWebhookConfigurationList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> CreateMutatingWebhookConfigurationWithHttpMessagesAsync(
             V1MutatingWebhookConfiguration body,
@@ -16933,19 +15583,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1MutatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteMutatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
@@ -16999,19 +15644,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> ReadMutatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
@@ -17044,19 +15684,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1MutatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> PatchMutatingWebhookConfigurationWithHttpMessagesAsync(
             V1Patch body,
@@ -17114,19 +15749,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1MutatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> ReplaceMutatingWebhookConfigurationWithHttpMessagesAsync(
             V1MutatingWebhookConfiguration body,
@@ -17179,19 +15809,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1MutatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionValidatingWebhookConfigurationWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -17274,19 +15899,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ValidatingWebhookConfigurationList>> ListValidatingWebhookConfigurationWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -17362,19 +15982,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ValidatingWebhookConfigurationList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> CreateValidatingWebhookConfigurationWithHttpMessagesAsync(
             V1ValidatingWebhookConfiguration body,
@@ -17421,19 +16036,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ValidatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteValidatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
@@ -17487,19 +16097,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> ReadValidatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
@@ -17532,19 +16137,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ValidatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> PatchValidatingWebhookConfigurationWithHttpMessagesAsync(
             V1Patch body,
@@ -17602,19 +16202,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ValidatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> ReplaceValidatingWebhookConfigurationWithHttpMessagesAsync(
             V1ValidatingWebhookConfiguration body,
@@ -17667,19 +16262,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ValidatingWebhookConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionCustomResourceDefinitionWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -17762,19 +16352,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinitionList>> ListCustomResourceDefinitionWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -17850,19 +16435,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinitionList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> CreateCustomResourceDefinitionWithHttpMessagesAsync(
             V1CustomResourceDefinition body,
@@ -17909,19 +16489,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCustomResourceDefinitionWithHttpMessagesAsync(
             string name,
@@ -17975,19 +16550,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> ReadCustomResourceDefinitionWithHttpMessagesAsync(
             string name,
@@ -18020,19 +16590,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionWithHttpMessagesAsync(
             V1Patch body,
@@ -18090,19 +16655,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> ReplaceCustomResourceDefinitionWithHttpMessagesAsync(
             V1CustomResourceDefinition body,
@@ -18155,19 +16715,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> ReadCustomResourceDefinitionStatusWithHttpMessagesAsync(
             string name,
@@ -18200,19 +16755,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> PatchCustomResourceDefinitionStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -18270,19 +16820,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CustomResourceDefinition>> ReplaceCustomResourceDefinitionStatusWithHttpMessagesAsync(
             V1CustomResourceDefinition body,
@@ -18335,19 +16880,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CustomResourceDefinition>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionAPIServiceWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -18430,19 +16970,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIServiceList>> ListAPIServiceWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -18518,19 +17053,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIServiceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> CreateAPIServiceWithHttpMessagesAsync(
             V1APIService body,
@@ -18577,19 +17107,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteAPIServiceWithHttpMessagesAsync(
             string name,
@@ -18643,19 +17168,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> ReadAPIServiceWithHttpMessagesAsync(
             string name,
@@ -18688,19 +17208,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> PatchAPIServiceWithHttpMessagesAsync(
             V1Patch body,
@@ -18758,19 +17273,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> ReplaceAPIServiceWithHttpMessagesAsync(
             V1APIService body,
@@ -18823,19 +17333,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> ReadAPIServiceStatusWithHttpMessagesAsync(
             string name,
@@ -18868,19 +17373,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> PatchAPIServiceStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -18938,19 +17438,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1APIService>> ReplaceAPIServiceStatusWithHttpMessagesAsync(
             V1APIService body,
@@ -19003,19 +17498,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1APIService>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevisionList>> ListControllerRevisionForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -19091,19 +17581,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevisionList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSetList>> ListDaemonSetForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -19179,19 +17664,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DeploymentList>> ListDeploymentForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -19267,19 +17747,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DeploymentList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedControllerRevisionWithHttpMessagesAsync(
             string namespaceParameter,
@@ -19368,19 +17843,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevisionList>> ListNamespacedControllerRevisionWithHttpMessagesAsync(
             string namespaceParameter,
@@ -19462,19 +17932,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevisionList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevision>> CreateNamespacedControllerRevisionWithHttpMessagesAsync(
             V1ControllerRevision body,
@@ -19527,19 +17992,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevision>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedControllerRevisionWithHttpMessagesAsync(
             string name,
@@ -19599,19 +18059,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevision>> ReadNamespacedControllerRevisionWithHttpMessagesAsync(
             string name,
@@ -19650,19 +18105,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevision>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevision>> PatchNamespacedControllerRevisionWithHttpMessagesAsync(
             V1Patch body,
@@ -19726,19 +18176,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevision>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ControllerRevision>> ReplaceNamespacedControllerRevisionWithHttpMessagesAsync(
             V1ControllerRevision body,
@@ -19797,19 +18242,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ControllerRevision>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDaemonSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -19898,19 +18338,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSetList>> ListNamespacedDaemonSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -19992,19 +18427,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> CreateNamespacedDaemonSetWithHttpMessagesAsync(
             V1DaemonSet body,
@@ -20057,19 +18487,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedDaemonSetWithHttpMessagesAsync(
             string name,
@@ -20129,19 +18554,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> ReadNamespacedDaemonSetWithHttpMessagesAsync(
             string name,
@@ -20180,19 +18600,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetWithHttpMessagesAsync(
             V1Patch body,
@@ -20256,19 +18671,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> ReplaceNamespacedDaemonSetWithHttpMessagesAsync(
             V1DaemonSet body,
@@ -20327,19 +18737,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> ReadNamespacedDaemonSetStatusWithHttpMessagesAsync(
             string name,
@@ -20378,19 +18783,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> PatchNamespacedDaemonSetStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -20454,19 +18854,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DaemonSet>> ReplaceNamespacedDaemonSetStatusWithHttpMessagesAsync(
             V1DaemonSet body,
@@ -20525,19 +18920,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DaemonSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedDeploymentWithHttpMessagesAsync(
             string namespaceParameter,
@@ -20626,19 +19016,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1DeploymentList>> ListNamespacedDeploymentWithHttpMessagesAsync(
             string namespaceParameter,
@@ -20720,19 +19105,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1DeploymentList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> CreateNamespacedDeploymentWithHttpMessagesAsync(
             V1Deployment body,
@@ -20785,19 +19165,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedDeploymentWithHttpMessagesAsync(
             string name,
@@ -20857,19 +19232,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> ReadNamespacedDeploymentWithHttpMessagesAsync(
             string name,
@@ -20908,19 +19278,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentWithHttpMessagesAsync(
             V1Patch body,
@@ -20984,19 +19349,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> ReplaceNamespacedDeploymentWithHttpMessagesAsync(
             V1Deployment body,
@@ -21055,19 +19415,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReadNamespacedDeploymentScaleWithHttpMessagesAsync(
             string name,
@@ -21106,19 +19461,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> PatchNamespacedDeploymentScaleWithHttpMessagesAsync(
             V1Patch body,
@@ -21182,19 +19532,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReplaceNamespacedDeploymentScaleWithHttpMessagesAsync(
             V1Scale body,
@@ -21253,19 +19598,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> ReadNamespacedDeploymentStatusWithHttpMessagesAsync(
             string name,
@@ -21304,19 +19644,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> PatchNamespacedDeploymentStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -21380,19 +19715,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Deployment>> ReplaceNamespacedDeploymentStatusWithHttpMessagesAsync(
             V1Deployment body,
@@ -21451,19 +19781,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Deployment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedReplicaSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -21552,19 +19877,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSetList>> ListNamespacedReplicaSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -21646,19 +19966,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> CreateNamespacedReplicaSetWithHttpMessagesAsync(
             V1ReplicaSet body,
@@ -21711,19 +20026,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedReplicaSetWithHttpMessagesAsync(
             string name,
@@ -21783,19 +20093,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> ReadNamespacedReplicaSetWithHttpMessagesAsync(
             string name,
@@ -21834,19 +20139,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetWithHttpMessagesAsync(
             V1Patch body,
@@ -21910,19 +20210,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> ReplaceNamespacedReplicaSetWithHttpMessagesAsync(
             V1ReplicaSet body,
@@ -21981,19 +20276,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReadNamespacedReplicaSetScaleWithHttpMessagesAsync(
             string name,
@@ -22032,19 +20322,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> PatchNamespacedReplicaSetScaleWithHttpMessagesAsync(
             V1Patch body,
@@ -22108,19 +20393,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReplaceNamespacedReplicaSetScaleWithHttpMessagesAsync(
             V1Scale body,
@@ -22179,19 +20459,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> ReadNamespacedReplicaSetStatusWithHttpMessagesAsync(
             string name,
@@ -22230,19 +20505,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> PatchNamespacedReplicaSetStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -22306,19 +20576,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSet>> ReplaceNamespacedReplicaSetStatusWithHttpMessagesAsync(
             V1ReplicaSet body,
@@ -22377,19 +20642,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedStatefulSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -22478,19 +20738,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSetList>> ListNamespacedStatefulSetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -22572,19 +20827,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> CreateNamespacedStatefulSetWithHttpMessagesAsync(
             V1StatefulSet body,
@@ -22637,19 +20887,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedStatefulSetWithHttpMessagesAsync(
             string name,
@@ -22709,19 +20954,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> ReadNamespacedStatefulSetWithHttpMessagesAsync(
             string name,
@@ -22760,19 +21000,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetWithHttpMessagesAsync(
             V1Patch body,
@@ -22836,19 +21071,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> ReplaceNamespacedStatefulSetWithHttpMessagesAsync(
             V1StatefulSet body,
@@ -22907,19 +21137,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReadNamespacedStatefulSetScaleWithHttpMessagesAsync(
             string name,
@@ -22958,19 +21183,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> PatchNamespacedStatefulSetScaleWithHttpMessagesAsync(
             V1Patch body,
@@ -23034,19 +21254,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Scale>> ReplaceNamespacedStatefulSetScaleWithHttpMessagesAsync(
             V1Scale body,
@@ -23105,19 +21320,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Scale>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> ReadNamespacedStatefulSetStatusWithHttpMessagesAsync(
             string name,
@@ -23156,19 +21366,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> PatchNamespacedStatefulSetStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -23232,19 +21437,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSet>> ReplaceNamespacedStatefulSetStatusWithHttpMessagesAsync(
             V1StatefulSet body,
@@ -23303,19 +21503,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSet>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ReplicaSetList>> ListReplicaSetForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -23391,19 +21586,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ReplicaSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StatefulSetList>> ListStatefulSetForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -23479,19 +21669,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StatefulSetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1TokenReview>> CreateTokenReviewWithHttpMessagesAsync(
             V1TokenReview body,
@@ -23538,19 +21723,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1TokenReview>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LocalSubjectAccessReview>> CreateNamespacedLocalSubjectAccessReviewWithHttpMessagesAsync(
             V1LocalSubjectAccessReview body,
@@ -23603,19 +21783,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LocalSubjectAccessReview>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1SelfSubjectAccessReview>> CreateSelfSubjectAccessReviewWithHttpMessagesAsync(
             V1SelfSubjectAccessReview body,
@@ -23662,19 +21837,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1SelfSubjectAccessReview>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1SelfSubjectRulesReview>> CreateSelfSubjectRulesReviewWithHttpMessagesAsync(
             V1SelfSubjectRulesReview body,
@@ -23721,19 +21891,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1SelfSubjectRulesReview>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1SubjectAccessReview>> CreateSubjectAccessReviewWithHttpMessagesAsync(
             V1SubjectAccessReview body,
@@ -23780,19 +21945,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1SubjectAccessReview>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -23868,19 +22028,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -23956,19 +22111,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces2WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -24044,19 +22194,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListHorizontalPodAutoscalerForAllNamespaces3WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -24132,19 +22277,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             string namespaceParameter,
@@ -24233,19 +22373,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24334,19 +22469,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24435,19 +22565,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24536,19 +22661,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             string namespaceParameter,
@@ -24630,19 +22750,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24724,19 +22839,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24818,19 +22928,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscalerList>> ListNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string namespaceParameter,
@@ -24912,19 +23017,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscalerList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             V1HorizontalPodAutoscaler body,
@@ -24977,19 +23077,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             V2HorizontalPodAutoscaler body,
@@ -25042,19 +23137,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
@@ -25107,19 +23197,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> CreateNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
@@ -25172,19 +23257,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             string name,
@@ -25244,19 +23324,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string name,
@@ -25316,19 +23391,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             string name,
@@ -25388,19 +23458,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string name,
@@ -25460,19 +23525,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             string name,
@@ -25511,19 +23571,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             string name,
@@ -25562,19 +23617,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             string name,
@@ -25613,19 +23663,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             string name,
@@ -25664,19 +23709,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             V1Patch body,
@@ -25740,19 +23780,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             V1Patch body,
@@ -25816,19 +23851,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V1Patch body,
@@ -25892,19 +23922,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             V1Patch body,
@@ -25968,19 +23993,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerWithHttpMessagesAsync(
             V1HorizontalPodAutoscaler body,
@@ -26039,19 +24059,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler1WithHttpMessagesAsync(
             V2HorizontalPodAutoscaler body,
@@ -26110,19 +24125,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
@@ -26181,19 +24191,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscaler3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
@@ -26252,19 +24257,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(
             string name,
@@ -26303,19 +24303,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
             string name,
@@ -26354,19 +24349,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
             string name,
@@ -26405,19 +24395,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReadNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
             string name,
@@ -26456,19 +24441,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -26532,19 +24512,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
             V1Patch body,
@@ -26608,19 +24583,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
             V1Patch body,
@@ -26684,19 +24654,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> PatchNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
             V1Patch body,
@@ -26760,19 +24725,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatusWithHttpMessagesAsync(
             V1HorizontalPodAutoscaler body,
@@ -26831,19 +24791,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus1WithHttpMessagesAsync(
             V2HorizontalPodAutoscaler body,
@@ -26902,19 +24857,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta1HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus2WithHttpMessagesAsync(
             V2beta1HorizontalPodAutoscaler body,
@@ -26973,19 +24923,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta1HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V2beta2HorizontalPodAutoscaler>> ReplaceNamespacedHorizontalPodAutoscalerStatus3WithHttpMessagesAsync(
             V2beta2HorizontalPodAutoscaler body,
@@ -27044,19 +24989,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V2beta2HorizontalPodAutoscaler>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJobList>> ListCronJobForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -27132,19 +25072,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJobList>> ListCronJobForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -27220,19 +25155,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1JobList>> ListJobForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -27308,19 +25238,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1JobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJobWithHttpMessagesAsync(
             string namespaceParameter,
@@ -27409,19 +25334,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCronJob1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -27510,19 +25430,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJobList>> ListNamespacedCronJobWithHttpMessagesAsync(
             string namespaceParameter,
@@ -27604,19 +25519,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJobList>> ListNamespacedCronJob1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -27698,19 +25608,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> CreateNamespacedCronJobWithHttpMessagesAsync(
             V1CronJob body,
@@ -27763,19 +25668,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> CreateNamespacedCronJob1WithHttpMessagesAsync(
             V1beta1CronJob body,
@@ -27828,19 +25728,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJobWithHttpMessagesAsync(
             string name,
@@ -27900,19 +25795,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedCronJob1WithHttpMessagesAsync(
             string name,
@@ -27972,19 +25862,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> ReadNamespacedCronJobWithHttpMessagesAsync(
             string name,
@@ -28023,19 +25908,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> ReadNamespacedCronJob1WithHttpMessagesAsync(
             string name,
@@ -28074,19 +25954,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> PatchNamespacedCronJobWithHttpMessagesAsync(
             V1Patch body,
@@ -28150,19 +26025,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJob1WithHttpMessagesAsync(
             V1Patch body,
@@ -28226,19 +26096,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> ReplaceNamespacedCronJobWithHttpMessagesAsync(
             V1CronJob body,
@@ -28297,19 +26162,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> ReplaceNamespacedCronJob1WithHttpMessagesAsync(
             V1beta1CronJob body,
@@ -28368,19 +26228,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> ReadNamespacedCronJobStatusWithHttpMessagesAsync(
             string name,
@@ -28419,19 +26274,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> ReadNamespacedCronJobStatus1WithHttpMessagesAsync(
             string name,
@@ -28470,19 +26320,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> PatchNamespacedCronJobStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -28546,19 +26391,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> PatchNamespacedCronJobStatus1WithHttpMessagesAsync(
             V1Patch body,
@@ -28622,19 +26462,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CronJob>> ReplaceNamespacedCronJobStatusWithHttpMessagesAsync(
             V1CronJob body,
@@ -28693,19 +26528,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CronJob>> ReplaceNamespacedCronJobStatus1WithHttpMessagesAsync(
             V1beta1CronJob body,
@@ -28764,19 +26594,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CronJob>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedJobWithHttpMessagesAsync(
             string namespaceParameter,
@@ -28865,19 +26690,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1JobList>> ListNamespacedJobWithHttpMessagesAsync(
             string namespaceParameter,
@@ -28959,19 +26779,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1JobList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> CreateNamespacedJobWithHttpMessagesAsync(
             V1Job body,
@@ -29024,19 +26839,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedJobWithHttpMessagesAsync(
             string name,
@@ -29096,19 +26906,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> ReadNamespacedJobWithHttpMessagesAsync(
             string name,
@@ -29147,19 +26952,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> PatchNamespacedJobWithHttpMessagesAsync(
             V1Patch body,
@@ -29223,19 +27023,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> ReplaceNamespacedJobWithHttpMessagesAsync(
             V1Job body,
@@ -29294,19 +27089,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> ReadNamespacedJobStatusWithHttpMessagesAsync(
             string name,
@@ -29345,19 +27135,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> PatchNamespacedJobStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -29421,19 +27206,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Job>> ReplaceNamespacedJobStatusWithHttpMessagesAsync(
             V1Job body,
@@ -29492,19 +27272,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Job>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionCertificateSigningRequestWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -29587,19 +27362,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequestList>> ListCertificateSigningRequestWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -29675,19 +27445,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequestList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> CreateCertificateSigningRequestWithHttpMessagesAsync(
             V1CertificateSigningRequest body,
@@ -29734,19 +27499,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCertificateSigningRequestWithHttpMessagesAsync(
             string name,
@@ -29800,19 +27560,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestWithHttpMessagesAsync(
             string name,
@@ -29845,19 +27600,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestWithHttpMessagesAsync(
             V1Patch body,
@@ -29915,19 +27665,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestWithHttpMessagesAsync(
             V1CertificateSigningRequest body,
@@ -29980,19 +27725,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestApprovalWithHttpMessagesAsync(
             string name,
@@ -30025,19 +27765,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestApprovalWithHttpMessagesAsync(
             V1Patch body,
@@ -30095,19 +27830,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestApprovalWithHttpMessagesAsync(
             V1CertificateSigningRequest body,
@@ -30160,19 +27890,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestStatusWithHttpMessagesAsync(
             string name,
@@ -30205,19 +27930,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> PatchCertificateSigningRequestStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -30275,19 +27995,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CertificateSigningRequest>> ReplaceCertificateSigningRequestStatusWithHttpMessagesAsync(
             V1CertificateSigningRequest body,
@@ -30340,19 +28055,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CertificateSigningRequest>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LeaseList>> ListLeaseForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -30428,19 +28138,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LeaseList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedLeaseWithHttpMessagesAsync(
             string namespaceParameter,
@@ -30529,19 +28234,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1LeaseList>> ListNamespacedLeaseWithHttpMessagesAsync(
             string namespaceParameter,
@@ -30623,19 +28323,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1LeaseList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Lease>> CreateNamespacedLeaseWithHttpMessagesAsync(
             V1Lease body,
@@ -30688,19 +28383,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Lease>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedLeaseWithHttpMessagesAsync(
             string name,
@@ -30760,19 +28450,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Lease>> ReadNamespacedLeaseWithHttpMessagesAsync(
             string name,
@@ -30811,19 +28496,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Lease>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Lease>> PatchNamespacedLeaseWithHttpMessagesAsync(
             V1Patch body,
@@ -30887,19 +28567,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Lease>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Lease>> ReplaceNamespacedLeaseWithHttpMessagesAsync(
             V1Lease body,
@@ -30958,19 +28633,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Lease>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSliceList>> ListEndpointSliceForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -31046,19 +28716,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSliceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListEndpointSliceForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -31134,19 +28799,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSliceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSliceWithHttpMessagesAsync(
             string namespaceParameter,
@@ -31235,19 +28895,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedEndpointSlice1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -31336,19 +28991,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSliceList>> ListNamespacedEndpointSliceWithHttpMessagesAsync(
             string namespaceParameter,
@@ -31430,19 +29080,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSliceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSliceList>> ListNamespacedEndpointSlice1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -31524,19 +29169,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSliceList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSlice>> CreateNamespacedEndpointSliceWithHttpMessagesAsync(
             V1EndpointSlice body,
@@ -31589,19 +29229,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSlice>> CreateNamespacedEndpointSlice1WithHttpMessagesAsync(
             V1beta1EndpointSlice body,
@@ -31654,19 +29289,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEndpointSliceWithHttpMessagesAsync(
             string name,
@@ -31726,19 +29356,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedEndpointSlice1WithHttpMessagesAsync(
             string name,
@@ -31798,19 +29423,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSlice>> ReadNamespacedEndpointSliceWithHttpMessagesAsync(
             string name,
@@ -31849,19 +29469,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSlice>> ReadNamespacedEndpointSlice1WithHttpMessagesAsync(
             string name,
@@ -31900,19 +29515,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSlice>> PatchNamespacedEndpointSliceWithHttpMessagesAsync(
             V1Patch body,
@@ -31976,19 +29586,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSlice>> PatchNamespacedEndpointSlice1WithHttpMessagesAsync(
             V1Patch body,
@@ -32052,19 +29657,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1EndpointSlice>> ReplaceNamespacedEndpointSliceWithHttpMessagesAsync(
             V1EndpointSlice body,
@@ -32123,19 +29723,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1EndpointSlice>> ReplaceNamespacedEndpointSlice1WithHttpMessagesAsync(
             V1beta1EndpointSlice body,
@@ -32194,19 +29789,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1EndpointSlice>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchemaWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -32289,19 +29879,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionFlowSchema1WithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -32384,19 +29969,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchemaList>> ListFlowSchemaWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -32472,19 +30052,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchemaList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchemaList>> ListFlowSchema1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -32560,19 +30135,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchemaList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> CreateFlowSchemaWithHttpMessagesAsync(
             V1beta1FlowSchema body,
@@ -32619,19 +30189,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> CreateFlowSchema1WithHttpMessagesAsync(
             V1beta2FlowSchema body,
@@ -32678,19 +30243,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteFlowSchemaWithHttpMessagesAsync(
             string name,
@@ -32744,19 +30304,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteFlowSchema1WithHttpMessagesAsync(
             string name,
@@ -32810,19 +30365,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaWithHttpMessagesAsync(
             string name,
@@ -32855,19 +30405,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchema1WithHttpMessagesAsync(
             string name,
@@ -32900,19 +30445,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> PatchFlowSchemaWithHttpMessagesAsync(
             V1Patch body,
@@ -32970,19 +30510,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> PatchFlowSchema1WithHttpMessagesAsync(
             V1Patch body,
@@ -33040,19 +30575,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> ReplaceFlowSchemaWithHttpMessagesAsync(
             V1beta1FlowSchema body,
@@ -33105,19 +30635,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> ReplaceFlowSchema1WithHttpMessagesAsync(
             V1beta2FlowSchema body,
@@ -33170,19 +30695,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaStatusWithHttpMessagesAsync(
             string name,
@@ -33215,19 +30735,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchemaStatus1WithHttpMessagesAsync(
             string name,
@@ -33260,19 +30775,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> PatchFlowSchemaStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -33330,19 +30840,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> PatchFlowSchemaStatus1WithHttpMessagesAsync(
             V1Patch body,
@@ -33400,19 +30905,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1FlowSchema>> ReplaceFlowSchemaStatusWithHttpMessagesAsync(
             V1beta1FlowSchema body,
@@ -33465,19 +30965,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2FlowSchema>> ReplaceFlowSchemaStatus1WithHttpMessagesAsync(
             V1beta2FlowSchema body,
@@ -33530,19 +31025,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2FlowSchema>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfigurationWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -33625,19 +31115,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityLevelConfiguration1WithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -33720,19 +31205,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfigurationList>> ListPriorityLevelConfigurationWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -33808,19 +31288,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfigurationList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfigurationList>> ListPriorityLevelConfiguration1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -33896,19 +31371,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfigurationList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> CreatePriorityLevelConfigurationWithHttpMessagesAsync(
             V1beta1PriorityLevelConfiguration body,
@@ -33955,19 +31425,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> CreatePriorityLevelConfiguration1WithHttpMessagesAsync(
             V1beta2PriorityLevelConfiguration body,
@@ -34014,19 +31479,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeletePriorityLevelConfigurationWithHttpMessagesAsync(
             string name,
@@ -34080,19 +31540,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeletePriorityLevelConfiguration1WithHttpMessagesAsync(
             string name,
@@ -34146,19 +31601,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationWithHttpMessagesAsync(
             string name,
@@ -34191,19 +31641,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfiguration1WithHttpMessagesAsync(
             string name,
@@ -34236,19 +31681,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationWithHttpMessagesAsync(
             V1Patch body,
@@ -34306,19 +31746,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> PatchPriorityLevelConfiguration1WithHttpMessagesAsync(
             V1Patch body,
@@ -34376,19 +31811,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationWithHttpMessagesAsync(
             V1beta1PriorityLevelConfiguration body,
@@ -34441,19 +31871,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReplacePriorityLevelConfiguration1WithHttpMessagesAsync(
             V1beta2PriorityLevelConfiguration body,
@@ -34506,19 +31931,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatusWithHttpMessagesAsync(
             string name,
@@ -34551,19 +31971,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatus1WithHttpMessagesAsync(
             string name,
@@ -34596,19 +32011,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -34666,19 +32076,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> PatchPriorityLevelConfigurationStatus1WithHttpMessagesAsync(
             V1Patch body,
@@ -34736,19 +32141,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationStatusWithHttpMessagesAsync(
             V1beta1PriorityLevelConfiguration body,
@@ -34801,19 +32201,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReplacePriorityLevelConfigurationStatus1WithHttpMessagesAsync(
             V1beta2PriorityLevelConfiguration body,
@@ -34866,19 +32261,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta2PriorityLevelConfiguration>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageVersionWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -34961,19 +32351,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersionList>> ListStorageVersionWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -35049,19 +32434,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersionList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> CreateStorageVersionWithHttpMessagesAsync(
             V1alpha1StorageVersion body,
@@ -35108,19 +32488,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteStorageVersionWithHttpMessagesAsync(
             string name,
@@ -35174,19 +32549,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> ReadStorageVersionWithHttpMessagesAsync(
             string name,
@@ -35219,19 +32589,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> PatchStorageVersionWithHttpMessagesAsync(
             V1Patch body,
@@ -35289,19 +32654,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> ReplaceStorageVersionWithHttpMessagesAsync(
             V1alpha1StorageVersion body,
@@ -35354,19 +32714,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> ReadStorageVersionStatusWithHttpMessagesAsync(
             string name,
@@ -35399,19 +32754,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> PatchStorageVersionStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -35469,19 +32819,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1StorageVersion>> ReplaceStorageVersionStatusWithHttpMessagesAsync(
             V1alpha1StorageVersion body,
@@ -35534,19 +32879,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1StorageVersion>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionIngressClassWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -35629,19 +32969,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressClassList>> ListIngressClassWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -35717,19 +33052,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressClass>> CreateIngressClassWithHttpMessagesAsync(
             V1IngressClass body,
@@ -35776,19 +33106,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteIngressClassWithHttpMessagesAsync(
             string name,
@@ -35842,19 +33167,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressClass>> ReadIngressClassWithHttpMessagesAsync(
             string name,
@@ -35887,19 +33207,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressClass>> PatchIngressClassWithHttpMessagesAsync(
             V1Patch body,
@@ -35957,19 +33272,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressClass>> ReplaceIngressClassWithHttpMessagesAsync(
             V1IngressClass body,
@@ -36022,19 +33332,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressList>> ListIngressForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -36110,19 +33415,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedIngressWithHttpMessagesAsync(
             string namespaceParameter,
@@ -36211,19 +33511,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1IngressList>> ListNamespacedIngressWithHttpMessagesAsync(
             string namespaceParameter,
@@ -36305,19 +33600,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1IngressList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> CreateNamespacedIngressWithHttpMessagesAsync(
             V1Ingress body,
@@ -36370,19 +33660,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedIngressWithHttpMessagesAsync(
             string name,
@@ -36442,19 +33727,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> ReadNamespacedIngressWithHttpMessagesAsync(
             string name,
@@ -36493,19 +33773,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> PatchNamespacedIngressWithHttpMessagesAsync(
             V1Patch body,
@@ -36569,19 +33844,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> ReplaceNamespacedIngressWithHttpMessagesAsync(
             V1Ingress body,
@@ -36640,19 +33910,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> ReadNamespacedIngressStatusWithHttpMessagesAsync(
             string name,
@@ -36691,19 +33956,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> PatchNamespacedIngressStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -36767,19 +34027,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Ingress>> ReplaceNamespacedIngressStatusWithHttpMessagesAsync(
             V1Ingress body,
@@ -36838,19 +34093,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Ingress>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedNetworkPolicyWithHttpMessagesAsync(
             string namespaceParameter,
@@ -36939,19 +34189,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicyList>> ListNamespacedNetworkPolicyWithHttpMessagesAsync(
             string namespaceParameter,
@@ -37033,19 +34278,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicyList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicy>> CreateNamespacedNetworkPolicyWithHttpMessagesAsync(
             V1NetworkPolicy body,
@@ -37098,19 +34338,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedNetworkPolicyWithHttpMessagesAsync(
             string name,
@@ -37170,19 +34405,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicy>> ReadNamespacedNetworkPolicyWithHttpMessagesAsync(
             string name,
@@ -37221,19 +34451,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicy>> PatchNamespacedNetworkPolicyWithHttpMessagesAsync(
             V1Patch body,
@@ -37297,19 +34522,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicy>> ReplaceNamespacedNetworkPolicyWithHttpMessagesAsync(
             V1NetworkPolicy body,
@@ -37368,19 +34588,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1NetworkPolicyList>> ListNetworkPolicyForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -37456,19 +34671,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1NetworkPolicyList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClassWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -37551,19 +34761,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass1WithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -37646,19 +34851,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionRuntimeClass2WithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -37741,19 +34941,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RuntimeClassList>> ListRuntimeClassWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -37829,19 +35024,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RuntimeClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1RuntimeClassList>> ListRuntimeClass1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -37917,19 +35107,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1RuntimeClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1RuntimeClassList>> ListRuntimeClass2WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -38005,19 +35190,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1RuntimeClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RuntimeClass>> CreateRuntimeClassWithHttpMessagesAsync(
             V1RuntimeClass body,
@@ -38064,19 +35244,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1RuntimeClass>> CreateRuntimeClass1WithHttpMessagesAsync(
             V1alpha1RuntimeClass body,
@@ -38123,19 +35298,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1RuntimeClass>> CreateRuntimeClass2WithHttpMessagesAsync(
             V1beta1RuntimeClass body,
@@ -38182,19 +35352,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteRuntimeClassWithHttpMessagesAsync(
             string name,
@@ -38248,19 +35413,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteRuntimeClass1WithHttpMessagesAsync(
             string name,
@@ -38314,19 +35474,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteRuntimeClass2WithHttpMessagesAsync(
             string name,
@@ -38380,19 +35535,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RuntimeClass>> ReadRuntimeClassWithHttpMessagesAsync(
             string name,
@@ -38425,19 +35575,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1RuntimeClass>> ReadRuntimeClass1WithHttpMessagesAsync(
             string name,
@@ -38470,19 +35615,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1RuntimeClass>> ReadRuntimeClass2WithHttpMessagesAsync(
             string name,
@@ -38515,19 +35655,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RuntimeClass>> PatchRuntimeClassWithHttpMessagesAsync(
             V1Patch body,
@@ -38585,19 +35720,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1RuntimeClass>> PatchRuntimeClass1WithHttpMessagesAsync(
             V1Patch body,
@@ -38655,19 +35785,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1RuntimeClass>> PatchRuntimeClass2WithHttpMessagesAsync(
             V1Patch body,
@@ -38725,19 +35850,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RuntimeClass>> ReplaceRuntimeClassWithHttpMessagesAsync(
             V1RuntimeClass body,
@@ -38790,19 +35910,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1RuntimeClass>> ReplaceRuntimeClass1WithHttpMessagesAsync(
             V1alpha1RuntimeClass body,
@@ -38855,19 +35970,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1RuntimeClass>> ReplaceRuntimeClass2WithHttpMessagesAsync(
             V1beta1RuntimeClass body,
@@ -38920,19 +36030,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1RuntimeClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -39021,19 +36126,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -39122,19 +36222,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             string namespaceParameter,
@@ -39216,19 +36311,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudgetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -39310,19 +36400,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudgetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> CreateNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             V1PodDisruptionBudget body,
@@ -39375,19 +36460,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> CreateNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             V1beta1PodDisruptionBudget body,
@@ -39440,19 +36520,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             string name,
@@ -39512,19 +36587,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             string name,
@@ -39584,19 +36654,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> ReadNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             string name,
@@ -39635,19 +36700,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> ReadNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             string name,
@@ -39686,19 +36746,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             V1Patch body,
@@ -39762,19 +36817,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             V1Patch body,
@@ -39838,19 +36888,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> ReplaceNamespacedPodDisruptionBudgetWithHttpMessagesAsync(
             V1PodDisruptionBudget body,
@@ -39909,19 +36954,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> ReplaceNamespacedPodDisruptionBudget1WithHttpMessagesAsync(
             V1beta1PodDisruptionBudget body,
@@ -39980,19 +37020,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> ReadNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(
             string name,
@@ -40031,19 +37066,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> ReadNamespacedPodDisruptionBudgetStatus1WithHttpMessagesAsync(
             string name,
@@ -40082,19 +37112,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -40158,19 +37183,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> PatchNamespacedPodDisruptionBudgetStatus1WithHttpMessagesAsync(
             V1Patch body,
@@ -40234,19 +37254,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudget>> ReplaceNamespacedPodDisruptionBudgetStatusWithHttpMessagesAsync(
             V1PodDisruptionBudget body,
@@ -40305,19 +37320,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudget>> ReplaceNamespacedPodDisruptionBudgetStatus1WithHttpMessagesAsync(
             V1beta1PodDisruptionBudget body,
@@ -40376,19 +37386,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudget>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -40464,19 +37469,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PodDisruptionBudgetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodDisruptionBudgetList>> ListPodDisruptionBudgetForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -40552,19 +37552,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodDisruptionBudgetList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionPodSecurityPolicyWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -40647,19 +37642,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicyList>> ListPodSecurityPolicyWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -40735,19 +37725,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicyList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> CreatePodSecurityPolicyWithHttpMessagesAsync(
             V1beta1PodSecurityPolicy body,
@@ -40794,19 +37779,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> DeletePodSecurityPolicyWithHttpMessagesAsync(
             string name,
@@ -40860,19 +37840,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> ReadPodSecurityPolicyWithHttpMessagesAsync(
             string name,
@@ -40905,19 +37880,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> PatchPodSecurityPolicyWithHttpMessagesAsync(
             V1Patch body,
@@ -40975,19 +37945,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> ReplacePodSecurityPolicyWithHttpMessagesAsync(
             V1beta1PodSecurityPolicy body,
@@ -41040,19 +38005,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1PodSecurityPolicy>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleBindingWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -41135,19 +38095,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleBindingList>> ListClusterRoleBindingWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -41223,19 +38178,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleBindingList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleBinding>> CreateClusterRoleBindingWithHttpMessagesAsync(
             V1ClusterRoleBinding body,
@@ -41282,19 +38232,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteClusterRoleBindingWithHttpMessagesAsync(
             string name,
@@ -41348,19 +38293,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleBinding>> ReadClusterRoleBindingWithHttpMessagesAsync(
             string name,
@@ -41393,19 +38333,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleBinding>> PatchClusterRoleBindingWithHttpMessagesAsync(
             V1Patch body,
@@ -41463,19 +38398,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleBinding>> ReplaceClusterRoleBindingWithHttpMessagesAsync(
             V1ClusterRoleBinding body,
@@ -41528,19 +38458,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionClusterRoleWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -41623,19 +38548,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRoleList>> ListClusterRoleWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -41711,19 +38631,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRoleList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRole>> CreateClusterRoleWithHttpMessagesAsync(
             V1ClusterRole body,
@@ -41770,19 +38685,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRole>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteClusterRoleWithHttpMessagesAsync(
             string name,
@@ -41836,19 +38746,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRole>> ReadClusterRoleWithHttpMessagesAsync(
             string name,
@@ -41881,19 +38786,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRole>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRole>> PatchClusterRoleWithHttpMessagesAsync(
             V1Patch body,
@@ -41951,19 +38851,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRole>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1ClusterRole>> ReplaceClusterRoleWithHttpMessagesAsync(
             V1ClusterRole body,
@@ -42016,19 +38911,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1ClusterRole>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleBindingWithHttpMessagesAsync(
             string namespaceParameter,
@@ -42117,19 +39007,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBindingList>> ListNamespacedRoleBindingWithHttpMessagesAsync(
             string namespaceParameter,
@@ -42211,19 +39096,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBindingList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBinding>> CreateNamespacedRoleBindingWithHttpMessagesAsync(
             V1RoleBinding body,
@@ -42276,19 +39156,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleBindingWithHttpMessagesAsync(
             string name,
@@ -42348,19 +39223,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBinding>> ReadNamespacedRoleBindingWithHttpMessagesAsync(
             string name,
@@ -42399,19 +39269,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBinding>> PatchNamespacedRoleBindingWithHttpMessagesAsync(
             V1Patch body,
@@ -42475,19 +39340,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBinding>> ReplaceNamespacedRoleBindingWithHttpMessagesAsync(
             V1RoleBinding body,
@@ -42546,19 +39406,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBinding>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedRoleWithHttpMessagesAsync(
             string namespaceParameter,
@@ -42647,19 +39502,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleList>> ListNamespacedRoleWithHttpMessagesAsync(
             string namespaceParameter,
@@ -42741,19 +39591,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Role>> CreateNamespacedRoleWithHttpMessagesAsync(
             V1Role body,
@@ -42806,19 +39651,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Role>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedRoleWithHttpMessagesAsync(
             string name,
@@ -42878,19 +39718,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Role>> ReadNamespacedRoleWithHttpMessagesAsync(
             string name,
@@ -42929,19 +39764,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Role>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Role>> PatchNamespacedRoleWithHttpMessagesAsync(
             V1Patch body,
@@ -43005,19 +39835,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Role>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Role>> ReplaceNamespacedRoleWithHttpMessagesAsync(
             V1Role body,
@@ -43076,19 +39901,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Role>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleBindingList>> ListRoleBindingForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -43164,19 +39984,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleBindingList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1RoleList>> ListRoleForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -43252,19 +40067,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1RoleList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionPriorityClassWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -43347,19 +40157,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PriorityClassList>> ListPriorityClassWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -43435,19 +40240,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PriorityClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PriorityClass>> CreatePriorityClassWithHttpMessagesAsync(
             V1PriorityClass body,
@@ -43494,19 +40294,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PriorityClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeletePriorityClassWithHttpMessagesAsync(
             string name,
@@ -43560,19 +40355,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PriorityClass>> ReadPriorityClassWithHttpMessagesAsync(
             string name,
@@ -43605,19 +40395,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PriorityClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PriorityClass>> PatchPriorityClassWithHttpMessagesAsync(
             V1Patch body,
@@ -43675,19 +40460,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PriorityClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1PriorityClass>> ReplacePriorityClassWithHttpMessagesAsync(
             V1PriorityClass body,
@@ -43740,19 +40520,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1PriorityClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionCSIDriverWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -43835,19 +40610,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriverList>> ListCSIDriverWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -43923,19 +40693,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriverList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriver>> CreateCSIDriverWithHttpMessagesAsync(
             V1CSIDriver body,
@@ -43982,19 +40747,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriver>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriver>> DeleteCSIDriverWithHttpMessagesAsync(
             string name,
@@ -44048,19 +40808,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriver>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriver>> ReadCSIDriverWithHttpMessagesAsync(
             string name,
@@ -44093,19 +40848,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriver>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriver>> PatchCSIDriverWithHttpMessagesAsync(
             V1Patch body,
@@ -44163,19 +40913,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriver>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSIDriver>> ReplaceCSIDriverWithHttpMessagesAsync(
             V1CSIDriver body,
@@ -44228,19 +40973,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSIDriver>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionCSINodeWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -44323,19 +41063,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINodeList>> ListCSINodeWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -44411,19 +41146,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINodeList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINode>> CreateCSINodeWithHttpMessagesAsync(
             V1CSINode body,
@@ -44470,19 +41200,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINode>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINode>> DeleteCSINodeWithHttpMessagesAsync(
             string name,
@@ -44536,19 +41261,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINode>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINode>> ReadCSINodeWithHttpMessagesAsync(
             string name,
@@ -44581,19 +41301,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINode>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINode>> PatchCSINodeWithHttpMessagesAsync(
             V1Patch body,
@@ -44651,19 +41366,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINode>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1CSINode>> ReplaceCSINodeWithHttpMessagesAsync(
             V1CSINode body,
@@ -44716,19 +41426,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1CSINode>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionStorageClassWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -44811,19 +41516,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClassList>> ListStorageClassWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -44899,19 +41599,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClassList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClass>> CreateStorageClassWithHttpMessagesAsync(
             V1StorageClass body,
@@ -44958,19 +41653,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClass>> DeleteStorageClassWithHttpMessagesAsync(
             string name,
@@ -45024,19 +41714,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClass>> ReadStorageClassWithHttpMessagesAsync(
             string name,
@@ -45069,19 +41754,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClass>> PatchStorageClassWithHttpMessagesAsync(
             V1Patch body,
@@ -45139,19 +41819,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1StorageClass>> ReplaceStorageClassWithHttpMessagesAsync(
             V1StorageClass body,
@@ -45204,19 +41879,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1StorageClass>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionVolumeAttachmentWithHttpMessagesAsync(
             V1DeleteOptions body = null,
@@ -45299,19 +41969,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachmentList>> ListVolumeAttachmentWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -45387,19 +42052,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachmentList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> CreateVolumeAttachmentWithHttpMessagesAsync(
             V1VolumeAttachment body,
@@ -45446,19 +42106,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> DeleteVolumeAttachmentWithHttpMessagesAsync(
             string name,
@@ -45512,19 +42167,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> ReadVolumeAttachmentWithHttpMessagesAsync(
             string name,
@@ -45557,19 +42207,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentWithHttpMessagesAsync(
             V1Patch body,
@@ -45627,19 +42272,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> ReplaceVolumeAttachmentWithHttpMessagesAsync(
             V1VolumeAttachment body,
@@ -45692,19 +42332,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> ReadVolumeAttachmentStatusWithHttpMessagesAsync(
             string name,
@@ -45737,19 +42372,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> PatchVolumeAttachmentStatusWithHttpMessagesAsync(
             V1Patch body,
@@ -45807,19 +42437,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1VolumeAttachment>> ReplaceVolumeAttachmentStatusWithHttpMessagesAsync(
             V1VolumeAttachment body,
@@ -45872,19 +42497,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1VolumeAttachment>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacityList>> ListCSIStorageCapacityForAllNamespacesWithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -45960,19 +42580,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacityList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacityList>> ListCSIStorageCapacityForAllNamespaces1WithHttpMessagesAsync(
             bool? allowWatchBookmarks = null,
@@ -46048,19 +42663,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacityList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             string namespaceParameter,
@@ -46149,19 +42759,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteCollectionNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -46250,19 +42855,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacityList>> ListNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             string namespaceParameter,
@@ -46344,19 +42944,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacityList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacityList>> ListNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             string namespaceParameter,
@@ -46438,19 +43033,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacityList>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacity>> CreateNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             V1alpha1CSIStorageCapacity body,
@@ -46503,19 +43093,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacity>> CreateNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             V1beta1CSIStorageCapacity body,
@@ -46568,19 +43153,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             string name,
@@ -46640,19 +43220,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1Status>> DeleteNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             string name,
@@ -46712,19 +43287,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1Status>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacity>> ReadNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             string name,
@@ -46763,19 +43333,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacity>> ReadNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             string name,
@@ -46814,19 +43379,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacity>> PatchNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             V1Patch body,
@@ -46890,19 +43450,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacity>> PatchNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             V1Patch body,
@@ -46966,19 +43521,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1alpha1CSIStorageCapacity>> ReplaceNamespacedCSIStorageCapacityWithHttpMessagesAsync(
             V1alpha1CSIStorageCapacity body,
@@ -47037,19 +43587,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1alpha1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<V1beta1CSIStorageCapacity>> ReplaceNamespacedCSIStorageCapacity1WithHttpMessagesAsync(
             V1beta1CSIStorageCapacity body,
@@ -47108,19 +43653,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<V1beta1CSIStorageCapacity>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse> LogFileListHandlerWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -47142,16 +43682,11 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse> LogFileHandlerWithHttpMessagesAsync(
             string logpath,
@@ -47179,16 +43714,11 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<string>> GetServiceAccountIssuerOpenIDKeysetWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -47210,19 +43740,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<string>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<VersionInfo>> GetCodeWithHttpMessagesAsync(
             IDictionary<string, IList<string>> customHeaders = null,
@@ -47244,19 +43769,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<VersionInfo>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ListClusterCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47350,19 +43870,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> CreateClusterCustomObjectWithHttpMessagesAsync(
             object body,
@@ -47422,19 +43937,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> DeleteCollectionClusterCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47500,19 +44010,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ListNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47612,19 +44117,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 watch,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> CreateNamespacedCustomObjectWithHttpMessagesAsync(
             object body,
@@ -47690,19 +44190,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Post, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> DeleteCollectionNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47774,19 +44269,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetClusterCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47832,19 +44322,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> DeleteClusterCustomObjectWithHttpMessagesAsync(
             string group,
@@ -47911,19 +44396,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchClusterCustomObjectWithHttpMessagesAsync(
             object body,
@@ -47989,19 +44469,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectWithHttpMessagesAsync(
             object body,
@@ -48062,19 +44537,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetClusterCustomObjectStatusWithHttpMessagesAsync(
             string group,
@@ -48120,19 +44590,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectStatusWithHttpMessagesAsync(
             object body,
@@ -48193,19 +44658,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchClusterCustomObjectStatusWithHttpMessagesAsync(
             object body,
@@ -48271,19 +44731,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetClusterCustomObjectScaleWithHttpMessagesAsync(
             string group,
@@ -48329,19 +44784,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceClusterCustomObjectScaleWithHttpMessagesAsync(
             object body,
@@ -48402,19 +44852,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchClusterCustomObjectScaleWithHttpMessagesAsync(
             object body,
@@ -48480,19 +44925,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
@@ -48544,19 +44984,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> DeleteNamespacedCustomObjectWithHttpMessagesAsync(
             string group,
@@ -48629,19 +45064,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Delete, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectWithHttpMessagesAsync(
             object body,
@@ -48713,19 +45143,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectWithHttpMessagesAsync(
             object body,
@@ -48792,19 +45217,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetNamespacedCustomObjectStatusWithHttpMessagesAsync(
             string group,
@@ -48856,19 +45276,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectStatusWithHttpMessagesAsync(
             object body,
@@ -48935,19 +45350,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(
             object body,
@@ -49019,19 +45429,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> GetNamespacedCustomObjectScaleWithHttpMessagesAsync(
             string group,
@@ -49083,19 +45488,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Get, customHeaders);
-
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> ReplaceNamespacedCustomObjectScaleWithHttpMessagesAsync(
             object body,
@@ -49162,19 +45562,14 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Put, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
         /// <inheritdoc/>
         public async Task<HttpOperationResponse<object>> PatchNamespacedCustomObjectScaleWithHttpMessagesAsync(
             object body,
@@ -49246,18 +45641,13 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.Patch, customHeaders);
-
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
-
-
             // Create Result
             var _result = await CreateResultAsync<object>(_httpRequest,
                 _httpResponse,
                 false,
                 cancellationToken);
             return _result;
-
         }
-
     }
 }
