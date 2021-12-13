@@ -4,7 +4,6 @@
 
 using k8s.Models;
 using Microsoft.Rest;
-using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,6 +11,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -304,7 +304,7 @@ namespace k8s.Tests
                 },
             };
 
-            var processStatusJson = Encoding.UTF8.GetBytes(SafeJsonConvert.SerializeObject(processStatus));
+            var processStatusJson = JsonSerializer.SerializeToUtf8Bytes(processStatus);
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
 
             using (MemoryStream stdIn = new MemoryStream())

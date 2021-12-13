@@ -7,7 +7,6 @@
 namespace k8s
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Models;
     using System.Collections.Generic;
     using System.IO;
