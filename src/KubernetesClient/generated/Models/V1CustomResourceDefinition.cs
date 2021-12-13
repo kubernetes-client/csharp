@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceDefinition represents a resource that should be exposed on the API
         /// server.  Its name MUST be in the format &lt;.spec.name&gt;.&lt;.spec.group&gt;.
@@ -72,7 +66,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -81,26 +75,26 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// spec describes how the user wants the resources to appear
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1CustomResourceDefinitionSpec Spec { get; set; }
 
         /// <summary>
         /// status indicates the actual state of the CustomResourceDefinition
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1CustomResourceDefinitionStatus Status { get; set; }
 
         /// <summary>
@@ -113,7 +107,7 @@ namespace k8s.Models
         {
             if (Spec == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");    
+                throw new ArgumentNullException("Spec");    
             }
             Metadata?.Validate();
             Spec?.Validate();

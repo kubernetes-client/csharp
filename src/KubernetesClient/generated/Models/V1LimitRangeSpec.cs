@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LimitRangeSpec defines a min/max usage limit for resources that match on kind.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Limits is the list of LimitRangeItem objects that are enforced.
         /// </summary>
-        [JsonProperty(PropertyName = "limits")]
+        [JsonPropertyName("limits")]
         public IList<V1LimitRangeItem> Limits { get; set; }
 
         /// <summary>

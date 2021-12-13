@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressClassParametersReference identifies an API object. This can be used to
         /// specify a cluster or namespace-scoped resource.
@@ -47,8 +41,7 @@ namespace k8s.Models
         /// </param>
         /// <param name="scope">
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
-        /// IngressClassNamespacedParams feature gate.
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;.
         /// </param>
         public V1IngressClassParametersReference(string kind, string name, string apiGroup = null, string namespaceProperty = null, string scope = null)
         {
@@ -70,19 +63,19 @@ namespace k8s.Models
         /// specified, the specified Kind must be in the core API group. For any other
         /// third-party types, APIGroup is required.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroup")]
+        [JsonPropertyName("apiGroup")]
         public string ApiGroup { get; set; }
 
         /// <summary>
         /// Kind is the type of resource being referenced.
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name is the name of resource being referenced.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -90,15 +83,14 @@ namespace k8s.Models
         /// required when scope is set to &quot;Namespace&quot; and must be unset when scope is set to
         /// &quot;Cluster&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// Scope represents if this refers to a cluster or namespace scoped resource. This
-        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;. Field can be enabled with
-        /// IngressClassNamespacedParams feature gate.
+        /// may be set to &quot;Cluster&quot; (default) or &quot;Namespace&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
 
         /// <summary>

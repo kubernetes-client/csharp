@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceReference holds a reference to Service.legacy.k8s.io
     /// </summary>
@@ -59,19 +53,19 @@ namespace k8s.Models
         /// <summary>
         /// name is the name of the service. Required
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// namespace is the namespace of the service. Required
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// path is an optional URL path at which the webhook will be contacted.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -79,7 +73,7 @@ namespace k8s.Models
         /// should be a valid port number (1-65535, inclusive). Defaults to 443 for backward
         /// compatibility.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int? Port { get; set; }
 
         /// <summary>

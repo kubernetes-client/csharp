@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceMetricStatus indicates the current value of a resource metric known to
         /// Kubernetes, as specified in requests and limits, describing each pod in the
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// value of the resource for the pods.  It will only be present if
         /// `targetAverageValue` was set in the corresponding metric specification.
         /// </summary>
-        [JsonProperty(PropertyName = "currentAverageUtilization")]
+        [JsonPropertyName("currentAverageUtilization")]
         public int? CurrentAverageUtilization { get; set; }
 
         /// <summary>
@@ -75,13 +69,13 @@ namespace k8s.Models
         /// request), similar to the &quot;pods&quot; metric source type. It will always be set,
         /// regardless of the corresponding metric specification.
         /// </summary>
-        [JsonProperty(PropertyName = "currentAverageValue")]
+        [JsonPropertyName("currentAverageValue")]
         public ResourceQuantity CurrentAverageValue { get; set; }
 
         /// <summary>
         /// name is the name of the resource in question.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         {
             if (CurrentAverageValue == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentAverageValue");    
+                throw new ArgumentNullException("CurrentAverageValue");    
             }
             CurrentAverageValue?.Validate();
         }

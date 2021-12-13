@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CronJobStatus represents the current state of a cron job.
     /// </summary>
@@ -53,19 +47,19 @@ namespace k8s.Models
         /// <summary>
         /// A list of pointers to currently running jobs.
         /// </summary>
-        [JsonProperty(PropertyName = "active")]
+        [JsonPropertyName("active")]
         public IList<V1ObjectReference> Active { get; set; }
 
         /// <summary>
         /// Information when was the last time the job was successfully scheduled.
         /// </summary>
-        [JsonProperty(PropertyName = "lastScheduleTime")]
+        [JsonPropertyName("lastScheduleTime")]
         public System.DateTime? LastScheduleTime { get; set; }
 
         /// <summary>
         /// Information when was the last time the job successfully completed.
         /// </summary>
-        [JsonProperty(PropertyName = "lastSuccessfulTime")]
+        [JsonPropertyName("lastSuccessfulTime")]
         public System.DateTime? LastSuccessfulTime { get; set; }
 
         /// <summary>

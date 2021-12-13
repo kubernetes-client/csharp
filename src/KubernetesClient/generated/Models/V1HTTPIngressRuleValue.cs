@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the
         /// example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt; -&gt; backend where where parts of the
@@ -48,7 +42,7 @@ namespace k8s.Models
         /// <summary>
         /// A collection of paths that map requests to backends.
         /// </summary>
-        [JsonProperty(PropertyName = "paths")]
+        [JsonPropertyName("paths")]
         public IList<V1HTTPIngressPath> Paths { get; set; }
 
         /// <summary>

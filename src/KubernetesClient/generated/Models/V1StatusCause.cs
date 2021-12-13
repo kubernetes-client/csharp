@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// StatusCause provides more information about an api.Status failure, including
         /// cases when multiple errors are encountered.
@@ -70,21 +64,21 @@ namespace k8s.Models
         /// &quot;name&quot; - the field &quot;name&quot; on the current resource
         /// &quot;items[0].name&quot; - the field &quot;name&quot; on the first array entry in &quot;items&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "field")]
+        [JsonPropertyName("field")]
         public string Field { get; set; }
 
         /// <summary>
         /// A human-readable description of the cause of the error.  This field may be
         /// presented as-is to a reader.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// A machine-readable description of the cause of the error. If this value is empty
         /// there is no information available.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CSINodeSpec holds information about the specification of all CSI drivers
         /// installed on a node
@@ -48,7 +42,7 @@ namespace k8s.Models
         /// drivers is a list of information of all CSI Drivers existing on a node. If all
         /// drivers in the list are uninstalled, this can become empty.
         /// </summary>
-        [JsonProperty(PropertyName = "drivers")]
+        [JsonPropertyName("drivers")]
         public IList<V1CSINodeDriver> Drivers { get; set; }
 
         /// <summary>

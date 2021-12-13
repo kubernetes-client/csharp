@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// StorageClass describes the parameters for a class of storage for which
         /// PersistentVolumes can be dynamically provisioned.
@@ -101,7 +95,7 @@ namespace k8s.Models
         /// <summary>
         /// AllowVolumeExpansion shows whether the storage class allow volume expand
         /// </summary>
-        [JsonProperty(PropertyName = "allowVolumeExpansion")]
+        [JsonPropertyName("allowVolumeExpansion")]
         public bool? AllowVolumeExpansion { get; set; }
 
         /// <summary>
@@ -110,7 +104,7 @@ namespace k8s.Models
         /// TopologySelectorTerm list means there is no topology restriction. This field is
         /// only honored by servers that enable the VolumeScheduling feature.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedTopologies")]
+        [JsonPropertyName("allowedTopologies")]
         public IList<V1TopologySelectorTerm> AllowedTopologies { get; set; }
 
         /// <summary>
@@ -119,7 +113,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -128,14 +122,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -143,27 +137,27 @@ namespace k8s.Models
         /// these mountOptions, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount of the PVs will
         /// simply fail if one is invalid.
         /// </summary>
-        [JsonProperty(PropertyName = "mountOptions")]
+        [JsonPropertyName("mountOptions")]
         public IList<string> MountOptions { get; set; }
 
         /// <summary>
         /// Parameters holds the parameters for the provisioner that should create volumes
         /// of this storage class.
         /// </summary>
-        [JsonProperty(PropertyName = "parameters")]
+        [JsonPropertyName("parameters")]
         public IDictionary<string, string> Parameters { get; set; }
 
         /// <summary>
         /// Provisioner indicates the type of the provisioner.
         /// </summary>
-        [JsonProperty(PropertyName = "provisioner")]
+        [JsonPropertyName("provisioner")]
         public string Provisioner { get; set; }
 
         /// <summary>
         /// Dynamically provisioned PersistentVolumes of this storage class are created with
         /// this reclaimPolicy. Defaults to Delete.
         /// </summary>
-        [JsonProperty(PropertyName = "reclaimPolicy")]
+        [JsonPropertyName("reclaimPolicy")]
         public string ReclaimPolicy { get; set; }
 
         /// <summary>
@@ -171,7 +165,7 @@ namespace k8s.Models
         /// bound.  When unset, VolumeBindingImmediate is used. This field is only honored
         /// by servers that enable the VolumeScheduling feature.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeBindingMode")]
+        [JsonPropertyName("volumeBindingMode")]
         public string VolumeBindingMode { get; set; }
 
         /// <summary>

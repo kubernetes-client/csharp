@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// JSONSchemaProps is a JSON-Schema following Specification Draft 4
         /// (http://json-schema.org/).
@@ -245,7 +239,12 @@ namespace k8s.Models
         /// properties or additionalProperties are specified in the schema. This can either
         /// be true or undefined. False is forbidden.
         /// </param>
-        public V1JSONSchemaProps(string refProperty = null, string schema = null, object additionalItems = null, object additionalProperties = null, IList<V1JSONSchemaProps> allOf = null, IList<V1JSONSchemaProps> anyOf = null, object defaultProperty = null, IDictionary<string, V1JSONSchemaProps> definitions = null, IDictionary<string, object> dependencies = null, string description = null, IList<object> enumProperty = null, object example = null, bool? exclusiveMaximum = null, bool? exclusiveMinimum = null, V1ExternalDocumentation externalDocs = null, string format = null, string id = null, object items = null, long? maxItems = null, long? maxLength = null, long? maxProperties = null, double? maximum = null, long? minItems = null, long? minLength = null, long? minProperties = null, double? minimum = null, double? multipleOf = null, V1JSONSchemaProps not = null, bool? nullable = null, IList<V1JSONSchemaProps> oneOf = null, string pattern = null, IDictionary<string, V1JSONSchemaProps> patternProperties = null, IDictionary<string, V1JSONSchemaProps> properties = null, IList<string> required = null, string title = null, string type = null, bool? uniqueItems = null, bool? xKubernetesEmbeddedResource = null, bool? xKubernetesIntOrString = null, IList<string> xKubernetesListMapKeys = null, string xKubernetesListType = null, string xKubernetesMapType = null, bool? xKubernetesPreserveUnknownFields = null)
+        /// <param name="xKubernetesValidations">
+        /// x-kubernetes-validations describes a list of validation rules written in the CEL
+        /// expression language. This field is an alpha-level. Using this field requires the
+        /// feature gate `CustomResourceValidationExpressions` to be enabled.
+        /// </param>
+        public V1JSONSchemaProps(string refProperty = null, string schema = null, object additionalItems = null, object additionalProperties = null, IList<V1JSONSchemaProps> allOf = null, IList<V1JSONSchemaProps> anyOf = null, object defaultProperty = null, IDictionary<string, V1JSONSchemaProps> definitions = null, IDictionary<string, object> dependencies = null, string description = null, IList<object> enumProperty = null, object example = null, bool? exclusiveMaximum = null, bool? exclusiveMinimum = null, V1ExternalDocumentation externalDocs = null, string format = null, string id = null, object items = null, long? maxItems = null, long? maxLength = null, long? maxProperties = null, double? maximum = null, long? minItems = null, long? minLength = null, long? minProperties = null, double? minimum = null, double? multipleOf = null, V1JSONSchemaProps not = null, bool? nullable = null, IList<V1JSONSchemaProps> oneOf = null, string pattern = null, IDictionary<string, V1JSONSchemaProps> patternProperties = null, IDictionary<string, V1JSONSchemaProps> properties = null, IList<string> required = null, string title = null, string type = null, bool? uniqueItems = null, bool? xKubernetesEmbeddedResource = null, bool? xKubernetesIntOrString = null, IList<string> xKubernetesListMapKeys = null, string xKubernetesListType = null, string xKubernetesMapType = null, bool? xKubernetesPreserveUnknownFields = null, IList<V1ValidationRule> xKubernetesValidations = null)
         {
             RefProperty = refProperty;
             Schema = schema;
@@ -290,6 +289,7 @@ namespace k8s.Models
             XKubernetesListType = xKubernetesListType;
             XKubernetesMapType = xKubernetesMapType;
             XKubernetesPreserveUnknownFields = xKubernetesPreserveUnknownFields;
+            XKubernetesValidations = xKubernetesValidations;
             CustomInit();
         }
 
@@ -301,39 +301,39 @@ namespace k8s.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "__referencePath")]
+        [JsonPropertyName("$ref")]
         public string RefProperty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "$schema")]
+        [JsonPropertyName("$schema")]
         public string Schema { get; set; }
 
         /// <summary>
         /// JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to
         /// true for the boolean property.
         /// </summary>
-        [JsonProperty(PropertyName = "additionalItems")]
+        [JsonPropertyName("additionalItems")]
         public object AdditionalItems { get; set; }
 
         /// <summary>
         /// JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to
         /// true for the boolean property.
         /// </summary>
-        [JsonProperty(PropertyName = "additionalProperties")]
+        [JsonPropertyName("additionalProperties")]
         public object AdditionalProperties { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "allOf")]
+        [JsonPropertyName("allOf")]
         public IList<V1JSONSchemaProps> AllOf { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "anyOf")]
+        [JsonPropertyName("anyOf")]
         public IList<V1JSONSchemaProps> AnyOf { get; set; }
 
         /// <summary>
@@ -341,56 +341,56 @@ namespace k8s.Models
         /// feature under the CustomResourceDefaulting feature gate. Defaulting requires
         /// spec.preserveUnknownFields to be false.
         /// </summary>
-        [JsonProperty(PropertyName = "default")]
+        [JsonPropertyName("default")]
         public object DefaultProperty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "definitions")]
+        [JsonPropertyName("definitions")]
         public IDictionary<string, V1JSONSchemaProps> Definitions { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "dependencies")]
+        [JsonPropertyName("dependencies")]
         public IDictionary<string, object> Dependencies { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "enum")]
+        [JsonPropertyName("enum")]
         public IList<object> EnumProperty { get; set; }
 
         /// <summary>
         /// JSON represents any valid JSON value. These types are supported: bool, int64,
         /// float64, string, []interface{}, map[string]interface{} and nil.
         /// </summary>
-        [JsonProperty(PropertyName = "example")]
+        [JsonPropertyName("example")]
         public object Example { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "exclusiveMaximum")]
+        [JsonPropertyName("exclusiveMaximum")]
         public bool? ExclusiveMaximum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "exclusiveMinimum")]
+        [JsonPropertyName("exclusiveMinimum")]
         public bool? ExclusiveMinimum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "externalDocs")]
+        [JsonPropertyName("externalDocs")]
         public V1ExternalDocumentation ExternalDocs { get; set; }
 
         /// <summary>
@@ -427,134 +427,134 @@ namespace k8s.Models
         /// duration format - datetime: a date time string like &quot;2014-12-15T19:30:20.000Z&quot;
         /// as defined by date-time in RFC3339.
         /// </summary>
-        [JsonProperty(PropertyName = "format")]
+        [JsonPropertyName("format")]
         public string Format { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps
         /// or an array of JSONSchemaProps. Mainly here for serialization purposes.
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public object Items { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "maxItems")]
+        [JsonPropertyName("maxItems")]
         public long? MaxItems { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "maxLength")]
+        [JsonPropertyName("maxLength")]
         public long? MaxLength { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "maxProperties")]
+        [JsonPropertyName("maxProperties")]
         public long? MaxProperties { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "maximum")]
+        [JsonPropertyName("maximum")]
         public double? Maximum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "minItems")]
+        [JsonPropertyName("minItems")]
         public long? MinItems { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "minLength")]
+        [JsonPropertyName("minLength")]
         public long? MinLength { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "minProperties")]
+        [JsonPropertyName("minProperties")]
         public long? MinProperties { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "minimum")]
+        [JsonPropertyName("minimum")]
         public double? Minimum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "multipleOf")]
+        [JsonPropertyName("multipleOf")]
         public double? MultipleOf { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "not")]
+        [JsonPropertyName("not")]
         public V1JSONSchemaProps Not { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "nullable")]
+        [JsonPropertyName("nullable")]
         public bool? Nullable { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "oneOf")]
+        [JsonPropertyName("oneOf")]
         public IList<V1JSONSchemaProps> OneOf { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "pattern")]
+        [JsonPropertyName("pattern")]
         public string Pattern { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "patternProperties")]
+        [JsonPropertyName("patternProperties")]
         public IDictionary<string, V1JSONSchemaProps> PatternProperties { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
+        [JsonPropertyName("properties")]
         public IDictionary<string, V1JSONSchemaProps> Properties { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "required")]
+        [JsonPropertyName("required")]
         public IList<string> Required { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "uniqueItems")]
+        [JsonPropertyName("uniqueItems")]
         public bool? UniqueItems { get; set; }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace k8s.Models
         /// be true, but does not have to be if the object is fully specified (up to kind,
         /// apiVersion, metadata).
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-embedded-resource")]
+        [JsonPropertyName("x-kubernetes-embedded-resource")]
         public bool? XKubernetesEmbeddedResource { get; set; }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace k8s.Models
         /// - type: string
         /// - ... zero or more
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-int-or-string")]
+        [JsonPropertyName("x-kubernetes-int-or-string")]
         public bool? XKubernetesIntOrString { get; set; }
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace k8s.Models
         /// The properties specified must either be required or have a default value, to
         /// ensure those properties are present for all list items.
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-list-map-keys")]
+        [JsonPropertyName("x-kubernetes-list-map-keys")]
         public IList<string> XKubernetesListMapKeys { get; set; }
 
         /// <summary>
@@ -616,7 +616,7 @@ namespace k8s.Models
         /// must only be used on a list with elements of type object.
         /// Defaults to atomic for arrays.
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-list-type")]
+        [JsonPropertyName("x-kubernetes-list-type")]
         public string XKubernetesListType { get; set; }
 
         /// <summary>
@@ -630,7 +630,7 @@ namespace k8s.Models
         /// 2) `atomic`: the list is treated as a single entity, like a scalar.
         /// Atomic maps will be entirely replaced when updated.
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-map-type")]
+        [JsonPropertyName("x-kubernetes-map-type")]
         public string XKubernetesMapType { get; set; }
 
         /// <summary>
@@ -640,8 +640,16 @@ namespace k8s.Models
         /// properties or additionalProperties are specified in the schema. This can either
         /// be true or undefined. False is forbidden.
         /// </summary>
-        [JsonProperty(PropertyName = "x-kubernetes-preserve-unknown-fields")]
+        [JsonPropertyName("x-kubernetes-preserve-unknown-fields")]
         public bool? XKubernetesPreserveUnknownFields { get; set; }
+
+        /// <summary>
+        /// x-kubernetes-validations describes a list of validation rules written in the CEL
+        /// expression language. This field is an alpha-level. Using this field requires the
+        /// feature gate `CustomResourceValidationExpressions` to be enabled.
+        /// </summary>
+        [JsonPropertyName("x-kubernetes-validations")]
+        public IList<V1ValidationRule> XKubernetesValidations { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -667,6 +675,12 @@ namespace k8s.Models
             Not?.Validate();
             if (OneOf != null){
                 foreach(var obj in OneOf)
+                {
+                    obj.Validate();
+                }
+            }
+            if (XKubernetesValidations != null){
+                foreach(var obj in XKubernetesValidations)
                 {
                     obj.Validate();
                 }

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HostPortRange defines a range of host ports that will be enabled by a policy for
         /// pods to use.  It requires both the start and end to be defined.
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// max is the end of the range, inclusive.
         /// </summary>
-        [JsonProperty(PropertyName = "max")]
+        [JsonPropertyName("max")]
         public int Max { get; set; }
 
         /// <summary>
         /// min is the start of the range, inclusive.
         /// </summary>
-        [JsonProperty(PropertyName = "min")]
+        [JsonPropertyName("min")]
         public int Min { get; set; }
 
         /// <summary>

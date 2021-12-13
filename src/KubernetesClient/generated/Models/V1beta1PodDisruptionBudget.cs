@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodDisruptionBudget is an object to define the max disruption that can be caused
         /// to a collection of pods
@@ -72,7 +66,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -81,26 +75,26 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired behavior of the PodDisruptionBudget.
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1beta1PodDisruptionBudgetSpec Spec { get; set; }
 
         /// <summary>
         /// Most recently observed status of the PodDisruptionBudget.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1beta1PodDisruptionBudgetStatus Status { get; set; }
 
         /// <summary>

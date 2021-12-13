@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIGroup contains the name, the supported versions, and the preferred version of
         /// a group.
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -92,20 +86,20 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// name is the name of the group.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// preferredVersion is the version preferred by the API server, which probably is
         /// the storage version.
         /// </summary>
-        [JsonProperty(PropertyName = "preferredVersion")]
+        [JsonPropertyName("preferredVersion")]
         public V1GroupVersionForDiscovery PreferredVersion { get; set; }
 
         /// <summary>
@@ -118,13 +112,13 @@ namespace k8s.Models
         /// server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip
         /// header or request.RemoteAddr (in that order) to get the client IP.
         /// </summary>
-        [JsonProperty(PropertyName = "serverAddressByClientCIDRs")]
+        [JsonPropertyName("serverAddressByClientCIDRs")]
         public IList<V1ServerAddressByClientCIDR> ServerAddressByClientCIDRs { get; set; }
 
         /// <summary>
         /// versions are the versions supported in this group.
         /// </summary>
-        [JsonProperty(PropertyName = "versions")]
+        [JsonPropertyName("versions")]
         public IList<V1GroupVersionForDiscovery> Versions { get; set; }
 
         /// <summary>

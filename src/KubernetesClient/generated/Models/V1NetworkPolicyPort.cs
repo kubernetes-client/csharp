@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NetworkPolicyPort describes a port to allow traffic on
     /// </summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// enabled by default. It can be disabled using the Feature Gate
         /// &quot;NetworkPolicyEndPort&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "endPort")]
+        [JsonPropertyName("endPort")]
         public int? EndPort { get; set; }
 
         /// <summary>
@@ -74,14 +68,14 @@ namespace k8s.Models
         /// a pod. If this field is not provided, this matches all port names and numbers.
         /// If present, only traffic on the specified protocol AND port will be matched.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public IntstrIntOrString Port { get; set; }
 
         /// <summary>
         /// The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified,
         /// this field defaults to TCP.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>

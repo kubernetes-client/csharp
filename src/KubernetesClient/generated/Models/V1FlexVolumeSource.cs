@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// FlexVolume represents a generic volume resource that is provisioned/attached
         /// using an exec based plugin.
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// <summary>
         /// Driver is the name of the driver to use for this volume.
         /// </summary>
-        [JsonProperty(PropertyName = "driver")]
+        [JsonPropertyName("driver")]
         public string Driver { get; set; }
 
         /// <summary>
@@ -76,20 +70,20 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. The default filesystem depends on
         /// FlexVolume script.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// Optional: Extra command options if any.
         /// </summary>
-        [JsonProperty(PropertyName = "options")]
+        [JsonPropertyName("options")]
         public IDictionary<string, string> Options { get; set; }
 
         /// <summary>
         /// Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly
         /// setting in VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
@@ -98,7 +92,7 @@ namespace k8s.Models
         /// is specified. If the secret object contains more than one secret, all secrets
         /// are passed to the plugin scripts.
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>

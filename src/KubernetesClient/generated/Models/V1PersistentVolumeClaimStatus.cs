@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeClaimStatus is the current status of a persistent volume claim.
     /// </summary>
@@ -33,6 +27,17 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
         /// </param>
+        /// <param name="allocatedResources">
+        /// The storage resource within AllocatedResources tracks the capacity allocated to
+        /// a PVC. It may be larger than the actual capacity when a volume expansion
+        /// operation is requested. For storage quota, the larger value from
+        /// allocatedResources and PVC.spec.resources is used. If allocatedResources is not
+        /// set, PVC.spec.resources alone is used for quota calculation. If a volume
+        /// expansion capacity request is lowered, allocatedResources is only lowered if
+        /// there are no expansion operations in progress and if the actual volume capacity
+        /// is equal or lower than the requested capacity. This is an alpha field and
+        /// requires enabling RecoverVolumeExpansionFailure feature.
+        /// </param>
         /// <param name="capacity">
         /// Represents the actual resources of the underlying volume.
         /// </param>
@@ -42,13 +47,28 @@ namespace k8s.Models
         /// </param>
         /// <param name="phase">
         /// Phase represents the current phase of PersistentVolumeClaim.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Bound&quot;` used for PersistentVolumeClaims that are bound
+        /// - `&quot;Lost&quot;` used for PersistentVolumeClaims that lost their underlying
+        /// PersistentVolume. The claim was bound to a PersistentVolume and this volume does
+        /// not exist any longer and all data on it was lost.
+        /// - `&quot;Pending&quot;` used for PersistentVolumeClaims that are not yet bound
         /// </param>
-        public V1PersistentVolumeClaimStatus(IList<string> accessModes = null, IDictionary<string, ResourceQuantity> capacity = null, IList<V1PersistentVolumeClaimCondition> conditions = null, string phase = null)
+        /// <param name="resizeStatus">
+        /// ResizeStatus stores status of resize operation. ResizeStatus is not set by
+        /// default but when expansion is complete resizeStatus is set to empty string by
+        /// resize controller or kubelet. This is an alpha field and requires enabling
+        /// RecoverVolumeExpansionFailure feature.
+        /// </param>
+        public V1PersistentVolumeClaimStatus(IList<string> accessModes = null, IDictionary<string, ResourceQuantity> allocatedResources = null, IDictionary<string, ResourceQuantity> capacity = null, IList<V1PersistentVolumeClaimCondition> conditions = null, string phase = null, string resizeStatus = null)
         {
             AccessModes = accessModes;
+            AllocatedResources = allocatedResources;
             Capacity = capacity;
             Conditions = conditions;
             Phase = phase;
+            ResizeStatus = resizeStatus;
             CustomInit();
         }
 
@@ -62,27 +82,57 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
         /// </summary>
-        [JsonProperty(PropertyName = "accessModes")]
+        [JsonPropertyName("accessModes")]
         public IList<string> AccessModes { get; set; }
+
+        /// <summary>
+        /// The storage resource within AllocatedResources tracks the capacity allocated to
+        /// a PVC. It may be larger than the actual capacity when a volume expansion
+        /// operation is requested. For storage quota, the larger value from
+        /// allocatedResources and PVC.spec.resources is used. If allocatedResources is not
+        /// set, PVC.spec.resources alone is used for quota calculation. If a volume
+        /// expansion capacity request is lowered, allocatedResources is only lowered if
+        /// there are no expansion operations in progress and if the actual volume capacity
+        /// is equal or lower than the requested capacity. This is an alpha field and
+        /// requires enabling RecoverVolumeExpansionFailure feature.
+        /// </summary>
+        [JsonPropertyName("allocatedResources")]
+        public IDictionary<string, ResourceQuantity> AllocatedResources { get; set; }
 
         /// <summary>
         /// Represents the actual resources of the underlying volume.
         /// </summary>
-        [JsonProperty(PropertyName = "capacity")]
+        [JsonPropertyName("capacity")]
         public IDictionary<string, ResourceQuantity> Capacity { get; set; }
 
         /// <summary>
         /// Current Condition of persistent volume claim. If underlying persistent volume is
         /// being resized then the Condition will be set to &apos;ResizeStarted&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1PersistentVolumeClaimCondition> Conditions { get; set; }
 
         /// <summary>
         /// Phase represents the current phase of PersistentVolumeClaim.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Bound&quot;` used for PersistentVolumeClaims that are bound
+        /// - `&quot;Lost&quot;` used for PersistentVolumeClaims that lost their underlying
+        /// PersistentVolume. The claim was bound to a PersistentVolume and this volume does
+        /// not exist any longer and all data on it was lost.
+        /// - `&quot;Pending&quot;` used for PersistentVolumeClaims that are not yet bound
         /// </summary>
-        [JsonProperty(PropertyName = "phase")]
+        [JsonPropertyName("phase")]
         public string Phase { get; set; }
+
+        /// <summary>
+        /// ResizeStatus stores status of resize operation. ResizeStatus is not set by
+        /// default but when expansion is complete resizeStatus is set to empty string by
+        /// resize controller or kubelet. This is an alpha field and requires enabling
+        /// RecoverVolumeExpansionFailure feature.
+        /// </summary>
+        [JsonPropertyName("resizeStatus")]
+        public string ResizeStatus { get; set; }
 
         /// <summary>
         /// Validate the object.

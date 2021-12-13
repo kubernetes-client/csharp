@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// JobTemplateSpec describes the data a Job should have when created from a
         /// template
@@ -53,14 +47,14 @@ namespace k8s.Models
         /// Standard object&apos;s metadata of the jobs created from this template. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired behavior of the job. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1JobSpec Spec { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IDRange provides a min/max of an allowed range of IDs.
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// max is the end of the range, inclusive.
         /// </summary>
-        [JsonProperty(PropertyName = "max")]
+        [JsonPropertyName("max")]
         public long Max { get; set; }
 
         /// <summary>
         /// min is the start of the range, inclusive.
         /// </summary>
-        [JsonProperty(PropertyName = "min")]
+        [JsonPropertyName("min")]
         public long Min { get; set; }
 
         /// <summary>

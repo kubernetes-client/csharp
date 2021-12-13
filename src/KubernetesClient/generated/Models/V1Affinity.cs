@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Affinity is a group of affinity scheduling rules.
     /// </summary>
@@ -55,21 +49,21 @@ namespace k8s.Models
         /// <summary>
         /// Describes node affinity scheduling rules for the pod.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeAffinity")]
+        [JsonPropertyName("nodeAffinity")]
         public V1NodeAffinity NodeAffinity { get; set; }
 
         /// <summary>
         /// Describes pod affinity scheduling rules (e.g. co-locate this pod in the same
         /// node, zone, etc. as some other pod(s)).
         /// </summary>
-        [JsonProperty(PropertyName = "podAffinity")]
+        [JsonPropertyName("podAffinity")]
         public V1PodAffinity PodAffinity { get; set; }
 
         /// <summary>
         /// Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the
         /// same node, zone, etc. as some other pod(s)).
         /// </summary>
-        [JsonProperty(PropertyName = "podAntiAffinity")]
+        [JsonPropertyName("podAntiAffinity")]
         public V1PodAntiAffinity PodAntiAffinity { get; set; }
 
         /// <summary>

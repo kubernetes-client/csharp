@@ -7,46 +7,6 @@ using k8s.Versioning;
 
 namespace k8s.Models
 {
-    public partial class V1AggregationRule
-    {
-        public static explicit operator V1AggregationRule(V1alpha1AggregationRule s) => VersionConverter.Mapper.Map<V1AggregationRule>(s);
-    }
-    public partial class V1alpha1AggregationRule
-    {
-        public static explicit operator V1alpha1AggregationRule(V1AggregationRule s) => VersionConverter.Mapper.Map<V1alpha1AggregationRule>(s);
-    }
-    public partial class V1alpha1ClusterRole
-    {
-        public static explicit operator V1alpha1ClusterRole(V1ClusterRole s) => VersionConverter.Mapper.Map<V1alpha1ClusterRole>(s);
-    }
-    public partial class V1ClusterRole
-    {
-        public static explicit operator V1ClusterRole(V1alpha1ClusterRole s) => VersionConverter.Mapper.Map<V1ClusterRole>(s);
-    }
-    public partial class V1alpha1ClusterRoleBinding
-    {
-        public static explicit operator V1alpha1ClusterRoleBinding(V1ClusterRoleBinding s) => VersionConverter.Mapper.Map<V1alpha1ClusterRoleBinding>(s);
-    }
-    public partial class V1ClusterRoleBinding
-    {
-        public static explicit operator V1ClusterRoleBinding(V1alpha1ClusterRoleBinding s) => VersionConverter.Mapper.Map<V1ClusterRoleBinding>(s);
-    }
-    public partial class V1alpha1ClusterRoleBindingList
-    {
-        public static explicit operator V1alpha1ClusterRoleBindingList(V1ClusterRoleBindingList s) => VersionConverter.Mapper.Map<V1alpha1ClusterRoleBindingList>(s);
-    }
-    public partial class V1ClusterRoleBindingList
-    {
-        public static explicit operator V1ClusterRoleBindingList(V1alpha1ClusterRoleBindingList s) => VersionConverter.Mapper.Map<V1ClusterRoleBindingList>(s);
-    }
-    public partial class V1alpha1ClusterRoleList
-    {
-        public static explicit operator V1alpha1ClusterRoleList(V1ClusterRoleList s) => VersionConverter.Mapper.Map<V1alpha1ClusterRoleList>(s);
-    }
-    public partial class V1ClusterRoleList
-    {
-        public static explicit operator V1ClusterRoleList(V1alpha1ClusterRoleList s) => VersionConverter.Mapper.Map<V1ClusterRoleList>(s);
-    }
     public partial class V2beta1ContainerResourceMetricSource
     {
         public static explicit operator V2beta1ContainerResourceMetricSource(V2beta2ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta1ContainerResourceMetricSource>(s);
@@ -55,6 +15,22 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ContainerResourceMetricSource(V2beta1ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta2ContainerResourceMetricSource>(s);
     }
+    public partial class V2beta1ContainerResourceMetricSource
+    {
+        public static explicit operator V2beta1ContainerResourceMetricSource(V2ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta1ContainerResourceMetricSource>(s);
+    }
+    public partial class V2ContainerResourceMetricSource
+    {
+        public static explicit operator V2ContainerResourceMetricSource(V2beta1ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2ContainerResourceMetricSource>(s);
+    }
+    public partial class V2beta2ContainerResourceMetricSource
+    {
+        public static explicit operator V2beta2ContainerResourceMetricSource(V2ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta2ContainerResourceMetricSource>(s);
+    }
+    public partial class V2ContainerResourceMetricSource
+    {
+        public static explicit operator V2ContainerResourceMetricSource(V2beta2ContainerResourceMetricSource s) => VersionConverter.Mapper.Map<V2ContainerResourceMetricSource>(s);
+    }
     public partial class V2beta1ContainerResourceMetricStatus
     {
         public static explicit operator V2beta1ContainerResourceMetricStatus(V2beta2ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ContainerResourceMetricStatus>(s);
@@ -62,6 +38,22 @@ namespace k8s.Models
     public partial class V2beta2ContainerResourceMetricStatus
     {
         public static explicit operator V2beta2ContainerResourceMetricStatus(V2beta1ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ContainerResourceMetricStatus>(s);
+    }
+    public partial class V2beta1ContainerResourceMetricStatus
+    {
+        public static explicit operator V2beta1ContainerResourceMetricStatus(V2ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ContainerResourceMetricStatus>(s);
+    }
+    public partial class V2ContainerResourceMetricStatus
+    {
+        public static explicit operator V2ContainerResourceMetricStatus(V2beta1ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2ContainerResourceMetricStatus>(s);
+    }
+    public partial class V2beta2ContainerResourceMetricStatus
+    {
+        public static explicit operator V2beta2ContainerResourceMetricStatus(V2ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ContainerResourceMetricStatus>(s);
+    }
+    public partial class V2ContainerResourceMetricStatus
+    {
+        public static explicit operator V2ContainerResourceMetricStatus(V2beta2ContainerResourceMetricStatus s) => VersionConverter.Mapper.Map<V2ContainerResourceMetricStatus>(s);
     }
     public partial class V1beta1CronJob
     {
@@ -111,6 +103,14 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2CrossVersionObjectReference(V1CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2beta2CrossVersionObjectReference>(s);
     }
+    public partial class V1CrossVersionObjectReference
+    {
+        public static explicit operator V1CrossVersionObjectReference(V2CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V1CrossVersionObjectReference>(s);
+    }
+    public partial class V2CrossVersionObjectReference
+    {
+        public static explicit operator V2CrossVersionObjectReference(V1CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2CrossVersionObjectReference>(s);
+    }
     public partial class V2beta1CrossVersionObjectReference
     {
         public static explicit operator V2beta1CrossVersionObjectReference(V2beta2CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2beta1CrossVersionObjectReference>(s);
@@ -118,6 +118,22 @@ namespace k8s.Models
     public partial class V2beta2CrossVersionObjectReference
     {
         public static explicit operator V2beta2CrossVersionObjectReference(V2beta1CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2beta2CrossVersionObjectReference>(s);
+    }
+    public partial class V2beta1CrossVersionObjectReference
+    {
+        public static explicit operator V2beta1CrossVersionObjectReference(V2CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2beta1CrossVersionObjectReference>(s);
+    }
+    public partial class V2CrossVersionObjectReference
+    {
+        public static explicit operator V2CrossVersionObjectReference(V2beta1CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2CrossVersionObjectReference>(s);
+    }
+    public partial class V2beta2CrossVersionObjectReference
+    {
+        public static explicit operator V2beta2CrossVersionObjectReference(V2CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2beta2CrossVersionObjectReference>(s);
+    }
+    public partial class V2CrossVersionObjectReference
+    {
+        public static explicit operator V2CrossVersionObjectReference(V2beta2CrossVersionObjectReference s) => VersionConverter.Mapper.Map<V2CrossVersionObjectReference>(s);
     }
     public partial class V1alpha1CSIStorageCapacity
     {
@@ -183,6 +199,22 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ExternalMetricSource(V2beta1ExternalMetricSource s) => VersionConverter.Mapper.Map<V2beta2ExternalMetricSource>(s);
     }
+    public partial class V2beta1ExternalMetricSource
+    {
+        public static explicit operator V2beta1ExternalMetricSource(V2ExternalMetricSource s) => VersionConverter.Mapper.Map<V2beta1ExternalMetricSource>(s);
+    }
+    public partial class V2ExternalMetricSource
+    {
+        public static explicit operator V2ExternalMetricSource(V2beta1ExternalMetricSource s) => VersionConverter.Mapper.Map<V2ExternalMetricSource>(s);
+    }
+    public partial class V2beta2ExternalMetricSource
+    {
+        public static explicit operator V2beta2ExternalMetricSource(V2ExternalMetricSource s) => VersionConverter.Mapper.Map<V2beta2ExternalMetricSource>(s);
+    }
+    public partial class V2ExternalMetricSource
+    {
+        public static explicit operator V2ExternalMetricSource(V2beta2ExternalMetricSource s) => VersionConverter.Mapper.Map<V2ExternalMetricSource>(s);
+    }
     public partial class V2beta1ExternalMetricStatus
     {
         public static explicit operator V2beta1ExternalMetricStatus(V2beta2ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ExternalMetricStatus>(s);
@@ -191,6 +223,70 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ExternalMetricStatus(V2beta1ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ExternalMetricStatus>(s);
     }
+    public partial class V2beta1ExternalMetricStatus
+    {
+        public static explicit operator V2beta1ExternalMetricStatus(V2ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ExternalMetricStatus>(s);
+    }
+    public partial class V2ExternalMetricStatus
+    {
+        public static explicit operator V2ExternalMetricStatus(V2beta1ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2ExternalMetricStatus>(s);
+    }
+    public partial class V2beta2ExternalMetricStatus
+    {
+        public static explicit operator V2beta2ExternalMetricStatus(V2ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ExternalMetricStatus>(s);
+    }
+    public partial class V2ExternalMetricStatus
+    {
+        public static explicit operator V2ExternalMetricStatus(V2beta2ExternalMetricStatus s) => VersionConverter.Mapper.Map<V2ExternalMetricStatus>(s);
+    }
+    public partial class V1beta1FlowDistinguisherMethod
+    {
+        public static explicit operator V1beta1FlowDistinguisherMethod(V1beta2FlowDistinguisherMethod s) => VersionConverter.Mapper.Map<V1beta1FlowDistinguisherMethod>(s);
+    }
+    public partial class V1beta2FlowDistinguisherMethod
+    {
+        public static explicit operator V1beta2FlowDistinguisherMethod(V1beta1FlowDistinguisherMethod s) => VersionConverter.Mapper.Map<V1beta2FlowDistinguisherMethod>(s);
+    }
+    public partial class V1beta1FlowSchema
+    {
+        public static explicit operator V1beta1FlowSchema(V1beta2FlowSchema s) => VersionConverter.Mapper.Map<V1beta1FlowSchema>(s);
+    }
+    public partial class V1beta2FlowSchema
+    {
+        public static explicit operator V1beta2FlowSchema(V1beta1FlowSchema s) => VersionConverter.Mapper.Map<V1beta2FlowSchema>(s);
+    }
+    public partial class V1beta1FlowSchemaCondition
+    {
+        public static explicit operator V1beta1FlowSchemaCondition(V1beta2FlowSchemaCondition s) => VersionConverter.Mapper.Map<V1beta1FlowSchemaCondition>(s);
+    }
+    public partial class V1beta2FlowSchemaCondition
+    {
+        public static explicit operator V1beta2FlowSchemaCondition(V1beta1FlowSchemaCondition s) => VersionConverter.Mapper.Map<V1beta2FlowSchemaCondition>(s);
+    }
+    public partial class V1beta1FlowSchemaList
+    {
+        public static explicit operator V1beta1FlowSchemaList(V1beta2FlowSchemaList s) => VersionConverter.Mapper.Map<V1beta1FlowSchemaList>(s);
+    }
+    public partial class V1beta2FlowSchemaList
+    {
+        public static explicit operator V1beta2FlowSchemaList(V1beta1FlowSchemaList s) => VersionConverter.Mapper.Map<V1beta2FlowSchemaList>(s);
+    }
+    public partial class V1beta1FlowSchemaSpec
+    {
+        public static explicit operator V1beta1FlowSchemaSpec(V1beta2FlowSchemaSpec s) => VersionConverter.Mapper.Map<V1beta1FlowSchemaSpec>(s);
+    }
+    public partial class V1beta2FlowSchemaSpec
+    {
+        public static explicit operator V1beta2FlowSchemaSpec(V1beta1FlowSchemaSpec s) => VersionConverter.Mapper.Map<V1beta2FlowSchemaSpec>(s);
+    }
+    public partial class V1beta1FlowSchemaStatus
+    {
+        public static explicit operator V1beta1FlowSchemaStatus(V1beta2FlowSchemaStatus s) => VersionConverter.Mapper.Map<V1beta1FlowSchemaStatus>(s);
+    }
+    public partial class V1beta2FlowSchemaStatus
+    {
+        public static explicit operator V1beta2FlowSchemaStatus(V1beta1FlowSchemaStatus s) => VersionConverter.Mapper.Map<V1beta2FlowSchemaStatus>(s);
+    }
     public partial class V1beta1ForZone
     {
         public static explicit operator V1beta1ForZone(V1ForZone s) => VersionConverter.Mapper.Map<V1beta1ForZone>(s);
@@ -198,6 +294,14 @@ namespace k8s.Models
     public partial class V1ForZone
     {
         public static explicit operator V1ForZone(V1beta1ForZone s) => VersionConverter.Mapper.Map<V1ForZone>(s);
+    }
+    public partial class V1beta1GroupSubject
+    {
+        public static explicit operator V1beta1GroupSubject(V1beta2GroupSubject s) => VersionConverter.Mapper.Map<V1beta1GroupSubject>(s);
+    }
+    public partial class V1beta2GroupSubject
+    {
+        public static explicit operator V1beta2GroupSubject(V1beta1GroupSubject s) => VersionConverter.Mapper.Map<V1beta2GroupSubject>(s);
     }
     public partial class V1HorizontalPodAutoscaler
     {
@@ -215,6 +319,14 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2HorizontalPodAutoscaler(V1HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscaler>(s);
     }
+    public partial class V1HorizontalPodAutoscaler
+    {
+        public static explicit operator V1HorizontalPodAutoscaler(V2HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V1HorizontalPodAutoscaler>(s);
+    }
+    public partial class V2HorizontalPodAutoscaler
+    {
+        public static explicit operator V2HorizontalPodAutoscaler(V1HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscaler>(s);
+    }
     public partial class V2beta1HorizontalPodAutoscaler
     {
         public static explicit operator V2beta1HorizontalPodAutoscaler(V2beta2HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscaler>(s);
@@ -223,6 +335,30 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2HorizontalPodAutoscaler(V2beta1HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscaler>(s);
     }
+    public partial class V2beta1HorizontalPodAutoscaler
+    {
+        public static explicit operator V2beta1HorizontalPodAutoscaler(V2HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscaler>(s);
+    }
+    public partial class V2HorizontalPodAutoscaler
+    {
+        public static explicit operator V2HorizontalPodAutoscaler(V2beta1HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscaler>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscaler
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscaler(V2HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscaler>(s);
+    }
+    public partial class V2HorizontalPodAutoscaler
+    {
+        public static explicit operator V2HorizontalPodAutoscaler(V2beta2HorizontalPodAutoscaler s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscaler>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscalerBehavior
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscalerBehavior(V2HorizontalPodAutoscalerBehavior s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerBehavior>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerBehavior
+    {
+        public static explicit operator V2HorizontalPodAutoscalerBehavior(V2beta2HorizontalPodAutoscalerBehavior s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerBehavior>(s);
+    }
     public partial class V2beta1HorizontalPodAutoscalerCondition
     {
         public static explicit operator V2beta1HorizontalPodAutoscalerCondition(V2beta2HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerCondition>(s);
@@ -230,6 +366,22 @@ namespace k8s.Models
     public partial class V2beta2HorizontalPodAutoscalerCondition
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerCondition(V2beta1HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerCondition>(s);
+    }
+    public partial class V2beta1HorizontalPodAutoscalerCondition
+    {
+        public static explicit operator V2beta1HorizontalPodAutoscalerCondition(V2HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerCondition>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerCondition
+    {
+        public static explicit operator V2HorizontalPodAutoscalerCondition(V2beta1HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerCondition>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscalerCondition
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscalerCondition(V2HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerCondition>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerCondition
+    {
+        public static explicit operator V2HorizontalPodAutoscalerCondition(V2beta2HorizontalPodAutoscalerCondition s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerCondition>(s);
     }
     public partial class V1HorizontalPodAutoscalerList
     {
@@ -247,6 +399,14 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerList(V1HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerList>(s);
     }
+    public partial class V1HorizontalPodAutoscalerList
+    {
+        public static explicit operator V1HorizontalPodAutoscalerList(V2HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V1HorizontalPodAutoscalerList>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerList
+    {
+        public static explicit operator V2HorizontalPodAutoscalerList(V1HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerList>(s);
+    }
     public partial class V2beta1HorizontalPodAutoscalerList
     {
         public static explicit operator V2beta1HorizontalPodAutoscalerList(V2beta2HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerList>(s);
@@ -254,6 +414,22 @@ namespace k8s.Models
     public partial class V2beta2HorizontalPodAutoscalerList
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerList(V2beta1HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerList>(s);
+    }
+    public partial class V2beta1HorizontalPodAutoscalerList
+    {
+        public static explicit operator V2beta1HorizontalPodAutoscalerList(V2HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerList>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerList
+    {
+        public static explicit operator V2HorizontalPodAutoscalerList(V2beta1HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerList>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscalerList
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscalerList(V2HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerList>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerList
+    {
+        public static explicit operator V2HorizontalPodAutoscalerList(V2beta2HorizontalPodAutoscalerList s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerList>(s);
     }
     public partial class V1HorizontalPodAutoscalerSpec
     {
@@ -271,6 +447,14 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerSpec(V1HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerSpec>(s);
     }
+    public partial class V1HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V1HorizontalPodAutoscalerSpec(V2HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V1HorizontalPodAutoscalerSpec>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V2HorizontalPodAutoscalerSpec(V1HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerSpec>(s);
+    }
     public partial class V2beta1HorizontalPodAutoscalerSpec
     {
         public static explicit operator V2beta1HorizontalPodAutoscalerSpec(V2beta2HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerSpec>(s);
@@ -278,6 +462,22 @@ namespace k8s.Models
     public partial class V2beta2HorizontalPodAutoscalerSpec
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerSpec(V2beta1HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerSpec>(s);
+    }
+    public partial class V2beta1HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V2beta1HorizontalPodAutoscalerSpec(V2HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerSpec>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V2HorizontalPodAutoscalerSpec(V2beta1HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerSpec>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscalerSpec(V2HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerSpec>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerSpec
+    {
+        public static explicit operator V2HorizontalPodAutoscalerSpec(V2beta2HorizontalPodAutoscalerSpec s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerSpec>(s);
     }
     public partial class V1HorizontalPodAutoscalerStatus
     {
@@ -295,6 +495,14 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerStatus(V1HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerStatus>(s);
     }
+    public partial class V1HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V1HorizontalPodAutoscalerStatus(V2HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V1HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V2HorizontalPodAutoscalerStatus(V1HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerStatus>(s);
+    }
     public partial class V2beta1HorizontalPodAutoscalerStatus
     {
         public static explicit operator V2beta1HorizontalPodAutoscalerStatus(V2beta2HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerStatus>(s);
@@ -302,6 +510,38 @@ namespace k8s.Models
     public partial class V2beta2HorizontalPodAutoscalerStatus
     {
         public static explicit operator V2beta2HorizontalPodAutoscalerStatus(V2beta1HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2beta1HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V2beta1HorizontalPodAutoscalerStatus(V2HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2beta1HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V2HorizontalPodAutoscalerStatus(V2beta1HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2beta2HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V2beta2HorizontalPodAutoscalerStatus(V2HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2beta2HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2HorizontalPodAutoscalerStatus
+    {
+        public static explicit operator V2HorizontalPodAutoscalerStatus(V2beta2HorizontalPodAutoscalerStatus s) => VersionConverter.Mapper.Map<V2HorizontalPodAutoscalerStatus>(s);
+    }
+    public partial class V2beta2HPAScalingPolicy
+    {
+        public static explicit operator V2beta2HPAScalingPolicy(V2HPAScalingPolicy s) => VersionConverter.Mapper.Map<V2beta2HPAScalingPolicy>(s);
+    }
+    public partial class V2HPAScalingPolicy
+    {
+        public static explicit operator V2HPAScalingPolicy(V2beta2HPAScalingPolicy s) => VersionConverter.Mapper.Map<V2HPAScalingPolicy>(s);
+    }
+    public partial class V2beta2HPAScalingRules
+    {
+        public static explicit operator V2beta2HPAScalingRules(V2HPAScalingRules s) => VersionConverter.Mapper.Map<V2beta2HPAScalingRules>(s);
+    }
+    public partial class V2HPAScalingRules
+    {
+        public static explicit operator V2HPAScalingRules(V2beta2HPAScalingRules s) => VersionConverter.Mapper.Map<V2HPAScalingRules>(s);
     }
     public partial class V1beta1JobTemplateSpec
     {
@@ -311,6 +551,30 @@ namespace k8s.Models
     {
         public static explicit operator V1JobTemplateSpec(V1beta1JobTemplateSpec s) => VersionConverter.Mapper.Map<V1JobTemplateSpec>(s);
     }
+    public partial class V1beta1LimitedPriorityLevelConfiguration
+    {
+        public static explicit operator V1beta1LimitedPriorityLevelConfiguration(V1beta2LimitedPriorityLevelConfiguration s) => VersionConverter.Mapper.Map<V1beta1LimitedPriorityLevelConfiguration>(s);
+    }
+    public partial class V1beta2LimitedPriorityLevelConfiguration
+    {
+        public static explicit operator V1beta2LimitedPriorityLevelConfiguration(V1beta1LimitedPriorityLevelConfiguration s) => VersionConverter.Mapper.Map<V1beta2LimitedPriorityLevelConfiguration>(s);
+    }
+    public partial class V1beta1LimitResponse
+    {
+        public static explicit operator V1beta1LimitResponse(V1beta2LimitResponse s) => VersionConverter.Mapper.Map<V1beta1LimitResponse>(s);
+    }
+    public partial class V1beta2LimitResponse
+    {
+        public static explicit operator V1beta2LimitResponse(V1beta1LimitResponse s) => VersionConverter.Mapper.Map<V1beta2LimitResponse>(s);
+    }
+    public partial class V2beta2MetricIdentifier
+    {
+        public static explicit operator V2beta2MetricIdentifier(V2MetricIdentifier s) => VersionConverter.Mapper.Map<V2beta2MetricIdentifier>(s);
+    }
+    public partial class V2MetricIdentifier
+    {
+        public static explicit operator V2MetricIdentifier(V2beta2MetricIdentifier s) => VersionConverter.Mapper.Map<V2MetricIdentifier>(s);
+    }
     public partial class V2beta1MetricSpec
     {
         public static explicit operator V2beta1MetricSpec(V2beta2MetricSpec s) => VersionConverter.Mapper.Map<V2beta1MetricSpec>(s);
@@ -318,6 +582,22 @@ namespace k8s.Models
     public partial class V2beta2MetricSpec
     {
         public static explicit operator V2beta2MetricSpec(V2beta1MetricSpec s) => VersionConverter.Mapper.Map<V2beta2MetricSpec>(s);
+    }
+    public partial class V2beta1MetricSpec
+    {
+        public static explicit operator V2beta1MetricSpec(V2MetricSpec s) => VersionConverter.Mapper.Map<V2beta1MetricSpec>(s);
+    }
+    public partial class V2MetricSpec
+    {
+        public static explicit operator V2MetricSpec(V2beta1MetricSpec s) => VersionConverter.Mapper.Map<V2MetricSpec>(s);
+    }
+    public partial class V2beta2MetricSpec
+    {
+        public static explicit operator V2beta2MetricSpec(V2MetricSpec s) => VersionConverter.Mapper.Map<V2beta2MetricSpec>(s);
+    }
+    public partial class V2MetricSpec
+    {
+        public static explicit operator V2MetricSpec(V2beta2MetricSpec s) => VersionConverter.Mapper.Map<V2MetricSpec>(s);
     }
     public partial class V2beta1MetricStatus
     {
@@ -327,6 +607,46 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2MetricStatus(V2beta1MetricStatus s) => VersionConverter.Mapper.Map<V2beta2MetricStatus>(s);
     }
+    public partial class V2beta1MetricStatus
+    {
+        public static explicit operator V2beta1MetricStatus(V2MetricStatus s) => VersionConverter.Mapper.Map<V2beta1MetricStatus>(s);
+    }
+    public partial class V2MetricStatus
+    {
+        public static explicit operator V2MetricStatus(V2beta1MetricStatus s) => VersionConverter.Mapper.Map<V2MetricStatus>(s);
+    }
+    public partial class V2beta2MetricStatus
+    {
+        public static explicit operator V2beta2MetricStatus(V2MetricStatus s) => VersionConverter.Mapper.Map<V2beta2MetricStatus>(s);
+    }
+    public partial class V2MetricStatus
+    {
+        public static explicit operator V2MetricStatus(V2beta2MetricStatus s) => VersionConverter.Mapper.Map<V2MetricStatus>(s);
+    }
+    public partial class V2beta2MetricTarget
+    {
+        public static explicit operator V2beta2MetricTarget(V2MetricTarget s) => VersionConverter.Mapper.Map<V2beta2MetricTarget>(s);
+    }
+    public partial class V2MetricTarget
+    {
+        public static explicit operator V2MetricTarget(V2beta2MetricTarget s) => VersionConverter.Mapper.Map<V2MetricTarget>(s);
+    }
+    public partial class V2beta2MetricValueStatus
+    {
+        public static explicit operator V2beta2MetricValueStatus(V2MetricValueStatus s) => VersionConverter.Mapper.Map<V2beta2MetricValueStatus>(s);
+    }
+    public partial class V2MetricValueStatus
+    {
+        public static explicit operator V2MetricValueStatus(V2beta2MetricValueStatus s) => VersionConverter.Mapper.Map<V2MetricValueStatus>(s);
+    }
+    public partial class V1beta1NonResourcePolicyRule
+    {
+        public static explicit operator V1beta1NonResourcePolicyRule(V1beta2NonResourcePolicyRule s) => VersionConverter.Mapper.Map<V1beta1NonResourcePolicyRule>(s);
+    }
+    public partial class V1beta2NonResourcePolicyRule
+    {
+        public static explicit operator V1beta2NonResourcePolicyRule(V1beta1NonResourcePolicyRule s) => VersionConverter.Mapper.Map<V1beta2NonResourcePolicyRule>(s);
+    }
     public partial class V2beta1ObjectMetricSource
     {
         public static explicit operator V2beta1ObjectMetricSource(V2beta2ObjectMetricSource s) => VersionConverter.Mapper.Map<V2beta1ObjectMetricSource>(s);
@@ -335,6 +655,22 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ObjectMetricSource(V2beta1ObjectMetricSource s) => VersionConverter.Mapper.Map<V2beta2ObjectMetricSource>(s);
     }
+    public partial class V2beta1ObjectMetricSource
+    {
+        public static explicit operator V2beta1ObjectMetricSource(V2ObjectMetricSource s) => VersionConverter.Mapper.Map<V2beta1ObjectMetricSource>(s);
+    }
+    public partial class V2ObjectMetricSource
+    {
+        public static explicit operator V2ObjectMetricSource(V2beta1ObjectMetricSource s) => VersionConverter.Mapper.Map<V2ObjectMetricSource>(s);
+    }
+    public partial class V2beta2ObjectMetricSource
+    {
+        public static explicit operator V2beta2ObjectMetricSource(V2ObjectMetricSource s) => VersionConverter.Mapper.Map<V2beta2ObjectMetricSource>(s);
+    }
+    public partial class V2ObjectMetricSource
+    {
+        public static explicit operator V2ObjectMetricSource(V2beta2ObjectMetricSource s) => VersionConverter.Mapper.Map<V2ObjectMetricSource>(s);
+    }
     public partial class V2beta1ObjectMetricStatus
     {
         public static explicit operator V2beta1ObjectMetricStatus(V2beta2ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ObjectMetricStatus>(s);
@@ -342,6 +678,22 @@ namespace k8s.Models
     public partial class V2beta2ObjectMetricStatus
     {
         public static explicit operator V2beta2ObjectMetricStatus(V2beta1ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ObjectMetricStatus>(s);
+    }
+    public partial class V2beta1ObjectMetricStatus
+    {
+        public static explicit operator V2beta1ObjectMetricStatus(V2ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ObjectMetricStatus>(s);
+    }
+    public partial class V2ObjectMetricStatus
+    {
+        public static explicit operator V2ObjectMetricStatus(V2beta1ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2ObjectMetricStatus>(s);
+    }
+    public partial class V2beta2ObjectMetricStatus
+    {
+        public static explicit operator V2beta2ObjectMetricStatus(V2ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ObjectMetricStatus>(s);
+    }
+    public partial class V2ObjectMetricStatus
+    {
+        public static explicit operator V2ObjectMetricStatus(V2beta2ObjectMetricStatus s) => VersionConverter.Mapper.Map<V2ObjectMetricStatus>(s);
     }
     public partial class V1alpha1Overhead
     {
@@ -407,6 +759,22 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2PodsMetricSource(V2beta1PodsMetricSource s) => VersionConverter.Mapper.Map<V2beta2PodsMetricSource>(s);
     }
+    public partial class V2beta1PodsMetricSource
+    {
+        public static explicit operator V2beta1PodsMetricSource(V2PodsMetricSource s) => VersionConverter.Mapper.Map<V2beta1PodsMetricSource>(s);
+    }
+    public partial class V2PodsMetricSource
+    {
+        public static explicit operator V2PodsMetricSource(V2beta1PodsMetricSource s) => VersionConverter.Mapper.Map<V2PodsMetricSource>(s);
+    }
+    public partial class V2beta2PodsMetricSource
+    {
+        public static explicit operator V2beta2PodsMetricSource(V2PodsMetricSource s) => VersionConverter.Mapper.Map<V2beta2PodsMetricSource>(s);
+    }
+    public partial class V2PodsMetricSource
+    {
+        public static explicit operator V2PodsMetricSource(V2beta2PodsMetricSource s) => VersionConverter.Mapper.Map<V2PodsMetricSource>(s);
+    }
     public partial class V2beta1PodsMetricStatus
     {
         public static explicit operator V2beta1PodsMetricStatus(V2beta2PodsMetricStatus s) => VersionConverter.Mapper.Map<V2beta1PodsMetricStatus>(s);
@@ -415,29 +783,85 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2PodsMetricStatus(V2beta1PodsMetricStatus s) => VersionConverter.Mapper.Map<V2beta2PodsMetricStatus>(s);
     }
-    public partial class V1alpha1PolicyRule
+    public partial class V2beta1PodsMetricStatus
     {
-        public static explicit operator V1alpha1PolicyRule(V1PolicyRule s) => VersionConverter.Mapper.Map<V1alpha1PolicyRule>(s);
+        public static explicit operator V2beta1PodsMetricStatus(V2PodsMetricStatus s) => VersionConverter.Mapper.Map<V2beta1PodsMetricStatus>(s);
     }
-    public partial class V1PolicyRule
+    public partial class V2PodsMetricStatus
     {
-        public static explicit operator V1PolicyRule(V1alpha1PolicyRule s) => VersionConverter.Mapper.Map<V1PolicyRule>(s);
+        public static explicit operator V2PodsMetricStatus(V2beta1PodsMetricStatus s) => VersionConverter.Mapper.Map<V2PodsMetricStatus>(s);
     }
-    public partial class V1alpha1PriorityClass
+    public partial class V2beta2PodsMetricStatus
     {
-        public static explicit operator V1alpha1PriorityClass(V1PriorityClass s) => VersionConverter.Mapper.Map<V1alpha1PriorityClass>(s);
+        public static explicit operator V2beta2PodsMetricStatus(V2PodsMetricStatus s) => VersionConverter.Mapper.Map<V2beta2PodsMetricStatus>(s);
     }
-    public partial class V1PriorityClass
+    public partial class V2PodsMetricStatus
     {
-        public static explicit operator V1PriorityClass(V1alpha1PriorityClass s) => VersionConverter.Mapper.Map<V1PriorityClass>(s);
+        public static explicit operator V2PodsMetricStatus(V2beta2PodsMetricStatus s) => VersionConverter.Mapper.Map<V2PodsMetricStatus>(s);
     }
-    public partial class V1alpha1PriorityClassList
+    public partial class V1beta1PolicyRulesWithSubjects
     {
-        public static explicit operator V1alpha1PriorityClassList(V1PriorityClassList s) => VersionConverter.Mapper.Map<V1alpha1PriorityClassList>(s);
+        public static explicit operator V1beta1PolicyRulesWithSubjects(V1beta2PolicyRulesWithSubjects s) => VersionConverter.Mapper.Map<V1beta1PolicyRulesWithSubjects>(s);
     }
-    public partial class V1PriorityClassList
+    public partial class V1beta2PolicyRulesWithSubjects
     {
-        public static explicit operator V1PriorityClassList(V1alpha1PriorityClassList s) => VersionConverter.Mapper.Map<V1PriorityClassList>(s);
+        public static explicit operator V1beta2PolicyRulesWithSubjects(V1beta1PolicyRulesWithSubjects s) => VersionConverter.Mapper.Map<V1beta2PolicyRulesWithSubjects>(s);
+    }
+    public partial class V1beta1PriorityLevelConfiguration
+    {
+        public static explicit operator V1beta1PriorityLevelConfiguration(V1beta2PriorityLevelConfiguration s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfiguration>(s);
+    }
+    public partial class V1beta2PriorityLevelConfiguration
+    {
+        public static explicit operator V1beta2PriorityLevelConfiguration(V1beta1PriorityLevelConfiguration s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfiguration>(s);
+    }
+    public partial class V1beta1PriorityLevelConfigurationCondition
+    {
+        public static explicit operator V1beta1PriorityLevelConfigurationCondition(V1beta2PriorityLevelConfigurationCondition s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfigurationCondition>(s);
+    }
+    public partial class V1beta2PriorityLevelConfigurationCondition
+    {
+        public static explicit operator V1beta2PriorityLevelConfigurationCondition(V1beta1PriorityLevelConfigurationCondition s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfigurationCondition>(s);
+    }
+    public partial class V1beta1PriorityLevelConfigurationList
+    {
+        public static explicit operator V1beta1PriorityLevelConfigurationList(V1beta2PriorityLevelConfigurationList s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfigurationList>(s);
+    }
+    public partial class V1beta2PriorityLevelConfigurationList
+    {
+        public static explicit operator V1beta2PriorityLevelConfigurationList(V1beta1PriorityLevelConfigurationList s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfigurationList>(s);
+    }
+    public partial class V1beta1PriorityLevelConfigurationReference
+    {
+        public static explicit operator V1beta1PriorityLevelConfigurationReference(V1beta2PriorityLevelConfigurationReference s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfigurationReference>(s);
+    }
+    public partial class V1beta2PriorityLevelConfigurationReference
+    {
+        public static explicit operator V1beta2PriorityLevelConfigurationReference(V1beta1PriorityLevelConfigurationReference s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfigurationReference>(s);
+    }
+    public partial class V1beta1PriorityLevelConfigurationSpec
+    {
+        public static explicit operator V1beta1PriorityLevelConfigurationSpec(V1beta2PriorityLevelConfigurationSpec s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfigurationSpec>(s);
+    }
+    public partial class V1beta2PriorityLevelConfigurationSpec
+    {
+        public static explicit operator V1beta2PriorityLevelConfigurationSpec(V1beta1PriorityLevelConfigurationSpec s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfigurationSpec>(s);
+    }
+    public partial class V1beta1PriorityLevelConfigurationStatus
+    {
+        public static explicit operator V1beta1PriorityLevelConfigurationStatus(V1beta2PriorityLevelConfigurationStatus s) => VersionConverter.Mapper.Map<V1beta1PriorityLevelConfigurationStatus>(s);
+    }
+    public partial class V1beta2PriorityLevelConfigurationStatus
+    {
+        public static explicit operator V1beta2PriorityLevelConfigurationStatus(V1beta1PriorityLevelConfigurationStatus s) => VersionConverter.Mapper.Map<V1beta2PriorityLevelConfigurationStatus>(s);
+    }
+    public partial class V1beta1QueuingConfiguration
+    {
+        public static explicit operator V1beta1QueuingConfiguration(V1beta2QueuingConfiguration s) => VersionConverter.Mapper.Map<V1beta1QueuingConfiguration>(s);
+    }
+    public partial class V1beta2QueuingConfiguration
+    {
+        public static explicit operator V1beta2QueuingConfiguration(V1beta1QueuingConfiguration s) => VersionConverter.Mapper.Map<V1beta2QueuingConfiguration>(s);
     }
     public partial class V2beta1ResourceMetricSource
     {
@@ -447,6 +871,22 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ResourceMetricSource(V2beta1ResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta2ResourceMetricSource>(s);
     }
+    public partial class V2beta1ResourceMetricSource
+    {
+        public static explicit operator V2beta1ResourceMetricSource(V2ResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta1ResourceMetricSource>(s);
+    }
+    public partial class V2ResourceMetricSource
+    {
+        public static explicit operator V2ResourceMetricSource(V2beta1ResourceMetricSource s) => VersionConverter.Mapper.Map<V2ResourceMetricSource>(s);
+    }
+    public partial class V2beta2ResourceMetricSource
+    {
+        public static explicit operator V2beta2ResourceMetricSource(V2ResourceMetricSource s) => VersionConverter.Mapper.Map<V2beta2ResourceMetricSource>(s);
+    }
+    public partial class V2ResourceMetricSource
+    {
+        public static explicit operator V2ResourceMetricSource(V2beta2ResourceMetricSource s) => VersionConverter.Mapper.Map<V2ResourceMetricSource>(s);
+    }
     public partial class V2beta1ResourceMetricStatus
     {
         public static explicit operator V2beta1ResourceMetricStatus(V2beta2ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ResourceMetricStatus>(s);
@@ -455,45 +895,29 @@ namespace k8s.Models
     {
         public static explicit operator V2beta2ResourceMetricStatus(V2beta1ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ResourceMetricStatus>(s);
     }
-    public partial class V1alpha1Role
+    public partial class V2beta1ResourceMetricStatus
     {
-        public static explicit operator V1alpha1Role(V1Role s) => VersionConverter.Mapper.Map<V1alpha1Role>(s);
+        public static explicit operator V2beta1ResourceMetricStatus(V2ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta1ResourceMetricStatus>(s);
     }
-    public partial class V1Role
+    public partial class V2ResourceMetricStatus
     {
-        public static explicit operator V1Role(V1alpha1Role s) => VersionConverter.Mapper.Map<V1Role>(s);
+        public static explicit operator V2ResourceMetricStatus(V2beta1ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2ResourceMetricStatus>(s);
     }
-    public partial class V1alpha1RoleBinding
+    public partial class V2beta2ResourceMetricStatus
     {
-        public static explicit operator V1alpha1RoleBinding(V1RoleBinding s) => VersionConverter.Mapper.Map<V1alpha1RoleBinding>(s);
+        public static explicit operator V2beta2ResourceMetricStatus(V2ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2beta2ResourceMetricStatus>(s);
     }
-    public partial class V1RoleBinding
+    public partial class V2ResourceMetricStatus
     {
-        public static explicit operator V1RoleBinding(V1alpha1RoleBinding s) => VersionConverter.Mapper.Map<V1RoleBinding>(s);
+        public static explicit operator V2ResourceMetricStatus(V2beta2ResourceMetricStatus s) => VersionConverter.Mapper.Map<V2ResourceMetricStatus>(s);
     }
-    public partial class V1alpha1RoleBindingList
+    public partial class V1beta1ResourcePolicyRule
     {
-        public static explicit operator V1alpha1RoleBindingList(V1RoleBindingList s) => VersionConverter.Mapper.Map<V1alpha1RoleBindingList>(s);
+        public static explicit operator V1beta1ResourcePolicyRule(V1beta2ResourcePolicyRule s) => VersionConverter.Mapper.Map<V1beta1ResourcePolicyRule>(s);
     }
-    public partial class V1RoleBindingList
+    public partial class V1beta2ResourcePolicyRule
     {
-        public static explicit operator V1RoleBindingList(V1alpha1RoleBindingList s) => VersionConverter.Mapper.Map<V1RoleBindingList>(s);
-    }
-    public partial class V1alpha1RoleList
-    {
-        public static explicit operator V1alpha1RoleList(V1RoleList s) => VersionConverter.Mapper.Map<V1alpha1RoleList>(s);
-    }
-    public partial class V1RoleList
-    {
-        public static explicit operator V1RoleList(V1alpha1RoleList s) => VersionConverter.Mapper.Map<V1RoleList>(s);
-    }
-    public partial class V1alpha1RoleRef
-    {
-        public static explicit operator V1alpha1RoleRef(V1RoleRef s) => VersionConverter.Mapper.Map<V1alpha1RoleRef>(s);
-    }
-    public partial class V1RoleRef
-    {
-        public static explicit operator V1RoleRef(V1alpha1RoleRef s) => VersionConverter.Mapper.Map<V1RoleRef>(s);
+        public static explicit operator V1beta2ResourcePolicyRule(V1beta1ResourcePolicyRule s) => VersionConverter.Mapper.Map<V1beta2ResourcePolicyRule>(s);
     }
     public partial class V1alpha1RuntimeClass
     {
@@ -567,21 +991,21 @@ namespace k8s.Models
     {
         public static explicit operator V1Scheduling(V1beta1Scheduling s) => VersionConverter.Mapper.Map<V1Scheduling>(s);
     }
-    public partial class V1alpha1Subject
+    public partial class V1beta1ServiceAccountSubject
     {
-        public static explicit operator V1alpha1Subject(V1beta1Subject s) => VersionConverter.Mapper.Map<V1alpha1Subject>(s);
+        public static explicit operator V1beta1ServiceAccountSubject(V1beta2ServiceAccountSubject s) => VersionConverter.Mapper.Map<V1beta1ServiceAccountSubject>(s);
+    }
+    public partial class V1beta2ServiceAccountSubject
+    {
+        public static explicit operator V1beta2ServiceAccountSubject(V1beta1ServiceAccountSubject s) => VersionConverter.Mapper.Map<V1beta2ServiceAccountSubject>(s);
     }
     public partial class V1beta1Subject
     {
-        public static explicit operator V1beta1Subject(V1alpha1Subject s) => VersionConverter.Mapper.Map<V1beta1Subject>(s);
+        public static explicit operator V1beta1Subject(V1beta2Subject s) => VersionConverter.Mapper.Map<V1beta1Subject>(s);
     }
-    public partial class V1alpha1Subject
+    public partial class V1beta2Subject
     {
-        public static explicit operator V1alpha1Subject(V1Subject s) => VersionConverter.Mapper.Map<V1alpha1Subject>(s);
-    }
-    public partial class V1Subject
-    {
-        public static explicit operator V1Subject(V1alpha1Subject s) => VersionConverter.Mapper.Map<V1Subject>(s);
+        public static explicit operator V1beta2Subject(V1beta1Subject s) => VersionConverter.Mapper.Map<V1beta2Subject>(s);
     }
     public partial class V1beta1Subject
     {
@@ -591,52 +1015,20 @@ namespace k8s.Models
     {
         public static explicit operator V1Subject(V1beta1Subject s) => VersionConverter.Mapper.Map<V1Subject>(s);
     }
-    public partial class V1alpha1VolumeAttachment
+    public partial class V1beta2Subject
     {
-        public static explicit operator V1alpha1VolumeAttachment(V1VolumeAttachment s) => VersionConverter.Mapper.Map<V1alpha1VolumeAttachment>(s);
+        public static explicit operator V1beta2Subject(V1Subject s) => VersionConverter.Mapper.Map<V1beta2Subject>(s);
     }
-    public partial class V1VolumeAttachment
+    public partial class V1Subject
     {
-        public static explicit operator V1VolumeAttachment(V1alpha1VolumeAttachment s) => VersionConverter.Mapper.Map<V1VolumeAttachment>(s);
+        public static explicit operator V1Subject(V1beta2Subject s) => VersionConverter.Mapper.Map<V1Subject>(s);
     }
-    public partial class V1alpha1VolumeAttachmentList
+    public partial class V1beta1UserSubject
     {
-        public static explicit operator V1alpha1VolumeAttachmentList(V1VolumeAttachmentList s) => VersionConverter.Mapper.Map<V1alpha1VolumeAttachmentList>(s);
+        public static explicit operator V1beta1UserSubject(V1beta2UserSubject s) => VersionConverter.Mapper.Map<V1beta1UserSubject>(s);
     }
-    public partial class V1VolumeAttachmentList
+    public partial class V1beta2UserSubject
     {
-        public static explicit operator V1VolumeAttachmentList(V1alpha1VolumeAttachmentList s) => VersionConverter.Mapper.Map<V1VolumeAttachmentList>(s);
-    }
-    public partial class V1alpha1VolumeAttachmentSource
-    {
-        public static explicit operator V1alpha1VolumeAttachmentSource(V1VolumeAttachmentSource s) => VersionConverter.Mapper.Map<V1alpha1VolumeAttachmentSource>(s);
-    }
-    public partial class V1VolumeAttachmentSource
-    {
-        public static explicit operator V1VolumeAttachmentSource(V1alpha1VolumeAttachmentSource s) => VersionConverter.Mapper.Map<V1VolumeAttachmentSource>(s);
-    }
-    public partial class V1alpha1VolumeAttachmentSpec
-    {
-        public static explicit operator V1alpha1VolumeAttachmentSpec(V1VolumeAttachmentSpec s) => VersionConverter.Mapper.Map<V1alpha1VolumeAttachmentSpec>(s);
-    }
-    public partial class V1VolumeAttachmentSpec
-    {
-        public static explicit operator V1VolumeAttachmentSpec(V1alpha1VolumeAttachmentSpec s) => VersionConverter.Mapper.Map<V1VolumeAttachmentSpec>(s);
-    }
-    public partial class V1alpha1VolumeAttachmentStatus
-    {
-        public static explicit operator V1alpha1VolumeAttachmentStatus(V1VolumeAttachmentStatus s) => VersionConverter.Mapper.Map<V1alpha1VolumeAttachmentStatus>(s);
-    }
-    public partial class V1VolumeAttachmentStatus
-    {
-        public static explicit operator V1VolumeAttachmentStatus(V1alpha1VolumeAttachmentStatus s) => VersionConverter.Mapper.Map<V1VolumeAttachmentStatus>(s);
-    }
-    public partial class V1alpha1VolumeError
-    {
-        public static explicit operator V1alpha1VolumeError(V1VolumeError s) => VersionConverter.Mapper.Map<V1alpha1VolumeError>(s);
-    }
-    public partial class V1VolumeError
-    {
-        public static explicit operator V1VolumeError(V1alpha1VolumeError s) => VersionConverter.Mapper.Map<V1VolumeError>(s);
+        public static explicit operator V1beta2UserSubject(V1beta1UserSubject s) => VersionConverter.Mapper.Map<V1beta2UserSubject>(s);
     }
 }

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// FlowSchemaSpec describes how the FlowSchema&apos;s specification looks like.
     /// </summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// that match this schema. `nil` specifies that the distinguisher is disabled and
         /// thus will always be the empty string.
         /// </summary>
-        [JsonProperty(PropertyName = "distinguisherMethod")]
+        [JsonPropertyName("distinguisherMethod")]
         public V1beta1FlowDistinguisherMethod DistinguisherMethod { get; set; }
 
         /// <summary>
@@ -80,7 +74,7 @@ namespace k8s.Models
         /// value must be ranged in [1,10000]. Note that if the precedence is not specified,
         /// it will be set to 1000 as default.
         /// </summary>
-        [JsonProperty(PropertyName = "matchingPrecedence")]
+        [JsonPropertyName("matchingPrecedence")]
         public int? MatchingPrecedence { get; set; }
 
         /// <summary>
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// the cluster. If the reference cannot be resolved, the FlowSchema will be ignored
         /// and marked as invalid in its status. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "priorityLevelConfiguration")]
+        [JsonPropertyName("priorityLevelConfiguration")]
         public V1beta1PriorityLevelConfigurationReference PriorityLevelConfiguration { get; set; }
 
         /// <summary>
@@ -97,7 +91,7 @@ namespace k8s.Models
         /// request. if it is an empty slice, there will be no requests matching the
         /// FlowSchema.
         /// </summary>
-        [JsonProperty(PropertyName = "rules")]
+        [JsonPropertyName("rules")]
         public IList<V1beta1PolicyRulesWithSubjects> Rules { get; set; }
 
         /// <summary>
@@ -110,7 +104,7 @@ namespace k8s.Models
         {
             if (PriorityLevelConfiguration == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PriorityLevelConfiguration");    
+                throw new ArgumentNullException("PriorityLevelConfiguration");    
             }
             DistinguisherMethod?.Validate();
             PriorityLevelConfiguration?.Validate();

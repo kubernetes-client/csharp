@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Describe a container image
     /// </summary>
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// Names by which this image is known. e.g. [&quot;k8s.gcr.io/hyperkube:v1.0.7&quot;,
         /// &quot;dockerhub.io/google_containers/hyperkube:v1.0.7&quot;]
         /// </summary>
-        [JsonProperty(PropertyName = "names")]
+        [JsonPropertyName("names")]
         public IList<string> Names { get; set; }
 
         /// <summary>
         /// The size of the image in bytes.
         /// </summary>
-        [JsonProperty(PropertyName = "sizeBytes")]
+        [JsonPropertyName("sizeBytes")]
         public long? SizeBytes { get; set; }
 
         /// <summary>

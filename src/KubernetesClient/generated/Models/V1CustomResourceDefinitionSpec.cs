@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceDefinitionSpec describes how a user wants their resource to appear
     /// </summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// <summary>
         /// conversion defines conversion settings for the CRD.
         /// </summary>
-        [JsonProperty(PropertyName = "conversion")]
+        [JsonPropertyName("conversion")]
         public V1CustomResourceConversion Conversion { get; set; }
 
         /// <summary>
@@ -91,13 +85,13 @@ namespace k8s.Models
         /// served under `/apis/&lt;group&gt;/...`. Must match the name of the
         /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`).
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public string Group { get; set; }
 
         /// <summary>
         /// names specify the resource and kind names for the custom resource.
         /// </summary>
-        [JsonProperty(PropertyName = "names")]
+        [JsonPropertyName("names")]
         public V1CustomResourceDefinitionNames Names { get; set; }
 
         /// <summary>
@@ -109,14 +103,14 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields
         /// for details.
         /// </summary>
-        [JsonProperty(PropertyName = "preserveUnknownFields")]
+        [JsonPropertyName("preserveUnknownFields")]
         public bool? PreserveUnknownFields { get; set; }
 
         /// <summary>
         /// scope indicates whether the defined custom resource is cluster- or
         /// namespace-scoped. Allowed values are `Cluster` and `Namespaced`.
         /// </summary>
-        [JsonProperty(PropertyName = "scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
 
         /// <summary>
@@ -131,7 +125,7 @@ namespace k8s.Models
         /// minor version. An example sorted list of versions: v10, v2, v1, v11beta2,
         /// v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
         /// </summary>
-        [JsonProperty(PropertyName = "versions")]
+        [JsonPropertyName("versions")]
         public IList<V1CustomResourceDefinitionVersion> Versions { get; set; }
 
         /// <summary>
@@ -144,7 +138,7 @@ namespace k8s.Models
         {
             if (Names == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Names");    
+                throw new ArgumentNullException("Names");    
             }
             Conversion?.Validate();
             Names?.Validate();

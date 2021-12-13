@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Condition contains details for one aspect of the current state of this API
         /// Resource.
@@ -78,14 +72,14 @@ namespace k8s.Models
         /// to another. This should be when the underlying condition changed.  If that is
         /// not known, then using the time when the API field changed is acceptable.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime LastTransitionTime { get; set; }
 
         /// <summary>
         /// message is a human readable message indicating details about the transition.
         /// This may be an empty string.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// .status.conditions[x].observedGeneration is 9, the condition is out of date with
         /// respect to the current state of the instance.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
@@ -104,19 +98,19 @@ namespace k8s.Models
         /// considered a guaranteed API. The value should be a CamelCase string. This field
         /// may not be empty.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// status of the condition, one of True, False, Unknown.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// type of condition in CamelCase or in foo.example.com/CamelCase.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HTTPHeader describes a custom header to be used in HTTP probes
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// The header field name
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The header field value
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

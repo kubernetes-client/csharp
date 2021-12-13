@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DeploymentSpec is the specification of the desired behavior of the Deployment.
     /// </summary>
@@ -85,13 +79,13 @@ namespace k8s.Models
         /// any of its container crashing, for it to be considered available. Defaults to 0
         /// (pod will be considered available as soon as it is ready)
         /// </summary>
-        [JsonProperty(PropertyName = "minReadySeconds")]
+        [JsonPropertyName("minReadySeconds")]
         public int? MinReadySeconds { get; set; }
 
         /// <summary>
         /// Indicates that the deployment is paused.
         /// </summary>
-        [JsonProperty(PropertyName = "paused")]
+        [JsonPropertyName("paused")]
         public bool? Paused { get; set; }
 
         /// <summary>
@@ -101,21 +95,21 @@ namespace k8s.Models
         /// be surfaced in the deployment status. Note that progress will not be estimated
         /// during the time a deployment is paused. Defaults to 600s.
         /// </summary>
-        [JsonProperty(PropertyName = "progressDeadlineSeconds")]
+        [JsonPropertyName("progressDeadlineSeconds")]
         public int? ProgressDeadlineSeconds { get; set; }
 
         /// <summary>
         /// Number of desired pods. This is a pointer to distinguish between explicit zero
         /// and not specified. Defaults to 1.
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int? Replicas { get; set; }
 
         /// <summary>
         /// The number of old ReplicaSets to retain to allow rollback. This is a pointer to
         /// distinguish between explicit zero and not specified. Defaults to 10.
         /// </summary>
-        [JsonProperty(PropertyName = "revisionHistoryLimit")]
+        [JsonPropertyName("revisionHistoryLimit")]
         public int? RevisionHistoryLimit { get; set; }
 
         /// <summary>
@@ -123,19 +117,19 @@ namespace k8s.Models
         /// will be the ones affected by this deployment. It must match the pod template&apos;s
         /// labels.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// The deployment strategy to use to replace existing pods with new ones.
         /// </summary>
-        [JsonProperty(PropertyName = "strategy")]
+        [JsonPropertyName("strategy")]
         public V1DeploymentStrategy Strategy { get; set; }
 
         /// <summary>
         /// Template describes the pods that will be created.
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
+        [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
@@ -148,11 +142,11 @@ namespace k8s.Models
         {
             if (Selector == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");    
+                throw new ArgumentNullException("Selector");    
             }
             if (Template == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Template");    
+                throw new ArgumentNullException("Template");    
             }
             Selector?.Validate();
             Strategy?.Validate();

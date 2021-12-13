@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TokenRequest contains parameters of a service account token.
     /// </summary>
@@ -53,7 +47,7 @@ namespace k8s.Models
         /// Audience is the intended audience of the token in &quot;TokenRequestSpec&quot;. It will
         /// default to the audiences of kube apiserver.
         /// </summary>
-        [JsonProperty(PropertyName = "audience")]
+        [JsonPropertyName("audience")]
         public string Audience { get; set; }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// &quot;TokenRequestSpec&quot;. It has the same default value of &quot;ExpirationSeconds&quot; in
         /// &quot;TokenRequestSpec&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "expirationSeconds")]
+        [JsonPropertyName("expirationSeconds")]
         public long? ExpirationSeconds { get; set; }
 
         /// <summary>

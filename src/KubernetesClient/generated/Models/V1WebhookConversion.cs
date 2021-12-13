@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// WebhookConversion describes how to call a conversion webhook
     /// </summary>
@@ -56,7 +50,7 @@ namespace k8s.Models
         /// clientConfig is the instructions for how to call the webhook if strategy is
         /// `Webhook`.
         /// </summary>
-        [JsonProperty(PropertyName = "clientConfig")]
+        [JsonPropertyName("clientConfig")]
         public Apiextensionsv1WebhookClientConfig ClientConfig { get; set; }
 
         /// <summary>
@@ -67,7 +61,7 @@ namespace k8s.Models
         /// persisted Webhook configuration specifies allowed versions and does not include
         /// any versions known to the API Server, calls to the webhook will fail.
         /// </summary>
-        [JsonProperty(PropertyName = "conversionReviewVersions")]
+        [JsonPropertyName("conversionReviewVersions")]
         public IList<string> ConversionReviewVersions { get; set; }
 
         /// <summary>

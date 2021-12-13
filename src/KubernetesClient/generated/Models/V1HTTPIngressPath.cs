@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HTTPIngressPath associates a path with a backend. Incoming urls matching the
         /// path are forwarded to the backend.
@@ -71,7 +65,7 @@ namespace k8s.Models
         /// Backend defines the referenced service endpoint to which the traffic will be
         /// forwarded to.
         /// </summary>
-        [JsonProperty(PropertyName = "backend")]
+        [JsonPropertyName("backend")]
         public V1IngressBackend Backend { get; set; }
 
         /// <summary>
@@ -80,7 +74,7 @@ namespace k8s.Models
         /// defined by RFC 3986. Paths must begin with a &apos;/&apos; and must be present when using
         /// PathType with value &quot;Exact&quot; or &quot;Prefix&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -98,7 +92,7 @@ namespace k8s.Models
         /// or treat it identically to Prefix or Exact path types.
         /// Implementations are required to support all path types.
         /// </summary>
-        [JsonProperty(PropertyName = "pathType")]
+        [JsonPropertyName("pathType")]
         public string PathType { get; set; }
 
         /// <summary>
@@ -111,7 +105,7 @@ namespace k8s.Models
         {
             if (Backend == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Backend");    
+                throw new ArgumentNullException("Backend");    
             }
             Backend?.Validate();
         }

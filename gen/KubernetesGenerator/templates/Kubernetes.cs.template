@@ -7,7 +7,6 @@
 namespace k8s
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Models;
     using System.Collections.Generic;
     using System.IO;
@@ -24,7 +23,7 @@ namespace k8s
 {{#operation.parameters}}
             {{GetDotNetType .}} {{GetDotNetName . "true"}},
 {{/operation.parameters}}
-            Dictionary<string, List<string>> customHeaders = null,
+            IDictionary<string, IList<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
@@ -41,23 +40,11 @@ namespace k8s
             {{#isRequired}}
             if ({{GetDotNetName name}} == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "{{GetDotNetName name}}");
+                throw new ArgumentNullException("{{GetDotNetName name}}");
             }
             {{/isRequired}}
             {{/operation.parameters}}
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                {{#operation.parameters}}
-                tracingParameters.Add("{{GetDotNetName name}}", {{GetDotNetName name}});
-                {{/operation.parameters}}
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "{{GetMethodName operation ""}}", tracingParameters);
-            }
+
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{{path}}").ToString();
@@ -81,75 +68,13 @@ namespace k8s
                 _url += "?" + string.Join("&", _queryParameters);
             }
             // Create HTTP transport
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = HttpMethod.{{Method}};
-            _httpRequest.RequestUri = new System.Uri(_url);
-            _httpRequest.Version = HttpVersion.Version20;
-            // Set Headers
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    _httpRequest.Headers.Remove(_header.Key);
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
+            var _httpRequest = CreateRequest(_url, HttpMethod.{{Method}}, customHeaders);
             {{#IfParamContains operation "body"}}
-            if(body != null)
-            {
-                _requestContent = SafeJsonConvert.SerializeObject(body, SerializationSettings);
-                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = GetHeader(body);
-            }
+            var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
             {{/IfParamContains operation "body"}}
-            // Set Credentials
-            if (Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await HttpClient.SendAsync(_httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
-            {
-                string _responseContent = null;
-                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                if (_httpResponse.Content != null) {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                }
-                else {
-                    _responseContent = string.Empty;
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
+            {{#IfParamDoesNotContain operation "body"}}
+            var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
+            {{/IfParamDoesNotContain operation "body"}}
             // Create Result
             {{#IfReturnType operation "void"}}
             HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
@@ -171,14 +96,8 @@ namespace k8s
                                 Response = _httpResponse,
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             {{/IfReturnType operation "stream"}}
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
             return _result;
-
         }
-
         {{/.}}
     }
 }

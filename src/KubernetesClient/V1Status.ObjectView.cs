@@ -1,26 +1,16 @@
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 namespace k8s.Models
 {
     public partial class V1Status
     {
-        internal class V1StatusObjectViewConverter : JsonConverter
+        internal class V1StatusObjectViewConverter : JsonConverter<V1Status>
         {
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            public override V1Status Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                serializer.Serialize(writer, value);
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-                JsonSerializer serializer)
-            {
-                var obj = JToken.Load(reader);
+                var obj = JsonElement.ParseValue(ref reader);
 
                 try
                 {
-                    return obj.ToObject(objectType);
+                    return obj.Deserialize<V1Status>();
                 }
                 catch (JsonException)
                 {
@@ -30,19 +20,19 @@ namespace k8s.Models
                 return new V1Status { _original = obj, HasObject = true };
             }
 
-            public override bool CanConvert(Type objectType)
+            public override void Write(Utf8JsonWriter writer, V1Status value, JsonSerializerOptions options)
             {
-                return typeof(V1Status) == objectType;
+                throw new NotImplementedException(); // will not send v1status to server
             }
         }
 
-        private JToken _original;
+        private JsonElement _original;
 
         public bool HasObject { get; private set; }
 
         public T ObjectView<T>()
         {
-            return _original.ToObject<T>();
+            return _original.Deserialize<T>();
         }
     }
 }

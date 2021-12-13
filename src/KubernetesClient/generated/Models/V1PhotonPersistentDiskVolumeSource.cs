@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Photon Controller persistent disk resource.
     /// </summary>
@@ -53,13 +47,13 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// ID that identifies Photon Controller persistent disk
         /// </summary>
-        [JsonProperty(PropertyName = "pdID")]
+        [JsonPropertyName("pdID")]
         public string PdID { get; set; }
 
         /// <summary>

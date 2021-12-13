@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <SignAssembly>true</SignAssembly>
@@ -8,7 +8,7 @@
 
   <ItemGroup>
 
-    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="5.0.10" />
+    <PackageReference Include="JsonPatch.Net" Version="1.1.2" />
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
 

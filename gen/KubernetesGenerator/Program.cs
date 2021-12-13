@@ -80,10 +80,10 @@ namespace KubernetesWatchGenerator
                 helper.RegisterHelper();
             }
 
-            if (options.GenerateWatch)
-            {
-                container.Resolve<WatchGenerator>().Generate(swaggerUnprocessed, outputDirectory);
-            }
+            //if (options.GenerateWatch)
+            //{
+            //    container.Resolve<WatchGenerator>().Generate(swaggerUnprocessed, outputDirectory);
+            //}
 
             if (options.GenerateApi)
             {
@@ -112,8 +112,8 @@ namespace KubernetesWatchGenerator
             [Value(0, Required = true, HelpText = "path to src/KubernetesClient/generated")]
             public string OutputPath { get; set; }
 
-            [Option("watch", Required = false, Default = true)]
-            public bool GenerateWatch { get; set; }
+            //[Option("watch", Required = false, Default = true)]
+            //public bool GenerateWatch { get; set; }
 
             [Option("api", Required = false, Default = true)]
             public bool GenerateApi { get; set; }

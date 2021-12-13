@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectMetricStatus indicates the current value of a metric describing a
         /// kubernetes object (for example, hits-per-second on an Ingress object).
@@ -67,19 +61,19 @@ namespace k8s.Models
         /// averageValue is the current value of the average of the metric across all
         /// relevant pods (as a quantity)
         /// </summary>
-        [JsonProperty(PropertyName = "averageValue")]
+        [JsonPropertyName("averageValue")]
         public ResourceQuantity AverageValue { get; set; }
 
         /// <summary>
         /// currentValue is the current value of the metric (as a quantity).
         /// </summary>
-        [JsonProperty(PropertyName = "currentValue")]
+        [JsonPropertyName("currentValue")]
         public ResourceQuantity CurrentValue { get; set; }
 
         /// <summary>
         /// metricName is the name of the metric in question.
         /// </summary>
-        [JsonProperty(PropertyName = "metricName")]
+        [JsonPropertyName("metricName")]
         public string MetricName { get; set; }
 
         /// <summary>
@@ -88,13 +82,13 @@ namespace k8s.Models
         /// additional parameter to the metrics server for more specific metrics scoping.
         /// When unset, just the metricName will be used to gather metrics.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// target is the described Kubernetes object.
         /// </summary>
-        [JsonProperty(PropertyName = "target")]
+        [JsonPropertyName("target")]
         public V2beta1CrossVersionObjectReference Target { get; set; }
 
         /// <summary>
@@ -107,11 +101,11 @@ namespace k8s.Models
         {
             if (CurrentValue == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentValue");    
+                throw new ArgumentNullException("CurrentValue");    
             }
             if (Target == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Target");    
+                throw new ArgumentNullException("Target");    
             }
             AverageValue?.Validate();
             CurrentValue?.Validate();

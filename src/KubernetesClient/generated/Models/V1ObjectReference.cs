@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectReference contains enough information to let you inspect or modify the
         /// referred object.
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// <summary>
         /// API version of the referent.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -95,42 +89,42 @@ namespace k8s.Models
         /// (container with index 2 in this pod). This syntax is chosen only to have some
         /// well-defined way of referencing a part of an object.
         /// </summary>
-        [JsonProperty(PropertyName = "fieldPath")]
+        [JsonPropertyName("fieldPath")]
         public string FieldPath { get; set; }
 
         /// <summary>
         /// Kind of the referent. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Namespace of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// Specific resourceVersion to which this reference is made, if any. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
-        [JsonProperty(PropertyName = "resourceVersion")]
+        [JsonPropertyName("resourceVersion")]
         public string ResourceVersion { get; set; }
 
         /// <summary>
         /// UID of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>

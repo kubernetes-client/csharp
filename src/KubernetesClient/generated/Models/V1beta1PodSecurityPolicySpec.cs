@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodSecurityPolicySpec defines the policy enforced.
     /// </summary>
@@ -183,7 +177,7 @@ namespace k8s.Models
         /// allowPrivilegeEscalation determines if a pod can request to allow privilege
         /// escalation. If unspecified, defaults to true.
         /// </summary>
-        [JsonProperty(PropertyName = "allowPrivilegeEscalation")]
+        [JsonPropertyName("allowPrivilegeEscalation")]
         public bool? AllowPrivilegeEscalation { get; set; }
 
         /// <summary>
@@ -192,7 +186,7 @@ namespace k8s.Models
         /// driver can be used for inline ephemeral volumes. This is a beta field, and is
         /// only honored if the API server enables the CSIInlineVolume feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedCSIDrivers")]
+        [JsonPropertyName("allowedCSIDrivers")]
         public IList<V1beta1AllowedCSIDriver> AllowedCSIDrivers { get; set; }
 
         /// <summary>
@@ -201,7 +195,7 @@ namespace k8s.Models
         /// discretion. You must not list a capability in both allowedCapabilities and
         /// requiredDropCapabilities.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedCapabilities")]
+        [JsonPropertyName("allowedCapabilities")]
         public IList<string> AllowedCapabilities { get; set; }
 
         /// <summary>
@@ -209,14 +203,14 @@ namespace k8s.Models
         /// all Flexvolumes may be used.  This parameter is effective only when the usage of
         /// the Flexvolumes is allowed in the &quot;volumes&quot; field.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedFlexVolumes")]
+        [JsonPropertyName("allowedFlexVolumes")]
         public IList<V1beta1AllowedFlexVolume> AllowedFlexVolumes { get; set; }
 
         /// <summary>
         /// allowedHostPaths is an allowlist of host paths. Empty indicates that all host
         /// paths may be used.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedHostPaths")]
+        [JsonPropertyName("allowedHostPaths")]
         public IList<V1beta1AllowedHostPath> AllowedHostPaths { get; set; }
 
         /// <summary>
@@ -224,7 +218,7 @@ namespace k8s.Models
         /// indicates that only the DefaultProcMountType may be used. This requires the
         /// ProcMountType feature flag to be enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedProcMountTypes")]
+        [JsonPropertyName("allowedProcMountTypes")]
         public IList<string> AllowedProcMountTypes { get; set; }
 
         /// <summary>
@@ -237,7 +231,7 @@ namespace k8s.Models
         /// Examples: e.g. &quot;foo/*&quot; allows &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; allows
         /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedUnsafeSysctls")]
+        [JsonPropertyName("allowedUnsafeSysctls")]
         public IList<string> AllowedUnsafeSysctls { get; set; }
 
         /// <summary>
@@ -247,14 +241,14 @@ namespace k8s.Models
         /// requiredDropCapabilities. Capabilities added here are implicitly allowed, and
         /// need not be included in the allowedCapabilities list.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultAddCapabilities")]
+        [JsonPropertyName("defaultAddCapabilities")]
         public IList<string> DefaultAddCapabilities { get; set; }
 
         /// <summary>
         /// defaultAllowPrivilegeEscalation controls the default setting for whether a
         /// process can gain more privileges than its parent process.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultAllowPrivilegeEscalation")]
+        [JsonPropertyName("defaultAllowPrivilegeEscalation")]
         public bool? DefaultAllowPrivilegeEscalation { get; set; }
 
         /// <summary>
@@ -266,45 +260,45 @@ namespace k8s.Models
         /// Examples: e.g. &quot;foo/*&quot; forbids &quot;foo/bar&quot;, &quot;foo/baz&quot;, etc. e.g. &quot;foo.*&quot; forbids
         /// &quot;foo.bar&quot;, &quot;foo.baz&quot;, etc.
         /// </summary>
-        [JsonProperty(PropertyName = "forbiddenSysctls")]
+        [JsonPropertyName("forbiddenSysctls")]
         public IList<string> ForbiddenSysctls { get; set; }
 
         /// <summary>
         /// fsGroup is the strategy that will dictate what fs group is used by the
         /// SecurityContext.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroup")]
+        [JsonPropertyName("fsGroup")]
         public V1beta1FSGroupStrategyOptions FsGroup { get; set; }
 
         /// <summary>
         /// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
         /// </summary>
-        [JsonProperty(PropertyName = "hostIPC")]
+        [JsonPropertyName("hostIPC")]
         public bool? HostIPC { get; set; }
 
         /// <summary>
         /// hostNetwork determines if the policy allows the use of HostNetwork in the pod
         /// spec.
         /// </summary>
-        [JsonProperty(PropertyName = "hostNetwork")]
+        [JsonPropertyName("hostNetwork")]
         public bool? HostNetwork { get; set; }
 
         /// <summary>
         /// hostPID determines if the policy allows the use of HostPID in the pod spec.
         /// </summary>
-        [JsonProperty(PropertyName = "hostPID")]
+        [JsonPropertyName("hostPID")]
         public bool? HostPID { get; set; }
 
         /// <summary>
         /// hostPorts determines which host port ranges are allowed to be exposed.
         /// </summary>
-        [JsonProperty(PropertyName = "hostPorts")]
+        [JsonPropertyName("hostPorts")]
         public IList<V1beta1HostPortRange> HostPorts { get; set; }
 
         /// <summary>
         /// privileged determines if a pod can request to be run as privileged.
         /// </summary>
-        [JsonProperty(PropertyName = "privileged")]
+        [JsonPropertyName("privileged")]
         public bool? Privileged { get; set; }
 
         /// <summary>
@@ -314,14 +308,14 @@ namespace k8s.Models
         /// container may run with a read only root file system if it wishes but it will not
         /// be forced to.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnlyRootFilesystem")]
+        [JsonPropertyName("readOnlyRootFilesystem")]
         public bool? ReadOnlyRootFilesystem { get; set; }
 
         /// <summary>
         /// requiredDropCapabilities are the capabilities that will be dropped from the
         /// container.  These are required to be dropped and cannot be added.
         /// </summary>
-        [JsonProperty(PropertyName = "requiredDropCapabilities")]
+        [JsonPropertyName("requiredDropCapabilities")]
         public IList<string> RequiredDropCapabilities { get; set; }
 
         /// <summary>
@@ -329,14 +323,14 @@ namespace k8s.Models
         /// that may be set. If this field is omitted, the pod&apos;s RunAsGroup can take any
         /// value. This field requires the RunAsGroup feature gate to be enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsGroup")]
+        [JsonPropertyName("runAsGroup")]
         public V1beta1RunAsGroupStrategyOptions RunAsGroup { get; set; }
 
         /// <summary>
         /// runAsUser is the strategy that will dictate the allowable RunAsUser values that
         /// may be set.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsUser")]
+        [JsonPropertyName("runAsUser")]
         public V1beta1RunAsUserStrategyOptions RunAsUser { get; set; }
 
         /// <summary>
@@ -345,27 +339,27 @@ namespace k8s.Models
         /// unrestricted. Enforcement of this field depends on the RuntimeClass feature gate
         /// being enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "runtimeClass")]
+        [JsonPropertyName("runtimeClass")]
         public V1beta1RuntimeClassStrategyOptions RuntimeClass { get; set; }
 
         /// <summary>
         /// seLinux is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
-        [JsonProperty(PropertyName = "seLinux")]
+        [JsonPropertyName("seLinux")]
         public V1beta1SELinuxStrategyOptions SeLinux { get; set; }
 
         /// <summary>
         /// supplementalGroups is the strategy that will dictate what supplemental groups
         /// are used by the SecurityContext.
         /// </summary>
-        [JsonProperty(PropertyName = "supplementalGroups")]
+        [JsonPropertyName("supplementalGroups")]
         public V1beta1SupplementalGroupsStrategyOptions SupplementalGroups { get; set; }
 
         /// <summary>
         /// volumes is an allowlist of volume plugins. Empty indicates that no volumes may
         /// be used. To allow all volumes you may use &apos;*&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "volumes")]
+        [JsonPropertyName("volumes")]
         public IList<string> Volumes { get; set; }
 
         /// <summary>
@@ -378,19 +372,19 @@ namespace k8s.Models
         {
             if (FsGroup == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "FsGroup");    
+                throw new ArgumentNullException("FsGroup");    
             }
             if (RunAsUser == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RunAsUser");    
+                throw new ArgumentNullException("RunAsUser");    
             }
             if (SeLinux == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SeLinux");    
+                throw new ArgumentNullException("SeLinux");    
             }
             if (SupplementalGroups == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SupplementalGroups");    
+                throw new ArgumentNullException("SupplementalGroups");    
             }
             if (AllowedCSIDrivers != null){
                 foreach(var obj in AllowedCSIDrivers)

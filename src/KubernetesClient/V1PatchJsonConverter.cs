@@ -1,32 +1,22 @@
-using System;
-using Newtonsoft.Json;
-
 namespace k8s.Models
 {
-    internal class V1PatchJsonConverter : JsonConverter
+    internal class V1PatchJsonConverter : JsonConverter<V1Patch>
     {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var content = (value as V1Patch)?.Content;
-            if (content is string s)
-            {
-                writer.WriteRaw(s);
-                return;
-            }
-
-            serializer.Serialize(writer, (value as V1Patch)?.Content);
-        }
-
-        // no read patch object supported at the moment
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
+        public override V1Patch Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
         }
 
-        public override bool CanConvert(Type objectType)
+        public override void Write(Utf8JsonWriter writer, V1Patch value, JsonSerializerOptions options)
         {
-            return objectType == typeof(V1Patch);
+            var content = value?.Content;
+            if (content is string s)
+            {
+                writer.WriteRawValue(s);
+                return;
+            }
+
+            JsonSerializer.Serialize(writer, content, options);
         }
     }
 }

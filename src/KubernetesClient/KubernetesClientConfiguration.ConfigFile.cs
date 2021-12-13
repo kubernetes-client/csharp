@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -487,7 +483,7 @@ namespace k8s
 
             var process = new Process();
 
-            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonConvert.SerializeObject(execInfo));
+            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonSerializer.Serialize(execInfo));
             if (config.EnvironmentVariables != null)
             {
                 foreach (var configEnvironmentVariable in config.EnvironmentVariables)
@@ -559,7 +555,7 @@ namespace k8s
 
             try
             {
-                var responseObject = JsonConvert.DeserializeObject<ExecCredentialResponse>(stdout);
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
@@ -584,7 +580,7 @@ namespace k8s
                     throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
                 }
             }
-            catch (JsonSerializationException ex)
+            catch (JsonException ex)
             {
                 throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
             }

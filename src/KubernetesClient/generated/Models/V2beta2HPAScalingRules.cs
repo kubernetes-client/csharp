@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HPAScalingRules configures the scaling behavior for one direction. These Rules
         /// are applied after calculating DesiredReplicas from metrics for the HPA. They can
@@ -68,14 +62,14 @@ namespace k8s.Models
         /// scaling. At least one policy must be specified, otherwise the HPAScalingRules
         /// will be discarded as invalid
         /// </summary>
-        [JsonProperty(PropertyName = "policies")]
+        [JsonPropertyName("policies")]
         public IList<V2beta2HPAScalingPolicy> Policies { get; set; }
 
         /// <summary>
         /// selectPolicy is used to specify which policy should be used. If not set, the
         /// default value MaxPolicySelect is used.
         /// </summary>
-        [JsonProperty(PropertyName = "selectPolicy")]
+        [JsonPropertyName("selectPolicy")]
         public string SelectPolicy { get; set; }
 
         /// <summary>
@@ -86,7 +80,7 @@ namespace k8s.Models
         /// 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization
         /// window is 300 seconds long).
         /// </summary>
-        [JsonProperty(PropertyName = "stabilizationWindowSeconds")]
+        [JsonPropertyName("stabilizationWindowSeconds")]
         public int? StabilizationWindowSeconds { get; set; }
 
         /// <summary>

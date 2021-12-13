@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LimitResponse defines how to handle requests that can not be executed right now.
     /// </summary>
@@ -54,7 +48,7 @@ namespace k8s.Models
         /// `queuing` holds the configuration parameters for queuing. This field may be
         /// non-empty only if `type` is `&quot;Queue&quot;`.
         /// </summary>
-        [JsonProperty(PropertyName = "queuing")]
+        [JsonPropertyName("queuing")]
         public V1beta1QueuingConfiguration Queuing { get; set; }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// queuing limit is reached. &quot;Reject&quot; means that requests that can not be executed
         /// upon arrival are rejected. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

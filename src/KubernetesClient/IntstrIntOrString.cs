@@ -1,12 +1,14 @@
-using System;
-using Newtonsoft.Json;
-
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringConverter))]
     public partial class IntstrIntOrString
     {
         public static implicit operator IntstrIntOrString(int v)
+        {
+            return new IntstrIntOrString(Convert.ToString(v));
+        }
+
+        public static implicit operator IntstrIntOrString(long v)
         {
             return new IntstrIntOrString(Convert.ToString(v));
         }

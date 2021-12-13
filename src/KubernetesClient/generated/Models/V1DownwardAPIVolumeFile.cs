@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DownwardAPIVolumeFile represents information to create the file containing the
         /// pod field
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// Required: Selects a field of the pod: only annotations, labels, name and
         /// namespace are supported.
         /// </summary>
-        [JsonProperty(PropertyName = "fieldRef")]
+        [JsonPropertyName("fieldRef")]
         public V1ObjectFieldSelector FieldRef { get; set; }
 
         /// <summary>
@@ -80,7 +74,7 @@ namespace k8s.Models
         /// other options that affect the file mode, like fsGroup, and the result can be
         /// other mode bits set.
         /// </summary>
-        [JsonProperty(PropertyName = "mode")]
+        [JsonPropertyName("mode")]
         public int? Mode { get; set; }
 
         /// <summary>
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// absolute or contain the &apos;..&apos; path. Must be utf-8 encoded. The first item of the
         /// relative path must not start with &apos;..&apos;
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -96,7 +90,7 @@ namespace k8s.Models
         /// (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently
         /// supported.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceFieldRef")]
+        [JsonPropertyName("resourceFieldRef")]
         public V1ResourceFieldSelector ResourceFieldRef { get; set; }
 
         /// <summary>

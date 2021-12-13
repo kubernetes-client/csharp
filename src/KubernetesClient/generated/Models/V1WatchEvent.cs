@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Event represents a single event to a watched resource.
     /// </summary>
@@ -57,13 +51,13 @@ namespace k8s.Models
         /// * If Type is Error: *Status is recommended; other types may make sense
         /// depending on context.
         /// </summary>
-        [JsonProperty(PropertyName = "object")]
+        [JsonPropertyName("object")]
         public object ObjectProperty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

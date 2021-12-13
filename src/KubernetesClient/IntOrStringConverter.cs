@@ -1,32 +1,33 @@
-using System;
-using Newtonsoft.Json;
-
 namespace k8s.Models
 {
-    internal class IntOrStringConverter : JsonConverter
+    internal class IntOrStringConverter : JsonConverter<IntstrIntOrString>
     {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override IntstrIntOrString Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var s = (value as IntstrIntOrString)?.Value;
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.String:
+                    return reader.GetString();
+                case JsonTokenType.Number:
+                    return reader.GetInt64();
+                default:
+                    break;
+            }
+
+            throw new NotSupportedException();
+        }
+
+        public override void Write(Utf8JsonWriter writer, IntstrIntOrString value, JsonSerializerOptions options)
+        {
+            var s = value?.Value;
 
             if (int.TryParse(s, out var intv))
             {
-                serializer.Serialize(writer, intv);
+                writer.WriteNumberValue(intv);
                 return;
             }
 
-            serializer.Serialize(writer, s);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
-        {
-            return (IntstrIntOrString)serializer.Deserialize<string>(reader);
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(int) || objectType == typeof(string);
+            writer.WriteStringValue(s);
         }
     }
 }

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIServiceCondition describes the state of an APIService at a particular point
     /// </summary>
@@ -61,31 +55,31 @@ namespace k8s.Models
         /// <summary>
         /// Last time the condition transitioned from one status to another.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// Human-readable message indicating details about last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Unique, one-word, CamelCase reason for the condition&apos;s last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Status is the status of the condition. Can be True, False, Unknown.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Type is the type of the condition.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

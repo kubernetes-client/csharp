@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
 namespace k8s.Models
 {
     public class PodMetricsList
@@ -8,25 +5,25 @@ namespace k8s.Models
         /// <summary>
         /// Defines the versioned schema of this representation of an object.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Defines the REST resource this object represents.
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// The kubernetes standard object's metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// The list of pod metrics.
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IEnumerable<PodMetrics> Items { get; set; }
     }
 }

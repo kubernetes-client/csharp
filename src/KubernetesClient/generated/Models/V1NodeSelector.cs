@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A node selector represents the union of the results of one or more label queries
         /// over a set of nodes; that is, it represents the OR of the selectors represented
@@ -47,7 +41,7 @@ namespace k8s.Models
         /// <summary>
         /// Required. A list of node selector terms. The terms are ORed.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeSelectorTerms")]
+        [JsonPropertyName("nodeSelectorTerms")]
         public IList<V1NodeSelectorTerm> NodeSelectorTerms { get; set; }
 
         /// <summary>

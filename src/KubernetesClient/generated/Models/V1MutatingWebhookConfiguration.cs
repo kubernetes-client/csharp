@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MutatingWebhookConfiguration describes the configuration of and admission
         /// webhook that accept or reject and may change the object.
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -77,20 +71,20 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object metadata; More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Webhooks is a list of webhooks and the affected resources and operations.
         /// </summary>
-        [JsonProperty(PropertyName = "webhooks")]
+        [JsonPropertyName("webhooks")]
         public IList<V1MutatingWebhook> Webhooks { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ExternalMetricSource indicates how to scale on a metric not associated with any
         /// Kubernetes object (for example length of queue in cloud messaging service, or
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// <summary>
         /// metric identifies the target metric by name and selector
         /// </summary>
-        [JsonProperty(PropertyName = "metric")]
+        [JsonPropertyName("metric")]
         public V2beta2MetricIdentifier Metric { get; set; }
 
         /// <summary>
         /// target specifies the target value for the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "target")]
+        [JsonPropertyName("target")]
         public V2beta2MetricTarget Target { get; set; }
 
         /// <summary>
@@ -70,11 +64,11 @@ namespace k8s.Models
         {
             if (Metric == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Metric");    
+                throw new ArgumentNullException("Metric");    
             }
             if (Target == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Target");    
+                throw new ArgumentNullException("Target");    
             }
             Metric?.Validate();
             Target?.Validate();

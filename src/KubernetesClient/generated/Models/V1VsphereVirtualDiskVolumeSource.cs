@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a vSphere volume resource.
     /// </summary>
@@ -62,26 +56,26 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// Storage Policy Based Management (SPBM) profile ID associated with the
         /// StoragePolicyName.
         /// </summary>
-        [JsonProperty(PropertyName = "storagePolicyID")]
+        [JsonPropertyName("storagePolicyID")]
         public string StoragePolicyID { get; set; }
 
         /// <summary>
         /// Storage Policy Based Management (SPBM) profile name.
         /// </summary>
-        [JsonProperty(PropertyName = "storagePolicyName")]
+        [JsonPropertyName("storagePolicyName")]
         public string StoragePolicyName { get; set; }
 
         /// <summary>
         /// Path that identifies vSphere volume vmdk
         /// </summary>
-        [JsonProperty(PropertyName = "volumePath")]
+        [JsonPropertyName("volumePath")]
         public string VolumePath { get; set; }
 
         /// <summary>

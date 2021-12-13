@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServicePort contains information on service&apos;s port.
     /// </summary>
@@ -56,6 +50,11 @@ namespace k8s.Models
         /// <param name="protocol">
         /// The IP protocol for this port. Supports &quot;TCP&quot;, &quot;UDP&quot;, and &quot;SCTP&quot;. Default is
         /// TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         /// <param name="targetPort">
         /// Number or name of the port to access on the pods targeted by the service. Number
@@ -88,7 +87,7 @@ namespace k8s.Models
         /// per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard
         /// protocols should use prefixed names such as mycompany.com/my-custom-protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "appProtocol")]
+        [JsonPropertyName("appProtocol")]
         public string AppProtocol { get; set; }
 
         /// <summary>
@@ -97,7 +96,7 @@ namespace k8s.Models
         /// a Service, this must match the &apos;name&apos; field in the EndpointPort. Optional if
         /// only one ServicePort is defined on this service.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -110,20 +109,25 @@ namespace k8s.Models
         /// (e.g. changing type from NodePort to ClusterIP). More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
         /// </summary>
-        [JsonProperty(PropertyName = "nodePort")]
+        [JsonPropertyName("nodePort")]
         public int? NodePort { get; set; }
 
         /// <summary>
         /// The port that will be exposed by this service.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int Port { get; set; }
 
         /// <summary>
         /// The IP protocol for this port. Supports &quot;TCP&quot;, &quot;UDP&quot;, and &quot;SCTP&quot;. Default is
         /// TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>
@@ -135,7 +139,7 @@ namespace k8s.Models
         /// should be omitted or set equal to the &apos;port&apos; field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
         /// </summary>
-        [JsonProperty(PropertyName = "targetPort")]
+        [JsonPropertyName("targetPort")]
         public IntstrIntOrString TargetPort { get; set; }
 
         /// <summary>

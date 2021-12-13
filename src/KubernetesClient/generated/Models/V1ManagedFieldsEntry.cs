@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the
         /// resource that the fieldset applies to.
@@ -85,34 +79,34 @@ namespace k8s.Models
         /// necessary to track the version of a field set because it cannot be automatically
         /// converted.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// FieldsType is the discriminator for the different fields format and version.
         /// There is currently only one possible value: &quot;FieldsV1&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "fieldsType")]
+        [JsonPropertyName("fieldsType")]
         public string FieldsType { get; set; }
 
         /// <summary>
         /// FieldsV1 holds the first JSON version format as described in the &quot;FieldsV1&quot;
         /// type.
         /// </summary>
-        [JsonProperty(PropertyName = "fieldsV1")]
+        [JsonPropertyName("fieldsV1")]
         public object FieldsV1 { get; set; }
 
         /// <summary>
         /// Manager is an identifier of the workflow managing these fields.
         /// </summary>
-        [JsonProperty(PropertyName = "manager")]
+        [JsonPropertyName("manager")]
         public string Manager { get; set; }
 
         /// <summary>
         /// Operation is the type of operation which lead to this ManagedFieldsEntry being
         /// created. The only valid values for this field are &apos;Apply&apos; and &apos;Update&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "operation")]
+        [JsonPropertyName("operation")]
         public string Operation { get; set; }
 
         /// <summary>
@@ -123,14 +117,14 @@ namespace k8s.Models
         /// same manager name. Note that the APIVersion field is not related to the
         /// Subresource field and it always corresponds to the version of the main resource.
         /// </summary>
-        [JsonProperty(PropertyName = "subresource")]
+        [JsonPropertyName("subresource")]
         public string Subresource { get; set; }
 
         /// <summary>
         /// Time is timestamp of when these fields were set. It should always be empty if
         /// Operation is &apos;Apply&apos;
         /// </summary>
-        [JsonProperty(PropertyName = "time")]
+        [JsonPropertyName("time")]
         public System.DateTime? Time { get; set; }
 
         /// <summary>

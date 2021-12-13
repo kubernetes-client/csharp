@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HorizontalPodAutoscalerCondition describes the state of a
         /// HorizontalPodAutoscaler at a certain point.
@@ -64,31 +58,31 @@ namespace k8s.Models
         /// lastTransitionTime is the last time the condition transitioned from one status
         /// to another
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// message is a human-readable explanation containing details about the transition
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// reason is the reason for the condition&apos;s last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// status is the status of the condition (True, False, Unknown)
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// type describes the current condition
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

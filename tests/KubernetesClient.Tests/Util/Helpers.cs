@@ -1,17 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading;
-using System.Threading.Tasks;
 using k8s.Models;
-using k8s.Tests.Mock;
 using k8s.Util.Common.Generic;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Nito.AsyncEx;
-using Xunit.Abstractions;
 
 namespace k8s.Tests.Util
 {

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodReadinessGate contains the reference to a pod condition
     /// </summary>
@@ -31,6 +25,14 @@ namespace k8s.Models
         /// <param name="conditionType">
         /// ConditionType refers to a condition in the pod&apos;s condition list with matching
         /// type.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </param>
         public V1PodReadinessGate(string conditionType)
         {
@@ -46,8 +48,16 @@ namespace k8s.Models
         /// <summary>
         /// ConditionType refers to a condition in the pod&apos;s condition list with matching
         /// type.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </summary>
-        [JsonProperty(PropertyName = "conditionType")]
+        [JsonPropertyName("conditionType")]
         public string ConditionType { get; set; }
 
         /// <summary>

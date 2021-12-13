@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A topology selector requirement is a selector that matches given label. This is
         /// an alpha feature and may change in the future.
@@ -51,14 +45,14 @@ namespace k8s.Models
         /// <summary>
         /// The label key that the selector applies to.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// An array of string values. One value must match the label to be selected. Each
         /// entry in Values is ORed.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

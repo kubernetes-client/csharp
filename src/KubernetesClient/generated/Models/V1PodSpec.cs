@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodSpec is a description of a pod.
     /// </summary>
@@ -54,6 +48,18 @@ namespace k8s.Models
         /// given in DNSConfig will be merged with the policy selected with DNSPolicy. To
         /// have DNS options set along with hostNetwork, you have to specify DNS policy
         /// explicitly to &apos;ClusterFirstWithHostNet&apos;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ClusterFirst&quot;` indicates that the pod should use cluster DNS first unless
+        /// hostNetwork is true, if it is available, then fall back on the default (as
+        /// determined by kubelet) DNS settings.
+        /// - `&quot;ClusterFirstWithHostNet&quot;` indicates that the pod should use cluster DNS
+        /// first, if it is available, then fall back on the default (as determined by
+        /// kubelet) DNS settings.
+        /// - `&quot;Default&quot;` indicates that the pod should use the default (as determined by
+        /// kubelet) DNS settings.
+        /// - `&quot;None&quot;` indicates that the pod should use empty DNS settings. DNS parameters
+        /// such as nameservers and search paths should be defined via DNSConfig.
         /// </param>
         /// <param name="enableServiceLinks">
         /// EnableServiceLinks indicates whether information about services should be
@@ -65,8 +71,8 @@ namespace k8s.Models
         /// an existing pod to perform user-initiated actions such as debugging. This list
         /// cannot be specified when creating a pod, and it cannot be modified by updating
         /// the pod spec. In order to add an ephemeral container to an existing pod, use the
-        /// pod&apos;s ephemeralcontainers subresource. This field is alpha-level and is only
-        /// honored by servers that enable the EphemeralContainers feature.
+        /// pod&apos;s ephemeralcontainers subresource. This field is beta-level and available on
+        /// clusters that haven&apos;t disabled the EphemeralContainers feature gate.
         /// </param>
         /// <param name="hostAliases">
         /// HostAliases is an optional list of hosts and IPs that will be injected into the
@@ -120,6 +126,30 @@ namespace k8s.Models
         /// node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
         /// </param>
+        /// <param name="os">
+        /// Specifies the OS of the containers in the pod. Some pod and container fields are
+        /// restricted if this is set.
+        /// 
+        /// If the OS field is set to linux, the following fields must be unset:
+        /// -securityContext.windowsOptions
+        /// 
+        /// If the OS field is set to windows, following fields must be unset: -
+        /// spec.hostPID - spec.hostIPC - spec.securityContext.seLinuxOptions -
+        /// spec.securityContext.seccompProfile - spec.securityContext.fsGroup -
+        /// spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls -
+        /// spec.shareProcessNamespace - spec.securityContext.runAsUser -
+        /// spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups -
+        /// spec.containers[*].securityContext.seLinuxOptions -
+        /// spec.containers[*].securityContext.seccompProfile -
+        /// spec.containers[*].securityContext.capabilities -
+        /// spec.containers[*].securityContext.readOnlyRootFilesystem -
+        /// spec.containers[*].securityContext.privileged -
+        /// spec.containers[*].securityContext.allowPrivilegeEscalation -
+        /// spec.containers[*].securityContext.procMount -
+        /// spec.containers[*].securityContext.runAsUser -
+        /// spec.containers[*].securityContext.runAsGroup This is an alpha field and
+        /// requires the IdentifyPodOS feature
+        /// </param>
         /// <param name="overhead">
         /// Overhead represents the resource overhead associated with running a pod for a
         /// given RuntimeClass. This field will be autopopulated at admission time by the
@@ -161,6 +191,11 @@ namespace k8s.Models
         /// Restart policy for all containers within the pod. One of Always, OnFailure,
         /// Never. Default to Always. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;`
+        /// - `&quot;Never&quot;`
+        /// - `&quot;OnFailure&quot;`
         /// </param>
         /// <param name="runtimeClassName">
         /// RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which
@@ -231,7 +266,7 @@ namespace k8s.Models
         /// List of volumes that can be mounted by containers belonging to the pod. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes
         /// </param>
-        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = null, V1Affinity affinity = null, bool? automountServiceAccountToken = null, V1PodDNSConfig dnsConfig = null, string dnsPolicy = null, bool? enableServiceLinks = null, IList<V1EphemeralContainer> ephemeralContainers = null, IList<V1HostAlias> hostAliases = null, bool? hostIPC = null, bool? hostNetwork = null, bool? hostPID = null, string hostname = null, IList<V1LocalObjectReference> imagePullSecrets = null, IList<V1Container> initContainers = null, string nodeName = null, IDictionary<string, string> nodeSelector = null, IDictionary<string, ResourceQuantity> overhead = null, string preemptionPolicy = null, int? priority = null, string priorityClassName = null, IList<V1PodReadinessGate> readinessGates = null, string restartPolicy = null, string runtimeClassName = null, string schedulerName = null, V1PodSecurityContext securityContext = null, string serviceAccount = null, string serviceAccountName = null, bool? setHostnameAsFQDN = null, bool? shareProcessNamespace = null, string subdomain = null, long? terminationGracePeriodSeconds = null, IList<V1Toleration> tolerations = null, IList<V1TopologySpreadConstraint> topologySpreadConstraints = null, IList<V1Volume> volumes = null)
+        public V1PodSpec(IList<V1Container> containers, long? activeDeadlineSeconds = null, V1Affinity affinity = null, bool? automountServiceAccountToken = null, V1PodDNSConfig dnsConfig = null, string dnsPolicy = null, bool? enableServiceLinks = null, IList<V1EphemeralContainer> ephemeralContainers = null, IList<V1HostAlias> hostAliases = null, bool? hostIPC = null, bool? hostNetwork = null, bool? hostPID = null, string hostname = null, IList<V1LocalObjectReference> imagePullSecrets = null, IList<V1Container> initContainers = null, string nodeName = null, IDictionary<string, string> nodeSelector = null, V1PodOS os = null, IDictionary<string, ResourceQuantity> overhead = null, string preemptionPolicy = null, int? priority = null, string priorityClassName = null, IList<V1PodReadinessGate> readinessGates = null, string restartPolicy = null, string runtimeClassName = null, string schedulerName = null, V1PodSecurityContext securityContext = null, string serviceAccount = null, string serviceAccountName = null, bool? setHostnameAsFQDN = null, bool? shareProcessNamespace = null, string subdomain = null, long? terminationGracePeriodSeconds = null, IList<V1Toleration> tolerations = null, IList<V1TopologySpreadConstraint> topologySpreadConstraints = null, IList<V1Volume> volumes = null)
         {
             ActiveDeadlineSeconds = activeDeadlineSeconds;
             Affinity = affinity;
@@ -250,6 +285,7 @@ namespace k8s.Models
             InitContainers = initContainers;
             NodeName = nodeName;
             NodeSelector = nodeSelector;
+            Os = os;
             Overhead = overhead;
             PreemptionPolicy = preemptionPolicy;
             Priority = priority;
@@ -281,34 +317,34 @@ namespace k8s.Models
         /// StartTime before the system will actively try to mark it failed and kill
         /// associated containers. Value must be a positive integer.
         /// </summary>
-        [JsonProperty(PropertyName = "activeDeadlineSeconds")]
+        [JsonPropertyName("activeDeadlineSeconds")]
         public long? ActiveDeadlineSeconds { get; set; }
 
         /// <summary>
         /// If specified, the pod&apos;s scheduling constraints
         /// </summary>
-        [JsonProperty(PropertyName = "affinity")]
+        [JsonPropertyName("affinity")]
         public V1Affinity Affinity { get; set; }
 
         /// <summary>
         /// AutomountServiceAccountToken indicates whether a service account token should be
         /// automatically mounted.
         /// </summary>
-        [JsonProperty(PropertyName = "automountServiceAccountToken")]
+        [JsonPropertyName("automountServiceAccountToken")]
         public bool? AutomountServiceAccountToken { get; set; }
 
         /// <summary>
         /// List of containers belonging to the pod. Containers cannot currently be added or
         /// removed. There must be at least one container in a Pod. Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "containers")]
+        [JsonPropertyName("containers")]
         public IList<V1Container> Containers { get; set; }
 
         /// <summary>
         /// Specifies the DNS parameters of a pod. Parameters specified here will be merged
         /// to the generated DNS configuration based on DNSPolicy.
         /// </summary>
-        [JsonProperty(PropertyName = "dnsConfig")]
+        [JsonPropertyName("dnsConfig")]
         public V1PodDNSConfig DnsConfig { get; set; }
 
         /// <summary>
@@ -317,8 +353,20 @@ namespace k8s.Models
         /// given in DNSConfig will be merged with the policy selected with DNSPolicy. To
         /// have DNS options set along with hostNetwork, you have to specify DNS policy
         /// explicitly to &apos;ClusterFirstWithHostNet&apos;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ClusterFirst&quot;` indicates that the pod should use cluster DNS first unless
+        /// hostNetwork is true, if it is available, then fall back on the default (as
+        /// determined by kubelet) DNS settings.
+        /// - `&quot;ClusterFirstWithHostNet&quot;` indicates that the pod should use cluster DNS
+        /// first, if it is available, then fall back on the default (as determined by
+        /// kubelet) DNS settings.
+        /// - `&quot;Default&quot;` indicates that the pod should use the default (as determined by
+        /// kubelet) DNS settings.
+        /// - `&quot;None&quot;` indicates that the pod should use empty DNS settings. DNS parameters
+        /// such as nameservers and search paths should be defined via DNSConfig.
         /// </summary>
-        [JsonProperty(PropertyName = "dnsPolicy")]
+        [JsonPropertyName("dnsPolicy")]
         public string DnsPolicy { get; set; }
 
         /// <summary>
@@ -326,7 +374,7 @@ namespace k8s.Models
         /// injected into pod&apos;s environment variables, matching the syntax of Docker links.
         /// Optional: Defaults to true.
         /// </summary>
-        [JsonProperty(PropertyName = "enableServiceLinks")]
+        [JsonPropertyName("enableServiceLinks")]
         public bool? EnableServiceLinks { get; set; }
 
         /// <summary>
@@ -334,23 +382,23 @@ namespace k8s.Models
         /// an existing pod to perform user-initiated actions such as debugging. This list
         /// cannot be specified when creating a pod, and it cannot be modified by updating
         /// the pod spec. In order to add an ephemeral container to an existing pod, use the
-        /// pod&apos;s ephemeralcontainers subresource. This field is alpha-level and is only
-        /// honored by servers that enable the EphemeralContainers feature.
+        /// pod&apos;s ephemeralcontainers subresource. This field is beta-level and available on
+        /// clusters that haven&apos;t disabled the EphemeralContainers feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "ephemeralContainers")]
+        [JsonPropertyName("ephemeralContainers")]
         public IList<V1EphemeralContainer> EphemeralContainers { get; set; }
 
         /// <summary>
         /// HostAliases is an optional list of hosts and IPs that will be injected into the
         /// pod&apos;s hosts file if specified. This is only valid for non-hostNetwork pods.
         /// </summary>
-        [JsonProperty(PropertyName = "hostAliases")]
+        [JsonPropertyName("hostAliases")]
         public IList<V1HostAlias> HostAliases { get; set; }
 
         /// <summary>
         /// Use the host&apos;s ipc namespace. Optional: Default to false.
         /// </summary>
-        [JsonProperty(PropertyName = "hostIPC")]
+        [JsonPropertyName("hostIPC")]
         public bool? HostIPC { get; set; }
 
         /// <summary>
@@ -358,20 +406,20 @@ namespace k8s.Models
         /// this option is set, the ports that will be used must be specified. Default to
         /// false.
         /// </summary>
-        [JsonProperty(PropertyName = "hostNetwork")]
+        [JsonPropertyName("hostNetwork")]
         public bool? HostNetwork { get; set; }
 
         /// <summary>
         /// Use the host&apos;s pid namespace. Optional: Default to false.
         /// </summary>
-        [JsonProperty(PropertyName = "hostPID")]
+        [JsonPropertyName("hostPID")]
         public bool? HostPID { get; set; }
 
         /// <summary>
         /// Specifies the hostname of the Pod If not specified, the pod&apos;s hostname will be
         /// set to a system-defined value.
         /// </summary>
-        [JsonProperty(PropertyName = "hostname")]
+        [JsonPropertyName("hostname")]
         public string Hostname { get; set; }
 
         /// <summary>
@@ -382,7 +430,7 @@ namespace k8s.Models
         /// are honored. More info:
         /// https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod
         /// </summary>
-        [JsonProperty(PropertyName = "imagePullSecrets")]
+        [JsonPropertyName("imagePullSecrets")]
         public IList<V1LocalObjectReference> ImagePullSecrets { get; set; }
 
         /// <summary>
@@ -399,7 +447,7 @@ namespace k8s.Models
         /// updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
         /// </summary>
-        [JsonProperty(PropertyName = "initContainers")]
+        [JsonPropertyName("initContainers")]
         public IList<V1Container> InitContainers { get; set; }
 
         /// <summary>
@@ -407,7 +455,7 @@ namespace k8s.Models
         /// non-empty, the scheduler simply schedules this pod onto that node, assuming that
         /// it fits resource requirements.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeName")]
+        [JsonPropertyName("nodeName")]
         public string NodeName { get; set; }
 
         /// <summary>
@@ -416,8 +464,35 @@ namespace k8s.Models
         /// node. More info:
         /// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
         /// </summary>
-        [JsonProperty(PropertyName = "nodeSelector")]
+        [JsonPropertyName("nodeSelector")]
         public IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>
+        /// Specifies the OS of the containers in the pod. Some pod and container fields are
+        /// restricted if this is set.
+        /// 
+        /// If the OS field is set to linux, the following fields must be unset:
+        /// -securityContext.windowsOptions
+        /// 
+        /// If the OS field is set to windows, following fields must be unset: -
+        /// spec.hostPID - spec.hostIPC - spec.securityContext.seLinuxOptions -
+        /// spec.securityContext.seccompProfile - spec.securityContext.fsGroup -
+        /// spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls -
+        /// spec.shareProcessNamespace - spec.securityContext.runAsUser -
+        /// spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups -
+        /// spec.containers[*].securityContext.seLinuxOptions -
+        /// spec.containers[*].securityContext.seccompProfile -
+        /// spec.containers[*].securityContext.capabilities -
+        /// spec.containers[*].securityContext.readOnlyRootFilesystem -
+        /// spec.containers[*].securityContext.privileged -
+        /// spec.containers[*].securityContext.allowPrivilegeEscalation -
+        /// spec.containers[*].securityContext.procMount -
+        /// spec.containers[*].securityContext.runAsUser -
+        /// spec.containers[*].securityContext.runAsGroup This is an alpha field and
+        /// requires the IdentifyPodOS feature
+        /// </summary>
+        [JsonPropertyName("os")]
+        public V1PodOS Os { get; set; }
 
         /// <summary>
         /// Overhead represents the resource overhead associated with running a pod for a
@@ -432,7 +507,7 @@ namespace k8s.Models
         /// field is beta-level as of Kubernetes v1.18, and is only honored by servers that
         /// enable the PodOverhead feature.
         /// </summary>
-        [JsonProperty(PropertyName = "overhead")]
+        [JsonPropertyName("overhead")]
         public IDictionary<string, ResourceQuantity> Overhead { get; set; }
 
         /// <summary>
@@ -440,7 +515,7 @@ namespace k8s.Models
         /// Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This
         /// field is beta-level, gated by the NonPreemptingPriority feature-gate.
         /// </summary>
-        [JsonProperty(PropertyName = "preemptionPolicy")]
+        [JsonPropertyName("preemptionPolicy")]
         public string PreemptionPolicy { get; set; }
 
         /// <summary>
@@ -449,7 +524,7 @@ namespace k8s.Models
         /// users from setting this field. The admission controller populates this field
         /// from PriorityClassName. The higher the value, the higher the priority.
         /// </summary>
-        [JsonProperty(PropertyName = "priority")]
+        [JsonPropertyName("priority")]
         public int? Priority { get; set; }
 
         /// <summary>
@@ -459,7 +534,7 @@ namespace k8s.Models
         /// defined by creating a PriorityClass object with that name. If not specified, the
         /// pod priority will be default or zero if there is no default.
         /// </summary>
-        [JsonProperty(PropertyName = "priorityClassName")]
+        [JsonPropertyName("priorityClassName")]
         public string PriorityClassName { get; set; }
 
         /// <summary>
@@ -468,15 +543,20 @@ namespace k8s.Models
         /// readiness gates have status equal to &quot;True&quot; More info:
         /// https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates
         /// </summary>
-        [JsonProperty(PropertyName = "readinessGates")]
+        [JsonPropertyName("readinessGates")]
         public IList<V1PodReadinessGate> ReadinessGates { get; set; }
 
         /// <summary>
         /// Restart policy for all containers within the pod. One of Always, OnFailure,
         /// Never. Default to Always. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;`
+        /// - `&quot;Never&quot;`
+        /// - `&quot;OnFailure&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "restartPolicy")]
+        [JsonPropertyName("restartPolicy")]
         public string RestartPolicy { get; set; }
 
         /// <summary>
@@ -488,14 +568,14 @@ namespace k8s.Models
         /// https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class This is a beta
         /// feature as of Kubernetes v1.14.
         /// </summary>
-        [JsonProperty(PropertyName = "runtimeClassName")]
+        [JsonPropertyName("runtimeClassName")]
         public string RuntimeClassName { get; set; }
 
         /// <summary>
         /// If specified, the pod will be dispatched by specified scheduler. If not
         /// specified, the pod will be dispatched by default scheduler.
         /// </summary>
-        [JsonProperty(PropertyName = "schedulerName")]
+        [JsonPropertyName("schedulerName")]
         public string SchedulerName { get; set; }
 
         /// <summary>
@@ -503,14 +583,14 @@ namespace k8s.Models
         /// settings. Optional: Defaults to empty.  See type description for default values
         /// of each field.
         /// </summary>
-        [JsonProperty(PropertyName = "securityContext")]
+        [JsonPropertyName("securityContext")]
         public V1PodSecurityContext SecurityContext { get; set; }
 
         /// <summary>
         /// DeprecatedServiceAccount is a depreciated alias for ServiceAccountName.
         /// Deprecated: Use serviceAccountName instead.
         /// </summary>
-        [JsonProperty(PropertyName = "serviceAccount")]
+        [JsonPropertyName("serviceAccount")]
         public string ServiceAccount { get; set; }
 
         /// <summary>
@@ -518,7 +598,7 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
         /// </summary>
-        [JsonProperty(PropertyName = "serviceAccountName")]
+        [JsonPropertyName("serviceAccountName")]
         public string ServiceAccountName { get; set; }
 
         /// <summary>
@@ -529,7 +609,7 @@ namespace k8s.Models
         /// key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters to
         /// FQDN. If a pod does not have FQDN, this has no effect. Default to false.
         /// </summary>
-        [JsonProperty(PropertyName = "setHostnameAsFQDN")]
+        [JsonPropertyName("setHostnameAsFQDN")]
         public bool? SetHostnameAsFQDN { get; set; }
 
         /// <summary>
@@ -539,7 +619,7 @@ namespace k8s.Models
         /// assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional:
         /// Default to false.
         /// </summary>
-        [JsonProperty(PropertyName = "shareProcessNamespace")]
+        [JsonPropertyName("shareProcessNamespace")]
         public bool? ShareProcessNamespace { get; set; }
 
         /// <summary>
@@ -547,7 +627,7 @@ namespace k8s.Models
         /// &quot;&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod namespace&gt;.svc.&lt;cluster domain&gt;&quot;. If not specified,
         /// the pod will not have a domainname at all.
         /// </summary>
-        [JsonProperty(PropertyName = "subdomain")]
+        [JsonPropertyName("subdomain")]
         public string Subdomain { get; set; }
 
         /// <summary>
@@ -560,13 +640,13 @@ namespace k8s.Models
         /// with a kill signal. Set this value longer than the expected cleanup time for
         /// your process. Defaults to 30 seconds.
         /// </summary>
-        [JsonProperty(PropertyName = "terminationGracePeriodSeconds")]
+        [JsonPropertyName("terminationGracePeriodSeconds")]
         public long? TerminationGracePeriodSeconds { get; set; }
 
         /// <summary>
         /// If specified, the pod&apos;s tolerations.
         /// </summary>
-        [JsonProperty(PropertyName = "tolerations")]
+        [JsonPropertyName("tolerations")]
         public IList<V1Toleration> Tolerations { get; set; }
 
         /// <summary>
@@ -574,14 +654,14 @@ namespace k8s.Models
         /// topology domains. Scheduler will schedule pods in a way which abides by the
         /// constraints. All topologySpreadConstraints are ANDed.
         /// </summary>
-        [JsonProperty(PropertyName = "topologySpreadConstraints")]
+        [JsonPropertyName("topologySpreadConstraints")]
         public IList<V1TopologySpreadConstraint> TopologySpreadConstraints { get; set; }
 
         /// <summary>
         /// List of volumes that can be mounted by containers belonging to the pod. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes
         /// </summary>
-        [JsonProperty(PropertyName = "volumes")]
+        [JsonPropertyName("volumes")]
         public IList<V1Volume> Volumes { get; set; }
 
         /// <summary>
@@ -624,6 +704,7 @@ namespace k8s.Models
                     obj.Validate();
                 }
             }
+            Os?.Validate();
             if (ReadinessGates != null){
                 foreach(var obj in ReadinessGates)
                 {

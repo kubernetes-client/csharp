@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// OwnerReference contains enough information to let you identify an owning object.
         /// An owning object must be in the same namespace as the dependent, or be
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// <summary>
         /// API version of the referent.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -82,34 +76,34 @@ namespace k8s.Models
         /// Defaults to false. To set this field, a user needs &quot;delete&quot; permission of the
         /// owner, otherwise 422 (Unprocessable Entity) will be returned.
         /// </summary>
-        [JsonProperty(PropertyName = "blockOwnerDeletion")]
+        [JsonPropertyName("blockOwnerDeletion")]
         public bool? BlockOwnerDeletion { get; set; }
 
         /// <summary>
         /// If true, this reference points to the managing controller.
         /// </summary>
-        [JsonProperty(PropertyName = "controller")]
+        [JsonPropertyName("controller")]
         public bool? Controller { get; set; }
 
         /// <summary>
         /// Kind of the referent. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name of the referent. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// UID of the referent. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#uids
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>

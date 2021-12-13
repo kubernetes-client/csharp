@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TokenRequestStatus is the result of a token request.
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// ExpirationTimestamp is the time of expiration of the returned token.
         /// </summary>
-        [JsonProperty(PropertyName = "expirationTimestamp")]
+        [JsonPropertyName("expirationTimestamp")]
         public System.DateTime ExpirationTimestamp { get; set; }
 
         /// <summary>
         /// Token is the opaque bearer token.
         /// </summary>
-        [JsonProperty(PropertyName = "token")]
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
         /// <summary>

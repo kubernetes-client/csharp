@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be
         /// mounted as read/write once. ISCSI volumes support ownership management and
@@ -95,13 +89,13 @@ namespace k8s.Models
         /// <summary>
         /// whether support iSCSI Discovery CHAP authentication
         /// </summary>
-        [JsonProperty(PropertyName = "chapAuthDiscovery")]
+        [JsonPropertyName("chapAuthDiscovery")]
         public bool? ChapAuthDiscovery { get; set; }
 
         /// <summary>
         /// whether support iSCSI Session CHAP authentication
         /// </summary>
-        [JsonProperty(PropertyName = "chapAuthSession")]
+        [JsonPropertyName("chapAuthSession")]
         public bool? ChapAuthSession { get; set; }
 
         /// <summary>
@@ -110,7 +104,7 @@ namespace k8s.Models
         /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#iscsi
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -118,52 +112,52 @@ namespace k8s.Models
         /// simultaneously, new iSCSI interface &lt;target portal&gt;:&lt;volume name&gt; will be
         /// created for the connection.
         /// </summary>
-        [JsonProperty(PropertyName = "initiatorName")]
+        [JsonPropertyName("initiatorName")]
         public string InitiatorName { get; set; }
 
         /// <summary>
         /// Target iSCSI Qualified Name.
         /// </summary>
-        [JsonProperty(PropertyName = "iqn")]
+        [JsonPropertyName("iqn")]
         public string Iqn { get; set; }
 
         /// <summary>
         /// iSCSI Interface Name that uses an iSCSI transport. Defaults to &apos;default&apos; (tcp).
         /// </summary>
-        [JsonProperty(PropertyName = "iscsiInterface")]
+        [JsonPropertyName("iscsiInterface")]
         public string IscsiInterface { get; set; }
 
         /// <summary>
         /// iSCSI Target Lun number.
         /// </summary>
-        [JsonProperty(PropertyName = "lun")]
+        [JsonPropertyName("lun")]
         public int Lun { get; set; }
 
         /// <summary>
         /// iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port
         /// is other than default (typically TCP ports 860 and 3260).
         /// </summary>
-        [JsonProperty(PropertyName = "portals")]
+        [JsonPropertyName("portals")]
         public IList<string> Portals { get; set; }
 
         /// <summary>
         /// ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to
         /// false.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// CHAP Secret for iSCSI target and initiator authentication
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1SecretReference SecretRef { get; set; }
 
         /// <summary>
         /// iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is
         /// other than default (typically TCP ports 860 and 3260).
         /// </summary>
-        [JsonProperty(PropertyName = "targetPortal")]
+        [JsonPropertyName("targetPortal")]
         public string TargetPortal { get; set; }
 
         /// <summary>

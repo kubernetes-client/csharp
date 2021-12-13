@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointConditions represents the current condition of an endpoint.
     /// </summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// state. In most cases consumers should interpret this unknown state as ready. For
         /// compatibility reasons, ready should never be &quot;true&quot; for terminating endpoints.
         /// </summary>
-        [JsonProperty(PropertyName = "ready")]
+        [JsonPropertyName("ready")]
         public bool? Ready { get; set; }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// condition. This field can be enabled with the EndpointSliceTerminatingCondition
         /// feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "serving")]
+        [JsonPropertyName("serving")]
         public bool? Serving { get; set; }
 
         /// <summary>
@@ -85,7 +79,7 @@ namespace k8s.Models
         /// endpoint is not terminating. This field can be enabled with the
         /// EndpointSliceTerminatingCondition feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "terminating")]
+        [JsonPropertyName("terminating")]
         public bool? Terminating { get; set; }
 
         /// <summary>

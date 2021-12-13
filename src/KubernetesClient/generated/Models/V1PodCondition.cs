@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodCondition contains details for the current condition of this pod.
     /// </summary>
@@ -35,6 +29,14 @@ namespace k8s.Models
         /// <param name="type">
         /// Type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </param>
         /// <param name="lastProbeTime">
         /// Last time we probed the condition.
@@ -67,39 +69,47 @@ namespace k8s.Models
         /// <summary>
         /// Last time we probed the condition.
         /// </summary>
-        [JsonProperty(PropertyName = "lastProbeTime")]
+        [JsonPropertyName("lastProbeTime")]
         public System.DateTime? LastProbeTime { get; set; }
 
         /// <summary>
         /// Last time the condition transitioned from one status to another.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// Human-readable message indicating details about last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Unique, one-word, CamelCase reason for the condition&apos;s last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Status is the status of the condition. Can be True, False, Unknown. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Type is the type of the condition. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+        /// 
+        /// Possible enum values:
+        /// - `&quot;ContainersReady&quot;` indicates whether all containers in the pod are ready.
+        /// - `&quot;Initialized&quot;` means that all init containers in the pod have started
+        /// successfully.
+        /// - `&quot;PodScheduled&quot;` represents status of the scheduling process for this pod.
+        /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
+        /// load balancing pools of all matching services.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

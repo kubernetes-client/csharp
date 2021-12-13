@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace k8s
 {
     /// <summary>
@@ -20,7 +18,7 @@ namespace k8s
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         string ApiVersion { get; set; }
 
         /// <summary>
@@ -30,7 +28,7 @@ namespace k8s
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         string Kind { get; set; }
     }
 

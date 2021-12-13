@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Adds and removes POSIX capabilities from running containers.
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// Added capabilities
         /// </summary>
-        [JsonProperty(PropertyName = "add")]
+        [JsonPropertyName("add")]
         public IList<string> Add { get; set; }
 
         /// <summary>
         /// Removed capabilities
         /// </summary>
-        [JsonProperty(PropertyName = "drop")]
+        [JsonPropertyName("drop")]
         public IList<string> Drop { get; set; }
 
         /// <summary>

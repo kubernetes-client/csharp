@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HPAScalingPolicy is a single policy which must hold true for a specified past
         /// interval.
@@ -59,20 +53,20 @@ namespace k8s.Models
         /// true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30
         /// min).
         /// </summary>
-        [JsonProperty(PropertyName = "periodSeconds")]
+        [JsonPropertyName("periodSeconds")]
         public int PeriodSeconds { get; set; }
 
         /// <summary>
         /// Type is used to specify the scaling policy.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Value contains the amount of change which is permitted by the policy. It must be
         /// greater than zero
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public int Value { get; set; }
 
         /// <summary>

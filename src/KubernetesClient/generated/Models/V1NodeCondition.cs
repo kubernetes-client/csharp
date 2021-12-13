@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeCondition contains condition information for a node.
     /// </summary>
@@ -33,6 +27,17 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// Type of node condition.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DiskPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available disk.
+        /// - `&quot;MemoryPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available memory.
+        /// - `&quot;NetworkUnavailable&quot;` means that network for the node is not correctly
+        /// configured.
+        /// - `&quot;PIDPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available PID.
+        /// - `&quot;Ready&quot;` means kubelet is healthy and ready to accept pods.
         /// </param>
         /// <param name="lastHeartbeatTime">
         /// Last time we got an update on a given condition.
@@ -65,37 +70,48 @@ namespace k8s.Models
         /// <summary>
         /// Last time we got an update on a given condition.
         /// </summary>
-        [JsonProperty(PropertyName = "lastHeartbeatTime")]
+        [JsonPropertyName("lastHeartbeatTime")]
         public System.DateTime? LastHeartbeatTime { get; set; }
 
         /// <summary>
         /// Last time the condition transit from one status to another.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// Human readable message indicating details about last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// (brief) reason for the condition&apos;s last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Type of node condition.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DiskPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available disk.
+        /// - `&quot;MemoryPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available memory.
+        /// - `&quot;NetworkUnavailable&quot;` means that network for the node is not correctly
+        /// configured.
+        /// - `&quot;PIDPressure&quot;` means the kubelet is under pressure due to insufficient
+        /// available PID.
+        /// - `&quot;Ready&quot;` means kubelet is healthy and ready to accept pods.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

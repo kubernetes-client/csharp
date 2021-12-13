@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RoleRef contains information that points to the role being used
     /// </summary>
@@ -53,19 +47,19 @@ namespace k8s.Models
         /// <summary>
         /// APIGroup is the group for the resource being referenced
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroup")]
+        [JsonPropertyName("apiGroup")]
         public string ApiGroup { get; set; }
 
         /// <summary>
         /// Kind is the type of resource being referenced
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name is the name of resource being referenced
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

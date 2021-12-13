@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SecretKeySelector selects a key of a Secret.
     /// </summary>
@@ -54,20 +48,20 @@ namespace k8s.Models
         /// <summary>
         /// The key of the secret to select from.  Must be a valid secret key.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Specify whether the Secret or its key must be defined
         /// </summary>
-        [JsonProperty(PropertyName = "optional")]
+        [JsonPropertyName("optional")]
         public bool? Optional { get; set; }
 
         /// <summary>

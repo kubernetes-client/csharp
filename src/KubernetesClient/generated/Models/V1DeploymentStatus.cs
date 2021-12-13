@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DeploymentStatus is the most recently observed status of the Deployment.
     /// </summary>
@@ -44,7 +38,8 @@ namespace k8s.Models
         /// The generation observed by the deployment controller.
         /// </param>
         /// <param name="readyReplicas">
-        /// Total number of ready pods targeted by this deployment.
+        /// readyReplicas is the number of pods targeted by this Deployment with a Ready
+        /// Condition.
         /// </param>
         /// <param name="replicas">
         /// Total number of non-terminated pods targeted by this deployment (their labels
@@ -82,7 +77,7 @@ namespace k8s.Models
         /// Total number of available pods (ready for at least minReadySeconds) targeted by
         /// this deployment.
         /// </summary>
-        [JsonProperty(PropertyName = "availableReplicas")]
+        [JsonPropertyName("availableReplicas")]
         public int? AvailableReplicas { get; set; }
 
         /// <summary>
@@ -90,32 +85,33 @@ namespace k8s.Models
         /// field as a collision avoidance mechanism when it needs to create the name for
         /// the newest ReplicaSet.
         /// </summary>
-        [JsonProperty(PropertyName = "collisionCount")]
+        [JsonPropertyName("collisionCount")]
         public int? CollisionCount { get; set; }
 
         /// <summary>
         /// Represents the latest available observations of a deployment&apos;s current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1DeploymentCondition> Conditions { get; set; }
 
         /// <summary>
         /// The generation observed by the deployment controller.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// Total number of ready pods targeted by this deployment.
+        /// readyReplicas is the number of pods targeted by this Deployment with a Ready
+        /// Condition.
         /// </summary>
-        [JsonProperty(PropertyName = "readyReplicas")]
+        [JsonPropertyName("readyReplicas")]
         public int? ReadyReplicas { get; set; }
 
         /// <summary>
         /// Total number of non-terminated pods targeted by this deployment (their labels
         /// match the selector).
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int? Replicas { get; set; }
 
         /// <summary>
@@ -124,14 +120,14 @@ namespace k8s.Models
         /// capacity. They may either be pods that are running but not yet available or pods
         /// that still have not been created.
         /// </summary>
-        [JsonProperty(PropertyName = "unavailableReplicas")]
+        [JsonPropertyName("unavailableReplicas")]
         public int? UnavailableReplicas { get; set; }
 
         /// <summary>
         /// Total number of non-terminated pods targeted by this deployment that have the
         /// desired template spec.
         /// </summary>
-        [JsonProperty(PropertyName = "updatedReplicas")]
+        [JsonPropertyName("updatedReplicas")]
         public int? UpdatedReplicas { get; set; }
 
         /// <summary>

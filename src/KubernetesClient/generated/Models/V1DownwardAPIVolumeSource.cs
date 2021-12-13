@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DownwardAPIVolumeSource represents a volume containing downward API info.
         /// Downward API volumes support ownership management and SELinux relabeling.
@@ -62,13 +56,13 @@ namespace k8s.Models
         /// might be in conflict with other options that affect the file mode, like fsGroup,
         /// and the result can be other mode bits set.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultMode")]
+        [JsonPropertyName("defaultMode")]
         public int? DefaultMode { get; set; }
 
         /// <summary>
         /// Items is a list of downward API volume file
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IList<V1DownwardAPIVolumeFile> Items { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
     /// </summary>
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// hard is the set of desired hard limits for each named resource. More info:
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
-        [JsonProperty(PropertyName = "hard")]
+        [JsonPropertyName("hard")]
         public IDictionary<string, ResourceQuantity> Hard { get; set; }
 
         /// <summary>
@@ -68,14 +62,14 @@ namespace k8s.Models
         /// combination with possible values. For a resource to match, both scopes AND
         /// scopeSelector (if specified in spec), must be matched.
         /// </summary>
-        [JsonProperty(PropertyName = "scopeSelector")]
+        [JsonPropertyName("scopeSelector")]
         public V1ScopeSelector ScopeSelector { get; set; }
 
         /// <summary>
         /// A collection of filters that must match each object tracked by a quota. If not
         /// specified, the quota matches all objects.
         /// </summary>
-        [JsonProperty(PropertyName = "scopes")]
+        [JsonPropertyName("scopes")]
         public IList<string> Scopes { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeClaimCondition contails details about state of pvc
     /// </summary>
@@ -33,6 +27,12 @@ namespace k8s.Models
         /// </param>
         /// <param name="type">
         /// 
+        /// 
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FileSystemResizePending&quot;` - controller resize is finished and a file system
+        /// resize is pending on node
+        /// - `&quot;Resizing&quot;` - a user trigger resize of pvc has been started
         /// </param>
         /// <param name="lastProbeTime">
         /// Last time we probed the condition.
@@ -67,19 +67,19 @@ namespace k8s.Models
         /// <summary>
         /// Last time we probed the condition.
         /// </summary>
-        [JsonProperty(PropertyName = "lastProbeTime")]
+        [JsonPropertyName("lastProbeTime")]
         public System.DateTime? LastProbeTime { get; set; }
 
         /// <summary>
         /// Last time the condition transitioned from one status to another.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// Human-readable message indicating details about last transition.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
@@ -87,19 +87,25 @@ namespace k8s.Models
         /// reason for condition&apos;s last transition. If it reports &quot;ResizeStarted&quot; that means
         /// the underlying persistent volume is being resized.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// 
+        /// 
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FileSystemResizePending&quot;` - controller resize is finished and a file system
+        /// resize is pending on node
+        /// - `&quot;Resizing&quot;` - a user trigger resize of pvc has been started
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

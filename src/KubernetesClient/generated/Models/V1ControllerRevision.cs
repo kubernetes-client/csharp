@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ControllerRevision implements an immutable snapshot of state data. Clients are
         /// responsible for serializing and deserializing the objects that contain their
@@ -79,13 +73,13 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Data is the serialized representation of the state.
         /// </summary>
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public object Data { get; set; }
 
         /// <summary>
@@ -94,20 +88,20 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Revision indicates the revision of the state represented by Data.
         /// </summary>
-        [JsonProperty(PropertyName = "revision")]
+        [JsonPropertyName("revision")]
         public long Revision { get; set; }
 
         /// <summary>

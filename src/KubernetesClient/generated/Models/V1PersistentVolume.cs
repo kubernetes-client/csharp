@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolume (PV) is a storage resource provisioned by an administrator. It
         /// is analogous to a node. More info:
@@ -77,7 +71,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -86,14 +80,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -101,7 +95,7 @@ namespace k8s.Models
         /// Provisioned by an administrator. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1PersistentVolumeSpec Spec { get; set; }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace k8s.Models
         /// Populated by the system. Read-only. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1PersistentVolumeStatus Status { get; set; }
 
         /// <summary>

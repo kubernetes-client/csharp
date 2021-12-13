@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceAccountTokenProjection represents a projected service account token
         /// volume. This projection can be used to insert a service account token into the
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// otherwise should reject the token. The audience defaults to the identifier of
         /// the apiserver.
         /// </summary>
-        [JsonProperty(PropertyName = "audience")]
+        [JsonPropertyName("audience")]
         public string Audience { get; set; }
 
         /// <summary>
@@ -79,14 +73,14 @@ namespace k8s.Models
         /// the token is older than 24 hours.Defaults to 1 hour and must be at least 10
         /// minutes.
         /// </summary>
-        [JsonProperty(PropertyName = "expirationSeconds")]
+        [JsonPropertyName("expirationSeconds")]
         public long? ExpirationSeconds { get; set; }
 
         /// <summary>
         /// Path is the path relative to the mount point of the file to project the token
         /// into.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeClaimSpec describes the common attributes of storage devices and
         /// allows a Source for provider-specific attributes
@@ -61,7 +55,10 @@ namespace k8s.Models
         /// enabled.
         /// </param>
         /// <param name="resources">
-        /// Resources represents the minimum resources the volume should have. More info:
+        /// Resources represents the minimum resources the volume should have. If
+        /// RecoverVolumeExpansionFailure feature is enabled users are allowed to specify
+        /// resource requirements that are lower than previous value but must still be
+        /// higher than capacity recorded in the status field of the claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </param>
         /// <param name="selector">
@@ -100,7 +97,7 @@ namespace k8s.Models
         /// AccessModes contains the desired access modes the volume should have. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
         /// </summary>
-        [JsonProperty(PropertyName = "accessModes")]
+        [JsonPropertyName("accessModes")]
         public IList<string> AccessModes { get; set; }
 
         /// <summary>
@@ -111,7 +108,7 @@ namespace k8s.Models
         /// the specified data source. If the AnyVolumeDataSource feature gate is enabled,
         /// this field will always have the same contents as the DataSourceRef field.
         /// </summary>
-        [JsonProperty(PropertyName = "dataSource")]
+        [JsonPropertyName("dataSource")]
         public V1TypedLocalObjectReference DataSource { get; set; }
 
         /// <summary>
@@ -133,40 +130,43 @@ namespace k8s.Models
         /// (Alpha) Using this field requires the AnyVolumeDataSource feature gate to be
         /// enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "dataSourceRef")]
+        [JsonPropertyName("dataSourceRef")]
         public V1TypedLocalObjectReference DataSourceRef { get; set; }
 
         /// <summary>
-        /// Resources represents the minimum resources the volume should have. More info:
+        /// Resources represents the minimum resources the volume should have. If
+        /// RecoverVolumeExpansionFailure feature is enabled users are allowed to specify
+        /// resource requirements that are lower than previous value but must still be
+        /// higher than capacity recorded in the status field of the claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public V1ResourceRequirements Resources { get; set; }
 
         /// <summary>
         /// A label query over volumes to consider for binding.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// Name of the StorageClass required by the claim. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
         /// </summary>
-        [JsonProperty(PropertyName = "storageClassName")]
+        [JsonPropertyName("storageClassName")]
         public string StorageClassName { get; set; }
 
         /// <summary>
         /// volumeMode defines what type of volume is required by the claim. Value of
         /// Filesystem is implied when not included in claim spec.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeMode")]
+        [JsonPropertyName("volumeMode")]
         public string VolumeMode { get; set; }
 
         /// <summary>
         /// VolumeName is the binding reference to the PersistentVolume backing this claim.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeName")]
+        [JsonPropertyName("volumeName")]
         public string VolumeName { get; set; }
 
         /// <summary>

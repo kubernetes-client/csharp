@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeConfigStatus describes the status of the config assigned by
         /// Node.Spec.ConfigSource.
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// LastKnownGood config, depending on whether attempting to use the Assigned config
         /// results in an error.
         /// </summary>
-        [JsonProperty(PropertyName = "active")]
+        [JsonPropertyName("active")]
         public V1NodeConfigSource Active { get; set; }
 
         /// <summary>
@@ -107,7 +101,7 @@ namespace k8s.Models
         /// Assigned config the Active config by loading and validating the checkpointed
         /// payload identified by Assigned.
         /// </summary>
-        [JsonProperty(PropertyName = "assigned")]
+        [JsonPropertyName("assigned")]
         public V1NodeConfigSource Assigned { get; set; }
 
         /// <summary>
@@ -126,7 +120,7 @@ namespace k8s.Models
         /// whether or not Error is empty, but should not rely on the stability of the Error
         /// text across Kubelet versions.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
 
         /// <summary>
@@ -142,7 +136,7 @@ namespace k8s.Models
         /// node&apos;s method of determining config stability and correctness, as this may
         /// change or become configurable in the future.
         /// </summary>
-        [JsonProperty(PropertyName = "lastKnownGood")]
+        [JsonPropertyName("lastKnownGood")]
         public V1NodeConfigSource LastKnownGood { get; set; }
 
         /// <summary>

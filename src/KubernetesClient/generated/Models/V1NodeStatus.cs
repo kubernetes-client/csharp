@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeStatus is information about the current status of a node.
     /// </summary>
@@ -65,6 +59,13 @@ namespace k8s.Models
         /// NodePhase is the recently observed lifecycle phase of the node. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never
         /// populated, and now is deprecated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Pending&quot;` means the node has been created/added by the system, but not
+        /// configured.
+        /// - `&quot;Running&quot;` means the node has been configured and has Kubernetes components
+        /// running.
+        /// - `&quot;Terminated&quot;` means the node has been removed from the cluster.
         /// </param>
         /// <param name="volumesAttached">
         /// List of volumes that are attached to the node.
@@ -100,74 +101,81 @@ namespace k8s.Models
         /// unique, which can cause data corruption when it is merged. Callers should
         /// instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.
         /// </summary>
-        [JsonProperty(PropertyName = "addresses")]
+        [JsonPropertyName("addresses")]
         public IList<V1NodeAddress> Addresses { get; set; }
 
         /// <summary>
         /// Allocatable represents the resources of a node that are available for
         /// scheduling. Defaults to Capacity.
         /// </summary>
-        [JsonProperty(PropertyName = "allocatable")]
+        [JsonPropertyName("allocatable")]
         public IDictionary<string, ResourceQuantity> Allocatable { get; set; }
 
         /// <summary>
         /// Capacity represents the total resources of a node. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
         /// </summary>
-        [JsonProperty(PropertyName = "capacity")]
+        [JsonPropertyName("capacity")]
         public IDictionary<string, ResourceQuantity> Capacity { get; set; }
 
         /// <summary>
         /// Conditions is an array of current observed node conditions. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#condition
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1NodeCondition> Conditions { get; set; }
 
         /// <summary>
         /// Status of the config assigned to the node via the dynamic Kubelet config
         /// feature.
         /// </summary>
-        [JsonProperty(PropertyName = "config")]
+        [JsonPropertyName("config")]
         public V1NodeConfigStatus Config { get; set; }
 
         /// <summary>
         /// Endpoints of daemons running on the Node.
         /// </summary>
-        [JsonProperty(PropertyName = "daemonEndpoints")]
+        [JsonPropertyName("daemonEndpoints")]
         public V1NodeDaemonEndpoints DaemonEndpoints { get; set; }
 
         /// <summary>
         /// List of container images on this node
         /// </summary>
-        [JsonProperty(PropertyName = "images")]
+        [JsonPropertyName("images")]
         public IList<V1ContainerImage> Images { get; set; }
 
         /// <summary>
         /// Set of ids/uuids to uniquely identify the node. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#info
         /// </summary>
-        [JsonProperty(PropertyName = "nodeInfo")]
+        [JsonPropertyName("nodeInfo")]
         public V1NodeSystemInfo NodeInfo { get; set; }
 
         /// <summary>
         /// NodePhase is the recently observed lifecycle phase of the node. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never
         /// populated, and now is deprecated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Pending&quot;` means the node has been created/added by the system, but not
+        /// configured.
+        /// - `&quot;Running&quot;` means the node has been configured and has Kubernetes components
+        /// running.
+        /// - `&quot;Terminated&quot;` means the node has been removed from the cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "phase")]
+        [JsonPropertyName("phase")]
         public string Phase { get; set; }
 
         /// <summary>
         /// List of volumes that are attached to the node.
         /// </summary>
-        [JsonProperty(PropertyName = "volumesAttached")]
+        [JsonPropertyName("volumesAttached")]
         public IList<V1AttachedVolume> VolumesAttached { get; set; }
 
         /// <summary>
         /// List of attachable volumes in use (mounted) by the node.
         /// </summary>
-        [JsonProperty(PropertyName = "volumesInUse")]
+        [JsonPropertyName("volumesInUse")]
         public IList<string> VolumesInUse { get; set; }
 
         /// <summary>

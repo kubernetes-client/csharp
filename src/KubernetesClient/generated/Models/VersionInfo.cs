@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Info contains versioning information. how we&apos;ll want to distribute that
         /// information.
@@ -78,55 +72,55 @@ namespace k8s.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "buildDate")]
+        [JsonPropertyName("buildDate")]
         public string BuildDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "compiler")]
+        [JsonPropertyName("compiler")]
         public string Compiler { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "gitCommit")]
+        [JsonPropertyName("gitCommit")]
         public string GitCommit { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "gitTreeState")]
+        [JsonPropertyName("gitTreeState")]
         public string GitTreeState { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "gitVersion")]
+        [JsonPropertyName("gitVersion")]
         public string GitVersion { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "goVersion")]
+        [JsonPropertyName("goVersion")]
         public string GoVersion { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "major")]
+        [JsonPropertyName("major")]
         public string Major { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "minor")]
+        [JsonPropertyName("minor")]
         public string Minor { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "platform")]
+        [JsonPropertyName("platform")]
         public string Platform { get; set; }
 
         /// <summary>

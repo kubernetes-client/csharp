@@ -1,6 +1,5 @@
 // Derived from
 // https://github.com/kubernetes-client/java/blob/master/util/src/main/java/io/kubernetes/client/apimachinery/KubernetesResource.java
-using System;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Web;

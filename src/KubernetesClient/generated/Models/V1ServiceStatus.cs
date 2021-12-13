@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceStatus represents the current status of a service.
     /// </summary>
@@ -50,14 +44,14 @@ namespace k8s.Models
         /// <summary>
         /// Current service state
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1Condition> Conditions { get; set; }
 
         /// <summary>
         /// LoadBalancer contains the current status of the load-balancer, if one is
         /// present.
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancer")]
+        [JsonPropertyName("loadBalancer")]
         public V1LoadBalancerStatus LoadBalancer { get; set; }
 
         /// <summary>

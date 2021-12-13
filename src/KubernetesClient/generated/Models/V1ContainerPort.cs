@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ContainerPort represents a network port in a single container.
     /// </summary>
@@ -47,6 +41,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="protocol">
         /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         public V1ContainerPort(int containerPort, string hostIP = null, int? hostPort = null, string name = null, string protocol = null)
         {
@@ -67,13 +66,13 @@ namespace k8s.Models
         /// Number of port to expose on the pod&apos;s IP address. This must be a valid port
         /// number, 0 &lt; x &lt; 65536.
         /// </summary>
-        [JsonProperty(PropertyName = "containerPort")]
+        [JsonPropertyName("containerPort")]
         public int ContainerPort { get; set; }
 
         /// <summary>
         /// What host IP to bind the external port to.
         /// </summary>
-        [JsonProperty(PropertyName = "hostIP")]
+        [JsonPropertyName("hostIP")]
         public string HostIP { get; set; }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace k8s.Models
         /// number, 0 &lt; x &lt; 65536. If HostNetwork is specified, this must match
         /// ContainerPort. Most containers do not need this.
         /// </summary>
-        [JsonProperty(PropertyName = "hostPort")]
+        [JsonPropertyName("hostPort")]
         public int? HostPort { get; set; }
 
         /// <summary>
@@ -89,13 +88,18 @@ namespace k8s.Models
         /// named port in a pod must have a unique name. Name for the port that can be
         /// referred to by services.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to &quot;TCP&quot;.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>

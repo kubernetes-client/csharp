@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Volume represents a named volume in a pod that may be accessed by any container
         /// in the pod.
@@ -90,9 +84,6 @@ namespace k8s.Models
         /// 
         /// A pod can use both types of ephemeral volumes and persistent volumes at the same
         /// time.
-        /// 
-        /// This is a beta feature and only available when the GenericEphemeralVolume
-        /// feature gate is enabled.
         /// </param>
         /// <param name="fc">
         /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
@@ -221,61 +212,61 @@ namespace k8s.Models
         /// kubelet&apos;s host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
-        [JsonProperty(PropertyName = "awsElasticBlockStore")]
+        [JsonPropertyName("awsElasticBlockStore")]
         public V1AWSElasticBlockStoreVolumeSource AwsElasticBlockStore { get; set; }
 
         /// <summary>
         /// AzureDisk represents an Azure Data Disk mount on the host and bind mount to the
         /// pod.
         /// </summary>
-        [JsonProperty(PropertyName = "azureDisk")]
+        [JsonPropertyName("azureDisk")]
         public V1AzureDiskVolumeSource AzureDisk { get; set; }
 
         /// <summary>
         /// AzureFile represents an Azure File Service mount on the host and bind mount to
         /// the pod.
         /// </summary>
-        [JsonProperty(PropertyName = "azureFile")]
+        [JsonPropertyName("azureFile")]
         public V1AzureFileVolumeSource AzureFile { get; set; }
 
         /// <summary>
         /// CephFS represents a Ceph FS mount on the host that shares a pod&apos;s lifetime
         /// </summary>
-        [JsonProperty(PropertyName = "cephfs")]
+        [JsonPropertyName("cephfs")]
         public V1CephFSVolumeSource Cephfs { get; set; }
 
         /// <summary>
         /// Cinder represents a cinder volume attached and mounted on kubelets host machine.
         /// More info: https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "cinder")]
+        [JsonPropertyName("cinder")]
         public V1CinderVolumeSource Cinder { get; set; }
 
         /// <summary>
         /// ConfigMap represents a configMap that should populate this volume
         /// </summary>
-        [JsonProperty(PropertyName = "configMap")]
+        [JsonPropertyName("configMap")]
         public V1ConfigMapVolumeSource ConfigMap { get; set; }
 
         /// <summary>
         /// CSI (Container Storage Interface) represents ephemeral storage that is handled
         /// by certain external CSI drivers (Beta feature).
         /// </summary>
-        [JsonProperty(PropertyName = "csi")]
+        [JsonPropertyName("csi")]
         public V1CSIVolumeSource Csi { get; set; }
 
         /// <summary>
         /// DownwardAPI represents downward API about the pod that should populate this
         /// volume
         /// </summary>
-        [JsonProperty(PropertyName = "downwardAPI")]
+        [JsonPropertyName("downwardAPI")]
         public V1DownwardAPIVolumeSource DownwardAPI { get; set; }
 
         /// <summary>
         /// EmptyDir represents a temporary directory that shares a pod&apos;s lifetime. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
-        [JsonProperty(PropertyName = "emptyDir")]
+        [JsonPropertyName("emptyDir")]
         public V1EmptyDirVolumeSource EmptyDir { get; set; }
 
         /// <summary>
@@ -300,32 +291,29 @@ namespace k8s.Models
         /// 
         /// A pod can use both types of ephemeral volumes and persistent volumes at the same
         /// time.
-        /// 
-        /// This is a beta feature and only available when the GenericEphemeralVolume
-        /// feature gate is enabled.
         /// </summary>
-        [JsonProperty(PropertyName = "ephemeral")]
+        [JsonPropertyName("ephemeral")]
         public V1EphemeralVolumeSource Ephemeral { get; set; }
 
         /// <summary>
         /// FC represents a Fibre Channel resource that is attached to a kubelet&apos;s host
         /// machine and then exposed to the pod.
         /// </summary>
-        [JsonProperty(PropertyName = "fc")]
+        [JsonPropertyName("fc")]
         public V1FCVolumeSource Fc { get; set; }
 
         /// <summary>
         /// FlexVolume represents a generic volume resource that is provisioned/attached
         /// using an exec based plugin.
         /// </summary>
-        [JsonProperty(PropertyName = "flexVolume")]
+        [JsonPropertyName("flexVolume")]
         public V1FlexVolumeSource FlexVolume { get; set; }
 
         /// <summary>
         /// Flocker represents a Flocker volume attached to a kubelet&apos;s host machine. This
         /// depends on the Flocker control service being running
         /// </summary>
-        [JsonProperty(PropertyName = "flocker")]
+        [JsonPropertyName("flocker")]
         public V1FlockerVolumeSource Flocker { get; set; }
 
         /// <summary>
@@ -333,7 +321,7 @@ namespace k8s.Models
         /// host machine and then exposed to the pod. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
-        [JsonProperty(PropertyName = "gcePersistentDisk")]
+        [JsonPropertyName("gcePersistentDisk")]
         public V1GCEPersistentDiskVolumeSource GcePersistentDisk { get; set; }
 
         /// <summary>
@@ -342,14 +330,14 @@ namespace k8s.Models
         /// EmptyDir into an InitContainer that clones the repo using git, then mount the
         /// EmptyDir into the Pod&apos;s container.
         /// </summary>
-        [JsonProperty(PropertyName = "gitRepo")]
+        [JsonPropertyName("gitRepo")]
         public V1GitRepoVolumeSource GitRepo { get; set; }
 
         /// <summary>
         /// Glusterfs represents a Glusterfs mount on the host that shares a pod&apos;s lifetime.
         /// More info: https://examples.k8s.io/volumes/glusterfs/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "glusterfs")]
+        [JsonPropertyName("glusterfs")]
         public V1GlusterfsVolumeSource Glusterfs { get; set; }
 
         /// <summary>
@@ -359,7 +347,7 @@ namespace k8s.Models
         /// containers will NOT need this. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </summary>
-        [JsonProperty(PropertyName = "hostPath")]
+        [JsonPropertyName("hostPath")]
         public V1HostPathVolumeSource HostPath { get; set; }
 
         /// <summary>
@@ -367,21 +355,21 @@ namespace k8s.Models
         /// machine and then exposed to the pod. More info:
         /// https://examples.k8s.io/volumes/iscsi/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "iscsi")]
+        [JsonPropertyName("iscsi")]
         public V1ISCSIVolumeSource Iscsi { get; set; }
 
         /// <summary>
         /// Volume&apos;s name. Must be a DNS_LABEL and unique within the pod. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// NFS represents an NFS mount on the host that shares a pod&apos;s lifetime More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </summary>
-        [JsonProperty(PropertyName = "nfs")]
+        [JsonPropertyName("nfs")]
         public V1NFSVolumeSource Nfs { get; set; }
 
         /// <summary>
@@ -389,68 +377,68 @@ namespace k8s.Models
         /// PersistentVolumeClaim in the same namespace. More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
         /// </summary>
-        [JsonProperty(PropertyName = "persistentVolumeClaim")]
+        [JsonPropertyName("persistentVolumeClaim")]
         public V1PersistentVolumeClaimVolumeSource PersistentVolumeClaim { get; set; }
 
         /// <summary>
         /// PhotonPersistentDisk represents a PhotonController persistent disk attached and
         /// mounted on kubelets host machine
         /// </summary>
-        [JsonProperty(PropertyName = "photonPersistentDisk")]
+        [JsonPropertyName("photonPersistentDisk")]
         public V1PhotonPersistentDiskVolumeSource PhotonPersistentDisk { get; set; }
 
         /// <summary>
         /// PortworxVolume represents a portworx volume attached and mounted on kubelets
         /// host machine
         /// </summary>
-        [JsonProperty(PropertyName = "portworxVolume")]
+        [JsonPropertyName("portworxVolume")]
         public V1PortworxVolumeSource PortworxVolume { get; set; }
 
         /// <summary>
         /// Items for all in one resources secrets, configmaps, and downward API
         /// </summary>
-        [JsonProperty(PropertyName = "projected")]
+        [JsonPropertyName("projected")]
         public V1ProjectedVolumeSource Projected { get; set; }
 
         /// <summary>
         /// Quobyte represents a Quobyte mount on the host that shares a pod&apos;s lifetime
         /// </summary>
-        [JsonProperty(PropertyName = "quobyte")]
+        [JsonPropertyName("quobyte")]
         public V1QuobyteVolumeSource Quobyte { get; set; }
 
         /// <summary>
         /// RBD represents a Rados Block Device mount on the host that shares a pod&apos;s
         /// lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "rbd")]
+        [JsonPropertyName("rbd")]
         public V1RBDVolumeSource Rbd { get; set; }
 
         /// <summary>
         /// ScaleIO represents a ScaleIO persistent volume attached and mounted on
         /// Kubernetes nodes.
         /// </summary>
-        [JsonProperty(PropertyName = "scaleIO")]
+        [JsonPropertyName("scaleIO")]
         public V1ScaleIOVolumeSource ScaleIO { get; set; }
 
         /// <summary>
         /// Secret represents a secret that should populate this volume. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// </summary>
-        [JsonProperty(PropertyName = "secret")]
+        [JsonPropertyName("secret")]
         public V1SecretVolumeSource Secret { get; set; }
 
         /// <summary>
         /// StorageOS represents a StorageOS volume attached and mounted on Kubernetes
         /// nodes.
         /// </summary>
-        [JsonProperty(PropertyName = "storageos")]
+        [JsonPropertyName("storageos")]
         public V1StorageOSVolumeSource Storageos { get; set; }
 
         /// <summary>
         /// VsphereVolume represents a vSphere volume attached and mounted on kubelets host
         /// machine
         /// </summary>
-        [JsonProperty(PropertyName = "vsphereVolume")]
+        [JsonPropertyName("vsphereVolume")]
         public V1VsphereVirtualDiskVolumeSource VsphereVolume { get; set; }
 
         /// <summary>

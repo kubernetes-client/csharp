@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeAttachment captures the intent to attach or detach the specified volume
         /// to/from the specified node.
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -85,28 +79,28 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired attach/detach volume behavior. Populated by the
         /// Kubernetes system.
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1VolumeAttachmentSpec Spec { get; set; }
 
         /// <summary>
         /// Status of the VolumeAttachment request. Populated by the entity completing the
         /// attach or detach operation, i.e. the external-attacher.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1VolumeAttachmentStatus Status { get; set; }
 
         /// <summary>
@@ -119,7 +113,7 @@ namespace k8s.Models
         {
             if (Spec == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");    
+                throw new ArgumentNullException("Spec");    
             }
             Metadata?.Validate();
             Spec?.Validate();

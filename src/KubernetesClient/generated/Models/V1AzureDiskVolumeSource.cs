@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AzureDisk represents an Azure Data Disk mount on the host and bind mount to the
         /// pod.
@@ -71,19 +65,19 @@ namespace k8s.Models
         /// <summary>
         /// Host Caching mode: None, Read Only, Read Write.
         /// </summary>
-        [JsonProperty(PropertyName = "cachingMode")]
+        [JsonPropertyName("cachingMode")]
         public string CachingMode { get; set; }
 
         /// <summary>
         /// The Name of the data disk in the blob storage
         /// </summary>
-        [JsonProperty(PropertyName = "diskName")]
+        [JsonPropertyName("diskName")]
         public string DiskName { get; set; }
 
         /// <summary>
         /// The URI the data disk in the blob storage
         /// </summary>
-        [JsonProperty(PropertyName = "diskURI")]
+        [JsonPropertyName("diskURI")]
         public string DiskURI { get; set; }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -99,14 +93,14 @@ namespace k8s.Models
         /// single blob disk per storage account  Managed: azure managed data disk (only in
         /// managed availability set). defaults to shared
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// The pod this Toleration is attached to tolerates any taint that matches the
         /// triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;.
@@ -32,6 +26,17 @@ namespace k8s.Models
         /// <param name="effect">
         /// Effect indicates the taint effect to match. Empty means match all taint effects.
         /// When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NoExecute&quot;` Evict any already-running pods that do not tolerate the taint.
+        /// Currently enforced by NodeController.
+        /// - `&quot;NoSchedule&quot;` Do not allow new pods to schedule onto the node unless they
+        /// tolerate the taint, but allow all pods submitted to Kubelet without going
+        /// through the scheduler to start, and allow all already-running pods to continue
+        /// running. Enforced by the scheduler.
+        /// - `&quot;PreferNoSchedule&quot;` Like TaintEffectNoSchedule, but the scheduler tries not
+        /// to schedule new pods onto the node, rather than prohibiting new pods from
+        /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </param>
         /// <param name="key">
         /// Key is the taint key that the toleration applies to. Empty means match all taint
@@ -42,6 +47,10 @@ namespace k8s.Models
         /// Operator represents a key&apos;s relationship to the value. Valid operators are
         /// Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value,
         /// so that a pod can tolerate all taints of a particular category.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Equal&quot;`
+        /// - `&quot;Exists&quot;`
         /// </param>
         /// <param name="tolerationSeconds">
         /// TolerationSeconds represents the period of time the toleration (which must be of
@@ -71,8 +80,19 @@ namespace k8s.Models
         /// <summary>
         /// Effect indicates the taint effect to match. Empty means match all taint effects.
         /// When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NoExecute&quot;` Evict any already-running pods that do not tolerate the taint.
+        /// Currently enforced by NodeController.
+        /// - `&quot;NoSchedule&quot;` Do not allow new pods to schedule onto the node unless they
+        /// tolerate the taint, but allow all pods submitted to Kubelet without going
+        /// through the scheduler to start, and allow all already-running pods to continue
+        /// running. Enforced by the scheduler.
+        /// - `&quot;PreferNoSchedule&quot;` Like TaintEffectNoSchedule, but the scheduler tries not
+        /// to schedule new pods onto the node, rather than prohibiting new pods from
+        /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </summary>
-        [JsonProperty(PropertyName = "effect")]
+        [JsonPropertyName("effect")]
         public string Effect { get; set; }
 
         /// <summary>
@@ -80,15 +100,19 @@ namespace k8s.Models
         /// keys. If the key is empty, operator must be Exists; this combination means to
         /// match all values and all keys.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// Operator represents a key&apos;s relationship to the value. Valid operators are
         /// Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value,
         /// so that a pod can tolerate all taints of a particular category.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Equal&quot;`
+        /// - `&quot;Exists&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -97,14 +121,14 @@ namespace k8s.Models
         /// default, it is not set, which means tolerate the taint forever (do not evict).
         /// Zero and negative values will be treated as 0 (evict immediately) by the system.
         /// </summary>
-        [JsonProperty(PropertyName = "tolerationSeconds")]
+        [JsonPropertyName("tolerationSeconds")]
         public long? TolerationSeconds { get; set; }
 
         /// <summary>
         /// Value is the taint value the toleration matches to. If the operator is Exists,
         /// the value should be empty, otherwise just a regular string.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

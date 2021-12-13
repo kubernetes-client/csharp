@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeSpec describes the attributes that a node is created with.
     /// </summary>
@@ -81,20 +75,20 @@ namespace k8s.Models
         /// field. This field is deprecated as of 1.22:
         /// https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration
         /// </summary>
-        [JsonProperty(PropertyName = "configSource")]
+        [JsonPropertyName("configSource")]
         public V1NodeConfigSource ConfigSource { get; set; }
 
         /// <summary>
         /// Deprecated. Not all kubelets will set this field. Remove field after 1.13. see:
         /// https://issues.k8s.io/61966
         /// </summary>
-        [JsonProperty(PropertyName = "externalID")]
+        [JsonPropertyName("externalID")]
         public string ExternalID { get; set; }
 
         /// <summary>
         /// PodCIDR represents the pod IP range assigned to the node.
         /// </summary>
-        [JsonProperty(PropertyName = "podCIDR")]
+        [JsonPropertyName("podCIDR")]
         public string PodCIDR { get; set; }
 
         /// <summary>
@@ -102,20 +96,20 @@ namespace k8s.Models
         /// node. If this field is specified, the 0th entry must match the podCIDR field. It
         /// may contain at most 1 value for each of IPv4 and IPv6.
         /// </summary>
-        [JsonProperty(PropertyName = "podCIDRs")]
+        [JsonPropertyName("podCIDRs")]
         public IList<string> PodCIDRs { get; set; }
 
         /// <summary>
         /// ID of the node assigned by the cloud provider in the format:
         /// &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
         /// </summary>
-        [JsonProperty(PropertyName = "providerID")]
+        [JsonPropertyName("providerID")]
         public string ProviderID { get; set; }
 
         /// <summary>
         /// If specified, the node&apos;s taints.
         /// </summary>
-        [JsonProperty(PropertyName = "taints")]
+        [JsonPropertyName("taints")]
         public IList<V1Taint> Taints { get; set; }
 
         /// <summary>
@@ -123,7 +117,7 @@ namespace k8s.Models
         /// schedulable. More info:
         /// https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
         /// </summary>
-        [JsonProperty(PropertyName = "unschedulable")]
+        [JsonPropertyName("unschedulable")]
         public bool? Unschedulable { get; set; }
 
         /// <summary>

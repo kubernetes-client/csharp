@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RuntimeClassStrategyOptions define the strategy that will dictate the allowable
         /// RuntimeClasses for a pod.
@@ -58,7 +52,7 @@ namespace k8s.Models
         /// and must be the only item in the list. An empty list requires the
         /// RuntimeClassName field to be unset.
         /// </summary>
-        [JsonProperty(PropertyName = "allowedRuntimeClassNames")]
+        [JsonPropertyName("allowedRuntimeClassNames")]
         public IList<string> AllowedRuntimeClassNames { get; set; }
 
         /// <summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// default MUST be allowed by the allowedRuntimeClassNames list. A value of nil
         /// does not mutate the Pod.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultRuntimeClassName")]
+        [JsonPropertyName("defaultRuntimeClassName")]
         public string DefaultRuntimeClassName { get; set; }
 
         /// <summary>

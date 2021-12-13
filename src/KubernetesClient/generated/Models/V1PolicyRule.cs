@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PolicyRule holds information that describes a policy rule, but does not contain
         /// information about who the rule applies to or which namespace the rule applies
@@ -31,8 +25,8 @@ namespace k8s.Models
         /// Initializes a new instance of the V1PolicyRule class.
         /// </summary>
         /// <param name="verbs">
-        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds and
-        /// AttributeRestrictions contained in this rule. &apos;*&apos; represents all verbs.
+        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this
+        /// rule. &apos;*&apos; represents all verbs.
         /// </param>
         /// <param name="apiGroups">
         /// APIGroups is the name of the APIGroup that contains the resources.  If multiple
@@ -75,7 +69,7 @@ namespace k8s.Models
         /// API groups are specified, any action requested against one of the enumerated
         /// resources in any API group will be allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroups")]
+        [JsonPropertyName("apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
@@ -86,28 +80,28 @@ namespace k8s.Models
         /// (such as &quot;pods&quot; or &quot;secrets&quot;) or non-resource URL paths (such as &quot;/api&quot;),  but
         /// not both.
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceURLs")]
+        [JsonPropertyName("nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }
 
         /// <summary>
         /// ResourceNames is an optional white list of names that the rule applies to.  An
         /// empty set means that everything is allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceNames")]
+        [JsonPropertyName("resourceNames")]
         public IList<string> ResourceNames { get; set; }
 
         /// <summary>
         /// Resources is a list of resources this rule applies to. &apos;*&apos; represents all
         /// resources.
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public IList<string> Resources { get; set; }
 
         /// <summary>
-        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds and
-        /// AttributeRestrictions contained in this rule. &apos;*&apos; represents all verbs.
+        /// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this
+        /// rule. &apos;*&apos; represents all verbs.
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>

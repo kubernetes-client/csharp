@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceFieldSelector represents container resources (cpu, memory) and their
         /// output format
@@ -54,19 +48,19 @@ namespace k8s.Models
         /// <summary>
         /// Container name: required for volumes, optional for env vars
         /// </summary>
-        [JsonProperty(PropertyName = "containerName")]
+        [JsonPropertyName("containerName")]
         public string ContainerName { get; set; }
 
         /// <summary>
         /// Specifies the output format of the exposed resources, defaults to &quot;1&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "divisor")]
+        [JsonPropertyName("divisor")]
         public ResourceQuantity Divisor { get; set; }
 
         /// <summary>
         /// Required: resource to select
         /// </summary>
-        [JsonProperty(PropertyName = "resource")]
+        [JsonPropertyName("resource")]
         public string Resource { get; set; }
 
         /// <summary>

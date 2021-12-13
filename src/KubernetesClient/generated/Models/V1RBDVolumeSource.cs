@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD
         /// volumes support ownership management and SELinux relabeling.
@@ -88,42 +82,42 @@ namespace k8s.Models
         /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#rbd
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// The rados image name. More info:
         /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "image")]
+        [JsonPropertyName("image")]
         public string Image { get; set; }
 
         /// <summary>
         /// Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More
         /// info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "keyring")]
+        [JsonPropertyName("keyring")]
         public string Keyring { get; set; }
 
         /// <summary>
         /// A collection of Ceph monitors. More info:
         /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "monitors")]
+        [JsonPropertyName("monitors")]
         public IList<string> Monitors { get; set; }
 
         /// <summary>
         /// The rados pool name. Default is rbd. More info:
         /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "pool")]
+        [JsonPropertyName("pool")]
         public string Pool { get; set; }
 
         /// <summary>
         /// ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to
         /// false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
@@ -131,14 +125,14 @@ namespace k8s.Models
         /// overrides keyring. Default is nil. More info:
         /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>
         /// The rados user name. Default is admin. More info:
         /// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
 
         /// <summary>

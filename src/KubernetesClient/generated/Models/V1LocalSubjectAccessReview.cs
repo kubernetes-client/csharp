@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LocalSubjectAccessReview checks whether or not a user or group can perform an
         /// action in a given namespace. Having a namespace scoped resource makes it much
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -85,14 +79,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard list metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -100,14 +94,14 @@ namespace k8s.Models
         /// be equal to the namespace you made the request against.  If empty, it is
         /// defaulted.
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1SubjectAccessReviewSpec Spec { get; set; }
 
         /// <summary>
         /// Status is filled in by the server and indicates whether the request is allowed
         /// or not
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1SubjectAccessReviewStatus Status { get; set; }
 
         /// <summary>
@@ -120,7 +114,7 @@ namespace k8s.Models
         {
             if (Spec == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");    
+                throw new ArgumentNullException("Spec");    
             }
             Metadata?.Validate();
             Spec?.Validate();

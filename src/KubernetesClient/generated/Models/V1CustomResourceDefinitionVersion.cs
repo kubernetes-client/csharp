@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceDefinitionVersion describes a version for CRD.
     /// </summary>
@@ -90,7 +84,7 @@ namespace k8s.Models
         /// for details. If no columns are specified, a single column displaying the age of
         /// the custom resource is used.
         /// </summary>
-        [JsonProperty(PropertyName = "additionalPrinterColumns")]
+        [JsonPropertyName("additionalPrinterColumns")]
         public IList<V1CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
 
         /// <summary>
@@ -98,7 +92,7 @@ namespace k8s.Models
         /// set to true, API requests to this version receive a warning header in the server
         /// response. Defaults to false.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecated")]
+        [JsonPropertyName("deprecated")]
         public bool? Deprecated { get; set; }
 
         /// <summary>
@@ -107,41 +101,41 @@ namespace k8s.Models
         /// version is deprecated and recommends use of the newest served version of equal
         /// or greater stability, if one exists.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecationWarning")]
+        [JsonPropertyName("deprecationWarning")]
         public string DeprecationWarning { get; set; }
 
         /// <summary>
         /// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are
         /// served under this version at `/apis/&lt;group&gt;/&lt;version&gt;/...` if `served` is true.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// schema describes the schema used for validation, pruning, and defaulting of this
         /// version of the custom resource.
         /// </summary>
-        [JsonProperty(PropertyName = "schema")]
+        [JsonPropertyName("schema")]
         public V1CustomResourceValidation Schema { get; set; }
 
         /// <summary>
         /// served is a flag enabling/disabling this version from being served via REST APIs
         /// </summary>
-        [JsonProperty(PropertyName = "served")]
+        [JsonPropertyName("served")]
         public bool Served { get; set; }
 
         /// <summary>
         /// storage indicates this version should be used when persisting custom resources
         /// to storage. There must be exactly one version with storage=true.
         /// </summary>
-        [JsonProperty(PropertyName = "storage")]
+        [JsonPropertyName("storage")]
         public bool Storage { get; set; }
 
         /// <summary>
         /// subresources specify what subresources this version of the defined custom
         /// resource have.
         /// </summary>
-        [JsonProperty(PropertyName = "subresources")]
+        [JsonPropertyName("subresources")]
         public V1CustomResourceSubresources Subresources { get; set; }
 
         /// <summary>

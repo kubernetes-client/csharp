@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http.Headers;
 using k8s.Models;
 

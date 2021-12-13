@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes
         /// do not support ownership management or SELinux relabeling.
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// EndpointsName is the endpoint name that details Glusterfs topology. More info:
         /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
-        [JsonProperty(PropertyName = "endpoints")]
+        [JsonPropertyName("endpoints")]
         public string Endpoints { get; set; }
 
         /// <summary>
@@ -75,14 +69,14 @@ namespace k8s.Models
         /// bound PVC. More info:
         /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
-        [JsonProperty(PropertyName = "endpointsNamespace")]
+        [JsonPropertyName("endpointsNamespace")]
         public string EndpointsNamespace { get; set; }
 
         /// <summary>
         /// Path is the Glusterfs volume path. More info:
         /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -90,7 +84,7 @@ namespace k8s.Models
         /// permissions. Defaults to false. More info:
         /// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>

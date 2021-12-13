@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IPBlock describes a particular CIDR (Ex. &quot;192.168.1.1/24&quot;,&quot;2001:db9::/64&quot;) that
         /// is allowed to the pods matched by a NetworkPolicySpec&apos;s podSelector. The except
@@ -55,7 +49,7 @@ namespace k8s.Models
         /// CIDR is a string representing the IP Block Valid examples are &quot;192.168.1.1/24&quot;
         /// or &quot;2001:db9::/64&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "cidr")]
+        [JsonPropertyName("cidr")]
         public string Cidr { get; set; }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// examples are &quot;192.168.1.1/24&quot; or &quot;2001:db9::/64&quot; Except values will be rejected
         /// if they are outside the CIDR range
         /// </summary>
-        [JsonProperty(PropertyName = "except")]
+        [JsonPropertyName("except")]
         public IList<string> Except { get; set; }
 
         /// <summary>

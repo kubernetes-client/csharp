@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceAttributes includes the authorization attributes available for resource
         /// requests to the Authorizer interface
@@ -76,14 +70,14 @@ namespace k8s.Models
         /// <summary>
         /// Group is the API Group of the Resource.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public string Group { get; set; }
 
         /// <summary>
         /// Name is the name of the resource being requested for a &quot;get&quot; or deleted for a
         /// &quot;delete&quot;. &quot;&quot; (empty) means all.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -93,32 +87,32 @@ namespace k8s.Models
         /// &quot;&quot; (empty) means &quot;all&quot; for namespace scoped resources from a SubjectAccessReview
         /// or SelfSubjectAccessReview
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// Resource is one of the existing resource types.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "resource")]
+        [JsonPropertyName("resource")]
         public string Resource { get; set; }
 
         /// <summary>
         /// Subresource is one of the existing resource types.  &quot;&quot; means none.
         /// </summary>
-        [JsonProperty(PropertyName = "subresource")]
+        [JsonPropertyName("subresource")]
         public string Subresource { get; set; }
 
         /// <summary>
         /// Verb is a kubernetes resource API verb, like: get, list, watch, create, update,
         /// delete, proxy.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "verb")]
+        [JsonPropertyName("verb")]
         public string Verb { get; set; }
 
         /// <summary>
         /// Version is the API Version of the Resource.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
         /// <summary>

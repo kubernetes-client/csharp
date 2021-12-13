@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Quantity is a fixed-point representation of a number. It provides convenient
         /// marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64()
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

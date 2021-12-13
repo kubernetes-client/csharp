@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodDNSConfig defines the DNS parameters of a pod in addition to those generated
         /// from DNSPolicy.
@@ -60,7 +54,7 @@ namespace k8s.Models
         /// A list of DNS name server IP addresses. This will be appended to the base
         /// nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
         /// </summary>
-        [JsonProperty(PropertyName = "nameservers")]
+        [JsonPropertyName("nameservers")]
         public IList<string> Nameservers { get; set; }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// generated from DNSPolicy. Duplicated entries will be removed. Resolution options
         /// given in Options will override those that appear in the base DNSPolicy.
         /// </summary>
-        [JsonProperty(PropertyName = "options")]
+        [JsonPropertyName("options")]
         public IList<V1PodDNSConfigOption> Options { get; set; }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// base search paths generated from DNSPolicy. Duplicated search paths will be
         /// removed.
         /// </summary>
-        [JsonProperty(PropertyName = "searches")]
+        [JsonPropertyName("searches")]
         public IList<string> Searches { get; set; }
 
         /// <summary>

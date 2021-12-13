@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Adapts a secret into a projected volume.
         /// 
@@ -68,20 +62,20 @@ namespace k8s.Models
         /// present in the Secret, the volume setup will error unless it is marked optional.
         /// Paths must be relative and may not contain the &apos;..&apos; path or start with &apos;..&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IList<V1KeyToPath> Items { get; set; }
 
         /// <summary>
         /// Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Specify whether the Secret or its key must be defined
         /// </summary>
-        [JsonProperty(PropertyName = "optional")]
+        [JsonPropertyName("optional")]
         public bool? Optional { get; set; }
 
         /// <summary>

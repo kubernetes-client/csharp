@@ -1,32 +1,15 @@
-using System;
-using Newtonsoft.Json;
-
 namespace k8s.Models
 {
-    internal class QuantityConverter : JsonConverter
+    internal class QuantityConverter : JsonConverter<ResourceQuantity>
     {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override ResourceQuantity Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var q = (ResourceQuantity)value;
-
-            if (q != null)
-            {
-                serializer.Serialize(writer, q.ToString());
-                return;
-            }
-
-            serializer.Serialize(writer, value);
+            return new ResourceQuantity(reader.GetString());
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
+        public override void Write(Utf8JsonWriter writer, ResourceQuantity value, JsonSerializerOptions options)
         {
-            return new ResourceQuantity(serializer.Deserialize<string>(reader));
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(string);
+            writer.WriteStringValue(value?.ToString());
         }
     }
 }

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DaemonSetStatus represents the current status of a daemon set.
     /// </summary>
@@ -44,8 +38,8 @@ namespace k8s.Models
         /// https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
         /// </param>
         /// <param name="numberReady">
-        /// The number of nodes that should be running the daemon pod and have one or more
-        /// of the daemon pod running and ready.
+        /// numberReady is the number of nodes that should be running the daemon pod and
+        /// have one or more of the daemon pod running with a Ready Condition.
         /// </param>
         /// <param name="collisionCount">
         /// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this
@@ -95,13 +89,13 @@ namespace k8s.Models
         /// field as a collision avoidance mechanism when it needs to create the name for
         /// the newest ControllerRevision.
         /// </summary>
-        [JsonProperty(PropertyName = "collisionCount")]
+        [JsonPropertyName("collisionCount")]
         public int? CollisionCount { get; set; }
 
         /// <summary>
         /// Represents the latest available observations of a DaemonSet&apos;s current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1DaemonSetCondition> Conditions { get; set; }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace k8s.Models
         /// run the daemon pod. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
         /// </summary>
-        [JsonProperty(PropertyName = "currentNumberScheduled")]
+        [JsonPropertyName("currentNumberScheduled")]
         public int CurrentNumberScheduled { get; set; }
 
         /// <summary>
@@ -117,7 +111,7 @@ namespace k8s.Models
         /// correctly running the daemon pod). More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
         /// </summary>
-        [JsonProperty(PropertyName = "desiredNumberScheduled")]
+        [JsonPropertyName("desiredNumberScheduled")]
         public int DesiredNumberScheduled { get; set; }
 
         /// <summary>
@@ -125,7 +119,7 @@ namespace k8s.Models
         /// of the daemon pod running and available (ready for at least
         /// spec.minReadySeconds)
         /// </summary>
-        [JsonProperty(PropertyName = "numberAvailable")]
+        [JsonPropertyName("numberAvailable")]
         public int? NumberAvailable { get; set; }
 
         /// <summary>
@@ -133,33 +127,33 @@ namespace k8s.Models
         /// the daemon pod. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
         /// </summary>
-        [JsonProperty(PropertyName = "numberMisscheduled")]
+        [JsonPropertyName("numberMisscheduled")]
         public int NumberMisscheduled { get; set; }
 
         /// <summary>
-        /// The number of nodes that should be running the daemon pod and have one or more
-        /// of the daemon pod running and ready.
+        /// numberReady is the number of nodes that should be running the daemon pod and
+        /// have one or more of the daemon pod running with a Ready Condition.
         /// </summary>
-        [JsonProperty(PropertyName = "numberReady")]
+        [JsonPropertyName("numberReady")]
         public int NumberReady { get; set; }
 
         /// <summary>
         /// The number of nodes that should be running the daemon pod and have none of the
         /// daemon pod running and available (ready for at least spec.minReadySeconds)
         /// </summary>
-        [JsonProperty(PropertyName = "numberUnavailable")]
+        [JsonPropertyName("numberUnavailable")]
         public int? NumberUnavailable { get; set; }
 
         /// <summary>
         /// The most recent generation observed by the daemon set controller.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
         /// The total number of nodes that are running updated daemon pod
         /// </summary>
-        [JsonProperty(PropertyName = "updatedNumberScheduled")]
+        [JsonPropertyName("updatedNumberScheduled")]
         public int? UpdatedNumberScheduled { get; set; }
 
         /// <summary>

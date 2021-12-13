@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CSIDriverSpec is the specification of a CSIDriver.
     /// </summary>
@@ -44,8 +38,7 @@ namespace k8s.Models
         /// <param name="fsGroupPolicy">
         /// Defines if the underlying volume supports changing ownership and permission of
         /// the volume before being mounted. Refer to the specific FSGroupPolicy values for
-        /// additional details. This field is beta, and is only honored by servers that
-        /// enable the CSIVolumeFSGroupPolicy feature gate.
+        /// additional details.
         /// 
         /// This field is immutable.
         /// 
@@ -99,7 +92,7 @@ namespace k8s.Models
         /// Alternatively, the driver can be deployed with the field unset or false and it
         /// can be flipped later when storage capacity information has been published.
         /// 
-        /// This field is immutable.
+        /// This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.
         /// 
         /// This is a beta field and only available when the CSIStorageCapacity feature is
         /// enabled. The default is false.
@@ -166,14 +159,13 @@ namespace k8s.Models
         /// 
         /// This field is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "attachRequired")]
+        [JsonPropertyName("attachRequired")]
         public bool? AttachRequired { get; set; }
 
         /// <summary>
         /// Defines if the underlying volume supports changing ownership and permission of
         /// the volume before being mounted. Refer to the specific FSGroupPolicy values for
-        /// additional details. This field is beta, and is only honored by servers that
-        /// enable the CSIVolumeFSGroupPolicy feature gate.
+        /// additional details.
         /// 
         /// This field is immutable.
         /// 
@@ -182,7 +174,7 @@ namespace k8s.Models
         /// default policy the defined fsGroup will only be applied if a fstype is defined
         /// and the volume&apos;s access mode contains ReadWriteOnce.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroupPolicy")]
+        [JsonPropertyName("fsGroupPolicy")]
         public string FsGroupPolicy { get; set; }
 
         /// <summary>
@@ -209,7 +201,7 @@ namespace k8s.Models
         /// 
         /// This field is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "podInfoOnMount")]
+        [JsonPropertyName("podInfoOnMount")]
         public bool? PodInfoOnMount { get; set; }
 
         /// <summary>
@@ -221,7 +213,7 @@ namespace k8s.Models
         /// NodePublishVolume should only update the contents of the volume. New mount
         /// points will not be seen by a running container.
         /// </summary>
-        [JsonProperty(PropertyName = "requiresRepublish")]
+        [JsonPropertyName("requiresRepublish")]
         public bool? RequiresRepublish { get; set; }
 
         /// <summary>
@@ -236,12 +228,12 @@ namespace k8s.Models
         /// Alternatively, the driver can be deployed with the field unset or false and it
         /// can be flipped later when storage capacity information has been published.
         /// 
-        /// This field is immutable.
+        /// This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.
         /// 
         /// This is a beta field and only available when the CSIStorageCapacity feature is
         /// enabled. The default is false.
         /// </summary>
-        [JsonProperty(PropertyName = "storageCapacity")]
+        [JsonPropertyName("storageCapacity")]
         public bool? StorageCapacity { get; set; }
 
         /// <summary>
@@ -261,7 +253,7 @@ namespace k8s.Models
         /// empty string. To receive a new token after expiry, RequiresRepublish can be used
         /// to trigger NodePublishVolume periodically.
         /// </summary>
-        [JsonProperty(PropertyName = "tokenRequests")]
+        [JsonPropertyName("tokenRequests")]
         public IList<Storagev1TokenRequest> TokenRequests { get; set; }
 
         /// <summary>
@@ -279,7 +271,7 @@ namespace k8s.Models
         /// 
         /// This field is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeLifecycleModes")]
+        [JsonPropertyName("volumeLifecycleModes")]
         public IList<string> VolumeLifecycleModes { get; set; }
 
         /// <summary>

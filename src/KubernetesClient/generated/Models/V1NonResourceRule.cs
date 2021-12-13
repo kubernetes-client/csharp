@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NonResourceRule holds information that describes a rule for the non-resource
     /// </summary>
@@ -52,14 +46,14 @@ namespace k8s.Models
         /// NonResourceURLs is a set of partial urls that a user should have access to.  *s
         /// are allowed, but only as the full, final step in the path.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceURLs")]
+        [JsonPropertyName("nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }
 
         /// <summary>
         /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put,
         /// delete, patch, head, options.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>

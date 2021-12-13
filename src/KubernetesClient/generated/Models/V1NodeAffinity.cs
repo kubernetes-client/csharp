@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Node affinity is a group of node affinity scheduling rules.
     /// </summary>
@@ -67,7 +61,7 @@ namespace k8s.Models
         /// &quot;weight&quot; to the sum if the node matches the corresponding matchExpressions; the
         /// node(s) with the highest sum are the most preferred.
         /// </summary>
-        [JsonProperty(PropertyName = "preferredDuringSchedulingIgnoredDuringExecution")]
+        [JsonPropertyName("preferredDuringSchedulingIgnoredDuringExecution")]
         public IList<V1PreferredSchedulingTerm> PreferredDuringSchedulingIgnoredDuringExecution { get; set; }
 
         /// <summary>
@@ -77,7 +71,7 @@ namespace k8s.Models
         /// due to an update), the system may or may not try to eventually evict the pod
         /// from its node.
         /// </summary>
-        [JsonProperty(PropertyName = "requiredDuringSchedulingIgnoredDuringExecution")]
+        [JsonPropertyName("requiredDuringSchedulingIgnoredDuringExecution")]
         public V1NodeSelector RequiredDuringSchedulingIgnoredDuringExecution { get; set; }
 
         /// <summary>

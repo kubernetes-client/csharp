@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressStatus describe the current state of the Ingress.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// LoadBalancer contains the current status of the load-balancer.
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancer")]
+        [JsonPropertyName("loadBalancer")]
         public V1LoadBalancerStatus LoadBalancer { get; set; }
 
         /// <summary>

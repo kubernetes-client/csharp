@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ScaleIOVolumeSource represents a persistent ScaleIO volume
     /// </summary>
@@ -87,65 +81,65 @@ namespace k8s.Models
         /// Filesystem type to mount. Must be a filesystem type supported by the host
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Default is &quot;xfs&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// The host address of the ScaleIO API Gateway.
         /// </summary>
-        [JsonProperty(PropertyName = "gateway")]
+        [JsonPropertyName("gateway")]
         public string Gateway { get; set; }
 
         /// <summary>
         /// The name of the ScaleIO Protection Domain for the configured storage.
         /// </summary>
-        [JsonProperty(PropertyName = "protectionDomain")]
+        [JsonPropertyName("protectionDomain")]
         public string ProtectionDomain { get; set; }
 
         /// <summary>
         /// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// SecretRef references to the secret for ScaleIO user and other sensitive
         /// information. If this is not provided, Login operation will fail.
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1LocalObjectReference SecretRef { get; set; }
 
         /// <summary>
         /// Flag to enable/disable SSL communication with Gateway, default false
         /// </summary>
-        [JsonProperty(PropertyName = "sslEnabled")]
+        [JsonPropertyName("sslEnabled")]
         public bool? SslEnabled { get; set; }
 
         /// <summary>
         /// Indicates whether the storage for a volume should be ThickProvisioned or
         /// ThinProvisioned. Default is ThinProvisioned.
         /// </summary>
-        [JsonProperty(PropertyName = "storageMode")]
+        [JsonPropertyName("storageMode")]
         public string StorageMode { get; set; }
 
         /// <summary>
         /// The ScaleIO Storage Pool associated with the protection domain.
         /// </summary>
-        [JsonProperty(PropertyName = "storagePool")]
+        [JsonPropertyName("storagePool")]
         public string StoragePool { get; set; }
 
         /// <summary>
         /// The name of the storage system as configured in ScaleIO.
         /// </summary>
-        [JsonProperty(PropertyName = "system")]
+        [JsonPropertyName("system")]
         public string System { get; set; }
 
         /// <summary>
         /// The name of a volume already created in the ScaleIO system that is associated
         /// with this volume source.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeName")]
+        [JsonPropertyName("volumeName")]
         public string VolumeName { get; set; }
 
         /// <summary>
@@ -158,7 +152,7 @@ namespace k8s.Models
         {
             if (SecretRef == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "SecretRef");    
+                throw new ArgumentNullException("SecretRef");    
             }
             SecretRef?.Validate();
         }

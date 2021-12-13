@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// JobStatus represents the current state of a Job.
     /// </summary>
@@ -29,7 +23,7 @@ namespace k8s.Models
         /// Initializes a new instance of the V1JobStatus class.
         /// </summary>
         /// <param name="active">
-        /// The number of actively running pods.
+        /// The number of pending and running pods.
         /// </param>
         /// <param name="completedIndexes">
         /// CompletedIndexes holds the completed indexes when .spec.completionMode =
@@ -57,6 +51,12 @@ namespace k8s.Models
         /// <param name="failed">
         /// The number of pods which reached phase Failed.
         /// </param>
+        /// <param name="ready">
+        /// The number of pods which have a Ready condition.
+        /// 
+        /// This field is alpha-level. The job controller populates the field when the
+        /// feature gate JobReadyPods is enabled (disabled by default).
+        /// </param>
         /// <param name="startTime">
         /// Represents time when the job controller started processing a job. When a Job is
         /// created in the suspended state, this field is not set until the first time it is
@@ -77,17 +77,19 @@ namespace k8s.Models
         /// corresponding
         /// counter.
         /// 
-        /// This field is alpha-level. The job controller only makes use of this field when
-        /// the feature gate PodTrackingWithFinalizers is enabled. Old jobs might not be
-        /// tracked using this field, in which case the field remains null.
+        /// This field is beta-level. The job controller only makes use of this field when
+        /// the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old
+        /// jobs might not be tracked using this field, in which case the field remains
+        /// null.
         /// </param>
-        public V1JobStatus(int? active = null, string completedIndexes = null, System.DateTime? completionTime = null, IList<V1JobCondition> conditions = null, int? failed = null, System.DateTime? startTime = null, int? succeeded = null, V1UncountedTerminatedPods uncountedTerminatedPods = null)
+        public V1JobStatus(int? active = null, string completedIndexes = null, System.DateTime? completionTime = null, IList<V1JobCondition> conditions = null, int? failed = null, int? ready = null, System.DateTime? startTime = null, int? succeeded = null, V1UncountedTerminatedPods uncountedTerminatedPods = null)
         {
             Active = active;
             CompletedIndexes = completedIndexes;
             CompletionTime = completionTime;
             Conditions = conditions;
             Failed = failed;
+            Ready = ready;
             StartTime = startTime;
             Succeeded = succeeded;
             UncountedTerminatedPods = uncountedTerminatedPods;
@@ -100,9 +102,9 @@ namespace k8s.Models
         partial void CustomInit();
 
         /// <summary>
-        /// The number of actively running pods.
+        /// The number of pending and running pods.
         /// </summary>
-        [JsonProperty(PropertyName = "active")]
+        [JsonPropertyName("active")]
         public int? Active { get; set; }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace k8s.Models
         /// of the series, separated by a hyphen. For example, if the completed indexes are
         /// 1, 3, 4, 5 and 7, they are represented as &quot;1,3-5,7&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "completedIndexes")]
+        [JsonPropertyName("completedIndexes")]
         public string CompletedIndexes { get; set; }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace k8s.Models
         /// form and is in UTC. The completion time is only set when the job finishes
         /// successfully.
         /// </summary>
-        [JsonProperty(PropertyName = "completionTime")]
+        [JsonPropertyName("completionTime")]
         public System.DateTime? CompletionTime { get; set; }
 
         /// <summary>
@@ -134,14 +136,23 @@ namespace k8s.Models
         /// true. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1JobCondition> Conditions { get; set; }
 
         /// <summary>
         /// The number of pods which reached phase Failed.
         /// </summary>
-        [JsonProperty(PropertyName = "failed")]
+        [JsonPropertyName("failed")]
         public int? Failed { get; set; }
+
+        /// <summary>
+        /// The number of pods which have a Ready condition.
+        /// 
+        /// This field is alpha-level. The job controller populates the field when the
+        /// feature gate JobReadyPods is enabled (disabled by default).
+        /// </summary>
+        [JsonPropertyName("ready")]
+        public int? Ready { get; set; }
 
         /// <summary>
         /// Represents time when the job controller started processing a job. When a Job is
@@ -149,13 +160,13 @@ namespace k8s.Models
         /// resumed. This field is reset every time a Job is resumed from suspension. It is
         /// represented in RFC3339 form and is in UTC.
         /// </summary>
-        [JsonProperty(PropertyName = "startTime")]
+        [JsonPropertyName("startTime")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
         /// The number of pods which reached phase Succeeded.
         /// </summary>
-        [JsonProperty(PropertyName = "succeeded")]
+        [JsonPropertyName("succeeded")]
         public int? Succeeded { get; set; }
 
         /// <summary>
@@ -169,11 +180,12 @@ namespace k8s.Models
         /// corresponding
         /// counter.
         /// 
-        /// This field is alpha-level. The job controller only makes use of this field when
-        /// the feature gate PodTrackingWithFinalizers is enabled. Old jobs might not be
-        /// tracked using this field, in which case the field remains null.
+        /// This field is beta-level. The job controller only makes use of this field when
+        /// the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old
+        /// jobs might not be tracked using this field, in which case the field remains
+        /// null.
         /// </summary>
-        [JsonProperty(PropertyName = "uncountedTerminatedPods")]
+        [JsonPropertyName("uncountedTerminatedPods")]
         public V1UncountedTerminatedPods UncountedTerminatedPods { get; set; }
 
         /// <summary>

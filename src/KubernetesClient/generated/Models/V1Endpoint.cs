@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Endpoint represents a single logical &quot;backend&quot; implementing a service.
     /// </summary>
@@ -89,13 +83,13 @@ namespace k8s.Models
         /// different types of addresses in the context of their own capabilities. This must
         /// contain at least one address but no more than 100.
         /// </summary>
-        [JsonProperty(PropertyName = "addresses")]
+        [JsonPropertyName("addresses")]
         public IList<string> Addresses { get; set; }
 
         /// <summary>
         /// conditions contains information about the current status of the endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public V1EndpointConditions Conditions { get; set; }
 
         /// <summary>
@@ -106,13 +100,13 @@ namespace k8s.Models
         /// ignored. Topology information can be found in the zone and nodeName fields
         /// instead.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecatedTopology")]
+        [JsonPropertyName("deprecatedTopology")]
         public IDictionary<string, string> DeprecatedTopology { get; set; }
 
         /// <summary>
         /// hints contains information associated with how an endpoint should be consumed.
         /// </summary>
-        [JsonProperty(PropertyName = "hints")]
+        [JsonPropertyName("hints")]
         public V1EndpointHints Hints { get; set; }
 
         /// <summary>
@@ -121,7 +115,7 @@ namespace k8s.Models
         /// which use the same hostname should be considered fungible (e.g. multiple A
         /// values in DNS). Must be lowercase and pass DNS Label (RFC 1123) validation.
         /// </summary>
-        [JsonProperty(PropertyName = "hostname")]
+        [JsonPropertyName("hostname")]
         public string Hostname { get; set; }
 
         /// <summary>
@@ -129,19 +123,19 @@ namespace k8s.Models
         /// to determine endpoints local to a Node. This field can be enabled with the
         /// EndpointSliceNodeName feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeName")]
+        [JsonPropertyName("nodeName")]
         public string NodeName { get; set; }
 
         /// <summary>
         /// targetRef is a reference to a Kubernetes object that represents this endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "targetRef")]
+        [JsonPropertyName("targetRef")]
         public V1ObjectReference TargetRef { get; set; }
 
         /// <summary>
         /// zone is the name of the Zone this endpoint exists in.
         /// </summary>
-        [JsonProperty(PropertyName = "zone")]
+        [JsonPropertyName("zone")]
         public string Zone { get; set; }
 
         /// <summary>

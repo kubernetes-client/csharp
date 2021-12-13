@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Secret holds secret data of a certain type. The total bytes of the values in the
         /// Data field must be less than MaxSecretSize bytes.
@@ -63,7 +57,8 @@ namespace k8s.Models
         /// stringData field is never output when reading from the API.
         /// </param>
         /// <param name="type">
-        /// Used to facilitate programmatic handling of secret data.
+        /// Used to facilitate programmatic handling of secret data. More info:
+        /// https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
         /// </param>
         public V1Secret(string apiVersion = null, IDictionary<string, byte[]> data = null, bool? immutable = null, string kind = null, V1ObjectMeta metadata = null, IDictionary<string, string> stringData = null, string type = null)
         {
@@ -88,7 +83,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -97,7 +92,7 @@ namespace k8s.Models
         /// string, representing the arbitrary (possibly non-string) data value here.
         /// Described in https://tools.ietf.org/html/rfc4648#section-4
         /// </summary>
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public IDictionary<string, byte[]> Data { get; set; }
 
         /// <summary>
@@ -105,7 +100,7 @@ namespace k8s.Models
         /// updated (only object metadata can be modified). If not set to true, the field
         /// can be modified at any time. Defaulted to nil.
         /// </summary>
-        [JsonProperty(PropertyName = "immutable")]
+        [JsonPropertyName("immutable")]
         public bool? Immutable { get; set; }
 
         /// <summary>
@@ -114,14 +109,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -130,13 +125,14 @@ namespace k8s.Models
         /// merged into the data field on write, overwriting any existing values. The
         /// stringData field is never output when reading from the API.
         /// </summary>
-        [JsonProperty(PropertyName = "stringData")]
+        [JsonPropertyName("stringData")]
         public IDictionary<string, string> StringData { get; set; }
 
         /// <summary>
-        /// Used to facilitate programmatic handling of secret data.
+        /// Used to facilitate programmatic handling of secret data. More info:
+        /// https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

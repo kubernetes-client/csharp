@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LimitedPriorityLevelConfiguration specifies how to handle requests that are
         /// subject to limits. It addresses two issues:
@@ -75,14 +69,14 @@ namespace k8s.Models
         /// bigger numbers of ACS mean more reserved concurrent requests (at the expense of
         /// every other PL). This field has a default value of 30.
         /// </summary>
-        [JsonProperty(PropertyName = "assuredConcurrencyShares")]
+        [JsonPropertyName("assuredConcurrencyShares")]
         public int? AssuredConcurrencyShares { get; set; }
 
         /// <summary>
         /// `limitResponse` indicates what to do with requests that can not be executed
         /// right now
         /// </summary>
-        [JsonProperty(PropertyName = "limitResponse")]
+        [JsonPropertyName("limitResponse")]
         public V1beta1LimitResponse LimitResponse { get; set; }
 
         /// <summary>

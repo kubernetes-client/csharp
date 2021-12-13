@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TokenReviewSpec is a description of the token authentication request.
     /// </summary>
@@ -57,13 +51,13 @@ namespace k8s.Models
         /// audiences are provided, the audience will default to the audience of the
         /// Kubernetes apiserver.
         /// </summary>
-        [JsonProperty(PropertyName = "audiences")]
+        [JsonPropertyName("audiences")]
         public IList<string> Audiences { get; set; }
 
         /// <summary>
         /// Token is the opaque bearer token.
         /// </summary>
-        [JsonProperty(PropertyName = "token")]
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
         /// <summary>

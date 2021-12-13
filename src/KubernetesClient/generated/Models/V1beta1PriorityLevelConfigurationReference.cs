@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PriorityLevelConfigurationReference contains information that points to the
         /// &quot;request-priority&quot; being used.
@@ -48,7 +42,7 @@ namespace k8s.Models
         /// `name` is the name of the priority level configuration being referenced
         /// Required.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

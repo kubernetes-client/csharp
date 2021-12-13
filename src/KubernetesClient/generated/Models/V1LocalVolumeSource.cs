@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Local represents directly-attached storage with node affinity (Beta feature)
     /// </summary>
@@ -35,7 +29,7 @@ namespace k8s.Models
         /// <param name="fsType">
         /// Filesystem type to mount. It applies only when the Path is a block device. Must
         /// be a filesystem type supported by the host operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;,
-        /// &quot;ntfs&quot;. The default value is to auto-select a fileystem if unspecified.
+        /// &quot;ntfs&quot;. The default value is to auto-select a filesystem if unspecified.
         /// </param>
         public V1LocalVolumeSource(string path, string fsType = null)
         {
@@ -52,16 +46,16 @@ namespace k8s.Models
         /// <summary>
         /// Filesystem type to mount. It applies only when the Path is a block device. Must
         /// be a filesystem type supported by the host operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;,
-        /// &quot;ntfs&quot;. The default value is to auto-select a fileystem if unspecified.
+        /// &quot;ntfs&quot;. The default value is to auto-select a filesystem if unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// The full path to the volume on the node. It can be either a directory or block
         /// device (disk, partition, ...).
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>

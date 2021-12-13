@@ -1,10 +1,6 @@
 using k8s.Models;
 using Microsoft.Rest;
-using Microsoft.Rest.Serialization;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -41,7 +37,7 @@ namespace k8s
 
                     // StatusError is defined here:
                     // https://github.com/kubernetes/kubernetes/blob/068e1642f63a1a8c48c16c18510e8854a4f4e7c5/staging/src/k8s.io/apimachinery/pkg/api/errors/errors.go#L37
-                    var returnMessage = SafeJsonConvert.DeserializeObject<V1Status>(errors);
+                    var returnMessage = KubernetesJson.Deserialize<V1Status>(errors);
                     return GetExitCodeOrThrow(returnMessage);
                 }
             }

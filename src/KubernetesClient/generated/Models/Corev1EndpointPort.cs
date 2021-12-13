@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointPort is a tuple that describes a single port.
     /// </summary>
@@ -43,6 +37,11 @@ namespace k8s.Models
         /// </param>
         /// <param name="protocol">
         /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </param>
         public Corev1EndpointPort(int port, string appProtocol = null, string name = null, string protocol = null)
         {
@@ -64,26 +63,31 @@ namespace k8s.Models
         /// per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard
         /// protocols should use prefixed names such as mycompany.com/my-custom-protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "appProtocol")]
+        [JsonPropertyName("appProtocol")]
         public string AppProtocol { get; set; }
 
         /// <summary>
         /// The name of this port.  This must match the &apos;name&apos; field in the corresponding
         /// ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The port number of the endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int Port { get; set; }
 
         /// <summary>
         /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;SCTP&quot;` is the SCTP protocol.
+        /// - `&quot;TCP&quot;` is the TCP protocol.
+        /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>

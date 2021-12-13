@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CertificateSigningRequestSpec contains the certificate request.
     /// </summary>
@@ -169,7 +163,7 @@ namespace k8s.Models
         /// As of v1.22, this field is beta and is controlled via the CSRDuration feature
         /// gate.
         /// </summary>
-        [JsonProperty(PropertyName = "expirationSeconds")]
+        [JsonPropertyName("expirationSeconds")]
         public int? ExpirationSeconds { get; set; }
 
         /// <summary>
@@ -177,7 +171,7 @@ namespace k8s.Models
         /// CertificateSigningRequest. Populated by the API server on creation and
         /// immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "extra")]
+        [JsonPropertyName("extra")]
         public IDictionary<string, IList<string>> Extra { get; set; }
 
         /// <summary>
@@ -185,7 +179,7 @@ namespace k8s.Models
         /// CertificateSigningRequest. Populated by the API server on creation and
         /// immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "groups")]
+        [JsonPropertyName("groups")]
         public IList<string> Groups { get; set; }
 
         /// <summary>
@@ -193,7 +187,7 @@ namespace k8s.Models
         /// REQUEST&quot; PEM block. When serialized as JSON or YAML, the data is additionally
         /// base64-encoded.
         /// </summary>
-        [JsonProperty(PropertyName = "request")]
+        [JsonPropertyName("request")]
         public byte[] Request { get; set; }
 
         /// <summary>
@@ -231,14 +225,14 @@ namespace k8s.Models
         /// configurable by the admin.
         /// 6. Whether or not requests for CA certificates are allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "signerName")]
+        [JsonPropertyName("signerName")]
         public string SignerName { get; set; }
 
         /// <summary>
         /// uid contains the uid of the user that created the CertificateSigningRequest.
         /// Populated by the API server on creation and immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>
@@ -259,7 +253,7 @@ namespace k8s.Models
         /// &quot;ipsec end system&quot;, &quot;ipsec tunnel&quot;, &quot;ipsec user&quot;,
         /// &quot;timestamping&quot;, &quot;ocsp signing&quot;, &quot;microsoft sgc&quot;, &quot;netscape sgc&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "usages")]
+        [JsonPropertyName("usages")]
         public IList<string> Usages { get; set; }
 
         /// <summary>
@@ -267,7 +261,7 @@ namespace k8s.Models
         /// CertificateSigningRequest. Populated by the API server on creation and
         /// immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "username")]
+        [JsonPropertyName("username")]
         public string Username { get; set; }
 
         /// <summary>

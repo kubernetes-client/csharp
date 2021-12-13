@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CertificateSigningRequestStatus contains conditions used to indicate
         /// approved/denied/failed status of the request, and the issued certificate.
@@ -115,14 +109,14 @@ namespace k8s.Models
         /// -----END CERTIFICATE-----
         /// )
         /// </summary>
-        [JsonProperty(PropertyName = "certificate")]
+        [JsonPropertyName("certificate")]
         public byte[] Certificate { get; set; }
 
         /// <summary>
         /// conditions applied to the request. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;,
         /// and &quot;Failed&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1CertificateSigningRequestCondition> Conditions { get; set; }
 
         /// <summary>

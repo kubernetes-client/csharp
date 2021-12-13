@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EnvVar represents an environment variable present in a Container.
     /// </summary>
@@ -60,7 +54,7 @@ namespace k8s.Models
         /// <summary>
         /// Name of the environment variable. Must be a C_IDENTIFIER.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -72,14 +66,14 @@ namespace k8s.Models
         /// &quot;$(VAR_NAME)&quot;. Escaped references will never be expanded, regardless of whether
         /// the variable exists or not. Defaults to &quot;&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>
         /// Source for the environment variable&apos;s value. Cannot be used if value is not
         /// empty.
         /// </summary>
-        [JsonProperty(PropertyName = "valueFrom")]
+        [JsonPropertyName("valueFrom")]
         public V1EnvVarSource ValueFrom { get; set; }
 
         /// <summary>

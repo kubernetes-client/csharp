@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodsMetricStatus indicates the current value of a metric describing each pod in
         /// the current scale target (for example, transactions-processed-per-second).
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// current contains the current value for the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "current")]
+        [JsonPropertyName("current")]
         public V2beta2MetricValueStatus Current { get; set; }
 
         /// <summary>
         /// metric identifies the target metric by name and selector
         /// </summary>
-        [JsonProperty(PropertyName = "metric")]
+        [JsonPropertyName("metric")]
         public V2beta2MetricIdentifier Metric { get; set; }
 
         /// <summary>
@@ -69,11 +63,11 @@ namespace k8s.Models
         {
             if (Current == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Current");    
+                throw new ArgumentNullException("Current");    
             }
             if (Metric == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Metric");    
+                throw new ArgumentNullException("Metric");    
             }
             Current?.Validate();
             Metric?.Validate();

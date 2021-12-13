@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Subject contains a reference to the object or user identities a role binding
         /// applies to.  This can either hold a direct API object reference, or a value for
@@ -67,7 +61,7 @@ namespace k8s.Models
         /// ServiceAccount subjects. Defaults to &quot;rbac.authorization.k8s.io&quot; for User and
         /// Group subjects.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroup")]
+        [JsonPropertyName("apiGroup")]
         public string ApiGroup { get; set; }
 
         /// <summary>
@@ -75,13 +69,13 @@ namespace k8s.Models
         /// &quot;Group&quot;, and &quot;ServiceAccount&quot;. If the Authorizer does not recognized the kind
         /// value, the Authorizer should report an error.
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name of the object being referenced.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -89,7 +83,7 @@ namespace k8s.Models
         /// as &quot;User&quot; or &quot;Group&quot;, and this value is not empty the Authorizer should report
         /// an error.
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>

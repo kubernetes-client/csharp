@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AllowedHostPath defines the host volume conditions that will be enabled by a
         /// policy for pods to use. It requires the path prefix to be defined.
@@ -61,14 +55,14 @@ namespace k8s.Models
         /// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not
         /// allow `/food` or `/etc/foo`
         /// </summary>
-        [JsonProperty(PropertyName = "pathPrefix")]
+        [JsonPropertyName("pathPrefix")]
         public string PathPrefix { get; set; }
 
         /// <summary>
         /// when set to true, will allow host volumes matching the pathPrefix only if all
         /// volume mounts are readOnly.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>

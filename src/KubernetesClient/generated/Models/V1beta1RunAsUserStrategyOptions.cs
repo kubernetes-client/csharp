@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RunAsUserStrategyOptions defines the strategy type and any options used to
         /// create the strategy.
@@ -55,14 +49,14 @@ namespace k8s.Models
         /// force a single uid then supply a single range with the same start and end.
         /// Required for MustRunAs.
         /// </summary>
-        [JsonProperty(PropertyName = "ranges")]
+        [JsonPropertyName("ranges")]
         public IList<V1beta1IDRange> Ranges { get; set; }
 
         /// <summary>
         /// rule is the strategy that will dictate the allowable RunAsUser values that may
         /// be set.
         /// </summary>
-        [JsonProperty(PropertyName = "rule")]
+        [JsonPropertyName("rule")]
         public string Rule { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointSlice represents a subset of the endpoints that implement a service. For
         /// a given service there may be multiple EndpointSlice objects, selected by labels,
@@ -36,6 +30,11 @@ namespace k8s.Models
         /// creation. The following address types are currently supported: * IPv4:
         /// Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
         /// Represents a Fully Qualified Domain Name.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FQDN&quot;` represents a FQDN.
+        /// - `&quot;IPv4&quot;` represents an IPv4 Address.
+        /// - `&quot;IPv6&quot;` represents an IPv6 Address.
         /// </param>
         /// <param name="endpoints">
         /// endpoints is a list of unique endpoints in this slice. Each slice may include a
@@ -84,8 +83,13 @@ namespace k8s.Models
         /// creation. The following address types are currently supported: * IPv4:
         /// Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
         /// Represents a Fully Qualified Domain Name.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FQDN&quot;` represents a FQDN.
+        /// - `&quot;IPv4&quot;` represents an IPv4 Address.
+        /// - `&quot;IPv6&quot;` represents an IPv6 Address.
         /// </summary>
-        [JsonProperty(PropertyName = "addressType")]
+        [JsonPropertyName("addressType")]
         public string AddressType { get; set; }
 
         /// <summary>
@@ -94,14 +98,14 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// endpoints is a list of unique endpoints in this slice. Each slice may include a
         /// maximum of 1000 endpoints.
         /// </summary>
-        [JsonProperty(PropertyName = "endpoints")]
+        [JsonPropertyName("endpoints")]
         public IList<V1Endpoint> Endpoints { get; set; }
 
         /// <summary>
@@ -110,13 +114,13 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -125,7 +129,7 @@ namespace k8s.Models
         /// there are no defined ports. When a port is defined with a nil port value, it
         /// indicates &quot;all ports&quot;. Each slice may include a maximum of 100 ports.
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<Discoveryv1EndpointPort> Ports { get; set; }
 
         /// <summary>

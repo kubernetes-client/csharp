@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceRule is the list of actions the subject is allowed to perform on
         /// resources. The list ordering isn&apos;t significant, may contain duplicates, and
@@ -68,14 +62,14 @@ namespace k8s.Models
         /// API groups are specified, any action requested against one of the enumerated
         /// resources in any API group will be allowed.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroups")]
+        [JsonPropertyName("apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
         /// ResourceNames is an optional white list of names that the rule applies to.  An
         /// empty set means that everything is allowed.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceNames")]
+        [JsonPropertyName("resourceNames")]
         public IList<string> ResourceNames { get; set; }
 
         /// <summary>
@@ -84,14 +78,14 @@ namespace k8s.Models
         /// &quot;*/foo&quot; represents the subresource &apos;foo&apos; for all resources in the specified
         /// apiGroups.
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public IList<string> Resources { get; set; }
 
         /// <summary>
         /// Verb is a list of kubernetes resource API verbs, like: get, list, watch, create,
         /// update, delete, proxy.  &quot;*&quot; means all.
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>

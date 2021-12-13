@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIServiceStatus contains derived information about an API server
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Current service state of apiService.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1APIServiceCondition> Conditions { get; set; }
 
         /// <summary>

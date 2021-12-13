@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MetricValueStatus holds the current value for a metric
     /// </summary>
@@ -58,20 +52,20 @@ namespace k8s.Models
         /// metric across all relevant pods, represented as a percentage of the requested
         /// value of the resource for the pods.
         /// </summary>
-        [JsonProperty(PropertyName = "averageUtilization")]
+        [JsonPropertyName("averageUtilization")]
         public int? AverageUtilization { get; set; }
 
         /// <summary>
         /// averageValue is the current value of the average of the metric across all
         /// relevant pods (as a quantity)
         /// </summary>
-        [JsonProperty(PropertyName = "averageValue")]
+        [JsonPropertyName("averageValue")]
         public ResourceQuantity AverageValue { get; set; }
 
         /// <summary>
         /// value is the current value of the metric (as a quantity).
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public ResourceQuantity Value { get; set; }
 
         /// <summary>

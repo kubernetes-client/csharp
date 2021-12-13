@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PriorityLevelConfigurationSpec specifies the configuration of a priority level.
     /// </summary>
@@ -57,7 +51,7 @@ namespace k8s.Models
         /// `limited` specifies how requests are handled for a Limited priority level. This
         /// field must be non-empty if and only if `type` is `&quot;Limited&quot;`.
         /// </summary>
-        [JsonProperty(PropertyName = "limited")]
+        [JsonPropertyName("limited")]
         public V1beta1LimitedPriorityLevelConfiguration Limited { get; set; }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// the server&apos;s limited capacity is made available exclusively to this priority
         /// level. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

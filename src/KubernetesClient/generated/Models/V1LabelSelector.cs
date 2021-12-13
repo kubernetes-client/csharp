@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A label selector is a label query over a set of resources. The result of
         /// matchLabels and matchExpressions are ANDed. An empty label selector matches all
@@ -56,7 +50,7 @@ namespace k8s.Models
         /// matchExpressions is a list of label selector requirements. The requirements are
         /// ANDed.
         /// </summary>
-        [JsonProperty(PropertyName = "matchExpressions")]
+        [JsonPropertyName("matchExpressions")]
         public IList<V1LabelSelectorRequirement> MatchExpressions { get; set; }
 
         /// <summary>
@@ -65,7 +59,7 @@ namespace k8s.Models
         /// is &quot;key&quot;, the operator is &quot;In&quot;, and the values array contains only &quot;value&quot;. The
         /// requirements are ANDed.
         /// </summary>
-        [JsonProperty(PropertyName = "matchLabels")]
+        [JsonPropertyName("matchLabels")]
         public IDictionary<string, string> MatchLabels { get; set; }
 
         /// <summary>

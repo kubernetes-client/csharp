@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
     /// </summary>
@@ -64,7 +58,7 @@ namespace k8s.Models
         /// example, one can prevent all voluntary evictions by specifying 0. This is a
         /// mutually exclusive setting with &quot;minAvailable&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "maxUnavailable")]
+        [JsonPropertyName("maxUnavailable")]
         public IntstrIntOrString MaxUnavailable { get; set; }
 
         /// <summary>
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// evicted pod.  So for example you can prevent all voluntary evictions by
         /// specifying &quot;100%&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "minAvailable")]
+        [JsonPropertyName("minAvailable")]
         public IntstrIntOrString MinAvailable { get; set; }
 
         /// <summary>
@@ -81,7 +75,7 @@ namespace k8s.Models
         /// null selector will match no pods, while an empty ({}) selector will select all
         /// pods within the namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>

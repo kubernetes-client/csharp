@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodSecurityContext holds pod-level security attributes and common container
         /// settings. Some fields are also present in container.securityContext.  Field
@@ -41,7 +35,7 @@ namespace k8s.Models
         /// with rw-rw----
         /// 
         /// If unset, the Kubelet will not modify the ownership and permissions of any
-        /// volume.
+        /// volume. Note that this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="fsGroupChangePolicy">
         /// fsGroupChangePolicy defines behavior of changing ownership and permission of the
@@ -49,12 +43,13 @@ namespace k8s.Models
         /// types which support fsGroup based ownership(and permissions). It will have no
         /// effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid
         /// values are &quot;OnRootMismatch&quot; and &quot;Always&quot;. If not specified, &quot;Always&quot; is used.
+        /// Note that this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="runAsGroup">
         /// The GID to run the entrypoint of the container process. Uses runtime default if
         /// unset. May also be set in SecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
-        /// that container.
+        /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="runAsNonRoot">
         /// Indicates that the container must run as a non-root user. If true, the Kubelet
@@ -68,32 +63,35 @@ namespace k8s.Models
         /// The UID to run the entrypoint of the container process. Defaults to user
         /// specified in image metadata if unspecified. May also be set in SecurityContext. 
         /// If set in both SecurityContext and PodSecurityContext, the value specified in
-        /// SecurityContext takes precedence for that container.
+        /// SecurityContext takes precedence for that container. Note that this field cannot
+        /// be set when spec.os.name is windows.
         /// </param>
         /// <param name="seLinuxOptions">
         /// The SELinux context to be applied to all containers. If unspecified, the
         /// container runtime will allocate a random SELinux context for each container. 
         /// May also be set in SecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
-        /// that container.
+        /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="seccompProfile">
-        /// The seccomp options to use by the containers in this pod.
+        /// The seccomp options to use by the containers in this pod. Note that this field
+        /// cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="supplementalGroups">
         /// A list of groups applied to the first process run in each container, in addition
         /// to the container&apos;s primary GID.  If unspecified, no groups will be added to any
-        /// container.
+        /// container. Note that this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="sysctls">
         /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with
-        /// unsupported sysctls (by the container runtime) might fail to launch.
+        /// unsupported sysctls (by the container runtime) might fail to launch. Note that
+        /// this field cannot be set when spec.os.name is windows.
         /// </param>
         /// <param name="windowsOptions">
         /// The Windows specific settings applied to all containers. If unspecified, the
         /// options within a container&apos;s SecurityContext will be used. If set in both
         /// SecurityContext and PodSecurityContext, the value specified in SecurityContext
-        /// takes precedence.
+        /// takes precedence. Note that this field cannot be set when spec.os.name is linux.
         /// </param>
         public V1PodSecurityContext(long? fsGroup = null, string fsGroupChangePolicy = null, long? runAsGroup = null, bool? runAsNonRoot = null, long? runAsUser = null, V1SELinuxOptions seLinuxOptions = null, V1SeccompProfile seccompProfile = null, IList<long?> supplementalGroups = null, IList<V1Sysctl> sysctls = null, V1WindowsSecurityContextOptions windowsOptions = null)
         {
@@ -125,9 +123,9 @@ namespace k8s.Models
         /// with rw-rw----
         /// 
         /// If unset, the Kubelet will not modify the ownership and permissions of any
-        /// volume.
+        /// volume. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroup")]
+        [JsonPropertyName("fsGroup")]
         public long? FsGroup { get; set; }
 
         /// <summary>
@@ -136,17 +134,18 @@ namespace k8s.Models
         /// types which support fsGroup based ownership(and permissions). It will have no
         /// effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid
         /// values are &quot;OnRootMismatch&quot; and &quot;Always&quot;. If not specified, &quot;Always&quot; is used.
+        /// Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroupChangePolicy")]
+        [JsonPropertyName("fsGroupChangePolicy")]
         public string FsGroupChangePolicy { get; set; }
 
         /// <summary>
         /// The GID to run the entrypoint of the container process. Uses runtime default if
         /// unset. May also be set in SecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
-        /// that container.
+        /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsGroup")]
+        [JsonPropertyName("runAsGroup")]
         public long? RunAsGroup { get; set; }
 
         /// <summary>
@@ -157,16 +156,17 @@ namespace k8s.Models
         /// both SecurityContext and PodSecurityContext, the value specified in
         /// SecurityContext takes precedence.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsNonRoot")]
+        [JsonPropertyName("runAsNonRoot")]
         public bool? RunAsNonRoot { get; set; }
 
         /// <summary>
         /// The UID to run the entrypoint of the container process. Defaults to user
         /// specified in image metadata if unspecified. May also be set in SecurityContext. 
         /// If set in both SecurityContext and PodSecurityContext, the value specified in
-        /// SecurityContext takes precedence for that container.
+        /// SecurityContext takes precedence for that container. Note that this field cannot
+        /// be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsUser")]
+        [JsonPropertyName("runAsUser")]
         public long? RunAsUser { get; set; }
 
         /// <summary>
@@ -174,39 +174,41 @@ namespace k8s.Models
         /// container runtime will allocate a random SELinux context for each container. 
         /// May also be set in SecurityContext.  If set in both SecurityContext and
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
-        /// that container.
+        /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "seLinuxOptions")]
+        [JsonPropertyName("seLinuxOptions")]
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>
-        /// The seccomp options to use by the containers in this pod.
+        /// The seccomp options to use by the containers in this pod. Note that this field
+        /// cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "seccompProfile")]
+        [JsonPropertyName("seccompProfile")]
         public V1SeccompProfile SeccompProfile { get; set; }
 
         /// <summary>
         /// A list of groups applied to the first process run in each container, in addition
         /// to the container&apos;s primary GID.  If unspecified, no groups will be added to any
-        /// container.
+        /// container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "supplementalGroups")]
+        [JsonPropertyName("supplementalGroups")]
         public IList<long?> SupplementalGroups { get; set; }
 
         /// <summary>
         /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with
-        /// unsupported sysctls (by the container runtime) might fail to launch.
+        /// unsupported sysctls (by the container runtime) might fail to launch. Note that
+        /// this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "sysctls")]
+        [JsonPropertyName("sysctls")]
         public IList<V1Sysctl> Sysctls { get; set; }
 
         /// <summary>
         /// The Windows specific settings applied to all containers. If unspecified, the
         /// options within a container&apos;s SecurityContext will be used. If set in both
         /// SecurityContext and PodSecurityContext, the value specified in SecurityContext
-        /// takes precedence.
+        /// takes precedence. Note that this field cannot be set when spec.os.name is linux.
         /// </summary>
-        [JsonProperty(PropertyName = "windowsOptions")]
+        [JsonPropertyName("windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }
 
         /// <summary>

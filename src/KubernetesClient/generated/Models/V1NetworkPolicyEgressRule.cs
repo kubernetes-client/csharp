@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NetworkPolicyEgressRule describes a particular set of traffic that is allowed
         /// out of pods matched by a NetworkPolicySpec&apos;s podSelector. The traffic must match
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// contains at least one item, then this rule allows traffic only if the traffic
         /// matches at least one port in the list.
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<V1NetworkPolicyPort> Ports { get; set; }
 
         /// <summary>
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// destination). If this field is present and contains at least one item, this rule
         /// allows traffic only if the traffic matches at least one item in the to list.
         /// </summary>
-        [JsonProperty(PropertyName = "to")]
+        [JsonPropertyName("to")]
         public IList<V1NetworkPolicyPeer> To { get; set; }
 
         /// <summary>

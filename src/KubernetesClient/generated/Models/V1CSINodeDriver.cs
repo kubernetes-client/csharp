@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CSINodeDriver holds information about the specification of one CSI driver
         /// installed on a node
@@ -75,14 +69,14 @@ namespace k8s.Models
         /// allocatable represents the volume resources of a node that are available for
         /// scheduling. This field is beta.
         /// </summary>
-        [JsonProperty(PropertyName = "allocatable")]
+        [JsonPropertyName("allocatable")]
         public V1VolumeNodeResources Allocatable { get; set; }
 
         /// <summary>
         /// This is the name of the CSI driver that this object refers to. This MUST be the
         /// same name returned by the CSI GetPluginName() call for that driver.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// this field to refer to the node name using the ID that the storage system will
         /// understand, e.g. &quot;nodeA&quot; instead of &quot;node1&quot;. This field is required.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeID")]
+        [JsonPropertyName("nodeID")]
         public string NodeID { get; set; }
 
         /// <summary>
@@ -108,7 +102,7 @@ namespace k8s.Models
         /// possible for different nodes to use different topology keys. This can be empty
         /// if driver does not support topology.
         /// </summary>
-        [JsonProperty(PropertyName = "topologyKeys")]
+        [JsonPropertyName("topologyKeys")]
         public IList<string> TopologyKeys { get; set; }
 
         /// <summary>

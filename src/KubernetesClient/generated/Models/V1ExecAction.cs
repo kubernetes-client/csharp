@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ExecAction describes a &quot;run in container&quot; action.
     /// </summary>
@@ -55,7 +49,7 @@ namespace k8s.Models
         /// out to that shell. Exit status of 0 is treated as live/healthy and non-zero is
         /// unhealthy.
         /// </summary>
-        [JsonProperty(PropertyName = "command")]
+        [JsonPropertyName("command")]
         public IList<string> Command { get; set; }
 
         /// <summary>

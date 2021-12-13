@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a source location of a volume to mount, managed by an external CSI
         /// driver
@@ -72,7 +66,7 @@ namespace k8s.Models
         /// Driver is the name of the CSI driver that handles this volume. Consult with your
         /// admin for the correct name as registered in the cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "driver")]
+        [JsonPropertyName("driver")]
         public string Driver { get; set; }
 
         /// <summary>
@@ -80,7 +74,7 @@ namespace k8s.Models
         /// value is passed to the associated CSI driver which will determine the default
         /// filesystem to apply.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -90,21 +84,21 @@ namespace k8s.Models
         /// secret is required. If the secret object contains more than one secret, all
         /// secret references are passed.
         /// </summary>
-        [JsonProperty(PropertyName = "nodePublishSecretRef")]
+        [JsonPropertyName("nodePublishSecretRef")]
         public V1LocalObjectReference NodePublishSecretRef { get; set; }
 
         /// <summary>
         /// Specifies a read-only configuration for the volume. Defaults to false
         /// (read/write).
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// VolumeAttributes stores driver-specific properties that are passed to the CSI
         /// driver. Consult your driver&apos;s documentation for supported values.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeAttributes")]
+        [JsonPropertyName("volumeAttributes")]
         public IDictionary<string, string> VolumeAttributes { get; set; }
 
         /// <summary>

@@ -1,11 +1,9 @@
-using System;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Exceptions;
 using Microsoft.Rest;
-using Newtonsoft.Json.Linq;
 
 namespace k8s.Authentication
 {
@@ -61,9 +59,17 @@ namespace k8s.Authentication
                 throw new KubernetesClientException($"Unable to obtain a token via gcloud command. Error code {process.ExitCode}. \n {err}");
             }
 
-            var json = JToken.Parse(await output.ConfigureAwait(false));
-            _token = json["credential"]["access_token"].Value<string>();
-            _expiry = json["credential"]["token_expiry"].Value<DateTime>();
+            dynamic json = JsonSerializer.Deserialize(await output.ConfigureAwait(false), new
+            {
+                credential = new
+                {
+                    access_token = "",
+                    token_expiry = DateTime.UtcNow,
+                },
+            }.GetType());
+
+            _token = json.credential.access_token;
+            _expiry = json.credential.token_expiry;
         }
     }
 }

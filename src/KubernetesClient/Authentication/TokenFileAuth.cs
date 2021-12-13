@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http.Headers;
 using System.IO;
 using System.Threading;

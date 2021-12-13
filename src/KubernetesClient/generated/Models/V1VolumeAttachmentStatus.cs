@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeAttachmentStatus is the status of a VolumeAttachment request.
     /// </summary>
@@ -67,14 +61,14 @@ namespace k8s.Models
         /// be set by the entity completing the attach operation, i.e. the
         /// external-attacher.
         /// </summary>
-        [JsonProperty(PropertyName = "attachError")]
+        [JsonPropertyName("attachError")]
         public V1VolumeError AttachError { get; set; }
 
         /// <summary>
         /// Indicates the volume is successfully attached. This field must only be set by
         /// the entity completing the attach operation, i.e. the external-attacher.
         /// </summary>
-        [JsonProperty(PropertyName = "attached")]
+        [JsonPropertyName("attached")]
         public bool Attached { get; set; }
 
         /// <summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// calls. This field must only be set by the entity completing the attach
         /// operation, i.e. the external-attacher.
         /// </summary>
-        [JsonProperty(PropertyName = "attachmentMetadata")]
+        [JsonPropertyName("attachmentMetadata")]
         public IDictionary<string, string> AttachmentMetadata { get; set; }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace k8s.Models
         /// be set by the entity completing the detach operation, i.e. the
         /// external-attacher.
         /// </summary>
-        [JsonProperty(PropertyName = "detachError")]
+        [JsonPropertyName("detachError")]
         public V1VolumeError DetachError { get; set; }
 
         /// <summary>

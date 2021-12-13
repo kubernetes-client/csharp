@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain
         /// combinations of fields are allowed
@@ -67,7 +61,7 @@ namespace k8s.Models
         /// IPBlock defines policy on a particular IPBlock. If this field is set then
         /// neither of the other fields can be.
         /// </summary>
-        [JsonProperty(PropertyName = "ipBlock")]
+        [JsonPropertyName("ipBlock")]
         public V1IPBlock IpBlock { get; set; }
 
         /// <summary>
@@ -78,7 +72,7 @@ namespace k8s.Models
         /// Pods matching PodSelector in the Namespaces selected by NamespaceSelector.
         /// Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
         /// </summary>
-        [JsonProperty(PropertyName = "namespaceSelector")]
+        [JsonPropertyName("namespaceSelector")]
         public V1LabelSelector NamespaceSelector { get; set; }
 
         /// <summary>
@@ -90,7 +84,7 @@ namespace k8s.Models
         /// Otherwise it selects the Pods matching PodSelector in the policy&apos;s own
         /// Namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "podSelector")]
+        [JsonPropertyName("podSelector")]
         public V1LabelSelector PodSelector { get; set; }
 
         /// <summary>

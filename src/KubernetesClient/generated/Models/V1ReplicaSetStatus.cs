@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ReplicaSetStatus represents the current status of a ReplicaSet.
     /// </summary>
@@ -48,7 +42,8 @@ namespace k8s.Models
         /// ReplicaSet.
         /// </param>
         /// <param name="readyReplicas">
-        /// The number of ready replicas for this replica set.
+        /// readyReplicas is the number of pods targeted by this ReplicaSet with a Ready
+        /// Condition.
         /// </param>
         public V1ReplicaSetStatus(int replicas, int? availableReplicas = null, IList<V1ReplicaSetCondition> conditions = null, int? fullyLabeledReplicas = null, long? observedGeneration = null, int? readyReplicas = null)
         {
@@ -70,40 +65,41 @@ namespace k8s.Models
         /// The number of available replicas (ready for at least minReadySeconds) for this
         /// replica set.
         /// </summary>
-        [JsonProperty(PropertyName = "availableReplicas")]
+        [JsonPropertyName("availableReplicas")]
         public int? AvailableReplicas { get; set; }
 
         /// <summary>
         /// Represents the latest available observations of a replica set&apos;s current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1ReplicaSetCondition> Conditions { get; set; }
 
         /// <summary>
         /// The number of pods that have labels matching the labels of the pod template of
         /// the replicaset.
         /// </summary>
-        [JsonProperty(PropertyName = "fullyLabeledReplicas")]
+        [JsonPropertyName("fullyLabeledReplicas")]
         public int? FullyLabeledReplicas { get; set; }
 
         /// <summary>
         /// ObservedGeneration reflects the generation of the most recently observed
         /// ReplicaSet.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// The number of ready replicas for this replica set.
+        /// readyReplicas is the number of pods targeted by this ReplicaSet with a Ready
+        /// Condition.
         /// </summary>
-        [JsonProperty(PropertyName = "readyReplicas")]
+        [JsonPropertyName("readyReplicas")]
         public int? ReadyReplicas { get; set; }
 
         /// <summary>
         /// Replicas is the most recently oberved number of replicas. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int Replicas { get; set; }
 
         /// <summary>

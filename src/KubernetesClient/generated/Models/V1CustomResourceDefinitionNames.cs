@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceDefinitionNames indicates the names to serve this
         /// CustomResourceDefinition
@@ -79,7 +73,7 @@ namespace k8s.Models
         /// &apos;all&apos;). This is published in API discovery documents, and used by clients to
         /// support invocations like `kubectl get all`.
         /// </summary>
-        [JsonProperty(PropertyName = "categories")]
+        [JsonPropertyName("categories")]
         public IList<string> Categories { get; set; }
 
         /// <summary>
@@ -87,14 +81,14 @@ namespace k8s.Models
         /// singular. Custom resource instances will use this value as the `kind` attribute
         /// in API calls.
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// listKind is the serialized kind of the list for this resource. Defaults to
         /// &quot;`kind`List&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "listKind")]
+        [JsonPropertyName("listKind")]
         public string ListKind { get; set; }
 
         /// <summary>
@@ -103,7 +97,7 @@ namespace k8s.Models
         /// CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`). Must be all
         /// lowercase.
         /// </summary>
-        [JsonProperty(PropertyName = "plural")]
+        [JsonPropertyName("plural")]
         public string Plural { get; set; }
 
         /// <summary>
@@ -111,14 +105,14 @@ namespace k8s.Models
         /// and used by clients to support invocations like `kubectl get &lt;shortname&gt;`. It
         /// must be all lowercase.
         /// </summary>
-        [JsonProperty(PropertyName = "shortNames")]
+        [JsonPropertyName("shortNames")]
         public IList<string> ShortNames { get; set; }
 
         /// <summary>
         /// singular is the singular name of the resource. It must be all lowercase.
         /// Defaults to lowercased `kind`.
         /// </summary>
-        [JsonProperty(PropertyName = "singular")]
+        [JsonPropertyName("singular")]
         public string Singular { get; set; }
 
         /// <summary>

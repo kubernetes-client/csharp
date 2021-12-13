@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TopologySpreadConstraint specifies how to spread matching pods among the given
         /// topology.
@@ -55,7 +49,7 @@ namespace k8s.Models
         /// but giving higher precedence to topologies that would help reduce the
         /// skew.
         /// A constraint is considered &quot;Unsatisfiable&quot; for an incoming pod if and only if
-        /// every possible node assigment for that pod would violate &quot;MaxSkew&quot; on some
+        /// every possible node assignment for that pod would violate &quot;MaxSkew&quot; on some
         /// topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with
         /// the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P 
         /// |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be
@@ -63,6 +57,12 @@ namespace k8s.Models
         /// zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be
         /// imbalanced, but scheduler won&apos;t make it *more* imbalanced. It&apos;s a required
         /// field.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoNotSchedule&quot;` instructs the scheduler not to schedule the pod when
+        /// constraints are not satisfied.
+        /// - `&quot;ScheduleAnyway&quot;` instructs the scheduler to schedule the pod even if
+        /// constraints are not satisfied.
         /// </param>
         /// <param name="labelSelector">
         /// LabelSelector is used to find matching pods. Pods that match this label selector
@@ -88,7 +88,7 @@ namespace k8s.Models
         /// are counted to determine the number of pods in their corresponding topology
         /// domain.
         /// </summary>
-        [JsonProperty(PropertyName = "labelSelector")]
+        [JsonPropertyName("labelSelector")]
         public V1LabelSelector LabelSelector { get; set; }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace k8s.Models
         /// give higher precedence to topologies that satisfy it. It&apos;s a required field.
         /// Default value is 1 and 0 is not allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "maxSkew")]
+        [JsonPropertyName("maxSkew")]
         public int MaxSkew { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace k8s.Models
         /// &lt;key, value&gt; as a &quot;bucket&quot;, and try to put balanced number of pods into each
         /// bucket. It&apos;s a required field.
         /// </summary>
-        [JsonProperty(PropertyName = "topologyKey")]
+        [JsonPropertyName("topologyKey")]
         public string TopologyKey { get; set; }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace k8s.Models
         /// but giving higher precedence to topologies that would help reduce the
         /// skew.
         /// A constraint is considered &quot;Unsatisfiable&quot; for an incoming pod if and only if
-        /// every possible node assigment for that pod would violate &quot;MaxSkew&quot; on some
+        /// every possible node assignment for that pod would violate &quot;MaxSkew&quot; on some
         /// topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with
         /// the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P 
         /// |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be
@@ -131,8 +131,14 @@ namespace k8s.Models
         /// zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be
         /// imbalanced, but scheduler won&apos;t make it *more* imbalanced. It&apos;s a required
         /// field.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoNotSchedule&quot;` instructs the scheduler not to schedule the pod when
+        /// constraints are not satisfied.
+        /// - `&quot;ScheduleAnyway&quot;` instructs the scheduler to schedule the pod even if
+        /// constraints are not satisfied.
         /// </summary>
-        [JsonProperty(PropertyName = "whenUnsatisfiable")]
+        [JsonPropertyName("whenUnsatisfiable")]
         public string WhenUnsatisfiable { get; set; }
 
         /// <summary>

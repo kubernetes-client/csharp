@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Json.Patch;
 using k8s.LeaderElection;
 using k8s.LeaderElection.ResourceLock;
 using k8s.Models;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.Rest;
 using Nito.AsyncEx;
 using Xunit;
@@ -112,20 +113,24 @@ namespace k8s.E2E
                         },
                         namespaceParameter);
 
+                    // patch
+                    {
+                        var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                        var old = JsonSerializer.SerializeToDocument(pod);
 
-                    var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                        var newlabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "test-jsonpatch" };
+                        pod.Metadata.Labels = newlabels;
 
-                    var newlabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "test-jsonpatch" };
-                    var patch = new JsonPatchDocument<V1Pod>();
-                    patch.Replace(e => e.Metadata.Labels, newlabels);
-                    client.PatchNamespacedPod(new V1Patch(patch, V1Patch.PatchType.JsonPatch), pod.Metadata.Name, "default");
-
-                    Assert.False(pod.Labels().ContainsKey("test"));
+                        var expected = JsonSerializer.SerializeToDocument(pod);
+                        var patch = old.CreatePatch(expected);
+                        client.PatchNamespacedPod(new V1Patch(patch, V1Patch.PatchType.JsonPatch), pod.Metadata.Name, "default");
+                    }
 
                     // refresh
-                    pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
-
-                    Assert.Equal("test-jsonpatch", pod.Labels()["test"]);
+                    {
+                        var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                        Assert.Equal("test-jsonpatch", pod.Labels()["test"]);
+                    }
                 }
 
                 {
@@ -214,12 +219,12 @@ namespace k8s.E2E
             var started = new AsyncManualResetEvent();
             var connectionClosed = new AsyncManualResetEvent();
 
-            var watcher = await kubernetes.WatchNamespacedJobAsync(
-                job.Metadata.Name,
+            var watcher = kubernetes.ListNamespacedJobWithHttpMessagesAsync(
                 job.Metadata.NamespaceProperty,
+                fieldSelector: $"metadata.name={job.Metadata.Name}",
                 resourceVersion: job.Metadata.ResourceVersion,
                 timeoutSeconds: 30,
-                onEvent:
+                watch: true).Watch<V1Job, V1JobList>(
                 (type, source) =>
                 {
                     Debug.WriteLine($"Watcher 1: {type}, {source}");
@@ -227,19 +232,18 @@ namespace k8s.E2E
                     job = source;
                     started.Set();
                 },
-                onClosed: connectionClosed.Set).ConfigureAwait(false);
+                onClosed: connectionClosed.Set);
 
             await started.WaitAsync().ConfigureAwait(false);
 
             await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TimeSpan.FromMinutes(3))).ConfigureAwait(false);
             Assert.True(connectionClosed.IsSet);
 
-            await kubernetes.DeleteNamespacedJobAsync(
+            var st = await kubernetes.DeleteNamespacedJobAsync(
                 job.Metadata.Name,
                 job.Metadata.NamespaceProperty,
                 new V1DeleteOptions() { PropagationPolicy = "Foreground" }).ConfigureAwait(false);
         }
-
 
         [MinikubeFact]
         public void LeaderIntegrationTest()

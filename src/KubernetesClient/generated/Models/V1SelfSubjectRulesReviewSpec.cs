@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Namespace to evaluate rules for. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>

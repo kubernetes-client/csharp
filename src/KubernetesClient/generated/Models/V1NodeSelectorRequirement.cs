@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A node selector requirement is a selector that contains values, a key, and an
         /// operator that relates the key and values.
@@ -35,6 +29,14 @@ namespace k8s.Models
         /// <param name="operatorProperty">
         /// Represents a key&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist. Gt, and Lt.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;Gt&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;Lt&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </param>
         /// <param name="values">
         /// An array of string values. If the operator is In or NotIn, the values array must
@@ -59,14 +61,22 @@ namespace k8s.Models
         /// <summary>
         /// The label key that the selector applies to.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// Represents a key&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist. Gt, and Lt.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;Gt&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;Lt&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -76,7 +86,7 @@ namespace k8s.Models
         /// element, which will be interpreted as an integer. This array is replaced during
         /// a strategic merge patch.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

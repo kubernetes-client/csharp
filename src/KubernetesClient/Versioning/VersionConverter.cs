@@ -1,13 +1,8 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using AutoMapper;
 using k8s.Models;
-using Newtonsoft.Json;
 
 namespace k8s.Versioning
 {
@@ -134,17 +129,12 @@ namespace k8s.Versioning
                     obj.Kind = metadata.Kind;
                 });
             });
-            cfg.CreateMap<V1Subject, V1alpha1Subject>()
-                .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
-                .ForMember(dest => dest.Name, opt => opt.Ignore())
-                .ForMember(dest => dest.NamespaceProperty, opt => opt.Ignore())
-                .ReverseMap();
-            cfg.CreateMap<V1beta1Subject, V1alpha1Subject>()
-                .ForMember(dest => dest.ApiVersion, opt => opt.Ignore())
-                .ForMember(dest => dest.Name, opt => opt.Ignore())
-                .ForMember(dest => dest.NamespaceProperty, opt => opt.Ignore())
-                .ReverseMap();
             cfg.CreateMap<V1Subject, V1beta1Subject>()
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ReverseMap();
+            cfg.CreateMap<V1Subject, V1beta2Subject>()
                 .ForMember(dest => dest.Group, opt => opt.Ignore())
                 .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore())
@@ -169,12 +159,26 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
                 .ForMember(dest => dest.AverageUtilization, opt => opt.MapFrom(src => src.CurrentAverageUtilization))
                 .ForMember(dest => dest.Value, opt => opt.Ignore());
+            cfg.CreateMap<V2beta1ResourceMetricStatus, V2MetricValueStatus>()
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
+                .ForMember(dest => dest.AverageUtilization, opt => opt.MapFrom(src => src.CurrentAverageUtilization))
+                .ForMember(dest => dest.Value, opt => opt.Ignore());
             cfg.CreateMap<V2beta1ResourceMetricStatus, V2beta2ResourceMetricStatus>()
                 .ForMember(dest => dest.Current, opt => opt.MapFrom(src => src));
             cfg.CreateMap<V2beta2ResourceMetricStatus, V2beta1ResourceMetricStatus>()
                 .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
                 .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization));
+            cfg.CreateMap<V2beta1ResourceMetricStatus, V2ResourceMetricStatus>()
+                .ForMember(dest => dest.Current, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2ResourceMetricStatus, V2beta1ResourceMetricStatus>()
+                .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization));
             cfg.CreateMap<V2beta1ResourceMetricSource, V2beta2MetricTarget>()
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
+                .ForMember(dest => dest.Value, opt => opt.Ignore())
+                .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
+                .ForMember(dest => dest.AverageUtilization, opt => opt.MapFrom(src => src.TargetAverageUtilization));
+            cfg.CreateMap<V2beta1ResourceMetricSource, V2MetricTarget>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetAverageValue != null ? "AverageValue" : "Utilization"))
@@ -184,11 +188,23 @@ namespace k8s.Versioning
             cfg.CreateMap<V2beta2ResourceMetricSource, V2beta1ResourceMetricSource>()
                 .ForMember(dest => dest.TargetAverageUtilization, opt => opt.MapFrom(src => src.Target.AverageUtilization))
                 .ForMember(dest => dest.TargetAverageValue, opt => opt.MapFrom(src => src.Target.Value));
+            cfg.CreateMap<V2beta1ResourceMetricSource, V2ResourceMetricSource>()
+                .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2ResourceMetricSource, V2beta1ResourceMetricSource>()
+                .ForMember(dest => dest.TargetAverageUtilization, opt => opt.MapFrom(src => src.Target.AverageUtilization))
+                .ForMember(dest => dest.TargetAverageValue, opt => opt.MapFrom(src => src.Target.Value));
             cfg.CreateMap<V2beta1PodsMetricStatus, V2beta2MetricValueStatus>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
                 .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore());
+            cfg.CreateMap<V2beta1PodsMetricStatus, V2MetricValueStatus>()
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
+                .ForMember(dest => dest.Value, opt => opt.Ignore())
+                .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore());
             cfg.CreateMap<V2beta1PodsMetricStatus, V2beta2MetricIdentifier>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector));
+            cfg.CreateMap<V2beta1PodsMetricStatus, V2MetricIdentifier>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector));
             cfg.CreateMap<V2beta1PodsMetricStatus, V2beta2PodsMetricStatus>()
@@ -198,11 +214,27 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Metric.Selector))
                 .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
                 .ForMember(dest => dest.MetricName, opt => opt.MapFrom(src => src.Metric.Name));
+            cfg.CreateMap<V2beta1PodsMetricStatus, V2PodsMetricStatus>()
+                .ForMember(dest => dest.Current, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.Metric, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2PodsMetricStatus, V2beta1PodsMetricStatus>()
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Metric.Selector))
+                .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(dest => dest.MetricName, opt => opt.MapFrom(src => src.Metric.Name));
             cfg.CreateMap<V2beta1PodsMetricSource, V2beta2MetricIdentifier>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
                 .ReverseMap();
+            cfg.CreateMap<V2beta1PodsMetricSource, V2MetricIdentifier>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
+                .ReverseMap();
             cfg.CreateMap<V2beta1PodsMetricSource, V2beta2MetricTarget>()
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => "AverageValue"))
+                .ForMember(dest => dest.Value, opt => opt.Ignore())
+                .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore());
+            cfg.CreateMap<V2beta1PodsMetricSource, V2MetricTarget>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => "AverageValue"))
                 .ForMember(dest => dest.Value, opt => opt.Ignore())
@@ -214,11 +246,27 @@ namespace k8s.Versioning
                 .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.Metric.Selector))
                 .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
                 .ForMember(x => x.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue));
+            cfg.CreateMap<V2beta1PodsMetricSource, V2PodsMetricSource>()
+                .ForMember(dest => dest.Metric, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2PodsMetricSource, V2beta1PodsMetricSource>()
+                .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.Metric.Selector))
+                .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
+                .ForMember(x => x.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue));
             cfg.CreateMap<V2beta1ObjectMetricStatus, V2beta2MetricIdentifier>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
                 .ReverseMap();
+            cfg.CreateMap<V2beta1ObjectMetricStatus, V2MetricIdentifier>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
+                .ReverseMap();
             cfg.CreateMap<V2beta1ObjectMetricStatus, V2beta2MetricValueStatus>()
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.CurrentValue))
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.AverageValue))
+                .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore())
+                .ReverseMap();
+            cfg.CreateMap<V2beta1ObjectMetricStatus, V2MetricValueStatus>()
                 .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.CurrentValue))
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.AverageValue))
                 .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore())
@@ -233,7 +281,22 @@ namespace k8s.Versioning
                 .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
                 .ForMember(x => x.Target, opt => opt.MapFrom(src => src.DescribedObject))
                 .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.Metric.Selector));
+            cfg.CreateMap<V2beta1ObjectMetricStatus, V2ObjectMetricStatus>()
+                .ForMember(x => x.Current, opt => opt.MapFrom(src => src))
+                .ForMember(x => x.Metric, opt => opt.MapFrom(src => src))
+                .ForMember(x => x.DescribedObject, opt => opt.MapFrom(src => src.Target));
+            cfg.CreateMap<V2ObjectMetricStatus, V2beta1ObjectMetricStatus>()
+                .ForMember(x => x.CurrentValue, opt => opt.MapFrom(src => src.Current.Value))
+                .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
+                .ForMember(x => x.Target, opt => opt.MapFrom(src => src.DescribedObject))
+                .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.Metric.Selector));
             cfg.CreateMap<V2beta1ExternalMetricSource, V2beta2MetricTarget>()
+                .ForMember(x => x.Value, opt => opt.MapFrom(src => src.TargetValue))
+                .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
+                .ForMember(x => x.AverageUtilization, opt => opt.Ignore())
+                .ForMember(x => x.Type, opt => opt.MapFrom((src, dest) => src.TargetValue != null ? "Value" : "AverageValue"));
+            cfg.CreateMap<V2beta1ExternalMetricSource, V2MetricTarget>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.TargetValue))
                 .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.TargetAverageValue))
                 .ForMember(x => x.AverageUtilization, opt => opt.Ignore())
@@ -246,6 +309,14 @@ namespace k8s.Versioning
                 .ForMember(x => x.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
                 .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
                 .ForMember(x => x.MetricSelector, opt => opt.MapFrom(src => src.Metric.Selector));
+            cfg.CreateMap<V2beta1ExternalMetricSource, V2ExternalMetricSource>()
+                .ForMember(x => x.Metric, opt => opt.MapFrom(src => src))
+                .ForMember(x => x.Target, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2ExternalMetricSource, V2beta1ExternalMetricSource>()
+                .ForMember(x => x.TargetValue, opt => opt.MapFrom(src => src.Target.Value))
+                .ForMember(x => x.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
+                .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
+                .ForMember(x => x.MetricSelector, opt => opt.MapFrom(src => src.Metric.Selector));
             cfg.CreateMap<V2beta1ExternalMetricStatus, V2beta2ExternalMetricStatus>()
                 .ForMember(x => x.Current, opt => opt.MapFrom(src => src))
                 .ForMember(x => x.Metric, opt => opt.MapFrom(src => src));
@@ -254,7 +325,19 @@ namespace k8s.Versioning
                 .ForMember(x => x.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
                 .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
                 .ForMember(x => x.MetricSelector, opt => opt.MapFrom(src => src.Metric.Selector));
+            cfg.CreateMap<V2beta1ExternalMetricStatus, V2ExternalMetricStatus>()
+                .ForMember(x => x.Current, opt => opt.MapFrom(src => src))
+                .ForMember(x => x.Metric, opt => opt.MapFrom(src => src));
+            cfg.CreateMap<V2ExternalMetricStatus, V2beta1ExternalMetricStatus>()
+                .ForMember(x => x.CurrentValue, opt => opt.MapFrom(src => src.Current.Value))
+                .ForMember(x => x.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(x => x.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
+                .ForMember(x => x.MetricSelector, opt => opt.MapFrom(src => src.Metric.Selector));
             cfg.CreateMap<V2beta1ExternalMetricStatus, V2beta2MetricIdentifier>()
+                .ForMember(x => x.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.MetricSelector))
+                .ReverseMap();
+            cfg.CreateMap<V2beta1ExternalMetricStatus, V2MetricIdentifier>()
                 .ForMember(x => x.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(x => x.Selector, opt => opt.MapFrom(src => src.MetricSelector))
                 .ReverseMap();
@@ -263,7 +346,17 @@ namespace k8s.Versioning
                 .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
                 .ForMember(x => x.AverageUtilization, opt => opt.Ignore())
                 .ReverseMap();
+            cfg.CreateMap<V2beta1ExternalMetricStatus, V2MetricValueStatus>()
+                .ForMember(x => x.Value, opt => opt.MapFrom(src => src.CurrentValue))
+                .ForMember(x => x.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
+                .ForMember(x => x.AverageUtilization, opt => opt.Ignore())
+                .ReverseMap();
             cfg.CreateMap<V2beta1ObjectMetricSource, V2beta2MetricTarget>()
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.TargetValue))
+                .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore())
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.AverageValue))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom((src, dest) => src.TargetValue != null ? "Value" : "AverageValue"));
+            cfg.CreateMap<V2beta1ObjectMetricSource, V2MetricTarget>()
                 .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.TargetValue))
                 .ForMember(dest => dest.AverageUtilization, opt => opt.Ignore())
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.AverageValue))
@@ -278,11 +371,28 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.TargetValue, opt => opt.MapFrom(src => src.Target.Value))
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Metric.Selector));
+            cfg.CreateMap<V2beta1ObjectMetricSource, V2ObjectMetricSource>()
+                .ForMember(dest => dest.Metric, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.DescribedObject, opt => opt.MapFrom(src => src.Target));
+            cfg.CreateMap<V2ObjectMetricSource, V2beta1ObjectMetricSource>()
+                .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src.DescribedObject))
+                .ForMember(dest => dest.MetricName, opt => opt.MapFrom(src => src.Metric.Name))
+                .ForMember(dest => dest.TargetValue, opt => opt.MapFrom(src => src.Target.Value))
+                .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Metric.Selector));
             cfg.CreateMap<V2beta1ObjectMetricSource, V2beta2MetricIdentifier>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
                 .ReverseMap();
+            cfg.CreateMap<V2beta1ObjectMetricSource, V2MetricIdentifier>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.Selector))
+                .ReverseMap();
             cfg.CreateMap<V2beta1ExternalMetricSource, V2beta2MetricIdentifier>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
+                .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.MetricSelector));
+            cfg.CreateMap<V2beta1ExternalMetricSource, V2MetricIdentifier>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MetricName))
                 .ForMember(dest => dest.Selector, opt => opt.MapFrom(src => src.MetricSelector));
             cfg.CreateMap<V2beta2MetricTarget, V2beta1ExternalMetricSource>() // todo: not needed
@@ -297,6 +407,11 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.Behavior, opt => opt.Ignore())
                 .ReverseMap();
 
+            cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>()
+                .ForMember(dest => dest.Metrics, opt => opt.Ignore())
+                .ForMember(dest => dest.Behavior, opt => opt.Ignore())
+                .ReverseMap();
+
             cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2beta1HorizontalPodAutoscalerSpec>()
                 .ForMember(dest => dest.Metrics, opt => opt.Ignore())
                 .ReverseMap();
@@ -305,11 +420,19 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.Behavior, opt => opt.Ignore())
                 .ReverseMap();
 
+            cfg.CreateMap<V2beta1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>()
+                .ForMember(dest => dest.Behavior, opt => opt.Ignore())
+                .ReverseMap();
+
             cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2beta1HorizontalPodAutoscalerStatus>()
                 .ForMember(dest => dest.Conditions, opt => opt.Ignore())
                 .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
                 .ReverseMap();
             cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2beta2HorizontalPodAutoscalerStatus>()
+                .ForMember(dest => dest.Conditions, opt => opt.Ignore())
+                .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
+                .ReverseMap();
+            cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2HorizontalPodAutoscalerStatus>()
                 .ForMember(dest => dest.Conditions, opt => opt.Ignore())
                 .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
                 .ReverseMap();
@@ -333,17 +456,20 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.TargetAverageUtilization, opt => opt.MapFrom(src => src.Target.AverageUtilization))
                 .ReverseMap();
 
+            cfg.CreateMap<V2ContainerResourceMetricSource, V2beta1ContainerResourceMetricSource>()
+                .ForMember(dest => dest.TargetAverageValue, opt => opt.MapFrom(src => src.Target.AverageValue))
+                .ForMember(dest => dest.TargetAverageUtilization, opt => opt.MapFrom(src => src.Target.AverageUtilization))
+                .ReverseMap();
+
             cfg.CreateMap<V2beta2ContainerResourceMetricStatus, V2beta1ContainerResourceMetricStatus>()
                 .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
                 .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization))
                 .ReverseMap();
 
-
-            cfg.CreateMap<V1alpha1RoleBinding, V1RoleBinding>().ReverseMap();
-
-
-            cfg.CreateMap<V1alpha1ClusterRoleBinding, V1ClusterRoleBinding>().ReverseMap();
-            cfg.CreateMap<V1alpha1ClusterRoleBindingList, V1ClusterRoleBindingList>().ReverseMap();
+            cfg.CreateMap<V2ContainerResourceMetricStatus, V2beta1ContainerResourceMetricStatus>()
+                .ForMember(dest => dest.CurrentAverageValue, opt => opt.MapFrom(src => src.Current.AverageValue))
+                .ForMember(dest => dest.CurrentAverageUtilization, opt => opt.MapFrom(src => src.Current.AverageUtilization))
+                .ReverseMap();
 
             cfg.CreateMap<V1beta1Endpoint, V1Endpoint>()
                 .ForMember(dest => dest.DeprecatedTopology, opt => opt.Ignore())

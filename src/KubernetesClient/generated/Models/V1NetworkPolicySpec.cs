@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NetworkPolicySpec provides the specification of a NetworkPolicy
     /// </summary>
@@ -89,7 +83,7 @@ namespace k8s.Models
         /// serves solely to ensure that the pods it selects are isolated by default). This
         /// field is beta-level in 1.8
         /// </summary>
-        [JsonProperty(PropertyName = "egress")]
+        [JsonPropertyName("egress")]
         public IList<V1NetworkPolicyEgressRule> Egress { get; set; }
 
         /// <summary>
@@ -101,7 +95,7 @@ namespace k8s.Models
         /// then this NetworkPolicy does not allow any traffic (and serves solely to ensure
         /// that the pods it selects are isolated by default)
         /// </summary>
-        [JsonProperty(PropertyName = "ingress")]
+        [JsonPropertyName("ingress")]
         public IList<V1NetworkPolicyIngressRule> Ingress { get; set; }
 
         /// <summary>
@@ -112,7 +106,7 @@ namespace k8s.Models
         /// label selector semantics. An empty podSelector matches all pods in this
         /// namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "podSelector")]
+        [JsonPropertyName("podSelector")]
         public V1LabelSelector PodSelector { get; set; }
 
         /// <summary>
@@ -127,7 +121,7 @@ namespace k8s.Models
         /// &quot;Egress&quot; (since such a policy would not include an Egress section and would
         /// otherwise default to just [ &quot;Ingress&quot; ]). This field is beta-level in 1.8
         /// </summary>
-        [JsonProperty(PropertyName = "policyTypes")]
+        [JsonPropertyName("policyTypes")]
         public IList<string> PolicyTypes { get; set; }
 
         /// <summary>
@@ -140,7 +134,7 @@ namespace k8s.Models
         {
             if (PodSelector == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PodSelector");    
+                throw new ArgumentNullException("PodSelector");    
             }
             if (Egress != null){
                 foreach(var obj in Egress)

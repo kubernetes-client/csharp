@@ -1,5 +1,4 @@
 using k8s.Models;
-using System;
 using System.Runtime.Serialization;
 
 namespace k8s

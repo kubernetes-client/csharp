@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents storage that is managed by an external CSI volume driver (Beta
         /// feature)
@@ -103,7 +97,7 @@ namespace k8s.Models
         /// secret is required. If the secret object contains more than one secret, all
         /// secrets are passed.
         /// </summary>
-        [JsonProperty(PropertyName = "controllerExpandSecretRef")]
+        [JsonPropertyName("controllerExpandSecretRef")]
         public V1SecretReference ControllerExpandSecretRef { get; set; }
 
         /// <summary>
@@ -113,20 +107,20 @@ namespace k8s.Models
         /// optional, and may be empty if no secret is required. If the secret object
         /// contains more than one secret, all secrets are passed.
         /// </summary>
-        [JsonProperty(PropertyName = "controllerPublishSecretRef")]
+        [JsonPropertyName("controllerPublishSecretRef")]
         public V1SecretReference ControllerPublishSecretRef { get; set; }
 
         /// <summary>
         /// Driver is the name of the driver to use for this volume. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "driver")]
+        [JsonPropertyName("driver")]
         public string Driver { get; set; }
 
         /// <summary>
         /// Filesystem type to mount. Must be a filesystem type supported by the host
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -136,7 +130,7 @@ namespace k8s.Models
         /// is required. If the secret object contains more than one secret, all secrets are
         /// passed.
         /// </summary>
-        [JsonProperty(PropertyName = "nodePublishSecretRef")]
+        [JsonPropertyName("nodePublishSecretRef")]
         public V1SecretReference NodePublishSecretRef { get; set; }
 
         /// <summary>
@@ -146,27 +140,27 @@ namespace k8s.Models
         /// empty if no secret is required. If the secret object contains more than one
         /// secret, all secrets are passed.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeStageSecretRef")]
+        [JsonPropertyName("nodeStageSecretRef")]
         public V1SecretReference NodeStageSecretRef { get; set; }
 
         /// <summary>
         /// Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false
         /// (read/write).
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Attributes of the volume to publish.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeAttributes")]
+        [JsonPropertyName("volumeAttributes")]
         public IDictionary<string, string> VolumeAttributes { get; set; }
 
         /// <summary>
         /// VolumeHandle is the unique volume name returned by the CSI volume plugin’s
         /// CreateVolume to refer to the volume on all subsequent calls. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeHandle")]
+        [JsonPropertyName("volumeHandle")]
         public string VolumeHandle { get; set; }
 
         /// <summary>

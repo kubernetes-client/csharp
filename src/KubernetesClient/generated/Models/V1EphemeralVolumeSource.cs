@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents an ephemeral volume that is handled by a normal storage driver.
     /// </summary>
@@ -79,7 +73,7 @@ namespace k8s.Models
         /// 
         /// Required, must not be nil.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeClaimTemplate")]
+        [JsonPropertyName("volumeClaimTemplate")]
         public V1PersistentVolumeClaimTemplate VolumeClaimTemplate { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// The node this Taint is attached to has the &quot;effect&quot; on any pod that does not
         /// tolerate the Taint.
@@ -32,6 +26,17 @@ namespace k8s.Models
         /// <param name="effect">
         /// Required. The effect of the taint on pods that do not tolerate the taint. Valid
         /// effects are NoSchedule, PreferNoSchedule and NoExecute.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NoExecute&quot;` Evict any already-running pods that do not tolerate the taint.
+        /// Currently enforced by NodeController.
+        /// - `&quot;NoSchedule&quot;` Do not allow new pods to schedule onto the node unless they
+        /// tolerate the taint, but allow all pods submitted to Kubelet without going
+        /// through the scheduler to start, and allow all already-running pods to continue
+        /// running. Enforced by the scheduler.
+        /// - `&quot;PreferNoSchedule&quot;` Like TaintEffectNoSchedule, but the scheduler tries not
+        /// to schedule new pods onto the node, rather than prohibiting new pods from
+        /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </param>
         /// <param name="key">
         /// Required. The taint key to be applied to a node.
@@ -60,27 +65,38 @@ namespace k8s.Models
         /// <summary>
         /// Required. The effect of the taint on pods that do not tolerate the taint. Valid
         /// effects are NoSchedule, PreferNoSchedule and NoExecute.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;NoExecute&quot;` Evict any already-running pods that do not tolerate the taint.
+        /// Currently enforced by NodeController.
+        /// - `&quot;NoSchedule&quot;` Do not allow new pods to schedule onto the node unless they
+        /// tolerate the taint, but allow all pods submitted to Kubelet without going
+        /// through the scheduler to start, and allow all already-running pods to continue
+        /// running. Enforced by the scheduler.
+        /// - `&quot;PreferNoSchedule&quot;` Like TaintEffectNoSchedule, but the scheduler tries not
+        /// to schedule new pods onto the node, rather than prohibiting new pods from
+        /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </summary>
-        [JsonProperty(PropertyName = "effect")]
+        [JsonPropertyName("effect")]
         public string Effect { get; set; }
 
         /// <summary>
         /// Required. The taint key to be applied to a node.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// TimeAdded represents the time at which the taint was added. It is only written
         /// for NoExecute taints.
         /// </summary>
-        [JsonProperty(PropertyName = "timeAdded")]
+        [JsonPropertyName("timeAdded")]
         public System.DateTime? TimeAdded { get; set; }
 
         /// <summary>
         /// The taint value corresponding to the taint key.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

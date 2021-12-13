@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a host path mapped into a pod. Host path volumes do not support
         /// ownership management or SELinux relabeling.
@@ -55,14 +49,14 @@ namespace k8s.Models
         /// link to the real path. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
         /// Type for HostPath Volume Defaults to &quot;&quot; More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#hostpath
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

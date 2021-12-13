@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a projected volume source
     /// </summary>
@@ -59,13 +53,13 @@ namespace k8s.Models
         /// conflict with other options that affect the file mode, like fsGroup, and the
         /// result can be other mode bits set.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultMode")]
+        [JsonPropertyName("defaultMode")]
         public int? DefaultMode { get; set; }
 
         /// <summary>
         /// list of volume projections
         /// </summary>
-        [JsonProperty(PropertyName = "sources")]
+        [JsonPropertyName("sources")]
         public IList<V1VolumeProjection> Sources { get; set; }
 
         /// <summary>

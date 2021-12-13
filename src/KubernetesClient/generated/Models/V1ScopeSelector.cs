@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A scope selector represents the AND of the selectors represented by the
         /// scoped-resource selector requirements.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// A list of scope selector requirements by scope of the resources.
         /// </summary>
-        [JsonProperty(PropertyName = "matchExpressions")]
+        [JsonPropertyName("matchExpressions")]
         public IList<V1ScopedResourceSelectorRequirement> MatchExpressions { get; set; }
 
         /// <summary>

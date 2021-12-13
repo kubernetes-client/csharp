@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EnvFromSource represents the source of a set of ConfigMaps
     /// </summary>
@@ -54,20 +48,20 @@ namespace k8s.Models
         /// <summary>
         /// The ConfigMap to select from
         /// </summary>
-        [JsonProperty(PropertyName = "configMapRef")]
+        [JsonPropertyName("configMapRef")]
         public V1ConfigMapEnvSource ConfigMapRef { get; set; }
 
         /// <summary>
         /// An optional identifier to prepend to each key in the ConfigMap. Must be a
         /// C_IDENTIFIER.
         /// </summary>
-        [JsonProperty(PropertyName = "prefix")]
+        [JsonPropertyName("prefix")]
         public string Prefix { get; set; }
 
         /// <summary>
         /// The Secret to select from
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1SecretEnvSource SecretRef { get; set; }
 
         /// <summary>

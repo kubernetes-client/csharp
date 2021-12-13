@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Spec to control the desired behavior of rolling update.
     /// </summary>
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// further, ensuring that total number of pods running at any time during the
         /// update is at most 130% of desired pods.
         /// </summary>
-        [JsonProperty(PropertyName = "maxSurge")]
+        [JsonPropertyName("maxSurge")]
         public IntstrIntOrString MaxSurge { get; set; }
 
         /// <summary>
@@ -87,7 +81,7 @@ namespace k8s.Models
         /// number of pods available at all times during the update is at least 70% of
         /// desired pods.
         /// </summary>
-        [JsonProperty(PropertyName = "maxUnavailable")]
+        [JsonPropertyName("maxUnavailable")]
         public IntstrIntOrString MaxUnavailable { get; set; }
 
         /// <summary>

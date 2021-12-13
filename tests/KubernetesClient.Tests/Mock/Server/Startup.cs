@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using Microsoft.AspNetCore.Mvc;
 
 namespace k8s.Tests.Mock.Server
 {

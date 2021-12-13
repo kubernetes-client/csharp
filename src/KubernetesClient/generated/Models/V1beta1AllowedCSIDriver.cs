@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be
         /// used.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// Name is the registered name of the CSI driver
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

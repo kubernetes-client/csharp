@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MetricSpec specifies how to scale based on a single metric (only `type` and one
         /// other matching field should be set at once).
@@ -89,7 +83,7 @@ namespace k8s.Models
         /// normal per-pod metrics using the &quot;pods&quot; source. This is an alpha feature and can
         /// be enabled by the HPAContainerMetrics feature flag.
         /// </summary>
-        [JsonProperty(PropertyName = "containerResource")]
+        [JsonPropertyName("containerResource")]
         public V2beta2ContainerResourceMetricSource ContainerResource { get; set; }
 
         /// <summary>
@@ -98,14 +92,14 @@ namespace k8s.Models
         /// running outside of cluster (for example length of queue in cloud messaging
         /// service, or QPS from loadbalancer running outside of cluster).
         /// </summary>
-        [JsonProperty(PropertyName = "external")]
+        [JsonPropertyName("external")]
         public V2beta2ExternalMetricSource External { get; set; }
 
         /// <summary>
         /// object refers to a metric describing a single kubernetes object (for example,
         /// hits-per-second on an Ingress object).
         /// </summary>
-        [JsonProperty(PropertyName = "object")]
+        [JsonPropertyName("object")]
         public V2beta2ObjectMetricSource ObjectProperty { get; set; }
 
         /// <summary>
@@ -113,7 +107,7 @@ namespace k8s.Models
         /// example, transactions-processed-per-second).  The values will be averaged
         /// together before being compared to the target value.
         /// </summary>
-        [JsonProperty(PropertyName = "pods")]
+        [JsonPropertyName("pods")]
         public V2beta2PodsMetricSource Pods { get; set; }
 
         /// <summary>
@@ -123,7 +117,7 @@ namespace k8s.Models
         /// scaling options on top of those available to normal per-pod metrics using the
         /// &quot;pods&quot; source.
         /// </summary>
-        [JsonProperty(PropertyName = "resource")]
+        [JsonPropertyName("resource")]
         public V2beta2ResourceMetricSource Resource { get; set; }
 
         /// <summary>
@@ -132,7 +126,7 @@ namespace k8s.Models
         /// the object. Note: &quot;ContainerResource&quot; type is available on when the feature-gate
         /// HPAContainerMetrics is enabled
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

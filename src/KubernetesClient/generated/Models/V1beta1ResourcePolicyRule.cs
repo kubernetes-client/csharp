@@ -6,19 +6,15 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourcePolicyRule is a predicate that matches some resource requests, testing
         /// the request&apos;s verb and the target resource. A ResourcePolicyRule matches a
         /// resource request if and only if: (a) at least one member of verbs matches the
         /// request, (b) at least one member of apiGroups matches the request, (c) at least
-        /// one member of resources matches the request, and (d) least one member of
-        /// namespaces matches the request.
+        /// one member of resources matches the request, and (d) either (d1) the request
+        /// does not specify a namespace (i.e., `Namespace==&quot;&quot;`) and clusterScope is true or
+        /// (d2) the request specifies a namespace and least one member of namespaces
+        /// matches the request&apos;s namespace.
     /// </summary>
     public partial class V1beta1ResourcePolicyRule
     {
@@ -80,7 +76,7 @@ namespace k8s.Models
         /// `apiGroups` is a list of matching API groups and may not be empty. &quot;*&quot; matches
         /// all API groups and, if present, must be the only entry. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroups")]
+        [JsonPropertyName("apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
@@ -89,7 +85,7 @@ namespace k8s.Models
         /// request targets all namespaces). If this field is omitted or false then the
         /// `namespaces` field must contain a non-empty list.
         /// </summary>
-        [JsonProperty(PropertyName = "clusterScope")]
+        [JsonPropertyName("clusterScope")]
         public bool? ClusterScope { get; set; }
 
         /// <summary>
@@ -100,7 +96,7 @@ namespace k8s.Models
         /// namespace (see the `clusterScope` field for that). This list may be empty, but
         /// only if `clusterScope` is true.
         /// </summary>
-        [JsonProperty(PropertyName = "namespaces")]
+        [JsonPropertyName("namespaces")]
         public IList<string> Namespaces { get; set; }
 
         /// <summary>
@@ -109,14 +105,14 @@ namespace k8s.Models
         /// list may not be empty. &quot;*&quot; matches all resources and, if present, must be the
         /// only entry. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public IList<string> Resources { get; set; }
 
         /// <summary>
         /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs
         /// and, if present, must be the only entry. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>

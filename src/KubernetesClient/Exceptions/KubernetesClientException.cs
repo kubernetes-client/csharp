@@ -1,5 +1,3 @@
-using System;
-
 namespace k8s.Exceptions
 {
     /// <summary>

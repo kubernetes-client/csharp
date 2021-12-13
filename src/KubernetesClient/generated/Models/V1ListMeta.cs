@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ListMeta describes metadata that synthetic resources must have, including lists
         /// and various status objects. A resource may have only one of {ObjectMeta,
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// will be identical to the value in the first response, unless you have received
         /// this token from an error message.
         /// </summary>
-        [JsonProperty(PropertyName = "continue")]
+        [JsonPropertyName("continue")]
         public string ContinueProperty { get; set; }
 
         /// <summary>
@@ -102,7 +96,7 @@ namespace k8s.Models
         /// of the remainingItemCount is *estimating* the size of a collection. Clients
         /// should not rely on the remainingItemCount to be set or to be exact.
         /// </summary>
-        [JsonProperty(PropertyName = "remainingItemCount")]
+        [JsonPropertyName("remainingItemCount")]
         public long? RemainingItemCount { get; set; }
 
         /// <summary>
@@ -112,7 +106,7 @@ namespace k8s.Models
         /// system. Read-only. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
-        [JsonProperty(PropertyName = "resourceVersion")]
+        [JsonPropertyName("resourceVersion")]
         public string ResourceVersion { get; set; }
 
         /// <summary>
@@ -121,7 +115,7 @@ namespace k8s.Models
         /// DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the
         /// field is planned to be removed in 1.21 release.
         /// </summary>
-        [JsonProperty(PropertyName = "selfLink")]
+        [JsonPropertyName("selfLink")]
         public string SelfLink { get; set; }
 
         /// <summary>

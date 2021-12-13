@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one
         /// of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must
@@ -52,14 +46,14 @@ namespace k8s.Models
         /// <summary>
         /// NonResourceAttributes describes information for a non-resource access request
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceAttributes")]
+        [JsonPropertyName("nonResourceAttributes")]
         public V1NonResourceAttributes NonResourceAttributes { get; set; }
 
         /// <summary>
         /// ResourceAuthorizationAttributes describes information for a resource access
         /// request
         /// </summary>
-        [JsonProperty(PropertyName = "resourceAttributes")]
+        [JsonPropertyName("resourceAttributes")]
         public V1ResourceAttributes ResourceAttributes { get; set; }
 
         /// <summary>

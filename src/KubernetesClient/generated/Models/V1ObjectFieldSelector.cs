@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectFieldSelector selects an APIVersioned field of an object.
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// Version of the schema the FieldPath is written in terms of, defaults to &quot;v1&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Path of the field to select in the specified API version.
         /// </summary>
-        [JsonProperty(PropertyName = "fieldPath")]
+        [JsonPropertyName("fieldPath")]
         public string FieldPath { get; set; }
 
         /// <summary>

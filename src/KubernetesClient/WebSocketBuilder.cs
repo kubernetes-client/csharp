@@ -1,6 +1,4 @@
-using System;
 using System.Net.WebSockets;
-using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;

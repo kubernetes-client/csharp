@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Rest;
-using Microsoft.Rest.Serialization;
-using Newtonsoft.Json;
 
 namespace k8s
 {
@@ -15,17 +12,7 @@ namespace k8s
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public System.Uri BaseUri { get; set; }
-
-        /// <summary>
-        /// Gets json serialization settings.
-        /// </summary>
-        public JsonSerializerSettings SerializationSettings { get; private set; }
-
-        /// <summary>
-        /// Gets json deserialization settings.
-        /// </summary>
-        public JsonSerializerSettings DeserializationSettings { get; private set; }
+        public Uri BaseUri { get; set; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify client subscription.
@@ -82,10 +69,10 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected Kubernetes(System.Uri baseUri, params DelegatingHandler[] handlers)
+        protected Kubernetes(Uri baseUri, params DelegatingHandler[] handlers)
             : this(handlers)
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
@@ -103,10 +90,10 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected Kubernetes(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
+        protected Kubernetes(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
             : this(rootHandler, handlers)
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
@@ -121,7 +108,7 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
         public Kubernetes(ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
@@ -142,7 +129,7 @@ namespace k8s
         /// </param>
         /// <param name='disposeHttpClient'>
         /// True: will dispose the provided httpClient on calling Kubernetes.Dispose(). False: will not dispose provided httpClient</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
         public Kubernetes(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient)
@@ -164,7 +151,7 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
         public Kubernetes(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
@@ -186,10 +173,10 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Kubernetes(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
+        public Kubernetes(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
             : this(handlers)
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
@@ -212,10 +199,10 @@ namespace k8s
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Kubernetes(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
+        public Kubernetes(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
             : this(rootHandler, handlers)
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
@@ -228,32 +215,7 @@ namespace k8s
         /// </summary>
         private void Initialize()
         {
-            BaseUri = new System.Uri("http://localhost");
-            SerializationSettings = new JsonSerializerSettings
-            {
-                Formatting = Newtonsoft.Json.Formatting.Indented,
-                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
-                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                ContractResolver = new ReadOnlyJsonContractResolver(),
-                Converters = new List<JsonConverter>
-                    {
-                        new Iso8601TimeSpanConverter(),
-                    },
-            };
-            DeserializationSettings = new JsonSerializerSettings
-            {
-                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
-                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
-                ContractResolver = new ReadOnlyJsonContractResolver(),
-                Converters = new List<JsonConverter>
-                    {
-                        new Iso8601TimeSpanConverter(),
-                    },
-            };
+            BaseUri = new Uri("http://localhost");
             CustomInitialize();
         }
 
@@ -268,16 +230,13 @@ namespace k8s
 
             try
             {
-                JsonSerializer jsonSerializer = JsonSerializer.Create(DeserializationSettings);
-                jsonSerializer.CheckAdditionalContent = true;
 #if NET5_0_OR_GREATER
                 using (Stream stream = await httpResponse.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false))
 #else
                 using (Stream stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false))
 #endif
-                using (JsonTextReader reader = new JsonTextReader(new StreamReader(stream)))
                 {
-                    result.Body = (T)jsonSerializer.Deserialize(reader, typeof(T));
+                    result.Body = KubernetesJson.Deserialize<T>(stream);
                 }
             }
             catch (JsonException ex)
@@ -288,6 +247,80 @@ namespace k8s
             }
 
             return result;
+        }
+
+        private HttpRequestMessage CreateRequest(string url, HttpMethod method, IDictionary<string, IList<string>> customHeaders)
+        {
+            var httpRequest = new HttpRequestMessage();
+            httpRequest.Method = method;
+            httpRequest.RequestUri = new Uri(url);
+            httpRequest.Version = HttpVersion.Version20;
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach (var header in customHeaders)
+                {
+                    httpRequest.Headers.Remove(header.Key);
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            return httpRequest;
+        }
+
+        private Task<HttpResponseMessage> SendRequest<T>(T body, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        {
+            if (body != null)
+            {
+                var requestContent = KubernetesJson.Serialize(body);
+                httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
+                httpRequest.Content.Headers.ContentType = GetHeader(body);
+                return SendRequestRaw(requestContent, httpRequest, cancellationToken);
+            }
+
+            return SendRequestRaw("", httpRequest, cancellationToken);
+        }
+
+        private async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        {
+            // Set Credentials
+            if (Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+
+            // Send Request
+            cancellationToken.ThrowIfCancellationRequested();
+            var httpResponse = await HttpClient.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                string responseContent = null;
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                if (httpResponse.Content != null)
+                {
+                    responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else
+                {
+                    responseContent = string.Empty;
+                }
+
+                ex.Request = new HttpRequestMessageWrapper(httpRequest, requestContent);
+                ex.Response = new HttpResponseMessageWrapper(httpResponse, responseContent);
+                httpRequest.Dispose();
+                if (httpResponse != null)
+                {
+                    httpResponse.Dispose();
+                }
+
+                throw ex;
+            }
+
+            return httpResponse;
         }
     }
 }

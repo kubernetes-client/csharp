@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeNodeAffinity defines constraints that limit what nodes this volume can be
         /// accessed from.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// Required specifies hard node constraints that must be met.
         /// </summary>
-        [JsonProperty(PropertyName = "required")]
+        [JsonPropertyName("required")]
         public V1NodeSelector Required { get; set; }
 
         /// <summary>

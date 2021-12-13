@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven&apos;t been
         /// accounted in Job status counters.
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// Failed holds UIDs of failed Pods.
         /// </summary>
-        [JsonProperty(PropertyName = "failed")]
+        [JsonPropertyName("failed")]
         public IList<string> Failed { get; set; }
 
         /// <summary>
         /// Succeeded holds UIDs of succeeded Pods.
         /// </summary>
-        [JsonProperty(PropertyName = "succeeded")]
+        [JsonPropertyName("succeeded")]
         public IList<string> Succeeded { get; set; }
 
         /// <summary>

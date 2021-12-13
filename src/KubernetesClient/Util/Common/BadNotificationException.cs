@@ -1,5 +1,3 @@
-using System;
-
 namespace k8s.Util.Common
 {
     public class BadNotificationException : Exception

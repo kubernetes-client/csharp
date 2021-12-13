@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceValidation is a list of validation methods for CustomResources.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
         /// </summary>
-        [JsonProperty(PropertyName = "openAPIV3Schema")]
+        [JsonPropertyName("openAPIV3Schema")]
         public V1JSONSchemaProps OpenAPIV3Schema { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DeploymentStrategy describes how to replace existing pods with new ones.
     /// </summary>
@@ -35,6 +29,11 @@ namespace k8s.Models
         /// <param name="type">
         /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Recreate&quot;` Kill all existing pods before creating new ones.
+        /// - `&quot;RollingUpdate&quot;` Replace the old ReplicaSets by new one using rolling update
+        /// i.e gradually scale down the old ReplicaSets and scale up the new one.
         /// </param>
         public V1DeploymentStrategy(V1RollingUpdateDeployment rollingUpdate = null, string type = null)
         {
@@ -52,14 +51,19 @@ namespace k8s.Models
         /// Rolling update config params. Present only if DeploymentStrategyType =
         /// RollingUpdate.
         /// </summary>
-        [JsonProperty(PropertyName = "rollingUpdate")]
+        [JsonPropertyName("rollingUpdate")]
         public V1RollingUpdateDeployment RollingUpdate { get; set; }
 
         /// <summary>
         /// Type of deployment. Can be &quot;Recreate&quot; or &quot;RollingUpdate&quot;. Default is
         /// RollingUpdate.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Recreate&quot;` Kill all existing pods before creating new ones.
+        /// - `&quot;RollingUpdate&quot;` Replace the old ReplicaSets by new one using rolling update
+        /// i.e gradually scale down the old ReplicaSets and scale up the new one.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

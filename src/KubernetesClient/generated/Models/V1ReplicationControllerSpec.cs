@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ReplicationControllerSpec is the specification of a replication controller.
     /// </summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// any of its container crashing, for it to be considered available. Defaults to 0
         /// (pod will be considered available as soon as it is ready)
         /// </summary>
-        [JsonProperty(PropertyName = "minReadySeconds")]
+        [JsonPropertyName("minReadySeconds")]
         public int? MinReadySeconds { get; set; }
 
         /// <summary>
@@ -78,7 +72,7 @@ namespace k8s.Models
         /// between explicit zero and unspecified. Defaults to 1. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int? Replicas { get; set; }
 
         /// <summary>
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// replication controller, if empty defaulted to labels on Pod template. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public IDictionary<string, string> Selector { get; set; }
 
         /// <summary>
@@ -97,7 +91,7 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
+        [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>

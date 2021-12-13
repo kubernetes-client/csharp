@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// StatefulSetStatus represents the current state of a StatefulSet.
     /// </summary>
@@ -28,14 +22,13 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the V1StatefulSetStatus class.
         /// </summary>
-        /// <param name="replicas">
-        /// replicas is the number of Pods created by the StatefulSet controller.
-        /// </param>
         /// <param name="availableReplicas">
         /// Total number of available pods (ready for at least minReadySeconds) targeted by
-        /// this statefulset. This is an alpha field and requires enabling
-        /// StatefulSetMinReadySeconds feature gate. Remove omitempty when graduating to
-        /// beta
+        /// this statefulset. This is a beta field and enabled/disabled by
+        /// StatefulSetMinReadySeconds feature gate.
+        /// </param>
+        /// <param name="replicas">
+        /// replicas is the number of Pods created by the StatefulSet controller.
         /// </param>
         /// <param name="collisionCount">
         /// collisionCount is the count of hash collisions for the StatefulSet. The
@@ -59,8 +52,8 @@ namespace k8s.Models
         /// the API Server.
         /// </param>
         /// <param name="readyReplicas">
-        /// readyReplicas is the number of Pods created by the StatefulSet controller that
-        /// have a Ready Condition.
+        /// readyReplicas is the number of pods created for this StatefulSet with a Ready
+        /// Condition.
         /// </param>
         /// <param name="updateRevision">
         /// updateRevision, if not empty, indicates the version of the StatefulSet used to
@@ -70,7 +63,7 @@ namespace k8s.Models
         /// updatedReplicas is the number of Pods created by the StatefulSet controller from
         /// the StatefulSet version indicated by updateRevision.
         /// </param>
-        public V1StatefulSetStatus(int replicas, int? availableReplicas = null, int? collisionCount = null, IList<V1StatefulSetCondition> conditions = null, int? currentReplicas = null, string currentRevision = null, long? observedGeneration = null, int? readyReplicas = null, string updateRevision = null, int? updatedReplicas = null)
+        public V1StatefulSetStatus(int availableReplicas, int replicas, int? collisionCount = null, IList<V1StatefulSetCondition> conditions = null, int? currentReplicas = null, string currentRevision = null, long? observedGeneration = null, int? readyReplicas = null, string updateRevision = null, int? updatedReplicas = null)
         {
             AvailableReplicas = availableReplicas;
             CollisionCount = collisionCount;
@@ -92,39 +85,38 @@ namespace k8s.Models
 
         /// <summary>
         /// Total number of available pods (ready for at least minReadySeconds) targeted by
-        /// this statefulset. This is an alpha field and requires enabling
-        /// StatefulSetMinReadySeconds feature gate. Remove omitempty when graduating to
-        /// beta
+        /// this statefulset. This is a beta field and enabled/disabled by
+        /// StatefulSetMinReadySeconds feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "availableReplicas")]
-        public int? AvailableReplicas { get; set; }
+        [JsonPropertyName("availableReplicas")]
+        public int AvailableReplicas { get; set; }
 
         /// <summary>
         /// collisionCount is the count of hash collisions for the StatefulSet. The
         /// StatefulSet controller uses this field as a collision avoidance mechanism when
         /// it needs to create the name for the newest ControllerRevision.
         /// </summary>
-        [JsonProperty(PropertyName = "collisionCount")]
+        [JsonPropertyName("collisionCount")]
         public int? CollisionCount { get; set; }
 
         /// <summary>
         /// Represents the latest available observations of a statefulset&apos;s current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1StatefulSetCondition> Conditions { get; set; }
 
         /// <summary>
         /// currentReplicas is the number of Pods created by the StatefulSet controller from
         /// the StatefulSet version indicated by currentRevision.
         /// </summary>
-        [JsonProperty(PropertyName = "currentReplicas")]
+        [JsonPropertyName("currentReplicas")]
         public int? CurrentReplicas { get; set; }
 
         /// <summary>
         /// currentRevision, if not empty, indicates the version of the StatefulSet used to
         /// generate Pods in the sequence [0,currentReplicas).
         /// </summary>
-        [JsonProperty(PropertyName = "currentRevision")]
+        [JsonPropertyName("currentRevision")]
         public string CurrentRevision { get; set; }
 
         /// <summary>
@@ -132,34 +124,34 @@ namespace k8s.Models
         /// It corresponds to the StatefulSet&apos;s generation, which is updated on mutation by
         /// the API Server.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// readyReplicas is the number of Pods created by the StatefulSet controller that
-        /// have a Ready Condition.
+        /// readyReplicas is the number of pods created for this StatefulSet with a Ready
+        /// Condition.
         /// </summary>
-        [JsonProperty(PropertyName = "readyReplicas")]
+        [JsonPropertyName("readyReplicas")]
         public int? ReadyReplicas { get; set; }
 
         /// <summary>
         /// replicas is the number of Pods created by the StatefulSet controller.
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int Replicas { get; set; }
 
         /// <summary>
         /// updateRevision, if not empty, indicates the version of the StatefulSet used to
         /// generate Pods in the sequence [replicas-updatedReplicas,replicas)
         /// </summary>
-        [JsonProperty(PropertyName = "updateRevision")]
+        [JsonPropertyName("updateRevision")]
         public string UpdateRevision { get; set; }
 
         /// <summary>
         /// updatedReplicas is the number of Pods created by the StatefulSet controller from
         /// the StatefulSet version indicated by updateRevision.
         /// </summary>
-        [JsonProperty(PropertyName = "updatedReplicas")]
+        [JsonPropertyName("updatedReplicas")]
         public int? UpdatedReplicas { get; set; }
 
         /// <summary>

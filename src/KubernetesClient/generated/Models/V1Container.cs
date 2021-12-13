@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A single application container that you want to run within a pod.
     /// </summary>
@@ -73,6 +67,14 @@ namespace k8s.Models
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </param>
         /// <param name="lifecycle">
         /// Actions that the management system should take in response to container
@@ -145,6 +147,13 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </param>
         /// <param name="tty">
         /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
@@ -203,7 +212,7 @@ namespace k8s.Models
         /// whether the variable exists or not. Cannot be updated. More info:
         /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
-        [JsonProperty(PropertyName = "args")]
+        [JsonPropertyName("args")]
         public IList<string> Args { get; set; }
 
         /// <summary>
@@ -216,13 +225,13 @@ namespace k8s.Models
         /// regardless of whether the variable exists or not. Cannot be updated. More info:
         /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
-        [JsonProperty(PropertyName = "command")]
+        [JsonPropertyName("command")]
         public IList<string> Command { get; set; }
 
         /// <summary>
         /// List of environment variables to set in the container. Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "env")]
+        [JsonPropertyName("env")]
         public IList<V1EnvVar> Env { get; set; }
 
         /// <summary>
@@ -233,7 +242,7 @@ namespace k8s.Models
         /// precedence. Values defined by an Env with a duplicate key will take precedence.
         /// Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "envFrom")]
+        [JsonPropertyName("envFrom")]
         public IList<V1EnvFromSource> EnvFrom { get; set; }
 
         /// <summary>
@@ -242,22 +251,30 @@ namespace k8s.Models
         /// allow higher level config management to default or override container images in
         /// workload controllers like Deployments and StatefulSets.
         /// </summary>
-        [JsonProperty(PropertyName = "image")]
+        [JsonPropertyName("image")]
         public string Image { get; set; }
 
         /// <summary>
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if
         /// :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More
         /// info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// 
+        /// Possible enum values:
+        /// - `&quot;Always&quot;` means that kubelet always attempts to pull the latest image.
+        /// Container will fail If the pull fails.
+        /// - `&quot;IfNotPresent&quot;` means that kubelet pulls if the image isn&apos;t present on disk.
+        /// Container will fail if the image isn&apos;t present and the pull fails.
+        /// - `&quot;Never&quot;` means that kubelet never pulls an image, but only uses a local
+        /// image. Container will fail if the image isn&apos;t present
         /// </summary>
-        [JsonProperty(PropertyName = "imagePullPolicy")]
+        [JsonPropertyName("imagePullPolicy")]
         public string ImagePullPolicy { get; set; }
 
         /// <summary>
         /// Actions that the management system should take in response to container
         /// lifecycle events. Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "lifecycle")]
+        [JsonPropertyName("lifecycle")]
         public V1Lifecycle Lifecycle { get; set; }
 
         /// <summary>
@@ -265,14 +282,14 @@ namespace k8s.Models
         /// fails. Cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [JsonProperty(PropertyName = "livenessProbe")]
+        [JsonPropertyName("livenessProbe")]
         public V1Probe LivenessProbe { get; set; }
 
         /// <summary>
         /// Name of the container specified as a DNS_LABEL. Each container in a pod must
         /// have a unique name (DNS_LABEL). Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -283,7 +300,7 @@ namespace k8s.Models
         /// address inside a container will be accessible from the network. Cannot be
         /// updated.
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<V1ContainerPort> Ports { get; set; }
 
         /// <summary>
@@ -291,14 +308,14 @@ namespace k8s.Models
         /// service endpoints if the probe fails. Cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [JsonProperty(PropertyName = "readinessProbe")]
+        [JsonPropertyName("readinessProbe")]
         public V1Probe ReadinessProbe { get; set; }
 
         /// <summary>
         /// Compute Resources required by this container. Cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public V1ResourceRequirements Resources { get; set; }
 
         /// <summary>
@@ -307,7 +324,7 @@ namespace k8s.Models
         /// PodSecurityContext. More info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
-        [JsonProperty(PropertyName = "securityContext")]
+        [JsonPropertyName("securityContext")]
         public V1SecurityContext SecurityContext { get; set; }
 
         /// <summary>
@@ -319,7 +336,7 @@ namespace k8s.Models
         /// during steady-state operation. This cannot be updated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [JsonProperty(PropertyName = "startupProbe")]
+        [JsonPropertyName("startupProbe")]
         public V1Probe StartupProbe { get; set; }
 
         /// <summary>
@@ -327,7 +344,7 @@ namespace k8s.Models
         /// runtime. If this is not set, reads from stdin in the container will always
         /// result in EOF. Default is false.
         /// </summary>
-        [JsonProperty(PropertyName = "stdin")]
+        [JsonPropertyName("stdin")]
         public bool? Stdin { get; set; }
 
         /// <summary>
@@ -340,7 +357,7 @@ namespace k8s.Models
         /// false, a container processes that reads from stdin will never receive an EOF.
         /// Default is false
         /// </summary>
-        [JsonProperty(PropertyName = "stdinOnce")]
+        [JsonPropertyName("stdinOnce")]
         public bool? StdinOnce { get; set; }
 
         /// <summary>
@@ -351,7 +368,7 @@ namespace k8s.Models
         /// across all containers will be limited to 12kb. Defaults to /dev/termination-log.
         /// Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "terminationMessagePath")]
+        [JsonPropertyName("terminationMessagePath")]
         public string TerminationMessagePath { get; set; }
 
         /// <summary>
@@ -361,27 +378,34 @@ namespace k8s.Models
         /// container log output if the termination message file is empty and the container
         /// exited with an error. The log output is limited to 2048 bytes or 80 lines,
         /// whichever is smaller. Defaults to File. Cannot be updated.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;FallbackToLogsOnError&quot;` will read the most recent contents of the container
+        /// logs for the container status message when the container exits with an error and
+        /// the terminationMessagePath has no contents.
+        /// - `&quot;File&quot;` is the default behavior and will set the container status message to
+        /// the contents of the container&apos;s terminationMessagePath when the container exits.
         /// </summary>
-        [JsonProperty(PropertyName = "terminationMessagePolicy")]
+        [JsonPropertyName("terminationMessagePolicy")]
         public string TerminationMessagePolicy { get; set; }
 
         /// <summary>
         /// Whether this container should allocate a TTY for itself, also requires &apos;stdin&apos;
         /// to be true. Default is false.
         /// </summary>
-        [JsonProperty(PropertyName = "tty")]
+        [JsonPropertyName("tty")]
         public bool? Tty { get; set; }
 
         /// <summary>
         /// volumeDevices is the list of block devices to be used by the container.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeDevices")]
+        [JsonPropertyName("volumeDevices")]
         public IList<V1VolumeDevice> VolumeDevices { get; set; }
 
         /// <summary>
         /// Pod volumes to mount into the container&apos;s filesystem. Cannot be updated.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeMounts")]
+        [JsonPropertyName("volumeMounts")]
         public IList<V1VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>
@@ -389,7 +413,7 @@ namespace k8s.Models
         /// will be used, which might be configured in the container image. Cannot be
         /// updated.
         /// </summary>
-        [JsonProperty(PropertyName = "workingDir")]
+        [JsonPropertyName("workingDir")]
         public string WorkingDir { get; set; }
 
         /// <summary>

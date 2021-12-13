@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A scoped-resource selector requirement is a selector that contains values, a
         /// scope name, and an operator that relates the scope name and values.
@@ -32,9 +26,27 @@ namespace k8s.Models
         /// <param name="operatorProperty">
         /// Represents a scope&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </param>
         /// <param name="scopeName">
         /// The name of the scope that the selector applies to.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;BestEffort&quot;` Match all pod objects that have best effort quality of service
+        /// - `&quot;CrossNamespacePodAffinity&quot;` Match all pod objects that have cross-namespace
+        /// pod (anti)affinity mentioned. This is a beta feature enabled by the
+        /// PodAffinityNamespaceSelector feature flag.
+        /// - `&quot;NotBestEffort&quot;` Match all pod objects that do not have best effort quality
+        /// of service
+        /// - `&quot;NotTerminating&quot;` Match all pod objects where spec.activeDeadlineSeconds is
+        /// nil
+        /// - `&quot;PriorityClass&quot;` Match all pod objects that have priority class mentioned
+        /// - `&quot;Terminating&quot;` Match all pod objects where spec.activeDeadlineSeconds &gt;=0
         /// </param>
         /// <param name="values">
         /// An array of string values. If the operator is In or NotIn, the values array must
@@ -57,14 +69,32 @@ namespace k8s.Models
         /// <summary>
         /// Represents a scope&apos;s relationship to a set of values. Valid operators are In,
         /// NotIn, Exists, DoesNotExist.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;DoesNotExist&quot;`
+        /// - `&quot;Exists&quot;`
+        /// - `&quot;In&quot;`
+        /// - `&quot;NotIn&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
         /// The name of the scope that the selector applies to.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;BestEffort&quot;` Match all pod objects that have best effort quality of service
+        /// - `&quot;CrossNamespacePodAffinity&quot;` Match all pod objects that have cross-namespace
+        /// pod (anti)affinity mentioned. This is a beta feature enabled by the
+        /// PodAffinityNamespaceSelector feature flag.
+        /// - `&quot;NotBestEffort&quot;` Match all pod objects that do not have best effort quality
+        /// of service
+        /// - `&quot;NotTerminating&quot;` Match all pod objects where spec.activeDeadlineSeconds is
+        /// nil
+        /// - `&quot;PriorityClass&quot;` Match all pod objects that have priority class mentioned
+        /// - `&quot;Terminating&quot;` Match all pod objects where spec.activeDeadlineSeconds &gt;=0
         /// </summary>
-        [JsonProperty(PropertyName = "scopeName")]
+        [JsonPropertyName("scopeName")]
         public string ScopeName { get; set; }
 
         /// <summary>
@@ -72,7 +102,7 @@ namespace k8s.Models
         /// be non-empty. If the operator is Exists or DoesNotExist, the values array must
         /// be empty. This array is replaced during a strategic merge patch.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

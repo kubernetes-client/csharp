@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// The weights of all of the matched WeightedPodAffinityTerm fields are added
         /// per-node to find the most preferred node(s)
@@ -51,14 +45,14 @@ namespace k8s.Models
         /// <summary>
         /// Required. A pod affinity term, associated with the corresponding weight.
         /// </summary>
-        [JsonProperty(PropertyName = "podAffinityTerm")]
+        [JsonPropertyName("podAffinityTerm")]
         public V1PodAffinityTerm PodAffinityTerm { get; set; }
 
         /// <summary>
         /// weight associated with matching the corresponding podAffinityTerm, in the range
         /// 1-100.
         /// </summary>
-        [JsonProperty(PropertyName = "weight")]
+        [JsonPropertyName("weight")]
         public int Weight { get; set; }
 
         /// <summary>
@@ -71,7 +65,7 @@ namespace k8s.Models
         {
             if (PodAffinityTerm == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "PodAffinityTerm");    
+                throw new ArgumentNullException("PodAffinityTerm");    
             }
             PodAffinityTerm?.Validate();
         }

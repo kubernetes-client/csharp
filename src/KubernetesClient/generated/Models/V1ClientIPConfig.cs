@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ClientIPConfig represents the configurations of Client IP based session
         /// affinity.
@@ -50,7 +44,7 @@ namespace k8s.Models
         /// value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &quot;ClientIP&quot;. Default
         /// value is 10800(for 3 hours).
         /// </summary>
-        [JsonProperty(PropertyName = "timeoutSeconds")]
+        [JsonPropertyName("timeoutSeconds")]
         public int? TimeoutSeconds { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressRule represents the rules mapping the paths under a specified host to the
         /// related backend services. Incoming requests are first evaluated for a host
@@ -91,13 +85,13 @@ namespace k8s.Models
         /// is a wildcard, then the request matches this rule if the http host header is to
         /// equal to the suffix (removing the first label) of the wildcard rule.
         /// </summary>
-        [JsonProperty(PropertyName = "host")]
+        [JsonPropertyName("host")]
         public string Host { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "http")]
+        [JsonPropertyName("http")]
         public V1HTTPIngressRuleValue Http { get; set; }
 
         /// <summary>

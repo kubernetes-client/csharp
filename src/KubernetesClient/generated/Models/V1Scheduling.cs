@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Scheduling specifies the scheduling constraints for nodes supporting a
         /// RuntimeClass.
@@ -60,7 +54,7 @@ namespace k8s.Models
         /// existing nodeSelector. Any conflicts will cause the pod to be rejected in
         /// admission.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeSelector")]
+        [JsonPropertyName("nodeSelector")]
         public IDictionary<string, string> NodeSelector { get; set; }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// RuntimeClass during admission, effectively unioning the set of nodes tolerated
         /// by the pod and the RuntimeClass.
         /// </summary>
-        [JsonProperty(PropertyName = "tolerations")]
+        [JsonPropertyName("tolerations")]
         public IList<V1Toleration> Tolerations { get; set; }
 
         /// <summary>

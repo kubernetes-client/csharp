@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServerAddressByClientCIDR helps the client to determine the server address that
         /// they should use, depending on the clientCIDR that they match.
@@ -53,14 +47,14 @@ namespace k8s.Models
         /// The CIDR with which clients can match their IP to figure out the server address
         /// that they should use.
         /// </summary>
-        [JsonProperty(PropertyName = "clientCIDR")]
+        [JsonPropertyName("clientCIDR")]
         public string ClientCIDR { get; set; }
 
         /// <summary>
         /// Address of this server, suitable for a client that matches the above CIDR. This
         /// can be a hostname, hostname:port, IP or IP:port.
         /// </summary>
-        [JsonProperty(PropertyName = "serverAddress")]
+        [JsonPropertyName("serverAddress")]
         public string ServerAddress { get; set; }
 
         /// <summary>

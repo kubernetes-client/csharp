@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
@@ -44,6 +38,10 @@ namespace k8s.Models
         /// </param>
         /// <param name="scheme">
         /// Scheme to use for connecting to the host. Defaults to HTTP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;HTTP&quot;` means that the scheme used will be http://
+        /// - `&quot;HTTPS&quot;` means that the scheme used will be https://
         /// </param>
         public V1HTTPGetAction(IntstrIntOrString port, string host = null, IList<V1HTTPHeader> httpHeaders = null, string path = null, string scheme = null)
         {
@@ -64,32 +62,36 @@ namespace k8s.Models
         /// Host name to connect to, defaults to the pod IP. You probably want to set &quot;Host&quot;
         /// in httpHeaders instead.
         /// </summary>
-        [JsonProperty(PropertyName = "host")]
+        [JsonPropertyName("host")]
         public string Host { get; set; }
 
         /// <summary>
         /// Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
-        [JsonProperty(PropertyName = "httpHeaders")]
+        [JsonPropertyName("httpHeaders")]
         public IList<V1HTTPHeader> HttpHeaders { get; set; }
 
         /// <summary>
         /// Path to access on the HTTP server.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
         /// Name or number of the port to access on the container. Number must be in the
         /// range 1 to 65535. Name must be an IANA_SVC_NAME.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public IntstrIntOrString Port { get; set; }
 
         /// <summary>
         /// Scheme to use for connecting to the host. Defaults to HTTP.
+        /// 
+        /// Possible enum values:
+        /// - `&quot;HTTP&quot;` means that the scheme used will be http://
+        /// - `&quot;HTTPS&quot;` means that the scheme used will be https://
         /// </summary>
-        [JsonProperty(PropertyName = "scheme")]
+        [JsonPropertyName("scheme")]
         public string Scheme { get; set; }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace k8s.Models
         {
             if (Port == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
+                throw new ArgumentNullException("Port");    
             }
             if (HttpHeaders != null){
                 foreach(var obj in HttpHeaders)

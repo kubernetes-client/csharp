@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace k8s.Util.Common.Generic.Options
 {
     public class CreateOptions

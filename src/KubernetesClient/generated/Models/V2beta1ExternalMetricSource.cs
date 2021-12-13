@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ExternalMetricSource indicates how to scale on a metric not associated with any
         /// Kubernetes object (for example length of queue in cloud messaging service, or
@@ -62,27 +56,27 @@ namespace k8s.Models
         /// <summary>
         /// metricName is the name of the metric in question.
         /// </summary>
-        [JsonProperty(PropertyName = "metricName")]
+        [JsonPropertyName("metricName")]
         public string MetricName { get; set; }
 
         /// <summary>
         /// metricSelector is used to identify a specific time series within a given metric.
         /// </summary>
-        [JsonProperty(PropertyName = "metricSelector")]
+        [JsonPropertyName("metricSelector")]
         public V1LabelSelector MetricSelector { get; set; }
 
         /// <summary>
         /// targetAverageValue is the target per-pod value of global metric (as a quantity).
         /// Mutually exclusive with TargetValue.
         /// </summary>
-        [JsonProperty(PropertyName = "targetAverageValue")]
+        [JsonPropertyName("targetAverageValue")]
         public ResourceQuantity TargetAverageValue { get; set; }
 
         /// <summary>
         /// targetValue is the target value of the metric (as a quantity). Mutually
         /// exclusive with TargetAverageValue.
         /// </summary>
-        [JsonProperty(PropertyName = "targetValue")]
+        [JsonPropertyName("targetValue")]
         public ResourceQuantity TargetValue { get; set; }
 
         /// <summary>

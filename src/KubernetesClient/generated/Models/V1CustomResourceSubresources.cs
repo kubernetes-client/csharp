@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceSubresources defines the status and scale subresources for
         /// CustomResources.
@@ -56,7 +50,7 @@ namespace k8s.Models
         /// scale indicates the custom resource should serve a `/scale` subresource that
         /// returns an `autoscaling/v1` Scale object.
         /// </summary>
-        [JsonProperty(PropertyName = "scale")]
+        [JsonPropertyName("scale")]
         public V1CustomResourceSubresourceScale Scale { get; set; }
 
         /// <summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// subresource ignore changes to anything other than the `status` stanza of the
         /// object.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public object Status { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SessionAffinityConfig represents the configurations of session affinity.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// clientIP contains the configurations of Client IP based session affinity.
         /// </summary>
-        [JsonProperty(PropertyName = "clientIP")]
+        [JsonPropertyName("clientIP")]
         public V1ClientIPConfig ClientIP { get; set; }
 
         /// <summary>

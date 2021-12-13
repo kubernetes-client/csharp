@@ -1,6 +1,6 @@
 using k8s.Models;
 using k8s.Tests.Mock;
-using Newtonsoft.Json;
+using System.Text.Json;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -20,7 +20,7 @@ namespace k8s.Tests
         {
             var v1Status = new V1Status { Message = "test message", Status = "test status" };
 
-            using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(v1Status)))
+            using (var server = new MockKubeApiServer(testOutput, resp: JsonSerializer.Serialize(v1Status)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
@@ -41,7 +41,7 @@ namespace k8s.Tests
                 Status = new V1NamespaceStatus() { Phase = "test termating" },
             };
 
-            using (var server = new MockKubeApiServer(testOutput, resp: JsonConvert.SerializeObject(corev1Namespace)))
+            using (var server = new MockKubeApiServer(testOutput, resp: KubernetesJson.Serialize(corev1Namespace)))
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 

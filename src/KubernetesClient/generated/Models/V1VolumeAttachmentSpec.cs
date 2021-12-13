@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeAttachmentSpec is the specification of a VolumeAttachment request.
     /// </summary>
@@ -55,19 +49,19 @@ namespace k8s.Models
         /// Attacher indicates the name of the volume driver that MUST handle this request.
         /// This is the name returned by GetPluginName().
         /// </summary>
-        [JsonProperty(PropertyName = "attacher")]
+        [JsonPropertyName("attacher")]
         public string Attacher { get; set; }
 
         /// <summary>
         /// The node that the volume should be attached to.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeName")]
+        [JsonPropertyName("nodeName")]
         public string NodeName { get; set; }
 
         /// <summary>
         /// Source represents the volume that should be attached.
         /// </summary>
-        [JsonProperty(PropertyName = "source")]
+        [JsonPropertyName("source")]
         public V1VolumeAttachmentSource Source { get; set; }
 
         /// <summary>
@@ -80,7 +74,7 @@ namespace k8s.Models
         {
             if (Source == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Source");    
+                throw new ArgumentNullException("Source");    
             }
             Source?.Validate();
         }

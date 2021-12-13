@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PortworxVolumeSource represents a Portworx volume resource.
     /// </summary>
@@ -58,20 +52,20 @@ namespace k8s.Models
         /// supported by the host operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;. Implicitly inferred
         /// to be &quot;ext4&quot; if unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// VolumeID uniquely identifies a Portworx volume
         /// </summary>
-        [JsonProperty(PropertyName = "volumeID")]
+        [JsonPropertyName("volumeID")]
         public string VolumeID { get; set; }
 
         /// <summary>

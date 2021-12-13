@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given
         /// StorageClass, this describes the available capacity in a particular topology
@@ -124,7 +118,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -136,7 +130,7 @@ namespace k8s.Models
         /// bytes, of the storage that can be used to provision volumes. If not set, that
         /// information is currently unavailable and treated like zero capacity.
         /// </summary>
-        [JsonProperty(PropertyName = "capacity")]
+        [JsonPropertyName("capacity")]
         public ResourceQuantity Capacity { get; set; }
 
         /// <summary>
@@ -145,7 +139,7 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
@@ -158,7 +152,7 @@ namespace k8s.Models
         /// the same parameters as those in GetCapacityRequest. The corresponding value in
         /// the Kubernetes API is ResourceRequirements.Requests in a volume claim.
         /// </summary>
-        [JsonProperty(PropertyName = "maximumVolumeSize")]
+        [JsonPropertyName("maximumVolumeSize")]
         public ResourceQuantity MaximumVolumeSize { get; set; }
 
         /// <summary>
@@ -173,7 +167,7 @@ namespace k8s.Models
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -182,7 +176,7 @@ namespace k8s.Models
         /// cluster. If empty, the storage is accessible from all nodes. This field is
         /// immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeTopology")]
+        [JsonPropertyName("nodeTopology")]
         public V1LabelSelector NodeTopology { get; set; }
 
         /// <summary>
@@ -191,7 +185,7 @@ namespace k8s.Models
         /// subdomain). If that object no longer exists, the CSIStorageCapacity object is
         /// obsolete and should be removed by its creator. This field is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "storageClassName")]
+        [JsonPropertyName("storageClassName")]
         public string StorageClassName { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIVersions lists the versions that are available, to allow clients to discover
         /// the API at /api, which is the root path of the legacy v1 API.
@@ -74,7 +68,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
@@ -96,13 +90,13 @@ namespace k8s.Models
         /// server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip
         /// header or request.RemoteAddr (in that order) to get the client IP.
         /// </summary>
-        [JsonProperty(PropertyName = "serverAddressByClientCIDRs")]
+        [JsonPropertyName("serverAddressByClientCIDRs")]
         public IList<V1ServerAddressByClientCIDR> ServerAddressByClientCIDRs { get; set; }
 
         /// <summary>
         /// versions are the api versions that are available.
         /// </summary>
-        [JsonProperty(PropertyName = "versions")]
+        [JsonPropertyName("versions")]
         public IList<string> Versions { get; set; }
 
         /// <summary>
