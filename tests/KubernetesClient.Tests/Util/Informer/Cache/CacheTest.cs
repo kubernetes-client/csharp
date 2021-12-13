@@ -301,7 +301,7 @@ namespace k8s.Tests.Util.Informer.Cache
                 },
             };
             var cache = new Cache<V1Pod>();
-            var defaultReturnValue = Caches.DeletionHandlingMetaNamespaceKeyFunc<V1Pod>(pod);
+            var defaultReturnValue = Caches.DeletionHandlingMetaNamespaceKeyFunc(pod);
 
             var funcReturnValue = cache.KeyFunc(pod);
 

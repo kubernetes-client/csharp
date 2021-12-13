@@ -6,12 +6,12 @@ namespace k8s.Models
         {
             switch (reader.TokenType)
             {
-            case JsonTokenType.String:
-                return reader.GetString();
-            case JsonTokenType.Number:
-                return reader.GetInt64();
-            default:
-                break;
+                case JsonTokenType.String:
+                    return reader.GetString();
+                case JsonTokenType.Number:
+                    return reader.GetInt64();
+                default:
+                    break;
             }
 
             throw new NotSupportedException();
