@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TokenReviewStatus is the result of the token authentication request.
     /// </summary>
@@ -73,25 +67,25 @@ namespace k8s.Models
         /// status.authenticated is &quot;true&quot;, the token is valid against the audience of the
         /// Kubernetes API server.
         /// </summary>
-        [JsonProperty(PropertyName = "audiences")]
+        [JsonPropertyName("audiences")]
         public IList<string> Audiences { get; set; }
 
         /// <summary>
         /// Authenticated indicates that the token was associated with a known user.
         /// </summary>
-        [JsonProperty(PropertyName = "authenticated")]
+        [JsonPropertyName("authenticated")]
         public bool? Authenticated { get; set; }
 
         /// <summary>
         /// Error indicates that the token couldn&apos;t be checked
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
 
         /// <summary>
         /// User is the UserInfo associated with the provided token.
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public V1UserInfo User { get; set; }
 
         /// <summary>

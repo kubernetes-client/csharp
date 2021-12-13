@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// GroupSubject holds detailed information for group-kind subject.
     /// </summary>
@@ -49,7 +43,7 @@ namespace k8s.Models
         /// https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go
         /// for some well-known group names. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointAddress is a tuple that describes single IP address.
     /// </summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// <summary>
         /// The Hostname of this endpoint
         /// </summary>
-        [JsonProperty(PropertyName = "hostname")]
+        [JsonPropertyName("hostname")]
         public string Hostname { get; set; }
 
         /// <summary>
@@ -70,20 +64,20 @@ namespace k8s.Models
         /// but not fully supported on all platforms. Also, certain kubernetes components,
         /// like kube-proxy, are not IPv6 ready.
         /// </summary>
-        [JsonProperty(PropertyName = "ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>
         /// Optional: Node hosting this endpoint. This can be used to determine endpoints
         /// local to a node.
         /// </summary>
-        [JsonProperty(PropertyName = "nodeName")]
+        [JsonPropertyName("nodeName")]
         public string NodeName { get; set; }
 
         /// <summary>
         /// Reference to object providing the endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "targetRef")]
+        [JsonPropertyName("targetRef")]
         public V1ObjectReference TargetRef { get; set; }
 
         /// <summary>

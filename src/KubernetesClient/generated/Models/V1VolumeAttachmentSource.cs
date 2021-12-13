@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeAttachmentSource represents a volume that should be attached. Right now
         /// only PersistenVolumes can be attached via external attacher, in future we may
@@ -59,13 +53,13 @@ namespace k8s.Models
         /// VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only
         /// honored by servers that enabled the CSIMigration feature.
         /// </summary>
-        [JsonProperty(PropertyName = "inlineVolumeSpec")]
+        [JsonPropertyName("inlineVolumeSpec")]
         public V1PersistentVolumeSpec InlineVolumeSpec { get; set; }
 
         /// <summary>
         /// Name of the persistent volume to attach.
         /// </summary>
-        [JsonProperty(PropertyName = "persistentVolumeName")]
+        [JsonPropertyName("persistentVolumeName")]
         public string PersistentVolumeName { get; set; }
 
         /// <summary>

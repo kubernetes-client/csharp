@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// An empty preferred scheduling term matches all objects with implicit weight 0
         /// (i.e. it&apos;s a no-op). A null preferred scheduling term matches no objects (i.e.
@@ -52,14 +46,14 @@ namespace k8s.Models
         /// <summary>
         /// A node selector term, associated with the corresponding weight.
         /// </summary>
-        [JsonProperty(PropertyName = "preference")]
+        [JsonPropertyName("preference")]
         public V1NodeSelectorTerm Preference { get; set; }
 
         /// <summary>
         /// Weight associated with matching the corresponding nodeSelectorTerm, in the range
         /// 1-100.
         /// </summary>
-        [JsonProperty(PropertyName = "weight")]
+        [JsonPropertyName("weight")]
         public int Weight { get; set; }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace k8s.Models
         {
             if (Preference == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Preference");    
+                throw new ArgumentNullException("Preference");    
             }
             Preference?.Validate();
         }

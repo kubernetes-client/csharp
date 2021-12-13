@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AttachedVolume describes a volume attached to a node
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// DevicePath represents the device path where the volume should be available
         /// </summary>
-        [JsonProperty(PropertyName = "devicePath")]
+        [JsonPropertyName("devicePath")]
         public string DevicePath { get; set; }
 
         /// <summary>
         /// Name of the attached volume
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

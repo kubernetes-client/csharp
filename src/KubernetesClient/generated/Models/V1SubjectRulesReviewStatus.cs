@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SubjectRulesReviewStatus contains the result of a rules check. This check can be
         /// incomplete depending on the set of authorizers the server is configured with and
@@ -71,7 +65,7 @@ namespace k8s.Models
         /// occurred during rule evaluation, such as an authorizer that doesn&apos;t support rule
         /// evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.
         /// </summary>
-        [JsonProperty(PropertyName = "evaluationError")]
+        [JsonPropertyName("evaluationError")]
         public string EvaluationError { get; set; }
 
         /// <summary>
@@ -79,7 +73,7 @@ namespace k8s.Models
         /// most commonly encountered when an authorizer, such as an external authorizer,
         /// doesn&apos;t support rules evaluation.
         /// </summary>
-        [JsonProperty(PropertyName = "incomplete")]
+        [JsonPropertyName("incomplete")]
         public bool Incomplete { get; set; }
 
         /// <summary>
@@ -87,7 +81,7 @@ namespace k8s.Models
         /// non-resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceRules")]
+        [JsonPropertyName("nonResourceRules")]
         public IList<V1NonResourceRule> NonResourceRules { get; set; }
 
         /// <summary>
@@ -95,7 +89,7 @@ namespace k8s.Models
         /// resources. The list ordering isn&apos;t significant, may contain duplicates, and
         /// possibly be incomplete.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceRules")]
+        [JsonPropertyName("resourceRules")]
         public IList<V1ResourceRule> ResourceRules { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HorizontalPodAutoscalerStatus describes the current status of a horizontal pod
         /// autoscaler.
@@ -71,40 +65,40 @@ namespace k8s.Models
         /// conditions is the set of conditions required for this autoscaler to scale its
         /// target, and indicates whether or not those conditions are met.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V2beta2HorizontalPodAutoscalerCondition> Conditions { get; set; }
 
         /// <summary>
         /// currentMetrics is the last read state of the metrics used by this autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "currentMetrics")]
+        [JsonPropertyName("currentMetrics")]
         public IList<V2beta2MetricStatus> CurrentMetrics { get; set; }
 
         /// <summary>
         /// currentReplicas is current number of replicas of pods managed by this
         /// autoscaler, as last seen by the autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "currentReplicas")]
+        [JsonPropertyName("currentReplicas")]
         public int CurrentReplicas { get; set; }
 
         /// <summary>
         /// desiredReplicas is the desired number of replicas of pods managed by this
         /// autoscaler, as last calculated by the autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "desiredReplicas")]
+        [JsonPropertyName("desiredReplicas")]
         public int DesiredReplicas { get; set; }
 
         /// <summary>
         /// lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of
         /// pods, used by the autoscaler to control how often the number of pods is changed.
         /// </summary>
-        [JsonProperty(PropertyName = "lastScaleTime")]
+        [JsonPropertyName("lastScaleTime")]
         public System.DateTime? LastScaleTime { get; set; }
 
         /// <summary>
         /// observedGeneration is the most recent generation observed by this autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>

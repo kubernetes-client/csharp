@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectMetricStatus indicates the current value of a metric describing a
         /// kubernetes object (for example, hits-per-second on an Ingress object).
@@ -55,20 +49,20 @@ namespace k8s.Models
         /// <summary>
         /// current contains the current value for the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "current")]
+        [JsonPropertyName("current")]
         public V2MetricValueStatus Current { get; set; }
 
         /// <summary>
         /// DescribedObject specifies the descriptions of a object,such as kind,name
         /// apiVersion
         /// </summary>
-        [JsonProperty(PropertyName = "describedObject")]
+        [JsonPropertyName("describedObject")]
         public V2CrossVersionObjectReference DescribedObject { get; set; }
 
         /// <summary>
         /// metric identifies the target metric by name and selector
         /// </summary>
-        [JsonProperty(PropertyName = "metric")]
+        [JsonPropertyName("metric")]
         public V2MetricIdentifier Metric { get; set; }
 
         /// <summary>
@@ -81,15 +75,15 @@ namespace k8s.Models
         {
             if (Current == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Current");    
+                throw new ArgumentNullException("Current");    
             }
             if (DescribedObject == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DescribedObject");    
+                throw new ArgumentNullException("DescribedObject");    
             }
             if (Metric == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Metric");    
+                throw new ArgumentNullException("Metric");    
             }
             Current?.Validate();
             DescribedObject?.Validate();

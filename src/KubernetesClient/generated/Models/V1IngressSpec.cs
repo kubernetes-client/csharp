@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressSpec describes the Ingress the user wishes to exist.
     /// </summary>
@@ -75,7 +69,7 @@ namespace k8s.Models
         /// DefaultBackend is not set, the handling of requests that do not match any of the
         /// rules will be up to the Ingress controller.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultBackend")]
+        [JsonPropertyName("defaultBackend")]
         public V1IngressBackend DefaultBackend { get; set; }
 
         /// <summary>
@@ -89,14 +83,14 @@ namespace k8s.Models
         /// default, which can be used to set a default value for this field. For more
         /// information, refer to the IngressClass documentation.
         /// </summary>
-        [JsonProperty(PropertyName = "ingressClassName")]
+        [JsonPropertyName("ingressClassName")]
         public string IngressClassName { get; set; }
 
         /// <summary>
         /// A list of host rules used to configure the Ingress. If unspecified, or no rule
         /// matches, all traffic is sent to the default backend.
         /// </summary>
-        [JsonProperty(PropertyName = "rules")]
+        [JsonPropertyName("rules")]
         public IList<V1IngressRule> Rules { get; set; }
 
         /// <summary>
@@ -105,7 +99,7 @@ namespace k8s.Models
         /// multiplexed on the same port according to the hostname specified through the SNI
         /// TLS extension, if the ingress controller fulfilling the ingress supports SNI.
         /// </summary>
-        [JsonProperty(PropertyName = "tls")]
+        [JsonPropertyName("tls")]
         public IList<V1IngressTLS> Tls { get; set; }
 
         /// <summary>

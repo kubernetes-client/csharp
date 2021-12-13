@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a
         /// config source for the Node. This API is deprecated since 1.22:
@@ -69,35 +63,35 @@ namespace k8s.Models
         /// KubeletConfigKey declares which key of the referenced ConfigMap corresponds to
         /// the KubeletConfiguration structure This field is required in all cases.
         /// </summary>
-        [JsonProperty(PropertyName = "kubeletConfigKey")]
+        [JsonPropertyName("kubeletConfigKey")]
         public string KubeletConfigKey { get; set; }
 
         /// <summary>
         /// Name is the metadata.name of the referenced ConfigMap. This field is required in
         /// all cases.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Namespace is the metadata.namespace of the referenced ConfigMap. This field is
         /// required in all cases.
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
         /// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap.
         /// This field is forbidden in Node.Spec, and required in Node.Status.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceVersion")]
+        [JsonPropertyName("resourceVersion")]
         public string ResourceVersion { get; set; }
 
         /// <summary>
         /// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in
         /// Node.Spec, and required in Node.Status.
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>

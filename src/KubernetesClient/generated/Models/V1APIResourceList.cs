@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIResourceList is a list of APIResource, it is used to expose the name of the
         /// resources supported in a specific group and version, and if the resource is
@@ -68,13 +62,13 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// groupVersion is the group and version this APIResourceList is for.
         /// </summary>
-        [JsonProperty(PropertyName = "groupVersion")]
+        [JsonPropertyName("groupVersion")]
         public string GroupVersion { get; set; }
 
         /// <summary>
@@ -83,13 +77,13 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// resources contains the name of the resources and if they are namespaced.
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public IList<V1APIResource> Resources { get; set; }
 
         /// <summary>

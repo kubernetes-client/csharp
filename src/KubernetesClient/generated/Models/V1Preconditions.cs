@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Preconditions must be fulfilled before an operation (update, delete, etc.) is
         /// carried out.
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// Specifies the target ResourceVersion
         /// </summary>
-        [JsonProperty(PropertyName = "resourceVersion")]
+        [JsonPropertyName("resourceVersion")]
         public string ResourceVersion { get; set; }
 
         /// <summary>
         /// Specifies the target UID.
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>

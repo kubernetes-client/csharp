@@ -8,7 +8,7 @@ namespace k8s
 {
     using Microsoft.Rest;
     using Models;
-    using Newtonsoft.Json;
+    
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
@@ -23,16 +23,6 @@ namespace k8s
         /// The base URI of the service.
         /// </summary>
         System.Uri BaseUri { get; set; }
-
-        /// <summary>
-        /// Gets or sets json serialization settings.
-        /// </summary>
-        JsonSerializerSettings SerializationSettings { get; }
-
-        /// <summary>
-        /// Gets or sets json deserialization settings.
-        /// </summary>
-        JsonSerializerSettings DeserializationSettings { get; }
 
         /// <summary>
         /// Subscription credentials which uniquely identify client
@@ -51,8 +41,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<string>> GetServiceAccountIssuerOpenIDConfigurationWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available API versions
@@ -64,8 +54,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIVersions>> GetAPIVersionsWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available API versions
@@ -77,8 +67,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroupList>> GetAPIVersions1WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -90,8 +80,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResourcesWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -103,8 +93,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources1WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -116,8 +106,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources2WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -129,8 +119,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources3WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -142,8 +132,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources4WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -155,8 +145,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources5WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -168,8 +158,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources6WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -181,8 +171,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources7WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -194,8 +184,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources8WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -207,8 +197,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources9WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -220,8 +210,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources10WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -233,8 +223,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources11WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -246,8 +236,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources12WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -259,8 +249,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources13WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -272,8 +262,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources14WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -285,8 +275,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources15WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -298,8 +288,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources16WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -311,8 +301,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources17WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -324,8 +314,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources18WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -337,8 +327,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources19WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -350,8 +340,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources20WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -363,8 +353,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources21WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -376,8 +366,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources22WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -389,8 +379,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources23WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -402,8 +392,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources24WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -415,8 +405,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources25WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -428,8 +418,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources26WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -441,8 +431,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources27WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -454,8 +444,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources28WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -467,8 +457,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources29WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -480,8 +470,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources30WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -493,8 +483,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources31WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get available resources
@@ -506,8 +496,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIResourceList>> GetAPIResources32WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list objects of kind ComponentStatus
@@ -613,8 +603,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ComponentStatus
@@ -634,8 +624,8 @@ namespace k8s
         Task<HttpOperationResponse<V1ComponentStatus>> ReadComponentStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ConfigMap
@@ -741,8 +731,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -848,8 +838,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -955,8 +945,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1062,8 +1052,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -1169,8 +1159,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -1276,8 +1266,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Namespace
@@ -1383,8 +1373,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Namespace
@@ -1427,8 +1417,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Binding
@@ -1475,8 +1465,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ConfigMap
@@ -1608,8 +1598,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ConfigMap
@@ -1719,8 +1709,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ConfigMap
@@ -1767,8 +1757,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ConfigMap
@@ -1827,8 +1817,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ConfigMap
@@ -1852,8 +1842,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ConfigMap
@@ -1912,8 +1902,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ConfigMap
@@ -1964,8 +1954,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Endpoints
@@ -2097,8 +2087,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Endpoints
@@ -2208,8 +2198,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create Endpoints
@@ -2256,8 +2246,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete Endpoints
@@ -2316,8 +2306,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Endpoints
@@ -2341,8 +2331,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Endpoints
@@ -2401,8 +2391,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Endpoints
@@ -2453,8 +2443,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Event
@@ -2586,8 +2576,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Event
@@ -2719,8 +2709,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Event
@@ -2852,8 +2842,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -2963,8 +2953,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -3074,8 +3064,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Event
@@ -3185,8 +3175,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an Event
@@ -3233,8 +3223,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an Event
@@ -3281,8 +3271,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an Event
@@ -3329,8 +3319,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an Event
@@ -3389,8 +3379,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an Event
@@ -3449,8 +3439,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an Event
@@ -3509,8 +3499,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Event
@@ -3534,8 +3524,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Event
@@ -3559,8 +3549,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Event
@@ -3584,8 +3574,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Event
@@ -3644,8 +3634,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Event
@@ -3704,8 +3694,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Event
@@ -3764,8 +3754,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Event
@@ -3816,8 +3806,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Event
@@ -3868,8 +3858,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Event
@@ -3920,8 +3910,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of LimitRange
@@ -4053,8 +4043,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind LimitRange
@@ -4164,8 +4154,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a LimitRange
@@ -4212,8 +4202,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a LimitRange
@@ -4272,8 +4262,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified LimitRange
@@ -4297,8 +4287,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified LimitRange
@@ -4357,8 +4347,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified LimitRange
@@ -4409,8 +4399,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PersistentVolumeClaim
@@ -4542,8 +4532,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -4653,8 +4643,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PersistentVolumeClaim
@@ -4701,8 +4691,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PersistentVolumeClaim
@@ -4761,8 +4751,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PersistentVolumeClaim
@@ -4786,8 +4776,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PersistentVolumeClaim
@@ -4846,8 +4836,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PersistentVolumeClaim
@@ -4898,8 +4888,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PersistentVolumeClaim
@@ -4923,8 +4913,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PersistentVolumeClaim
@@ -4983,8 +4973,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PersistentVolumeClaim
@@ -5035,8 +5025,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Pod
@@ -5168,8 +5158,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -5279,8 +5269,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Pod
@@ -5327,8 +5317,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Pod
@@ -5387,8 +5377,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Pod
@@ -5412,8 +5402,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Pod
@@ -5472,8 +5462,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Pod
@@ -5524,8 +5514,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to attach of Pod
@@ -5571,8 +5561,8 @@ namespace k8s
             bool? stdin = null,
             bool? stdout = null,
             bool? tty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to attach of Pod
@@ -5618,8 +5608,8 @@ namespace k8s
             bool? stdin = null,
             bool? stdout = null,
             bool? tty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create binding of a Pod
@@ -5670,8 +5660,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read ephemeralcontainers of the specified Pod
@@ -5695,8 +5685,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update ephemeralcontainers of the specified Pod
@@ -5755,8 +5745,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace ephemeralcontainers of the specified Pod
@@ -5807,8 +5797,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create eviction of a Pod
@@ -5859,8 +5849,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to exec of Pod
@@ -5907,8 +5897,8 @@ namespace k8s
             bool? stdin = null,
             bool? stdout = null,
             bool? tty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to exec of Pod
@@ -5955,8 +5945,8 @@ namespace k8s
             bool? stdin = null,
             bool? stdout = null,
             bool? tty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read log of the specified Pod
@@ -6027,8 +6017,8 @@ namespace k8s
             int? sinceSeconds = null,
             int? tailLines = null,
             bool? timestamps = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to portforward of Pod
@@ -6052,8 +6042,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             int? ports = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to portforward of Pod
@@ -6077,8 +6067,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             int? ports = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Pod
@@ -6102,8 +6092,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Pod
@@ -6127,8 +6117,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Pod
@@ -6152,8 +6142,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Pod
@@ -6177,8 +6167,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Pod
@@ -6202,8 +6192,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Pod
@@ -6227,8 +6217,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Pod
@@ -6256,8 +6246,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Pod
@@ -6285,8 +6275,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Pod
@@ -6314,8 +6304,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Pod
@@ -6343,8 +6333,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Pod
@@ -6372,8 +6362,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Pod
@@ -6401,8 +6391,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Pod
@@ -6426,8 +6416,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Pod
@@ -6486,8 +6476,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Pod
@@ -6538,8 +6528,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PodTemplate
@@ -6671,8 +6661,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -6782,8 +6772,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PodTemplate
@@ -6830,8 +6820,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PodTemplate
@@ -6890,8 +6880,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PodTemplate
@@ -6915,8 +6905,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PodTemplate
@@ -6975,8 +6965,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PodTemplate
@@ -7027,8 +7017,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ReplicationController
@@ -7160,8 +7150,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -7271,8 +7261,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ReplicationController
@@ -7319,8 +7309,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ReplicationController
@@ -7379,8 +7369,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ReplicationController
@@ -7404,8 +7394,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ReplicationController
@@ -7464,8 +7454,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ReplicationController
@@ -7516,8 +7506,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified ReplicationController
@@ -7541,8 +7531,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified ReplicationController
@@ -7601,8 +7591,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified ReplicationController
@@ -7653,8 +7643,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified ReplicationController
@@ -7678,8 +7668,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified ReplicationController
@@ -7738,8 +7728,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified ReplicationController
@@ -7790,8 +7780,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ResourceQuota
@@ -7923,8 +7913,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -8034,8 +8024,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ResourceQuota
@@ -8082,8 +8072,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ResourceQuota
@@ -8142,8 +8132,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ResourceQuota
@@ -8167,8 +8157,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ResourceQuota
@@ -8227,8 +8217,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ResourceQuota
@@ -8279,8 +8269,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified ResourceQuota
@@ -8304,8 +8294,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified ResourceQuota
@@ -8364,8 +8354,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified ResourceQuota
@@ -8416,8 +8406,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Secret
@@ -8549,8 +8539,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -8660,8 +8650,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Secret
@@ -8708,8 +8698,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Secret
@@ -8768,8 +8758,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Secret
@@ -8793,8 +8783,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Secret
@@ -8853,8 +8843,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Secret
@@ -8905,8 +8895,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ServiceAccount
@@ -9038,8 +9028,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -9149,8 +9139,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ServiceAccount
@@ -9197,8 +9187,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ServiceAccount
@@ -9257,8 +9247,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ServiceAccount
@@ -9282,8 +9272,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ServiceAccount
@@ -9342,8 +9332,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ServiceAccount
@@ -9394,8 +9384,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create token of a ServiceAccount
@@ -9446,8 +9436,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Service
@@ -9579,8 +9569,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Service
@@ -9690,8 +9680,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Service
@@ -9738,8 +9728,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Service
@@ -9798,8 +9788,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Service
@@ -9823,8 +9813,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Service
@@ -9883,8 +9873,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Service
@@ -9935,8 +9925,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Service
@@ -9964,8 +9954,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Service
@@ -9993,8 +9983,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Service
@@ -10022,8 +10012,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Service
@@ -10051,8 +10041,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Service
@@ -10080,8 +10070,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Service
@@ -10109,8 +10099,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Service
@@ -10142,8 +10132,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Service
@@ -10175,8 +10165,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Service
@@ -10208,8 +10198,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Service
@@ -10241,8 +10231,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Service
@@ -10274,8 +10264,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Service
@@ -10307,8 +10297,8 @@ namespace k8s
             string namespaceParameter,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Service
@@ -10332,8 +10322,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Service
@@ -10392,8 +10382,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Service
@@ -10444,8 +10434,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Namespace
@@ -10500,8 +10490,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Namespace
@@ -10521,8 +10511,8 @@ namespace k8s
         Task<HttpOperationResponse<V1Namespace>> ReadNamespaceWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Namespace
@@ -10577,8 +10567,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Namespace
@@ -10625,8 +10615,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace finalize of the specified Namespace
@@ -10673,8 +10663,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Namespace
@@ -10694,8 +10684,8 @@ namespace k8s
         Task<HttpOperationResponse<V1Namespace>> ReadNamespaceStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Namespace
@@ -10750,8 +10740,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Namespace
@@ -10798,8 +10788,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Node
@@ -10927,8 +10917,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Node
@@ -11034,8 +11024,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Node
@@ -11078,8 +11068,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Node
@@ -11134,8 +11124,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Node
@@ -11155,8 +11145,8 @@ namespace k8s
         Task<HttpOperationResponse<V1Node>> ReadNodeWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Node
@@ -11211,8 +11201,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Node
@@ -11259,8 +11249,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Node
@@ -11280,8 +11270,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectDeleteNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Node
@@ -11301,8 +11291,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectGetNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Node
@@ -11322,8 +11312,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectHeadNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Node
@@ -11343,8 +11333,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectPatchNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Node
@@ -11364,8 +11354,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectPostNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Node
@@ -11385,8 +11375,8 @@ namespace k8s
         Task<HttpOperationResponse<Stream>> ConnectPutNodeProxyWithHttpMessagesAsync(
             string name,
             string path = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect DELETE requests to proxy of Node
@@ -11410,8 +11400,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect GET requests to proxy of Node
@@ -11435,8 +11425,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect HEAD requests to proxy of Node
@@ -11460,8 +11450,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PATCH requests to proxy of Node
@@ -11485,8 +11475,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect POST requests to proxy of Node
@@ -11510,8 +11500,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// connect PUT requests to proxy of Node
@@ -11535,8 +11525,8 @@ namespace k8s
             string name,
             string path,
             string path1 = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Node
@@ -11556,8 +11546,8 @@ namespace k8s
         Task<HttpOperationResponse<V1Node>> ReadNodeStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Node
@@ -11612,8 +11602,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Node
@@ -11660,8 +11650,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PersistentVolumeClaim
@@ -11767,8 +11757,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PersistentVolume
@@ -11896,8 +11886,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PersistentVolume
@@ -12003,8 +11993,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PersistentVolume
@@ -12047,8 +12037,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PersistentVolume
@@ -12103,8 +12093,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PersistentVolume
@@ -12124,8 +12114,8 @@ namespace k8s
         Task<HttpOperationResponse<V1PersistentVolume>> ReadPersistentVolumeWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PersistentVolume
@@ -12180,8 +12170,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PersistentVolume
@@ -12228,8 +12218,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PersistentVolume
@@ -12249,8 +12239,8 @@ namespace k8s
         Task<HttpOperationResponse<V1PersistentVolume>> ReadPersistentVolumeStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PersistentVolume
@@ -12305,8 +12295,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PersistentVolume
@@ -12353,8 +12343,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Pod
@@ -12460,8 +12450,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodTemplate
@@ -12567,8 +12557,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ReplicationController
@@ -12674,8 +12664,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ResourceQuota
@@ -12781,8 +12771,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Secret
@@ -12888,8 +12878,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ServiceAccount
@@ -12995,8 +12985,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Service
@@ -13102,8 +13092,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13115,8 +13105,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroupWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13128,8 +13118,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup1WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13141,8 +13131,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup2WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13154,8 +13144,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup3WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13167,8 +13157,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup4WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13180,8 +13170,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup5WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13193,8 +13183,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup6WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13206,8 +13196,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup7WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13219,8 +13209,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup8WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13232,8 +13222,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup9WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13245,8 +13235,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup10WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13258,8 +13248,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup11WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13271,8 +13261,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup12WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13284,8 +13274,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup13WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13297,8 +13287,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup14WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13310,8 +13300,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup15WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13323,8 +13313,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup16WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13336,8 +13326,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup17WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13349,8 +13339,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup18WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get information of a group
@@ -13362,8 +13352,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<V1APIGroup>> GetAPIGroup19WithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of MutatingWebhookConfiguration
@@ -13491,8 +13481,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind MutatingWebhookConfiguration
@@ -13598,8 +13588,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a MutatingWebhookConfiguration
@@ -13642,8 +13632,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a MutatingWebhookConfiguration
@@ -13698,8 +13688,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified MutatingWebhookConfiguration
@@ -13719,8 +13709,8 @@ namespace k8s
         Task<HttpOperationResponse<V1MutatingWebhookConfiguration>> ReadMutatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified MutatingWebhookConfiguration
@@ -13775,8 +13765,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified MutatingWebhookConfiguration
@@ -13823,8 +13813,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ValidatingWebhookConfiguration
@@ -13952,8 +13942,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ValidatingWebhookConfiguration
@@ -14059,8 +14049,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ValidatingWebhookConfiguration
@@ -14103,8 +14093,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ValidatingWebhookConfiguration
@@ -14159,8 +14149,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ValidatingWebhookConfiguration
@@ -14180,8 +14170,8 @@ namespace k8s
         Task<HttpOperationResponse<V1ValidatingWebhookConfiguration>> ReadValidatingWebhookConfigurationWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ValidatingWebhookConfiguration
@@ -14236,8 +14226,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ValidatingWebhookConfiguration
@@ -14284,8 +14274,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CustomResourceDefinition
@@ -14413,8 +14403,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CustomResourceDefinition
@@ -14520,8 +14510,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CustomResourceDefinition
@@ -14564,8 +14554,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CustomResourceDefinition
@@ -14620,8 +14610,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CustomResourceDefinition
@@ -14641,8 +14631,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CustomResourceDefinition>> ReadCustomResourceDefinitionWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CustomResourceDefinition
@@ -14697,8 +14687,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CustomResourceDefinition
@@ -14745,8 +14735,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified CustomResourceDefinition
@@ -14766,8 +14756,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CustomResourceDefinition>> ReadCustomResourceDefinitionStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified CustomResourceDefinition
@@ -14822,8 +14812,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified CustomResourceDefinition
@@ -14870,8 +14860,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of APIService
@@ -14999,8 +14989,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind APIService
@@ -15106,8 +15096,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an APIService
@@ -15150,8 +15140,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an APIService
@@ -15206,8 +15196,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified APIService
@@ -15227,8 +15217,8 @@ namespace k8s
         Task<HttpOperationResponse<V1APIService>> ReadAPIServiceWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified APIService
@@ -15283,8 +15273,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified APIService
@@ -15331,8 +15321,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified APIService
@@ -15352,8 +15342,8 @@ namespace k8s
         Task<HttpOperationResponse<V1APIService>> ReadAPIServiceStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified APIService
@@ -15408,8 +15398,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified APIService
@@ -15456,8 +15446,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -15563,8 +15553,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -15670,8 +15660,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -15777,8 +15767,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ControllerRevision
@@ -15910,8 +15900,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ControllerRevision
@@ -16021,8 +16011,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ControllerRevision
@@ -16069,8 +16059,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ControllerRevision
@@ -16129,8 +16119,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ControllerRevision
@@ -16154,8 +16144,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ControllerRevision
@@ -16214,8 +16204,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ControllerRevision
@@ -16266,8 +16256,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of DaemonSet
@@ -16399,8 +16389,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind DaemonSet
@@ -16510,8 +16500,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a DaemonSet
@@ -16558,8 +16548,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a DaemonSet
@@ -16618,8 +16608,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified DaemonSet
@@ -16643,8 +16633,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified DaemonSet
@@ -16703,8 +16693,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified DaemonSet
@@ -16755,8 +16745,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified DaemonSet
@@ -16780,8 +16770,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified DaemonSet
@@ -16840,8 +16830,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified DaemonSet
@@ -16892,8 +16882,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Deployment
@@ -17025,8 +17015,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Deployment
@@ -17136,8 +17126,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Deployment
@@ -17184,8 +17174,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Deployment
@@ -17244,8 +17234,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Deployment
@@ -17269,8 +17259,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Deployment
@@ -17329,8 +17319,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Deployment
@@ -17381,8 +17371,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified Deployment
@@ -17406,8 +17396,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified Deployment
@@ -17466,8 +17456,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified Deployment
@@ -17518,8 +17508,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Deployment
@@ -17543,8 +17533,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Deployment
@@ -17603,8 +17593,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Deployment
@@ -17655,8 +17645,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ReplicaSet
@@ -17788,8 +17778,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -17899,8 +17889,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ReplicaSet
@@ -17947,8 +17937,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ReplicaSet
@@ -18007,8 +17997,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ReplicaSet
@@ -18032,8 +18022,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ReplicaSet
@@ -18092,8 +18082,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ReplicaSet
@@ -18144,8 +18134,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified ReplicaSet
@@ -18169,8 +18159,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified ReplicaSet
@@ -18229,8 +18219,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified ReplicaSet
@@ -18281,8 +18271,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified ReplicaSet
@@ -18306,8 +18296,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified ReplicaSet
@@ -18366,8 +18356,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified ReplicaSet
@@ -18418,8 +18408,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of StatefulSet
@@ -18551,8 +18541,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -18662,8 +18652,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a StatefulSet
@@ -18710,8 +18700,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a StatefulSet
@@ -18770,8 +18760,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified StatefulSet
@@ -18795,8 +18785,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified StatefulSet
@@ -18855,8 +18845,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified StatefulSet
@@ -18907,8 +18897,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified StatefulSet
@@ -18932,8 +18922,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified StatefulSet
@@ -18992,8 +18982,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified StatefulSet
@@ -19044,8 +19034,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified StatefulSet
@@ -19069,8 +19059,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified StatefulSet
@@ -19129,8 +19119,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified StatefulSet
@@ -19181,8 +19171,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ReplicaSet
@@ -19288,8 +19278,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind StatefulSet
@@ -19395,8 +19385,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a TokenReview
@@ -19439,8 +19429,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a LocalSubjectAccessReview
@@ -19487,8 +19477,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a SelfSubjectAccessReview
@@ -19531,8 +19521,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a SelfSubjectRulesReview
@@ -19575,8 +19565,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a SubjectAccessReview
@@ -19619,8 +19609,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -19726,8 +19716,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -19833,8 +19823,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -19940,8 +19930,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -20047,8 +20037,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -20180,8 +20170,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -20313,8 +20303,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -20446,8 +20436,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of HorizontalPodAutoscaler
@@ -20579,8 +20569,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -20690,8 +20680,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -20801,8 +20791,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -20912,8 +20902,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind HorizontalPodAutoscaler
@@ -21023,8 +21013,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -21071,8 +21061,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -21119,8 +21109,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -21167,8 +21157,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a HorizontalPodAutoscaler
@@ -21215,8 +21205,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a HorizontalPodAutoscaler
@@ -21275,8 +21265,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a HorizontalPodAutoscaler
@@ -21335,8 +21325,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a HorizontalPodAutoscaler
@@ -21395,8 +21385,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a HorizontalPodAutoscaler
@@ -21455,8 +21445,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified HorizontalPodAutoscaler
@@ -21480,8 +21470,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified HorizontalPodAutoscaler
@@ -21505,8 +21495,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified HorizontalPodAutoscaler
@@ -21530,8 +21520,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified HorizontalPodAutoscaler
@@ -21555,8 +21545,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -21615,8 +21605,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -21675,8 +21665,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -21735,8 +21725,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified HorizontalPodAutoscaler
@@ -21795,8 +21785,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -21847,8 +21837,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -21899,8 +21889,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -21951,8 +21941,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified HorizontalPodAutoscaler
@@ -22003,8 +21993,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -22028,8 +22018,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -22053,8 +22043,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -22078,8 +22068,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified HorizontalPodAutoscaler
@@ -22103,8 +22093,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified HorizontalPodAutoscaler
@@ -22163,8 +22153,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified HorizontalPodAutoscaler
@@ -22223,8 +22213,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified HorizontalPodAutoscaler
@@ -22283,8 +22273,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified HorizontalPodAutoscaler
@@ -22343,8 +22333,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -22395,8 +22385,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -22447,8 +22437,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -22499,8 +22489,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified HorizontalPodAutoscaler
@@ -22551,8 +22541,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -22658,8 +22648,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -22765,8 +22755,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -22872,8 +22862,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CronJob
@@ -23005,8 +22995,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CronJob
@@ -23138,8 +23128,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -23249,8 +23239,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CronJob
@@ -23360,8 +23350,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CronJob
@@ -23408,8 +23398,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CronJob
@@ -23456,8 +23446,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CronJob
@@ -23516,8 +23506,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CronJob
@@ -23576,8 +23566,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CronJob
@@ -23601,8 +23591,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CronJob
@@ -23626,8 +23616,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CronJob
@@ -23686,8 +23676,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CronJob
@@ -23746,8 +23736,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CronJob
@@ -23798,8 +23788,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CronJob
@@ -23850,8 +23840,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified CronJob
@@ -23875,8 +23865,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified CronJob
@@ -23900,8 +23890,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified CronJob
@@ -23960,8 +23950,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified CronJob
@@ -24020,8 +24010,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified CronJob
@@ -24072,8 +24062,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified CronJob
@@ -24124,8 +24114,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Job
@@ -24257,8 +24247,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Job
@@ -24368,8 +24358,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Job
@@ -24416,8 +24406,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Job
@@ -24476,8 +24466,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Job
@@ -24501,8 +24491,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Job
@@ -24561,8 +24551,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Job
@@ -24613,8 +24603,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Job
@@ -24638,8 +24628,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Job
@@ -24698,8 +24688,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Job
@@ -24750,8 +24740,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CertificateSigningRequest
@@ -24879,8 +24869,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CertificateSigningRequest
@@ -24986,8 +24976,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CertificateSigningRequest
@@ -25030,8 +25020,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CertificateSigningRequest
@@ -25086,8 +25076,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CertificateSigningRequest
@@ -25107,8 +25097,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CertificateSigningRequest
@@ -25163,8 +25153,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CertificateSigningRequest
@@ -25211,8 +25201,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read approval of the specified CertificateSigningRequest
@@ -25232,8 +25222,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestApprovalWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update approval of the specified CertificateSigningRequest
@@ -25288,8 +25278,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace approval of the specified CertificateSigningRequest
@@ -25336,8 +25326,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified CertificateSigningRequest
@@ -25357,8 +25347,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CertificateSigningRequest>> ReadCertificateSigningRequestStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified CertificateSigningRequest
@@ -25413,8 +25403,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified CertificateSigningRequest
@@ -25461,8 +25451,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -25568,8 +25558,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Lease
@@ -25701,8 +25691,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Lease
@@ -25812,8 +25802,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Lease
@@ -25860,8 +25850,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Lease
@@ -25920,8 +25910,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Lease
@@ -25945,8 +25935,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Lease
@@ -26005,8 +25995,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Lease
@@ -26057,8 +26047,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -26164,8 +26154,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -26271,8 +26261,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of EndpointSlice
@@ -26404,8 +26394,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of EndpointSlice
@@ -26537,8 +26527,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -26648,8 +26638,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind EndpointSlice
@@ -26759,8 +26749,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an EndpointSlice
@@ -26807,8 +26797,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an EndpointSlice
@@ -26855,8 +26845,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an EndpointSlice
@@ -26915,8 +26905,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an EndpointSlice
@@ -26975,8 +26965,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified EndpointSlice
@@ -27000,8 +26990,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified EndpointSlice
@@ -27025,8 +27015,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified EndpointSlice
@@ -27085,8 +27075,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified EndpointSlice
@@ -27145,8 +27135,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified EndpointSlice
@@ -27197,8 +27187,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified EndpointSlice
@@ -27249,8 +27239,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of FlowSchema
@@ -27378,8 +27368,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of FlowSchema
@@ -27507,8 +27497,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind FlowSchema
@@ -27614,8 +27604,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind FlowSchema
@@ -27721,8 +27711,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a FlowSchema
@@ -27765,8 +27755,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a FlowSchema
@@ -27809,8 +27799,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a FlowSchema
@@ -27865,8 +27855,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a FlowSchema
@@ -27921,8 +27911,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified FlowSchema
@@ -27942,8 +27932,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified FlowSchema
@@ -27963,8 +27953,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchema1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified FlowSchema
@@ -28019,8 +28009,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified FlowSchema
@@ -28075,8 +28065,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified FlowSchema
@@ -28123,8 +28113,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified FlowSchema
@@ -28171,8 +28161,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified FlowSchema
@@ -28192,8 +28182,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1FlowSchema>> ReadFlowSchemaStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified FlowSchema
@@ -28213,8 +28203,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta2FlowSchema>> ReadFlowSchemaStatus1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified FlowSchema
@@ -28269,8 +28259,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified FlowSchema
@@ -28325,8 +28315,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified FlowSchema
@@ -28373,8 +28363,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified FlowSchema
@@ -28421,8 +28411,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PriorityLevelConfiguration
@@ -28550,8 +28540,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PriorityLevelConfiguration
@@ -28679,8 +28669,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PriorityLevelConfiguration
@@ -28786,8 +28776,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PriorityLevelConfiguration
@@ -28893,8 +28883,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PriorityLevelConfiguration
@@ -28937,8 +28927,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PriorityLevelConfiguration
@@ -28981,8 +28971,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PriorityLevelConfiguration
@@ -29037,8 +29027,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PriorityLevelConfiguration
@@ -29093,8 +29083,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PriorityLevelConfiguration
@@ -29114,8 +29104,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PriorityLevelConfiguration
@@ -29135,8 +29125,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfiguration1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PriorityLevelConfiguration
@@ -29191,8 +29181,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PriorityLevelConfiguration
@@ -29247,8 +29237,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PriorityLevelConfiguration
@@ -29295,8 +29285,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PriorityLevelConfiguration
@@ -29343,8 +29333,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PriorityLevelConfiguration
@@ -29364,8 +29354,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PriorityLevelConfiguration
@@ -29385,8 +29375,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta2PriorityLevelConfiguration>> ReadPriorityLevelConfigurationStatus1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PriorityLevelConfiguration
@@ -29441,8 +29431,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PriorityLevelConfiguration
@@ -29497,8 +29487,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PriorityLevelConfiguration
@@ -29545,8 +29535,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PriorityLevelConfiguration
@@ -29593,8 +29583,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of StorageVersion
@@ -29722,8 +29712,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind StorageVersion
@@ -29829,8 +29819,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a StorageVersion
@@ -29873,8 +29863,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a StorageVersion
@@ -29929,8 +29919,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified StorageVersion
@@ -29950,8 +29940,8 @@ namespace k8s
         Task<HttpOperationResponse<V1alpha1StorageVersion>> ReadStorageVersionWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified StorageVersion
@@ -30006,8 +29996,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified StorageVersion
@@ -30054,8 +30044,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified StorageVersion
@@ -30075,8 +30065,8 @@ namespace k8s
         Task<HttpOperationResponse<V1alpha1StorageVersion>> ReadStorageVersionStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified StorageVersion
@@ -30131,8 +30121,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified StorageVersion
@@ -30179,8 +30169,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of IngressClass
@@ -30308,8 +30298,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind IngressClass
@@ -30415,8 +30405,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an IngressClass
@@ -30459,8 +30449,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an IngressClass
@@ -30515,8 +30505,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified IngressClass
@@ -30536,8 +30526,8 @@ namespace k8s
         Task<HttpOperationResponse<V1IngressClass>> ReadIngressClassWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified IngressClass
@@ -30592,8 +30582,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified IngressClass
@@ -30640,8 +30630,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -30747,8 +30737,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Ingress
@@ -30880,8 +30870,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Ingress
@@ -30991,8 +30981,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create an Ingress
@@ -31039,8 +31029,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete an Ingress
@@ -31099,8 +31089,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Ingress
@@ -31124,8 +31114,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Ingress
@@ -31184,8 +31174,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Ingress
@@ -31236,8 +31226,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified Ingress
@@ -31261,8 +31251,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified Ingress
@@ -31321,8 +31311,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified Ingress
@@ -31373,8 +31363,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of NetworkPolicy
@@ -31506,8 +31496,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -31617,8 +31607,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a NetworkPolicy
@@ -31665,8 +31655,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a NetworkPolicy
@@ -31725,8 +31715,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified NetworkPolicy
@@ -31750,8 +31740,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified NetworkPolicy
@@ -31810,8 +31800,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified NetworkPolicy
@@ -31862,8 +31852,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind NetworkPolicy
@@ -31969,8 +31959,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of RuntimeClass
@@ -32098,8 +32088,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of RuntimeClass
@@ -32227,8 +32217,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of RuntimeClass
@@ -32356,8 +32346,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -32463,8 +32453,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -32570,8 +32560,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind RuntimeClass
@@ -32677,8 +32667,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a RuntimeClass
@@ -32721,8 +32711,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a RuntimeClass
@@ -32765,8 +32755,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a RuntimeClass
@@ -32809,8 +32799,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a RuntimeClass
@@ -32865,8 +32855,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a RuntimeClass
@@ -32921,8 +32911,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a RuntimeClass
@@ -32977,8 +32967,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified RuntimeClass
@@ -32998,8 +32988,8 @@ namespace k8s
         Task<HttpOperationResponse<V1RuntimeClass>> ReadRuntimeClassWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified RuntimeClass
@@ -33019,8 +33009,8 @@ namespace k8s
         Task<HttpOperationResponse<V1alpha1RuntimeClass>> ReadRuntimeClass1WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified RuntimeClass
@@ -33040,8 +33030,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1RuntimeClass>> ReadRuntimeClass2WithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified RuntimeClass
@@ -33096,8 +33086,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified RuntimeClass
@@ -33152,8 +33142,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified RuntimeClass
@@ -33208,8 +33198,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified RuntimeClass
@@ -33256,8 +33246,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified RuntimeClass
@@ -33304,8 +33294,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified RuntimeClass
@@ -33352,8 +33342,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PodDisruptionBudget
@@ -33485,8 +33475,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PodDisruptionBudget
@@ -33618,8 +33608,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -33729,8 +33719,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -33840,8 +33830,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PodDisruptionBudget
@@ -33888,8 +33878,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PodDisruptionBudget
@@ -33936,8 +33926,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PodDisruptionBudget
@@ -33996,8 +33986,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PodDisruptionBudget
@@ -34056,8 +34046,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PodDisruptionBudget
@@ -34081,8 +34071,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PodDisruptionBudget
@@ -34106,8 +34096,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PodDisruptionBudget
@@ -34166,8 +34156,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PodDisruptionBudget
@@ -34226,8 +34216,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PodDisruptionBudget
@@ -34278,8 +34268,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PodDisruptionBudget
@@ -34330,8 +34320,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PodDisruptionBudget
@@ -34355,8 +34345,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified PodDisruptionBudget
@@ -34380,8 +34370,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PodDisruptionBudget
@@ -34440,8 +34430,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified PodDisruptionBudget
@@ -34500,8 +34490,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PodDisruptionBudget
@@ -34552,8 +34542,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified PodDisruptionBudget
@@ -34604,8 +34594,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -34711,8 +34701,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodDisruptionBudget
@@ -34818,8 +34808,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PodSecurityPolicy
@@ -34947,8 +34937,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PodSecurityPolicy
@@ -35054,8 +35044,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PodSecurityPolicy
@@ -35098,8 +35088,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PodSecurityPolicy
@@ -35154,8 +35144,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PodSecurityPolicy
@@ -35175,8 +35165,8 @@ namespace k8s
         Task<HttpOperationResponse<V1beta1PodSecurityPolicy>> ReadPodSecurityPolicyWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PodSecurityPolicy
@@ -35231,8 +35221,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PodSecurityPolicy
@@ -35279,8 +35269,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ClusterRoleBinding
@@ -35408,8 +35398,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ClusterRoleBinding
@@ -35515,8 +35505,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ClusterRoleBinding
@@ -35559,8 +35549,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ClusterRoleBinding
@@ -35615,8 +35605,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ClusterRoleBinding
@@ -35636,8 +35626,8 @@ namespace k8s
         Task<HttpOperationResponse<V1ClusterRoleBinding>> ReadClusterRoleBindingWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ClusterRoleBinding
@@ -35692,8 +35682,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ClusterRoleBinding
@@ -35740,8 +35730,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of ClusterRole
@@ -35869,8 +35859,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind ClusterRole
@@ -35976,8 +35966,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a ClusterRole
@@ -36020,8 +36010,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a ClusterRole
@@ -36076,8 +36066,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified ClusterRole
@@ -36097,8 +36087,8 @@ namespace k8s
         Task<HttpOperationResponse<V1ClusterRole>> ReadClusterRoleWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified ClusterRole
@@ -36153,8 +36143,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified ClusterRole
@@ -36201,8 +36191,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of RoleBinding
@@ -36334,8 +36324,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -36445,8 +36435,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a RoleBinding
@@ -36493,8 +36483,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a RoleBinding
@@ -36553,8 +36543,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified RoleBinding
@@ -36578,8 +36568,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified RoleBinding
@@ -36638,8 +36628,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified RoleBinding
@@ -36690,8 +36680,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of Role
@@ -36823,8 +36813,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -36934,8 +36924,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a Role
@@ -36982,8 +36972,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a Role
@@ -37042,8 +37032,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified Role
@@ -37067,8 +37057,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified Role
@@ -37127,8 +37117,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified Role
@@ -37179,8 +37169,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind RoleBinding
@@ -37286,8 +37276,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind Role
@@ -37393,8 +37383,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of PriorityClass
@@ -37522,8 +37512,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind PriorityClass
@@ -37629,8 +37619,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a PriorityClass
@@ -37673,8 +37663,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a PriorityClass
@@ -37729,8 +37719,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified PriorityClass
@@ -37750,8 +37740,8 @@ namespace k8s
         Task<HttpOperationResponse<V1PriorityClass>> ReadPriorityClassWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified PriorityClass
@@ -37806,8 +37796,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified PriorityClass
@@ -37854,8 +37844,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CSIDriver
@@ -37983,8 +37973,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSIDriver
@@ -38090,8 +38080,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CSIDriver
@@ -38134,8 +38124,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CSIDriver
@@ -38190,8 +38180,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CSIDriver
@@ -38211,8 +38201,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CSIDriver>> ReadCSIDriverWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CSIDriver
@@ -38267,8 +38257,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CSIDriver
@@ -38315,8 +38305,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CSINode
@@ -38444,8 +38434,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSINode
@@ -38551,8 +38541,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CSINode
@@ -38595,8 +38585,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CSINode
@@ -38651,8 +38641,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CSINode
@@ -38672,8 +38662,8 @@ namespace k8s
         Task<HttpOperationResponse<V1CSINode>> ReadCSINodeWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CSINode
@@ -38728,8 +38718,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CSINode
@@ -38776,8 +38766,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of StorageClass
@@ -38905,8 +38895,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind StorageClass
@@ -39012,8 +39002,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a StorageClass
@@ -39056,8 +39046,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a StorageClass
@@ -39112,8 +39102,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified StorageClass
@@ -39133,8 +39123,8 @@ namespace k8s
         Task<HttpOperationResponse<V1StorageClass>> ReadStorageClassWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified StorageClass
@@ -39189,8 +39179,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified StorageClass
@@ -39237,8 +39227,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of VolumeAttachment
@@ -39366,8 +39356,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind VolumeAttachment
@@ -39473,8 +39463,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a VolumeAttachment
@@ -39517,8 +39507,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a VolumeAttachment
@@ -39573,8 +39563,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified VolumeAttachment
@@ -39594,8 +39584,8 @@ namespace k8s
         Task<HttpOperationResponse<V1VolumeAttachment>> ReadVolumeAttachmentWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified VolumeAttachment
@@ -39650,8 +39640,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified VolumeAttachment
@@ -39698,8 +39688,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified VolumeAttachment
@@ -39719,8 +39709,8 @@ namespace k8s
         Task<HttpOperationResponse<V1VolumeAttachment>> ReadVolumeAttachmentStatusWithHttpMessagesAsync(
             string name,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified VolumeAttachment
@@ -39775,8 +39765,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified VolumeAttachment
@@ -39823,8 +39813,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSIStorageCapacity
@@ -39930,8 +39920,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSIStorageCapacity
@@ -40037,8 +40027,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? watch = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CSIStorageCapacity
@@ -40170,8 +40160,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete collection of CSIStorageCapacity
@@ -40303,8 +40293,8 @@ namespace k8s
             string resourceVersionMatch = null,
             int? timeoutSeconds = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSIStorageCapacity
@@ -40414,8 +40404,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch objects of kind CSIStorageCapacity
@@ -40525,8 +40515,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CSIStorageCapacity
@@ -40573,8 +40563,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// create a CSIStorageCapacity
@@ -40621,8 +40611,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CSIStorageCapacity
@@ -40681,8 +40671,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete a CSIStorageCapacity
@@ -40741,8 +40731,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CSIStorageCapacity
@@ -40766,8 +40756,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read the specified CSIStorageCapacity
@@ -40791,8 +40781,8 @@ namespace k8s
             string name,
             string namespaceParameter,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CSIStorageCapacity
@@ -40851,8 +40841,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update the specified CSIStorageCapacity
@@ -40911,8 +40901,8 @@ namespace k8s
             string fieldValidation = null,
             bool? force = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CSIStorageCapacity
@@ -40963,8 +40953,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified CSIStorageCapacity
@@ -41015,8 +41005,8 @@ namespace k8s
             string fieldManager = null,
             string fieldValidation = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -41028,8 +41018,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse> LogFileListHandlerWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -41045,8 +41035,8 @@ namespace k8s
         /// </param>
         Task<HttpOperationResponse> LogFileHandlerWithHttpMessagesAsync(
             string logpath,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get service account issuer OpenID JSON Web Key Set (contains public token
@@ -41059,8 +41049,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<string>> GetServiceAccountIssuerOpenIDKeysetWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// get the code version
@@ -41072,8 +41062,8 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         Task<HttpOperationResponse<VersionInfo>> GetCodeWithHttpMessagesAsync(
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch cluster scoped custom objects
@@ -41192,8 +41182,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a cluster scoped Custom object
@@ -41240,8 +41230,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete collection of cluster scoped custom objects
@@ -41301,8 +41291,8 @@ namespace k8s
             string propagationPolicy = null,
             string dryRun = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// list or watch namespace scoped custom objects
@@ -41425,8 +41415,8 @@ namespace k8s
             int? timeoutSeconds = null,
             bool? watch = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a namespace scoped Custom object
@@ -41475,8 +41465,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete collection of namespace scoped custom objects
@@ -41540,8 +41530,8 @@ namespace k8s
             string propagationPolicy = null,
             string dryRun = null,
             bool? pretty = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns a cluster scoped custom object
@@ -41569,8 +41559,8 @@ namespace k8s
             string version,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes the specified cluster scoped custom object
@@ -41630,8 +41620,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             string dryRun = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// patch the specified cluster scoped custom object
@@ -41684,8 +41674,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified cluster scoped custom object
@@ -41730,8 +41720,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified cluster scoped custom object
@@ -41759,8 +41749,8 @@ namespace k8s
             string version,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the cluster scoped specified custom object
@@ -41805,8 +41795,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified cluster scoped custom object
@@ -41859,8 +41849,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified custom object
@@ -41888,8 +41878,8 @@ namespace k8s
             string version,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified cluster scoped custom object
@@ -41934,8 +41924,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified cluster scoped custom object
@@ -41988,8 +41978,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns a namespace scoped custom object
@@ -42021,8 +42011,8 @@ namespace k8s
             string namespaceParameter,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes the specified namespace scoped custom object
@@ -42086,8 +42076,8 @@ namespace k8s
             bool? orphanDependents = null,
             string propagationPolicy = null,
             string dryRun = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// patch the specified namespace scoped custom object
@@ -42144,8 +42134,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace the specified namespace scoped custom object
@@ -42194,8 +42184,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read status of the specified namespace scoped custom object
@@ -42227,8 +42217,8 @@ namespace k8s
             string namespaceParameter,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace status of the specified namespace scoped custom object
@@ -42277,8 +42267,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update status of the specified namespace scoped custom object
@@ -42335,8 +42325,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// read scale of the specified namespace scoped custom object
@@ -42368,8 +42358,8 @@ namespace k8s
             string namespaceParameter,
             string plural,
             string name,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// replace scale of the specified namespace scoped custom object
@@ -42418,8 +42408,8 @@ namespace k8s
             string name,
             string dryRun = null,
             string fieldManager = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// partially update scale of the specified namespace scoped custom object
@@ -42476,8 +42466,8 @@ namespace k8s
             string dryRun = null,
             string fieldManager = null,
             bool? force = null,
-            Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+            IDictionary<string, IList<string>> customHeaders = null,
+            CancellationToken cancellationToken = default);
 
     }
 }

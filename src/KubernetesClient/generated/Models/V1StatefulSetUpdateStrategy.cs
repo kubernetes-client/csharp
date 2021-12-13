@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller
         /// will use to perform updates. It includes any additional parameters necessary to
@@ -64,7 +58,7 @@ namespace k8s.Models
         /// RollingUpdate is used to communicate parameters when Type is
         /// RollingUpdateStatefulSetStrategyType.
         /// </summary>
-        [JsonProperty(PropertyName = "rollingUpdate")]
+        [JsonPropertyName("rollingUpdate")]
         public V1RollingUpdateStatefulSetStrategy RollingUpdate { get; set; }
 
         /// <summary>
@@ -81,7 +75,7 @@ namespace k8s.Models
         /// operation is performed with this strategy, new Pods will be created from the
         /// specification version indicated by the StatefulSet&apos;s updateRevision.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

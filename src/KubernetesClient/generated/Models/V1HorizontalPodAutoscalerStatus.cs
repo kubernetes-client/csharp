@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// current status of a horizontal pod autoscaler
     /// </summary>
@@ -66,32 +60,32 @@ namespace k8s.Models
         /// requested CPU, e.g. 70 means that an average pod is using now 70% of its
         /// requested CPU.
         /// </summary>
-        [JsonProperty(PropertyName = "currentCPUUtilizationPercentage")]
+        [JsonPropertyName("currentCPUUtilizationPercentage")]
         public int? CurrentCPUUtilizationPercentage { get; set; }
 
         /// <summary>
         /// current number of replicas of pods managed by this autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "currentReplicas")]
+        [JsonPropertyName("currentReplicas")]
         public int CurrentReplicas { get; set; }
 
         /// <summary>
         /// desired number of replicas of pods managed by this autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "desiredReplicas")]
+        [JsonPropertyName("desiredReplicas")]
         public int DesiredReplicas { get; set; }
 
         /// <summary>
         /// last time the HorizontalPodAutoscaler scaled the number of pods; used by the
         /// autoscaler to control how often the number of pods is changed.
         /// </summary>
-        [JsonProperty(PropertyName = "lastScaleTime")]
+        [JsonPropertyName("lastScaleTime")]
         public System.DateTime? LastScaleTime { get; set; }
 
         /// <summary>
         /// most recent generation observed by this autoscaler.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>

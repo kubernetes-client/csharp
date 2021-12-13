@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AggregationRule describes how to locate ClusterRoles to aggregate into the
         /// ClusterRole
@@ -50,7 +44,7 @@ namespace k8s.Models
         /// ClusterRoles and create the rules. If any of the selectors match, then the
         /// ClusterRole&apos;s permissions will be added
         /// </summary>
-        [JsonProperty(PropertyName = "clusterRoleSelectors")]
+        [JsonPropertyName("clusterRoleSelectors")]
         public IList<V1LabelSelector> ClusterRoleSelectors { get; set; }
 
         /// <summary>

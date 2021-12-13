@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EnvVarSource represents a source for the value of an EnvVar.
     /// </summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// <summary>
         /// Selects a key of a ConfigMap.
         /// </summary>
-        [JsonProperty(PropertyName = "configMapKeyRef")]
+        [JsonPropertyName("configMapKeyRef")]
         public V1ConfigMapKeySelector ConfigMapKeyRef { get; set; }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// `metadata.labels[&apos;&lt;KEY&gt;&apos;]`, `metadata.annotations[&apos;&lt;KEY&gt;&apos;]`, spec.nodeName,
         /// spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
         /// </summary>
-        [JsonProperty(PropertyName = "fieldRef")]
+        [JsonPropertyName("fieldRef")]
         public V1ObjectFieldSelector FieldRef { get; set; }
 
         /// <summary>
@@ -77,13 +71,13 @@ namespace k8s.Models
         /// (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu,
         /// requests.memory and requests.ephemeral-storage) are currently supported.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceFieldRef")]
+        [JsonPropertyName("resourceFieldRef")]
         public V1ResourceFieldSelector ResourceFieldRef { get; set; }
 
         /// <summary>
         /// Selects a key of a secret in the pod&apos;s namespace
         /// </summary>
-        [JsonProperty(PropertyName = "secretKeyRef")]
+        [JsonPropertyName("secretKeyRef")]
         public V1SecretKeySelector SecretKeyRef { get; set; }
 
         /// <summary>

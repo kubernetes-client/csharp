@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A StatefulSetSpec is the specification of a StatefulSet.
     /// </summary>
@@ -128,7 +122,7 @@ namespace k8s.Models
         /// (pod will be considered available as soon as it is ready) This is an alpha field
         /// and requires enabling StatefulSetMinReadySeconds feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "minReadySeconds")]
+        [JsonPropertyName("minReadySeconds")]
         public int? MinReadySeconds { get; set; }
 
         /// <summary>
@@ -140,7 +134,7 @@ namespace k8s.Models
         /// down. This requires the StatefulSetAutoDeletePVC feature gate to be enabled,
         /// which is alpha.  +optional
         /// </summary>
-        [JsonProperty(PropertyName = "persistentVolumeClaimRetentionPolicy")]
+        [JsonPropertyName("persistentVolumeClaimRetentionPolicy")]
         public V1StatefulSetPersistentVolumeClaimRetentionPolicy PersistentVolumeClaimRetentionPolicy { get; set; }
 
         /// <summary>
@@ -160,7 +154,7 @@ namespace k8s.Models
         /// count is changed, and will not wait for pods to be ready or complete
         /// termination.
         /// </summary>
-        [JsonProperty(PropertyName = "podManagementPolicy")]
+        [JsonPropertyName("podManagementPolicy")]
         public string PodManagementPolicy { get; set; }
 
         /// <summary>
@@ -169,7 +163,7 @@ namespace k8s.Models
         /// individual replicas also have a consistent identity. If unspecified, defaults to
         /// 1.
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int? Replicas { get; set; }
 
         /// <summary>
@@ -178,7 +172,7 @@ namespace k8s.Models
         /// revisions not represented by a currently applied StatefulSetSpec version. The
         /// default value is 10.
         /// </summary>
-        [JsonProperty(PropertyName = "revisionHistoryLimit")]
+        [JsonPropertyName("revisionHistoryLimit")]
         public int? RevisionHistoryLimit { get; set; }
 
         /// <summary>
@@ -186,7 +180,7 @@ namespace k8s.Models
         /// match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
@@ -196,7 +190,7 @@ namespace k8s.Models
         /// pod-specific-string.serviceName.default.svc.cluster.local where
         /// &quot;pod-specific-string&quot; is managed by the StatefulSet controller.
         /// </summary>
-        [JsonProperty(PropertyName = "serviceName")]
+        [JsonPropertyName("serviceName")]
         public string ServiceName { get; set; }
 
         /// <summary>
@@ -205,14 +199,14 @@ namespace k8s.Models
         /// fulfill this Template, but have a unique identity from the rest of the
         /// StatefulSet.
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
+        [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// updateStrategy indicates the StatefulSetUpdateStrategy that will be employed to
         /// update Pods in the StatefulSet when a revision is made to Template.
         /// </summary>
-        [JsonProperty(PropertyName = "updateStrategy")]
+        [JsonPropertyName("updateStrategy")]
         public V1StatefulSetUpdateStrategy UpdateStrategy { get; set; }
 
         /// <summary>
@@ -223,7 +217,7 @@ namespace k8s.Models
         /// template. A claim in this list takes precedence over any volumes in the
         /// template, with the same name.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeClaimTemplates")]
+        [JsonPropertyName("volumeClaimTemplates")]
         public IList<V1PersistentVolumeClaim> VolumeClaimTemplates { get; set; }
 
         /// <summary>
@@ -236,11 +230,11 @@ namespace k8s.Models
         {
             if (Selector == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");    
+                throw new ArgumentNullException("Selector");    
             }
             if (Template == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Template");    
+                throw new ArgumentNullException("Template");    
             }
             PersistentVolumeClaimRetentionPolicy?.Validate();
             Selector?.Validate();

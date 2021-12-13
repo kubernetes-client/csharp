@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeError captures an error encountered during a volume operation.
     /// </summary>
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// String detailing the error encountered during Attach or Detach operation. This
         /// string may be logged, so it should not contain sensitive information.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Time the error was encountered.
         /// </summary>
-        [JsonProperty(PropertyName = "time")]
+        [JsonPropertyName("time")]
         public System.DateTime? Time { get; set; }
 
         /// <summary>

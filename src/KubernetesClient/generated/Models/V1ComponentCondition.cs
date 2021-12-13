@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Information about the condition of a component.
     /// </summary>
@@ -59,27 +53,27 @@ namespace k8s.Models
         /// <summary>
         /// Condition error code for a component. For example, a health check error code.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
 
         /// <summary>
         /// Message about the condition for a component. For example, information about a
         /// health check.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Status of the condition for a component. Valid values for &quot;Healthy&quot;: &quot;True&quot;,
         /// &quot;False&quot;, or &quot;Unknown&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Type of condition for a component. Valid value: &quot;Healthy&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

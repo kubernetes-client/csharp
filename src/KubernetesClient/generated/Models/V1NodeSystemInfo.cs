@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeSystemInfo is a set of ids/uuids to uniquely identify the node.
     /// </summary>
@@ -87,38 +81,38 @@ namespace k8s.Models
         /// <summary>
         /// The Architecture reported by the node
         /// </summary>
-        [JsonProperty(PropertyName = "architecture")]
+        [JsonPropertyName("architecture")]
         public string Architecture { get; set; }
 
         /// <summary>
         /// Boot ID reported by the node.
         /// </summary>
-        [JsonProperty(PropertyName = "bootID")]
+        [JsonPropertyName("bootID")]
         public string BootID { get; set; }
 
         /// <summary>
         /// ContainerRuntime Version reported by the node through runtime remote API (e.g.
         /// docker://1.5.0).
         /// </summary>
-        [JsonProperty(PropertyName = "containerRuntimeVersion")]
+        [JsonPropertyName("containerRuntimeVersion")]
         public string ContainerRuntimeVersion { get; set; }
 
         /// <summary>
         /// Kernel Version reported by the node from &apos;uname -r&apos; (e.g. 3.16.0-0.bpo.4-amd64).
         /// </summary>
-        [JsonProperty(PropertyName = "kernelVersion")]
+        [JsonPropertyName("kernelVersion")]
         public string KernelVersion { get; set; }
 
         /// <summary>
         /// KubeProxy Version reported by the node.
         /// </summary>
-        [JsonProperty(PropertyName = "kubeProxyVersion")]
+        [JsonPropertyName("kubeProxyVersion")]
         public string KubeProxyVersion { get; set; }
 
         /// <summary>
         /// Kubelet Version reported by the node.
         /// </summary>
-        [JsonProperty(PropertyName = "kubeletVersion")]
+        [JsonPropertyName("kubeletVersion")]
         public string KubeletVersion { get; set; }
 
         /// <summary>
@@ -126,20 +120,20 @@ namespace k8s.Models
         /// this field is preferred. Learn more from man(5) machine-id:
         /// http://man7.org/linux/man-pages/man5/machine-id.5.html
         /// </summary>
-        [JsonProperty(PropertyName = "machineID")]
+        [JsonPropertyName("machineID")]
         public string MachineID { get; set; }
 
         /// <summary>
         /// The Operating System reported by the node
         /// </summary>
-        [JsonProperty(PropertyName = "operatingSystem")]
+        [JsonPropertyName("operatingSystem")]
         public string OperatingSystem { get; set; }
 
         /// <summary>
         /// OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7
         /// (wheezy)).
         /// </summary>
-        [JsonProperty(PropertyName = "osImage")]
+        [JsonPropertyName("osImage")]
         public string OsImage { get; set; }
 
         /// <summary>
@@ -147,7 +141,7 @@ namespace k8s.Models
         /// preferred. This field is specific to Red Hat hosts
         /// https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
         /// </summary>
-        [JsonProperty(PropertyName = "systemUUID")]
+        [JsonPropertyName("systemUUID")]
         public string SystemUUID { get; set; }
 
         /// <summary>

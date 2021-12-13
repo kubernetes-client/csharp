@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeMount describes a mounting of a Volume within a container.
     /// </summary>
@@ -74,7 +68,7 @@ namespace k8s.Models
         /// Path within the container at which the volume should be mounted.  Must not
         /// contain &apos;:&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "mountPath")]
+        [JsonPropertyName("mountPath")]
         public string MountPath { get; set; }
 
         /// <summary>
@@ -82,27 +76,27 @@ namespace k8s.Models
         /// and the other way around. When not set, MountPropagationNone is used. This field
         /// is beta in 1.10.
         /// </summary>
-        [JsonProperty(PropertyName = "mountPropagation")]
+        [JsonPropertyName("mountPropagation")]
         public string MountPropagation { get; set; }
 
         /// <summary>
         /// This must match the Name of a Volume.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults
         /// to false.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Path within the volume from which the container&apos;s volume should be mounted.
         /// Defaults to &quot;&quot; (volume&apos;s root).
         /// </summary>
-        [JsonProperty(PropertyName = "subPath")]
+        [JsonPropertyName("subPath")]
         public string SubPath { get; set; }
 
         /// <summary>
@@ -111,7 +105,7 @@ namespace k8s.Models
         /// $(VAR_NAME) are expanded using the container&apos;s environment. Defaults to &quot;&quot;
         /// (volume&apos;s root). SubPathExpr and SubPath are mutually exclusive.
         /// </summary>
-        [JsonProperty(PropertyName = "subPathExpr")]
+        [JsonPropertyName("subPathExpr")]
         public string SubPathExpr { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SubjectAccessReviewStatus
     /// </summary>
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// <summary>
         /// Allowed is required. True if the action would be allowed, false otherwise.
         /// </summary>
-        [JsonProperty(PropertyName = "allowed")]
+        [JsonPropertyName("allowed")]
         public bool Allowed { get; set; }
 
         /// <summary>
@@ -71,7 +65,7 @@ namespace k8s.Models
         /// allowed is false and denied is false, then the authorizer has no opinion on
         /// whether to authorize the action. Denied may not be true if Allowed is true.
         /// </summary>
-        [JsonProperty(PropertyName = "denied")]
+        [JsonPropertyName("denied")]
         public bool? Denied { get; set; }
 
         /// <summary>
@@ -81,13 +75,13 @@ namespace k8s.Models
         /// be missing a role, but enough roles are still present and bound to reason about
         /// the request.
         /// </summary>
-        [JsonProperty(PropertyName = "evaluationError")]
+        [JsonPropertyName("evaluationError")]
         public string EvaluationError { get; set; }
 
         /// <summary>
         /// Reason is optional.  It indicates why a request was allowed or denied.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>

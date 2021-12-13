@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents an empty directory for a pod. Empty directory volumes support
         /// ownership management and SELinux relabeling.
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// means to use the node&apos;s default medium. Must be an empty string (default) or
         /// Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
-        [JsonProperty(PropertyName = "medium")]
+        [JsonPropertyName("medium")]
         public string Medium { get; set; }
 
         /// <summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// that the limit is undefined. More info:
         /// http://kubernetes.io/docs/user-guide/volumes#emptydir
         /// </summary>
-        [JsonProperty(PropertyName = "sizeLimit")]
+        [JsonPropertyName("sizeLimit")]
         public ResourceQuantity SizeLimit { get; set; }
 
         /// <summary>

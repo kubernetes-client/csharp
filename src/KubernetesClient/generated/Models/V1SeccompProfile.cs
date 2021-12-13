@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SeccompProfile defines a pod/container&apos;s seccomp profile settings. Only one
         /// profile source may be set.
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// descending path, relative to the kubelet&apos;s configured seccomp profile location.
         /// Must only be set if type is &quot;Localhost&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "localhostProfile")]
+        [JsonPropertyName("localhostProfile")]
         public string LocalhostProfile { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// - `&quot;RuntimeDefault&quot;` represents the default container runtime seccomp profile.
         /// - `&quot;Unconfined&quot;` indicates no seccomp profile is applied (A.K.A. unconfined).
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

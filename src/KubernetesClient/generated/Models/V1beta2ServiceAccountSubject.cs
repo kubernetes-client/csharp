@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceAccountSubject holds detailed information for service-account-kind
         /// subject.
@@ -52,13 +46,13 @@ namespace k8s.Models
         /// `name` is the name of matching ServiceAccount objects, or &quot;*&quot; to match
         /// regardless of name. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// `namespace` is the namespace of matching ServiceAccount objects. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>

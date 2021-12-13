@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Adapts a Secret into a volume.
         /// 
@@ -77,7 +71,7 @@ namespace k8s.Models
         /// setting. This might be in conflict with other options that affect the file mode,
         /// like fsGroup, and the result can be other mode bits set.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultMode")]
+        [JsonPropertyName("defaultMode")]
         public int? DefaultMode { get; set; }
 
         /// <summary>
@@ -88,20 +82,20 @@ namespace k8s.Models
         /// present in the Secret, the volume setup will error unless it is marked optional.
         /// Paths must be relative and may not contain the &apos;..&apos; path or start with &apos;..&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IList<V1KeyToPath> Items { get; set; }
 
         /// <summary>
         /// Specify whether the Secret or its keys must be defined
         /// </summary>
-        [JsonProperty(PropertyName = "optional")]
+        [JsonPropertyName("optional")]
         public bool? Optional { get; set; }
 
         /// <summary>
         /// Name of the secret in the pod&apos;s namespace to use. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// </summary>
-        [JsonProperty(PropertyName = "secretName")]
+        [JsonPropertyName("secretName")]
         public string SecretName { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// UserInfo holds the information about the user needed to implement the user.Info
         /// interface.
@@ -59,26 +53,26 @@ namespace k8s.Models
         /// <summary>
         /// Any additional information provided by the authenticator.
         /// </summary>
-        [JsonProperty(PropertyName = "extra")]
+        [JsonPropertyName("extra")]
         public IDictionary<string, IList<string>> Extra { get; set; }
 
         /// <summary>
         /// The names of groups this user is a part of.
         /// </summary>
-        [JsonProperty(PropertyName = "groups")]
+        [JsonPropertyName("groups")]
         public IList<string> Groups { get; set; }
 
         /// <summary>
         /// A unique value that identifies this user across time. If this user is deleted
         /// and another user by the same name is added, they will have different UIDs.
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>
         /// The name that uniquely identifies this user among all active users.
         /// </summary>
-        [JsonProperty(PropertyName = "username")]
+        [JsonPropertyName("username")]
         public string Username { get; set; }
 
         /// <summary>

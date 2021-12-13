@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HostAlias holds the mapping between IP and hostnames that will be injected as an
         /// entry in the pod&apos;s hosts file.
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// Hostnames for the above IP address.
         /// </summary>
-        [JsonProperty(PropertyName = "hostnames")]
+        [JsonPropertyName("hostnames")]
         public IList<string> Hostnames { get; set; }
 
         /// <summary>
         /// IP address of the host file entry.
         /// </summary>
-        [JsonProperty(PropertyName = "ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>

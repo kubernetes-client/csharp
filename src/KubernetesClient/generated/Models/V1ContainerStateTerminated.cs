@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ContainerStateTerminated is a terminated state of a container.
     /// </summary>
@@ -69,43 +63,43 @@ namespace k8s.Models
         /// <summary>
         /// Container&apos;s ID in the format &apos;docker://&lt;container_id&gt;&apos;
         /// </summary>
-        [JsonProperty(PropertyName = "containerID")]
+        [JsonPropertyName("containerID")]
         public string ContainerID { get; set; }
 
         /// <summary>
         /// Exit status from the last termination of the container
         /// </summary>
-        [JsonProperty(PropertyName = "exitCode")]
+        [JsonPropertyName("exitCode")]
         public int ExitCode { get; set; }
 
         /// <summary>
         /// Time at which the container last terminated
         /// </summary>
-        [JsonProperty(PropertyName = "finishedAt")]
+        [JsonPropertyName("finishedAt")]
         public System.DateTime? FinishedAt { get; set; }
 
         /// <summary>
         /// Message regarding the last termination of the container
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// (brief) reason from the last termination of the container
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Signal from the last termination of the container
         /// </summary>
-        [JsonProperty(PropertyName = "signal")]
+        [JsonPropertyName("signal")]
         public int? Signal { get; set; }
 
         /// <summary>
         /// Time at which previous execution of the container started
         /// </summary>
-        [JsonProperty(PropertyName = "startedAt")]
+        [JsonPropertyName("startedAt")]
         public System.DateTime? StartedAt { get; set; }
 
         /// <summary>

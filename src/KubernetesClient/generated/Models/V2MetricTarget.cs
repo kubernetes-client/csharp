@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MetricTarget defines the target value, average value, or average utilization of
         /// a specific metric
@@ -63,26 +57,26 @@ namespace k8s.Models
         /// across all relevant pods, represented as a percentage of the requested value of
         /// the resource for the pods. Currently only valid for Resource metric source type
         /// </summary>
-        [JsonProperty(PropertyName = "averageUtilization")]
+        [JsonPropertyName("averageUtilization")]
         public int? AverageUtilization { get; set; }
 
         /// <summary>
         /// averageValue is the target value of the average of the metric across all
         /// relevant pods (as a quantity)
         /// </summary>
-        [JsonProperty(PropertyName = "averageValue")]
+        [JsonPropertyName("averageValue")]
         public ResourceQuantity AverageValue { get; set; }
 
         /// <summary>
         /// type represents whether the metric type is Utilization, Value, or AverageValue
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// value is the target value of the metric (as a quantity).
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public ResourceQuantity Value { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectMeta is metadata that all persisted resources must have, which includes
         /// all objects users must create.
@@ -205,7 +199,7 @@ namespace k8s.Models
         /// queryable and should be preserved when modifying objects. More info:
         /// http://kubernetes.io/docs/user-guide/annotations
         /// </summary>
-        [JsonProperty(PropertyName = "annotations")]
+        [JsonPropertyName("annotations")]
         public IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
@@ -214,7 +208,7 @@ namespace k8s.Models
         /// set anywhere right now and apiserver is going to ignore it if set in create or
         /// update request.
         /// </summary>
-        [JsonProperty(PropertyName = "clusterName")]
+        [JsonPropertyName("clusterName")]
         public string ClusterName { get; set; }
 
         /// <summary>
@@ -226,7 +220,7 @@ namespace k8s.Models
         /// Populated by the system. Read-only. Null for lists. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "creationTimestamp")]
+        [JsonPropertyName("creationTimestamp")]
         public System.DateTime? CreationTimestamp { get; set; }
 
         /// <summary>
@@ -234,7 +228,7 @@ namespace k8s.Models
         /// be removed from the system. Only set when deletionTimestamp is also set. May
         /// only be shortened. Read-only.
         /// </summary>
-        [JsonProperty(PropertyName = "deletionGracePeriodSeconds")]
+        [JsonPropertyName("deletionGracePeriodSeconds")]
         public long? DeletionGracePeriodSeconds { get; set; }
 
         /// <summary>
@@ -259,7 +253,7 @@ namespace k8s.Models
         /// info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "deletionTimestamp")]
+        [JsonPropertyName("deletionTimestamp")]
         public System.DateTime? DeletionTimestamp { get; set; }
 
         /// <summary>
@@ -276,7 +270,7 @@ namespace k8s.Models
         /// deadlock. Without enforced ordering finalizers are free to order amongst
         /// themselves and are not vulnerable to ordering changes in the list.
         /// </summary>
-        [JsonProperty(PropertyName = "finalizers")]
+        [JsonPropertyName("finalizers")]
         public IList<string> Finalizers { get; set; }
 
         /// <summary>
@@ -296,14 +290,14 @@ namespace k8s.Models
         /// Applied only if Name is not specified. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
         /// </summary>
-        [JsonProperty(PropertyName = "generateName")]
+        [JsonPropertyName("generateName")]
         public string GenerateName { get; set; }
 
         /// <summary>
         /// A sequence number representing a specific generation of the desired state.
         /// Populated by the system. Read-only.
         /// </summary>
-        [JsonProperty(PropertyName = "generation")]
+        [JsonPropertyName("generation")]
         public long? Generation { get; set; }
 
         /// <summary>
@@ -311,7 +305,7 @@ namespace k8s.Models
         /// and select) objects. May match selectors of replication controllers and
         /// services. More info: http://kubernetes.io/docs/user-guide/labels
         /// </summary>
-        [JsonProperty(PropertyName = "labels")]
+        [JsonPropertyName("labels")]
         public IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
@@ -322,7 +316,7 @@ namespace k8s.Models
         /// The set of fields is always in the version that the workflow used when modifying
         /// the object.
         /// </summary>
-        [JsonProperty(PropertyName = "managedFields")]
+        [JsonPropertyName("managedFields")]
         public IList<V1ManagedFieldsEntry> ManagedFields { get; set; }
 
         /// <summary>
@@ -332,7 +326,7 @@ namespace k8s.Models
         /// idempotence and configuration definition. Cannot be updated. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#names
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -344,7 +338,7 @@ namespace k8s.Models
         /// Must be a DNS_LABEL. Cannot be updated. More info:
         /// http://kubernetes.io/docs/user-guide/namespaces
         /// </summary>
-        [JsonProperty(PropertyName = "namespace")]
+        [JsonPropertyName("namespace")]
         public string NamespaceProperty { get; set; }
 
         /// <summary>
@@ -353,7 +347,7 @@ namespace k8s.Models
         /// controller, then an entry in this list will point to this controller, with the
         /// controller field set to true. There cannot be more than one managing controller.
         /// </summary>
-        [JsonProperty(PropertyName = "ownerReferences")]
+        [JsonPropertyName("ownerReferences")]
         public IList<V1OwnerReference> OwnerReferences { get; set; }
 
         /// <summary>
@@ -368,7 +362,7 @@ namespace k8s.Models
         /// and . More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
-        [JsonProperty(PropertyName = "resourceVersion")]
+        [JsonPropertyName("resourceVersion")]
         public string ResourceVersion { get; set; }
 
         /// <summary>
@@ -377,7 +371,7 @@ namespace k8s.Models
         /// DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the
         /// field is planned to be removed in 1.21 release.
         /// </summary>
-        [JsonProperty(PropertyName = "selfLink")]
+        [JsonPropertyName("selfLink")]
         public string SelfLink { get; set; }
 
         /// <summary>
@@ -388,7 +382,7 @@ namespace k8s.Models
         /// Populated by the system. Read-only. More info:
         /// http://kubernetes.io/docs/user-guide/identifiers#uids
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>

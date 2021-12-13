@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointPort represents a Port used by an EndpointSlice
     /// </summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard
         /// protocols should use prefixed names such as mycompany.com/my-custom-protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "appProtocol")]
+        [JsonPropertyName("appProtocol")]
         public string AppProtocol { get; set; }
 
         /// <summary>
@@ -80,20 +74,20 @@ namespace k8s.Models
         /// case alphanumeric characters or &apos;-&apos;. * must start and end with an alphanumeric
         /// character. Default is empty string.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The port number of the endpoint. If this is not specified, ports are not
         /// restricted and must be interpreted in the context of the specific consumer.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int? Port { get; set; }
 
         /// <summary>
         /// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>

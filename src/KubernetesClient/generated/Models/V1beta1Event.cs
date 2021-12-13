@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Event is a report of an event somewhere in the cluster. It generally denotes
         /// some state change in the system. Events have a limited retention time and
@@ -139,7 +133,7 @@ namespace k8s.Models
         /// action is what action was taken/failed regarding to the regarding object. It is
         /// machine-readable. This field can have at most 128 characters.
         /// </summary>
-        [JsonProperty(PropertyName = "action")]
+        [JsonPropertyName("action")]
         public string Action { get; set; }
 
         /// <summary>
@@ -148,41 +142,41 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// deprecatedCount is the deprecated field assuring backward compatibility with
         /// core.v1 Event type.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecatedCount")]
+        [JsonPropertyName("deprecatedCount")]
         public int? DeprecatedCount { get; set; }
 
         /// <summary>
         /// deprecatedFirstTimestamp is the deprecated field assuring backward compatibility
         /// with core.v1 Event type.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecatedFirstTimestamp")]
+        [JsonPropertyName("deprecatedFirstTimestamp")]
         public System.DateTime? DeprecatedFirstTimestamp { get; set; }
 
         /// <summary>
         /// deprecatedLastTimestamp is the deprecated field assuring backward compatibility
         /// with core.v1 Event type.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecatedLastTimestamp")]
+        [JsonPropertyName("deprecatedLastTimestamp")]
         public System.DateTime? DeprecatedLastTimestamp { get; set; }
 
         /// <summary>
         /// deprecatedSource is the deprecated field assuring backward compatibility with
         /// core.v1 Event type.
         /// </summary>
-        [JsonProperty(PropertyName = "deprecatedSource")]
+        [JsonPropertyName("deprecatedSource")]
         public V1EventSource DeprecatedSource { get; set; }
 
         /// <summary>
         /// eventTime is the time when this Event was first observed. It is required.
         /// </summary>
-        [JsonProperty(PropertyName = "eventTime")]
+        [JsonPropertyName("eventTime")]
         public System.DateTime EventTime { get; set; }
 
         /// <summary>
@@ -191,14 +185,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -206,14 +200,14 @@ namespace k8s.Models
         /// length of the note is 1kB, but libraries should be prepared to handle values up
         /// to 64kB.
         /// </summary>
-        [JsonProperty(PropertyName = "note")]
+        [JsonPropertyName("note")]
         public string Note { get; set; }
 
         /// <summary>
         /// reason is why the action was taken. It is human-readable. This field can have at
         /// most 128 characters.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
@@ -222,21 +216,21 @@ namespace k8s.Models
         /// ReplicaSets and this event is emitted because it acts on some changes in a
         /// ReplicaSet object.
         /// </summary>
-        [JsonProperty(PropertyName = "regarding")]
+        [JsonPropertyName("regarding")]
         public V1ObjectReference Regarding { get; set; }
 
         /// <summary>
         /// related is the optional secondary object for more complex actions. E.g. when
         /// regarding object triggers a creation or deletion of related object.
         /// </summary>
-        [JsonProperty(PropertyName = "related")]
+        [JsonPropertyName("related")]
         public V1ObjectReference Related { get; set; }
 
         /// <summary>
         /// reportingController is the name of the controller that emitted this Event, e.g.
         /// `kubernetes.io/kubelet`. This field cannot be empty for new Events.
         /// </summary>
-        [JsonProperty(PropertyName = "reportingController")]
+        [JsonPropertyName("reportingController")]
         public string ReportingController { get; set; }
 
         /// <summary>
@@ -244,21 +238,21 @@ namespace k8s.Models
         /// This field cannot be empty for new Events and it can have at most 128
         /// characters.
         /// </summary>
-        [JsonProperty(PropertyName = "reportingInstance")]
+        [JsonPropertyName("reportingInstance")]
         public string ReportingInstance { get; set; }
 
         /// <summary>
         /// series is data about the Event series this event represents or nil if it&apos;s a
         /// singleton Event.
         /// </summary>
-        [JsonProperty(PropertyName = "series")]
+        [JsonPropertyName("series")]
         public V1beta1EventSeries Series { get; set; }
 
         /// <summary>
         /// type is the type of this event (Normal, Warning), new types could be added in
         /// the future. It is machine-readable.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

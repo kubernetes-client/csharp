@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a volume that is populated with the contents of a git repository. Git
         /// repo volumes do not support ownership management. Git repo volumes support
@@ -63,19 +57,19 @@ namespace k8s.Models
         /// the volume directory will be the git repository.  Otherwise, if specified, the
         /// volume will contain the git repository in the subdirectory with the given name.
         /// </summary>
-        [JsonProperty(PropertyName = "directory")]
+        [JsonPropertyName("directory")]
         public string Directory { get; set; }
 
         /// <summary>
         /// Repository URL
         /// </summary>
-        [JsonProperty(PropertyName = "repository")]
+        [JsonPropertyName("repository")]
         public string Repository { get; set; }
 
         /// <summary>
         /// Commit hash for the specified revision.
         /// </summary>
-        [JsonProperty(PropertyName = "revision")]
+        [JsonPropertyName("revision")]
         public string Revision { get; set; }
 
         /// <summary>

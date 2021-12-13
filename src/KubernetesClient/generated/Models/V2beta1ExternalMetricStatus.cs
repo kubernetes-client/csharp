@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ExternalMetricStatus indicates the current value of a global metric not
         /// associated with any Kubernetes object.
@@ -60,25 +54,25 @@ namespace k8s.Models
         /// currentAverageValue is the current value of metric averaged over autoscaled
         /// pods.
         /// </summary>
-        [JsonProperty(PropertyName = "currentAverageValue")]
+        [JsonPropertyName("currentAverageValue")]
         public ResourceQuantity CurrentAverageValue { get; set; }
 
         /// <summary>
         /// currentValue is the current value of the metric (as a quantity)
         /// </summary>
-        [JsonProperty(PropertyName = "currentValue")]
+        [JsonPropertyName("currentValue")]
         public ResourceQuantity CurrentValue { get; set; }
 
         /// <summary>
         /// metricName is the name of a metric used for autoscaling in metric system.
         /// </summary>
-        [JsonProperty(PropertyName = "metricName")]
+        [JsonPropertyName("metricName")]
         public string MetricName { get; set; }
 
         /// <summary>
         /// metricSelector is used to identify a specific time series within a given metric.
         /// </summary>
-        [JsonProperty(PropertyName = "metricSelector")]
+        [JsonPropertyName("metricSelector")]
         public V1LabelSelector MetricSelector { get; set; }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace k8s.Models
         {
             if (CurrentValue == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CurrentValue");    
+                throw new ArgumentNullException("CurrentValue");    
             }
             CurrentAverageValue?.Validate();
             CurrentValue?.Validate();

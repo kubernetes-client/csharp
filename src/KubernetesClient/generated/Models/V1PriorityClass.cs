@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PriorityClass defines mapping from a priority class name to the priority integer
         /// value. The value can be any valid integer.
@@ -89,14 +83,14 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// description is an arbitrary string that usually provides guidelines on when this
         /// priority class should be used.
         /// </summary>
-        [JsonProperty(PropertyName = "description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -107,7 +101,7 @@ namespace k8s.Models
         /// smallest value of such global default PriorityClasses will be used as the
         /// default priority.
         /// </summary>
-        [JsonProperty(PropertyName = "globalDefault")]
+        [JsonPropertyName("globalDefault")]
         public bool? GlobalDefault { get; set; }
 
         /// <summary>
@@ -116,14 +110,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -131,14 +125,14 @@ namespace k8s.Models
         /// Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This
         /// field is beta-level, gated by the NonPreemptingPriority feature-gate.
         /// </summary>
-        [JsonProperty(PropertyName = "preemptionPolicy")]
+        [JsonPropertyName("preemptionPolicy")]
         public string PreemptionPolicy { get; set; }
 
         /// <summary>
         /// The value of this priority class. This is the actual priority that pods receive
         /// when they have the name of this class in their pod spec.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public int Value { get; set; }
 
         /// <summary>

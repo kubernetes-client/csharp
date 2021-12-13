@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as
         /// read/write once. Fibre Channel volumes support ownership management and SELinux
@@ -69,33 +63,33 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// Optional: FC target lun number
         /// </summary>
-        [JsonProperty(PropertyName = "lun")]
+        [JsonPropertyName("lun")]
         public int? Lun { get; set; }
 
         /// <summary>
         /// Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly
         /// setting in VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Optional: FC target worldwide names (WWNs)
         /// </summary>
-        [JsonProperty(PropertyName = "targetWWNs")]
+        [JsonPropertyName("targetWWNs")]
         public IList<string> TargetWWNs { get; set; }
 
         /// <summary>
         /// Optional: FC volume world wide identifiers (wwids) Either wwids or combination
         /// of targetWWNs and lun must be set, but not both simultaneously.
         /// </summary>
-        [JsonProperty(PropertyName = "wwids")]
+        [JsonPropertyName("wwids")]
         public IList<string> Wwids { get; set; }
 
         /// <summary>

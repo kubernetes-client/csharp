@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EventSource contains information for an event.
     /// </summary>
@@ -49,13 +43,13 @@ namespace k8s.Models
         /// <summary>
         /// Component from which the event is generated.
         /// </summary>
-        [JsonProperty(PropertyName = "component")]
+        [JsonPropertyName("component")]
         public string Component { get; set; }
 
         /// <summary>
         /// Node name on which the event is generated.
         /// </summary>
-        [JsonProperty(PropertyName = "host")]
+        [JsonPropertyName("host")]
         public string Host { get; set; }
 
         /// <summary>

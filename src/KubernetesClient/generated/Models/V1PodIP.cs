@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IP address information for entries in the (plural) PodIPs field. Each entry
         /// includes:
@@ -47,7 +41,7 @@ namespace k8s.Models
         /// <summary>
         /// ip is an IP address (IPv4 or IPv6) assigned to the pod
         /// </summary>
-        [JsonProperty(PropertyName = "ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>

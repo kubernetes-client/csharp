@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Status is a return value for calls that don&apos;t return other objects.
     /// </summary>
@@ -88,13 +82,13 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// Suggested HTTP return code for this status, 0 if not set.
         /// </summary>
-        [JsonProperty(PropertyName = "code")]
+        [JsonPropertyName("code")]
         public int? Code { get; set; }
 
         /// <summary>
@@ -102,7 +96,7 @@ namespace k8s.Models
         /// extended details. This field is optional and the data returned is not guaranteed
         /// to conform to any schema except that defined by the reason type.
         /// </summary>
-        [JsonProperty(PropertyName = "details")]
+        [JsonPropertyName("details")]
         public V1StatusDetails Details { get; set; }
 
         /// <summary>
@@ -111,20 +105,20 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// A human-readable description of the status of this operation.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// Standard list metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ListMeta Metadata { get; set; }
 
         /// <summary>
@@ -132,14 +126,14 @@ namespace k8s.Models
         /// If this value is empty there is no information available. A Reason clarifies an
         /// HTTP status code but does not override it.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Status of the operation. One of: &quot;Success&quot; or &quot;Failure&quot;. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>

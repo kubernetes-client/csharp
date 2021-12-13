@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceDefinitionStatus indicates the state of the
         /// CustomResourceDefinition
@@ -61,13 +55,13 @@ namespace k8s.Models
         /// acceptedNames are the names that are actually being used to serve discovery.
         /// They may be different than the names in spec.
         /// </summary>
-        [JsonProperty(PropertyName = "acceptedNames")]
+        [JsonPropertyName("acceptedNames")]
         public V1CustomResourceDefinitionNames AcceptedNames { get; set; }
 
         /// <summary>
         /// conditions indicate state for particular aspects of a CustomResourceDefinition
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1CustomResourceDefinitionCondition> Conditions { get; set; }
 
         /// <summary>
@@ -78,7 +72,7 @@ namespace k8s.Models
         /// of the versions from this list. Versions may not be removed from `spec.versions`
         /// while they exist in this list.
         /// </summary>
-        [JsonProperty(PropertyName = "storedVersions")]
+        [JsonPropertyName("storedVersions")]
         public IList<string> StoredVersions { get; set; }
 
         /// <summary>

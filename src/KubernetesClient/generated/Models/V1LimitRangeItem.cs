@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LimitRangeItem defines a min/max usage limit for any resource that matches on
         /// kind.
@@ -78,20 +72,20 @@ namespace k8s.Models
         /// Default resource requirement limit value by resource name if resource limit is
         /// omitted.
         /// </summary>
-        [JsonProperty(PropertyName = "default")]
+        [JsonPropertyName("default")]
         public IDictionary<string, ResourceQuantity> DefaultProperty { get; set; }
 
         /// <summary>
         /// DefaultRequest is the default resource requirement request value by resource
         /// name if resource request is omitted.
         /// </summary>
-        [JsonProperty(PropertyName = "defaultRequest")]
+        [JsonPropertyName("defaultRequest")]
         public IDictionary<string, ResourceQuantity> DefaultRequest { get; set; }
 
         /// <summary>
         /// Max usage constraints on this kind by resource name.
         /// </summary>
-        [JsonProperty(PropertyName = "max")]
+        [JsonPropertyName("max")]
         public IDictionary<string, ResourceQuantity> Max { get; set; }
 
         /// <summary>
@@ -100,13 +94,13 @@ namespace k8s.Models
         /// equal to the enumerated value; this represents the max burst for the named
         /// resource.
         /// </summary>
-        [JsonProperty(PropertyName = "maxLimitRequestRatio")]
+        [JsonPropertyName("maxLimitRequestRatio")]
         public IDictionary<string, ResourceQuantity> MaxLimitRequestRatio { get; set; }
 
         /// <summary>
         /// Min usage constraints on this kind by resource name.
         /// </summary>
-        [JsonProperty(PropertyName = "min")]
+        [JsonPropertyName("min")]
         public IDictionary<string, ResourceQuantity> Min { get; set; }
 
         /// <summary>
@@ -118,7 +112,7 @@ namespace k8s.Models
         /// in a namespace
         /// - `&quot;Pod&quot;` Limit that applies to all pods in a namespace
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

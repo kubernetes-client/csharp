@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TokenRequestSpec contains client provided parameters of a token request.
     /// </summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// used to authenticate against any of the audiences listed but implies a high
         /// degree of trust between the target audiences.
         /// </summary>
-        [JsonProperty(PropertyName = "audiences")]
+        [JsonPropertyName("audiences")]
         public IList<string> Audiences { get; set; }
 
         /// <summary>
@@ -75,7 +69,7 @@ namespace k8s.Models
         /// server&apos;s TokenReview endpoint will validate the BoundObjectRef, but other
         /// audiences may not. Keep ExpirationSeconds small if you want prompt revocation.
         /// </summary>
-        [JsonProperty(PropertyName = "boundObjectRef")]
+        [JsonPropertyName("boundObjectRef")]
         public V1BoundObjectReference BoundObjectRef { get; set; }
 
         /// <summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// token issuer may return a token with a different validity duration so a client
         /// needs to check the &apos;expiration&apos; field in a response.
         /// </summary>
-        [JsonProperty(PropertyName = "expirationSeconds")]
+        [JsonPropertyName("expirationSeconds")]
         public long? ExpirationSeconds { get; set; }
 
         /// <summary>

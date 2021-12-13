@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeStatus is the current status of a persistent volume.
     /// </summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// A human-readable message indicating details about why the volume is in this
         /// state.
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
@@ -90,14 +84,14 @@ namespace k8s.Models
         /// this phase is used by the persistent volume claim binder to signal to another
         /// process to reclaim the resource
         /// </summary>
-        [JsonProperty(PropertyName = "phase")]
+        [JsonPropertyName("phase")]
         public string Phase { get; set; }
 
         /// <summary>
         /// Reason is a brief CamelCase string that describes any failure and is meant for
         /// machine parsing and tidy display in the CLI.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>

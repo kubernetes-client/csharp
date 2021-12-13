@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// The pod this Toleration is attached to tolerates any taint that matches the
         /// triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;.
@@ -98,7 +92,7 @@ namespace k8s.Models
         /// to schedule new pods onto the node, rather than prohibiting new pods from
         /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </summary>
-        [JsonProperty(PropertyName = "effect")]
+        [JsonPropertyName("effect")]
         public string Effect { get; set; }
 
         /// <summary>
@@ -106,7 +100,7 @@ namespace k8s.Models
         /// keys. If the key is empty, operator must be Exists; this combination means to
         /// match all values and all keys.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
@@ -118,7 +112,7 @@ namespace k8s.Models
         /// - `&quot;Equal&quot;`
         /// - `&quot;Exists&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -127,14 +121,14 @@ namespace k8s.Models
         /// default, it is not set, which means tolerate the taint forever (do not evict).
         /// Zero and negative values will be treated as 0 (evict immediately) by the system.
         /// </summary>
-        [JsonProperty(PropertyName = "tolerationSeconds")]
+        [JsonPropertyName("tolerationSeconds")]
         public long? TolerationSeconds { get; set; }
 
         /// <summary>
         /// Value is the taint value the toleration matches to. If the operator is Exists,
         /// the value should be empty, otherwise just a regular string.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

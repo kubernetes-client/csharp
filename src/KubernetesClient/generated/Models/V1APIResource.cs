@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIResource specifies the name of a resource and whether it is namespaced.
     /// </summary>
@@ -96,7 +90,7 @@ namespace k8s.Models
         /// categories is a list of the grouped resources this resource belongs to (e.g.
         /// &apos;all&apos;)
         /// </summary>
-        [JsonProperty(PropertyName = "categories")]
+        [JsonPropertyName("categories")]
         public IList<string> Categories { get; set; }
 
         /// <summary>
@@ -104,31 +98,31 @@ namespace k8s.Models
         /// containing resource list. For subresources, this may have a different value, for
         /// example: Scale&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public string Group { get; set; }
 
         /// <summary>
         /// kind is the kind for the resource (e.g. &apos;Foo&apos; is the kind for a resource &apos;foo&apos;)
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// name is the plural name of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// namespaced indicates if a resource is namespaced or not.
         /// </summary>
-        [JsonProperty(PropertyName = "namespaced")]
+        [JsonPropertyName("namespaced")]
         public bool Namespaced { get; set; }
 
         /// <summary>
         /// shortNames is a list of suggested short names of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "shortNames")]
+        [JsonPropertyName("shortNames")]
         public IList<string> ShortNames { get; set; }
 
         /// <summary>
@@ -137,7 +131,7 @@ namespace k8s.Models
         /// reporting status on a single item and both singular and plural are allowed from
         /// the kubectl CLI interface.
         /// </summary>
-        [JsonProperty(PropertyName = "singularName")]
+        [JsonPropertyName("singularName")]
         public string SingularName { get; set; }
 
         /// <summary>
@@ -148,14 +142,14 @@ namespace k8s.Models
         /// if the StorageVersionHash feature gate is enabled. This field will remain
         /// optional even if it graduates.
         /// </summary>
-        [JsonProperty(PropertyName = "storageVersionHash")]
+        [JsonPropertyName("storageVersionHash")]
         public string StorageVersionHash { get; set; }
 
         /// <summary>
         /// verbs is a list of supported kube verbs (this includes get, list, watch, create,
         /// update, patch, delete, deletecollection, and proxy)
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>
@@ -163,7 +157,7 @@ namespace k8s.Models
         /// the containing resource list For subresources, this may have a different value,
         /// for example: v1 (while inside a v1beta1 version of the core resource&apos;s group)&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
         /// <summary>

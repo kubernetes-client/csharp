@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do
         /// not support ownership management or SELinux relabeling.
@@ -70,14 +64,14 @@ namespace k8s.Models
         /// <summary>
         /// Group to map volume access to Default is no group
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public string Group { get; set; }
 
         /// <summary>
         /// ReadOnly here will force the Quobyte volume to be mounted with read-only
         /// permissions. Defaults to false.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
@@ -85,26 +79,26 @@ namespace k8s.Models
         /// a string as host:port pair (multiple entries are separated with commas) which
         /// acts as the central registry for volumes
         /// </summary>
-        [JsonProperty(PropertyName = "registry")]
+        [JsonPropertyName("registry")]
         public string Registry { get; set; }
 
         /// <summary>
         /// Tenant owning the given Quobyte volume in the Backend Used with dynamically
         /// provisioned Quobyte volumes, value is set by the plugin
         /// </summary>
-        [JsonProperty(PropertyName = "tenant")]
+        [JsonPropertyName("tenant")]
         public string Tenant { get; set; }
 
         /// <summary>
         /// User to map volume access to Defaults to serivceaccount user
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
 
         /// <summary>
         /// Volume is a string that references an already created Quobyte volume by name.
         /// </summary>
-        [JsonProperty(PropertyName = "volume")]
+        [JsonPropertyName("volume")]
         public string Volume { get; set; }
 
         /// <summary>

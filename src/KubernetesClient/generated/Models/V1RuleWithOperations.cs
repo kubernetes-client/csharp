@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RuleWithOperations is a tuple of Operations and Resources. It is recommended to
         /// make sure that all the tuple expansions are valid.
@@ -83,14 +77,14 @@ namespace k8s.Models
         /// APIGroups is the API groups the resources belong to. &apos;*&apos; is all groups. If &apos;*&apos;
         /// is present, the length of the slice must be one. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroups")]
+        [JsonPropertyName("apiGroups")]
         public IList<string> ApiGroups { get; set; }
 
         /// <summary>
         /// APIVersions is the API versions the resources belong to. &apos;*&apos; is all versions. If
         /// &apos;*&apos; is present, the length of the slice must be one. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersions")]
+        [JsonPropertyName("apiVersions")]
         public IList<string> ApiVersions { get; set; }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace k8s.Models
         /// operations that are added. If &apos;*&apos; is present, the length of the slice must be
         /// one. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "operations")]
+        [JsonPropertyName("operations")]
         public IList<string> Operations { get; set; }
 
         /// <summary>
@@ -115,7 +109,7 @@ namespace k8s.Models
         /// 
         /// Depending on the enclosing object, subresources might not be allowed. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "resources")]
+        [JsonPropertyName("resources")]
         public IList<string> Resources { get; set; }
 
         /// <summary>
@@ -126,7 +120,7 @@ namespace k8s.Models
         /// scope restrictions. Subresources match the scope of their parent resource.
         /// Default is &quot;*&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "scope")]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
 
         /// <summary>

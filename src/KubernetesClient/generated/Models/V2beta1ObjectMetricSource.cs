@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectMetricSource indicates how to scale on a metric describing a kubernetes
         /// object (for example, hits-per-second on an Ingress object).
@@ -67,13 +61,13 @@ namespace k8s.Models
         /// averageValue is the target value of the average of the metric across all
         /// relevant pods (as a quantity)
         /// </summary>
-        [JsonProperty(PropertyName = "averageValue")]
+        [JsonPropertyName("averageValue")]
         public ResourceQuantity AverageValue { get; set; }
 
         /// <summary>
         /// metricName is the name of the metric in question.
         /// </summary>
-        [JsonProperty(PropertyName = "metricName")]
+        [JsonPropertyName("metricName")]
         public string MetricName { get; set; }
 
         /// <summary>
@@ -82,19 +76,19 @@ namespace k8s.Models
         /// metrics server for more specific metrics scoping When unset, just the metricName
         /// will be used to gather metrics.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
         /// target is the described Kubernetes object.
         /// </summary>
-        [JsonProperty(PropertyName = "target")]
+        [JsonPropertyName("target")]
         public V2beta1CrossVersionObjectReference Target { get; set; }
 
         /// <summary>
         /// targetValue is the target value of the metric (as a quantity).
         /// </summary>
-        [JsonProperty(PropertyName = "targetValue")]
+        [JsonPropertyName("targetValue")]
         public ResourceQuantity TargetValue { get; set; }
 
         /// <summary>
@@ -107,11 +101,11 @@ namespace k8s.Models
         {
             if (Target == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Target");    
+                throw new ArgumentNullException("Target");    
             }
             if (TargetValue == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TargetValue");    
+                throw new ArgumentNullException("TargetValue");    
             }
             AverageValue?.Validate();
             Selector?.Validate();

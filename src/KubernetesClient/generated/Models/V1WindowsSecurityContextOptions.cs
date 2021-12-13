@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// WindowsSecurityContextOptions contain Windows-specific options and credentials.
     /// </summary>
@@ -70,13 +64,13 @@ namespace k8s.Models
         /// (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the
         /// GMSA credential spec named by the GMSACredentialSpecName field.
         /// </summary>
-        [JsonProperty(PropertyName = "gmsaCredentialSpec")]
+        [JsonPropertyName("gmsaCredentialSpec")]
         public string GmsaCredentialSpec { get; set; }
 
         /// <summary>
         /// GMSACredentialSpecName is the name of the GMSA credential spec to use.
         /// </summary>
-        [JsonProperty(PropertyName = "gmsaCredentialSpecName")]
+        [JsonPropertyName("gmsaCredentialSpecName")]
         public string GmsaCredentialSpecName { get; set; }
 
         /// <summary>
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// have a mix of HostProcess containers and non-HostProcess containers).  In
         /// addition, if HostProcess is true then HostNetwork must also be set to true.
         /// </summary>
-        [JsonProperty(PropertyName = "hostProcess")]
+        [JsonPropertyName("hostProcess")]
         public bool? HostProcess { get; set; }
 
         /// <summary>
@@ -97,7 +91,7 @@ namespace k8s.Models
         /// PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the
         /// value specified in SecurityContext takes precedence.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsUserName")]
+        [JsonPropertyName("runAsUserName")]
         public string RunAsUserName { get; set; }
 
         /// <summary>

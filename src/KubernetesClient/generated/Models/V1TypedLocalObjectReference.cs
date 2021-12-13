@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TypedLocalObjectReference contains enough information to let you locate the
         /// typed referenced object inside the same namespace.
@@ -58,19 +52,19 @@ namespace k8s.Models
         /// specified, the specified Kind must be in the core API group. For any other
         /// third-party types, APIGroup is required.
         /// </summary>
-        [JsonProperty(PropertyName = "apiGroup")]
+        [JsonPropertyName("apiGroup")]
         public string ApiGroup { get; set; }
 
         /// <summary>
         /// Kind is the type of resource being referenced
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Name is the name of resource being referenced
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

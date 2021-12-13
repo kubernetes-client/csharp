@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A scoped-resource selector requirement is a selector that contains values, a
         /// scope name, and an operator that relates the scope name and values.
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// - `&quot;In&quot;`
         /// - `&quot;NotIn&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -100,7 +94,7 @@ namespace k8s.Models
         /// - `&quot;PriorityClass&quot;` Match all pod objects that have priority class mentioned
         /// - `&quot;Terminating&quot;` Match all pod objects where spec.activeDeadlineSeconds &gt;=0
         /// </summary>
-        [JsonProperty(PropertyName = "scopeName")]
+        [JsonPropertyName("scopeName")]
         public string ScopeName { get; set; }
 
         /// <summary>
@@ -108,7 +102,7 @@ namespace k8s.Models
         /// be non-empty. If the operator is Exists or DoesNotExist, the values array must
         /// be empty. This array is replaced during a strategic merge patch.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

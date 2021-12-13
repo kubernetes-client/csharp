@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeDaemonEndpoints lists ports opened by daemons running on the Node.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Endpoint on which Kubelet is listening.
         /// </summary>
-        [JsonProperty(PropertyName = "kubeletEndpoint")]
+        [JsonPropertyName("kubeletEndpoint")]
         public V1DaemonEndpoint KubeletEndpoint { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RuntimeClass defines a class of container runtime supported in the cluster. The
         /// RuntimeClass is used to determine which container runtime is used to run all
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -107,7 +101,7 @@ namespace k8s.Models
         /// pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123)
         /// requirements, and is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "handler")]
+        [JsonPropertyName("handler")]
         public string Handler { get; set; }
 
         /// <summary>
@@ -116,14 +110,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -133,7 +127,7 @@ namespace k8s.Models
         /// field is beta-level as of Kubernetes v1.18, and is only honored by servers that
         /// enable the PodOverhead feature.
         /// </summary>
-        [JsonProperty(PropertyName = "overhead")]
+        [JsonPropertyName("overhead")]
         public V1beta1Overhead Overhead { get; set; }
 
         /// <summary>
@@ -141,7 +135,7 @@ namespace k8s.Models
         /// this RuntimeClass are scheduled to nodes that support it. If scheduling is nil,
         /// this RuntimeClass is assumed to be supported by all nodes.
         /// </summary>
-        [JsonProperty(PropertyName = "scheduling")]
+        [JsonPropertyName("scheduling")]
         public V1beta1Scheduling Scheduling { get; set; }
 
         /// <summary>

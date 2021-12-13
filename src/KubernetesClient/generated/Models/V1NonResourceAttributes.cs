@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NonResourceAttributes includes the authorization attributes available for
         /// non-resource requests to the Authorizer interface
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// Path is the URL path of the request
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
         /// Verb is the standard HTTP verb
         /// </summary>
-        [JsonProperty(PropertyName = "verb")]
+        [JsonPropertyName("verb")]
         public string Verb { get; set; }
 
         /// <summary>

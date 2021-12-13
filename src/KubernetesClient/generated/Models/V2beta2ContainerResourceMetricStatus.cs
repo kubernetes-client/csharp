@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ContainerResourceMetricStatus indicates the current value of a resource metric
         /// known to Kubernetes, as specified in requests and limits, describing a single
@@ -57,19 +51,19 @@ namespace k8s.Models
         /// <summary>
         /// Container is the name of the container in the pods of the scaling target
         /// </summary>
-        [JsonProperty(PropertyName = "container")]
+        [JsonPropertyName("container")]
         public string Container { get; set; }
 
         /// <summary>
         /// current contains the current value for the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "current")]
+        [JsonPropertyName("current")]
         public V2beta2MetricValueStatus Current { get; set; }
 
         /// <summary>
         /// Name is the name of the resource in question.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         {
             if (Current == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Current");    
+                throw new ArgumentNullException("Current");    
             }
             Current?.Validate();
         }

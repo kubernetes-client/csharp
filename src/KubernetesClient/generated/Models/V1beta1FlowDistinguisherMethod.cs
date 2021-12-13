@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// FlowDistinguisherMethod specifies the method of a flow distinguisher.
     /// </summary>
@@ -47,7 +41,7 @@ namespace k8s.Models
         /// `type` is the type of flow distinguisher method The supported types are &quot;ByUser&quot;
         /// and &quot;ByNamespace&quot;. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

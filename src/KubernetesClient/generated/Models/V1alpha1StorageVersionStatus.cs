@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// API server instances report the versions they can decode and the version they
         /// encode objects to when persisting objects in the backend.
@@ -60,19 +54,19 @@ namespace k8s.Models
         /// servers should finish updating its storageVersionStatus entry before serving
         /// write operations, so that this field will be in sync with the reality.
         /// </summary>
-        [JsonProperty(PropertyName = "commonEncodingVersion")]
+        [JsonPropertyName("commonEncodingVersion")]
         public string CommonEncodingVersion { get; set; }
 
         /// <summary>
         /// The latest available observations of the storageVersion&apos;s state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1alpha1StorageVersionCondition> Conditions { get; set; }
 
         /// <summary>
         /// The reported versions per API server instance.
         /// </summary>
-        [JsonProperty(PropertyName = "storageVersions")]
+        [JsonPropertyName("storageVersions")]
         public IList<V1alpha1ServerStorageVersion> StorageVersions { get; set; }
 
         /// <summary>

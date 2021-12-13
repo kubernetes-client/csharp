@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Spec to control the desired behavior of daemon set rolling update.
     /// </summary>
@@ -92,7 +86,7 @@ namespace k8s.Models
         /// evictions during disruption. This is beta field and enabled/disabled by
         /// DaemonSetUpdateSurge feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "maxSurge")]
+        [JsonPropertyName("maxSurge")]
         public IntstrIntOrString MaxSurge { get; set; }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace k8s.Models
         /// least 70% of original number of DaemonSet pods are available at all times during
         /// the update.
         /// </summary>
-        [JsonProperty(PropertyName = "maxUnavailable")]
+        [JsonPropertyName("maxUnavailable")]
         public IntstrIntOrString MaxUnavailable { get; set; }
 
         /// <summary>

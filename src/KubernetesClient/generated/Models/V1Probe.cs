@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Probe describes a health check to be performed against a container to determine
         /// whether it is alive or ready to receive traffic.
@@ -101,27 +95,27 @@ namespace k8s.Models
         /// <summary>
         /// Exec specifies the action to take.
         /// </summary>
-        [JsonProperty(PropertyName = "exec")]
+        [JsonPropertyName("exec")]
         public V1ExecAction Exec { get; set; }
 
         /// <summary>
         /// Minimum consecutive failures for the probe to be considered failed after having
         /// succeeded. Defaults to 3. Minimum value is 1.
         /// </summary>
-        [JsonProperty(PropertyName = "failureThreshold")]
+        [JsonPropertyName("failureThreshold")]
         public int? FailureThreshold { get; set; }
 
         /// <summary>
         /// GRPC specifies an action involving a GRPC port. This is an alpha field and
         /// requires enabling GRPCContainerProbe feature gate.
         /// </summary>
-        [JsonProperty(PropertyName = "grpc")]
+        [JsonPropertyName("grpc")]
         public V1GRPCAction Grpc { get; set; }
 
         /// <summary>
         /// HTTPGet specifies the http request to perform.
         /// </summary>
-        [JsonProperty(PropertyName = "httpGet")]
+        [JsonPropertyName("httpGet")]
         public V1HTTPGetAction HttpGet { get; set; }
 
         /// <summary>
@@ -129,14 +123,14 @@ namespace k8s.Models
         /// initiated. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [JsonProperty(PropertyName = "initialDelaySeconds")]
+        [JsonPropertyName("initialDelaySeconds")]
         public int? InitialDelaySeconds { get; set; }
 
         /// <summary>
         /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
         /// value is 1.
         /// </summary>
-        [JsonProperty(PropertyName = "periodSeconds")]
+        [JsonPropertyName("periodSeconds")]
         public int? PeriodSeconds { get; set; }
 
         /// <summary>
@@ -144,13 +138,13 @@ namespace k8s.Models
         /// having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value
         /// is 1.
         /// </summary>
-        [JsonProperty(PropertyName = "successThreshold")]
+        [JsonPropertyName("successThreshold")]
         public int? SuccessThreshold { get; set; }
 
         /// <summary>
         /// TCPSocket specifies an action involving a TCP port.
         /// </summary>
-        [JsonProperty(PropertyName = "tcpSocket")]
+        [JsonPropertyName("tcpSocket")]
         public V1TCPSocketAction TcpSocket { get; set; }
 
         /// <summary>
@@ -166,7 +160,7 @@ namespace k8s.Models
         /// feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if
         /// unset.
         /// </summary>
-        [JsonProperty(PropertyName = "terminationGracePeriodSeconds")]
+        [JsonPropertyName("terminationGracePeriodSeconds")]
         public long? TerminationGracePeriodSeconds { get; set; }
 
         /// <summary>
@@ -174,7 +168,7 @@ namespace k8s.Models
         /// value is 1. More info:
         /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [JsonProperty(PropertyName = "timeoutSeconds")]
+        [JsonPropertyName("timeoutSeconds")]
         public int? TimeoutSeconds { get; set; }
 
         /// <summary>

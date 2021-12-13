@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceRequirements describes the compute resource requirements.
     /// </summary>
@@ -54,7 +48,7 @@ namespace k8s.Models
         /// Limits describes the maximum amount of compute resources allowed. More info:
         /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
-        [JsonProperty(PropertyName = "limits")]
+        [JsonPropertyName("limits")]
         public IDictionary<string, ResourceQuantity> Limits { get; set; }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// specified, otherwise to an implementation-defined value. More info:
         /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         /// </summary>
-        [JsonProperty(PropertyName = "requests")]
+        [JsonPropertyName("requests")]
         public IDictionary<string, ResourceQuantity> Requests { get; set; }
 
         /// <summary>

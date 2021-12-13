@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RoleBinding references a role, but does not contain it.  It can reference a Role
         /// in the same namespace or a ClusterRole in the global namespace. It adds who
@@ -75,7 +69,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -84,13 +78,13 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -98,13 +92,13 @@ namespace k8s.Models
         /// global namespace. If the RoleRef cannot be resolved, the Authorizer must return
         /// an error.
         /// </summary>
-        [JsonProperty(PropertyName = "roleRef")]
+        [JsonPropertyName("roleRef")]
         public V1RoleRef RoleRef { get; set; }
 
         /// <summary>
         /// Subjects holds references to the objects the role applies to.
         /// </summary>
-        [JsonProperty(PropertyName = "subjects")]
+        [JsonPropertyName("subjects")]
         public IList<V1Subject> Subjects { get; set; }
 
         /// <summary>
@@ -117,7 +111,7 @@ namespace k8s.Models
         {
             if (RoleRef == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "RoleRef");    
+                throw new ArgumentNullException("RoleRef");    
             }
             Metadata?.Validate();
             RoleRef?.Validate();

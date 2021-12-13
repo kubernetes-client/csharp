@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodReadinessGate contains the reference to a pod condition
     /// </summary>
@@ -63,7 +57,7 @@ namespace k8s.Models
         /// - `&quot;Ready&quot;` means the pod is able to service requests and should be added to the
         /// load balancing pools of all matching services.
         /// </summary>
-        [JsonProperty(PropertyName = "conditionType")]
+        [JsonPropertyName("conditionType")]
         public string ConditionType { get; set; }
 
         /// <summary>

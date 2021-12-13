@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A topology selector term represents the result of label queries. A null or empty
         /// topology selector term matches no objects. The requirements of them are ANDed.
@@ -48,7 +42,7 @@ namespace k8s.Models
         /// <summary>
         /// A list of topology selector requirements by labels.
         /// </summary>
-        [JsonProperty(PropertyName = "matchLabelExpressions")]
+        [JsonPropertyName("matchLabelExpressions")]
         public IList<V1TopologySelectorLabelRequirement> MatchLabelExpressions { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects
         /// as part of an EphemeralVolumeSource.
@@ -54,7 +48,7 @@ namespace k8s.Models
         /// May contain labels and annotations that will be copied into the PVC when
         /// creating it. No other fields are allowed and will be rejected during validation.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
@@ -62,7 +56,7 @@ namespace k8s.Models
         /// unchanged into the PVC that gets created from this template. The same fields as
         /// in a PersistentVolumeClaim are also valid here.
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public V1PersistentVolumeClaimSpec Spec { get; set; }
 
         /// <summary>
@@ -75,7 +69,7 @@ namespace k8s.Models
         {
             if (Spec == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Spec");    
+                throw new ArgumentNullException("Spec");    
             }
             Metadata?.Validate();
             Spec?.Validate();

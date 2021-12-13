@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// 
     /// </summary>
@@ -69,13 +63,13 @@ namespace k8s.Models
         /// - cloud provider specific error values must have names that comply with the
         /// format foo.example.com/CamelCase.
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
 
         /// <summary>
         /// Port is the port number of the service port of which status is recorded here
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int Port { get; set; }
 
         /// <summary>
@@ -87,7 +81,7 @@ namespace k8s.Models
         /// - `&quot;TCP&quot;` is the TCP protocol.
         /// - `&quot;UDP&quot;` is the UDP protocol.
         /// </summary>
-        [JsonProperty(PropertyName = "protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
 
         /// <summary>

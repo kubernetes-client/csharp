@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents downward API info for projecting into a projected volume. Note that
         /// this is identical to a downwardAPI volume source without the default mode.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// Items is a list of DownwardAPIVolume file
         /// </summary>
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IList<V1DownwardAPIVolumeFile> Items { get; set; }
 
         /// <summary>

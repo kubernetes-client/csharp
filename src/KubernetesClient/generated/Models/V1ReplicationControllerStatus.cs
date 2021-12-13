@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ReplicationControllerStatus represents the current status of a replication
         /// controller.
@@ -72,41 +66,41 @@ namespace k8s.Models
         /// The number of available replicas (ready for at least minReadySeconds) for this
         /// replication controller.
         /// </summary>
-        [JsonProperty(PropertyName = "availableReplicas")]
+        [JsonPropertyName("availableReplicas")]
         public int? AvailableReplicas { get; set; }
 
         /// <summary>
         /// Represents the latest available observations of a replication controller&apos;s
         /// current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1ReplicationControllerCondition> Conditions { get; set; }
 
         /// <summary>
         /// The number of pods that have labels matching the labels of the pod template of
         /// the replication controller.
         /// </summary>
-        [JsonProperty(PropertyName = "fullyLabeledReplicas")]
+        [JsonPropertyName("fullyLabeledReplicas")]
         public int? FullyLabeledReplicas { get; set; }
 
         /// <summary>
         /// ObservedGeneration reflects the generation of the most recently observed
         /// replication controller.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>
         /// The number of ready replicas for this replication controller.
         /// </summary>
-        [JsonProperty(PropertyName = "readyReplicas")]
+        [JsonPropertyName("readyReplicas")]
         public int? ReadyReplicas { get; set; }
 
         /// <summary>
         /// Replicas is the most recently oberved number of replicas. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int Replicas { get; set; }
 
         /// <summary>

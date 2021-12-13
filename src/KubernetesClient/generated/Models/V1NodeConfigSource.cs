@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeConfigSource specifies a source of node configuration. Exactly one subfield
         /// (excluding metadata) must be non-nil. This API is deprecated since 1.22
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// ConfigMap is a reference to a Node&apos;s ConfigMap
         /// </summary>
-        [JsonProperty(PropertyName = "configMap")]
+        [JsonPropertyName("configMap")]
         public V1ConfigMapNodeConfigSource ConfigMap { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// specification of a horizontal pod autoscaler.
     /// </summary>
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// upper limit for the number of pods that can be set by the autoscaler; cannot be
         /// smaller than MinReplicas.
         /// </summary>
-        [JsonProperty(PropertyName = "maxReplicas")]
+        [JsonPropertyName("maxReplicas")]
         public int MaxReplicas { get; set; }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// External metric is configured.  Scaling is active as long as at least one metric
         /// value is available.
         /// </summary>
-        [JsonProperty(PropertyName = "minReplicas")]
+        [JsonPropertyName("minReplicas")]
         public int? MinReplicas { get; set; }
 
         /// <summary>
@@ -84,14 +78,14 @@ namespace k8s.Models
         /// resource consumption and will set the desired number of pods by using its Scale
         /// subresource.
         /// </summary>
-        [JsonProperty(PropertyName = "scaleTargetRef")]
+        [JsonPropertyName("scaleTargetRef")]
         public V1CrossVersionObjectReference ScaleTargetRef { get; set; }
 
         /// <summary>
         /// target average CPU utilization (represented as a percentage of requested CPU)
         /// over all the pods; if not specified the default autoscaling policy will be used.
         /// </summary>
-        [JsonProperty(PropertyName = "targetCPUUtilizationPercentage")]
+        [JsonPropertyName("targetCPUUtilizationPercentage")]
         public int? TargetCPUUtilizationPercentage { get; set; }
 
         /// <summary>
@@ -104,7 +98,7 @@ namespace k8s.Models
         {
             if (ScaleTargetRef == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ScaleTargetRef");    
+                throw new ArgumentNullException("ScaleTargetRef");    
             }
             ScaleTargetRef?.Validate();
         }

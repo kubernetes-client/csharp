@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a StorageOS persistent volume resource.
     /// </summary>
@@ -73,28 +67,28 @@ namespace k8s.Models
         /// operating system. Ex. &quot;ext4&quot;, &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
         /// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in
         /// VolumeMounts.
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// SecretRef specifies the secret to use for obtaining the StorageOS API
         /// credentials.  If not specified, default values will be attempted.
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1ObjectReference SecretRef { get; set; }
 
         /// <summary>
         /// VolumeName is the human-readable name of the StorageOS volume.  Volume names are
         /// only unique within a namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeName")]
+        [JsonPropertyName("volumeName")]
         public string VolumeName { get; set; }
 
         /// <summary>
@@ -105,7 +99,7 @@ namespace k8s.Models
         /// if you are not using namespaces within StorageOS. Namespaces that do not
         /// pre-exist within StorageOS will be created.
         /// </summary>
-        [JsonProperty(PropertyName = "volumeNamespace")]
+        [JsonPropertyName("volumeNamespace")]
         public string VolumeNamespace { get; set; }
 
         /// <summary>

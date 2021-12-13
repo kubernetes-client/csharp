@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DeploymentStrategy describes how to replace existing pods with new ones.
     /// </summary>
@@ -57,7 +51,7 @@ namespace k8s.Models
         /// Rolling update config params. Present only if DeploymentStrategyType =
         /// RollingUpdate.
         /// </summary>
-        [JsonProperty(PropertyName = "rollingUpdate")]
+        [JsonPropertyName("rollingUpdate")]
         public V1RollingUpdateDeployment RollingUpdate { get; set; }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// - `&quot;RollingUpdate&quot;` Replace the old ReplicaSets by new one using rolling update
         /// i.e gradually scale down the old ReplicaSets and scale up the new one.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

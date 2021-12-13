@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NamespaceStatus is information about the current status of a Namespace.
     /// </summary>
@@ -54,7 +48,7 @@ namespace k8s.Models
         /// <summary>
         /// Represents the latest available observations of a namespace&apos;s current state.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1NamespaceCondition> Conditions { get; set; }
 
         /// <summary>
@@ -65,7 +59,7 @@ namespace k8s.Models
         /// - `&quot;Active&quot;` means the namespace is available for use in the system
         /// - `&quot;Terminating&quot;` means the namespace is undergoing graceful termination
         /// </summary>
-        [JsonProperty(PropertyName = "phase")]
+        [JsonPropertyName("phase")]
         public string Phase { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LoadBalancerIngress represents the status of a load-balancer ingress point:
         /// traffic intended for the service should be sent to an ingress point.
@@ -58,21 +52,21 @@ namespace k8s.Models
         /// Hostname is set for load-balancer ingress points that are DNS based (typically
         /// AWS load-balancers)
         /// </summary>
-        [JsonProperty(PropertyName = "hostname")]
+        [JsonPropertyName("hostname")]
         public string Hostname { get; set; }
 
         /// <summary>
         /// IP is set for load-balancer ingress points that are IP based (typically GCE or
         /// OpenStack load-balancers)
         /// </summary>
-        [JsonProperty(PropertyName = "ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
 
         /// <summary>
         /// Ports is a list of records of service ports If used, every port defined in the
         /// service should have an entry in it
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<V1PortStatus> Ports { get; set; }
 
         /// <summary>

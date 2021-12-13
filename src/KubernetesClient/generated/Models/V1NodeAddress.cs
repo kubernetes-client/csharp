@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NodeAddress contains information for the node&apos;s address.
     /// </summary>
@@ -76,7 +70,7 @@ namespace k8s.Models
         /// <summary>
         /// The node address.
         /// </summary>
-        [JsonProperty(PropertyName = "address")]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace k8s.Models
         /// a node has multiple internal IPs, no specific semantics are assigned to the
         /// additional IPs.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

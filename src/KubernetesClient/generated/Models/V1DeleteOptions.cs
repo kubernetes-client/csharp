@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DeleteOptions may be provided when deleting an API object.
     /// </summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -103,7 +97,7 @@ namespace k8s.Models
         /// processing of the request. Valid values are: - All: all dry run stages will be
         /// processed
         /// </summary>
-        [JsonProperty(PropertyName = "dryRun")]
+        [JsonPropertyName("dryRun")]
         public IList<string> DryRun { get; set; }
 
         /// <summary>
@@ -112,7 +106,7 @@ namespace k8s.Models
         /// is nil, the default grace period for the specified type will be used. Defaults
         /// to a per object value if not specified. zero means delete immediately.
         /// </summary>
-        [JsonProperty(PropertyName = "gracePeriodSeconds")]
+        [JsonPropertyName("gracePeriodSeconds")]
         public long? GracePeriodSeconds { get; set; }
 
         /// <summary>
@@ -121,7 +115,7 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
@@ -130,14 +124,14 @@ namespace k8s.Models
         /// finalizer will be added to/removed from the object&apos;s finalizers list. Either
         /// this field or PropagationPolicy may be set, but not both.
         /// </summary>
-        [JsonProperty(PropertyName = "orphanDependents")]
+        [JsonPropertyName("orphanDependents")]
         public bool? OrphanDependents { get; set; }
 
         /// <summary>
         /// Must be fulfilled before a deletion is carried out. If not possible, a 409
         /// Conflict status will be returned.
         /// </summary>
-        [JsonProperty(PropertyName = "preconditions")]
+        [JsonPropertyName("preconditions")]
         public V1Preconditions Preconditions { get; set; }
 
         /// <summary>
@@ -149,7 +143,7 @@ namespace k8s.Models
         /// background; &apos;Foreground&apos; - a cascading policy that deletes all dependents in the
         /// foreground.
         /// </summary>
-        [JsonProperty(PropertyName = "propagationPolicy")]
+        [JsonPropertyName("propagationPolicy")]
         public string PropagationPolicy { get; set; }
 
         /// <summary>

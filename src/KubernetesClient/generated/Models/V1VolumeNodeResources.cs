@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// VolumeNodeResources is a set of resource limits for scheduling of volumes.
     /// </summary>
@@ -53,7 +47,7 @@ namespace k8s.Models
         /// among multiple pods on the same node. If this field is not specified, then the
         /// supported number of volumes on this node is unbounded.
         /// </summary>
-        [JsonProperty(PropertyName = "count")]
+        [JsonPropertyName("count")]
         public int? Count { get; set; }
 
         /// <summary>

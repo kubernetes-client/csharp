@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ScaleStatus represents the current status of a scale subresource.
     /// </summary>
@@ -52,7 +46,7 @@ namespace k8s.Models
         /// <summary>
         /// actual number of observed instances of the scaled object.
         /// </summary>
-        [JsonProperty(PropertyName = "replicas")]
+        [JsonPropertyName("replicas")]
         public int Replicas { get; set; }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// string will be in the same format as the query-param syntax. More info about
         /// label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public string Selector { get; set; }
 
         /// <summary>

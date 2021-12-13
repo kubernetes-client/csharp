@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// 
         /// Storage version of a specific resource.
@@ -72,7 +66,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -81,26 +75,26 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// The name is &lt;group&gt;.&lt;resource&gt;.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// Spec is an empty spec. It is here to comply with Kubernetes API style.
         /// </summary>
-        [JsonProperty(PropertyName = "spec")]
+        [JsonPropertyName("spec")]
         public object Spec { get; set; }
 
         /// <summary>
         /// API server instances report the version they can decode and the version they
         /// encode objects to when persisting objects in the backend.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public V1alpha1StorageVersionStatus Status { get; set; }
 
         /// <summary>
@@ -113,7 +107,7 @@ namespace k8s.Models
         {
             if (Status == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Status");    
+                throw new ArgumentNullException("Status");    
             }
             Metadata?.Validate();
             Status?.Validate();

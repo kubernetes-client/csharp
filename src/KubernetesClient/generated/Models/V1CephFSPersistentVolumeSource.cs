@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs
         /// volumes do not support ownership management or SELinux relabeling.
@@ -75,13 +69,13 @@ namespace k8s.Models
         /// Required: Monitors is a collection of Ceph monitors More info:
         /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "monitors")]
+        [JsonPropertyName("monitors")]
         public IList<string> Monitors { get; set; }
 
         /// <summary>
         /// Optional: Used as the mounted root, rather than the full Ceph tree, default is /
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -89,7 +83,7 @@ namespace k8s.Models
         /// setting in VolumeMounts. More info:
         /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
@@ -97,7 +91,7 @@ namespace k8s.Models
         /// /etc/ceph/user.secret More info:
         /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "secretFile")]
+        [JsonPropertyName("secretFile")]
         public string SecretFile { get; set; }
 
         /// <summary>
@@ -105,14 +99,14 @@ namespace k8s.Models
         /// is empty. More info:
         /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1SecretReference SecretRef { get; set; }
 
         /// <summary>
         /// Optional: User is the rados user name, default is admin More info:
         /// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
 
         /// <summary>

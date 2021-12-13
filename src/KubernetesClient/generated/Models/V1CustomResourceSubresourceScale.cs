@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceSubresourceScale defines how to serve the scale subresource for
         /// CustomResources.
@@ -80,7 +74,7 @@ namespace k8s.Models
         /// `status.selector` value in the `/scale` subresource will default to the empty
         /// string.
         /// </summary>
-        [JsonProperty(PropertyName = "labelSelectorPath")]
+        [JsonPropertyName("labelSelectorPath")]
         public string LabelSelectorPath { get; set; }
 
         /// <summary>
@@ -90,7 +84,7 @@ namespace k8s.Models
         /// given path in the custom resource, the `/scale` subresource will return an error
         /// on GET.
         /// </summary>
-        [JsonProperty(PropertyName = "specReplicasPath")]
+        [JsonPropertyName("specReplicasPath")]
         public string SpecReplicasPath { get; set; }
 
         /// <summary>
@@ -100,7 +94,7 @@ namespace k8s.Models
         /// under the given path in the custom resource, the `status.replicas` value in the
         /// `/scale` subresource will default to 0.
         /// </summary>
-        [JsonProperty(PropertyName = "statusReplicasPath")]
+        [JsonPropertyName("statusReplicasPath")]
         public string StatusReplicasPath { get; set; }
 
         /// <summary>

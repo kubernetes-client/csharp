@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceMetricSource indicates how to scale on a resource metric known to
         /// Kubernetes, as specified in requests and limits, describing each pod in the
@@ -62,7 +56,7 @@ namespace k8s.Models
         /// <summary>
         /// name is the name of the resource in question.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// metric across all relevant pods, represented as a percentage of the requested
         /// value of the resource for the pods.
         /// </summary>
-        [JsonProperty(PropertyName = "targetAverageUtilization")]
+        [JsonPropertyName("targetAverageUtilization")]
         public int? TargetAverageUtilization { get; set; }
 
         /// <summary>
@@ -78,7 +72,7 @@ namespace k8s.Models
         /// across all relevant pods, as a raw value (instead of as a percentage of the
         /// request), similar to the &quot;pods&quot; metric source type.
         /// </summary>
-        [JsonProperty(PropertyName = "targetAverageValue")]
+        [JsonPropertyName("targetAverageValue")]
         public ResourceQuantity TargetAverageValue { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressClassSpec provides information about the class of an Ingress.
     /// </summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// characters in length, e.g. &quot;acme.io/ingress-controller&quot;. This field is
         /// immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "controller")]
+        [JsonPropertyName("controller")]
         public string Controller { get; set; }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// for the controller. This is optional if the controller does not require extra
         /// parameters.
         /// </summary>
-        [JsonProperty(PropertyName = "parameters")]
+        [JsonPropertyName("parameters")]
         public V1IngressClassParametersReference Parameters { get; set; }
 
         /// <summary>

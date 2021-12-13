@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// APIServiceSpec contains information for locating and communicating with a
         /// server. Only https is supported, though you are able to disable certificate
@@ -100,13 +94,13 @@ namespace k8s.Models
         /// server&apos;s serving certificate. If unspecified, system trust roots on the
         /// apiserver are used.
         /// </summary>
-        [JsonProperty(PropertyName = "caBundle")]
+        [JsonPropertyName("caBundle")]
         public byte[] CaBundle { get; set; }
 
         /// <summary>
         /// Group is the API group name this server hosts
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public string Group { get; set; }
 
         /// <summary>
@@ -120,7 +114,7 @@ namespace k8s.Models
         /// something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift,
         /// Deis) are recommended to be in the 2000s
         /// </summary>
-        [JsonProperty(PropertyName = "groupPriorityMinimum")]
+        [JsonPropertyName("groupPriorityMinimum")]
         public int GroupPriorityMinimum { get; set; }
 
         /// <summary>
@@ -128,7 +122,7 @@ namespace k8s.Models
         /// with this server. This is strongly discouraged.  You should use the CABundle
         /// instead.
         /// </summary>
-        [JsonProperty(PropertyName = "insecureSkipTLSVerify")]
+        [JsonPropertyName("insecureSkipTLSVerify")]
         public bool? InsecureSkipTLSVerify { get; set; }
 
         /// <summary>
@@ -137,13 +131,13 @@ namespace k8s.Models
         /// groupversion is handled locally on this server. The call will simply delegate to
         /// the normal handler chain to be fulfilled.
         /// </summary>
-        [JsonProperty(PropertyName = "service")]
+        [JsonPropertyName("service")]
         public Apiregistrationv1ServiceReference Service { get; set; }
 
         /// <summary>
         /// Version is the API version this server hosts.  For example, &quot;v1&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
         /// <summary>
@@ -161,7 +155,7 @@ namespace k8s.Models
         /// versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1,
         /// foo10.
         /// </summary>
-        [JsonProperty(PropertyName = "versionPriority")]
+        [JsonPropertyName("versionPriority")]
         public int VersionPriority { get; set; }
 
         /// <summary>

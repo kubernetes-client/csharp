@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A label selector requirement is a selector that contains values, a key, and an
         /// operator that relates the key and values.
@@ -57,14 +51,14 @@ namespace k8s.Models
         /// <summary>
         /// key is the label key that the selector applies to.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// operator represents a key&apos;s relationship to a set of values. Valid operators are
         /// In, NotIn, Exists and DoesNotExist.
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace k8s.Models
         /// array must be non-empty. If the operator is Exists or DoesNotExist, the values
         /// array must be empty. This array is replaced during a strategic merge patch.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

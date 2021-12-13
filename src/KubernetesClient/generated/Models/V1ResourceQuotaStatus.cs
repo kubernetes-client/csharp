@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ResourceQuotaStatus defines the enforced hard limits and observed use.
     /// </summary>
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// Hard is the set of enforced hard limits for each named resource. More info:
         /// https://kubernetes.io/docs/concepts/policy/resource-quotas/
         /// </summary>
-        [JsonProperty(PropertyName = "hard")]
+        [JsonPropertyName("hard")]
         public IDictionary<string, ResourceQuantity> Hard { get; set; }
 
         /// <summary>
         /// Used is the current observed total usage of the resource in the namespace.
         /// </summary>
-        [JsonProperty(PropertyName = "used")]
+        [JsonPropertyName("used")]
         public IDictionary<string, ResourceQuantity> Used { get; set; }
 
         /// <summary>

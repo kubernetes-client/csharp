@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Persistent Disk resource in Google Compute Engine.
         /// 
@@ -75,7 +69,7 @@ namespace k8s.Models
         /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -85,14 +79,14 @@ namespace k8s.Models
         /// can leave the property empty). More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
-        [JsonProperty(PropertyName = "partition")]
+        [JsonPropertyName("partition")]
         public int? Partition { get; set; }
 
         /// <summary>
         /// Unique name of the PD resource in GCE. Used to identify the disk in GCE. More
         /// info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
-        [JsonProperty(PropertyName = "pdName")]
+        [JsonPropertyName("pdName")]
         public string PdName { get; set; }
 
         /// <summary>
@@ -100,7 +94,7 @@ namespace k8s.Models
         /// false. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>

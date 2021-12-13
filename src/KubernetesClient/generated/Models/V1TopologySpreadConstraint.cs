@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TopologySpreadConstraint specifies how to spread matching pods among the given
         /// topology.
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// are counted to determine the number of pods in their corresponding topology
         /// domain.
         /// </summary>
-        [JsonProperty(PropertyName = "labelSelector")]
+        [JsonPropertyName("labelSelector")]
         public V1LabelSelector LabelSelector { get; set; }
 
         /// <summary>
@@ -110,7 +104,7 @@ namespace k8s.Models
         /// give higher precedence to topologies that satisfy it. It&apos;s a required field.
         /// Default value is 1 and 0 is not allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "maxSkew")]
+        [JsonPropertyName("maxSkew")]
         public int MaxSkew { get; set; }
 
         /// <summary>
@@ -119,7 +113,7 @@ namespace k8s.Models
         /// &lt;key, value&gt; as a &quot;bucket&quot;, and try to put balanced number of pods into each
         /// bucket. It&apos;s a required field.
         /// </summary>
-        [JsonProperty(PropertyName = "topologyKey")]
+        [JsonPropertyName("topologyKey")]
         public string TopologyKey { get; set; }
 
         /// <summary>
@@ -144,7 +138,7 @@ namespace k8s.Models
         /// - `&quot;ScheduleAnyway&quot;` instructs the scheduler to schedule the pod even if
         /// constraints are not satisfied.
         /// </summary>
-        [JsonProperty(PropertyName = "whenUnsatisfiable")]
+        [JsonPropertyName("whenUnsatisfiable")]
         public string WhenUnsatisfiable { get; set; }
 
         /// <summary>

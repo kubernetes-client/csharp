@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HorizontalPodAutoscalerSpec describes the desired functionality of the
         /// HorizontalPodAutoscaler.
@@ -80,14 +74,14 @@ namespace k8s.Models
         /// directions (scaleUp and scaleDown fields respectively). If not set, the default
         /// HPAScalingRules for scale up and scale down are used.
         /// </summary>
-        [JsonProperty(PropertyName = "behavior")]
+        [JsonPropertyName("behavior")]
         public V2beta2HorizontalPodAutoscalerBehavior Behavior { get; set; }
 
         /// <summary>
         /// maxReplicas is the upper limit for the number of replicas to which the
         /// autoscaler can scale up. It cannot be less that minReplicas.
         /// </summary>
-        [JsonProperty(PropertyName = "maxReplicas")]
+        [JsonPropertyName("maxReplicas")]
         public int MaxReplicas { get; set; }
 
         /// <summary>
@@ -100,7 +94,7 @@ namespace k8s.Models
         /// respond. If not set, the default metric will be set to 80% average CPU
         /// utilization.
         /// </summary>
-        [JsonProperty(PropertyName = "metrics")]
+        [JsonPropertyName("metrics")]
         public IList<V2beta2MetricSpec> Metrics { get; set; }
 
         /// <summary>
@@ -110,7 +104,7 @@ namespace k8s.Models
         /// External metric is configured.  Scaling is active as long as at least one metric
         /// value is available.
         /// </summary>
-        [JsonProperty(PropertyName = "minReplicas")]
+        [JsonPropertyName("minReplicas")]
         public int? MinReplicas { get; set; }
 
         /// <summary>
@@ -118,7 +112,7 @@ namespace k8s.Models
         /// for which metrics should be collected, as well as to actually change the replica
         /// count.
         /// </summary>
-        [JsonProperty(PropertyName = "scaleTargetRef")]
+        [JsonPropertyName("scaleTargetRef")]
         public V2beta2CrossVersionObjectReference ScaleTargetRef { get; set; }
 
         /// <summary>
@@ -131,7 +125,7 @@ namespace k8s.Models
         {
             if (ScaleTargetRef == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ScaleTargetRef");    
+                throw new ArgumentNullException("ScaleTargetRef");    
             }
             Behavior?.Validate();
             if (Metrics != null){

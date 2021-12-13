@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Patch is provided to give a concrete name and type to the Kubernetes PATCH
         /// request body.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty(PropertyName = "content")]
+        [JsonPropertyName("content")]
         public object Content { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Overhead structure represents the resource overhead associated with running a
         /// pod.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// PodFixed represents the fixed resource overhead associated with running a pod.
         /// </summary>
-        [JsonProperty(PropertyName = "podFixed")]
+        [JsonPropertyName("podFixed")]
         public IDictionary<string, ResourceQuantity> PodFixed { get; set; }
 
         /// <summary>

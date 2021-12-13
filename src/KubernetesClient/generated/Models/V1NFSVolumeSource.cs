@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not
         /// support ownership management or SELinux relabeling.
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// Path that is exported by the NFS server. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>
@@ -67,14 +61,14 @@ namespace k8s.Models
         /// permissions. Defaults to false. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Server is the hostname or IP address of the NFS server. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#nfs
         /// </summary>
-        [JsonProperty(PropertyName = "server")]
+        [JsonPropertyName("server")]
         public string Server { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressBackend describes all endpoints for a given service and port.
     /// </summary>
@@ -54,14 +48,14 @@ namespace k8s.Models
         /// Ingress object. If resource is specified, a service.Name and service.Port must
         /// not be specified. This is a mutually exclusive setting with &quot;Service&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "resource")]
+        [JsonPropertyName("resource")]
         public V1TypedLocalObjectReference Resource { get; set; }
 
         /// <summary>
         /// Service references a Service as a Backend. This is a mutually exclusive setting
         /// with &quot;Resource&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "service")]
+        [JsonPropertyName("service")]
         public V1IngressServiceBackend Service { get; set; }
 
         /// <summary>

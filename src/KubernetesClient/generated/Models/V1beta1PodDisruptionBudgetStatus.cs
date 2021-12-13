@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodDisruptionBudgetStatus represents information about the status of a
         /// PodDisruptionBudget. Status may trail the actual state of a system.
@@ -104,19 +98,19 @@ namespace k8s.Models
         /// The condition will be True, and the number of allowed
         /// disruptions are provided by the disruptionsAllowed property.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1Condition> Conditions { get; set; }
 
         /// <summary>
         /// current number of healthy pods
         /// </summary>
-        [JsonProperty(PropertyName = "currentHealthy")]
+        [JsonPropertyName("currentHealthy")]
         public int CurrentHealthy { get; set; }
 
         /// <summary>
         /// minimum desired number of healthy pods
         /// </summary>
-        [JsonProperty(PropertyName = "desiredHealthy")]
+        [JsonPropertyName("desiredHealthy")]
         public int DesiredHealthy { get; set; }
 
         /// <summary>
@@ -132,19 +126,19 @@ namespace k8s.Models
         /// for the most of the time. Large number of entries in the map may indicate
         /// problems with pod deletions.
         /// </summary>
-        [JsonProperty(PropertyName = "disruptedPods")]
+        [JsonPropertyName("disruptedPods")]
         public IDictionary<string, System.DateTime?> DisruptedPods { get; set; }
 
         /// <summary>
         /// Number of pod disruptions that are currently allowed.
         /// </summary>
-        [JsonProperty(PropertyName = "disruptionsAllowed")]
+        [JsonPropertyName("disruptionsAllowed")]
         public int DisruptionsAllowed { get; set; }
 
         /// <summary>
         /// total number of pods counted by this disruption budget
         /// </summary>
-        [JsonProperty(PropertyName = "expectedPods")]
+        [JsonPropertyName("expectedPods")]
         public int ExpectedPods { get; set; }
 
         /// <summary>
@@ -152,7 +146,7 @@ namespace k8s.Models
         /// DisruptionsAllowed and other status information is valid only if
         /// observedGeneration equals to PDB&apos;s object generation.
         /// </summary>
-        [JsonProperty(PropertyName = "observedGeneration")]
+        [JsonPropertyName("observedGeneration")]
         public long? ObservedGeneration { get; set; }
 
         /// <summary>

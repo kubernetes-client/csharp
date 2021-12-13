@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DaemonEndpoint contains information about a single Daemon endpoint.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Port number of the given endpoint.
         /// </summary>
-        [JsonProperty(PropertyName = "Port")]
+        [JsonPropertyName("Port")]
         public int Port { get; set; }
 
         /// <summary>

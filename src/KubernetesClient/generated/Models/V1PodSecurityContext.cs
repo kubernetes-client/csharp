@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodSecurityContext holds pod-level security attributes and common container
         /// settings. Some fields are also present in container.securityContext.  Field
@@ -131,7 +125,7 @@ namespace k8s.Models
         /// If unset, the Kubelet will not modify the ownership and permissions of any
         /// volume. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroup")]
+        [JsonPropertyName("fsGroup")]
         public long? FsGroup { get; set; }
 
         /// <summary>
@@ -142,7 +136,7 @@ namespace k8s.Models
         /// values are &quot;OnRootMismatch&quot; and &quot;Always&quot;. If not specified, &quot;Always&quot; is used.
         /// Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "fsGroupChangePolicy")]
+        [JsonPropertyName("fsGroupChangePolicy")]
         public string FsGroupChangePolicy { get; set; }
 
         /// <summary>
@@ -151,7 +145,7 @@ namespace k8s.Models
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
         /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsGroup")]
+        [JsonPropertyName("runAsGroup")]
         public long? RunAsGroup { get; set; }
 
         /// <summary>
@@ -162,7 +156,7 @@ namespace k8s.Models
         /// both SecurityContext and PodSecurityContext, the value specified in
         /// SecurityContext takes precedence.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsNonRoot")]
+        [JsonPropertyName("runAsNonRoot")]
         public bool? RunAsNonRoot { get; set; }
 
         /// <summary>
@@ -172,7 +166,7 @@ namespace k8s.Models
         /// SecurityContext takes precedence for that container. Note that this field cannot
         /// be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "runAsUser")]
+        [JsonPropertyName("runAsUser")]
         public long? RunAsUser { get; set; }
 
         /// <summary>
@@ -182,14 +176,14 @@ namespace k8s.Models
         /// PodSecurityContext, the value specified in SecurityContext takes precedence for
         /// that container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "seLinuxOptions")]
+        [JsonPropertyName("seLinuxOptions")]
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>
         /// The seccomp options to use by the containers in this pod. Note that this field
         /// cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "seccompProfile")]
+        [JsonPropertyName("seccompProfile")]
         public V1SeccompProfile SeccompProfile { get; set; }
 
         /// <summary>
@@ -197,7 +191,7 @@ namespace k8s.Models
         /// to the container&apos;s primary GID.  If unspecified, no groups will be added to any
         /// container. Note that this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "supplementalGroups")]
+        [JsonPropertyName("supplementalGroups")]
         public IList<long?> SupplementalGroups { get; set; }
 
         /// <summary>
@@ -205,7 +199,7 @@ namespace k8s.Models
         /// unsupported sysctls (by the container runtime) might fail to launch. Note that
         /// this field cannot be set when spec.os.name is windows.
         /// </summary>
-        [JsonProperty(PropertyName = "sysctls")]
+        [JsonPropertyName("sysctls")]
         public IList<V1Sysctl> Sysctls { get; set; }
 
         /// <summary>
@@ -214,7 +208,7 @@ namespace k8s.Models
         /// SecurityContext and PodSecurityContext, the value specified in SecurityContext
         /// takes precedence. Note that this field cannot be set when spec.os.name is linux.
         /// </summary>
-        [JsonProperty(PropertyName = "windowsOptions")]
+        [JsonPropertyName("windowsOptions")]
         public V1WindowsSecurityContextOptions WindowsOptions { get; set; }
 
         /// <summary>

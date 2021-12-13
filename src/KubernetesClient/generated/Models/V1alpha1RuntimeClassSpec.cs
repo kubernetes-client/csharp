@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters
         /// that are required to describe the RuntimeClass to the Container Runtime
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// field is beta-level as of Kubernetes v1.18, and is only honored by servers that
         /// enable the PodOverhead feature.
         /// </summary>
-        [JsonProperty(PropertyName = "overhead")]
+        [JsonPropertyName("overhead")]
         public V1alpha1Overhead Overhead { get; set; }
 
         /// <summary>
@@ -86,7 +80,7 @@ namespace k8s.Models
         /// pod. The RuntimeHandler must be lowercase, conform to the DNS Label (RFC 1123)
         /// requirements, and is immutable.
         /// </summary>
-        [JsonProperty(PropertyName = "runtimeHandler")]
+        [JsonPropertyName("runtimeHandler")]
         public string RuntimeHandler { get; set; }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// this RuntimeClass are scheduled to nodes that support it. If scheduling is nil,
         /// this RuntimeClass is assumed to be supported by all nodes.
         /// </summary>
-        [JsonProperty(PropertyName = "scheduling")]
+        [JsonPropertyName("scheduling")]
         public V1alpha1Scheduling Scheduling { get; set; }
 
         /// <summary>

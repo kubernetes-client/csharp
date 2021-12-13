@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PriorityLevelConfigurationStatus represents the current state of a
         /// &quot;request-priority&quot;.
@@ -46,7 +40,7 @@ namespace k8s.Models
         /// <summary>
         /// `conditions` is the current state of &quot;request-priority&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1beta1PriorityLevelConfigurationCondition> Conditions { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceBackendPort is the service port being referenced.
     /// </summary>
@@ -52,14 +46,14 @@ namespace k8s.Models
         /// Name is the name of the port on the Service. This is a mutually exclusive
         /// setting with &quot;Number&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Number is the numerical port number (e.g. 80) on the Service. This is a mutually
         /// exclusive setting with &quot;Name&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "number")]
+        [JsonPropertyName("number")]
         public int? Number { get; set; }
 
         /// <summary>

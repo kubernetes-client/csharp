@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// WebhookClientConfig contains the information to make a TLS connection with the
         /// webhook
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// webhook&apos;s server certificate. If unspecified, system trust roots on the
         /// apiserver are used.
         /// </summary>
-        [JsonProperty(PropertyName = "caBundle")]
+        [JsonPropertyName("caBundle")]
         public byte[] CaBundle { get; set; }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace k8s.Models
         /// 
         /// If the webhook is running within the cluster, then you should use `service`.
         /// </summary>
-        [JsonProperty(PropertyName = "service")]
+        [JsonPropertyName("service")]
         public Admissionregistrationv1ServiceReference Service { get; set; }
 
         /// <summary>
@@ -118,7 +112,7 @@ namespace k8s.Models
         /// Attempting to use a user or basic auth e.g. &quot;user:password@&quot; is not allowed.
         /// Fragments (&quot;#...&quot;) and query parameters (&quot;?...&quot;) are not allowed, either.
         /// </summary>
-        [JsonProperty(PropertyName = "url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>

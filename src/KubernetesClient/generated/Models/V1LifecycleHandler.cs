@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LifecycleHandler defines a specific action that should be taken in a lifecycle
         /// hook. One and only one of the fields, except TCPSocket must be specified.
@@ -56,13 +50,13 @@ namespace k8s.Models
         /// <summary>
         /// Exec specifies the action to take.
         /// </summary>
-        [JsonProperty(PropertyName = "exec")]
+        [JsonPropertyName("exec")]
         public V1ExecAction Exec { get; set; }
 
         /// <summary>
         /// HTTPGet specifies the http request to perform.
         /// </summary>
-        [JsonProperty(PropertyName = "httpGet")]
+        [JsonPropertyName("httpGet")]
         public V1HTTPGetAction HttpGet { get; set; }
 
         /// <summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// backward compatibility. There are no validation of this field and lifecycle
         /// hooks will fail in runtime when tcp handler is specified.
         /// </summary>
-        [JsonProperty(PropertyName = "tcpSocket")]
+        [JsonPropertyName("tcpSocket")]
         public V1TCPSocketAction TcpSocket { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// QueuingConfiguration holds the configuration parameters for queuing
     /// </summary>
@@ -74,7 +68,7 @@ namespace k8s.Models
         /// documentation for more extensive guidance on setting this field.  This field has
         /// a default value of 8.
         /// </summary>
-        [JsonProperty(PropertyName = "handSize")]
+        [JsonPropertyName("handSize")]
         public int? HandSize { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// given queue of this priority level at a time; excess requests are rejected. 
         /// This value must be positive.  If not specified, it will be defaulted to 50.
         /// </summary>
-        [JsonProperty(PropertyName = "queueLengthLimit")]
+        [JsonPropertyName("queueLengthLimit")]
         public int? QueueLengthLimit { get; set; }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace k8s.Models
         /// effectively precludes shufflesharding and thus makes the distinguisher method of
         /// associated flow schemas irrelevant.  This field has a default value of 64.
         /// </summary>
-        [JsonProperty(PropertyName = "queues")]
+        [JsonPropertyName("queues")]
         public int? Queues { get; set; }
 
         /// <summary>

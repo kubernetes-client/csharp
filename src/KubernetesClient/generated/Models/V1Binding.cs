@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Binding ties one object to another; for example, a pod is bound to a node by a
         /// scheduler. Deprecated in 1.7, please use the bindings subresource of pods
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -78,20 +72,20 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>
         /// The target object that you want to bind to the standard object.
         /// </summary>
-        [JsonProperty(PropertyName = "target")]
+        [JsonPropertyName("target")]
         public V1ObjectReference Target { get; set; }
 
         /// <summary>
@@ -104,7 +98,7 @@ namespace k8s.Models
         {
             if (Target == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Target");    
+                throw new ArgumentNullException("Target");    
             }
             Metadata?.Validate();
             Target?.Validate();

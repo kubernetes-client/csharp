@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Flocker volume mounted by the Flocker agent. One and only one of
         /// datasetName and datasetUUID should be set. Flocker volumes do not support
@@ -53,13 +47,13 @@ namespace k8s.Models
         /// Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should
         /// be considered as deprecated
         /// </summary>
-        [JsonProperty(PropertyName = "datasetName")]
+        [JsonPropertyName("datasetName")]
         public string DatasetName { get; set; }
 
         /// <summary>
         /// UUID of the dataset. This is unique identifier of a Flocker dataset
         /// </summary>
-        [JsonProperty(PropertyName = "datasetUUID")]
+        [JsonPropertyName("datasetUUID")]
         public string DatasetUUID { get; set; }
 
         /// <summary>

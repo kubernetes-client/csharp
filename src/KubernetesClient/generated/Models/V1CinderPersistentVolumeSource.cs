@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a cinder volume resource in Openstack. A Cinder volume must exist
         /// before mounting to a container. The volume must also be in the same region as
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// &quot;ext4&quot; if unspecified. More info:
         /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -77,21 +71,21 @@ namespace k8s.Models
         /// setting in VolumeMounts. More info:
         /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Optional: points to a secret object containing parameters used to connect to
         /// OpenStack.
         /// </summary>
-        [JsonProperty(PropertyName = "secretRef")]
+        [JsonPropertyName("secretRef")]
         public V1SecretReference SecretRef { get; set; }
 
         /// <summary>
         /// volume id used to identify the volume in cinder. More info:
         /// https://examples.k8s.io/mysql-cinder-pd/README.md
         /// </summary>
-        [JsonProperty(PropertyName = "volumeID")]
+        [JsonPropertyName("volumeID")]
         public string VolumeID { get; set; }
 
         /// <summary>

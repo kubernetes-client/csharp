@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceColumnDefinition specifies a column for server side printing.
     /// </summary>
@@ -74,7 +68,7 @@ namespace k8s.Models
         /// <summary>
         /// description is a human readable description of this column.
         /// </summary>
-        [JsonProperty(PropertyName = "description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -84,20 +78,20 @@ namespace k8s.Models
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
         /// for details.
         /// </summary>
-        [JsonProperty(PropertyName = "format")]
+        [JsonPropertyName("format")]
         public string Format { get; set; }
 
         /// <summary>
         /// jsonPath is a simple JSON path (i.e. with array notation) which is evaluated
         /// against each custom resource to produce the value for this column.
         /// </summary>
-        [JsonProperty(PropertyName = "jsonPath")]
+        [JsonPropertyName("jsonPath")]
         public string JsonPath { get; set; }
 
         /// <summary>
         /// name is a human readable name for the column.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -105,7 +99,7 @@ namespace k8s.Models
         /// to others. Lower numbers are considered higher priority. Columns that may be
         /// omitted in limited space scenarios should be given a priority greater than 0.
         /// </summary>
-        [JsonProperty(PropertyName = "priority")]
+        [JsonPropertyName("priority")]
         public int? Priority { get; set; }
 
         /// <summary>
@@ -113,7 +107,7 @@ namespace k8s.Models
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
         /// for details.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

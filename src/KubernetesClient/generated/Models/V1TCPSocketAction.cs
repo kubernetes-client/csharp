@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// TCPSocketAction describes an action based on opening a socket
     /// </summary>
@@ -50,14 +44,14 @@ namespace k8s.Models
         /// <summary>
         /// Optional: Host name to connect to, defaults to the pod IP.
         /// </summary>
-        [JsonProperty(PropertyName = "host")]
+        [JsonPropertyName("host")]
         public string Host { get; set; }
 
         /// <summary>
         /// Number or name of the port to access on the container. Number must be in the
         /// range 1 to 65535. Name must be an IANA_SVC_NAME.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public IntstrIntOrString Port { get; set; }
 
         /// <summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         {
             if (Port == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Port");    
+                throw new ArgumentNullException("Port");    
             }
             Port?.Validate();
         }

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CustomResourceConversion describes how to convert different versions of a CR.
     /// </summary>
@@ -60,14 +54,14 @@ namespace k8s.Models
         /// is needed for this option. This requires spec.preserveUnknownFields to be false,
         /// and spec.conversion.webhook to be set.
         /// </summary>
-        [JsonProperty(PropertyName = "strategy")]
+        [JsonPropertyName("strategy")]
         public string Strategy { get; set; }
 
         /// <summary>
         /// webhook describes how to call the conversion webhook. Required when `strategy`
         /// is set to `Webhook`.
         /// </summary>
-        [JsonProperty(PropertyName = "webhook")]
+        [JsonPropertyName("webhook")]
         public V1WebhookConversion Webhook { get; set; }
 
         /// <summary>

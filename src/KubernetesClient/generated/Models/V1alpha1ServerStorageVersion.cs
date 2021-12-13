@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// An API server instance reports the version it can decode and the version it
         /// encodes objects to when persisting objects in the backend.
@@ -56,21 +50,21 @@ namespace k8s.Models
         /// <summary>
         /// The ID of the reporting API server.
         /// </summary>
-        [JsonProperty(PropertyName = "apiServerID")]
+        [JsonPropertyName("apiServerID")]
         public string ApiServerID { get; set; }
 
         /// <summary>
         /// The API server can decode objects encoded in these versions. The encodingVersion
         /// must be included in the decodableVersions.
         /// </summary>
-        [JsonProperty(PropertyName = "decodableVersions")]
+        [JsonPropertyName("decodableVersions")]
         public IList<string> DecodableVersions { get; set; }
 
         /// <summary>
         /// The API server encodes the object to this version when persisting it in the
         /// backend (e.g., etcd).
         /// </summary>
-        [JsonProperty(PropertyName = "encodingVersion")]
+        [JsonPropertyName("encodingVersion")]
         public string EncodingVersion { get; set; }
 
         /// <summary>

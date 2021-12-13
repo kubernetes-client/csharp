@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressServiceBackend references a Kubernetes Service as a Backend.
     /// </summary>
@@ -52,14 +46,14 @@ namespace k8s.Models
         /// Name is the referenced service. The service must exist in the same namespace as
         /// the Ingress object.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Port of the referenced service. A port name or port number is required for a
         /// IngressServiceBackend.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public V1ServiceBackendPort Port { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointSubset is a group of addresses with a common set of ports. The expanded
         /// set of endpoints is the Cartesian product of Addresses x Ports. For example,
@@ -66,7 +60,7 @@ namespace k8s.Models
         /// IP addresses which offer the related ports that are marked as ready. These
         /// endpoints should be considered safe for load balancers and clients to utilize.
         /// </summary>
-        [JsonProperty(PropertyName = "addresses")]
+        [JsonPropertyName("addresses")]
         public IList<V1EndpointAddress> Addresses { get; set; }
 
         /// <summary>
@@ -74,13 +68,13 @@ namespace k8s.Models
         /// because they have not yet finished starting, have recently failed a readiness
         /// check, or have recently failed a liveness check.
         /// </summary>
-        [JsonProperty(PropertyName = "notReadyAddresses")]
+        [JsonPropertyName("notReadyAddresses")]
         public IList<V1EndpointAddress> NotReadyAddresses { get; set; }
 
         /// <summary>
         /// Port numbers available on the related IP addresses.
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<Corev1EndpointPort> Ports { get; set; }
 
         /// <summary>

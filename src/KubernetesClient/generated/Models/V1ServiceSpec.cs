@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ServiceSpec describes the attributes that a user creates on a service.
     /// </summary>
@@ -275,7 +269,7 @@ namespace k8s.Models
         /// type. This field is beta-level and is only honored by servers that enable the
         /// ServiceLBNodePortControl feature.
         /// </summary>
-        [JsonProperty(PropertyName = "allocateLoadBalancerNodePorts")]
+        [JsonPropertyName("allocateLoadBalancerNodePorts")]
         public bool? AllocateLoadBalancerNodePorts { get; set; }
 
         /// <summary>
@@ -294,7 +288,7 @@ namespace k8s.Models
         /// when updating a Service to type ExternalName. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
         /// </summary>
-        [JsonProperty(PropertyName = "clusterIP")]
+        [JsonPropertyName("clusterIP")]
         public string ClusterIP { get; set; }
 
         /// <summary>
@@ -320,7 +314,7 @@ namespace k8s.Models
         /// and ipFamilies are governed by the ipFamilyPolicy field. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
         /// </summary>
-        [JsonProperty(PropertyName = "clusterIPs")]
+        [JsonPropertyName("clusterIPs")]
         public IList<string> ClusterIPs { get; set; }
 
         /// <summary>
@@ -330,7 +324,7 @@ namespace k8s.Models
         /// common example is external load-balancers that are not part of the Kubernetes
         /// system.
         /// </summary>
-        [JsonProperty(PropertyName = "externalIPs")]
+        [JsonPropertyName("externalIPs")]
         public IList<string> ExternalIPs { get; set; }
 
         /// <summary>
@@ -339,7 +333,7 @@ namespace k8s.Models
         /// involved.  Must be a lowercase RFC-1123 hostname
         /// (https://tools.ietf.org/html/rfc1123) and requires `type` to be &quot;ExternalName&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "externalName")]
+        [JsonPropertyName("externalName")]
         public string ExternalName { get; set; }
 
         /// <summary>
@@ -354,7 +348,7 @@ namespace k8s.Models
         /// - `&quot;Cluster&quot;` specifies node-global (legacy) behavior.
         /// - `&quot;Local&quot;` specifies node-local endpoints behavior.
         /// </summary>
-        [JsonProperty(PropertyName = "externalTrafficPolicy")]
+        [JsonPropertyName("externalTrafficPolicy")]
         public string ExternalTrafficPolicy { get; set; }
 
         /// <summary>
@@ -367,7 +361,7 @@ namespace k8s.Models
         /// creating a Service which does not need it, creation will fail. This field will
         /// be wiped when updating a Service to no longer need it (e.g. changing type).
         /// </summary>
-        [JsonProperty(PropertyName = "healthCheckNodePort")]
+        [JsonPropertyName("healthCheckNodePort")]
         public int? HealthCheckNodePort { get; set; }
 
         /// <summary>
@@ -377,7 +371,7 @@ namespace k8s.Models
         /// only, traffic is dropped if no node-local endpoints are ready. The default value
         /// is &quot;Cluster&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "internalTrafficPolicy")]
+        [JsonPropertyName("internalTrafficPolicy")]
         public string InternalTrafficPolicy { get; set; }
 
         /// <summary>
@@ -397,7 +391,7 @@ namespace k8s.Models
         /// if specified. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy
         /// field.
         /// </summary>
-        [JsonProperty(PropertyName = "ipFamilies")]
+        [JsonPropertyName("ipFamilies")]
         public IList<string> IpFamilies { get; set; }
 
         /// <summary>
@@ -410,7 +404,7 @@ namespace k8s.Models
         /// fields depend on the value of this field. This field will be wiped when updating
         /// a service to type ExternalName.
         /// </summary>
-        [JsonProperty(PropertyName = "ipFamilyPolicy")]
+        [JsonPropertyName("ipFamilyPolicy")]
         public string IpFamilyPolicy { get; set; }
 
         /// <summary>
@@ -428,7 +422,7 @@ namespace k8s.Models
         /// &apos;LoadBalancer&apos;. Once set, it can not be changed. This field will be wiped when a
         /// service is updated to a non &apos;LoadBalancer&apos; type.
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancerClass")]
+        [JsonPropertyName("loadBalancerClass")]
         public string LoadBalancerClass { get; set; }
 
         /// <summary>
@@ -438,7 +432,7 @@ namespace k8s.Models
         /// created. This field will be ignored if the cloud-provider does not support the
         /// feature.
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancerIP")]
+        [JsonPropertyName("loadBalancerIP")]
         public string LoadBalancerIP { get; set; }
 
         /// <summary>
@@ -448,14 +442,14 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/
         /// </summary>
-        [JsonProperty(PropertyName = "loadBalancerSourceRanges")]
+        [JsonPropertyName("loadBalancerSourceRanges")]
         public IList<string> LoadBalancerSourceRanges { get; set; }
 
         /// <summary>
         /// The list of ports that are exposed by this service. More info:
         /// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
         /// </summary>
-        [JsonProperty(PropertyName = "ports")]
+        [JsonPropertyName("ports")]
         public IList<V1ServicePort> Ports { get; set; }
 
         /// <summary>
@@ -469,7 +463,7 @@ namespace k8s.Models
         /// endpoints through the Endpoints or EndpointSlice resources can safely assume
         /// this behavior.
         /// </summary>
-        [JsonProperty(PropertyName = "publishNotReadyAddresses")]
+        [JsonPropertyName("publishNotReadyAddresses")]
         public bool? PublishNotReadyAddresses { get; set; }
 
         /// <summary>
@@ -479,7 +473,7 @@ namespace k8s.Models
         /// ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More
         /// info: https://kubernetes.io/docs/concepts/services-networking/service/
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public IDictionary<string, string> Selector { get; set; }
 
         /// <summary>
@@ -492,13 +486,13 @@ namespace k8s.Models
         /// - `&quot;ClientIP&quot;` is the Client IP based.
         /// - `&quot;None&quot;` - no session affinity.
         /// </summary>
-        [JsonProperty(PropertyName = "sessionAffinity")]
+        [JsonPropertyName("sessionAffinity")]
         public string SessionAffinity { get; set; }
 
         /// <summary>
         /// sessionAffinityConfig contains the configurations of session affinity.
         /// </summary>
-        [JsonProperty(PropertyName = "sessionAffinityConfig")]
+        [JsonPropertyName("sessionAffinityConfig")]
         public V1SessionAffinityConfig SessionAffinityConfig { get; set; }
 
         /// <summary>
@@ -527,7 +521,7 @@ namespace k8s.Models
         /// - `&quot;NodePort&quot;` means a service will be exposed on one port of every node, in
         /// addition to &apos;ClusterIP&apos; type.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

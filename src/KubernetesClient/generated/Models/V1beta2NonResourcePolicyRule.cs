@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NonResourcePolicyRule is a predicate that matches non-resource requests
         /// according to their verb and the target non-resource URL. A NonResourcePolicyRule
@@ -69,14 +63,14 @@ namespace k8s.Models
         /// &quot;*&quot; matches all non-resource urls. if it is present, it must be the only entry.
         /// Required.
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceURLs")]
+        [JsonPropertyName("nonResourceURLs")]
         public IList<string> NonResourceURLs { get; set; }
 
         /// <summary>
         /// `verbs` is a list of matching verbs and may not be empty. &quot;*&quot; matches all verbs.
         /// If it is present, it must be the only entry. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "verbs")]
+        [JsonPropertyName("verbs")]
         public IList<string> Verbs { get; set; }
 
         /// <summary>

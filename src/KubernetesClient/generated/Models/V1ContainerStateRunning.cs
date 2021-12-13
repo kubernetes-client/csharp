@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ContainerStateRunning is a running state of a container.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// Time at which the container was last (re-)started
         /// </summary>
-        [JsonProperty(PropertyName = "startedAt")]
+        [JsonPropertyName("startedAt")]
         public System.DateTime? StartedAt { get; set; }
 
         /// <summary>

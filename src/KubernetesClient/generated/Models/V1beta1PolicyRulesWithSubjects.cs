@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PolicyRulesWithSubjects prescribes a test that applies to a request to an
         /// apiserver. The test considers the subject making the request, the verb being
@@ -65,7 +59,7 @@ namespace k8s.Models
         /// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching
         /// requests according to their verb and the target non-resource URL.
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceRules")]
+        [JsonPropertyName("nonResourceRules")]
         public IList<V1beta1NonResourcePolicyRule> NonResourceRules { get; set; }
 
         /// <summary>
@@ -73,7 +67,7 @@ namespace k8s.Models
         /// requests according to their verb and the target resource. At least one of
         /// `resourceRules` and `nonResourceRules` has to be non-empty.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceRules")]
+        [JsonPropertyName("resourceRules")]
         public IList<V1beta1ResourcePolicyRule> ResourceRules { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// includes both the system:authenticated and system:unauthenticated user groups
         /// matches every request. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "subjects")]
+        [JsonPropertyName("subjects")]
         public IList<V1beta1Subject> Subjects { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EventSeries contain information on series of events, i.e. thing that was/is
         /// happening continuously for some time.
@@ -50,13 +44,13 @@ namespace k8s.Models
         /// <summary>
         /// Number of occurrences in this series up to the last heartbeat time
         /// </summary>
-        [JsonProperty(PropertyName = "count")]
+        [JsonPropertyName("count")]
         public int? Count { get; set; }
 
         /// <summary>
         /// Time of the last occurrence observed
         /// </summary>
-        [JsonProperty(PropertyName = "lastObservedTime")]
+        [JsonPropertyName("lastObservedTime")]
         public System.DateTime? LastObservedTime { get; set; }
 
         /// <summary>

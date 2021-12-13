@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// StatefulSetPersistentVolumeClaimRetentionPolicy describes the policy used for
         /// PVCs created from the StatefulSet VolumeClaimTemplates.
@@ -60,7 +54,7 @@ namespace k8s.Models
         /// `Retain` causes PVCs to not be affected by StatefulSet deletion. The `Delete`
         /// policy causes those PVCs to be deleted.
         /// </summary>
-        [JsonProperty(PropertyName = "whenDeleted")]
+        [JsonPropertyName("whenDeleted")]
         public string WhenDeleted { get; set; }
 
         /// <summary>
@@ -70,7 +64,7 @@ namespace k8s.Models
         /// causes the associated PVCs for any excess pods above the replica count to be
         /// deleted.
         /// </summary>
-        [JsonProperty(PropertyName = "whenScaled")]
+        [JsonPropertyName("whenScaled")]
         public string WhenScaled { get; set; }
 
         /// <summary>

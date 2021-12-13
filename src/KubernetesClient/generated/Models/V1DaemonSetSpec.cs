@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DaemonSetSpec is the specification of a daemon set.
     /// </summary>
@@ -71,14 +65,14 @@ namespace k8s.Models
         /// ready without any of its container crashing, for it to be considered available.
         /// Defaults to 0 (pod will be considered available as soon as it is ready).
         /// </summary>
-        [JsonProperty(PropertyName = "minReadySeconds")]
+        [JsonPropertyName("minReadySeconds")]
         public int? MinReadySeconds { get; set; }
 
         /// <summary>
         /// The number of old history to retain to allow rollback. This is a pointer to
         /// distinguish between explicit zero and not specified. Defaults to 10.
         /// </summary>
-        [JsonProperty(PropertyName = "revisionHistoryLimit")]
+        [JsonPropertyName("revisionHistoryLimit")]
         public int? RevisionHistoryLimit { get; set; }
 
         /// <summary>
@@ -86,7 +80,7 @@ namespace k8s.Models
         /// to be controlled. It must match the pod template&apos;s labels. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
@@ -95,13 +89,13 @@ namespace k8s.Models
         /// selector (or on every node if no node selector is specified). More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
+        [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
         /// An update strategy to replace existing DaemonSet pods with new pods.
         /// </summary>
-        [JsonProperty(PropertyName = "updateStrategy")]
+        [JsonPropertyName("updateStrategy")]
         public V1DaemonSetUpdateStrategy UpdateStrategy { get; set; }
 
         /// <summary>
@@ -114,11 +108,11 @@ namespace k8s.Models
         {
             if (Selector == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Selector");    
+                throw new ArgumentNullException("Selector");    
             }
             if (Template == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Template");    
+                throw new ArgumentNullException("Template");    
             }
             Selector?.Validate();
             Template?.Validate();

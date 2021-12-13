@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// NamespaceSpec describes the attributes on a Namespace.
     /// </summary>
@@ -49,7 +43,7 @@ namespace k8s.Models
         /// object from storage. More info:
         /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
         /// </summary>
-        [JsonProperty(PropertyName = "finalizers")]
+        [JsonPropertyName("finalizers")]
         public IList<string> Finalizers { get; set; }
 
         /// <summary>

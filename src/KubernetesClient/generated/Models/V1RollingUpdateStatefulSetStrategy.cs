@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// RollingUpdateStatefulSetStrategy is used to communicate parameter for
         /// RollingUpdateStatefulSetStrategyType.
@@ -48,7 +42,7 @@ namespace k8s.Models
         /// Partition indicates the ordinal at which the StatefulSet should be partitioned.
         /// Default value is 0.
         /// </summary>
-        [JsonProperty(PropertyName = "partition")]
+        [JsonPropertyName("partition")]
         public int? Partition { get; set; }
 
         /// <summary>

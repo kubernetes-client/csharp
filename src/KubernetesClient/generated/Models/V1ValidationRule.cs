@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ValidationRule describes a validation rule written in the CEL expression
         /// language.
@@ -117,7 +111,7 @@ namespace k8s.Models
         /// breaks. If unset, the message is &quot;failed rule: {Rule}&quot;. e.g. &quot;must be a URL with
         /// the host matching spec.host&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
@@ -184,7 +178,7 @@ namespace k8s.Models
         /// Elements in `Y` with
         /// non-intersecting keys are appended, retaining their partial order.
         /// </summary>
-        [JsonProperty(PropertyName = "rule")]
+        [JsonPropertyName("rule")]
         public string Rule { get; set; }
 
         /// <summary>

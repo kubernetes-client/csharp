@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// The node this Taint is attached to has the &quot;effect&quot; on any pod that does not
         /// tolerate the Taint.
@@ -83,26 +77,26 @@ namespace k8s.Models
         /// to schedule new pods onto the node, rather than prohibiting new pods from
         /// scheduling onto the node entirely. Enforced by the scheduler.
         /// </summary>
-        [JsonProperty(PropertyName = "effect")]
+        [JsonPropertyName("effect")]
         public string Effect { get; set; }
 
         /// <summary>
         /// Required. The taint key to be applied to a node.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
         /// TimeAdded represents the time at which the taint was added. It is only written
         /// for NoExecute taints.
         /// </summary>
-        [JsonProperty(PropertyName = "timeAdded")]
+        [JsonPropertyName("timeAdded")]
         public System.DateTime? TimeAdded { get; set; }
 
         /// <summary>
         /// The taint value corresponding to the taint key.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
         /// <summary>

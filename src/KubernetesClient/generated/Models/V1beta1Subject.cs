@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Subject matches the originator of a request, as identified by the request
         /// authentication system. There are three ways of matching an originator; by user,
@@ -59,25 +53,25 @@ namespace k8s.Models
         /// <summary>
         /// `group` matches based on user group name.
         /// </summary>
-        [JsonProperty(PropertyName = "group")]
+        [JsonPropertyName("group")]
         public V1beta1GroupSubject Group { get; set; }
 
         /// <summary>
         /// `kind` indicates which one of the other fields is non-empty. Required
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// `serviceAccount` matches ServiceAccounts.
         /// </summary>
-        [JsonProperty(PropertyName = "serviceAccount")]
+        [JsonPropertyName("serviceAccount")]
         public V1beta1ServiceAccountSubject ServiceAccount { get; set; }
 
         /// <summary>
         /// `user` matches based on username.
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public V1beta1UserSubject User { get; set; }
 
         /// <summary>

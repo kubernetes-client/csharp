@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// GroupVersion contains the &quot;group/version&quot; and &quot;version&quot; string of a version. It
         /// is made a struct to keep extensibility.
@@ -51,14 +45,14 @@ namespace k8s.Models
         /// <summary>
         /// groupVersion specifies the API group and version in the form &quot;group/version&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "groupVersion")]
+        [JsonPropertyName("groupVersion")]
         public string GroupVersion { get; set; }
 
         /// <summary>
         /// version specifies the version in the form of &quot;version&quot;. This is to save the
         /// clients the trouble of splitting the GroupVersion.
         /// </summary>
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
         /// <summary>

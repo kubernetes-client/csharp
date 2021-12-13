@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LeaseSpec is a specification of a Lease.
     /// </summary>
@@ -63,33 +57,33 @@ namespace k8s.Models
         /// <summary>
         /// acquireTime is a time when the current lease was acquired.
         /// </summary>
-        [JsonProperty(PropertyName = "acquireTime")]
+        [JsonPropertyName("acquireTime")]
         public System.DateTime? AcquireTime { get; set; }
 
         /// <summary>
         /// holderIdentity contains the identity of the holder of a current lease.
         /// </summary>
-        [JsonProperty(PropertyName = "holderIdentity")]
+        [JsonPropertyName("holderIdentity")]
         public string HolderIdentity { get; set; }
 
         /// <summary>
         /// leaseDurationSeconds is a duration that candidates for a lease need to wait to
         /// force acquire it. This is measure against time of last observed RenewTime.
         /// </summary>
-        [JsonProperty(PropertyName = "leaseDurationSeconds")]
+        [JsonPropertyName("leaseDurationSeconds")]
         public int? LeaseDurationSeconds { get; set; }
 
         /// <summary>
         /// leaseTransitions is the number of transitions of a lease between holders.
         /// </summary>
-        [JsonProperty(PropertyName = "leaseTransitions")]
+        [JsonPropertyName("leaseTransitions")]
         public int? LeaseTransitions { get; set; }
 
         /// <summary>
         /// renewTime is a time when the current holder of a lease has last updated the
         /// lease.
         /// </summary>
-        [JsonProperty(PropertyName = "renewTime")]
+        [JsonPropertyName("renewTime")]
         public System.DateTime? RenewTime { get; set; }
 
         /// <summary>

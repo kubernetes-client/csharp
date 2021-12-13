@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MetricIdentifier defines the name and optionally selector for a metric
     /// </summary>
@@ -52,7 +46,7 @@ namespace k8s.Models
         /// <summary>
         /// name is the name of the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// metrics server for more specific metrics scoping. When unset, just the
         /// metricName will be used to gather metrics.
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>

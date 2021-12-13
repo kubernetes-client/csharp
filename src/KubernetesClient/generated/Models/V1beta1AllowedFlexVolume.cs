@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
     /// </summary>
@@ -45,7 +39,7 @@ namespace k8s.Models
         /// <summary>
         /// driver is the name of the Flexvolume driver.
         /// </summary>
-        [JsonProperty(PropertyName = "driver")]
+        [JsonPropertyName("driver")]
         public string Driver { get; set; }
 
         /// <summary>

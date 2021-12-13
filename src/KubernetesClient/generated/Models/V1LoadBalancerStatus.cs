@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// LoadBalancerStatus represents the status of a load-balancer.
     /// </summary>
@@ -47,7 +41,7 @@ namespace k8s.Models
         /// Ingress is a list containing ingress points for the load-balancer. Traffic
         /// intended for the service should be sent to these ingress points.
         /// </summary>
-        [JsonProperty(PropertyName = "ingress")]
+        [JsonPropertyName("ingress")]
         public IList<V1LoadBalancerIngress> Ingress { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// volumeDevice describes a mapping of a raw block device within a container.
     /// </summary>
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// devicePath is the path inside of the container that the device will be mapped
         /// to.
         /// </summary>
-        [JsonProperty(PropertyName = "devicePath")]
+        [JsonPropertyName("devicePath")]
         public string DevicePath { get; set; }
 
         /// <summary>
         /// name must match the name of a persistentVolumeClaim in the pod
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

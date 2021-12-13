@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// JobSpec describes how the job execution will look like.
     /// </summary>
@@ -139,13 +133,13 @@ namespace k8s.Models
         /// positive integer. If a Job is suspended (at creation or through an update), this
         /// timer will effectively be stopped and reset when the Job is resumed again.
         /// </summary>
-        [JsonProperty(PropertyName = "activeDeadlineSeconds")]
+        [JsonPropertyName("activeDeadlineSeconds")]
         public long? ActiveDeadlineSeconds { get; set; }
 
         /// <summary>
         /// Specifies the number of retries before marking this job failed. Defaults to 6
         /// </summary>
-        [JsonProperty(PropertyName = "backoffLimit")]
+        [JsonPropertyName("backoffLimit")]
         public int? BackoffLimit { get; set; }
 
         /// <summary>
@@ -169,7 +163,7 @@ namespace k8s.Models
         /// the Job controller observes a mode that it doesn&apos;t recognize, the controller
         /// skips updates for the Job.
         /// </summary>
-        [JsonProperty(PropertyName = "completionMode")]
+        [JsonPropertyName("completionMode")]
         public string CompletionMode { get; set; }
 
         /// <summary>
@@ -180,7 +174,7 @@ namespace k8s.Models
         /// of the job. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
-        [JsonProperty(PropertyName = "completions")]
+        [JsonPropertyName("completions")]
         public int? Completions { get; set; }
 
         /// <summary>
@@ -194,7 +188,7 @@ namespace k8s.Models
         /// `extensions/v1beta1` API. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector
         /// </summary>
-        [JsonProperty(PropertyName = "manualSelector")]
+        [JsonPropertyName("manualSelector")]
         public bool? ManualSelector { get; set; }
 
         /// <summary>
@@ -204,7 +198,7 @@ namespace k8s.Models
         /// when the work left to do is less than max parallelism. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
-        [JsonProperty(PropertyName = "parallelism")]
+        [JsonPropertyName("parallelism")]
         public int? Parallelism { get; set; }
 
         /// <summary>
@@ -212,7 +206,7 @@ namespace k8s.Models
         /// sets this field for you. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
         /// </summary>
-        [JsonProperty(PropertyName = "selector")]
+        [JsonPropertyName("selector")]
         public V1LabelSelector Selector { get; set; }
 
         /// <summary>
@@ -226,14 +220,14 @@ namespace k8s.Models
         /// 
         /// This field is beta-level, gated by SuspendJob feature flag (enabled by default).
         /// </summary>
-        [JsonProperty(PropertyName = "suspend")]
+        [JsonPropertyName("suspend")]
         public bool? Suspend { get; set; }
 
         /// <summary>
         /// Describes the pod that will be created when executing a job. More info:
         /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         /// </summary>
-        [JsonProperty(PropertyName = "template")]
+        [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
 
         /// <summary>
@@ -245,7 +239,7 @@ namespace k8s.Models
         /// set to zero, the Job becomes eligible to be deleted immediately after it
         /// finishes.
         /// </summary>
-        [JsonProperty(PropertyName = "ttlSecondsAfterFinished")]
+        [JsonPropertyName("ttlSecondsAfterFinished")]
         public int? TtlSecondsAfterFinished { get; set; }
 
         /// <summary>
@@ -258,7 +252,7 @@ namespace k8s.Models
         {
             if (Template == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Template");    
+                throw new ArgumentNullException("Template");    
             }
             Selector?.Validate();
             Template?.Validate();

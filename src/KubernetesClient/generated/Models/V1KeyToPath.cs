@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Maps a string key to a path within a volume.
     /// </summary>
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// <summary>
         /// The key to project.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
@@ -70,14 +64,14 @@ namespace k8s.Models
         /// other options that affect the file mode, like fsGroup, and the result can be
         /// other mode bits set.
         /// </summary>
-        [JsonProperty(PropertyName = "mode")]
+        [JsonPropertyName("mode")]
         public int? Mode { get; set; }
 
         /// <summary>
         /// The relative path of the file to map the key to. May not be an absolute path.
         /// May not contain the path element &apos;..&apos;. May not start with the string &apos;..&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
 
         /// <summary>

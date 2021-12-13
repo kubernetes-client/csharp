@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// EndpointHints provides hints describing how an endpoint should be consumed.
     /// </summary>
@@ -47,7 +41,7 @@ namespace k8s.Models
         /// forZones indicates the zone(s) this endpoint should be consumed by to enable
         /// topology aware routing.
         /// </summary>
-        [JsonProperty(PropertyName = "forZones")]
+        [JsonPropertyName("forZones")]
         public IList<V1ForZone> ForZones { get; set; }
 
         /// <summary>

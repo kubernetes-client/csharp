@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A node selector requirement is a selector that contains values, a key, and an
         /// operator that relates the key and values.
@@ -67,7 +61,7 @@ namespace k8s.Models
         /// <summary>
         /// The label key that the selector applies to.
         /// </summary>
-        [JsonProperty(PropertyName = "key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// - `&quot;Lt&quot;`
         /// - `&quot;NotIn&quot;`
         /// </summary>
-        [JsonProperty(PropertyName = "operator")]
+        [JsonPropertyName("operator")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -92,7 +86,7 @@ namespace k8s.Models
         /// element, which will be interpreted as an integer. This array is replaced during
         /// a strategic merge patch.
         /// </summary>
-        [JsonProperty(PropertyName = "values")]
+        [JsonPropertyName("values")]
         public IList<string> Values { get; set; }
 
         /// <summary>

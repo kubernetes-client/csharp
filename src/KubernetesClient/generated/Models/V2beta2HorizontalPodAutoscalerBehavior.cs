@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in
         /// both Up and Down directions (scaleUp and scaleDown fields respectively).
@@ -58,7 +52,7 @@ namespace k8s.Models
         /// to allow to scale down to minReplicas pods, with a 300 second stabilization
         /// window (i.e., the highest recommendation for the last 300sec is used).
         /// </summary>
-        [JsonProperty(PropertyName = "scaleDown")]
+        [JsonPropertyName("scaleDown")]
         public V2beta2HPAScalingRules ScaleDown { get; set; }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// * double the number of pods per 60 seconds
         /// No stabilization is used.
         /// </summary>
-        [JsonProperty(PropertyName = "scaleUp")]
+        [JsonPropertyName("scaleUp")]
         public V2beta2HPAScalingRules ScaleUp { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ObjectMetricSource indicates how to scale on a metric describing a kubernetes
         /// object (for example, hits-per-second on an Ingress object).
@@ -56,19 +50,19 @@ namespace k8s.Models
         /// describedObject specifies the descriptions of a object,such as kind,name
         /// apiVersion
         /// </summary>
-        [JsonProperty(PropertyName = "describedObject")]
+        [JsonPropertyName("describedObject")]
         public V2CrossVersionObjectReference DescribedObject { get; set; }
 
         /// <summary>
         /// metric identifies the target metric by name and selector
         /// </summary>
-        [JsonProperty(PropertyName = "metric")]
+        [JsonPropertyName("metric")]
         public V2MetricIdentifier Metric { get; set; }
 
         /// <summary>
         /// target specifies the target value for the given metric
         /// </summary>
-        [JsonProperty(PropertyName = "target")]
+        [JsonPropertyName("target")]
         public V2MetricTarget Target { get; set; }
 
         /// <summary>
@@ -81,15 +75,15 @@ namespace k8s.Models
         {
             if (DescribedObject == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DescribedObject");    
+                throw new ArgumentNullException("DescribedObject");    
             }
             if (Metric == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Metric");    
+                throw new ArgumentNullException("Metric");    
             }
             if (Target == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Target");    
+                throw new ArgumentNullException("Target");    
             }
             DescribedObject?.Validate();
             Metric?.Validate();

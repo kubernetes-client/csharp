@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// IngressTLS describes the transport layer security associated with an Ingress.
     /// </summary>
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// setting for the loadbalancer controller fulfilling this Ingress, if left
         /// unspecified.
         /// </summary>
-        [JsonProperty(PropertyName = "hosts")]
+        [JsonPropertyName("hosts")]
         public IList<string> Hosts { get; set; }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace k8s.Models
         /// IngressRule, the SNI host is used for termination and value of the Host header
         /// is used for routing.
         /// </summary>
-        [JsonProperty(PropertyName = "secretName")]
+        [JsonPropertyName("secretName")]
         public string SecretName { get; set; }
 
         /// <summary>

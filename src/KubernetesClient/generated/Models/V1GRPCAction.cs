@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// 
     /// </summary>
@@ -52,7 +46,7 @@ namespace k8s.Models
         /// <summary>
         /// Port number of the gRPC service. Number must be in the range 1 to 65535.
         /// </summary>
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int Port { get; set; }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace k8s.Models
         /// 
         /// If this is not specified, the default behavior is defined by gRPC.
         /// </summary>
-        [JsonProperty(PropertyName = "service")]
+        [JsonPropertyName("service")]
         public string Service { get; set; }
 
         /// <summary>

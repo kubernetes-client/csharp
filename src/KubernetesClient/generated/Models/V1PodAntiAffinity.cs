@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Pod anti affinity is a group of inter pod anti affinity scheduling rules.
     /// </summary>
@@ -71,7 +65,7 @@ namespace k8s.Models
         /// matches the corresponding podAffinityTerm; the node(s) with the highest sum are
         /// the most preferred.
         /// </summary>
-        [JsonProperty(PropertyName = "preferredDuringSchedulingIgnoredDuringExecution")]
+        [JsonPropertyName("preferredDuringSchedulingIgnoredDuringExecution")]
         public IList<V1WeightedPodAffinityTerm> PreferredDuringSchedulingIgnoredDuringExecution { get; set; }
 
         /// <summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// the lists of nodes corresponding to each podAffinityTerm are intersected, i.e.
         /// all terms must be satisfied.
         /// </summary>
-        [JsonProperty(PropertyName = "requiredDuringSchedulingIgnoredDuringExecution")]
+        [JsonPropertyName("requiredDuringSchedulingIgnoredDuringExecution")]
         public IList<V1PodAffinityTerm> RequiredDuringSchedulingIgnoredDuringExecution { get; set; }
 
         /// <summary>

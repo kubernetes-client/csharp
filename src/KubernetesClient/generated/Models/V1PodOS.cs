@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PodOS defines the OS parameters of a pod.
     /// </summary>
@@ -53,7 +47,7 @@ namespace k8s.Models
         /// Clients should expect to handle additional values and treat unrecognized values
         /// in this field as os: null
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>

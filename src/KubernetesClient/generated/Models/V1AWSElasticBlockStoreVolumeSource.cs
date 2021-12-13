@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Represents a Persistent Disk resource in AWS.
         /// 
@@ -74,7 +68,7 @@ namespace k8s.Models
         /// &quot;xfs&quot;, &quot;ntfs&quot;. Implicitly inferred to be &quot;ext4&quot; if unspecified. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
-        [JsonProperty(PropertyName = "fsType")]
+        [JsonPropertyName("fsType")]
         public string FsType { get; set; }
 
         /// <summary>
@@ -83,7 +77,7 @@ namespace k8s.Models
         /// partition as &quot;1&quot;. Similarly, the volume partition for /dev/sda is &quot;0&quot; (or you
         /// can leave the property empty).
         /// </summary>
-        [JsonProperty(PropertyName = "partition")]
+        [JsonPropertyName("partition")]
         public int? Partition { get; set; }
 
         /// <summary>
@@ -91,14 +85,14 @@ namespace k8s.Models
         /// If omitted, the default is &quot;false&quot;. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
-        [JsonProperty(PropertyName = "readOnly")]
+        [JsonPropertyName("readOnly")]
         public bool? ReadOnlyProperty { get; set; }
 
         /// <summary>
         /// Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
         /// </summary>
-        [JsonProperty(PropertyName = "volumeID")]
+        [JsonPropertyName("volumeID")]
         public string VolumeID { get; set; }
 
         /// <summary>

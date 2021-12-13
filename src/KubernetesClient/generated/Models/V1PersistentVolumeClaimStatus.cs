@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// PersistentVolumeClaimStatus is the current status of a persistent volume claim.
     /// </summary>
@@ -88,7 +82,7 @@ namespace k8s.Models
         /// More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
         /// </summary>
-        [JsonProperty(PropertyName = "accessModes")]
+        [JsonPropertyName("accessModes")]
         public IList<string> AccessModes { get; set; }
 
         /// <summary>
@@ -102,20 +96,20 @@ namespace k8s.Models
         /// is equal or lower than the requested capacity. This is an alpha field and
         /// requires enabling RecoverVolumeExpansionFailure feature.
         /// </summary>
-        [JsonProperty(PropertyName = "allocatedResources")]
+        [JsonPropertyName("allocatedResources")]
         public IDictionary<string, ResourceQuantity> AllocatedResources { get; set; }
 
         /// <summary>
         /// Represents the actual resources of the underlying volume.
         /// </summary>
-        [JsonProperty(PropertyName = "capacity")]
+        [JsonPropertyName("capacity")]
         public IDictionary<string, ResourceQuantity> Capacity { get; set; }
 
         /// <summary>
         /// Current Condition of persistent volume claim. If underlying persistent volume is
         /// being resized then the Condition will be set to &apos;ResizeStarted&apos;.
         /// </summary>
-        [JsonProperty(PropertyName = "conditions")]
+        [JsonPropertyName("conditions")]
         public IList<V1PersistentVolumeClaimCondition> Conditions { get; set; }
 
         /// <summary>
@@ -128,7 +122,7 @@ namespace k8s.Models
         /// not exist any longer and all data on it was lost.
         /// - `&quot;Pending&quot;` used for PersistentVolumeClaims that are not yet bound
         /// </summary>
-        [JsonProperty(PropertyName = "phase")]
+        [JsonPropertyName("phase")]
         public string Phase { get; set; }
 
         /// <summary>
@@ -137,7 +131,7 @@ namespace k8s.Models
         /// resize controller or kubelet. This is an alpha field and requires enabling
         /// RecoverVolumeExpansionFailure feature.
         /// </summary>
-        [JsonProperty(PropertyName = "resizeStatus")]
+        [JsonPropertyName("resizeStatus")]
         public string ResizeStatus { get; set; }
 
         /// <summary>

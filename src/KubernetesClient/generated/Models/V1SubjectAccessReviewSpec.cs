@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SubjectAccessReviewSpec is a description of the access request.  Exactly one of
         /// ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be
@@ -71,39 +65,39 @@ namespace k8s.Models
         /// Extra corresponds to the user.Info.GetExtra() method from the authenticator. 
         /// Since that is input to the authorizer it needs a reflection here.
         /// </summary>
-        [JsonProperty(PropertyName = "extra")]
+        [JsonPropertyName("extra")]
         public IDictionary<string, IList<string>> Extra { get; set; }
 
         /// <summary>
         /// Groups is the groups you&apos;re testing for.
         /// </summary>
-        [JsonProperty(PropertyName = "groups")]
+        [JsonPropertyName("groups")]
         public IList<string> Groups { get; set; }
 
         /// <summary>
         /// NonResourceAttributes describes information for a non-resource access request
         /// </summary>
-        [JsonProperty(PropertyName = "nonResourceAttributes")]
+        [JsonPropertyName("nonResourceAttributes")]
         public V1NonResourceAttributes NonResourceAttributes { get; set; }
 
         /// <summary>
         /// ResourceAuthorizationAttributes describes information for a resource access
         /// request
         /// </summary>
-        [JsonProperty(PropertyName = "resourceAttributes")]
+        [JsonPropertyName("resourceAttributes")]
         public V1ResourceAttributes ResourceAttributes { get; set; }
 
         /// <summary>
         /// UID information about the requesting user.
         /// </summary>
-        [JsonProperty(PropertyName = "uid")]
+        [JsonPropertyName("uid")]
         public string Uid { get; set; }
 
         /// <summary>
         /// User is the user you&apos;re testing for. If you specify &quot;User&quot; but not &quot;Groups&quot;,
         /// then is it interpreted as &quot;What if User were not a member of any groups
         /// </summary>
-        [JsonProperty(PropertyName = "user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
 
         /// <summary>

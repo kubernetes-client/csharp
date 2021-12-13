@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// A null or empty node selector term matches no objects. The requirements of them
         /// are ANDed. The TopologySelectorTerm type implements a subset of the
@@ -51,13 +45,13 @@ namespace k8s.Models
         /// <summary>
         /// A list of node selector requirements by node&apos;s labels.
         /// </summary>
-        [JsonProperty(PropertyName = "matchExpressions")]
+        [JsonPropertyName("matchExpressions")]
         public IList<V1NodeSelectorRequirement> MatchExpressions { get; set; }
 
         /// <summary>
         /// A list of node selector requirements by node&apos;s fields.
         /// </summary>
-        [JsonProperty(PropertyName = "matchFields")]
+        [JsonPropertyName("matchFields")]
         public IList<V1NodeSelectorRequirement> MatchFields { get; set; }
 
         /// <summary>

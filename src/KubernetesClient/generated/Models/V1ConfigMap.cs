@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ConfigMap holds configuration data for pods to consume.
     /// </summary>
@@ -84,7 +78,7 @@ namespace k8s.Models
         /// reject unrecognized values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace k8s.Models
         /// in the Data field, this is enforced during validation process. Using this field
         /// will require 1.10+ apiserver and kubelet.
         /// </summary>
-        [JsonProperty(PropertyName = "binaryData")]
+        [JsonPropertyName("binaryData")]
         public IDictionary<string, byte[]> BinaryData { get; set; }
 
         /// <summary>
@@ -103,7 +97,7 @@ namespace k8s.Models
         /// BinaryData field. The keys stored in Data must not overlap with the keys in the
         /// BinaryData field, this is enforced during validation process.
         /// </summary>
-        [JsonProperty(PropertyName = "data")]
+        [JsonPropertyName("data")]
         public IDictionary<string, string> Data { get; set; }
 
         /// <summary>
@@ -111,7 +105,7 @@ namespace k8s.Models
         /// updated (only object metadata can be modified). If not set to true, the field
         /// can be modified at any time. Defaulted to nil.
         /// </summary>
-        [JsonProperty(PropertyName = "immutable")]
+        [JsonPropertyName("immutable")]
         public bool? Immutable { get; set; }
 
         /// <summary>
@@ -120,14 +114,14 @@ namespace k8s.Models
         /// be updated. In CamelCase. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Standard object&apos;s metadata. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
 
         /// <summary>

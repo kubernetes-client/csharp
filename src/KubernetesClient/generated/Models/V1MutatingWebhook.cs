@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// MutatingWebhook describes an admission webhook and the resources and operations
         /// it applies to.
@@ -196,20 +190,20 @@ namespace k8s.Models
         /// to the API Server, calls to the webhook will fail and be subject to the failure
         /// policy.
         /// </summary>
-        [JsonProperty(PropertyName = "admissionReviewVersions")]
+        [JsonPropertyName("admissionReviewVersions")]
         public IList<string> AdmissionReviewVersions { get; set; }
 
         /// <summary>
         /// ClientConfig defines how to communicate with the hook. Required
         /// </summary>
-        [JsonProperty(PropertyName = "clientConfig")]
+        [JsonPropertyName("clientConfig")]
         public Admissionregistrationv1WebhookClientConfig ClientConfig { get; set; }
 
         /// <summary>
         /// FailurePolicy defines how unrecognized errors from the admission endpoint are
         /// handled - allowed values are Ignore or Fail. Defaults to Fail.
         /// </summary>
-        [JsonProperty(PropertyName = "failurePolicy")]
+        [JsonPropertyName("failurePolicy")]
         public string FailurePolicy { get; set; }
 
         /// <summary>
@@ -231,7 +225,7 @@ namespace k8s.Models
         /// 
         /// Defaults to &quot;Equivalent&quot;
         /// </summary>
-        [JsonProperty(PropertyName = "matchPolicy")]
+        [JsonPropertyName("matchPolicy")]
         public string MatchPolicy { get; set; }
 
         /// <summary>
@@ -239,7 +233,7 @@ namespace k8s.Models
         /// imagepolicy.kubernetes.io, where &quot;imagepolicy&quot; is the name of the webhook, and
         /// kubernetes.io is the name of the organization. Required.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -283,7 +277,7 @@ namespace k8s.Models
         /// 
         /// Default to the empty LabelSelector, which matches everything.
         /// </summary>
-        [JsonProperty(PropertyName = "namespaceSelector")]
+        [JsonPropertyName("namespaceSelector")]
         public V1LabelSelector NamespaceSelector { get; set; }
 
         /// <summary>
@@ -297,7 +291,7 @@ namespace k8s.Models
         /// may skip the admission webhook by setting the labels. Default to the empty
         /// LabelSelector, which matches everything.
         /// </summary>
-        [JsonProperty(PropertyName = "objectSelector")]
+        [JsonPropertyName("objectSelector")]
         public V1LabelSelector ObjectSelector { get; set; }
 
         /// <summary>
@@ -321,7 +315,7 @@ namespace k8s.Models
         /// 
         /// Defaults to &quot;Never&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "reinvocationPolicy")]
+        [JsonPropertyName("reinvocationPolicy")]
         public string ReinvocationPolicy { get; set; }
 
         /// <summary>
@@ -333,7 +327,7 @@ namespace k8s.Models
         /// MutatingAdmissionWebhooks are never called on admission requests for
         /// ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
         /// </summary>
-        [JsonProperty(PropertyName = "rules")]
+        [JsonPropertyName("rules")]
         public IList<V1RuleWithOperations> Rules { get; set; }
 
         /// <summary>
@@ -345,7 +339,7 @@ namespace k8s.Models
         /// will be auto-rejected if they match a webhook with sideEffects == Unknown or
         /// Some.
         /// </summary>
-        [JsonProperty(PropertyName = "sideEffects")]
+        [JsonPropertyName("sideEffects")]
         public string SideEffects { get; set; }
 
         /// <summary>
@@ -354,7 +348,7 @@ namespace k8s.Models
         /// policy. The timeout value must be between 1 and 30 seconds. Default to 10
         /// seconds.
         /// </summary>
-        [JsonProperty(PropertyName = "timeoutSeconds")]
+        [JsonPropertyName("timeoutSeconds")]
         public int? TimeoutSeconds { get; set; }
 
         /// <summary>
@@ -367,7 +361,7 @@ namespace k8s.Models
         {
             if (ClientConfig == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "ClientConfig");    
+                throw new ArgumentNullException("ClientConfig");    
             }
             ClientConfig?.Validate();
             NamespaceSelector?.Validate();

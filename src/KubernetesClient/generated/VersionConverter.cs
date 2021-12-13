@@ -112,6 +112,7 @@ namespace k8s.Versioning
                 cfg.CreateMap<V1beta1ServiceAccountSubject, V1beta2ServiceAccountSubject>().ReverseMap();
                 cfg.CreateMap<V1beta1Subject, V1beta2Subject>().ReverseMap();
                 cfg.CreateMap<V1beta1Subject, V1Subject>().ReverseMap();
+                cfg.CreateMap<V1beta2Subject, V1Subject>().ReverseMap();
                 cfg.CreateMap<V1beta1UserSubject, V1beta2UserSubject>().ReverseMap();
         }
     }

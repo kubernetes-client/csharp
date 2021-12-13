@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Lifecycle describes actions that the management system should take in response
         /// to container lifecycle events. For the PostStart and PreStop lifecycle handlers,
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// info:
         /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
         /// </summary>
-        [JsonProperty(PropertyName = "postStart")]
+        [JsonPropertyName("postStart")]
         public V1LifecycleHandler PostStart { get; set; }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace k8s.Models
         /// completes or until the termination grace period is reached. More info:
         /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
         /// </summary>
-        [JsonProperty(PropertyName = "preStop")]
+        [JsonPropertyName("preStop")]
         public V1LifecycleHandler PreStop { get; set; }
 
         /// <summary>

@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// CertificateSigningRequestCondition describes a condition of a
         /// CertificateSigningRequest object
@@ -92,32 +86,32 @@ namespace k8s.Models
         /// to another. If unset, when a new condition type is added or an existing
         /// condition&apos;s status is changed, the server defaults this to the current time.
         /// </summary>
-        [JsonProperty(PropertyName = "lastTransitionTime")]
+        [JsonPropertyName("lastTransitionTime")]
         public System.DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// lastUpdateTime is the time of the last update to this condition
         /// </summary>
-        [JsonProperty(PropertyName = "lastUpdateTime")]
+        [JsonPropertyName("lastUpdateTime")]
         public System.DateTime? LastUpdateTime { get; set; }
 
         /// <summary>
         /// message contains a human readable message with details about the request state
         /// </summary>
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
 
         /// <summary>
         /// reason indicates a brief reason for the request state
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
+        [JsonPropertyName("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// status of the condition, one of True, False, Unknown. Approved, Denied, and
         /// Failed conditions may not be &quot;False&quot; or &quot;Unknown&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         /// <summary>
@@ -144,7 +138,7 @@ namespace k8s.Models
         /// the signer.
         /// - `&quot;Failed&quot;` Failed indicates the signer failed to issue the certificate.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

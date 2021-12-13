@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// Projection that may be projected along with other supported volume types
     /// </summary>
@@ -57,25 +51,25 @@ namespace k8s.Models
         /// <summary>
         /// information about the configMap data to project
         /// </summary>
-        [JsonProperty(PropertyName = "configMap")]
+        [JsonPropertyName("configMap")]
         public V1ConfigMapProjection ConfigMap { get; set; }
 
         /// <summary>
         /// information about the downwardAPI data to project
         /// </summary>
-        [JsonProperty(PropertyName = "downwardAPI")]
+        [JsonPropertyName("downwardAPI")]
         public V1DownwardAPIProjection DownwardAPI { get; set; }
 
         /// <summary>
         /// information about the secret data to project
         /// </summary>
-        [JsonProperty(PropertyName = "secret")]
+        [JsonPropertyName("secret")]
         public V1SecretProjection Secret { get; set; }
 
         /// <summary>
         /// information about the serviceAccountToken data to project
         /// </summary>
-        [JsonProperty(PropertyName = "serviceAccountToken")]
+        [JsonPropertyName("serviceAccountToken")]
         public V1ServiceAccountTokenProjection ServiceAccountToken { get; set; }
 
         /// <summary>

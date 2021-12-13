@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// DaemonSetUpdateStrategy is a struct used to control the update strategy for a
         /// DaemonSet.
@@ -56,7 +50,7 @@ namespace k8s.Models
         /// <summary>
         /// Rolling update config params. Present only if type = &quot;RollingUpdate&quot;.
         /// </summary>
-        [JsonProperty(PropertyName = "rollingUpdate")]
+        [JsonPropertyName("rollingUpdate")]
         public V1RollingUpdateDaemonSet RollingUpdate { get; set; }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace k8s.Models
         /// - `&quot;RollingUpdate&quot;` Replace the old daemons by new ones using rolling update i.e
         /// replace them on each node one after the other.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>

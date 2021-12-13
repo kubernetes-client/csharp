@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// SELinuxStrategyOptions defines the strategy type and any options used to create
         /// the strategy.
@@ -51,14 +45,14 @@ namespace k8s.Models
         /// <summary>
         /// rule is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
-        [JsonProperty(PropertyName = "rule")]
+        [JsonPropertyName("rule")]
         public string Rule { get; set; }
 
         /// <summary>
         /// seLinuxOptions required to run as; required for MustRunAs More info:
         /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
-        [JsonProperty(PropertyName = "seLinuxOptions")]
+        [JsonPropertyName("seLinuxOptions")]
         public V1SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>

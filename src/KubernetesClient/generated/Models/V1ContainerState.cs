@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// ContainerState holds a possible state of container. Only one of its members may
         /// be specified. If none of them is specified, the default one is
@@ -55,19 +49,19 @@ namespace k8s.Models
         /// <summary>
         /// Details about a running container
         /// </summary>
-        [JsonProperty(PropertyName = "running")]
+        [JsonPropertyName("running")]
         public V1ContainerStateRunning Running { get; set; }
 
         /// <summary>
         /// Details about a terminated container
         /// </summary>
-        [JsonProperty(PropertyName = "terminated")]
+        [JsonPropertyName("terminated")]
         public V1ContainerStateTerminated Terminated { get; set; }
 
         /// <summary>
         /// Details about a waiting container
         /// </summary>
-        [JsonProperty(PropertyName = "waiting")]
+        [JsonPropertyName("waiting")]
         public V1ContainerStateWaiting Waiting { get; set; }
 
         /// <summary>
