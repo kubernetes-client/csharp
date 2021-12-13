@@ -228,7 +228,6 @@ namespace k8s
                 httpResponse.Content = new LineSeparatedHttpContent(httpResponse.Content, cancellationToken);
             }
 
-            string all;
             try
             {
 #if NET5_0_OR_GREATER
@@ -237,8 +236,7 @@ namespace k8s
                 using (Stream stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false))
 #endif
                 {
-                    all = new StreamReader(stream).ReadToEnd();
-                    result.Body = KubernetesJson.Deserialize<T>(all);
+                    result.Body = KubernetesJson.Deserialize<T>(stream);
                 }
             }
             catch (JsonException ex)

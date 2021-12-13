@@ -219,12 +219,12 @@ namespace k8s.E2E
             var started = new AsyncManualResetEvent();
             var connectionClosed = new AsyncManualResetEvent();
 
-            var watcher = await kubernetes.WatchNamespacedJobAsync(
-                job.Metadata.Name,
+            var watcher = kubernetes.ListNamespacedJobWithHttpMessagesAsync(
                 job.Metadata.NamespaceProperty,
+                fieldSelector: $"metadata.name={job.Metadata.Name}",
                 resourceVersion: job.Metadata.ResourceVersion,
                 timeoutSeconds: 30,
-                onEvent:
+                watch: true).Watch<V1Job, V1JobList>(
                 (type, source) =>
                 {
                     Debug.WriteLine($"Watcher 1: {type}, {source}");
@@ -232,7 +232,7 @@ namespace k8s.E2E
                     job = source;
                     started.Set();
                 },
-                onClosed: connectionClosed.Set).ConfigureAwait(false);
+                onClosed: connectionClosed.Set);
 
             await started.WaitAsync().ConfigureAwait(false);
 
