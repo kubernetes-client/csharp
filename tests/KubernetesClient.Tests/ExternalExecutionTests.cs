@@ -19,9 +19,9 @@ namespace k8s.Tests
                     { new Dictionary<string, string> { { "name", "testkey" }, { "value", "testvalue" } } },
             });
 
-            var actualExecInfo = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
-            Assert.Equal("testingversion", actualExecInfo["apiVersion"]);
-            Assert.Equal("ExecCredentials", actualExecInfo["kind"]);
+            var actualExecInfo = JsonSerializer.Deserialize<IDictionary<string, dynamic>>(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
+            Assert.Equal("testingversion", actualExecInfo["apiVersion"].ToString());
+            Assert.Equal("ExecCredentials", actualExecInfo["kind"].ToString());
 
             Assert.Equal("command", actual.StartInfo.FileName);
             Assert.Equal("arg1 arg2", actual.StartInfo.Arguments);

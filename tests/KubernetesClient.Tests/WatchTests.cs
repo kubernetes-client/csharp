@@ -54,7 +54,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // did not pass watch param
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default");
+                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
                 var onErrorCalled = false;
 
                 using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => { onErrorCalled = true; }))
@@ -502,9 +502,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = await client.WatchNamespacedPodAsync(
-                    "myPod",
-                    "default",
+                var watcher = client.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
                     onEvent:
                     (type, item) =>
                     {
@@ -521,7 +519,7 @@ namespace k8s.Tests
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    onClosed: connectionClosed.Set).ConfigureAwait(false);
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
@@ -605,9 +603,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = await client.WatchNamespacedPodAsync(
-                    "myPod",
-                    "default",
+                var watcher = client.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
                     onEvent:
                     (type, item) =>
                     {
@@ -623,7 +619,7 @@ namespace k8s.Tests
 
                         errors += 1;
                         eventsReceived.Signal();
-                    }).ConfigureAwait(false);
+                    });
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);

@@ -134,6 +134,11 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ReverseMap();
+            cfg.CreateMap<V1Subject, V1beta2Subject>()
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ReverseMap();
 
             cfg.CreateMap<V1alpha1RuntimeClass, V1RuntimeClass>()
                 .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
