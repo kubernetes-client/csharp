@@ -1,11 +1,8 @@
-using System;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
 using k8s.Util.Common.Generic.Options;
 using Microsoft.Rest;
-using Microsoft.Rest.Serialization;
 
 namespace k8s.Util.Common.Generic
 {
@@ -241,7 +238,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.GetClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -268,7 +265,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.GetNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, namespaceParameter: namespaceProperty,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -289,7 +286,7 @@ namespace k8s.Util.Common.Generic
             var resp = await _client.ListClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, resourceVersion: listOptions.ResourceVersion,
                 continueParameter: listOptions.Continue, fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit,
                 timeoutSeconds: listOptions.TimeoutSeconds, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -317,7 +314,7 @@ namespace k8s.Util.Common.Generic
                 continueParameter: listOptions.Continue, fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit,
                 timeoutSeconds: listOptions.TimeoutSeconds, namespaceParameter: namespaceProperty, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -352,7 +349,7 @@ namespace k8s.Util.Common.Generic
             var resp = await _client.CreateClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion, dryRun: createOptions.DryRun,
                 fieldManager: createOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -380,7 +377,7 @@ namespace k8s.Util.Common.Generic
             var resp = await _client.CreateNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion,
                 namespaceParameter: namespaceProperty, dryRun: createOptions.DryRun, fieldManager: createOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -420,7 +417,7 @@ namespace k8s.Util.Common.Generic
                     version: _apiVersion, dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
 
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -475,7 +472,7 @@ namespace k8s.Util.Common.Generic
                     dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, force: updateOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
 
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -507,7 +504,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.PatchClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: name, dryRun: patchOptions.DryRun,
                 fieldManager: patchOptions.FieldManager, force: patchOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -545,7 +542,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.PatchNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
                 name: name, dryRun: patchOptions.DryRun, fieldManager: patchOptions.FieldManager, force: patchOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -566,7 +563,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.DeleteClusterCustomObjectWithHttpMessagesAsync(
                 group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: name, body: deleteOptions, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>
@@ -593,7 +590,7 @@ namespace k8s.Util.Common.Generic
 
             var resp = await _client.DeleteNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
                 name: name, body: deleteOptions, cancellationToken: cancellationToken).ConfigureAwait(false);
-            return SafeJsonConvert.DeserializeObject<T>(resp.Body.ToString());
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
         /// <summary>

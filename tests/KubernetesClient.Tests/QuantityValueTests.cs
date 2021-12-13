@@ -1,6 +1,5 @@
 using System;
 using k8s.Models;
-using Newtonsoft.Json;
 using Xunit;
 using static k8s.Models.ResourceQuantity.SuffixFormat;
 
@@ -12,7 +11,7 @@ namespace k8s.Tests
         public void Deserialize()
         {
             {
-                var q = JsonConvert.DeserializeObject<ResourceQuantity>("\"12k\"");
+                var q = KubernetesJson.Deserialize<ResourceQuantity>("\"12k\"");
                 Assert.Equal(new ResourceQuantity(12000, 0, DecimalSI), q);
             }
         }
@@ -205,7 +204,7 @@ namespace k8s.Tests
         {
             {
                 ResourceQuantity quantity = 12000;
-                Assert.Equal("\"12e3\"", JsonConvert.SerializeObject(quantity));
+                Assert.Equal("\"12e3\"", KubernetesJson.Serialize(quantity));
             }
         }
 

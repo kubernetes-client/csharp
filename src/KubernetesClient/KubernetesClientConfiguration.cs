@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Rest;
 

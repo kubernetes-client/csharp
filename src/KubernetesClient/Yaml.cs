@@ -1,8 +1,4 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -219,13 +215,13 @@ namespace k8s
             {
                 foreach (var property in type.GetProperties())
                 {
-                    var jsonAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    var jsonAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
                     if (jsonAttribute == null)
                     {
                         continue;
                     }
 
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.PropertyName, ApplyNamingConventions = false };
+                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.Name, ApplyNamingConventions = false };
                     builder.WithAttributeOverride(type, property.Name, yamlAttribute);
                 }
             }

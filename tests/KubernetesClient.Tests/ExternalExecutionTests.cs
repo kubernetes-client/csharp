@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json;
 using k8s.KubeConfigModels;
 using Xunit;
 
@@ -19,7 +19,7 @@ namespace k8s.Tests
                     { new Dictionary<string, string> { { "name", "testkey" }, { "value", "testvalue" } } },
             });
 
-            var actualExecInfo = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
+            var actualExecInfo = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
             Assert.Equal("testingversion", actualExecInfo["apiVersion"]);
             Assert.Equal("ExecCredentials", actualExecInfo["kind"]);
 

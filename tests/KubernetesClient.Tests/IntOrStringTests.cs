@@ -1,5 +1,4 @@
 using k8s.Models;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace k8s.Tests
@@ -13,12 +12,12 @@ namespace k8s.Tests
                 var v = 123;
                 IntstrIntOrString intorstr = v;
 
-                Assert.Equal("123", JsonConvert.SerializeObject(intorstr));
+                Assert.Equal("123", KubernetesJson.Serialize(intorstr));
             }
 
             {
                 IntstrIntOrString intorstr = "12%";
-                Assert.Equal("\"12%\"", JsonConvert.SerializeObject(intorstr));
+                Assert.Equal("\"12%\"", KubernetesJson.Serialize(intorstr));
             }
         }
 
@@ -26,12 +25,12 @@ namespace k8s.Tests
         public void Deserialize()
         {
             {
-                var v = JsonConvert.DeserializeObject<IntstrIntOrString>("1234");
+                var v = KubernetesJson.Deserialize<IntstrIntOrString>("1234");
                 Assert.Equal("1234", v.Value);
             }
 
             {
-                var v = JsonConvert.DeserializeObject<IntstrIntOrString>("\"12%\"");
+                var v = KubernetesJson.Deserialize<IntstrIntOrString>("\"12%\"");
                 Assert.Equal("12%", v.Value);
             }
         }

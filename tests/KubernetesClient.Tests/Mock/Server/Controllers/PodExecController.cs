@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Net.WebSockets;
 using System.Threading.Tasks;
 
 namespace k8s.Tests.Mock.Server.Controllers

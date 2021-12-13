@@ -1,5 +1,4 @@
 using k8s.Models;
-using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 
 namespace k8s
@@ -16,8 +15,8 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<NodeMetricsList> GetKubernetesNodesMetricsAsync(this IKubernetes kubernetes)
         {
-            var customObject = (JObject)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "nodes", string.Empty).ConfigureAwait(false);
-            return customObject.ToObject<NodeMetricsList>();
+            var customObject = (JsonElement)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "nodes", string.Empty).ConfigureAwait(false);
+            return customObject.Deserialize<NodeMetricsList>();
         }
 
         /// <summary>
@@ -27,8 +26,8 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<PodMetricsList> GetKubernetesPodsMetricsAsync(this IKubernetes kubernetes)
         {
-            var customObject = (JObject)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "pods", string.Empty).ConfigureAwait(false);
-            return customObject.ToObject<PodMetricsList>();
+            var customObject = (JsonElement)await kubernetes.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "pods", string.Empty).ConfigureAwait(false);
+            return customObject.Deserialize<PodMetricsList>();
         }
 
         /// <summary>
@@ -39,8 +38,8 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<PodMetricsList> GetKubernetesPodsMetricsByNamespaceAsync(this IKubernetes kubernetes, string namespaceParameter)
         {
-            var customObject = (JObject)await kubernetes.GetNamespacedCustomObjectAsync("metrics.k8s.io", "v1beta1", namespaceParameter, "pods", string.Empty).ConfigureAwait(false);
-            return customObject.ToObject<PodMetricsList>();
+            var customObject = (JsonElement)await kubernetes.GetNamespacedCustomObjectAsync("metrics.k8s.io", "v1beta1", namespaceParameter, "pods", string.Empty).ConfigureAwait(false);
+            return customObject.Deserialize<PodMetricsList>();
         }
     }
 }

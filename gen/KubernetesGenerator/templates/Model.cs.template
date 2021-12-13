@@ -6,12 +6,6 @@
 
 namespace k8s.Models
 {
-    using Microsoft.Rest;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.Linq;
-
     /// <summary>
     /// {{ToXmlDoc def.description}}
     /// </summary>
@@ -59,7 +53,7 @@ namespace k8s.Models
         /// <summary>
         /// {{ToXmlDoc description}}
         /// </summary>
-        [JsonProperty(PropertyName = "{{name}}")]
+        [JsonPropertyName("{{name}}")]
         public {{GetDotNetType .}} {{GetDotNetName name "field"}} { get; set; }
         {{/properties}}
 
@@ -76,7 +70,7 @@ namespace k8s.Models
             {{#isRequired}}
             if ({{GetDotNetName name "field"}} == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "{{GetDotNetName name "field"}}");    
+                throw new ArgumentNullException("{{GetDotNetName name "field"}}");    
             }
             {{/isRequired}}
             {{/IfType . "object"}}

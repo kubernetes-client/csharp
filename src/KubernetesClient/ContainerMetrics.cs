@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
 namespace k8s.Models
 {
     /// <summary>
@@ -11,13 +8,13 @@ namespace k8s.Models
         /// <summary>
         /// Defines container name corresponding to the one from pod.spec.containers.
         /// </summary>
-        [JsonProperty(PropertyName = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// The resource usage.
         /// </summary>
-        [JsonProperty(PropertyName = "usage")]
+        [JsonPropertyName("usage")]
         public IDictionary<string, ResourceQuantity> Usage { get; set; }
     }
 }

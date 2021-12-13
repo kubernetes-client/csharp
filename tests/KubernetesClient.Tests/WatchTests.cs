@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -12,8 +10,6 @@ using System.Threading.Tasks;
 using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Nito.AsyncEx;
 using Xunit;
 using Xunit.Abstractions;
@@ -38,10 +34,8 @@ namespace k8s.Tests
 
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
         {
-            var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockKubeApiServer.MockPodResponse);
-            return JsonConvert.SerializeObject(
-                new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First() },
-                new StringEnumConverter());
+            var corev1PodList = KubernetesJson.Deserialize<V1PodList>(MockKubeApiServer.MockPodResponse);
+            return KubernetesJson.Serialize(new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First()});
         }
 
         private static async Task WriteStreamLine(HttpContext httpContext, string reponseLine)

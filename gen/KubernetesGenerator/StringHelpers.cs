@@ -109,7 +109,7 @@ namespace KubernetesGenerator
 
             if (name == "pretty")
             {
-                context.Write($"{name}.Value == true ? \"true\" : \"false\"");
+                context.Write($"{name}.Value ? \"true\" : \"false\"");
                 return;
             }
 
@@ -118,10 +118,14 @@ namespace KubernetesGenerator
                 case JsonObjectType.String:
                     context.Write($"System.Uri.EscapeDataString({name})");
                     break;
-                default:
-                    context.Write(
-                        $"System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject({name}, SerializationSettings).Trim('\"'))");
+                case JsonObjectType.Boolean:
+                    context.Write($"{name}.Value ? \"true\" : \"false\"");
                     break;
+                case JsonObjectType.Integer:
+                    context.Write($"{name}.Value");
+                    break;
+                default:
+                    throw new ArgumentException("type not supportted");
             }
         }
     }

@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
-using Microsoft.Rest.Serialization;
 
 namespace k8s
 {
@@ -120,8 +116,10 @@ namespace k8s
 
         public class WatchEvent
         {
+            [JsonPropertyName("type")]
             public WatchEventType Type { get; set; }
 
+            [JsonPropertyName("object")]
             public T Object { get; set; }
         }
 
@@ -189,17 +187,17 @@ namespace k8s
 
                 try
                 {
-                    var genericEvent = SafeJsonConvert.DeserializeObject<Watcher<KubernetesObject>.WatchEvent>(line);
+                    var genericEvent = KubernetesJson.Deserialize<Watcher<KubernetesObject>.WatchEvent>(line);
 
                     if (genericEvent.Object.Kind == "Status")
                     {
-                        var statusEvent = SafeJsonConvert.DeserializeObject<Watcher<V1Status>.WatchEvent>(line);
+                        var statusEvent = KubernetesJson.Deserialize<Watcher<V1Status>.WatchEvent>(line);
                         var exception = new KubernetesException(statusEvent.Object);
                         onError?.Invoke(exception);
                     }
                     else
                     {
-                        @event = SafeJsonConvert.DeserializeObject<WatchEvent>(line);
+                        @event = KubernetesJson.Deserialize<WatchEvent>(line);
                     }
                 }
                 catch (Exception e)

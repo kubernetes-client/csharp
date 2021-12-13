@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using k8s.Authentication;
 using k8s.Exceptions;

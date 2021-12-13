@@ -4,8 +4,6 @@ using System.Net;
 using System.Threading.Tasks;
 using k8s.Models;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Nito.AsyncEx;
 
 namespace k8s.Tests.Util
@@ -84,10 +82,8 @@ namespace k8s.Tests.Util
 
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
         {
-            var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockPodResponse);
-            return JsonConvert.SerializeObject(
-                new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First() },
-                new StringEnumConverter());
+            var corev1PodList = KubernetesJson.Deserialize<V1PodList>(MockPodResponse);
+            return KubernetesJson.Serialize(new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First() });
         }
 
         private async Task WriteStreamLine(HttpContext httpContext, string reponseLine)
@@ -157,8 +153,8 @@ namespace k8s.Tests.Util
                         await WriteStreamLine(httpContext, MockPodResponse).ConfigureAwait(false);
                         break;
                     case MockKubeServerFlags.GetPod:
-                        var corev1PodList = JsonConvert.DeserializeObject<V1PodList>(MockPodResponse);
-                        await WriteStreamLine(httpContext, JsonConvert.SerializeObject(corev1PodList.Items.First())).ConfigureAwait(false);
+                        var corev1PodList = KubernetesJson.Deserialize<V1PodList>(MockPodResponse);
+                        await WriteStreamLine(httpContext, KubernetesJson.Serialize(corev1PodList.Items.First())).ConfigureAwait(false);
                         break;
                     case MockKubeServerFlags.Throw500:
                         return false;

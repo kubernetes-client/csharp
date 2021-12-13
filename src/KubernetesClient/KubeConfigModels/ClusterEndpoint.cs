@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using YamlDotNet.Serialization;
 
 namespace k8s.KubeConfigModels

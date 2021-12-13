@@ -1,4 +1,3 @@
-using System;
 using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 

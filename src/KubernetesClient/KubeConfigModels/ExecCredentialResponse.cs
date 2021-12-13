@@ -1,15 +1,12 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace k8s.KubeConfigModels
 {
     public class ExecCredentialResponse
     {
-        [JsonProperty("apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
-        [JsonProperty("kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public IDictionary<string, string> Status { get; set; }
     }
 }

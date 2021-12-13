@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Rest;
-using Newtonsoft.Json;
 
 namespace k8s.Models
 {
@@ -24,10 +21,10 @@ namespace k8s.Models
         /// values. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         /// </summary>
-        [JsonProperty(PropertyName = "apiVersion")]
+        [JsonPropertyName("apiVersion")]
         public string ApiVersion { get; set; }
 
-        [JsonProperty(PropertyName = "items")]
+        [JsonPropertyName("items")]
         public IList<T> Items { get; set; }
 
         /// <summary>
@@ -37,13 +34,13 @@ namespace k8s.Models
         /// More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
-        [JsonProperty(PropertyName = "kind")]
+        [JsonPropertyName("kind")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets standard object's metadata.
         /// </summary>
-        [JsonProperty(PropertyName = "metadata")]
+        [JsonPropertyName("metadata")]
         public V1ListMeta Metadata { get; set; }
 
         /// <summary>
@@ -56,7 +53,7 @@ namespace k8s.Models
         {
             if (Items == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Items");
+                throw new ArgumentNullException("Items");
             }
 
             if (Items != null)

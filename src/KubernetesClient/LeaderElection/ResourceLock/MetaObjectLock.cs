@@ -1,9 +1,8 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
 using Microsoft.Rest;
-using Newtonsoft.Json;
+
 
 namespace k8s.LeaderElection.ResourceLock
 {

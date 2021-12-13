@@ -1,6 +1,3 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
@@ -10,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using k8s.Exceptions;
-using k8s.Models;
 using Microsoft.Rest;
 
 namespace k8s
@@ -139,8 +135,6 @@ namespace k8s
 
         private void CustomInitialize()
         {
-            DeserializationSettings.Converters.Add(new V1Status.V1StatusObjectViewConverter());
-            SerializationSettings.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
         }
 
         /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>

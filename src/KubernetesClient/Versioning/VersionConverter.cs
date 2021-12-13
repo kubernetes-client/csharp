@@ -1,13 +1,8 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using AutoMapper;
 using k8s.Models;
-using Newtonsoft.Json;
 
 namespace k8s.Versioning
 {

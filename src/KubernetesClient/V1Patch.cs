@@ -1,6 +1,3 @@
-using System;
-using Newtonsoft.Json;
-
 namespace k8s.Models
 {
     [JsonConverter(typeof(V1PatchJsonConverter))]

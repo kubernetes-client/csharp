@@ -1,4 +1,3 @@
-using k8s.Models;
 using Xunit;
 using FluentAssertions;
 using k8s.Versioning;
