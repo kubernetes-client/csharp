@@ -112,7 +112,19 @@ namespace k8s.E2E
                             },
                         },
                         namespaceParameter);
+/* Unmerged change from project 'E2E.Tests(net5)'
+Before:
+                    {
+After:
+                    {
+*/
 
+/* Unmerged change from project 'E2E.Tests(net6)'
+Before:
+                    {
+After:
+                    {
+*/
 
                     {
                         var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);

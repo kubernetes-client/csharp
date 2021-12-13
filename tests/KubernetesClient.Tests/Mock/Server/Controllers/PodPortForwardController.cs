@@ -46,6 +46,8 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// <param name="ports">
         ///     The port(s) to forward to the pod.
         /// </param>
+        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
         [Route("namespaces/{kubeNamespace}/pods/{podName}/portforward")]
         public async Task<IActionResult> Exec(string kubeNamespace, string podName, IEnumerable<string> ports)
         {

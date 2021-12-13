@@ -43,6 +43,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Verify that the client can request execution of a command in a pod's default container, with only the STDOUT stream enabled.
         /// </summary>
+        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
+        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
         [Fact(DisplayName = "Can exec in pod's default container, STDOUT only")]
         public async Task ExecDefaultContainerStdOut()
         {

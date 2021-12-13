@@ -35,7 +35,7 @@ namespace k8s.Tests
         private static string BuildWatchEventStreamLine(WatchEventType eventType)
         {
             var corev1PodList = KubernetesJson.Deserialize<V1PodList>(MockKubeApiServer.MockPodResponse);
-            return KubernetesJson.Serialize(new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First()});
+            return KubernetesJson.Serialize(new Watcher<V1Pod>.WatchEvent { Type = eventType, Object = corev1PodList.Items.First() });
         }
 
         private static async Task WriteStreamLine(HttpContext httpContext, string reponseLine)
