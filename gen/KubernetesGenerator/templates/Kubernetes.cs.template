@@ -70,15 +70,12 @@ namespace k8s
             }
             // Create HTTP transport
             var _httpRequest = CreateRequest(_url, HttpMethod.{{Method}}, customHeaders);
-
             {{#IfParamContains operation "body"}}
             var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
             {{/IfParamContains operation "body"}}
             {{#IfParamDoesNotContain operation "body"}}
             var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
             {{/IfParamDoesNotContain operation "body"}}
-
-
             // Create Result
             {{#IfReturnType operation "void"}}
             HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
@@ -101,9 +98,7 @@ namespace k8s
                                 Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             {{/IfReturnType operation "stream"}}
             return _result;
-
         }
-
         {{/.}}
     }
 }
