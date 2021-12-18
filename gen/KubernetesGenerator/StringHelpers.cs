@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Text.RegularExpressions;
 using NJsonSchema;
 using Nustache.Core;
 
@@ -20,8 +21,8 @@ namespace KubernetesGenerator
         public void RegisterHelper()
         {
             Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
-            Helpers.Register(nameof(AddCurly), AddCurly);
-            Helpers.Register(nameof(EscapeDataString), EscapeDataString);
+            Helpers.Register(nameof(ToInterpolationPathString), ToInterpolationPathString);
+            Helpers.Register(nameof(IfGroupPathParamContainsGroup), IfGroupPathParamContainsGroup);
         }
 
         private void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
@@ -90,42 +91,23 @@ namespace KubernetesGenerator
             }
         }
 
-        public void AddCurly(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
+        public void ToInterpolationPathString(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var s = arguments?.FirstOrDefault() as string;
-            if (s != null)
+            var p = arguments?.FirstOrDefault() as string;
+            if (p != null)
             {
-                context.Write("{" + s + "}");
+                context.Write(Regex.Replace(p, "{(.+?)}", (m) => "{" + generalNameHelper.GetDotNetName(m.Groups[1].Value) + "}"));
             }
         }
 
-        public void EscapeDataString(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
+        public void IfGroupPathParamContainsGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
             RenderBlock fn, RenderBlock inverse)
         {
-            var name = generalNameHelper.GetDotNetName(arguments[0] as string);
-            var type = arguments[1] as JsonObjectType?;
-
-            if (name == "pretty")
+            var p = arguments?.FirstOrDefault() as string;
+            if (p?.StartsWith("apis/{group}") == true)
             {
-                context.Write($"{name}.Value ? \"true\" : \"false\"");
-                return;
-            }
-
-            switch (type)
-            {
-                case JsonObjectType.String:
-                    context.Write($"System.Uri.EscapeDataString({name})");
-                    break;
-                case JsonObjectType.Boolean:
-                    context.Write($"{name}.Value ? \"true\" : \"false\"");
-                    break;
-                case JsonObjectType.Integer:
-                    context.Write($"{name}.Value");
-                    break;
-                default:
-                    throw new ArgumentException("type not supportted");
+                fn(null);
             }
         }
     }
