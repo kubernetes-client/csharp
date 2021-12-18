@@ -262,7 +262,7 @@ namespace k8s
 
         private class QueryBuilder
         {
-            private List<string> parameters = new ();
+            private List<string> parameters = new();
 
             public void Append(string key, params object[] values)
             {

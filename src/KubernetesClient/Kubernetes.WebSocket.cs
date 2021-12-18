@@ -141,7 +141,7 @@ namespace k8s
                 throw new ArgumentNullException(nameof(ports));
             }
 
-          
+
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri);
             uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
@@ -210,7 +210,22 @@ namespace k8s
                 cancellationToken);
         }
 
+
+/* Unmerged change from project 'KubernetesClient(net5)'
+Before:
         protected async Task<WebSocket> StreamConnectAsync(Uri uri, 
+After:
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri,
+*/
+
+/* Unmerged change from project 'KubernetesClient(net6)'
+Before:
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, 
+After:
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri,
+*/
+        protected async Task<WebSocket> StreamConnectAsync(
+            Uri uri,
             string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default)
         {
