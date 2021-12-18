@@ -70,8 +70,6 @@ namespace KubernetesWatchGenerator
             builder.RegisterType<ModelExtGenerator>();
             builder.RegisterType<ModelGenerator>();
             builder.RegisterType<ApiGenerator>();
-            builder.RegisterType<WatchGenerator>();
-            builder.RegisterType<VersionConverterGenerator>();
 
             var container = builder.Build();
 
@@ -79,11 +77,6 @@ namespace KubernetesWatchGenerator
             {
                 helper.RegisterHelper();
             }
-
-            //if (options.GenerateWatch)
-            //{
-            //    container.Resolve<WatchGenerator>().Generate(swaggerUnprocessed, outputDirectory);
-            //}
 
             if (options.GenerateApi)
             {
@@ -99,11 +92,6 @@ namespace KubernetesWatchGenerator
             {
                 container.Resolve<ModelExtGenerator>().Generate(swaggerUnprocessed, outputDirectory);
             }
-
-            if (options.GenerateVersionConverter)
-            {
-                container.Resolve<VersionConverterGenerator>().GenerateFromModels(outputDirectory);
-            }
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1812", Justification = "Instanced in CommandLineParser")]
@@ -111,9 +99,6 @@ namespace KubernetesWatchGenerator
         {
             [Value(0, Required = true, HelpText = "path to src/KubernetesClient/generated")]
             public string OutputPath { get; set; }
-
-            //[Option("watch", Required = false, Default = true)]
-            //public bool GenerateWatch { get; set; }
 
             [Option("api", Required = false, Default = true)]
             public bool GenerateApi { get; set; }
@@ -123,9 +108,6 @@ namespace KubernetesWatchGenerator
 
             [Option("modelext", Required = false, Default = true)]
             public bool GenerateModelExt { get; set; }
-
-            [Option("versionconverter", Required = false, Default = false)]
-            public bool GenerateVersionConverter { get; set; }
         }
     }
 }
