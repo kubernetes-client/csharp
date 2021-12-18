@@ -210,24 +210,7 @@ namespace k8s
                 cancellationToken);
         }
 
-
-/* Unmerged change from project 'KubernetesClient(net5)'
-Before:
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, 
-After:
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri,
-*/
-
-/* Unmerged change from project 'KubernetesClient(net6)'
-Before:
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, 
-After:
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri,
-*/
-        protected async Task<WebSocket> StreamConnectAsync(
-            Uri uri,
-            string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default)
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default)
         {
             if (uri == null)
             {
@@ -344,7 +327,7 @@ After:
                     throw ex;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
