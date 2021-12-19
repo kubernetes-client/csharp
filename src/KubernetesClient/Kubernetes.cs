@@ -9,10 +9,20 @@ namespace k8s
 {
     public partial class Kubernetes
     {
+        private Uri baseuri;
+
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public Uri BaseUri { get; set; }
+        public Uri BaseUri
+        {
+            get => baseuri;
+            set
+            {
+                var baseUrl = value?.AbsoluteUri ?? throw new ArgumentNullException(nameof(BaseUri));
+                baseuri = new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/"));
+            }
+        }
 
         /// <summary>
         /// Subscription credentials which uniquely identify client subscription.
@@ -132,6 +142,7 @@ namespace k8s
         /// <exception cref="ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
+        [Obsolete]
         public Kubernetes(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient)
             : this(httpClient, disposeHttpClient)
         {
@@ -247,6 +258,43 @@ namespace k8s
             }
 
             return result;
+        }
+
+        private class QueryBuilder
+        {
+            private List<string> parameters = new List<string>();
+
+            public void Append(string key, params object[] values)
+            {
+                foreach (var value in values)
+                {
+                    switch (value)
+                    {
+                        case int intval:
+                            parameters.Add($"{key}={intval}");
+                            break;
+                        case string strval:
+                            parameters.Add($"{key}={Uri.EscapeDataString(strval)}");
+                            break;
+                        case bool boolval:
+                            parameters.Add($"{key}={(boolval ? "true" : "false")}");
+                            break;
+                        default:
+                            // null
+                            break;
+                    }
+                }
+            }
+
+            public override string ToString()
+            {
+                if (parameters.Count > 0)
+                {
+                    return "?" + string.Join("&", parameters);
+                }
+
+                return "";
+            }
         }
 
         private HttpRequestMessage CreateRequest(string url, HttpMethod method, IDictionary<string, IList<string>> customHeaders)

@@ -83,27 +83,6 @@ namespace k8s
                 }
             }
 
-            // Tracing
-            var shouldTrace = ServiceClientTracing.IsEnabled;
-            string invocationId = null;
-            if (shouldTrace)
-            {
-                invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                var tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("command", command);
-                tracingParameters.Add("container", container);
-                tracingParameters.Add("name", name);
-                tracingParameters.Add("namespace", @namespace);
-                tracingParameters.Add("stderr", stderr);
-                tracingParameters.Add("stdin", stdin);
-                tracingParameters.Add("stdout", stdout);
-                tracingParameters.Add("tty", tty);
-                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, nameof(WebSocketNamespacedPodExecAsync),
-                    tracingParameters);
-            }
-
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri);
             uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
@@ -137,7 +116,7 @@ namespace k8s
             uriBuilder.Query =
                 query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return StreamConnectAsync(uriBuilder.Uri, invocationId, webSocketSubProtol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtol, customHeaders,
                 cancellationToken);
         }
 
@@ -162,21 +141,6 @@ namespace k8s
                 throw new ArgumentNullException(nameof(ports));
             }
 
-            // Tracing
-            var shouldTrace = ServiceClientTracing.IsEnabled;
-            string invocationId = null;
-            if (shouldTrace)
-            {
-                invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                var tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("name", name);
-                tracingParameters.Add("@namespace", @namespace);
-                tracingParameters.Add("ports", ports);
-                tracingParameters.Add("webSocketSubProtocol", webSocketSubProtocol);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, nameof(WebSocketNamespacedPodPortForwardAsync),
-                    tracingParameters);
-            }
 
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri);
@@ -202,7 +166,7 @@ namespace k8s
 
             uriBuilder.Query = q.ToString();
 
-            return StreamConnectAsync(uriBuilder.Uri, invocationId, webSocketSubProtocol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtocol, customHeaders,
                 cancellationToken);
         }
 
@@ -220,26 +184,6 @@ namespace k8s
             if (@namespace == null)
             {
                 throw new ArgumentNullException(nameof(@namespace));
-            }
-
-            // Tracing
-            var shouldTrace = ServiceClientTracing.IsEnabled;
-            string invocationId = null;
-            if (shouldTrace)
-            {
-                invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                var tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("container", container);
-                tracingParameters.Add("name", name);
-                tracingParameters.Add("namespace", @namespace);
-                tracingParameters.Add("stderr", stderr);
-                tracingParameters.Add("stdin", stdin);
-                tracingParameters.Add("stdout", stdout);
-                tracingParameters.Add("tty", tty);
-                tracingParameters.Add("webSocketSubProtol", webSocketSubProtol);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, nameof(WebSocketNamespacedPodAttachAsync),
-                    tracingParameters);
             }
 
             // Construct URL
@@ -262,20 +206,16 @@ namespace k8s
             uriBuilder.Query =
                 query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return StreamConnectAsync(uriBuilder.Uri, invocationId, webSocketSubProtol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtol, customHeaders,
                 cancellationToken);
         }
 
-        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string invocationId = null,
-            string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
-            CancellationToken cancellationToken = default)
+        protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default)
         {
             if (uri == null)
             {
                 throw new ArgumentNullException(nameof(uri));
             }
-
-            var shouldTrace = ServiceClientTracing.IsEnabled;
 
             // Create WebSocket transport objects
             var webSocketBuilder = CreateWebSocketBuilder();
@@ -387,21 +327,9 @@ namespace k8s
                     throw ex;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                if (shouldTrace)
-                {
-                    ServiceClientTracing.Error(invocationId, ex);
-                }
-
                 throw;
-            }
-            finally
-            {
-                if (shouldTrace)
-                {
-                    ServiceClientTracing.Exit(invocationId, null);
-                }
             }
 
             return webSocket;

@@ -46,42 +46,33 @@ namespace k8s
             {{/operation.parameters}}
 
             // Construct URL
-            var _baseUrl = BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{{path}}").ToString();
-            {{#operation.parameters}}
-            {{#IfKindIs . "path"}}
-            _url = _url.Replace("{{AddCurly name}}", {{GetDotNetName name}});
-            {{/IfKindIs . "path"}}
-            {{/operation.parameters}}
-            _url = _url.Replace("/apis//", "/api/");
-            List<string> _queryParameters = new List<string>();
+            var url = new System.Uri(BaseUri, $"{{ToInterpolationPathString path}}").ToString();
+            {{#IfGroupPathParamContainsGroup path}}
+            url = url.Replace("/apis//", "/api/");
+            {{/IfGroupPathParamContainsGroup}}
+            var q = new QueryBuilder();
             {{#operation.parameters}}
             {{#IfKindIs . "query"}}
-            if ({{GetDotNetName name}} != null)
-            {
-                _queryParameters.Add(string.Format("{{name}}={0}", {{EscapeDataString name type}}));
-            }
+            q.Append("{{name}}", {{GetDotNetName name}});
             {{/IfKindIs . "query"}}
             {{/operation.parameters}}
-            if (_queryParameters.Count > 0)
-            {
-                _url += "?" + string.Join("&", _queryParameters);
-            }
+            url += q.ToString();
+
             // Create HTTP transport
-            var _httpRequest = CreateRequest(_url, HttpMethod.{{Method}}, customHeaders);
+            var httpRequest = CreateRequest(url, HttpMethod.{{Method}}, customHeaders);
             {{#IfParamContains operation "body"}}
-            var _httpResponse = await SendRequest(body, _httpRequest, cancellationToken);
+            var httpResponse = await SendRequest(body, httpRequest, cancellationToken);
             {{/IfParamContains operation "body"}}
             {{#IfParamDoesNotContain operation "body"}}
-            var _httpResponse = await SendRequestRaw("", _httpRequest, cancellationToken);
+            var httpResponse = await SendRequestRaw("", httpRequest, cancellationToken);
             {{/IfParamDoesNotContain operation "body"}}
             // Create Result
             {{#IfReturnType operation "void"}}
-            HttpOperationResponse _result = new HttpOperationResponse() { Request = _httpRequest, Response =  _httpResponse };
+            HttpOperationResponse result = new HttpOperationResponse() { Request = httpRequest, Response =  httpResponse };
             {{/IfReturnType operation "void"}}
             {{#IfReturnType operation "obj"}}
-            var _result = await CreateResultAsync{{GetReturnType operation "<>"}}(_httpRequest,
-                _httpResponse,
+            var result = await CreateResultAsync{{GetReturnType operation "<>"}}(httpRequest,
+                httpResponse,
                 {{#IfParamContains operation "watch"}}
                 watch,
                 {{/IfParamContains operation "watch"}}
@@ -91,12 +82,12 @@ namespace k8s
                 cancellationToken);
             {{/IfReturnType operation "obj"}}
             {{#IfReturnType operation "stream"}}
-            var _result = new HttpOperationResponse{{GetReturnType operation "<>"}}() {
-                                Request = _httpRequest,
-                                Response = _httpResponse,
-                                Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
+            var result = new HttpOperationResponse{{GetReturnType operation "<>"}}() {
+                                Request = httpRequest,
+                                Response = httpResponse,
+                                Body = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
             {{/IfReturnType operation "stream"}}
-            return _result;
+            return result;
         }
         {{/.}}
     }
