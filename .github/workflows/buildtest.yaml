@@ -23,10 +23,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'          
-      - name: Check Format
-        # don't check formatting on Windows b/c of CRLF issues.
-        if: matrix.os == 'ubuntu-latest'
-        run: dotnet format --severity error --verify-no-changes --exclude ./src/KubernetesClient/generated/
+      # - name: Check Format
+      #   # don't check formatting on Windows b/c of CRLF issues.
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: dotnet format --severity error --verify-no-changes --exclude ./src/KubernetesClient/generated/
       - name: Build
         run: dotnet build --configuration Release
       - name: Test
