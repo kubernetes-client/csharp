@@ -5,7 +5,7 @@ using NJsonSchema;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class PluralHelper : INustacheHelper
     {
@@ -48,7 +48,12 @@ namespace KubernetesGenerator
         public string GetPlural(JsonSchema definition)
         {
             var className = classNameHelper.GetClassNameForSchemaDefinition(definition);
-            return _classNameToPluralMap.GetValueOrDefault(className, null);
+            if (_classNameToPluralMap.TryGetValue(className, out var plural))
+            {
+                return plural;
+            }
+
+            return null;
         }
 
         private Dictionary<string, string> InitClassNameToPluralMap(OpenApiDocument swagger)
@@ -58,7 +63,7 @@ namespace KubernetesGenerator
                 .Where(x => !opblackList.Contains(x.Operation.OperationId))
                 .Select(x => new
                 {
-                    PluralName = x.Path.Split("/").Last(),
+                    PluralName = x.Path.Split('/').Last(),
                     ClassName = classNameHelper.GetClassNameForSchemaDefinition(x.Operation.Responses["200"]
                         .ActualResponse.Schema.ActualSchema),
                 })

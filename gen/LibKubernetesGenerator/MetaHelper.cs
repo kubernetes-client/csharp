@@ -4,7 +4,7 @@ using NJsonSchema;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class MetaHelper : INustacheHelper
     {

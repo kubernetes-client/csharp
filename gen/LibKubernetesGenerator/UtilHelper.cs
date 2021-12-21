@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class UtilHelper : INustacheHelper
     {

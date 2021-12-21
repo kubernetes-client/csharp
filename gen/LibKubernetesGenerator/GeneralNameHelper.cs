@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using CaseExtensions;
 using NJsonSchema;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class GeneralNameHelper : INustacheHelper
     {
@@ -196,7 +197,7 @@ namespace KubernetesGenerator
 
                 default:
                     // This tries to remove the version from the method name, e.g. watchCoreV1NamespacedPod => WatchNamespacedPod
-                    methodName = methodName.Replace(tag, string.Empty, StringComparison.OrdinalIgnoreCase);
+                    methodName = Regex.Replace(methodName, tag, string.Empty, RegexOptions.IgnoreCase);
                     methodName += "Async";
                     break;
             }

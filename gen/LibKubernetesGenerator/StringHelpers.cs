@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using NJsonSchema;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class StringHelpers : INustacheHelper
     {

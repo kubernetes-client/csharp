@@ -1,8 +1,9 @@
 using System.IO;
+using Microsoft.CodeAnalysis;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class ModelGenerator
     {
@@ -13,17 +14,16 @@ namespace KubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swagger, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
         {
-            Directory.CreateDirectory(Path.Combine(outputDirectory, "Models"));
-
-            foreach (var (_, def) in swagger.Definitions)
+            foreach (var kv in swagger.Definitions)
             {
+                var def = kv.Value;
                 var clz = classNameHelper.GetClassNameForSchemaDefinition(def);
-                Render.FileToFile(
-                    Path.Combine("templates", "Model.cs.template"),
+                context.RenderToContext(
+                    "Model.cs.template",
                     new { clz, def, properties = def.Properties.Values },
-                    Path.Combine(outputDirectory, "Models", $"{clz}.cs"));
+                    $"Models_{clz}.g.cs");
             }
         }
     }

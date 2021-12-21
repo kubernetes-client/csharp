@@ -1,4 +1,4 @@
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     public interface INustacheHelper
     {

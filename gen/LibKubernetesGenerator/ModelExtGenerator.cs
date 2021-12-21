@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.CodeAnalysis;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class ModelExtGenerator
     {
@@ -15,7 +17,7 @@ namespace KubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swagger, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
         {
             // Generate the interface declarations
             var skippedTypes = new HashSet<string> { "V1WatchEvent" };
@@ -26,8 +28,7 @@ namespace KubernetesGenerator
                          && d.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
                          && !skippedTypes.Contains(classNameHelper.GetClassName(d)));
 
-            Render.FileToFile(Path.Combine("templates", "ModelExtensions.cs.template"), definitions,
-                Path.Combine(outputDirectory, "ModelExtensions.cs"));
+            context.RenderToContext("ModelExtensions.cs.template", definitions, "ModelExtensions.g.cs");
         }
     }
 }

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.CodeAnalysis;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class ApiGenerator
     {
-        public void Generate(OpenApiDocument swagger, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
         {
             var data = swagger.Operations
                 .Where(o => o.Method != OpenApiOperationMethod.Options)
@@ -55,12 +56,9 @@ namespace KubernetesGenerator
                 })
                 .ToArray();
 
-            Render.FileToFile(Path.Combine("templates", "IKubernetes.cs.template"), data,
-                Path.Combine(outputDirectory, "IKubernetes.cs"));
-            Render.FileToFile(Path.Combine("templates", "Kubernetes.cs.template"), data,
-                Path.Combine(outputDirectory, "Kubernetes.cs"));
-            Render.FileToFile(Path.Combine("templates", "KubernetesExtensions.cs.template"), data,
-                Path.Combine(outputDirectory, "KubernetesExtensions.cs"));
+            context.RenderToContext("IKubernetes.cs.template", data, "IKubernetes.g.cs");
+            context.RenderToContext("Kubernetes.cs.template", data, "Kubernetes.g.cs");
+            context.RenderToContext("KubernetesExtensions.cs.template", data, "KubernetesExtensions.g.cs");
         }
     }
 }

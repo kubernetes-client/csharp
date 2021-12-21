@@ -5,7 +5,7 @@ using NJsonSchema;
 using NSwag;
 using Nustache.Core;
 
-namespace KubernetesGenerator
+namespace LibKubernetesGenerator
 {
     internal class ClassNameHelper : INustacheHelper
     {
@@ -31,8 +31,10 @@ namespace KubernetesGenerator
         private Dictionary<string, string> InitClassNameMap(OpenApiDocument doc)
         {
             var map = new Dictionary<string, string>();
-            foreach (var (k, v) in doc.Definitions)
+            foreach (var kv in doc.Definitions)
             {
+                var k = kv.Key;
+                var v = kv.Value;
                 if (v.ExtensionData?.TryGetValue("x-kubernetes-group-version-kind", out _) == true)
                 {
                     var groupVersionKindElements = (object[])v.ExtensionData["x-kubernetes-group-version-kind"];
