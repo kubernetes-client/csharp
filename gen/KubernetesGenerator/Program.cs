@@ -3,10 +3,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Autofac;
 using CommandLine;
-using KubernetesGenerator;
 using NSwag;
 
-namespace KubernetesWatchGenerator
+namespace KubernetesGenerator
 {
     internal class Program
     {
@@ -20,18 +19,13 @@ namespace KubernetesWatchGenerator
         {
             var outputDirectory = options.OutputPath;
 
-            var swaggerCooked = await OpenApiDocument.FromFileAsync(Path.Combine(outputDirectory, "swagger.json"))
+            var swagger = await OpenApiDocument.FromFileAsync(Path.Combine(outputDirectory, "swagger.json"))
                 .ConfigureAwait(false);
-            var swaggerUnprocessed = await OpenApiDocument
-                .FromFileAsync(Path.Combine(outputDirectory, "swagger.json.unprocessed"))
-                .ConfigureAwait(false);
-
 
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ClassNameHelper>()
-                .WithParameter(new NamedParameter(nameof(swaggerCooked), swaggerCooked))
-                .WithParameter(new NamedParameter(nameof(swaggerUnprocessed), swaggerUnprocessed))
+                .WithParameter(new NamedParameter(nameof(swagger), swagger))
                 .AsSelf()
                 .AsImplementedInterfaces()
                 ;
@@ -45,7 +39,7 @@ namespace KubernetesWatchGenerator
                 ;
 
             builder.RegisterType<PluralHelper>()
-                .WithParameter(new TypedParameter(typeof(OpenApiDocument), swaggerUnprocessed))
+                .WithParameter(new TypedParameter(typeof(OpenApiDocument), swagger))
                 .AsImplementedInterfaces()
                 ;
 
@@ -80,17 +74,17 @@ namespace KubernetesWatchGenerator
 
             if (options.GenerateApi)
             {
-                container.Resolve<ApiGenerator>().Generate(swaggerCooked, outputDirectory);
+                container.Resolve<ApiGenerator>().Generate(swagger, outputDirectory);
             }
 
             if (options.GenerateModel)
             {
-                container.Resolve<ModelGenerator>().Generate(swaggerCooked, outputDirectory);
+                container.Resolve<ModelGenerator>().Generate(swagger, outputDirectory);
             }
 
             if (options.GenerateModelExt)
             {
-                container.Resolve<ModelExtGenerator>().Generate(swaggerUnprocessed, outputDirectory);
+                container.Resolve<ModelExtGenerator>().Generate(swagger, outputDirectory);
             }
         }
 

@@ -13,11 +13,11 @@ namespace KubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swaggercooked, string outputDirectory)
+        public void Generate(OpenApiDocument swagger, string outputDirectory)
         {
             Directory.CreateDirectory(Path.Combine(outputDirectory, "Models"));
 
-            foreach (var (_, def) in swaggercooked.Definitions)
+            foreach (var (_, def) in swagger.Definitions)
             {
                 var clz = classNameHelper.GetClassNameForSchemaDefinition(def);
                 Render.FileToFile(

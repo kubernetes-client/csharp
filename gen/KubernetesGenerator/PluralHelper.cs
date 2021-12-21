@@ -11,6 +11,11 @@ namespace KubernetesGenerator
     {
         private readonly Dictionary<string, string> _classNameToPluralMap;
         private readonly ClassNameHelper classNameHelper;
+        private HashSet<string> opblackList = new HashSet<string>()
+        {
+            "listClusterCustomObject",
+            "listNamespacedCustomObject",
+        };
 
         public PluralHelper(ClassNameHelper classNameHelper, OpenApiDocument swagger)
         {
@@ -50,6 +55,7 @@ namespace KubernetesGenerator
         {
             var classNameToPluralMap = swagger.Operations
                 .Where(x => x.Operation.OperationId.StartsWith("list", StringComparison.InvariantCulture))
+                .Where(x => !opblackList.Contains(x.Operation.OperationId))
                 .Select(x => new
                 {
                     PluralName = x.Path.Split("/").Last(),

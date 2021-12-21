@@ -10,17 +10,12 @@ namespace KubernetesGenerator
     internal class ClassNameHelper : INustacheHelper
     {
         private readonly Dictionary<string, string> classNameMap;
-        private readonly HashSet<string> schemaDefinitionsInMultipleGroups;
         private readonly Dictionary<JsonSchema, string> schemaToNameMapCooked;
-        private readonly Dictionary<JsonSchema, string> schemaToNameMapUnprocessed;
 
-        public ClassNameHelper(OpenApiDocument swaggerCooked, OpenApiDocument swaggerUnprocessed)
+        public ClassNameHelper(OpenApiDocument swagger)
         {
-            classNameMap = InitClassNameMap(swaggerCooked);
-
-            schemaToNameMapCooked = GenerateSchemaToNameMapCooked(swaggerCooked);
-            schemaToNameMapUnprocessed = GenerateSchemaToNameMapUnprocessed(swaggerUnprocessed);
-            schemaDefinitionsInMultipleGroups = InitSchemaDefinitionsInMultipleGroups(schemaToNameMapUnprocessed);
+            classNameMap = InitClassNameMap(swagger);
+            schemaToNameMapCooked = GenerateSchemaToNameMapCooked(swagger);
         }
 
         public void RegisterHelper()
@@ -28,36 +23,9 @@ namespace KubernetesGenerator
             Helpers.Register(nameof(GetClassName), GetClassName);
         }
 
-        private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapUnprocessed(
-            OpenApiDocument swaggerUnprocessed)
+        private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapCooked(OpenApiDocument swagger)
         {
-            return swaggerUnprocessed.Definitions.ToDictionary(x => x.Value, x => x.Key);
-        }
-
-        private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapCooked(OpenApiDocument swaggerCooked)
-        {
-            return swaggerCooked.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
-        }
-
-        private static HashSet<string> InitSchemaDefinitionsInMultipleGroups(
-            Dictionary<JsonSchema, string> schemaToNameMap)
-        {
-            return schemaToNameMap.Values.Select(x =>
-                {
-                    var parts = x.Split(".");
-                    return new
-                    {
-                        FullName = x,
-                        Name = parts[parts.Length - 1],
-                        Version = parts[parts.Length - 2],
-                        Group = parts[parts.Length - 3],
-                    };
-                })
-                .GroupBy(x => new { x.Name, x.Version })
-                .Where(x => x.Count() > 1)
-                .SelectMany(x => x)
-                .Select(x => x.FullName)
-                .ToHashSet();
+            return swagger.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
         }
 
         private Dictionary<string, string> InitClassNameMap(OpenApiDocument doc)
@@ -125,28 +93,13 @@ namespace KubernetesGenerator
                 return GetClassName(definition);
             }
 
-            if (schemaToNameMapCooked.TryGetValue(definition, out var name))
-            {
-                return name;
-            }
 
-            var schemaName = schemaToNameMapUnprocessed[definition];
-
-            var parts = schemaName.Split(".");
-            var group = parts[parts.Length - 3];
-            var version = parts[parts.Length - 2];
-            var entityName = parts[parts.Length - 1];
-            if (!schemaDefinitionsInMultipleGroups.Contains(schemaName))
-            {
-                group = null;
-            }
-
-            return $"{group}{version}{entityName}".ToPascalCase();
+            return schemaToNameMapCooked[definition];
         }
 
-        private static Dictionary<JsonSchema, string> InitSchemaToNameCooked(OpenApiDocument swaggercooked)
+        private static Dictionary<JsonSchema, string> InitSchemaToNameCooked(OpenApiDocument swagger)
         {
-            return swaggercooked.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
+            return swagger.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
         }
     }
 }

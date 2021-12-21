@@ -57,7 +57,7 @@ namespace KubernetesGenerator
             if (definition.Properties.TryGetValue("spec", out var specProperty))
             {
                 // ignore empty spec placeholder
-                if (specProperty.Reference.ActualProperties.Any())
+                if (specProperty.Reference?.ActualProperties.Any() == true)
                 {
                     interfaces.Add($"ISpec<{classNameHelper.GetClassNameForSchemaDefinition(specProperty.Reference)}>");
                 }
