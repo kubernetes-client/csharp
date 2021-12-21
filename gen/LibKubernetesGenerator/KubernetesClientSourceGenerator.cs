@@ -11,6 +11,8 @@ namespace LibKubernetesGenerator
     [Generator]
     public class KubernetesClientSourceGenerator : ISourceGenerator
     {
+        private static bool helpersRegistered = false;
+
         public void ExecuteInner(GeneratorExecutionContext context)
         {
             var swaggerfile = context.AdditionalFiles.First(f => f.Path.EndsWith("swagger.json"));
@@ -62,9 +64,14 @@ namespace LibKubernetesGenerator
 
             var container = builder.Build();
 
-            foreach (var helper in container.Resolve<IEnumerable<INustacheHelper>>())
+            if (!helpersRegistered)
             {
-                helper.RegisterHelper();
+                foreach (var helper in container.Resolve<IEnumerable<INustacheHelper>>())
+                {
+                    helper.RegisterHelper();
+                }
+
+                helpersRegistered = true; // TODO remove flag, using Helper.Contains or move to Handlebars.Net
             }
 
             container.Resolve<ApiGenerator>().Generate(swagger, context);
