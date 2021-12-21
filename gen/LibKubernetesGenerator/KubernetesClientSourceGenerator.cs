@@ -12,6 +12,7 @@ namespace LibKubernetesGenerator
     public class KubernetesClientSourceGenerator : ISourceGenerator
     {
         private static bool helpersRegistered = false;
+        private static object helperLock = new object();
 
         public void ExecuteInner(GeneratorExecutionContext context)
         {
@@ -64,14 +65,17 @@ namespace LibKubernetesGenerator
 
             var container = builder.Build();
 
-            if (!helpersRegistered)
+            lock (helperLock)
             {
-                foreach (var helper in container.Resolve<IEnumerable<INustacheHelper>>())
+                if (!helpersRegistered)
                 {
-                    helper.RegisterHelper();
-                }
+                    foreach (var helper in container.Resolve<IEnumerable<INustacheHelper>>())
+                    {
+                        helper.RegisterHelper();
+                    }
 
-                helpersRegistered = true; // TODO remove flag, using Helper.Contains or move to Handlebars.Net
+                    helpersRegistered = true; // TODO remove flag, using Helper.Contains or move to Handlebars.Net
+                }
             }
 
             container.Resolve<ApiGenerator>().Generate(swagger, context);
