@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using NSwag;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,46 +10,33 @@ using System.Text.RegularExpressions;
 
 namespace LibKubernetesGenerator
 {
-    [Generator]
-    public class VersionConverterGenerator : ISourceGenerator
+    internal class VersionConverterGenerator
     {
-        private IEnumerable<string> PathSplit(string path)
-        {
-            var p = path;
+        private readonly ClassNameHelper classNameHelper;
 
-            while (!string.IsNullOrEmpty(p))
-            {
-                yield return Path.GetFileName(p);
-                p = Path.GetDirectoryName(p);
-            }
+        public VersionConverterGenerator(ClassNameHelper classNameHelper)
+        {
+            this.classNameHelper = classNameHelper;
         }
 
-        private bool PathSuffixMath(string path, string suffix)
+        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
         {
-            var s = PathSplit(suffix).ToList();
-            return PathSplit(path).Take(s.Count).SequenceEqual(s);
-        }
-
-        public void Execute(GeneratorExecutionContext context)
-        {
-            // TODO should parse syntax node instead of text
             var allGeneratedModelClassNames = new List<string>();
-            var manualMaps = new List<(string, string)>();
-            foreach (var s in context.Compilation.SyntaxTrees)
+
+            foreach (var kv in swagger.Definitions)
             {
-                var p = s.FilePath;
-                if (PathSuffixMath(p, "Versioning/VersionConverter.cs"))
-                {
-                    manualMaps = Regex.Matches(s.GetText().ToString(), @"\.CreateMap<(?<T1>.+?),\s?(?<T2>.+?)>")
-                        .OfType<Match>()
-                        .Select(x => (x.Groups["T1"].Value, x.Groups["T2"].Value))
-                        .ToList();
-                }
-                else if (PathSuffixMath(Path.GetDirectoryName(p), "generated/Models"))
-                {
-                    allGeneratedModelClassNames.Add(Path.GetFileNameWithoutExtension(p));
-                }
+                var def = kv.Value;
+                var clz = classNameHelper.GetClassNameForSchemaDefinition(def);
+                allGeneratedModelClassNames.Add(clz);
             }
+
+            var manualMaps = new List<(string, string)>();
+
+            var manualconverter = context.Compilation.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "Versioning/VersionConverter.cs"));
+            manualMaps = Regex.Matches(manualconverter.GetText().ToString(), @"\.CreateMap<(?<T1>.+?),\s?(?<T2>.+?)>")
+                .OfType<Match>()
+                .Select(x => (x.Groups["T1"].Value, x.Groups["T2"].Value))
+                .ToList();
 
             var versionRegex = @"(^V|v)[0-9]+((alpha|beta)[0-9]+)?";
             var typePairs = allGeneratedModelClassNames
@@ -105,12 +93,25 @@ using k8s.Models;
 
             sbversion.AppendLine("}}");
 
-            context.AddSource($"generated_ModelOperators.cs", SourceText.From(sbmodel.ToString(), Encoding.UTF8));
-            context.AddSource($"generated_VersionConverter.cs", SourceText.From(sbversion.ToString(), Encoding.UTF8));
+            context.AddSource($"ModelOperators.g.cs", SourceText.From(sbmodel.ToString(), Encoding.UTF8));
+            context.AddSource($"VersionConverter.g.cs", SourceText.From(sbversion.ToString(), Encoding.UTF8));
         }
 
-        public void Initialize(GeneratorInitializationContext context)
+        private IEnumerable<string> PathSplit(string path)
         {
+            var p = path;
+
+            while (!string.IsNullOrEmpty(p))
+            {
+                yield return Path.GetFileName(p);
+                p = Path.GetDirectoryName(p);
+            }
+        }
+
+        private bool PathSuffixMath(string path, string suffix)
+        {
+            var s = PathSplit(suffix).ToList();
+            return PathSplit(path).Take(s.Count).SequenceEqual(s);
         }
     }
 }
