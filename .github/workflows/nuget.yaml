@@ -10,6 +10,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: debug
+      run: gh --version
+
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
