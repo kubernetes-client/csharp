@@ -10,14 +10,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: debug
-      run: gh --version
 
+    # Can be removed when GH runner has gh version 2.4.0 (2021-12-21) or higher
     - name: install latest gh cli 
       run: choco install gh
-
-    - name: debug again
-      run: gh --version
 
     - uses: actions/checkout@v2
       with:
