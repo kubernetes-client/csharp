@@ -14,15 +14,15 @@ jobs:
       with:
         fetch-depth: 0
 
-    # - name: .NET Core 3.1.x SDK
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 3.1.x
+    - name: .NET Core 3.1.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
 
-    # - name: .NET 5.x SDK
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 5.0.x
+    - name: .NET 5.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
 
     - name: .NET 6.x SDK
       uses: actions/setup-dotnet@v1
@@ -32,14 +32,14 @@ jobs:
     - name: dotnet restore
       run: dotnet restore --verbosity minimal --configfile nuget.config
 
-    #- name: dotnet test
-    #  run: dotnet test
+    - name: dotnet test
+     run: dotnet test
 
     - name: dotnet pack
       run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
 
-    # - name: dotnet nuget push
-    #   run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
+    - name: dotnet nuget push
+      run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
 
     # This step can be removed when GH runner has gh version 2.4.0 (2021-12-21) or higher
     # As of 1/8/2022, runner has 2.3.0 which doesn't support --generate-notes below
