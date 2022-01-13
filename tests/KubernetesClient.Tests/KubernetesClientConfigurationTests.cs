@@ -13,8 +13,23 @@ using Xunit;
 
 namespace k8s.Tests
 {
-    public class KubernetesClientConfigurationTests
+    public class KubernetesClientConfigurationTests : IDisposable
     {
+        /// <summary>
+        ///     Not all tests set these, but no harm in clearing them.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_HOST", null);
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_PORT", null);
+        }
+
         /// <summary>
         ///     Check if host is properly loaded, per context
         /// </summary>
@@ -683,6 +698,9 @@ namespace k8s.Tests
         {
             Assert.False(KubernetesClientConfiguration.IsInCluster());
 
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_HOST", "kubernetes");
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_PORT", "443");
+
             var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
             var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
 
@@ -703,6 +721,9 @@ namespace k8s.Tests
         [Fact]
         public void LoadInCluster()
         {
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_HOST", "other.default.svc");
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_PORT", "443");
+
             var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
             var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
 
@@ -715,7 +736,7 @@ namespace k8s.Tests
             using (new FileUtils.InjectedFileSystem(fileSystem))
             {
                 var config = KubernetesClientConfiguration.InClusterConfig();
-                Assert.Equal("https://kubernetes.default.svc:443/", config.Host);
+                Assert.Equal("https://other.default.svc:443/", config.Host);
                 Assert.Null(config.Namespace);
             }
         }
@@ -726,6 +747,9 @@ namespace k8s.Tests
         [Fact]
         public void LoadInClusterNamespace()
         {
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_HOST", "kubernetes.default.svc");
+            Environment.SetEnvironmentVariable("KUBERNETES_SERVICE_PORT", "443");
+
             var tokenPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountTokenKeyFileName);
             var certPath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountRootCAKeyFileName);
             var namespacePath = Path.Combine(KubernetesClientConfiguration.ServiceAccountPath, KubernetesClientConfiguration.ServiceAccountNamespaceFileName);
