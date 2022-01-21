@@ -38,8 +38,8 @@ jobs:
     - name: dotnet pack
       run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
 
-    - name: dotnet nuget push
-      run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
+    # - name: dotnet nuget push
+    #   run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
 
     - name: create release
       shell: pwsh
