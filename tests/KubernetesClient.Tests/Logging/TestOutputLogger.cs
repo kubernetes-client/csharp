@@ -84,16 +84,32 @@ namespace k8s.Tests.Logging
                 throw new ArgumentNullException(nameof(formatter));
             }
 
-            TestOutput.WriteLine(string.Format(
-                "[{0}] {1}: {2}",
-                level,
-                LoggerCategory,
-                formatter(state, exception)));
-
-            if (exception != null)
+            try
             {
-                TestOutput.WriteLine(
-                    exception.ToString());
+                TestOutput.WriteLine(string.Format(
+                    "[{0}] {1}: {2}",
+                    level,
+                    LoggerCategory,
+                    formatter(state, exception)));
+
+                if (exception != null)
+                {
+                    TestOutput.WriteLine(
+                        exception.ToString());
+                }
+            }
+            catch (AggregateException e)
+            {
+                // ignore 'There is no currently active test.'
+                foreach (var inner in e.InnerExceptions)
+                {
+                    if (inner.Message.Contains("There is no currently active test"))
+                    {
+                        return;
+                    }
+                }
+
+                throw;
             }
         }
 
