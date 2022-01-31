@@ -4,14 +4,14 @@ namespace k8s.Util.Common
     {
         public static void AddRange<T>(this HashSet<T> hashSet, ICollection<T> items)
         {
-            if (items == null)
+            if (items == null || hashSet == null)
             {
                 return;
             }
 
             foreach (var item in items)
             {
-                hashSet?.Add(item);
+                hashSet.Add(item);
             }
         }
 
