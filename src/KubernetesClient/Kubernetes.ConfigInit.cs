@@ -176,7 +176,7 @@ namespace k8s
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
 
 
-#if NET5_0
+#if NET5_0_OR_GREATER
             // https://github.com/kubernetes-client/csharp/issues/587
             // let user control if tcp keep alive until better fix
             if (config.TcpKeepAlive)
