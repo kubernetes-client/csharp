@@ -300,7 +300,7 @@ namespace k8s
                 }
                 else
                 {
-#if NET5_0
+#if NET5_0_OR_GREATER
                     var content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 #else
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
