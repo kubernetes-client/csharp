@@ -176,7 +176,7 @@ namespace k8s
             FirstMessageHandler = HttpClientHandler = CreateRootHandler();
 
 
-#if NET5_0
+#if NET5_0_OR_GREATER
             // https://github.com/kubernetes-client/csharp/issues/587
             // let user control if tcp keep alive until better fix
             if (config.TcpKeepAlive)
@@ -192,7 +192,12 @@ namespace k8s
                 //
                 // Should remove after better solution
 
-                var sh = new SocketsHttpHandler();
+                var sh = new SocketsHttpHandler
+                {
+                    KeepAlivePingPolicy = HttpKeepAlivePingPolicy.WithActiveRequests,
+                    KeepAlivePingDelay = TimeSpan.FromMinutes(3),
+                    KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
+                };
                 sh.ConnectCallback = async (context, token) =>
                 {
                     var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
