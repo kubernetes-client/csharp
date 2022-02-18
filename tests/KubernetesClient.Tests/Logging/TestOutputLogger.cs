@@ -98,15 +98,12 @@ namespace k8s.Tests.Logging
                         exception.ToString());
                 }
             }
-            catch (AggregateException e)
+            catch (Exception e)
             {
                 // ignore 'There is no currently active test.'
-                foreach (var inner in e.InnerExceptions)
+                if (e.ToString().Contains("There is no currently active test"))
                 {
-                    if (inner.Message.Contains("There is no currently active test"))
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 throw;
