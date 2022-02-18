@@ -28,7 +28,7 @@ jobs:
       #   if: matrix.os == 'ubuntu-latest'
       #   run: dotnet format --severity error --verify-no-changes --exclude ./src/KubernetesClient/generated/
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release -v detailed
       - name: Test
         run: dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura"
       # - uses: 5monkeys/cobertura-action@master
