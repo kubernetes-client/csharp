@@ -5,7 +5,7 @@ on:
     branches: [ master ]
     
 jobs:
-  build:
+  draft:
 
     runs-on: windows-latest
 
