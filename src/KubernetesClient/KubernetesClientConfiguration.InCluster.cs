@@ -24,7 +24,7 @@ namespace k8s
             var host = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST");
             var port = Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_PORT");
 
-            if (String.IsNullOrEmpty(host) || String.IsNullOrEmpty(port))
+            if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(port))
             {
                 return false;
             }

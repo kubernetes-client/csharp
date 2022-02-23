@@ -444,15 +444,21 @@ namespace k8s
                     throw new KubeConfigException("External command execution missing ApiVersion key");
                 }
 
-                var (accessToken, clientCertificateData, clientCertificateKeyData) = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
-                AccessToken = accessToken;
+                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                AccessToken = response.Status.Token;
                 // When reading ClientCertificateData from a config file it will be base64 encoded, and code later in the system (see CertUtils.GeneratePfx)
                 // expects ClientCertificateData and ClientCertificateKeyData to be base64 encoded because of this. However the string returned by external
                 // auth providers is the raw certificate and key PEM text, so we need to take that and base64 encoded it here so it can be decoded later.
-                ClientCertificateData = clientCertificateData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateData));
-                ClientCertificateKeyData = clientCertificateKeyData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(clientCertificateKeyData));
+                ClientCertificateData = response.Status.ClientCertificateData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(response.Status.ClientCertificateData));
+                ClientCertificateKeyData = response.Status.ClientKeyData == null ? null : Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(response.Status.ClientKeyData));
 
                 userCredentialsFound = true;
+
+                // TODO: support client certificates here too.
+                if (AccessToken != null)
+                {
+                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution);
+                }
             }
 
             if (!userCredentialsFound)
@@ -525,7 +531,7 @@ namespace k8s
         /// <returns>
         /// The token, client certificate data, and the client key data received from the external command execution
         /// </returns>
-        public static (string, string, string) ExecuteExternalCommand(ExternalExecution config)
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config)
         {
             if (config == null)
             {
@@ -562,18 +568,9 @@ namespace k8s
                         $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                 }
 
-                if (responseObject.Status.ContainsKey("token"))
+                if (responseObject.Status.IsValid())
                 {
-                    return (responseObject.Status["token"], null, null);
-                }
-                else if (responseObject.Status.ContainsKey("clientCertificateData"))
-                {
-                    if (!responseObject.Status.ContainsKey("clientKeyData"))
-                    {
-                        throw new KubeConfigException($"external exec failed missing clientKeyData field in plugin output");
-                    }
-
-                    return (null, responseObject.Status["clientCertificateData"], responseObject.Status["clientKeyData"]);
+                    return responseObject;
                 }
                 else
                 {
