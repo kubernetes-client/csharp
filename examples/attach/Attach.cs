@@ -10,8 +10,6 @@ namespace attach
     {
         private static async Task Main(string[] args)
         {
-            ServiceClientTracing.IsEnabled = true;
-
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
