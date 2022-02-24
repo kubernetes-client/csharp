@@ -1,4 +1,4 @@
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s.Models
 {

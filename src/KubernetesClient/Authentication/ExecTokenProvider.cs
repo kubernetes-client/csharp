@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s.Authentication
 {

@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s
 {
@@ -28,20 +28,6 @@ namespace k8s
         /// Subscription credentials which uniquely identify client subscription.
         /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='httpClient'>
-        /// HttpClient to be used
-        /// </param>
-        /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling Kubernetes.Dispose(). False: will not dispose provided httpClient</param>
-        protected Kubernetes(HttpClient httpClient, bool disposeHttpClient)
-            : base(httpClient, disposeHttpClient)
-        {
-            Initialize();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Kubernetes"/> class.
@@ -123,28 +109,6 @@ namespace k8s
         /// </exception>
         public Kubernetes(ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
             : this(handlers)
-        {
-            Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            Credentials.InitializeServiceClient(this);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='httpClient'>
-        /// HttpClient to be used
-        /// </param>
-        /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling Kubernetes.Dispose(). False: will not dispose provided httpClient</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        [Obsolete]
-        public Kubernetes(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient)
-            : this(httpClient, disposeHttpClient)
         {
             Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
             Credentials.InitializeServiceClient(this);

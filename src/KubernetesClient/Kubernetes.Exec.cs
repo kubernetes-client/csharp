@@ -1,5 +1,5 @@
 using k8s.Models;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;

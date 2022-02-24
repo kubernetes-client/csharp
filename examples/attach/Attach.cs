@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace attach
 {

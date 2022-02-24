@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using k8s.Exceptions;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s
 {
@@ -19,43 +19,6 @@ namespace k8s
         /// </summary>
         /// <value>timeout</value>
         public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
-        /// </summary>
-        /// <param name='config'>
-        ///     The kube config to use.
-        /// </param>
-        /// <param name="httpClient">
-        ///     The <see cref="HttpClient" /> to use for all requests.
-        /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient)
-            : this(config, httpClient, false)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
-        /// </summary>
-        /// <param name='config'>
-        ///     The kube config to use.
-        /// </param>
-        /// <param name="httpClient">
-        ///     The <see cref="HttpClient" /> to use for all requests.
-        /// </param>
-        /// <param name="disposeHttpClient">
-        ///     Whether or not the <see cref="Kubernetes"/> object should own the lifetime of <paramref name="httpClient"/>.
-        /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient)
-            : this(
-            httpClient, disposeHttpClient)
-        {
-            ValidateConfig(config);
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-            ClientCert = CertUtils.GetClientCert(config);
-            SetCredentials(config);
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.

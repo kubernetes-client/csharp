@@ -1,6 +1,6 @@
 using IdentityModel.OidcClient;
 using k8s.Exceptions;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Threading;

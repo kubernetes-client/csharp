@@ -1,5 +1,5 @@
 using k8s.Models;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
