@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
@@ -14,10 +14,12 @@ namespace k8s.Autorest
     public class HttpRequestMessageWrapper : HttpMessageWrapper
     {
         /// <summary>
-        /// Initializes a new instance of the HttpRequestMessageWrapper class from HttpRequestMessage
+        /// Initializes a new instance of the <see cref="HttpRequestMessageWrapper"/> class from HttpRequestMessage.
         /// and content.
         /// </summary>
+#pragma warning disable SA1611 // Element parameters should be documented
         public HttpRequestMessageWrapper(HttpRequestMessage httpRequest, string content)
+#pragma warning restore SA1611 // Element parameters should be documented
         {
             if (httpRequest == null)
             {
@@ -30,10 +32,12 @@ namespace k8s.Autorest
             this.Content = content;
             this.Method = httpRequest.Method;
             this.RequestUri = httpRequest.RequestUri;
+#pragma warning disable CS0618 // Type or member is obsolete
             if (httpRequest.Properties != null)
             {
                 Properties = new Dictionary<string, object>();
                 foreach (KeyValuePair<string, object> pair in httpRequest.Properties)
+#pragma warning restore CS0618 // Type or member is obsolete
                 {
                     this.Properties[pair.Key] = pair.Value;
                 }

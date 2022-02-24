@@ -14,7 +14,7 @@ namespace k8s.Autorest
         where T : ServiceClient<T>
     {
         /// <summary>
-        /// Indicates whether the ServiceClient has been disposed. 
+        /// Indicates whether the ServiceClient has been disposed.
         /// </summary>
         private bool _disposed;
 
@@ -31,31 +31,24 @@ namespace k8s.Autorest
         protected HttpClientHandler HttpClientHandler { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the ServiceClient class.
+        /// Initializes a new instance of the <see cref="ServiceClient{T}"/> class.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Reliability",
-            "CA2000:Dispose objects before losing scope",
-            Justification = "The created objects should be disposed on caller's side")]
         protected ServiceClient()
             : this(CreateRootHandler())
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the ServiceClient class.
+        /// Initializes a new instance of the <see cref="ServiceClient{T}"/> class.
         /// </summary>
         /// <param name="handlers">List of handlers from top to bottom (outer handler is the first in the list)</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Reliability",
-            "CA2000:Dispose objects before losing scope",
-            Justification = "The created objects should be disposed on caller's side")]
         protected ServiceClient(params DelegatingHandler[] handlers)
             : this(CreateRootHandler(), handlers)
         {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceClient{T}"/> class.
         /// Initializes ServiceClient using base HttpClientHandler and list of handlers.
         /// </summary>
         /// <param name="rootHandler">Base HttpClientHandler.</param>
@@ -68,10 +61,6 @@ namespace k8s.Autorest
         /// Create a new instance of the root handler.
         /// </summary>
         /// <returns>HttpClientHandler created.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Reliability",
-            "CA2000:Dispose objects before losing scope",
-            Justification = "The created objects should be disposed on caller's side")]
         protected static HttpClientHandler CreateRootHandler()
         {
             // Create our root handler
@@ -144,47 +133,6 @@ namespace k8s.Autorest
         }
 
         /// <summary>
-        /// Sets the product name to be used in the user agent header when making requests
-        /// </summary>
-        /// <param name="productName">Name of the product to be used in the user agent</param>
-        public bool SetUserAgent(string productName)
-        {
-            if (!_disposed && HttpClient != null)
-            {
-                // Clear the old user agent
-                HttpClient.DefaultRequestHeaders.UserAgent.Clear();
-                HttpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(productName, GetClientVersion()));
-
-                // Returns true if the user agent was set 
-                return true;
-            }
-
-            // Returns false if the HttpClient was disposed before invoking the method
-            return false;
-        }
-
-        /// <summary>
-        /// Sets the product name and version to be used in the user agent header when making requests
-        /// </summary>
-        /// <param name="productName">Name of the product to be used in the user agent</param>
-        /// <param name="version">Version of the product to be used in the user agent</param>
-        public bool SetUserAgent(string productName, string version)
-        {
-            if (!_disposed && HttpClient != null)
-            {
-                // Clear the old user agent
-                HttpClient.DefaultRequestHeaders.UserAgent.Clear();
-                HttpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(productName, version));
-
-                // Returns true if the user agent was set
-                return true;
-            }
-
-            // Returns false if the HttpClient was disposed before invoking the method
-            return false;
-        }
-
-        /// <summary>
         /// Gets the AssemblyInformationalVersion if available
         /// if not it gets the AssemblyFileVerion
         /// if neither are available it will default to the Assembly Version of a service client.
@@ -192,8 +140,7 @@ namespace k8s.Autorest
         /// <returns>The version of the client.</returns>
         private string GetClientVersion()
         {
-
-            string version = String.Empty;
+            string version = string.Empty;
             Type type = this.GetType();
             Assembly assembly = type.GetTypeInfo().Assembly;
 
@@ -205,7 +152,7 @@ namespace k8s.Autorest
                 version = aivAttribute?.InformationalVersion;
 
                 // if not available try to get AssemblyFileVersion
-                if (String.IsNullOrEmpty(version))
+                if (string.IsNullOrEmpty(version))
                 {
                     AssemblyFileVersionAttribute fvAttribute =
                         assembly.GetCustomAttribute(typeof(AssemblyFileVersionAttribute)) as AssemblyFileVersionAttribute;
@@ -218,7 +165,7 @@ namespace k8s.Autorest
             }
 
             // no usable version attribute found so default to Assembly Version
-            if (String.IsNullOrEmpty(version))
+            if (string.IsNullOrEmpty(version))
             {
                 version =
                     assembly

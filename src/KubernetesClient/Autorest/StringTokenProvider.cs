@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Net.Http.Headers;
@@ -16,7 +16,8 @@ namespace k8s.Autorest
         private string _type;
 
         /// <summary>
-        /// Create a token provider for the given token type that returns the given 
+        /// Initializes a new instance of the <see cref="StringTokenProvider"/> class.
+        /// Create a token provider for the given token type that returns the given
         /// access token.
         /// </summary>
         /// <param name="accessToken">The access token to return.</param>
@@ -38,7 +39,7 @@ namespace k8s.Autorest
         /// <summary>
         /// Returns the static access token.
         /// </summary>
-        /// <param name="cancellationToken">The cancellation token for this action.  
+        /// <param name="cancellationToken">The cancellation token for this action.
         /// This will not be used since the returned token is static.</param>
         /// <returns>The access token.</returns>
         public Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)

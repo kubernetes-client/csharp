@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
@@ -31,8 +31,9 @@ namespace k8s.Autorest
         /// </summary>
         /// <param name="request">The outgoing request</param>
         /// <param name="cancellationToken">A token to cancel the operation</param>
-        /// <returns></returns>
-        public override Task ProcessHttpRequestAsync(HttpRequestMessage request,
+        /// <returns>void</returns>
+        public override Task ProcessHttpRequestAsync(
+            HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
             if (request == null)
@@ -41,7 +42,8 @@ namespace k8s.Autorest
             }
 
             // Add username and password to "Basic" header of each request.
-            request.Headers.Authorization = new AuthenticationHeaderValue("Basic",
+            request.Headers.Authorization = new AuthenticationHeaderValue(
+                "Basic",
                 Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}:{1}",

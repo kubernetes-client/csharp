@@ -19,7 +19,7 @@ namespace k8s.Autorest
         private const string BearerTokenType = "Bearer";
 
         /// <summary>
-        /// Gets or sets secure token used to authenticate against Microsoft Azure API. 
+        /// Gets secure token used to authenticate against Microsoft Azure API.
         /// No anonymous requests are allowed.
         /// </summary>
         protected ITokenProvider TokenProvider { get; private set; }
@@ -50,7 +50,7 @@ namespace k8s.Autorest
         /// </summary>
         /// <param name="token">Valid JSON Web Token (JWT).</param>
         /// <param name="tokenType">The token type of the given token.</param>
-        public TokenCredentials(string token, string tokenType) 
+        public TokenCredentials(string token, string tokenType)
             : this(new StringTokenProvider(token, tokenType))
         {
             if (string.IsNullOrEmpty(token))
@@ -65,6 +65,7 @@ namespace k8s.Autorest
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TokenCredentials"/> class.
         /// Create an access token credentials object, given an interface to a token source.
         /// </summary>
         /// <param name="tokenProvider">The source of tokens for these credentials.</param>
@@ -79,6 +80,7 @@ namespace k8s.Autorest
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TokenCredentials"/> class.
         /// Create an access token credentials object, given an interface to a token source.
         /// </summary>
         /// <param name="tokenProvider">The source of tokens for these credentials.</param>
@@ -99,7 +101,8 @@ namespace k8s.Autorest
         /// <returns>
         /// Task that will complete when processing has completed.
         /// </returns>
-        public async override Task ProcessHttpRequestAsync(HttpRequestMessage request,
+        public async override Task ProcessHttpRequestAsync(
+            HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
             if (request == null)

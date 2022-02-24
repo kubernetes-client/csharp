@@ -129,7 +129,8 @@ namespace k8s.Autorest
                 return "{}";
             }
 
-            return "{" + string.Join(",",
+            return "{" + string.Join(
+                ",",
                 dictionary.Select(kv => kv.Key.ToString() +
                                         "=" +
                                         (kv.Value == null ? string.Empty : kv.Value.ToString()))

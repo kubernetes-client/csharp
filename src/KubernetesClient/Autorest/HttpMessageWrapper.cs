@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ using System.Net.Http.Headers;
 namespace k8s.Autorest
 {
     /// <summary>
-    /// Base class used to wrap HTTP requests and responses to preserve data after disposal of 
+    /// Base class used to wrap HTTP requests and responses to preserve data after disposal of
     /// HttpClient.
     /// </summary>
     public abstract class HttpMessageWrapper
     {
         /// <summary>
-        /// Initializes a new instance of the HttpMessageWrapper class.
+        /// Initializes a new instance of the <see cref="HttpMessageWrapper"/> class.
         /// </summary>
         protected HttpMessageWrapper()
         {

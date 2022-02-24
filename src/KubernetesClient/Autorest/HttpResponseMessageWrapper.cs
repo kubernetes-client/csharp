@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
@@ -14,10 +14,12 @@ namespace k8s.Autorest
     public class HttpResponseMessageWrapper : HttpMessageWrapper
     {
         /// <summary>
-        /// Initializes a new instance of the HttpResponseMessageWrapper class from HttpResponseMessage
+        /// Initializes a new instance of the <see cref="HttpResponseMessageWrapper"/> class from HttpResponseMessage.
         /// and content.
         /// </summary>
+#pragma warning disable SA1611 // Element parameters should be documented
         public HttpResponseMessageWrapper(HttpResponseMessage httpResponse, string content)
+#pragma warning restore SA1611 // Element parameters should be documented
         {
             if (httpResponse == null)
             {
@@ -38,7 +40,7 @@ namespace k8s.Autorest
         public HttpStatusCode StatusCode { get; protected set; }
 
         /// <summary>
-        /// Exposes the reason phrase, typically sent along with the status code. 
+        /// Exposes the reason phrase, typically sent along with the status code.
         /// </summary>
         public string ReasonPhrase { get; protected set; }
     }

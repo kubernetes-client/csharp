@@ -27,7 +27,9 @@ namespace k8s.Autorest
     /// <summary>
     /// Represents the base return type of all ServiceClient REST operations with response body.
     /// </summary>
+#pragma warning disable SA1618 // Generic type parameters should be documented
     public interface IHttpOperationResponse<T> : IHttpOperationResponse
+#pragma warning restore SA1618 // Generic type parameters should be documented
     {
         /// <summary>
         /// Gets or sets the response object.
@@ -35,11 +37,13 @@ namespace k8s.Autorest
         T Body { get; set; }
     }
 
+#pragma warning disable SA1622 // Generic type parameter documentation should have text
     /// <summary>
     /// Represents the base return type of all ServiceClient REST operations with a header response.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IHttpOperationHeaderResponse<T> : IHttpOperationResponse
+#pragma warning restore SA1622 // Generic type parameter documentation should have text
     {
         /// <summary>
         /// Gets or sets the response header object.
@@ -50,18 +54,19 @@ namespace k8s.Autorest
     /// <summary>
     /// Represents the base return type of all ServiceClient REST operations with response body and header.
     /// </summary>
+#pragma warning disable SA1618 // Generic type parameters should be documented
     public interface IHttpOperationResponse<TBody, THeader> : IHttpOperationResponse<TBody>, IHttpOperationHeaderResponse<THeader>
+#pragma warning restore SA1618 // Generic type parameters should be documented
     {
-        
     }
-    
+
     /// <summary>
     /// Represents the base return type of all ServiceClient REST operations without response body.
     /// </summary>
     public class HttpOperationResponse : IHttpOperationResponse, IDisposable
     {
         /// <summary>
-        /// Indicates whether the HttpOperationResponse has been disposed. 
+        /// Indicates whether the HttpOperationResponse has been disposed.
         /// </summary>
         private bool _disposed;
 
@@ -115,7 +120,9 @@ namespace k8s.Autorest
     /// Represents the base return type of all ServiceClient REST operations.
     /// </summary>
 #pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable SA1618 // Generic type parameters should be documented
     public class HttpOperationResponse<T> : HttpOperationResponse, IHttpOperationResponse<T>
+#pragma warning restore SA1618 // Generic type parameters should be documented
 #pragma warning restore SA1402 // File may only contain a single type
     {
         /// <summary>
@@ -128,7 +135,9 @@ namespace k8s.Autorest
     /// Represents the base return type of all ServiceClient REST operations.
     /// </summary>
 #pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable SA1618 // Generic type parameters should be documented
     public class HttpOperationHeaderResponse<THeader> : HttpOperationResponse, IHttpOperationHeaderResponse<THeader>
+#pragma warning restore SA1618 // Generic type parameters should be documented
 #pragma warning restore SA1402 // File may only contain a single type
     {
         public THeader Headers { get; set; }
@@ -138,7 +147,9 @@ namespace k8s.Autorest
     /// Represents the base return type of all ServiceClient REST operations.
     /// </summary>
 #pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable SA1618 // Generic type parameters should be documented
     public class HttpOperationResponse<TBody, THeader> : HttpOperationResponse<TBody>, IHttpOperationResponse<TBody, THeader>
+#pragma warning restore SA1618 // Generic type parameters should be documented
 #pragma warning restore SA1402 // File may only contain a single type
     {
         /// <summary>

@@ -214,11 +214,11 @@ namespace k8s
                     result.Body = KubernetesJson.Deserialize<T>(stream);
                 }
             }
-            catch (JsonException ex)
+            catch (JsonException)
             {
                 httpRequest.Dispose();
                 httpResponse.Dispose();
-                throw new SerializationException("Unable to deserialize the response.", ex);
+                throw;
             }
 
             return result;

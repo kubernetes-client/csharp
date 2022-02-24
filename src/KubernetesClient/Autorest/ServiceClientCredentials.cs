@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Net.Http;
@@ -13,7 +13,7 @@ namespace k8s.Autorest
     public abstract class ServiceClientCredentials
     {
         /// <summary>
-        /// Initialize a ServiceClient instance for accessing REST APIs with these credentials. 
+        /// Initialize a ServiceClient instance for accessing REST APIs with these credentials.
         /// </summary>
         /// <typeparam name="T">Type of ServiceClient.</typeparam>
         /// <param name="client">The ServiceClient.</param>
