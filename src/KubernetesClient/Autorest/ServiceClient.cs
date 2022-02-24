@@ -125,7 +125,7 @@ namespace k8s.Autorest
                 _disposed = true;
 
                 // Dispose the client
-                HttpClient.Dispose();
+                HttpClient?.Dispose();
                 HttpClient = null;
                 FirstMessageHandler = null;
                 HttpClientHandler = null;
