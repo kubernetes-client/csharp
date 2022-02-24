@@ -29,163 +29,9 @@ namespace k8s
         /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected Kubernetes(params DelegatingHandler[] handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        protected Kubernetes(HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected Kubernetes(Uri baseUri, params DelegatingHandler[] handlers)
-            : this(handlers)
-        {
-            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        protected Kubernetes(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-            : this(rootHandler, handlers)
-        {
-            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
-            : this(handlers)
-        {
-            Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            //Credentials.InitializeServiceClient(this);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-            : this(rootHandler, handlers)
-        {
-            Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            //Credentials.InitializeServiceClient(this);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
-            : this(handlers)
-        {
-            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
-            Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            //Credentials.InitializeServiceClient(this);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Kubernetes"/> class.
-        /// </summary>
-        /// <param name='baseUri'>
-        /// Optional. The base URI of the service.
-        /// </param>
-        /// <param name='credentials'>
-        /// Required. Subscription credentials which uniquely identify client subscription.
-        /// </param>
-        /// <param name='rootHandler'>
-        /// Optional. The http client handler used to handle http transport.
-        /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        public Kubernetes(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-            : this(rootHandler, handlers)
-        {
-            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
-            Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            //Credentials.InitializeServiceClient(this);
-        }
-
         public HttpClient HttpClient { get; protected set; }
 
-        public virtual IEnumerable<HttpMessageHandler> HttpMessageHandlers
+        private IEnumerable<HttpMessageHandler> HttpMessageHandlers
         {
             get
             {
@@ -205,13 +51,18 @@ namespace k8s
         /// Reference to the first HTTP handler (which is the start of send HTTP
         /// pipeline).
         /// </summary>
-        protected HttpMessageHandler FirstMessageHandler { get; set; }
+        private HttpMessageHandler FirstMessageHandler { get; set; }
 
         /// <summary>
         /// Reference to the innermost HTTP handler (which is the end of send HTTP
         /// pipeline).
         /// </summary>
-        protected HttpClientHandler HttpClientHandler { get; set; }
+#if NET5_0_OR_GREATER
+        private SocketsHttpHandler HttpClientHandler { get; set; }
+#else
+        private HttpClientHandler HttpClientHandler { get; set; }
+#endif
+
 
         /// <summary>
         /// Initializes client properties.

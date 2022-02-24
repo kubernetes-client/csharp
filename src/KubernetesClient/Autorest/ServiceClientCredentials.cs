@@ -13,16 +13,6 @@ namespace k8s.Autorest
     public abstract class ServiceClientCredentials
     {
         /// <summary>
-        /// Initialize a ServiceClient instance for accessing REST APIs with these credentials.
-        /// </summary>
-        /// <typeparam name="T">Type of ServiceClient.</typeparam>
-        /// <param name="client">The ServiceClient.</param>
-        //public virtual void InitializeServiceClient<T>(ServiceClient<T> client)
-        //    where T : ServiceClient<T>
-        //{
-        //}
-
-        /// <summary>
         /// Apply the credentials to the HTTP request.
         /// </summary>
         /// <param name="request">The HTTP request message.</param>

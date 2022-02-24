@@ -84,14 +84,6 @@ namespace k8s
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
-        ///     Set true to enable tcp keep alive
-        ///     You have to set https://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html as well
-        /// </summary>
-        /// <value>true or false</value>
-        public bool TcpKeepAlive { get; set; } = true;
-
-
-        /// <summary>
         ///     Timeout of REST calls to Kubernetes server
         ///     Does not apply to watch related api
         /// </summary>

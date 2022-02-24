@@ -237,7 +237,11 @@ namespace k8s
 
             if (this.HttpClientHandler != null)
             {
+#if NET5_0_OR_GREATER
+                foreach (var cert in this.HttpClientHandler.SslOptions.ClientCertificates.OfType<X509Certificate2>())
+#else
                 foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
+#endif
                 {
                     webSocketBuilder.AddClientCertificate(cert);
                 }
