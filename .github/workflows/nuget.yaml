@@ -1,11 +1,11 @@
 name: Nuget
 
 on:
-  push:
-    branches: [ master ]
+  release:
+    types: [ released ]
     
 jobs:
-  build:
+  nuget:
 
     runs-on: windows-latest
 
@@ -40,11 +40,3 @@ jobs:
 
     - name: dotnet nuget push
       run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
-
-    - name: create release
-      shell: pwsh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        $VERSION = Get-ChildItem -Path pkg/*.nupkg -Name | Select-String -Pattern '\d+.\d+.\d+' | foreach {$_.Matches.Value}
-        gh release create --generate-notes $VERSION

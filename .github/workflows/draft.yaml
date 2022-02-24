@@ -1,0 +1,47 @@
+name: Nuget
+
+on:
+  push:
+    branches: [ master ]
+    
+jobs:
+  draft:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: .NET Core 3.1.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+
+    - name: .NET 5.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: .NET 6.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: dotnet restore
+      run: dotnet restore --verbosity minimal --configfile nuget.config
+
+    - name: dotnet test
+      run: dotnet test
+
+    - name: dotnet pack
+      run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
+
+    - name: create release
+      shell: pwsh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        $VERSION = Get-ChildItem -Path pkg/*.nupkg -Name | Select-String -Pattern '\d+.\d+.\d+' | foreach {$_.Matches.Value}
+        gh release create -d --generate-notes $VERSION
