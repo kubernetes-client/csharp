@@ -43,13 +43,6 @@ namespace k8s.Util.Common.Generic
             _client = apiClient ?? new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
         }
 
-        public TimeSpan ClientTimeout => _client.HttpClient.Timeout;
-
-        public void SetClientTimeout(TimeSpan value)
-        {
-            _client.HttpClient.Timeout = value;
-        }
-
         /// <summary>
         /// Get kubernetes object.
         /// </summary>

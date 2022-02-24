@@ -17,10 +17,10 @@ namespace k8s.Autorest
         /// </summary>
         /// <typeparam name="T">Type of ServiceClient.</typeparam>
         /// <param name="client">The ServiceClient.</param>
-        public virtual void InitializeServiceClient<T>(ServiceClient<T> client)
-            where T : ServiceClient<T>
-        {
-        }
+        //public virtual void InitializeServiceClient<T>(ServiceClient<T> client)
+        //    where T : ServiceClient<T>
+        //{
+        //}
 
         /// <summary>
         /// Apply the credentials to the HTTP request.

@@ -36,7 +36,6 @@ namespace k8s
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
         protected Kubernetes(params DelegatingHandler[] handlers)
-            : base(handlers)
         {
             Initialize();
         }
@@ -51,7 +50,6 @@ namespace k8s
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
         protected Kubernetes(HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
-            : base(rootHandler, handlers)
         {
             Initialize();
         }
@@ -111,7 +109,7 @@ namespace k8s
             : this(handlers)
         {
             Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            Credentials.InitializeServiceClient(this);
+            //Credentials.InitializeServiceClient(this);
         }
 
         /// <summary>
@@ -133,7 +131,7 @@ namespace k8s
             : this(rootHandler, handlers)
         {
             Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            Credentials.InitializeServiceClient(this);
+            //Credentials.InitializeServiceClient(this);
         }
 
         /// <summary>
@@ -156,7 +154,7 @@ namespace k8s
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
             Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            Credentials.InitializeServiceClient(this);
+            //Credentials.InitializeServiceClient(this);
         }
 
         /// <summary>
@@ -182,8 +180,38 @@ namespace k8s
         {
             BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
             Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
-            Credentials.InitializeServiceClient(this);
+            //Credentials.InitializeServiceClient(this);
         }
+
+        public HttpClient HttpClient { get; protected set; }
+
+        public virtual IEnumerable<HttpMessageHandler> HttpMessageHandlers
+        {
+            get
+            {
+                var handler = FirstMessageHandler;
+
+                while (handler != null)
+                {
+                    yield return handler;
+
+                    DelegatingHandler delegating = handler as DelegatingHandler;
+                    handler = delegating != null ? delegating.InnerHandler : null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Reference to the first HTTP handler (which is the start of send HTTP
+        /// pipeline).
+        /// </summary>
+        protected HttpMessageHandler FirstMessageHandler { get; set; }
+
+        /// <summary>
+        /// Reference to the innermost HTTP handler (which is the end of send HTTP
+        /// pipeline).
+        /// </summary>
+        protected HttpClientHandler HttpClientHandler { get; set; }
 
         /// <summary>
         /// Initializes client properties.
@@ -191,7 +219,6 @@ namespace k8s
         private void Initialize()
         {
             BaseUri = new Uri("http://localhost");
-            CustomInitialize();
         }
 
         private async Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken)
@@ -333,6 +360,38 @@ namespace k8s
             }
 
             return httpResponse;
+        }
+
+        /// <summary>
+        /// Indicates whether the ServiceClient has been disposed.
+        /// </summary>
+        private bool _disposed;
+
+        /// <summary>
+        /// Dispose the ServiceClient.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose the HttpClient and Handlers.
+        /// </summary>
+        /// <param name="disposing">True to release both managed and unmanaged resources; false to releases only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                _disposed = true;
+
+                // Dispose the client
+                HttpClient?.Dispose();
+                HttpClient = null;
+                FirstMessageHandler = null;
+                HttpClientHandler = null;
+            }
         }
     }
 }

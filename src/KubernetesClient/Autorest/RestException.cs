@@ -9,9 +9,7 @@ namespace k8s.Autorest
     /// <summary>
     /// Generic exception for Microsoft Rest Client.
     /// </summary>
-#if !PORTABLE
     [Serializable]
-#endif
     public class RestException : Exception
     {
         /// <summary>
@@ -40,7 +38,6 @@ namespace k8s.Autorest
         {
         }
 
-#if !PORTABLE
         /// <summary>
         /// Initializes a new instance of the <see cref="RestException"/> class.
         /// </summary>
@@ -50,6 +47,5 @@ namespace k8s.Autorest
             : base(info, context)
         {
         }
-#endif
     }
 }

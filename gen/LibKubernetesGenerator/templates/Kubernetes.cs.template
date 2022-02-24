@@ -15,7 +15,7 @@ namespace k8s
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class Kubernetes : ServiceClient<Kubernetes>, IKubernetes
+    public partial class Kubernetes : IKubernetes
     {
         {{#.}}
         /// <inheritdoc/>

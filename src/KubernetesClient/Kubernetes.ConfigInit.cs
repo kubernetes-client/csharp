@@ -96,10 +96,6 @@ namespace k8s
         private X509Certificate2 ClientCert { get; }
         private bool SkipTlsVerify { get; }
 
-        private void CustomInitialize()
-        {
-        }
-
         /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
         private sealed class ForwardingHandler : DelegatingHandler
         {
@@ -115,7 +111,7 @@ namespace k8s
         // 3xx. in particular, this prevents upgraded connections and certain generic/custom requests from working.
         private void CreateHttpClient(DelegatingHandler[] handlers, KubernetesClientConfiguration config)
         {
-            FirstMessageHandler = HttpClientHandler = CreateRootHandler();
+            FirstMessageHandler = HttpClientHandler = new HttpClientHandler(); // 
 
 
 #if NET5_0_OR_GREATER

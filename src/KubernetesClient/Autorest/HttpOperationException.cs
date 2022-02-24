@@ -4,18 +4,14 @@
 using System;
 using System.Net.Http;
 using System.Runtime.Serialization;
-#if !PORTABLE
 using System.Security.Permissions;
-#endif
 
 namespace k8s.Autorest
 {
     /// <summary>
     /// Exception thrown for an invalid response with custom error information.
     /// </summary>
-#if !PORTABLE
     [Serializable]
-#endif
     public class HttpOperationException : RestException
     {
         /// <summary>
@@ -59,7 +55,6 @@ namespace k8s.Autorest
         {
         }
 
-#if !PORTABLE
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpOperationException"/> class.
         /// </summary>
@@ -69,6 +64,5 @@ namespace k8s.Autorest
             : base(info, context)
         {
         }
-#endif
     }
 }
