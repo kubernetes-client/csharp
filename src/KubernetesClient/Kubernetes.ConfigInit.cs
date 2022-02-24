@@ -109,27 +109,6 @@ namespace k8s
             }
         }
 
-        private void AppendDelegatingHandler<T>()
-            where T : DelegatingHandler, new()
-        {
-            var cur = FirstMessageHandler as DelegatingHandler;
-
-            while (cur != null)
-            {
-                var next = cur.InnerHandler as DelegatingHandler;
-
-                if (next == null)
-                {
-                    // last one
-                    // append watcher handler between to last handler
-                    cur.InnerHandler = new T { InnerHandler = cur.InnerHandler };
-                    break;
-                }
-
-                cur = next;
-            }
-        }
-
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
         // of what requests have failed. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and
