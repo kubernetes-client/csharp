@@ -129,6 +129,8 @@ namespace k8s
                 KeepAlivePingDelay = TimeSpan.FromMinutes(3),
                 KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
             };
+
+            HttpClientHandler.SslOptions.ClientCertificates = new X509Certificate2Collection();
 #else
             FirstMessageHandler = HttpClientHandler = new HttpClientHandler();
 #endif
