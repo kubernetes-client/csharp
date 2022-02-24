@@ -99,12 +99,15 @@ namespace k8s
             SetCredentials(config);
 
             var clientCert = CertUtils.GetClientCert(config);
-
+            if (clientCert != null)
+            {
 #if NET5_0_OR_GREATER
-            HttpClientHandler.SslOptions.ClientCertificates.Add(clientCert);
+                HttpClientHandler.SslOptions.ClientCertificates.Add(clientCert);
 #else
-            HttpClientHandler.ClientCertificates.Add(clientCert);
+                HttpClientHandler.ClientCertificates.Add(clientCert);
 #endif
+            }
+
         }
 
         private X509Certificate2Collection CaCerts { get; }
