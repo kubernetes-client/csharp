@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>10.0</LangVersion>
@@ -19,6 +19,7 @@
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Newtonsoft.Json" Version="9.0.1" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Namotion.Reflection" Version="2.0.9" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.7.1" GeneratePathProperty="true" PrivateAssets="all" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -35,6 +36,7 @@
             <TargetPathWithTargetPlatformMoniker Include="$(PKGMicrosoft_Bcl_AsyncInterfaces)\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNewtonsoft_Json)\lib\netstandard1.0\Newtonsoft.Json.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNamotion_Reflection)\lib\netstandard2.0\Namotion.Reflection.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_Diagnostics_DiagnosticSource)\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll" IncludeRuntimeDependency="false" />
         </ItemGroup>
     </Target>
     

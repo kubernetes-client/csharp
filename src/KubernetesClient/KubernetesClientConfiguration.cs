@@ -1,5 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s
 {
@@ -82,14 +82,6 @@ namespace k8s
         /// </summary>
         /// <value>The access token.</value>
         public ITokenProvider TokenProvider { get; set; }
-
-        /// <summary>
-        ///     Set true to enable tcp keep alive
-        ///     You have to set https://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html as well
-        /// </summary>
-        /// <value>true or false</value>
-        public bool TcpKeepAlive { get; set; } = true;
-
 
         /// <summary>
         ///     Timeout of REST calls to Kubernetes server

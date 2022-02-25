@@ -3,7 +3,7 @@
  */
 
 using k8s.Models;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -193,7 +193,7 @@ namespace k8s.Tests
                 muxedStream.Setup(m => m.GetStream(ChannelIndex.Error, null)).Returns(errorStream);
 
                 var kubernetesMock = new Moq.Mock<Kubernetes>(
-                    new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } })
+                    new object[] { new KubernetesClientConfiguration() { Host = "http://localhost" }, new DelegatingHandler[] { } })
                 { CallBase = true };
                 var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
 
@@ -216,7 +216,7 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsyncHttpExceptionWithStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } })
+                new object[] { new KubernetesClientConfiguration() { Host = "http://localhost" }, new DelegatingHandler[] { } })
             { CallBase = true };
             var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
@@ -241,7 +241,7 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsyncHttpExceptionNoStatus()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } })
+                new object[] { new KubernetesClientConfiguration() { Host = "http://localhost" }, new DelegatingHandler[] { } })
             { CallBase = true };
             var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
@@ -265,7 +265,7 @@ namespace k8s.Tests
         public async Task NamespacedPodExecAsyncGenericException()
         {
             var kubernetesMock = new Moq.Mock<Kubernetes>(
-                new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } })
+                new object[] { new KubernetesClientConfiguration() { Host = "http://localhost" }, new DelegatingHandler[] { } })
             { CallBase = true };
             var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
             var handler = new ExecAsyncCallback((stdIn, stdOut, stdError) => Task.CompletedTask);
@@ -319,7 +319,7 @@ namespace k8s.Tests
                 muxedStream.Setup(m => m.GetStream(ChannelIndex.Error, null)).Returns(errorStream);
 
                 var kubernetesMock = new Moq.Mock<Kubernetes>(
-                    new object[] { Moq.Mock.Of<ServiceClientCredentials>(), new DelegatingHandler[] { } })
+                    new object[] { new KubernetesClientConfiguration() { Host = "http://localhost" }, new DelegatingHandler[] { } })
                 { CallBase = true };
                 var command = new string[] { "/bin/bash", "-c", "echo Hello, World!" };
 

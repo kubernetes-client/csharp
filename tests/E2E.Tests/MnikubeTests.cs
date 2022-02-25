@@ -11,7 +11,7 @@ using Json.Patch;
 using k8s.LeaderElection;
 using k8s.LeaderElection.ResourceLock;
 using k8s.Models;
-using Microsoft.Rest;
+using k8s.Autorest;
 using Nito.AsyncEx;
 using Xunit;
 

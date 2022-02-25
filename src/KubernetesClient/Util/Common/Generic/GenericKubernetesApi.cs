@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using k8s.Models;
 using k8s.Util.Common.Generic.Options;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s.Util.Common.Generic
 {
@@ -41,13 +41,6 @@ namespace k8s.Util.Common.Generic
             _apiVersion = apiVersion ?? throw new ArgumentNullException(nameof(apiVersion));
             _resourcePlural = resourcePlural ?? throw new ArgumentNullException(nameof(resourcePlural));
             _client = apiClient ?? new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
-        }
-
-        public TimeSpan ClientTimeout => _client.HttpClient.Timeout;
-
-        public void SetClientTimeout(TimeSpan value)
-        {
-            _client.HttpClient.Timeout = value;
         }
 
         /// <summary>

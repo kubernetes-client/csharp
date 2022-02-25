@@ -3,7 +3,7 @@
  */
 
 using k8s.Tests.Mock;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -24,13 +24,12 @@ namespace k8s.Tests
         [Fact]
         public async Task WebSocketNamespacedPodExecAsync()
         {
-            var credentials = new BasicAuthenticationCredentials()
+            Kubernetes client = new Kubernetes(new KubernetesClientConfiguration()
             {
-                UserName = "my-user",
+                Host = "http://localhost",
+                Username = "my-user",
                 Password = "my-secret-password",
-            };
-
-            Kubernetes client = new Kubernetes(credentials);
+            });
             client.BaseUri = new Uri("http://localhost");
 
             MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();
@@ -71,14 +70,12 @@ namespace k8s.Tests
         [Fact]
         public async Task WebSocketNamespacedPodPortForwardAsync()
         {
-            var credentials = new BasicAuthenticationCredentials()
+            Kubernetes client = new Kubernetes(new KubernetesClientConfiguration()
             {
-                UserName = "my-user",
+                Host = "http://localhost",
+                Username = "my-user",
                 Password = "my-secret-password",
-            };
-
-            Kubernetes client = new Kubernetes(credentials);
-            client.BaseUri = new Uri("http://localhost");
+            });
 
             MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();
             client.CreateWebSocketBuilder = () => mockWebSocketBuilder;
@@ -112,13 +109,12 @@ namespace k8s.Tests
         [Fact]
         public async Task WebSocketNamespacedPodAttachAsync()
         {
-            var credentials = new BasicAuthenticationCredentials()
+            Kubernetes client = new Kubernetes(new KubernetesClientConfiguration()
             {
-                UserName = "my-user",
+                Host = "http://localhost",
+                Username = "my-user",
                 Password = "my-secret-password",
-            };
-
-            Kubernetes client = new Kubernetes(credentials);
+            });
             client.BaseUri = new Uri("http://localhost");
 
             MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();

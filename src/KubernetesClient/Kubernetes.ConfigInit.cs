@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using k8s.Exceptions;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s
 {
@@ -19,43 +19,6 @@ namespace k8s
         /// </summary>
         /// <value>timeout</value>
         public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
-        /// </summary>
-        /// <param name='config'>
-        ///     The kube config to use.
-        /// </param>
-        /// <param name="httpClient">
-        ///     The <see cref="HttpClient" /> to use for all requests.
-        /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient)
-            : this(config, httpClient, false)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
-        /// </summary>
-        /// <param name='config'>
-        ///     The kube config to use.
-        /// </param>
-        /// <param name="httpClient">
-        ///     The <see cref="HttpClient" /> to use for all requests.
-        /// </param>
-        /// <param name="disposeHttpClient">
-        ///     Whether or not the <see cref="Kubernetes"/> object should own the lifetime of <paramref name="httpClient"/>.
-        /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, HttpClient httpClient, bool disposeHttpClient)
-            : this(
-            httpClient, disposeHttpClient)
-        {
-            ValidateConfig(config);
-            CaCerts = config.SslCaCerts;
-            SkipTlsVerify = config.SkipTlsVerify;
-            ClientCert = CertUtils.GetClientCert(config);
-            SetCredentials(config);
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
@@ -105,7 +68,11 @@ namespace k8s
             {
                 if (config.SkipTlsVerify)
                 {
+#if NET5_0_OR_GREATER
+                    HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
+#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
+#endif
                         (sender, certificate, chain, sslPolicyErrors) => true;
                 }
                 else
@@ -115,7 +82,11 @@ namespace k8s
                         throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
                     }
 
+#if NET5_0_OR_GREATER
+                    HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
+#else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
+#endif
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
                             return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
@@ -126,46 +97,23 @@ namespace k8s
 
             // set credentails for the kubernetes client
             SetCredentials(config);
-            config.AddCertificates(HttpClientHandler);
+
+            var clientCert = CertUtils.GetClientCert(config);
+            if (clientCert != null)
+            {
+#if NET5_0_OR_GREATER
+                HttpClientHandler.SslOptions.ClientCertificates.Add(clientCert);
+#else
+                HttpClientHandler.ClientCertificates.Add(clientCert);
+#endif
+            }
         }
 
         private X509Certificate2Collection CaCerts { get; }
+
         private X509Certificate2 ClientCert { get; }
+
         private bool SkipTlsVerify { get; }
-
-        private void CustomInitialize()
-        {
-        }
-
-        /// <summary>A <see cref="DelegatingHandler"/> that simply forwards a request with no further processing.</summary>
-        private sealed class ForwardingHandler : DelegatingHandler
-        {
-            public ForwardingHandler(HttpMessageHandler handler)
-                : base(handler)
-            {
-            }
-        }
-
-        private void AppendDelegatingHandler<T>()
-            where T : DelegatingHandler, new()
-        {
-            var cur = FirstMessageHandler as DelegatingHandler;
-
-            while (cur != null)
-            {
-                var next = cur.InnerHandler as DelegatingHandler;
-
-                if (next == null)
-                {
-                    // last one
-                    // append watcher handler between to last handler
-                    cur.InnerHandler = new T { InnerHandler = cur.InnerHandler };
-                    break;
-                }
-
-                cur = next;
-            }
-        }
 
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
@@ -173,75 +121,20 @@ namespace k8s
         // 3xx. in particular, this prevents upgraded connections and certain generic/custom requests from working.
         private void CreateHttpClient(DelegatingHandler[] handlers, KubernetesClientConfiguration config)
         {
-            FirstMessageHandler = HttpClientHandler = CreateRootHandler();
-
-
 #if NET5_0_OR_GREATER
-            // https://github.com/kubernetes-client/csharp/issues/587
-            // let user control if tcp keep alive until better fix
-            if (config.TcpKeepAlive)
+            FirstMessageHandler = HttpClientHandler = new SocketsHttpHandler
             {
-                // https://github.com/kubernetes-client/csharp/issues/533
-                // net5 only
-                // this is a temp fix to attach SocketsHttpHandler to HttpClient in order to set SO_KEEPALIVE
-                // https://tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/
-                //
-                // _underlyingHandler is not a public accessible field
-                // src of net5 HttpClientHandler and _underlyingHandler field defined here
-                // https://github.com/dotnet/runtime/blob/79ae74f5ca5c8a6fe3a48935e85bd7374959c570/src/libraries/System.Net.Http/src/System/Net/Http/HttpClientHandler.cs#L22
-                //
-                // Should remove after better solution
+                KeepAlivePingPolicy = HttpKeepAlivePingPolicy.WithActiveRequests,
+                KeepAlivePingDelay = TimeSpan.FromMinutes(3),
+                KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
+            };
 
-                var sh = new SocketsHttpHandler
-                {
-                    KeepAlivePingPolicy = HttpKeepAlivePingPolicy.WithActiveRequests,
-                    KeepAlivePingDelay = TimeSpan.FromMinutes(3),
-                    KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
-                };
-                sh.ConnectCallback = async (context, token) =>
-                {
-                    var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
-                    {
-                        NoDelay = true,
-                    };
-
-                    socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-
-                    var host = context.DnsEndPoint.Host;
-
-                    if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    {
-                        // https://github.com/dotnet/runtime/issues/24917
-                        // GetHostAddresses will return {host} if host is an ip
-                        var ips = Dns.GetHostAddresses(host);
-                        if (ips.Length == 0)
-                        {
-                            throw new Exception($"{host} DNS lookup failed");
-                        }
-
-                        host = ips[new Random().Next(ips.Length)].ToString();
-                    }
-
-                    await socket.ConnectAsync(host, context.DnsEndPoint.Port, token).ConfigureAwait(false);
-                    return new NetworkStream(socket, ownsSocket: true);
-                };
-
-
-                // set HttpClientHandler's cert callback before replace _underlyingHandler
-                // force HttpClientHandler use our callback
-                InitializeFromConfig(config);
-
-                var p = HttpClientHandler.GetType().GetField("_underlyingHandler", BindingFlags.NonPublic | BindingFlags.Instance);
-                p.SetValue(HttpClientHandler, (sh));
-            }
+            HttpClientHandler.SslOptions.ClientCertificates = new X509Certificate2Collection();
+#else
+            FirstMessageHandler = HttpClientHandler = new HttpClientHandler();
 #endif
 
-            if (handlers == null || handlers.Length == 0)
-            {
-                // ensure we have at least one DelegatingHandler so AppendDelegatingHandler will work
-                FirstMessageHandler = new ForwardingHandler(HttpClientHandler);
-            }
-            else
+            if (handlers != null)
             {
                 for (int i = handlers.Length - 1; i >= 0; i--)
                 {

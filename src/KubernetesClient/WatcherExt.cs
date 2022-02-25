@@ -1,7 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using k8s.Exceptions;
-using Microsoft.Rest;
+using k8s.Autorest;
 
 namespace k8s
 {

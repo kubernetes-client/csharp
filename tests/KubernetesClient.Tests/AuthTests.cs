@@ -16,7 +16,7 @@ using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
-using Microsoft.Rest;
+using k8s.Autorest;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;

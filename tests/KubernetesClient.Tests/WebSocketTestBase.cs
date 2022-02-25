@@ -4,7 +4,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Rest;
+using k8s.Autorest;
 using System;
 using System.IO;
 using System.Net.WebSockets;
@@ -132,7 +132,10 @@ namespace k8s.Tests
         /// </returns>
         protected virtual Kubernetes CreateTestClient(ServiceClientCredentials credentials = null)
         {
-            return new Kubernetes(credentials ?? AnonymousClientCredentials.Instance) { BaseUri = ServerBaseAddress };
+            return new Kubernetes(new KubernetesClientConfiguration()
+            {
+                Host = ServerBaseAddress.ToString(),
+            });
         }
 
         /// <summary>

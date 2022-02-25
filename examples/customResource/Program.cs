@@ -1,4 +1,5 @@
 using k8s;
+using k8s.Autorest;
 using k8s.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
@@ -35,14 +36,14 @@ namespace customResource
                     myCr.Metadata.NamespaceProperty ?? "default",
                     myCRD.PluralName).ConfigureAwait(false);
             }
-            catch (Microsoft.Rest.HttpOperationException httpOperationException) when (httpOperationException.Message.Contains("422"))
+            catch (HttpOperationException httpOperationException) when (httpOperationException.Message.Contains("422"))
             {
                 var phase = httpOperationException.Response.ReasonPhrase;
                 var content = httpOperationException.Response.Content;
                 Console.WriteLine("response content: {0}", content);
                 Console.WriteLine("response phase: {0}", phase);
             }
-            catch (Microsoft.Rest.HttpOperationException)
+            catch (HttpOperationException)
             {
             }
 
@@ -70,7 +71,7 @@ namespace customResource
                     myCRD.PluralName,
                     myCr.Metadata.Name).ConfigureAwait(false);
             }
-            catch (Microsoft.Rest.HttpOperationException httpOperationException)
+            catch (HttpOperationException httpOperationException)
             {
                 var phase = httpOperationException.Response.ReasonPhrase;
                 var content = httpOperationException.Response.Content;

@@ -35,9 +35,9 @@ namespace @namespace
                 {
                     foreach (var innerEx in ex.InnerExceptions)
                     {
-                        if (innerEx is Microsoft.Rest.HttpOperationException)
+                        if (innerEx is k8s.Autorest.HttpOperationException)
                         {
-                            var code = ((Microsoft.Rest.HttpOperationException)innerEx).Response.StatusCode;
+                            var code = ((k8s.Autorest.HttpOperationException)innerEx).Response.StatusCode;
                             if (code == HttpStatusCode.NotFound)
                             {
                                 return;
@@ -47,7 +47,7 @@ namespace @namespace
                         }
                     }
                 }
-                catch (Microsoft.Rest.HttpOperationException ex)
+                catch (k8s.Autorest.HttpOperationException ex)
                 {
                     if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                     {
