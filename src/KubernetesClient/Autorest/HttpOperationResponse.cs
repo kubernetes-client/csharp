@@ -130,31 +130,4 @@ namespace k8s.Autorest
         /// </summary>
         public T Body { get; set; }
     }
-
-    /// <summary>
-    /// Represents the base return type of all ServiceClient REST operations.
-    /// </summary>
-#pragma warning disable SA1402 // File may only contain a single type
-#pragma warning disable SA1618 // Generic type parameters should be documented
-    public class HttpOperationHeaderResponse<THeader> : HttpOperationResponse, IHttpOperationHeaderResponse<THeader>
-#pragma warning restore SA1618 // Generic type parameters should be documented
-#pragma warning restore SA1402 // File may only contain a single type
-    {
-        public THeader Headers { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the base return type of all ServiceClient REST operations.
-    /// </summary>
-#pragma warning disable SA1402 // File may only contain a single type
-#pragma warning disable SA1618 // Generic type parameters should be documented
-    public class HttpOperationResponse<TBody, THeader> : HttpOperationResponse<TBody>, IHttpOperationResponse<TBody, THeader>
-#pragma warning restore SA1618 // Generic type parameters should be documented
-#pragma warning restore SA1402 // File may only contain a single type
-    {
-        /// <summary>
-        /// Gets or sets the response header object.
-        /// </summary>
-        public THeader Headers { get; set; }
-    }
 }

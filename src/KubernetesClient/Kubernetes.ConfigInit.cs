@@ -107,7 +107,6 @@ namespace k8s
                 HttpClientHandler.ClientCertificates.Add(clientCert);
 #endif
             }
-
         }
 
         private X509Certificate2Collection CaCerts { get; }
