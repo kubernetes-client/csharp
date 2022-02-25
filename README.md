@@ -123,13 +123,11 @@ dotnet restore
 dotnet test
 ```
 
-# Generating the Client Code
+# Update the API model
 
 ## Prerequisites
 
 You'll need a Linux machine with Docker.
-
-The generated code works on all platforms supported by .NET or .NET Core.
 
 Check out the generator project into some other directory
 (henceforth `$GEN_DIR`).
@@ -139,12 +137,12 @@ cd $GEN_DIR/..
 git clone https://github.com/kubernetes-client/gen
 ```
 
-## Generating code
+## Generating new swagger.json
 
 ```bash
 # Where REPO_DIR points to the root of the csharp repository
-cd ${REPO_DIR}/csharp/src/KubernetesClient
-${GEN_DIR}/openapi/csharp.sh generated ../csharp.settings
+cd 
+${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp.settings
 ```
 
 # Version Compatibility 
