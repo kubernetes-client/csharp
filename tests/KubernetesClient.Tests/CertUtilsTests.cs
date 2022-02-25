@@ -30,7 +30,7 @@ namespace k8s.Tests
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
-            Assert.NotNull(cert.PrivateKey);
+            Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace k8s.Tests
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
-            Assert.NotNull(cert.PrivateKey);
+            Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace k8s.Tests
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
-            Assert.NotNull(cert.PrivateKey);
+            Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace k8s.Tests
 
             // Just validate that this doesn't throw and private key is non-null
             var cert = CertUtils.GeneratePfx(cfg);
-            Assert.NotNull(cert.PrivateKey);
+            Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
         /// <summary>
