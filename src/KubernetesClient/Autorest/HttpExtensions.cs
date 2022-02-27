@@ -13,18 +13,13 @@ namespace k8s.Autorest
     internal static class HttpExtensions
     {
         /// <summary>
-        /// Get the content headers of an HtttRequestMessage.
+        /// Get the content headers of an HttpRequestMessage.
         /// </summary>
         /// <param name="request">The request message.</param>
         /// <returns>The content headers.</returns>
         public static HttpHeaders GetContentHeaders(this HttpRequestMessage request)
         {
-            if (request != null && request.Content != null)
-            {
-                return request.Content.Headers;
-            }
-
-            return null;
+            return request?.Content?.Headers;
         }
 
         /// <summary>
@@ -34,12 +29,7 @@ namespace k8s.Autorest
         /// <returns>The content headers.</returns>
         public static HttpHeaders GetContentHeaders(this HttpResponseMessage response)
         {
-            if (response != null && response.Content != null)
-            {
-                return response.Content.Headers;
-            }
-
-            return null;
+            return response?.Content?.Headers;
         }
     }
 }
