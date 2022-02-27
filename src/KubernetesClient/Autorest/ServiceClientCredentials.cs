@@ -23,7 +23,7 @@ namespace k8s.Autorest
         public virtual Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Return an empty task by default
-            return Task.FromResult<object>(null);
+            return Task.CompletedTask;
         }
     }
 }

@@ -49,7 +49,7 @@ namespace k8s.Autorest
                     "{0}:{1}",
                     UserName,
                     Password).ToCharArray())));
-            return Task.FromResult<object>(null);
+            return Task.CompletedTask;
         }
     }
 }
