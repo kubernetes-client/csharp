@@ -32,7 +32,7 @@
 
   <ItemGroup>
    <AdditionalFiles Include="swagger.json" />
-   <ProjectReference Include="..\..\gen\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+   <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
