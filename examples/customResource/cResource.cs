@@ -1,5 +1,5 @@
 using k8s.Models;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace customResource
 {
@@ -21,13 +21,13 @@ namespace customResource
 
     public class CResourceSpec
     {
-        [JsonProperty(PropertyName = "cityName")]
+        [JsonPropertyName("cityName")]
         public string CityName { get; set; }
     }
 
     public class CResourceStatus : V1Status
     {
-        [JsonProperty(PropertyName = "temperature", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("temperature")]
         public string Temperature { get; set; }
     }
 }

@@ -1,9 +1,10 @@
+using Json.Patch;
 using k8s;
 using k8s.Autorest;
 using k8s.Models;
-using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 
@@ -55,11 +56,13 @@ namespace customResource
                 Console.WriteLine("- CR Item {0} = {1}", crs.Items.IndexOf(cr), cr.Metadata.Name);
             }
 
-            // updating the custom resource
+            var old = JsonSerializer.SerializeToDocument(myCr);
             myCr.Metadata.Labels.TryAdd("newKey", "newValue");
-            var patch = new JsonPatchDocument<CResource>();
-            patch.Replace(x => x.Metadata.Labels, myCr.Metadata.Labels);
-            patch.Operations.ForEach(x => x.path = x.path.ToLower());
+
+            var expected = JsonSerializer.SerializeToDocument(myCr);
+            var patch = old.CreatePatch(expected);
+
+            // updating the custom resource
             var crPatch = new V1Patch(patch, V1Patch.PatchType.JsonPatch);
             try
             {
