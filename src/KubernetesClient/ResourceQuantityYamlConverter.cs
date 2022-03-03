@@ -36,7 +36,7 @@ namespace k8s.Models
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
-            var obj = (IntstrIntOrString)value;
+            var obj = (ResourceQuantity)value;
             emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj?.ToString()));
         }
     }

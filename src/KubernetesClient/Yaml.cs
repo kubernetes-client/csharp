@@ -20,6 +20,7 @@ namespace k8s
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
+                .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithOverridesFromJsonPropertyAttributes()
                 .IgnoreUnmatchedProperties()
                 .Build();
@@ -30,6 +31,7 @@ namespace k8s
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
+                .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .WithOverridesFromJsonPropertyAttributes()
