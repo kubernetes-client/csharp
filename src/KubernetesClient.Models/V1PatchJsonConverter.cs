@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal class V1PatchJsonConverter : JsonConverter<V1Patch>
+    public class V1PatchJsonConverter : JsonConverter<V1Patch>
     {
         public override V1Patch Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -9,6 +9,11 @@ namespace k8s.Models
 
         public override void Write(Utf8JsonWriter writer, V1Patch value, JsonSerializerOptions options)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
             var content = value?.Content;
             if (content is string s)
             {

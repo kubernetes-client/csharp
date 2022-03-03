@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal class IntOrStringConverter : JsonConverter<IntstrIntOrString>
+    public class IntOrStringConverter : JsonConverter<IntstrIntOrString>
     {
         public override IntstrIntOrString Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -19,6 +19,11 @@ namespace k8s.Models
 
         public override void Write(Utf8JsonWriter writer, IntstrIntOrString value, JsonSerializerOptions options)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
             var s = value?.Value;
 
             if (int.TryParse(s, out var intv))

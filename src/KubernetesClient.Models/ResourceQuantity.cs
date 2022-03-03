@@ -1,9 +1,6 @@
 using System.Globalization;
 using System.Numerics;
 using Fractions;
-using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
-using YamlDotNet.Serialization;
 
 namespace k8s.Models
 {
@@ -57,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(QuantityConverter))]
-    public partial class ResourceQuantity : IYamlConvertible
+    public partial class ResourceQuantity
     {
         public enum SuffixFormat
         {
@@ -199,28 +196,6 @@ namespace k8s.Models
             }
 
             return BigInteger.Remainder(value.Numerator, value.Denominator) > 0;
-        }
-
-        /// <inheritdoc/>
-        public void Read(IParser parser, Type expectedType, ObjectDeserializer nestedObjectDeserializer)
-        {
-            if (expectedType != typeof(ResourceQuantity))
-            {
-                throw new ArgumentOutOfRangeException(nameof(expectedType));
-            }
-
-            if (parser?.Current is Scalar)
-            {
-                Value = ((Scalar)parser.Current).Value;
-                parser.MoveNext();
-                CustomInit();
-            }
-        }
-
-        /// <inheritdoc/>
-        public void Write(IEmitter emitter, ObjectSerializer nestedObjectSerializer)
-        {
-            emitter?.Emit(new Scalar(ToString()));
         }
 
         public static implicit operator decimal(ResourceQuantity v)

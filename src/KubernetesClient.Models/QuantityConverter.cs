@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal class QuantityConverter : JsonConverter<ResourceQuantity>
+    public class QuantityConverter : JsonConverter<ResourceQuantity>
     {
         public override ResourceQuantity Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -9,6 +9,11 @@ namespace k8s.Models
 
         public override void Write(Utf8JsonWriter writer, ResourceQuantity value, JsonSerializerOptions options)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
             writer.WriteStringValue(value?.ToString());
         }
     }
