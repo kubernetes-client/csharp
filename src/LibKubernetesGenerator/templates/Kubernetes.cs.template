@@ -48,7 +48,7 @@ namespace k8s
             // Construct URL
             var url = $"{{ToInterpolationPathString path}}";
             {{#IfGroupPathParamContainsGroup path}}
-            url = url.Replace("/apis//", "/api/");
+            url = url.Replace("apis//", "api/");
             {{/IfGroupPathParamContainsGroup}}
             var q = new QueryBuilder();
             {{#operation.parameters}}
