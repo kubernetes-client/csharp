@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-
     <PackageReference Include="prometheus-net" Version="5.0.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
     <PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
@@ -14,13 +13,6 @@
     <PackageReference Include="IdentityModel.OidcClient" Version="4.0.0" />
 
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.10" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
-    <PackageReference Include="System.Text.Json" Version="6.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1' OR '$(TargetFramework)' == 'net5'" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-    <AdditionalFiles Include="..\..\swagger.json" Generator="api" />
-    <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
+    <ProjectReference Include="..\KubernetesClient.VanillaRest\KubernetesClient.VanillaRest.csproj" />
   </ItemGroup>
 
 </Project>

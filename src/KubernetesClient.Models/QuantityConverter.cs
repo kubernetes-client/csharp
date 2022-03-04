@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    public class QuantityConverter : JsonConverter<ResourceQuantity>
+    internal class QuantityConverter : JsonConverter<ResourceQuantity>
     {
         public override ResourceQuantity Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
