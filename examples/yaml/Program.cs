@@ -14,7 +14,7 @@ namespace yaml
             var typeMap = new Dictionary<String, Type>();
             typeMap.Add("v1/Pod", typeof(V1Pod));
             typeMap.Add("v1/Service", typeof(V1Service));
-            typeMap.Add("apps/v1beta1/Deployment", typeof(Appsv1beta1Deployment));
+            typeMap.Add("apps/v1/Deployment", typeof(V1Deployment));
 
             var objects = await Yaml.LoadAllFromFileAsync(args[0], typeMap);
 

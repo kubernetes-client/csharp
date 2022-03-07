@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\src\KubernetesClient\KubernetesClient.csproj" />
+      <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
       <ProjectReference Include="..\..\src\KubernetesClient.Util\KubernetesClient.Util.csproj" />
     </ItemGroup>
 
