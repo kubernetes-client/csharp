@@ -11,7 +11,7 @@ namespace k8s
 {
     public abstract partial class VanillaKubernetes
     {
-        private class QueryBuilder
+        private sealed class QueryBuilder
         {
             private List<string> parameters = new List<string>();
 

@@ -2,7 +2,7 @@ namespace k8s.Models
 {
     public partial class V1Status
     {
-        internal class V1StatusObjectViewConverter : JsonConverter<V1Status>
+        internal sealed class V1StatusObjectViewConverter : JsonConverter<V1Status>
         {
             public override V1Status Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
