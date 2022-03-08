@@ -21,7 +21,7 @@ namespace k8s.Models
         {
             var s = value?.Value;
 
-            if (int.TryParse(s, out var intv))
+            if (long.TryParse(s, out var intv))
             {
                 writer.WriteNumberValue(intv);
                 return;
