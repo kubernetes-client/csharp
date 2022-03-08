@@ -233,7 +233,7 @@ namespace k8s.Models
             return new ResourceQuantity(v, 0, SuffixFormat.DecimalExponent);
         }
 
-        private class Suffixer
+        private sealed class Suffixer
         {
             private static readonly IReadOnlyDictionary<string, (int, int)> BinSuffixes =
                 new Dictionary<string, (int, int)>
