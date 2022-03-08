@@ -12,8 +12,8 @@ namespace k8s.Autorest
     /// </summary>
     public sealed class StringTokenProvider : ITokenProvider
     {
-        private string _accessToken;
-        private string _type;
+        private readonly string _accessToken;
+        private readonly string _type;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StringTokenProvider"/> class.
@@ -31,10 +31,7 @@ namespace k8s.Autorest
         /// <summary>
         /// Gets the token type of this access token.
         /// </summary>
-        public string TokenType
-        {
-            get { return _type; }
-        }
+        public string TokenType => _type;
 
         /// <summary>
         /// Returns the static access token.

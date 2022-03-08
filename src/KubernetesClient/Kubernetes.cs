@@ -102,7 +102,7 @@ namespace k8s
             return result;
         }
 
-        private class QueryBuilder
+        private sealed class QueryBuilder
         {
             private List<string> parameters = new List<string>();
 

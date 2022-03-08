@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace k8s
 {
-    internal class LineSeparatedHttpContent : HttpContent
+    internal sealed class LineSeparatedHttpContent : HttpContent
     {
         private readonly HttpContent _originContent;
         private readonly CancellationToken _cancellationToken;
@@ -41,7 +41,7 @@ namespace k8s
             return false;
         }
 
-        internal class CancelableStream : Stream
+        internal sealed class CancelableStream : Stream
         {
             private readonly Stream _innerStream;
             private readonly CancellationToken _cancellationToken;
@@ -149,7 +149,7 @@ namespace k8s
             }
         }
 
-        internal class PeekableStreamReader : TextReader
+        internal sealed class PeekableStreamReader : TextReader
         {
             private readonly Queue<string> _buffer;
             private readonly StreamReader _inner;
