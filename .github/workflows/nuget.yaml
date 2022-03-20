@@ -36,7 +36,7 @@ jobs:
       run: dotnet test
 
     - name: dotnet pack
-      run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
+      run: dotnet pack -c Release src/nuget.proj -o pkg --include-symbols
 
     - name: dotnet nuget push
       run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
