@@ -1,4 +1,4 @@
-name: Nuget
+name: Draft Release
 
 on:
   push:
