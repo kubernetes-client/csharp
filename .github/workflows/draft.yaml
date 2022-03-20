@@ -40,7 +40,8 @@ jobs:
         setAllVars: true
 
     - name: create release
+      shell: pwsh
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release create -d --generate-notes v$NBGV_NuGetPackageVersion
+        gh release create -d --generate-notes v$env:NBGV_NuGetPackageVersion
