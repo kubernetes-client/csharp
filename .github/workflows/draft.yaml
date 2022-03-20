@@ -44,4 +44,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         $VERSION = Get-ChildItem -Path pkg/*.nupkg -Name | Select-String -Pattern '\d+.\d+.\d+' | foreach {$_.Matches.Value}
-        gh release create -d --generate-notes $VERSION
+        gh release create -d --generate-notes v$VERSION
