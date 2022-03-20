@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yaml", "examples\yaml\yaml.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KubernetesClient.Models", "src\KubernetesClient.Models\KubernetesClient.Models.csproj", "{F066A4D8-2EF0-4C07-AC0D-BD325DE3FFA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesClient.VanillaRest", "src\KubernetesClient.VanillaRest\KubernetesClient.VanillaRest.csproj", "{927995F5-05CC-4078-8805-8E6CC06914D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesClient.Basic", "src\KubernetesClient.Basic\KubernetesClient.Basic.csproj", "{927995F5-05CC-4078-8805-8E6CC06914D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
