@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
-    <ProjectReference Include="..\KubernetesClient.VanillaRest\KubernetesClient.VanillaRest.csproj" />
+    <ProjectReference Include="..\KubernetesClient.Basic\KubernetesClient.Basic.csproj" />
   </ItemGroup>
 
 </Project>

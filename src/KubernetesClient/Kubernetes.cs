@@ -7,7 +7,7 @@ using k8s.Autorest;
 
 namespace k8s
 {
-    public partial class Kubernetes : VanillaKubernetes, IKubernetes
+    public partial class Kubernetes : AbstractKubernetes, IKubernetes
     {
         private Uri baseuri;
 

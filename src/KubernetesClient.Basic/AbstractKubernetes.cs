@@ -9,7 +9,7 @@ using System.Net.Http.Headers;
 
 namespace k8s
 {
-    public abstract partial class VanillaKubernetes
+    public abstract partial class AbstractKubernetes
     {
         private sealed class QueryBuilder
         {
