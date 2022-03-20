@@ -35,10 +35,11 @@ jobs:
     - name: dotnet test
       run: dotnet test
 
-    - name: create release
-      uses: dotnet/nbgv@master
+    - uses: dotnet/nbgv@master
       with:
         setAllVars: true
+
+    - name: create release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
