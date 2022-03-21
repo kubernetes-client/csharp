@@ -31,22 +31,6 @@ namespace k8s
 
         public HttpClient HttpClient { get; protected set; }
 
-        private IEnumerable<HttpMessageHandler> HttpMessageHandlers
-        {
-            get
-            {
-                var handler = FirstMessageHandler;
-
-                while (handler != null)
-                {
-                    yield return handler;
-
-                    DelegatingHandler delegating = handler as DelegatingHandler;
-                    handler = delegating != null ? delegating.InnerHandler : null;
-                }
-            }
-        }
-
         /// <summary>
         /// Reference to the first HTTP handler (which is the start of send HTTP
         /// pipeline).

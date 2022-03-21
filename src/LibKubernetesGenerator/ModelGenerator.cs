@@ -1,7 +1,5 @@
-using System.IO;
 using Microsoft.CodeAnalysis;
 using NSwag;
-using Nustache.Core;
 
 namespace LibKubernetesGenerator
 {
