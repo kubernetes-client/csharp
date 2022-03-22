@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
-using k8s.Autorest;
 
 namespace attach
 {

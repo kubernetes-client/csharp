@@ -1,6 +1,5 @@
 using YamlDotNet.Core;
 using YamlDotNet.Serialization;
-using Fractions;
 
 namespace k8s.Models
 {
