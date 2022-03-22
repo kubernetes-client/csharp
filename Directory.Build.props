@@ -2,6 +2,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\kubernetes-client.ruleset</CodeAnalysisRuleSet>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   
   <PropertyGroup>
@@ -12,6 +14,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   
@@ -29,4 +32,8 @@
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../logo.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 </Project>

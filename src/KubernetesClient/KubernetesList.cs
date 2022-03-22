@@ -1,5 +1,3 @@
-using k8s.Autorest;
-
 namespace k8s.Models
 {
     public class KubernetesList<T> : IMetadata<V1ListMeta>, IItems<T>

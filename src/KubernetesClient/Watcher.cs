@@ -46,6 +46,7 @@ namespace k8s
         private readonly Func<Task<TextReader>> _streamReaderCreator;
 
         private bool disposedValue;
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "IDE0052:Remove unread private members", Justification = "Used in an async task loop")]
         private readonly Task _watcherLoop;
 
 

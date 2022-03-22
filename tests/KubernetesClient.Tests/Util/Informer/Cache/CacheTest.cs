@@ -11,7 +11,7 @@ namespace k8s.Tests.Util.Informer.Cache
     public class CacheTest
     {
         [Fact(DisplayName = "Create default cache success")]
-        private void CreateCacheSuccess()
+        public void CreateCacheSuccess()
         {
             var cache = new Cache<V1Node>();
             cache.Should().NotBeNull();
@@ -19,7 +19,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Add cache item success")]
-        private void AddCacheItemSuccess()
+        public void AddCacheItemSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
@@ -30,7 +30,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Update cache item success")]
-        private void UpdateCacheItemSuccess()
+        public void UpdateCacheItemSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
 
@@ -44,7 +44,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Delete cache item success")]
-        private void DeleteCacheItemSuccess()
+        public void DeleteCacheItemSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
 
@@ -58,7 +58,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Replace cache items success")]
-        private void ReplaceCacheItemsSuccess()
+        public void ReplaceCacheItemsSuccess()
         {
             var pods = Helpers.CreatePods(3);
             var aPod = pods.First();
