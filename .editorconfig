@@ -45,3 +45,20 @@ csharp_new_line_before_catch = true
 csharp_new_line_before_finally = true
 csharp_new_line_before_members_in_object_initializers = true
 csharp_new_line_before_members_in_anonymous_types = true
+
+# https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/unnecessary-code-rules
+
+# Avoid unused private fields
+dotnet_diagnostic.CA1823.severity = error
+
+# Use string.Contains(char) instead of string.Contains(string) with single characters
+dotnet_diagnostic.CA1847.severity = error
+
+# Remove unnecessary import
+dotnet_diagnostic.IDE0005.severity = error
+
+# Private member is unused
+dotnet_diagnostic.IDE0051.severity = error
+
+# Private member is unread
+dotnet_diagnostic.IDE0052.severity = error

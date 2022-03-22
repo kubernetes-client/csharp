@@ -12,13 +12,6 @@ namespace k8s.Tests
 {
     public class StreamDemuxerTests
     {
-        private readonly ITestOutputHelper testOutput;
-
-        public StreamDemuxerTests(ITestOutputHelper testOutput)
-        {
-            this.testOutput = testOutput;
-        }
-
         [Fact]
         public async Task SendDataRemoteCommand()
         {

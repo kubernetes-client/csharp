@@ -1,8 +1,6 @@
-using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using k8s.Autorest;
 

@@ -9,7 +9,7 @@ namespace k8s.Tests.Util.Informer.Cache
     public class ListerTest
     {
         [Fact(DisplayName = "Create default lister success")]
-        private void CreateListerDefaultsSuccess()
+        public void CreateListerDefaultsSuccess()
         {
             var cache = new Cache<V1Pod>();
             var lister = new Lister<V1Pod>(cache);
@@ -18,7 +18,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "List with null namespace success")]
-        private void ListNullNamespaceSuccess()
+        public void ListNullNamespaceSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
@@ -33,7 +33,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "List with custom namespace success")]
-        private void ListCustomNamespaceSuccess()
+        public void ListCustomNamespaceSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
@@ -48,7 +48,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Get with null namespace success")]
-        private void GetNullNamespaceSuccess()
+        public void GetNullNamespaceSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
@@ -63,7 +63,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Get with custom namespace success")]
-        private void GetCustomNamespaceSuccess()
+        public void GetCustomNamespaceSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
@@ -76,7 +76,7 @@ namespace k8s.Tests.Util.Informer.Cache
         }
 
         [Fact(DisplayName = "Set custom namespace success")]
-        private void SetCustomNamespaceSuccess()
+        public void SetCustomNamespaceSuccess()
         {
             var aPod = Helpers.CreatePods(1).First();
             var cache = new Cache<V1Pod>();
