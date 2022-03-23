@@ -1,5 +1,3 @@
-using k8s.Models;
-
 namespace k8s.Util.Informer.Cache
 {
     // DeletedFinalStateUnknown is placed into a DeltaFIFO in the case where

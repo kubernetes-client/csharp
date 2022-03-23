@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
-using k8s.Models;
 using k8s.Tests.Mock;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;

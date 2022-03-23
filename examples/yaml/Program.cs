@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using k8s;
-using k8s.Models;
 
 namespace yaml
 {
