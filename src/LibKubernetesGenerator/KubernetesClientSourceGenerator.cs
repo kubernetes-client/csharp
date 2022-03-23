@@ -21,6 +21,9 @@ namespace LibKubernetesGenerator
                 var swaggerfile = context.AdditionalFiles.First(f => f.Path.EndsWith("swagger.json"));
                 var swagger = OpenApiDocument.FromJsonAsync(swaggerfile.GetText().ToString()).GetAwaiter().GetResult();
 
+                context.AnalyzerConfigOptions.GetOptions(swaggerfile).TryGetValue("build_metadata.AdditionalFiles.Generator", out var generatorSetting);
+                var generators = new HashSet<string>(generatorSetting.Split(','));
+
                 var builder = new ContainerBuilder();
 
                 builder.RegisterType<ClassNameHelper>()
@@ -78,13 +81,25 @@ namespace LibKubernetesGenerator
                 }
 
 
-                container.Resolve<ApiGenerator>().Generate(swagger, context);
+                if (generators.Contains("api"))
+                {
+                    container.Resolve<ApiGenerator>().Generate(swagger, context);
+                }
 
-                container.Resolve<ModelGenerator>().Generate(swagger, context);
+                if (generators.Contains("model"))
+                {
+                    container.Resolve<ModelGenerator>().Generate(swagger, context);
+                }
 
-                container.Resolve<ModelExtGenerator>().Generate(swagger, context);
+                if (generators.Contains("modelext"))
+                {
+                    container.Resolve<ModelExtGenerator>().Generate(swagger, context);
+                }
 
-                container.Resolve<VersionConverterGenerator>().Generate(swagger, context);
+                if (generators.Contains("versionconverter"))
+                {
+                    container.Resolve<VersionConverterGenerator>().Generate(swagger, context);
+                }
             }
         }
 
@@ -110,11 +125,11 @@ namespace LibKubernetesGenerator
         public void Initialize(GeneratorInitializationContext context)
         {
 #if DEBUG
-            // if (!Debugger.IsAttached)
-            // {
-            //     Debugger.Launch();
-            // }
+        // if (!Debugger.IsAttached)
+        // {
+        //     Debugger.Launch();
+        // }
 #endif
-        }
+    }
     }
 }

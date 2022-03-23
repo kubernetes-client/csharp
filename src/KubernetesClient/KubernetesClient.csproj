@@ -1,60 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Authors>The Kubernetes Project Authors</Authors>
-    <Copyright>2017 The Kubernetes Project Authors</Copyright>
-    <Description>Client library for the Kubernetes open source container orchestrator.</Description>
-
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/kubernetes-client/csharp</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png</PackageIconUrl>
-    <PackageIcon>logo.png</PackageIcon>
-    <PackageTags>kubernetes;docker;containers;</PackageTags>
-
     <TargetFrameworks>netstandard2.1;net5;net6</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
-    <SignAssembly>true</SignAssembly>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  
-    <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-      
-    <!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>    
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <LangVersion>10.0</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
-   <AdditionalFiles Include="swagger.json" />
-   <None Include="../../logo.png" Pack="true" Visible="false" PackagePath="" />
-   <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Fractions" Version="7.0.0" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.255" PrivateAssets="all" />
     <PackageReference Include="prometheus-net" Version="5.0.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
     <PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="IdentityModel.OidcClient" Version="4.0.0" />
 
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.10" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
-    <PackageReference Include="System.Text.Json" Version="6.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1' OR '$(TargetFramework)' == 'net5'" />
-
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Util\Informer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
+    <ProjectReference Include="..\KubernetesClient.Basic\KubernetesClient.Basic.csproj" />
   </ItemGroup>
 
 </Project>

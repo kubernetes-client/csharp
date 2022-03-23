@@ -17,7 +17,7 @@ namespace k8s
 
     /// <summary>
     /// </summary>
-    public partial interface IKubernetes
+    public partial interface IBasicKubernetes
     {
         {{#.}}
         /// <summary>

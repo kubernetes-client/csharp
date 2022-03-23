@@ -15,7 +15,7 @@ namespace k8s
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class Kubernetes : IKubernetes
+    public partial class AbstractKubernetes : IBasicKubernetes
     {
         {{#.}}
         /// <inheritdoc/>
@@ -46,9 +46,9 @@ namespace k8s
             {{/operation.parameters}}
 
             // Construct URL
-            var url = new System.Uri(BaseUri, $"{{ToInterpolationPathString path}}").ToString();
+            var url = $"{{ToInterpolationPathString path}}";
             {{#IfGroupPathParamContainsGroup path}}
-            url = url.Replace("/apis//", "/api/");
+            url = url.Replace("apis//", "api/");
             {{/IfGroupPathParamContainsGroup}}
             var q = new QueryBuilder();
             {{#operation.parameters}}
@@ -59,7 +59,7 @@ namespace k8s
             url += q.ToString();
 
             // Create HTTP transport
-            var httpRequest = CreateRequest(url, HttpMethod.{{Method}}, customHeaders);
+            var httpRequest = CreateRequest(url, "{{Method}}", customHeaders);
             {{#IfParamContains operation "body"}}
             var httpResponse = await SendRequest(body, httpRequest, cancellationToken);
             {{/IfParamContains operation "body"}}

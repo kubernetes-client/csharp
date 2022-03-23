@@ -29,7 +29,7 @@ namespace k8s
         /// </param>
         {{/operation.parameters}}
         public static {{GetReturnType operation "void"}} {{GetMethodName operation ""}}(
-            this IKubernetes operations
+            this IBasicKubernetes operations
 {{#operation.parameters}}
             ,{{GetDotNetType .}} {{GetDotNetName . "true"}}
 {{/operation.parameters}}
@@ -58,7 +58,7 @@ namespace k8s
         /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
         /// </param>
         public static async Task{{GetReturnType operation "<>"}} {{GetMethodName operation "Async"}}(
-            this IKubernetes operations,
+            this IBasicKubernetes operations,
             {{#operation.parameters}}
             {{GetDotNetType .}} {{GetDotNetName . "true"}},
             {{/operation.parameters}}

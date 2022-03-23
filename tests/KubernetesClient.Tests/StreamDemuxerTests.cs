@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using k8s.Tests.Mock;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace k8s.Tests
 {

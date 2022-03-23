@@ -1,4 +1,4 @@
-name: Nuget
+name: Draft Release
 
 on:
   push:
@@ -35,13 +35,13 @@ jobs:
     - name: dotnet test
       run: dotnet test
 
-    - name: dotnet pack
-      run: dotnet pack -c Release src/KubernetesClient -o pkg --include-symbols
+    - uses: dotnet/nbgv@master
+      with:
+        setAllVars: true
 
     - name: create release
       shell: pwsh
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        $VERSION = Get-ChildItem -Path pkg/*.nupkg -Name | Select-String -Pattern '\d+.\d+.\d+' | foreach {$_.Matches.Value}
-        gh release create -d --generate-notes v$VERSION
+        gh release create -d --generate-notes v$env:NBGV_NuGetPackageVersion

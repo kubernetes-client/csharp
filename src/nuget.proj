@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.Build.Traversal">
+    <ItemGroup>
+      <ProjectReference Include="KubernetesClient.Models/KubernetesClient.Models.csproj" />
+      <ProjectReference Include="KubernetesClient.Basic/KubernetesClient.Basic.csproj" />
+      <ProjectReference Include="KubernetesClient/KubernetesClient.csproj" />
+    </ItemGroup>
+  </Project>
+  

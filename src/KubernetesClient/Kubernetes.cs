@@ -7,7 +7,7 @@ using k8s.Autorest;
 
 namespace k8s
 {
-    public partial class Kubernetes
+    public partial class Kubernetes : AbstractKubernetes, IKubernetes
     {
         private Uri baseuri;
 
@@ -47,7 +47,6 @@ namespace k8s
         private HttpClientHandler HttpClientHandler { get; set; }
 #endif
 
-
         /// <summary>
         /// Initializes client properties.
         /// </summary>
@@ -56,8 +55,18 @@ namespace k8s
             BaseUri = new Uri("http://localhost");
         }
 
-        private async Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken)
+        protected override async Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken)
         {
+            if (httpRequest == null)
+            {
+                throw new ArgumentNullException(nameof(httpRequest));
+            }
+
+            if (httpResponse == null)
+            {
+                throw new ArgumentNullException(nameof(httpResponse));
+            }
+
             var result = new HttpOperationResponse<T>() { Request = httpRequest, Response = httpResponse };
 
             if (watch == true)
@@ -86,48 +95,11 @@ namespace k8s
             return result;
         }
 
-        private sealed class QueryBuilder
-        {
-            private List<string> parameters = new List<string>();
-
-            public void Append(string key, params object[] values)
-            {
-                foreach (var value in values)
-                {
-                    switch (value)
-                    {
-                        case int intval:
-                            parameters.Add($"{key}={intval}");
-                            break;
-                        case string strval:
-                            parameters.Add($"{key}={Uri.EscapeDataString(strval)}");
-                            break;
-                        case bool boolval:
-                            parameters.Add($"{key}={(boolval ? "true" : "false")}");
-                            break;
-                        default:
-                            // null
-                            break;
-                    }
-                }
-            }
-
-            public override string ToString()
-            {
-                if (parameters.Count > 0)
-                {
-                    return "?" + string.Join("&", parameters);
-                }
-
-                return "";
-            }
-        }
-
-        private HttpRequestMessage CreateRequest(string url, HttpMethod method, IDictionary<string, IList<string>> customHeaders)
+        protected override HttpRequestMessage CreateRequest(string relativeUri, string method, IDictionary<string, IList<string>> customHeaders)
         {
             var httpRequest = new HttpRequestMessage();
-            httpRequest.Method = method;
-            httpRequest.RequestUri = new Uri(url);
+            httpRequest.Method = new HttpMethod(method);
+            httpRequest.RequestUri = new Uri(BaseUri, relativeUri);
             httpRequest.Version = HttpVersion.Version20;
             // Set Headers
             if (customHeaders != null)
@@ -142,21 +114,13 @@ namespace k8s
             return httpRequest;
         }
 
-        private Task<HttpResponseMessage> SendRequest<T>(T body, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
         {
-            if (body != null)
+            if (httpRequest == null)
             {
-                var requestContent = KubernetesJson.Serialize(body);
-                httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
-                httpRequest.Content.Headers.ContentType = GetHeader(body);
-                return SendRequestRaw(requestContent, httpRequest, cancellationToken);
+                throw new ArgumentNullException(nameof(httpRequest));
             }
 
-            return SendRequestRaw("", httpRequest, cancellationToken);
-        }
-
-        private async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
-        {
             // Set Credentials
             if (Credentials != null)
             {

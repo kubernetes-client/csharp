@@ -9,6 +9,11 @@ namespace k8s.Models
 
         public override void Write(Utf8JsonWriter writer, V1Patch value, JsonSerializerOptions options)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
             var content = value?.Content;
             if (content is string s)
             {

@@ -5,7 +5,7 @@ namespace k8s
 {
     public partial class Kubernetes
     {
-        public virtual MediaTypeHeaderValue GetHeader(object body)
+        protected override MediaTypeHeaderValue GetHeader(object body)
         {
             if (body == null)
             {
@@ -21,7 +21,7 @@ namespace k8s
         }
 
 
-        public virtual MediaTypeHeaderValue GetHeader(V1Patch body)
+        private MediaTypeHeaderValue GetHeader(V1Patch body)
         {
             if (body == null)
             {

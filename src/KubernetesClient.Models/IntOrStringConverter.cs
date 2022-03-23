@@ -19,6 +19,11 @@ namespace k8s.Models
 
         public override void Write(Utf8JsonWriter writer, IntstrIntOrString value, JsonSerializerOptions options)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException(nameof(writer));
+            }
+
             var s = value?.Value;
 
             if (long.TryParse(s, out var intv))

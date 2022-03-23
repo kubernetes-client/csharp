@@ -10,13 +10,6 @@ namespace k8s
     public partial class Kubernetes
     {
         /// <summary>
-        ///     Timeout of REST calls to Kubernetes server
-        ///     Does not apply to watch related api
-        /// </summary>
-        /// <value>timeout</value>
-        public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
         /// <param name='config'>

@@ -3,7 +3,6 @@
  */
 
 using k8s.Tests.Mock;
-using k8s.Autorest;
 using System;
 using System.Collections.Generic;
 using System.Threading;
