@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Models;
 using k8s.Autorest;
 
 
