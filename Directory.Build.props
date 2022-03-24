@@ -5,7 +5,7 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <Authors>The Kubernetes Project Authors</Authors>
     <Copyright>2017 The Kubernetes Project Authors</Copyright>
@@ -17,14 +17,14 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageTags>kubernetes;docker;containers;</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  
+
     <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-      
+
     <!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>    
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <LangVersion>10.0</LangVersion>
   </PropertyGroup>
