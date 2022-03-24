@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net48</TargetFrameworks>
+    <RootNamespace>k8s</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.10" />
+    <PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
+    <PackageReference Include="IdentityModel.OidcClient" Version="4.0.0" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
+    <ProjectReference Include="..\KubernetesClient.Basic\KubernetesClient.Basic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\KubernetesClient\CertUtils.cs" />
+    <Compile Include="..\KubernetesClient\FileUtils.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.ConfigInit.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.ConfigFile.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.InCluster.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesException.cs" />
+
+    <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
+    <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
+
+    <Compile Include="..\KubernetesClient\Authentication\ExecTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\GcpTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\OidcTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\TokenFileAuth.cs" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <Reference Include="System.Net.Http" Condition="'$(TargetFramework)' == 'net48'" />
+  </ItemGroup>
+</Project>
