@@ -15,7 +15,7 @@ namespace yaml
             typeMap.Add("v1/Service", typeof(V1Service));
             typeMap.Add("apps/v1/Deployment", typeof(V1Deployment));
 
-            var objects = await Yaml.LoadAllFromFileAsync(args[0], typeMap);
+            var objects = await KubernetesYaml.LoadAllFromFileAsync(args[0], typeMap);
 
             foreach (var obj in objects) {
                 Console.WriteLine(obj);

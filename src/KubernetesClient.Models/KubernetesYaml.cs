@@ -13,7 +13,7 @@ namespace k8s
     /// <summary>
     /// This is a utility class that helps you load objects from YAML files.
     /// </summary>
-    public static class Yaml
+    public static class KubernetesYaml
     {
         private static readonly IDeserializer Deserializer =
             new DeserializerBuilder()
