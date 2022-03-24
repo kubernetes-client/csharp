@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>10.0</LangVersion>
         <NoWarn>CA1812</NoWarn>
     </PropertyGroup>
 
@@ -24,7 +23,7 @@
 
     <PropertyGroup>
         <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
-    </PropertyGroup>    
+    </PropertyGroup>
 
     <Target Name="GetDependencyTargetPaths">
         <ItemGroup>
@@ -39,5 +38,5 @@
             <TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_Diagnostics_DiagnosticSource)\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll" IncludeRuntimeDependency="false" />
         </ItemGroup>
     </Target>
-    
+
 </Project>

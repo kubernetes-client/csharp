@@ -1,3 +1,4 @@
+using k8s.Models;
 using System.Collections.Generic;
 namespace customResource
 {

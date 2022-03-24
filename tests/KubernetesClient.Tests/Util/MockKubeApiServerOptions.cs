@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using k8s.Models;
 using Microsoft.AspNetCore.Http;
 using Nito.AsyncEx;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using k8s.Models;
 using k8s.Util.Common.Generic;
 
 namespace k8s.Tests.Util

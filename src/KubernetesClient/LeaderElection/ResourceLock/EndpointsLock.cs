@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using k8s.Models;
 
 namespace k8s.LeaderElection.ResourceLock
 {
