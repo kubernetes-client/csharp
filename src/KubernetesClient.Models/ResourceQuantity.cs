@@ -53,7 +53,7 @@ namespace k8s.Models
     ///     writing some sort of special handling code in the hopes that that will
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
-    [JsonConverter(typeof(QuantityConverter))]
+    [JsonConverter(typeof(ResourceQuantityJsonConverter))]
     public partial class ResourceQuantity
     {
         public enum SuffixFormat
