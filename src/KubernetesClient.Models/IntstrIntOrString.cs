@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    [JsonConverter(typeof(IntOrStringConverter))]
+    [JsonConverter(typeof(IntOrStringJsonConverter))]
     public partial class IntstrIntOrString
     {
         public static implicit operator IntstrIntOrString(int v)

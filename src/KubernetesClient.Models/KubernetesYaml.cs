@@ -13,7 +13,7 @@ namespace k8s
     /// <summary>
     /// This is a utility class that helps you load objects from YAML files.
     /// </summary>
-    public static class Yaml
+    public static class KubernetesYaml
     {
         private static readonly IDeserializer Deserializer =
             new DeserializerBuilder()
@@ -50,7 +50,7 @@ namespace k8s
                 },
                 t => t);
 
-        public class ByteArrayStringYamlConverter : IYamlTypeConverter
+        private class ByteArrayStringYamlConverter : IYamlTypeConverter
         {
             public bool Accepts(Type type)
             {
@@ -179,21 +179,42 @@ namespace k8s
             }
         }
 
+        [Obsolete("use Deserialize")]
         public static T LoadFromString<T>(string content)
         {
-            var obj = Deserializer.Deserialize<T>(content);
-            return obj;
+            return Deserialize<T>(content);
         }
 
+        [Obsolete("use Serialize")]
         public static string SaveToString<T>(T value)
         {
+            return Serialize(value);
+        }
+
+        public static TValue Deserialize<TValue>(string yaml)
+        {
+            return Deserializer.Deserialize<TValue>(yaml);
+        }
+
+        public static TValue Deserialize<TValue>(Stream yaml)
+        {
+            return Deserializer.Deserialize<TValue>(new StreamReader(yaml));
+        }
+
+        public static string Serialize(object value)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
             var stringBuilder = new StringBuilder();
             var writer = new StringWriter(stringBuilder);
             var emitter = new Emitter(writer);
 
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
-            Serializer.SerializeValue(emitter, value, typeof(T));
+            Serializer.SerializeValue(emitter, value, value.GetType());
 
             return stringBuilder.ToString();
         }

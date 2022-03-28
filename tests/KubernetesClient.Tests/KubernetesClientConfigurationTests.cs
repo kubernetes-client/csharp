@@ -445,7 +445,7 @@ namespace k8s.Tests
         public void LoadKubeConfigExplicitFilePath()
         {
             var txt = File.ReadAllText("assets/kubeconfig.yml");
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            var expectedCfg = KubernetesYaml.LoadFromString<K8SConfiguration>(txt);
 
             var cfg = KubernetesClientConfiguration.LoadKubeConfig("assets/kubeconfig.yml");
 
@@ -458,7 +458,7 @@ namespace k8s.Tests
         {
             var filePath = "assets/kubeconfig.yml";
             var txt = File.ReadAllText(filePath);
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            var expectedCfg = KubernetesYaml.LoadFromString<K8SConfiguration>(txt);
 
             var fileInfo = new FileInfo(filePath);
             var cfg = KubernetesClientConfiguration.LoadKubeConfig(fileInfo);
@@ -472,7 +472,7 @@ namespace k8s.Tests
         {
             var filePath = "assets/kubeconfig.yml";
             var txt = File.ReadAllText(filePath);
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            var expectedCfg = KubernetesYaml.LoadFromString<K8SConfiguration>(txt);
 
             var fileInfo = new FileInfo(filePath);
             K8SConfiguration cfg;
@@ -524,7 +524,7 @@ namespace k8s.Tests
         public void LoadSameKubeConfigFromEnvironmentVariableUnmodified()
         {
             var txt = File.ReadAllText("assets/kubeconfig.yml");
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            var expectedCfg = KubernetesYaml.LoadFromString<K8SConfiguration>(txt);
 
             var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.yml"));
 
@@ -537,7 +537,7 @@ namespace k8s.Tests
         public void LoadKubeConfigWithAdditionalProperties()
         {
             var txt = File.ReadAllText("assets/kubeconfig.additional-properties.yml");
-            var expectedCfg = Yaml.LoadFromString<K8SConfiguration>(txt);
+            var expectedCfg = KubernetesYaml.LoadFromString<K8SConfiguration>(txt);
 
             var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.additional-properties.yml"));
 

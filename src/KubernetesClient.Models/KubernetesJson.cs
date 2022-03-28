@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace k8s
 {
-    internal static class KubernetesJson
+    public static class KubernetesJson
     {
         private static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
 
