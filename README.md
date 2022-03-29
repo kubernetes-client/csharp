@@ -13,7 +13,7 @@ dotnet add package KubernetesClient
 ## Authentication/Configuration
 You should be able to use a standard KubeConfig file with this library,
 see the `BuildConfigFromConfigFile` function below. Most authentication
-methods are currently supported, but a few are not, see the 
+methods are currently supported, but a few are not, see the
 [known-issues](https://github.com/kubernetes-client/csharp#known-issues).
 
 You should also be able to authenticate with the in-cluster service
@@ -141,16 +141,16 @@ git clone https://github.com/kubernetes-client/gen
 
 ```bash
 # Where REPO_DIR points to the root of the csharp repository
-cd 
+cd
 ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp.settings
 ```
 
-# Version Compatibility 
+# Version Compatibility
 
 | SDK Version | Kubernetes Version | .NET Targeting                        |
 |-------------|--------------------|---------------------------------------|
-| 7.0         | 1.23               | netstandard2.1;net5;net6              |
-| 6.0         | 1.22               | netstandard2.1;net5                   |
+| 7.0         | 1.23               | netstandard2.1;net5.0;net6.0          |
+| 6.0         | 1.22               | netstandard2.1;net5.0                 |
 | 5.0         | 1.21               | netstandard2.1;net5                   |
 | 4.0         | 1.20               | netstandard2.0;netstandard2.1         |
 | 3.0         | 1.19               | netstandard2.0;net452                 |

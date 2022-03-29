@@ -3,14 +3,14 @@
     <IsPackable>false</IsPackable>
     <SignAssembly>true</SignAssembly>
     <RootNamespace>k8s.E2E</RootNamespace>
-    <TargetFrameworks>netcoreapp3.1;net5;net6</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
 
     <PackageReference Include="JsonPatch.Net" Version="1.1.2" />
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
 
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
