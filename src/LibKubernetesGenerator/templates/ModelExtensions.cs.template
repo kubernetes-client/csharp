@@ -11,7 +11,7 @@ namespace k8s.Models
         public const string KubeApiVersion = "{{GetApiVersion . }}";
         public const string KubeKind = "{{GetKind . }}";
         public const string KubeGroup = "{{GetGroup . }}";
-        public const string KubePluralName = "{{GetPlural . }}";
+        public const string KubePluralName = {{GetPlural . }};
     }
 
 {{/.}}
