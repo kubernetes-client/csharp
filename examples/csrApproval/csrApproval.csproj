@@ -9,7 +9,10 @@
 
     <ItemGroup>
       <PackageReference Include="JsonPatch.Net" Version="1.1.2" />
-      <PackageReference Include="KubernetesClient" Version="7.1.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GenericKubernetesApi\GenericKubernetesApi.csproj" />
     </ItemGroup>
 
 </Project>
