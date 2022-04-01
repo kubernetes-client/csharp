@@ -39,4 +39,11 @@ jobs:
       run: dotnet pack -c Release src/nuget.proj -o pkg --include-symbols
 
     - name: dotnet nuget push
-      run: dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
+      run: |
+        dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
+        
+    - name: Delete Package Versions
+      uses: actions/delete-package-versions@v2
+      with:
+        min-versions-to-keep: 10
