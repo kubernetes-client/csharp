@@ -9,9 +9,4 @@
     <ItemGroup>
       <PackageReference Include="JsonPatch.Net" Version="1.1.2" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\GenericKubernetesApi\GenericKubernetesApi.csproj" />
-    </ItemGroup>
-
 </Project>
