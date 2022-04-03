@@ -23,7 +23,9 @@ namespace k8s
             Initialize();
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             SkipTlsVerify = config.SkipTlsVerify;
+#endif
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
@@ -100,9 +102,11 @@ namespace k8s
 
         private X509Certificate2Collection CaCerts { get; }
 
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
         private X509Certificate2 ClientCert { get; }
 
         private bool SkipTlsVerify { get; }
+#endif
 
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition

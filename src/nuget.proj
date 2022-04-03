@@ -3,5 +3,6 @@
     <ProjectReference Include="KubernetesClient.Models/KubernetesClient.Models.csproj" />
     <ProjectReference Include="KubernetesClient.Basic/KubernetesClient.Basic.csproj" />
     <ProjectReference Include="KubernetesClient/KubernetesClient.csproj" />
+    <ProjectReference Include="KubernetesClient.Classic/KubernetesClient.Classic.csproj" />
   </ItemGroup>
 </Project>

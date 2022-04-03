@@ -71,7 +71,11 @@ namespace k8s
 
             if (watch == true)
             {
+#if NETSTANDARD2_0 || NET48
+                throw new KubernetesException("watch not supported");
+#else
                 httpResponse.Content = new LineSeparatedHttpContent(httpResponse.Content, cancellationToken);
+#endif
             }
 
             try
@@ -100,7 +104,9 @@ namespace k8s
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = new HttpMethod(method);
             httpRequest.RequestUri = new Uri(BaseUri, relativeUri);
+#if NETSTANDARD2_1_OR_GREATER
             httpRequest.Version = HttpVersion.Version20;
+#endif
             // Set Headers
             if (customHeaders != null)
             {
