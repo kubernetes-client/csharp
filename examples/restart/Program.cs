@@ -11,17 +11,11 @@ double ConvertToUnixTimestamp(DateTime date)
     return Math.Floor(diff.TotalSeconds);
 }
 
-async Task RestartDamonsetAsync(string name,string @namespace)
+async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes client)
 {
-    var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-    IKubernetes client = new Kubernetes(config);
     var daemonSet = await client.ReadNamespacedDaemonSetAsync(name, @namespace);
-    var options = new JsonSerializerOptions
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    };
-    var old = JsonSerializer.SerializeToDocument(daemonSet,options);
+    var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
+    var old = JsonSerializer.SerializeToDocument(daemonSet, options);
 
     var restart = new Dictionary<string, string>(daemonSet.Spec.Template.Metadata.Annotations)
     {
@@ -36,17 +30,11 @@ async Task RestartDamonsetAsync(string name,string @namespace)
     await client.PatchNamespacedDaemonSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
 }
 
-async Task RestartDeploymentAsync(string name,string @namespace)
+async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes client)
 {
-    var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-    IKubernetes client = new Kubernetes(config);
     var deployment = await client.ReadNamespacedDeploymentAsync(name, @namespace);
-    var options = new JsonSerializerOptions
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    };
-    var old = JsonSerializer.SerializeToDocument(deployment,options);
+    var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
+    var old = JsonSerializer.SerializeToDocument(deployment, options);
 
     var restart = new Dictionary<string, string>(deployment.Spec.Template.Metadata.Annotations)
     {
@@ -61,17 +49,11 @@ async Task RestartDeploymentAsync(string name,string @namespace)
     await client.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
 }
 
-async Task RestartStatefulSetAsync(string name,string @namespace)
+async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes client)
 {
-    var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-    IKubernetes client = new Kubernetes(config);
     var deployment = await client.ReadNamespacedStatefulSetAsync(name, @namespace);
-    var options = new JsonSerializerOptions
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    };
-    var old = JsonSerializer.SerializeToDocument(deployment,options);
+    var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
+    var old = JsonSerializer.SerializeToDocument(deployment, options);
 
     var restart = new Dictionary<string, string>(deployment.Spec.Template.Metadata.Annotations)
     {
@@ -86,4 +68,9 @@ async Task RestartStatefulSetAsync(string name,string @namespace)
     await client.PatchNamespacedStatefulSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
 }
 
-await RestartDeploymentAsync("event-exporter", "monitoring");
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+IKubernetes client = new Kubernetes(config);
+
+await RestartDeploymentAsync("event-exporter", "monitoring", client);
+await RestartDaemonSetAsync("prometheus-exporter", "monitoring", client);
+await RestartStatefulSetAsync("argocd-application-controlle", "argocd", client);
