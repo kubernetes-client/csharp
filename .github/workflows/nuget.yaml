@@ -40,8 +40,8 @@ jobs:
 
     - name: dotnet nuget push
       run: |
-        dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }}
-        dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }}
+        dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }} --skip-duplicate
         
     - name: Delete Package Versions
       uses: actions/delete-package-versions@v2
