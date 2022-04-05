@@ -2,8 +2,9 @@
 
 approvers:
 - brendandburns 
-- krabhishek8260
+- tg123
 reviewers:
 - brendandburns
-- krabhishek8260
-
+- tg123
+emeritus_approvers:
+- krabhishek8260 # 4/4/2022
