@@ -5,7 +5,7 @@ namespace k8s.kubectl.beta;
 public partial class Kubectl
 {
     // TODO should auto generate this
-    public KubeVersion Version()
+    public KubernetesSDKVersion Version()
     {
         return client.Version().GetAwaiter().GetResult();
     }

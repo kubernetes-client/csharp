@@ -1,22 +1,23 @@
-using System.Reflection;
 using k8s.Models;
 
 namespace k8s.kubectl.beta;
 
 public partial class AsyncKubectl
 {
-    private static readonly Version AsssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version ?? default!;
+    private const string AsssemblyVersion = ThisAssembly.AssemblyInformationalVersion;
 
-    public record KubeVersion
+    public record KubernetesSDKVersion
     {
-        public Version ClientVersion { get; init; } = AsssemblyVersion;
+        public string ClientVersion { get; init; } = AsssemblyVersion;
+
+        public string ClientSwaggerVersion { get; init; } = GeneratedApiVersion.SwaggerVersion;
 
         public VersionInfo ServerVersion { get; init; } = default!;
     }
 
-    public async Task<KubeVersion> Version(CancellationToken cancellationToken = default)
+    public async Task<KubernetesSDKVersion> Version(CancellationToken cancellationToken = default)
     {
         var serverVersion = await client.GetCodeAsync(cancellationToken).ConfigureAwait(false);
-        return new KubeVersion { ServerVersion = serverVersion };
+        return new KubernetesSDKVersion { ServerVersion = serverVersion };
     }
 }
