@@ -23,7 +23,7 @@ namespace k8s
 {{#operation.parameters}}
             {{GetDotNetType .}} {{GetDotNetName . "true"}},
 {{/operation.parameters}}
-            IReadonlyDictionary<string, IReadonlyList<string>> customHeaders = null,
+            IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);

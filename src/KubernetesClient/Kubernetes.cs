@@ -99,7 +99,7 @@ namespace k8s
             return result;
         }
 
-        protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IDictionary<string, IList<string>> customHeaders)
+        protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
         {
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = method;

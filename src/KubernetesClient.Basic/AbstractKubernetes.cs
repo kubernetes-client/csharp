@@ -113,7 +113,7 @@ namespace k8s
 
         protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
-        protected abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IDictionary<string, IList<string>> customHeaders);
+        protected abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders);
 
         protected abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
     }

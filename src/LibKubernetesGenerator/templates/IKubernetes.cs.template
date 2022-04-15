@@ -38,7 +38,7 @@ namespace k8s
 {{#operation.parameters}}
             {{GetDotNetType .}} {{GetDotNetName . "true"}},
 {{/operation.parameters}}
-            IDictionary<string, IList<string>> customHeaders = null,
+            IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders = null,
             CancellationToken cancellationToken = default);
 
         {{/.}}
