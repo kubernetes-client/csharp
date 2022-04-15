@@ -61,7 +61,7 @@ namespace k8s
             {{/IfListNotEmpty operation.parameters}}
 
             // Create HTTP transport
-            var httpRequest = CreateRequest(url, "{{Method}}", customHeaders);
+            var httpRequest = CreateRequest(url, HttpMethods.{{Method}}, customHeaders);
             {{#IfParamContains operation "body"}}
             var httpResponse = await SendRequest(body, httpRequest, cancellationToken);
             {{/IfParamContains operation "body"}}
