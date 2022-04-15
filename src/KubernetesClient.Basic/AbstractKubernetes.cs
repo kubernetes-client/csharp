@@ -10,7 +10,7 @@ namespace k8s
 {
     public abstract partial class AbstractKubernetes
     {
-        protected static class HttpMethods
+        private static class HttpMethods
         {
             public static readonly HttpMethod Delete = HttpMethod.Delete;
             public static readonly HttpMethod Get = HttpMethod.Get;
