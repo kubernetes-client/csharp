@@ -50,6 +50,7 @@ namespace k8s
             {{#IfGroupPathParamContainsGroup path}}
             url = url.Replace("apis//", "api/");
             {{/IfGroupPathParamContainsGroup}}
+            {{#IfListNotEmpty operation.parameters}}
             var q = new QueryBuilder();
             {{#operation.parameters}}
             {{#IfKindIs . "query"}}
@@ -57,6 +58,7 @@ namespace k8s
             {{/IfKindIs . "query"}}
             {{/operation.parameters}}
             url += q.ToString();
+            {{/IfListNotEmpty operation.parameters}}
 
             // Create HTTP transport
             var httpRequest = CreateRequest(url, "{{Method}}", customHeaders);
