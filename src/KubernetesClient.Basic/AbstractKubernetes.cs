@@ -10,6 +10,18 @@ namespace k8s
 {
     public abstract partial class AbstractKubernetes
     {
+        private static class HttpMethods
+        {
+            public static readonly HttpMethod Delete = HttpMethod.Delete;
+            public static readonly HttpMethod Get = HttpMethod.Get;
+            public static readonly HttpMethod Head = HttpMethod.Head;
+            public static readonly HttpMethod Options = HttpMethod.Options;
+            public static readonly HttpMethod Post = HttpMethod.Post;
+            public static readonly HttpMethod Put = HttpMethod.Put;
+            public static readonly HttpMethod Trace = HttpMethod.Trace;
+            public static readonly HttpMethod Patch = new HttpMethod("Patch");
+        }
+
         private sealed class QueryBuilder
         {
             private List<string> parameters = new List<string>();
@@ -101,7 +113,7 @@ namespace k8s
 
         protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
-        protected abstract HttpRequestMessage CreateRequest(string relativeUri, string method, IDictionary<string, IList<string>> customHeaders);
+        protected abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders);
 
         protected abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
     }

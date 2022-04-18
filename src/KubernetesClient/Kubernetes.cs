@@ -99,10 +99,10 @@ namespace k8s
             return result;
         }
 
-        protected override HttpRequestMessage CreateRequest(string relativeUri, string method, IDictionary<string, IList<string>> customHeaders)
+        protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
         {
             var httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod(method);
+            httpRequest.Method = method;
             httpRequest.RequestUri = new Uri(BaseUri, relativeUri);
 #if NETSTANDARD2_1_OR_GREATER
             httpRequest.Version = HttpVersion.Version20;
