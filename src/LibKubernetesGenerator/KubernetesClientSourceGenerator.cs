@@ -67,6 +67,7 @@ namespace LibKubernetesGenerator
                 builder.RegisterType<ModelGenerator>();
                 builder.RegisterType<ApiGenerator>();
                 builder.RegisterType<VersionConverterGenerator>();
+                builder.RegisterType<VersionGenerator>();
 
                 var container = builder.Build();
                 // TODO move to Handlebars.Net
@@ -99,6 +100,11 @@ namespace LibKubernetesGenerator
                 if (generators.Contains("versionconverter"))
                 {
                     container.Resolve<VersionConverterGenerator>().Generate(swagger, context);
+                }
+
+                if (generators.Contains("version"))
+                {
+                    container.Resolve<VersionGenerator>().Generate(swagger, context);
                 }
             }
         }

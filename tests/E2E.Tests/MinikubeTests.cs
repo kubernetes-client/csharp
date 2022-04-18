@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -17,7 +17,7 @@ using Xunit;
 
 namespace k8s.E2E
 {
-    public class MnikubeTests
+    public class MinikubeTests
     {
         [MinikubeFact]
         public void SimpleTest()
@@ -548,7 +548,7 @@ namespace k8s.E2E
         }
 
 
-        private static IKubernetes CreateClient()
+        public static IKubernetes CreateClient()
         {
             return new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
         }

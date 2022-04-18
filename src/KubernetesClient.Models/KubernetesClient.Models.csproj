@@ -6,7 +6,7 @@
 
   <ItemGroup>
    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-   <AdditionalFiles Include="..\..\swagger.json" Generator="model,modelext,versionconverter" />
+   <AdditionalFiles Include="..\..\swagger.json" Generator="model,modelext,versionconverter,version" />
    <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 

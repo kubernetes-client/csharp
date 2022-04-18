@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-        <AdditionalFiles Include="..\..\swagger.json" Generator="api" />
+        <AdditionalFiles Include="..\..\swagger.json" Generator="api,version" />
         <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
     </ItemGroup>
 
