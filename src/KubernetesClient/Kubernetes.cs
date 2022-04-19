@@ -104,7 +104,7 @@ namespace k8s
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = method;
             httpRequest.RequestUri = new Uri(BaseUri, relativeUri);
-#if NETSTANDARD2_1_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             httpRequest.Version = HttpVersion.Version20;
 #endif
             // Set Headers
