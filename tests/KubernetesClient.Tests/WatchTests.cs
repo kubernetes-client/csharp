@@ -728,7 +728,6 @@ namespace k8s.Tests
         {
             var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
-                // block until reponse watcher obj created
                 await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
                 return false;
             });
