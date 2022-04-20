@@ -175,6 +175,11 @@ namespace k8s
             public async Task<string> PeekLineAsync()
             {
                 var line = await ReadLineAsync().ConfigureAwait(false);
+                if (line == null)
+                {
+                    throw new EndOfStreamException();
+                }
+
                 _buffer.Enqueue(line);
                 return line;
             }
