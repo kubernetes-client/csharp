@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using k8s.Autorest;
 
@@ -89,5 +90,18 @@ namespace k8s
         /// </summary>
         /// <value>timeout</value>
         public TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
+
+        /// <summary>
+        ///     Gets or sets the FirstMessageHandler setup callback.
+        /// </summary>
+        /// <remarks>
+        ///     Allow custom configuration of the first http handler.
+        /// </remarks>
+        /// <value>The FirstMessageHandler factory.</value>
+#if NET5_0_OR_GREATER
+        public Action<SocketsHttpHandler> FirstMessageHandlerSetup { get; set; }
+#else
+        public Action<HttpClientHandler> FirstMessageHandlerSetup { get; set; }
+#endif
     }
 }
