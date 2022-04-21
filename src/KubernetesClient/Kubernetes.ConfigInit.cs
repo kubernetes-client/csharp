@@ -126,6 +126,7 @@ namespace k8s
 #else
             FirstMessageHandler = HttpClientHandler = new HttpClientHandler();
 #endif
+            config.FirstMessageHandlerSetup?.Invoke(HttpClientHandler);
 
             if (handlers != null)
             {
