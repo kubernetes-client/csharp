@@ -701,5 +701,43 @@ namespace k8s.Tests
                 Assert.Equal("too old resource version: 44982(53593)", k8sException.Status.Message);
             }
         }
+
+        private class CheckHeaderDelegatingHandler : DelegatingHandler
+        {
+            public Version Version { get; private set; }
+
+            public CheckHeaderDelegatingHandler()
+                : base()
+            {
+            }
+
+            public CheckHeaderDelegatingHandler(HttpMessageHandler innerHandler)
+                : base(innerHandler)
+            {
+            }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                Version = request.Version;
+                return base.SendAsync(request, cancellationToken);
+            }
+        }
+
+        [Fact]
+        public async Task MustHttp2VersionSet()
+        {
+            var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(false);
+                return false;
+            });
+
+            var h = new CheckHeaderDelegatingHandler();
+            var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() }, h);
+
+            Assert.Null(h.Version);
+            await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+            Assert.Equal(HttpVersion.Version20, h.Version);
+        }
     }
 }
