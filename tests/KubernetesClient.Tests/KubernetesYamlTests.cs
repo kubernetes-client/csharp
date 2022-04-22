@@ -193,7 +193,7 @@ metadata:
   name: foo
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
         }
@@ -208,7 +208,7 @@ metadata:
   youDontKnow: Me
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
         }
@@ -223,7 +223,7 @@ metadata:
   youDontKnow: Me
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
         }
@@ -238,7 +238,7 @@ metadata:
   name: foo
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
             Assert.Equal("bar", obj.Metadata.NamespaceProperty);
@@ -264,7 +264,7 @@ spec:
         readOnly: false
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.True(obj.Spec.Containers[0].VolumeMounts[0].ReadOnlyProperty);
             Assert.False(obj.Spec.Containers[0].VolumeMounts[1].ReadOnlyProperty);
@@ -318,10 +318,10 @@ metadata:
         {
             var content = @"namespace: foo";
 
-            var deserialized = KubernetesYaml.LoadFromString<V1ObjectMeta>(content);
+            var deserialized = KubernetesYaml.Deserialize<V1ObjectMeta>(content);
             Assert.Equal("foo", deserialized.NamespaceProperty);
 
-            var serialized = KubernetesYaml.SaveToString(deserialized);
+            var serialized = KubernetesYaml.Serialize(deserialized);
             Assert.Equal(content, serialized);
         }
 
@@ -330,7 +330,7 @@ metadata:
         {
             var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } };
 
-            var yaml = KubernetesYaml.SaveToString(pod);
+            var yaml = KubernetesYaml.Serialize(pod);
             Assert.Equal(
                 ToLines(@"apiVersion: v1
 kind: Pod
@@ -348,7 +348,7 @@ metadata:
                 Metadata = new V1ObjectMeta() { Name = "foo", NamespaceProperty = "bar" },
             };
 
-            var yaml = KubernetesYaml.SaveToString(pod);
+            var yaml = KubernetesYaml.Serialize(pod);
             Assert.Equal(
                 ToLines(@"apiVersion: v1
 kind: Pod
@@ -388,7 +388,7 @@ metadata:
                 },
             };
 
-            var yaml = KubernetesYaml.SaveToString(pod);
+            var yaml = KubernetesYaml.Serialize(pod);
             Assert.Equal(
                 ToLines(@"apiVersion: v1
 kind: Pod
@@ -446,7 +446,7 @@ spec:
             - -cpus
             - ""2""";
 
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.NotNull(obj?.Spec?.Containers);
             var container = Assert.Single(obj.Spec.Containers);
@@ -476,7 +476,7 @@ spec:
     targetPort: 3000
 ";
 
-            var obj = KubernetesYaml.LoadFromString<V1Service>(content);
+            var obj = KubernetesYaml.Deserialize<V1Service>(content);
 
             Assert.Equal(3000, obj.Spec.Ports[0].Port);
             Assert.Equal(3000, int.Parse(obj.Spec.Ports[0].TargetPort));
@@ -508,7 +508,7 @@ spec:
                 },
             };
 
-            var output = KubernetesYaml.SaveToString(obj);
+            var output = KubernetesYaml.Serialize(obj);
             Assert.Equal(ToLines(output), ToLines(content));
         }
 
@@ -534,11 +534,11 @@ spec:
       value: ""false""
     image: vish/stress
     name: cpu-demo-ctr";
-            var obj = KubernetesYaml.LoadFromString<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
             Assert.NotNull(obj?.Spec?.Containers);
             var container = Assert.Single(obj.Spec.Containers);
             Assert.NotNull(container.Env);
-            var objStr = KubernetesYaml.SaveToString(obj);
+            var objStr = KubernetesYaml.Serialize(obj);
             Assert.Equal(content.Replace("\r\n", "\n"), objStr.Replace("\r\n", "\n"));
         }
 
@@ -555,7 +555,7 @@ data:
   password: Mzk1MjgkdmRnN0pi
 ";
 
-            var result = KubernetesYaml.LoadFromString<V1Secret>(kManifest);
+            var result = KubernetesYaml.Deserialize<V1Secret>(kManifest);
             Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
             Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
         }
@@ -589,7 +589,7 @@ spec:
     served: true
     storage: true
 ";
-            var result = KubernetesYaml.LoadFromString<V1CustomResourceDefinition>(kManifest);
+            var result = KubernetesYaml.Deserialize<V1CustomResourceDefinition>(kManifest);
             Assert.Single(result?.Spec?.Versions);
             var ver = result.Spec.Versions[0];
             Assert.Equal(true, ver?.Schema?.OpenAPIV3Schema?.XKubernetesIntOrString);
