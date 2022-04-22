@@ -168,7 +168,7 @@ namespace k8s
         {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
-            return LoadFromString<T>(content);
+            return Deserialize<T>(content);
         }
 
         public static async Task<T> LoadFromFileAsync<T>(string file)
