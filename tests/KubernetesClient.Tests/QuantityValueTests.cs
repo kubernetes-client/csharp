@@ -211,14 +211,14 @@ namespace k8s.Tests
         [Fact]
         public void DeserializeYaml()
         {
-            var value = KubernetesYaml.LoadFromString<ResourceQuantity>("\"1\"");
+            var value = KubernetesYaml.Deserialize<ResourceQuantity>("\"1\"");
             Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
         }
 
         [Fact]
         public void SerializeYaml()
         {
-            var value = KubernetesYaml.SaveToString(new ResourceQuantity(1, -1, DecimalSI));
+            var value = KubernetesYaml.Serialize(new ResourceQuantity(1, -1, DecimalSI));
             Assert.Equal("100m", value);
         }
     }
