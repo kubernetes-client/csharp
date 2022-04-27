@@ -44,7 +44,7 @@ namespace k8s
             if (!IsInCluster())
             {
                 throw new KubeConfigException(
-                    "unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined");
+                    "Unable to load in-cluster configuration. Missing environment variables KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT or service account token. Hint: consider using option \"automountServiceAccountToken: true\" in deployment declaration.");
             }
 
             var rootCAFile = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
