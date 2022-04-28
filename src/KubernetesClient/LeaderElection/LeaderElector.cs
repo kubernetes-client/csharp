@@ -195,7 +195,7 @@ namespace k8s.LeaderElection
                 {
                     var acq = TryAcquireOrRenew(cancellationToken);
 
-                    if (await Task.WhenAny(acq, Task.Delay(delay, cancellationToken))
+                    if (await Task.WhenAny(acq, Task.Delay((int)(delay * JitterFactor * (new Random().NextDouble() + 1)), cancellationToken))
                         .ConfigureAwait(false) == acq)
                     {
                         if (await acq.ConfigureAwait(false))
@@ -208,8 +208,6 @@ namespace k8s.LeaderElection
                     }
 
                     // else timeout
-
-                    delay = (int)(delay * JitterFactor);
                 }
                 finally
                 {
