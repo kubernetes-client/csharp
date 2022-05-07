@@ -250,8 +250,8 @@ namespace k8s.Tests
                     {
                         Host = server.Uri.ToString(),
                         ClientCertificateFilePath =
-                            "assets/client.CoreV1.crt", // TODO amazoning why client.CoreV1.crt != client-data.txt
-                        ClientKeyFilePath = "assets/client.CoreV1.key",
+                            "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
+                        ClientKeyFilePath = "assets/client.key",
                         SkipTlsVerify = true,
                     });
 
@@ -328,8 +328,8 @@ namespace k8s.Tests
                 }
 
                 {
-                    var clientCertificateText = File.ReadAllText("assets/client.CoreV1.crt").Replace("\n", "\\n");
-                    var clientCertificateKeyText = File.ReadAllText("assets/client.CoreV1.key").Replace("\n", "\\n");
+                    var clientCertificateText = File.ReadAllText("assets/client.crt").Replace("\n", "\\n");
+                    var clientCertificateKeyText = File.ReadAllText("assets/client.key").Replace("\n", "\\n");
                     var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"clientCertificateData\":\"{clientCertificateText}\",\"clientKeyData\":\"{clientCertificateKeyText}\"}}}}";
                     var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);
