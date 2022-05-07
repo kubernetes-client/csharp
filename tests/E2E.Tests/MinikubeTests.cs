@@ -29,12 +29,12 @@ namespace k8s.E2E
 
             void Cleanup()
             {
-                var pods = client.ListNamespacedPod(namespaceParameter);
+                var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                 while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
                     try
                     {
-                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                        client.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
                     }
                     catch (HttpOperationException e)
                     {
@@ -50,7 +50,7 @@ namespace k8s.E2E
             {
                 Cleanup();
 
-                client.CreateNamespacedPod(
+                client.CoreV1.CreateNamespacedPod(
                     new V1Pod()
                     {
                         Metadata = new V1ObjectMeta { Name = podName, },
@@ -61,7 +61,7 @@ namespace k8s.E2E
                     },
                     namespaceParameter);
 
-                var pods = client.ListNamespacedPod(namespaceParameter);
+                var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                 Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
             }
             finally
@@ -80,12 +80,12 @@ namespace k8s.E2E
 
             void Cleanup()
             {
-                var pods = client.ListNamespacedPod(namespaceParameter);
+                var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                 while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
                     try
                     {
-                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                        client.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
                     }
                     catch (HttpOperationException e)
                     {
@@ -102,7 +102,7 @@ namespace k8s.E2E
                 {
                     Cleanup();
 
-                    client.CreateNamespacedPod(
+                    client.CoreV1.CreateNamespacedPod(
                         new V1Pod()
                         {
                             Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
@@ -115,7 +115,7 @@ namespace k8s.E2E
 
                     // patch
                     {
-                        var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                        var pod = client.CoreV1.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
                         var old = JsonSerializer.SerializeToDocument(pod);
 
                         var newlabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "test-jsonpatch" };
@@ -123,12 +123,12 @@ namespace k8s.E2E
 
                         var expected = JsonSerializer.SerializeToDocument(pod);
                         var patch = old.CreatePatch(expected);
-                        client.PatchNamespacedPod(new V1Patch(patch, V1Patch.PatchType.JsonPatch), pod.Metadata.Name, "default");
+                        client.CoreV1.PatchNamespacedPod(new V1Patch(patch, V1Patch.PatchType.JsonPatch), pod.Metadata.Name, "default");
                     }
 
                     // refresh
                     {
-                        var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                        var pod = client.CoreV1.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
                         Assert.Equal("test-jsonpatch", pod.Labels()["test"]);
                     }
                 }
@@ -138,7 +138,7 @@ namespace k8s.E2E
                 }
 
                 {
-                    client.CreateNamespacedPod(
+                    client.CoreV1.CreateNamespacedPod(
                         new V1Pod()
                         {
                             Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
@@ -150,7 +150,7 @@ namespace k8s.E2E
                         namespaceParameter);
 
 
-                    var pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                    var pod = client.CoreV1.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
 
                     var patchStr = @"
 {
@@ -161,12 +161,12 @@ namespace k8s.E2E
     }
 }";
 
-                    client.PatchNamespacedPod(new V1Patch(patchStr, V1Patch.PatchType.MergePatch), pod.Metadata.Name, "default");
+                    client.CoreV1.PatchNamespacedPod(new V1Patch(patchStr, V1Patch.PatchType.MergePatch), pod.Metadata.Name, "default");
 
                     Assert.False(pod.Labels().ContainsKey("test"));
 
                     // refresh
-                    pod = client.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
+                    pod = client.CoreV1.ListNamespacedPod(namespaceParameter).Items.First(p => p.Metadata.Name == podName);
 
                     Assert.Equal("test-mergepatch", pod.Labels()["test"]);
                 }
@@ -182,7 +182,7 @@ namespace k8s.E2E
         {
             var kubernetes = CreateClient();
 
-            var job = await kubernetes.CreateNamespacedJobAsync(
+            var job = await kubernetes.BatchV1.CreateNamespacedJobAsync(
                 new V1Job()
                 {
                     ApiVersion = "batch/v1",
@@ -219,7 +219,7 @@ namespace k8s.E2E
             var started = new AsyncManualResetEvent();
             var connectionClosed = new AsyncManualResetEvent();
 
-            var watcher = kubernetes.ListNamespacedJobWithHttpMessagesAsync(
+            var watcher = kubernetes.BatchV1.ListNamespacedJobWithHttpMessagesAsync(
                 job.Metadata.NamespaceProperty,
                 fieldSelector: $"metadata.name={job.Metadata.Name}",
                 resourceVersion: job.Metadata.ResourceVersion,
@@ -239,7 +239,7 @@ namespace k8s.E2E
             await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TimeSpan.FromMinutes(3))).ConfigureAwait(false);
             Assert.True(connectionClosed.IsSet);
 
-            var st = await kubernetes.DeleteNamespacedJobAsync(
+            var st = await kubernetes.BatchV1.DeleteNamespacedJobAsync(
                 job.Metadata.Name,
                 job.Metadata.NamespaceProperty,
                 new V1DeleteOptions() { PropagationPolicy = "Foreground" }).ConfigureAwait(false);
@@ -253,7 +253,7 @@ namespace k8s.E2E
 
             void Cleanup()
             {
-                var endpoints = client.ListNamespacedEndpoints(namespaceParameter);
+                var endpoints = client.CoreV1.ListNamespacedEndpoints(namespaceParameter);
 
                 void DeleteEndpoints(string name)
                 {
@@ -261,7 +261,7 @@ namespace k8s.E2E
                     {
                         try
                         {
-                            client.DeleteNamespacedEndpoints(name, namespaceParameter);
+                            client.CoreV1.DeleteNamespacedEndpoints(name, namespaceParameter);
                         }
                         catch (HttpOperationException e)
                         {
@@ -351,12 +351,12 @@ namespace k8s.E2E
 
             void Cleanup()
             {
-                var pods = client.ListNamespacedPod(namespaceParameter);
+                var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                 while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
                     try
                     {
-                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                        client.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
                     }
                     catch (HttpOperationException e)
                     {
@@ -372,7 +372,7 @@ namespace k8s.E2E
             {
                 Cleanup();
 
-                client.CreateNamespacedPod(
+                client.CoreV1.CreateNamespacedPod(
                     new V1Pod()
                     {
                         Metadata = new V1ObjectMeta { Name = podName, },
@@ -397,7 +397,7 @@ namespace k8s.E2E
 
                 async Task<V1Pod> Pod()
                 {
-                    var pods = client.ListNamespacedPod(namespaceParameter);
+                    var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                     var pod = pods.Items.First();
                     while (pod.Status.Phase != "Running")
                     {
@@ -409,7 +409,7 @@ namespace k8s.E2E
                 }
 
                 var pod = await Pod().ConfigureAwait(false);
-                var stream = client.ReadNamespacedPodLog(pod.Metadata.Name, pod.Metadata.NamespaceProperty, follow: true);
+                var stream = client.CoreV1.ReadNamespacedPodLog(pod.Metadata.Name, pod.Metadata.NamespaceProperty, follow: true);
                 using var reader = new StreamReader(stream);
 
                 var copytask = Task.Run(() =>
@@ -445,7 +445,7 @@ namespace k8s.E2E
         {
             var kubernetes = CreateClient();
 
-            await kubernetes.CreateNamespacedEventAsync(
+            await kubernetes.CoreV1.CreateNamespacedEventAsync(
                 new Corev1Event(
                     new V1ObjectReference(
                         "v1alpha1",
@@ -480,12 +480,12 @@ namespace k8s.E2E
 
             void Cleanup()
             {
-                var pods = client.ListNamespacedPod(namespaceParameter);
+                var pods = client.CoreV1.ListNamespacedPod(namespaceParameter);
                 while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
                     try
                     {
-                        client.DeleteNamespacedPod(podName, namespaceParameter);
+                        client.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
                     }
                     catch (HttpOperationException e)
                     {
