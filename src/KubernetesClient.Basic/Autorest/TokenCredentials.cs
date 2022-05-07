@@ -2,8 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s.Autorest
 {
