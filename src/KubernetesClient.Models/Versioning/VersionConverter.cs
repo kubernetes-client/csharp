@@ -140,20 +140,10 @@ namespace k8s.Versioning
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ReverseMap();
 
-            cfg.CreateMap<V1alpha1RuntimeClass, V1RuntimeClass>()
-                .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
-                .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Spec.Overhead))
-                .ForMember(dest => dest.Scheduling, opt => opt.MapFrom(src => src.Spec.Scheduling))
-                .ReverseMap();
             cfg.CreateMap<V1beta1RuntimeClass, V1RuntimeClass>()
                 .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Handler))
                 .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Overhead))
                 .ForMember(dest => dest.Scheduling, opt => opt.MapFrom(src => src.Scheduling))
-                .ReverseMap();
-            cfg.CreateMap<V1alpha1RuntimeClass, V1beta1RuntimeClass>()
-                .ForMember(dest => dest.Handler, opt => opt.MapFrom(src => src.Spec.RuntimeHandler))
-                .ForMember(dest => dest.Overhead, opt => opt.MapFrom(src => src.Spec.Overhead))
-                .ForMember(dest => dest.Scheduling, opt => opt.MapFrom(src => src.Spec.Scheduling))
                 .ReverseMap();
             cfg.CreateMap<V2beta1ResourceMetricStatus, V2beta2MetricValueStatus>()
                 .ForMember(dest => dest.AverageValue, opt => opt.MapFrom(src => src.CurrentAverageValue))
