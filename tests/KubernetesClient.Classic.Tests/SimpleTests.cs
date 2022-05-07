@@ -74,7 +74,7 @@ public class BasicTests
         });
         var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Addr });
 
-        var pod = await client.ReadNamespacedPodAsync("pod", "default").ConfigureAwait(false);
+        var pod = await client.CoreV1.ReadNamespacedPodAsync("pod", "default").ConfigureAwait(false);
 
         Assert.Equal("pod0", pod.Metadata.Name);
     }

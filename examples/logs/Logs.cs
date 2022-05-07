@@ -12,7 +12,7 @@ namespace logs
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
 
-            var list = client.ListNamespacedPod("default");
+            var list = client.CoreV1.ListNamespacedPod("default");
             if (list.Items.Count == 0)
             {
                 Console.WriteLine("No pods!");
@@ -21,7 +21,7 @@ namespace logs
 
             var pod = list.Items[0];
 
-            var response = await client.ReadNamespacedPodLogWithHttpMessagesAsync(
+            var response = await client.CoreV1.ReadNamespacedPodLogWithHttpMessagesAsync(
                 pod.Metadata.Name,
                 pod.Metadata.NamespaceProperty, follow: true).ConfigureAwait(false);
             var stream = response.Body;

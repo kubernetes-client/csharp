@@ -17,7 +17,7 @@ public partial class AsyncKubectl
 
     public async Task<KubernetesSDKVersion> Version(CancellationToken cancellationToken = default)
     {
-        var serverVersion = await client.GetCodeAsync(cancellationToken).ConfigureAwait(false);
+        var serverVersion = await client.Version.GetCodeAsync(cancellationToken).ConfigureAwait(false);
         return new KubernetesSDKVersion { ServerVersion = serverVersion };
     }
 }

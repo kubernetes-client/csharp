@@ -36,7 +36,7 @@ namespace k8s.Tests
 
         private static HttpOperationResponse<V1PodList> ExecuteListPods(IKubernetes client)
         {
-            return client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
+            return client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default").Result;
         }
 
         [Fact]
@@ -250,8 +250,8 @@ namespace k8s.Tests
                     {
                         Host = server.Uri.ToString(),
                         ClientCertificateFilePath =
-                            "assets/client.crt", // TODO amazoning why client.crt != client-data.txt
-                        ClientKeyFilePath = "assets/client.key",
+                            "assets/client.CoreV1.crt", // TODO amazoning why client.CoreV1.crt != client-data.txt
+                        ClientKeyFilePath = "assets/client.CoreV1.key",
                         SkipTlsVerify = true,
                     });
 
@@ -328,8 +328,8 @@ namespace k8s.Tests
                 }
 
                 {
-                    var clientCertificateText = File.ReadAllText("assets/client.crt").Replace("\n", "\\n");
-                    var clientCertificateKeyText = File.ReadAllText("assets/client.key").Replace("\n", "\\n");
+                    var clientCertificateText = File.ReadAllText("assets/client.CoreV1.crt").Replace("\n", "\\n");
+                    var clientCertificateKeyText = File.ReadAllText("assets/client.CoreV1.key").Replace("\n", "\\n");
                     var responseJson = $"{{\"apiVersion\":\"testingversion\",\"status\":{{\"clientCertificateData\":\"{clientCertificateText}\",\"clientKeyData\":\"{clientCertificateKeyText}\"}}}}";
                     var kubernetesConfig = GetK8SConfiguration(server.Uri.ToString(), responseJson, name);
                     var clientConfig = KubernetesClientConfiguration.BuildConfigFromConfigObject(kubernetesConfig, name);

@@ -13,7 +13,7 @@ namespace patch
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
 
-            var pod = client.ListNamespacedPod("default").Items.First();
+            var pod = client.CoreV1.ListNamespacedPod("default").Items.First();
             var name = pod.Metadata.Name;
             PrintLabels(pod);
 
@@ -26,8 +26,8 @@ namespace patch
     }
 }";
 
-            client.PatchNamespacedPod(new V1Patch(patchStr, V1Patch.PatchType.MergePatch), name, "default");
-            PrintLabels(client.ReadNamespacedPod(name, "default"));
+            client.CoreV1.PatchNamespacedPod(new V1Patch(patchStr, V1Patch.PatchType.MergePatch), name, "default");
+            PrintLabels(client.CoreV1.ReadNamespacedPod(name, "default"));
         }
 
         private static void PrintLabels(V1Pod pod)

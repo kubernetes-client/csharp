@@ -24,7 +24,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var status = client.DeleteNamespace("test", new V1DeleteOptions());
+                var status = client.CoreV1.DeleteNamespace("test", new V1DeleteOptions());
 
                 Assert.False(status.HasObject);
                 Assert.Equal(v1Status.Message, status.Message);
@@ -45,7 +45,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var status = client.DeleteNamespace("test", new V1DeleteOptions());
+                var status = client.CoreV1.DeleteNamespace("test", new V1DeleteOptions());
 
                 Assert.True(status.HasObject);
 
