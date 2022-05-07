@@ -15,21 +15,21 @@ namespace k8s.LeaderElection.ResourceLock
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.ReadNamespacedConfigMapAsync(name, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CoreV1.ReadNamespacedConfigMapAsync(name, namespaceParameter, cancellationToken: cancellationToken);
         }
 
         protected override Task<V1ConfigMap> CreateMetaObjectAsync(IKubernetes client, V1ConfigMap obj,
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.CreateNamespacedConfigMapAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CoreV1.CreateNamespacedConfigMapAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
         }
 
         protected override Task<V1ConfigMap> ReplaceMetaObjectAsync(IKubernetes client, V1ConfigMap obj, string name,
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.ReplaceNamespacedConfigMapAsync(obj, name, namespaceParameter,
+            return client.CoreV1.ReplaceNamespacedConfigMapAsync(obj, name, namespaceParameter,
                 cancellationToken: cancellationToken);
         }
     }

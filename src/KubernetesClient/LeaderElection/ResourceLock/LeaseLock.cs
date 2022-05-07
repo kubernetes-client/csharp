@@ -14,7 +14,7 @@ namespace k8s.LeaderElection.ResourceLock
         protected override Task<V1Lease> ReadMetaObjectAsync(IKubernetes client, string name, string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.ReadNamespacedLeaseAsync(name, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CoordinationV1.ReadNamespacedLeaseAsync(name, namespaceParameter, cancellationToken: cancellationToken);
         }
 
         protected override LeaderElectionRecord GetLeaderElectionRecord(V1Lease obj)
@@ -61,13 +61,13 @@ namespace k8s.LeaderElection.ResourceLock
         protected override Task<V1Lease> CreateMetaObjectAsync(IKubernetes client, V1Lease obj, string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.CreateNamespacedLeaseAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CoordinationV1.CreateNamespacedLeaseAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
         }
 
         protected override Task<V1Lease> ReplaceMetaObjectAsync(IKubernetes client, V1Lease obj, string name, string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.ReplaceNamespacedLeaseAsync(obj, name, namespaceParameter, cancellationToken: cancellationToken);
+            return client.CoordinationV1.ReplaceNamespacedLeaseAsync(obj, name, namespaceParameter, cancellationToken: cancellationToken);
         }
     }
 }

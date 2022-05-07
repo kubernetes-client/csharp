@@ -229,7 +229,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var resp = await _client.GetClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, cancellationToken: cancellationToken)
+            var resp = await _client.CustomObjects.GetClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -256,7 +256,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(namespaceProperty));
             }
 
-            var resp = await _client.GetNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, namespaceParameter: namespaceProperty,
+            var resp = await _client.CustomObjects.GetNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, name: name, namespaceParameter: namespaceProperty,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -276,7 +276,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(listOptions));
             }
 
-            var resp = await _client.ListClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, resourceVersion: listOptions.ResourceVersion,
+            var resp = await _client.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, resourceVersion: listOptions.ResourceVersion,
                 continueParameter: listOptions.Continue, fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit,
                 timeoutSeconds: listOptions.TimeoutSeconds, cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
@@ -303,7 +303,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(namespaceProperty));
             }
 
-            var resp = await _client.ListNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, resourceVersion: listOptions.ResourceVersion,
+            var resp = await _client.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, plural: _resourcePlural, version: _apiVersion, resourceVersion: listOptions.ResourceVersion,
                 continueParameter: listOptions.Continue, fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit,
                 timeoutSeconds: listOptions.TimeoutSeconds, namespaceParameter: namespaceProperty, cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -339,7 +339,7 @@ namespace k8s.Util.Common.Generic
                 return await CreateAsync(objectMeta.NamespaceProperty, obj, createOptions, cancellationToken).ConfigureAwait(false);
             }
 
-            var resp = await _client.CreateClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion, dryRun: createOptions.DryRun,
+            var resp = await _client.CustomObjects.CreateClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion, dryRun: createOptions.DryRun,
                 fieldManager: createOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
 
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
@@ -367,7 +367,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(createOptions));
             }
 
-            var resp = await _client.CreateNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion,
+            var resp = await _client.CustomObjects.CreateNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, plural: _resourcePlural, version: _apiVersion,
                 namespaceParameter: namespaceProperty, dryRun: createOptions.DryRun, fieldManager: createOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
 
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
@@ -400,13 +400,13 @@ namespace k8s.Util.Common.Generic
             HttpOperationResponse<object> resp;
             if (isNamespaced)
             {
-                resp = await _client.ReplaceNamespacedCustomObjectWithHttpMessagesAsync(body: obj, name: objectMeta.Name, group: _apiGroup, plural: _resourcePlural, version: _apiVersion,
+                resp = await _client.CustomObjects.ReplaceNamespacedCustomObjectWithHttpMessagesAsync(body: obj, name: objectMeta.Name, group: _apiGroup, plural: _resourcePlural, version: _apiVersion,
                         namespaceParameter: objectMeta.NamespaceProperty, dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
             }
             else
             {
-                resp = await _client.ReplaceClusterCustomObjectWithHttpMessagesAsync(body: obj, name: objectMeta.Name, group: _apiGroup ?? obj.ApiGroup(), plural: _resourcePlural,
+                resp = await _client.CustomObjects.ReplaceClusterCustomObjectWithHttpMessagesAsync(body: obj, name: objectMeta.Name, group: _apiGroup ?? obj.ApiGroup(), plural: _resourcePlural,
                     version: _apiVersion, dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
 
@@ -455,13 +455,13 @@ namespace k8s.Util.Common.Generic
             var isNamespaced = !string.IsNullOrEmpty(objectMeta.NamespaceProperty);
             if (isNamespaced)
             {
-                resp = await _client.PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, namespaceParameter: objectMeta.NamespaceProperty,
+                resp = await _client.CustomObjects.PatchNamespacedCustomObjectStatusWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, namespaceParameter: objectMeta.NamespaceProperty,
                     plural: _resourcePlural, name: objectMeta.Name, dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, force: updateOptions.Force,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
             }
             else
             {
-                resp = await _client.PatchClusterCustomObjectStatusWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: objectMeta.Name,
+                resp = await _client.CustomObjects.PatchClusterCustomObjectStatusWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: objectMeta.Name,
                     dryRun: updateOptions.DryRun, fieldManager: updateOptions.FieldManager, force: updateOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
 
@@ -495,7 +495,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var resp = await _client.PatchClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: name, dryRun: patchOptions.DryRun,
+            var resp = await _client.CustomObjects.PatchClusterCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: name, dryRun: patchOptions.DryRun,
                 fieldManager: patchOptions.FieldManager, force: patchOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -533,7 +533,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(patchOptions));
             }
 
-            var resp = await _client.PatchNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
+            var resp = await _client.CustomObjects.PatchNamespacedCustomObjectWithHttpMessagesAsync(body: obj, group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
                 name: name, dryRun: patchOptions.DryRun, fieldManager: patchOptions.FieldManager, force: patchOptions.Force, cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -554,7 +554,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var resp = await _client.DeleteClusterCustomObjectWithHttpMessagesAsync(
+            var resp = await _client.CustomObjects.DeleteClusterCustomObjectWithHttpMessagesAsync(
                 group: _apiGroup, version: _apiVersion, plural: _resourcePlural, name: name, body: deleteOptions, cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -581,7 +581,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var resp = await _client.DeleteNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
+            var resp = await _client.CustomObjects.DeleteNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
                 name: name, body: deleteOptions, cancellationToken: cancellationToken).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
@@ -605,7 +605,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(listOptions));
             }
 
-            var resp = _client.ListClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, plural: _resourcePlural, continueParameter: listOptions.Continue,
+            var resp = _client.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, plural: _resourcePlural, continueParameter: listOptions.Continue,
                 fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit, resourceVersion: listOptions.ResourceVersion,
                 timeoutSeconds: listOptions.TimeoutSeconds, watch: true, cancellationToken: cancellationToken);
 
@@ -637,7 +637,7 @@ namespace k8s.Util.Common.Generic
                 throw new ArgumentNullException(nameof(namespaceProperty));
             }
 
-            var resp = _client.ListNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
+            var resp = _client.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync(group: _apiGroup, version: _apiVersion, namespaceParameter: namespaceProperty, plural: _resourcePlural,
                 continueParameter: listOptions.Continue, fieldSelector: listOptions.FieldSelector, labelSelector: listOptions.LabelSelector, limit: listOptions.Limit,
                 resourceVersion: listOptions.ResourceVersion, timeoutSeconds: listOptions.TimeoutSeconds, watch: true, cancellationToken: cancellationToken);
 
