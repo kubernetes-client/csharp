@@ -55,7 +55,7 @@ namespace k8s
             BaseUri = new Uri("http://localhost");
         }
 
-        protected override async Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken)
+        protected internal override async Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken)
         {
             if (httpRequest == null)
             {
@@ -99,7 +99,7 @@ namespace k8s
             return result;
         }
 
-        protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
+        protected internal override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
         {
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = method;
@@ -120,7 +120,7 @@ namespace k8s
             return httpRequest;
         }
 
-        protected override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        protected internal override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
         {
             if (httpRequest == null)
             {

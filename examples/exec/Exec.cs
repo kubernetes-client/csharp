@@ -13,7 +13,7 @@ namespace exec
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
 
-            var list = client.ListNamespacedPod("default");
+            var list = client.CoreV1.ListNamespacedPod("default");
             var pod = list.Items[0];
             await ExecInPod(client, pod).ConfigureAwait(false);
         }

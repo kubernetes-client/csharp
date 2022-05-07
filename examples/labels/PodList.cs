@@ -12,7 +12,7 @@ namespace simple
             IKubernetes client = new Kubernetes(config);
             Console.WriteLine("Starting Request!");
 
-            var list = client.ListNamespacedService("default");
+            var list = client.CoreV1.ListNamespacedService("default");
             foreach (var item in list.Items)
             {
                 Console.WriteLine("Pods for service: " + item.Metadata.Name);
@@ -30,7 +30,7 @@ namespace simple
 
                 var labelStr = string.Join(",", labels.ToArray());
                 Console.WriteLine(labelStr);
-                var podList = client.ListNamespacedPod("default", labelSelector: labelStr);
+                var podList = client.CoreV1.ListNamespacedPod("default", labelSelector: labelStr);
                 foreach (var pod in podList.Items)
                 {
                     Console.WriteLine(pod.Metadata.Name);

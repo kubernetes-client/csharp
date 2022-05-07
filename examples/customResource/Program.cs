@@ -31,7 +31,7 @@ namespace customResource
             try
             {
                 Console.WriteLine("creating CR {0}", myCr.Metadata.Name);
-                var response = await client.CreateNamespacedCustomObjectWithHttpMessagesAsync(
+                var response = await client.CustomObjects.CreateNamespacedCustomObjectWithHttpMessagesAsync(
                     myCr,
                     myCRD.Group, myCRD.Version,
                     myCr.Metadata.NamespaceProperty ?? "default",
@@ -66,7 +66,7 @@ namespace customResource
             var crPatch = new V1Patch(patch, V1Patch.PatchType.JsonPatch);
             try
             {
-                var patchResponse = await client.PatchNamespacedCustomObjectAsync(
+                var patchResponse = await client.CustomObjects.PatchNamespacedCustomObjectAsync(
                     crPatch,
                     myCRD.Group,
                     myCRD.Version,

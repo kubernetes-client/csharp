@@ -21,9 +21,9 @@ namespace prom
             Console.WriteLine("Making requests!");
             while (true)
             {
-                client.ListNamespacedPod("default");
-                client.ListNode();
-                client.ListNamespacedDeployment("default");
+                client.CoreV1.ListNamespacedPod("default");
+                client.CoreV1.ListNode();
+                client.AppsV1.ListNamespacedDeployment("default");
                 Thread.Sleep(1000);
             }
         }

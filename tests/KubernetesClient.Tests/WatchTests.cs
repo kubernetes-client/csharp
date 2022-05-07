@@ -54,7 +54,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // did not pass watch param
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+                var listTask = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
                 var onErrorCalled = false;
 
                 using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => { onErrorCalled = true; }))
@@ -68,7 +68,7 @@ namespace k8s.Tests
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
                 {
-                    return client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+                    return client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
 
                     // this line did not throw
                     // listTask.Watch<Corev1Pod>((type, item) => { });
@@ -93,7 +93,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
 
-                var listTask = client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+                var listTask = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
                 using (listTask.Watch<V1Pod, V1PodList>((type, item) => { eventsReceived.Set(); }))
                 {
                     // here watcher is ready to use, but http server has not responsed yet.
@@ -134,7 +134,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -195,7 +195,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 var events = new HashSet<WatchEventType>();
 
@@ -255,7 +255,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -324,7 +324,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
@@ -386,7 +386,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 waitForException.Set();
                 Watcher<V1Pod> watcher;
@@ -451,7 +451,7 @@ namespace k8s.Tests
                 Assert.False(handler1.Called);
                 Assert.False(handler2.Called);
 
-                var listTask = await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
 
                 var events = new HashSet<WatchEventType>();
 
@@ -502,7 +502,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = client.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
+                var watcher = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
                     onEvent:
                     (type, item) =>
                     {
@@ -563,7 +563,7 @@ namespace k8s.Tests
                     Host = server.Uri.ToString(),
                     HttpClientTimeout = TimeSpan.FromSeconds(5),
                 });
-                await client.ListNamespacedPodWithHttpMessagesAsync("default").ConfigureAwait(false);
+                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default").ConfigureAwait(false);
             }).ConfigureAwait(false);
 
             // cts
@@ -575,7 +575,7 @@ namespace k8s.Tests
                 {
                     Host = server.Uri.ToString(),
                 });
-                await client.ListNamespacedPodWithHttpMessagesAsync("default", cancellationToken: cts.Token).ConfigureAwait(false);
+                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", cancellationToken: cts.Token).ConfigureAwait(false);
             }).ConfigureAwait(false);
         }
 
@@ -603,7 +603,7 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = client.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
+                var watcher = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
                     onEvent:
                     (type, item) =>
                     {
@@ -662,7 +662,7 @@ namespace k8s.Tests
 
                 await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
                 {
-                    await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true,
+                    await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true,
                         cancellationToken: cts.Token).ConfigureAwait(false);
                 }).ConfigureAwait(false);
             }
@@ -736,7 +736,7 @@ namespace k8s.Tests
             var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() }, h);
 
             Assert.Null(h.Version);
-            await client.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
+            await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);
             Assert.Equal(HttpVersion.Version20, h.Version);
         }
     }

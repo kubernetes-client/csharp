@@ -36,7 +36,7 @@ namespace k8s.Tests
 
         private static HttpOperationResponse<V1PodList> ExecuteListPods(IKubernetes client)
         {
-            return client.ListNamespacedPodWithHttpMessagesAsync("default").Result;
+            return client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default").Result;
         }
 
         [Fact]
