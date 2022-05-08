@@ -11,6 +11,6 @@ namespace k8s;
 public abstract partial class AbstractKubernetes
 {
     {{#.}}
-    public I{{.}}Operations {{.}} => new {{.}}Operations(this);
+    public I{{.}}Operations {{.}} => this;
     {{/.}}
 }
