@@ -48,10 +48,10 @@ var client = new Kubernetes(config);
 
 ### Listing Objects
 ```c#
-var namespaces = client.ListNamespace();
+var namespaces = client.CoreV1.ListNamespace();
 foreach (var ns in namespaces.Items) {
     Console.WriteLine(ns.Metadata.Name);
-    var list = client.ListNamespacedPod(ns.Metadata.Name);
+    var list = client.CoreV1.ListNamespacedPod(ns.Metadata.Name);
     foreach (var item in list.Items)
     {
         Console.WriteLine(item.Metadata.Name);
@@ -69,10 +69,10 @@ var ns = new V1Namespace
     }
 };
 
-var result = client.CreateNamespace(ns);
+var result = client.CoreV1.CreateNamespace(ns);
 Console.WriteLine(result);
 
-var status = client.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
+var status = client.CoreV1.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
 ```
 
 ## Examples
@@ -147,21 +147,24 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
 # Version Compatibility
 
-| SDK Version | Kubernetes Version | .NET Targeting                        |
-|-------------|--------------------|---------------------------------------|
-| 7.0         | 1.23               | netstandard2.1;net5.0;net6.0          |
-| 6.0         | 1.22               | netstandard2.1;net5.0                 |
-| 5.0         | 1.21               | netstandard2.1;net5                   |
-| 4.0         | 1.20               | netstandard2.0;netstandard2.1         |
-| 3.0         | 1.19               | netstandard2.0;net452                 |
-| 2.0         | 1.18               | netstandard2.0;net452                 |
-| 1.6         | 1.16               | netstandard1.4;netstandard2.0;net452; |
-| 1.4         | 1.13               | netstandard1.4;net451                 |
-| 1.3         | 1.12               | netstandard1.4;net452                 |
+| SDK Version | Kubernetes Version | .NET Targeting                                       |
+|-------------|--------------------|------------------------------------------------------|
+| 8.0         | 1.24               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
+| 7.2         | 1.23               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
+| 7.0         | 1.23               | netstandard2.1;net5.0;net6.0                         |
+| 6.0         | 1.22               | netstandard2.1;net5.0                                |
+| 5.0         | 1.21               | netstandard2.1;net5                                  |
+| 4.0         | 1.20               | netstandard2.0;netstandard2.1                        |
+| 3.0         | 1.19               | netstandard2.0;net452                                |
+| 2.0         | 1.18               | netstandard2.0;net452                                |
+| 1.6         | 1.16               | netstandard1.4;netstandard2.0;net452;                |
+| 1.4         | 1.13               | netstandard1.4;net451                                |
+| 1.3         | 1.12               | netstandard1.4;net452                                |
 
  * Starting from `2.0`, [dotnet sdk versioning](https://github.com/kubernetes-client/csharp/issues/400) adopted
  * `Kubernetes Version` here means the version sdk models and apis were generated from
  * Kubernetes api server guarantees the compatibility with `n-2` version. for exmaple, 1.19 based sdk should work with 1.21 cluster, but no guarantee works with 1.22 cluster. see also <https://kubernetes.io/releases/version-skew-policy/>
+ * `*` `KubernetesClient.Classic`: netstandard2.0 and net48 are supported with limited features
 
 
 ## Contributing
