@@ -47,7 +47,7 @@ public abstract partial class AbstractKubernetes
         {
             if (parameters.Count > 0)
             {
-                return "?" + string.Join("&", parameters);
+                return $"?{string.Join("&", parameters)}";
             }
 
             return "";
