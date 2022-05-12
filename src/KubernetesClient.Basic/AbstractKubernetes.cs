@@ -5,11 +5,71 @@ namespace k8s;
 
 public abstract partial class AbstractKubernetes
 {
+    private static class HttpMethods
+    {
+        public static readonly HttpMethod Delete = HttpMethod.Delete;
+        public static readonly HttpMethod Get = HttpMethod.Get;
+        public static readonly HttpMethod Head = HttpMethod.Head;
+        public static readonly HttpMethod Options = HttpMethod.Options;
+        public static readonly HttpMethod Post = HttpMethod.Post;
+        public static readonly HttpMethod Put = HttpMethod.Put;
+        public static readonly HttpMethod Trace = HttpMethod.Trace;
+        public static readonly HttpMethod Patch = new HttpMethod("Patch");
+    }
 
+    private sealed class QueryBuilder
+    {
+        private List<string> parameters = new List<string>();
+
+        public void Append(string key, params object[] values)
+        {
+            foreach (var value in values)
+            {
+                switch (value)
+                {
+                    case int intval:
+                        parameters.Add($"{key}={intval}");
+                        break;
+                    case string strval:
+                        parameters.Add($"{key}={Uri.EscapeDataString(strval)}");
+                        break;
+                    case bool boolval:
+                        parameters.Add($"{key}={(boolval ? "true" : "false")}");
+                        break;
+                    default:
+                        // null
+                        break;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            if (parameters.Count > 0)
+            {
+                return $"?{string.Join("&", parameters)}";
+            }
+
+            return "";
+        }
+    }
+
+    private Task<HttpResponseMessage> SendRequest<T>(T body, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+    {
+        if (body != null)
+        {
+            var requestContent = KubernetesJson.Serialize(body);
+            httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = GetHeader(body);
+            return SendRequestRaw(requestContent, httpRequest, cancellationToken);
+        }
+
+        return SendRequestRaw("", httpRequest, cancellationToken);
+    }
 
     public virtual TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
 
-    protected internal virtual MediaTypeHeaderValue GetHeader(object body)
+    protected virtual MediaTypeHeaderValue GetHeader(object body)
     {
         if (body == null)
         {
@@ -46,9 +106,9 @@ public abstract partial class AbstractKubernetes
         }
     }
 
-    protected internal abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
+    protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
-    protected internal abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders);
+    protected abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders);
 
-    protected internal abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
+    protected abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
 }
