@@ -1,25 +1,17 @@
-﻿using System.Globalization;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Json.Patch;
 using k8s;
 using k8s.Models;
-
-double ConvertToUnixTimestamp(DateTime date)
-{
-    var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-    var diff = date.ToUniversalTime() - origin;
-    return Math.Floor(diff.TotalSeconds);
-}
 
 async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes client)
 {
     var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(daemonSet, options);
-
-    var restart = new Dictionary<string, string>(daemonSet.Spec.Template.Metadata.Annotations)
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = now.ToString()
     };
 
     daemonSet.Spec.Template.Metadata.Annotations = restart;
@@ -35,10 +27,10 @@ async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes cl
     var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
-
-    var restart = new Dictionary<string, string>(deployment.Spec.Template.Metadata.Annotations)
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = now.ToString()
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
@@ -54,10 +46,10 @@ async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes c
     var deployment = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
-
-    var restart = new Dictionary<string, string>(deployment.Spec.Template.Metadata.Annotations)
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = now.ToString()
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
