@@ -8,10 +8,10 @@ async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes cli
     var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(daemonSet, options);
-
-    var restart = new Dictionary<string, int>
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
+        ["date"] = now.ToString()
     };
 
     daemonSet.Spec.Template.Metadata.Annotations = restart;
@@ -27,10 +27,10 @@ async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes cl
     var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
-
-    var restart = new Dictionary<string, int>
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
+        ["date"] = now.ToString()
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
@@ -46,10 +46,10 @@ async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes c
     var deployment = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
-
-    var restart = new Dictionary<string, int>
+    var now = DateTimeOffset.Now.ToUnixTimeSeconds();
+    var restart = new Dictionary<string, string>
     {
-        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
+        ["date"] = now.ToString()
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
