@@ -17,9 +17,9 @@ async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes cli
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(daemonSet, options);
 
-    var restart = new Dictionary<string, string>
+    var restart = new Dictionary<string, int>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
     };
 
     daemonSet.Spec.Template.Metadata.Annotations = restart;
@@ -36,9 +36,9 @@ async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes cl
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
 
-    var restart = new Dictionary<string, string>
+    var restart = new Dictionary<string, int>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
@@ -55,9 +55,9 @@ async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes c
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
 
-    var restart = new Dictionary<string, string>
+    var restart = new Dictionary<string, int>
     {
-        ["date"] = ConvertToUnixTimestamp(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture)
+        ["date"] = DateTimeOffset.Now.ToUnixTimeSeconds
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
