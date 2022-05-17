@@ -1,15 +1,7 @@
-﻿using System.Globalization;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Json.Patch;
 using k8s;
 using k8s.Models;
-
-double ConvertToUnixTimestamp(DateTime date)
-{
-    var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-    var diff = date.ToUniversalTime() - origin;
-    return Math.Floor(diff.TotalSeconds);
-}
 
 async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes client)
 {
