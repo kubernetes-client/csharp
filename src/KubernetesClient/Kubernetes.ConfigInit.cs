@@ -209,7 +209,7 @@ namespace k8s
                 //
                 foreach (var cert in caCerts)
                 {
-                    if (rootCert.RawData.SequenceEqual(cert.RawData))
+                    if (chain.Build(cert))
                     {
                         isTrusted = true;
                         break;
