@@ -60,5 +60,32 @@ namespace k8s.Tests
 
             Assert.False(result);
         }
+
+        [Fact]
+        public void ValidBundleWithMultipleCerts()
+        {
+            var caCert = CertUtils.LoadPemFileCert("assets/ca-bundle-correct.crt");
+
+            var testCert = caCert[0];
+            var chain = new X509Chain();
+            var errors = SslPolicyErrors.RemoteCertificateChainErrors;
+
+            var result = Kubernetes.CertificateValidationCallBack(this, caCert, testCert, chain, errors);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void InvalidBundleWithMultipleCerts()
+        {
+            var caCert = CertUtils.LoadPemFileCert("assets/ca-bundle-incorrect.crt");
+            var testCert = caCert[0];
+            var chain = new X509Chain();
+            var errors = SslPolicyErrors.RemoteCertificateChainErrors;
+
+            var result = Kubernetes.CertificateValidationCallBack(this, caCert, testCert, chain, errors);
+
+            Assert.False(result);
+        }
     }
 }
