@@ -203,8 +203,6 @@ namespace k8s
 
                 var isTrusted = false;
 
-                var rootCert = chain.ChainElements[chain.ChainElements.Count - 1].Certificate;
-
                 // Make sure that one of our trusted certs exists in the chain provided by the server.
                 //
                 foreach (var cert in caCerts)
