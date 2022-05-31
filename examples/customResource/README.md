@@ -15,7 +15,7 @@ dotnet add package KubernetesClient
 Make sure the  [CRD](./config/crd.yaml) is created, in order to create an instance of it after.
 
 ```shell
-kubectl create -f ./crd.yaml
+kubectl create -f ./config/crd.yaml
 ```
 
 You can test that the CRD is successfully added, by creating an [instance](./config/yaml-cr-instance.yaml) of it using kubectl:
