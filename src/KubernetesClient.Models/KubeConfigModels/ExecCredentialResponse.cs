@@ -5,7 +5,7 @@ namespace k8s.KubeConfigModels
         public class ExecStatus
         {
 #nullable enable
-            public DateTime? Expiry { get; set; }
+            public DateTime? ExpirationTimestamp { get; set; }
             public string? Token { get; set; }
             public string? ClientCertificateData { get; set; }
             public string? ClientKeyData { get; set; }
