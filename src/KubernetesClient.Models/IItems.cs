@@ -12,4 +12,12 @@ namespace k8s
         /// </summary>
         IList<T> Items { get; set; }
     }
+
+    public static class ItemsExt
+    {
+        public static IEnumerator<T> GetEnumerator<T>(this IItems<T> items)
+        {
+            return items.Items.GetEnumerator();
+        }
+    }
 }
