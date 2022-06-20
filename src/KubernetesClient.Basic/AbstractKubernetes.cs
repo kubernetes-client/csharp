@@ -14,7 +14,7 @@ public abstract partial class AbstractKubernetes
         public static readonly HttpMethod Post = HttpMethod.Post;
         public static readonly HttpMethod Put = HttpMethod.Put;
         public static readonly HttpMethod Trace = HttpMethod.Trace;
-        public static readonly HttpMethod Patch = new HttpMethod("Patch");
+        public static readonly HttpMethod Patch = new HttpMethod("PATCH");
     }
 
     private sealed class QueryBuilder
