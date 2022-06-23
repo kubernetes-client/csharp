@@ -23,7 +23,7 @@ namespace logs
 
             var response = await client.CoreV1.ReadNamespacedPodLogWithHttpMessagesAsync(
                 pod.Metadata.Name,
-                pod.Metadata.NamespaceProperty, follow: true).ConfigureAwait(false);
+                pod.Metadata.NamespaceProperty, container: pod.Spec.Containers[0].Name, follow: true).ConfigureAwait(false);
             var stream = response.Body;
             stream.CopyTo(Console.OpenStandardOutput());
         }
