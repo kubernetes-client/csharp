@@ -36,20 +36,23 @@ namespace k8s
 
         public WebSocketBuilder ExpectServerCertificate(X509Certificate2Collection serverCertificate)
         {
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             Options.RemoteCertificateValidationCallback
  = (sender, certificate, chain, sslPolicyErrors) =>
             {
                 return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
             };
-
+#endif
             return this;
         }
 
         public WebSocketBuilder SkipServerCertificateValidation()
         {
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             Options.RemoteCertificateValidationCallback
  = (sender, certificate, chain, sslPolicyErrors) => true;
 
+#endif
             return this;
         }
 
