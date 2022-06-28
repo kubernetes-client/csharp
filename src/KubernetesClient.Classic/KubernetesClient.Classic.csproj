@@ -28,6 +28,18 @@
     <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.cs" />
     <Compile Include="..\KubernetesClient\KubernetesException.cs" />
 
+    <Compile Include="..\KubernetesClient\ChannelIndex.cs" />
+    <Compile Include="..\KubernetesClient\IStreamDemuxer.cs" />
+    <Compile Include="..\KubernetesClient\ByteBuffer.cs" />
+    <Compile Include="..\KubernetesClient\StreamDemuxer.cs" />
+    <Compile Include="..\KubernetesClient\MuxedStream.cs" />
+    <Compile Include="..\KubernetesClient\StreamType.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.WebSocket.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.WebSocket.cs" />
+    <Compile Include="..\KubernetesClient\WebSocketBuilder.cs" />
+    <Compile Include="..\KubernetesClient\WebSocketProtocol.cs" />
+    <Compile Include="..\KubernetesClient\Utilities.cs" />
+
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
 

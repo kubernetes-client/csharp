@@ -210,6 +210,9 @@ namespace k8s
                 cancellationToken);
         }
 
+        partial void BeforeRequest();
+        partial void AfterRequest();
+
         protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default)
         {
             if (uri == null)
@@ -280,6 +283,7 @@ namespace k8s
             WebSocket webSocket = null;
             try
             {
+                BeforeRequest();
                 webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None)
                     .ConfigureAwait(false);
             }
@@ -334,6 +338,10 @@ namespace k8s
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                AfterRequest();
             }
 
             return webSocket;
