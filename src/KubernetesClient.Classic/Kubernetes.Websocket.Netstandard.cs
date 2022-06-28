@@ -5,12 +5,12 @@ namespace k8s;
 
 public partial class Kubernetes
 {
-    private partial void BeforeRequest()
+    partial void BeforeRequest()
     {
         System.Net.ServicePointManager.ServerCertificateValidationCallback += ServerCertificateValidationCallback;
     }
 
-    private partial void AfterRequest()
+    partial void AfterRequest()
     {
         System.Net.ServicePointManager.ServerCertificateValidationCallback -= ServerCertificateValidationCallback;
     }

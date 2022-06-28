@@ -210,8 +210,8 @@ namespace k8s
                 cancellationToken);
         }
 
-        private partial void BeforeRequest();
-        private partial void AfterRequest();
+        partial void BeforeRequest();
+        partial void AfterRequest();
 
         protected async Task<WebSocket> StreamConnectAsync(Uri uri, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default)
         {
