@@ -12,15 +12,15 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup dotnet SDK 3.1
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '3.1.x'          
       - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '5.0.x'          
       - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'          
       # - name: Check Format
@@ -43,15 +43,15 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup dotnet SDK 3.1
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '3.1.x'          
       - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '5.0.x'                
       - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'          
       - name: Minikube
