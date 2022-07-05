@@ -44,6 +44,6 @@ jobs:
         dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }} --skip-duplicate
         
     - name: Delete Package Versions
-      uses: actions/delete-package-versions@v2
+      uses: actions/delete-package-versions@v3
       with:
         min-versions-to-keep: 10
