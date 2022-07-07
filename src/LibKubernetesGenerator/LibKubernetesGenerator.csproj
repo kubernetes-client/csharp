@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.3.0" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="Autofac" Version="6.4.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="CaseExtensions" Version="1.1.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="NSwag.Core" Version="13.15.5" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Nustache" Version="1.16.0.10" GeneratePathProperty="true" PrivateAssets="all" NoWarn="NU1701" />
