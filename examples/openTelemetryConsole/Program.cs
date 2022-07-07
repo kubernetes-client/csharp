@@ -35,8 +35,12 @@ builder.ConfigureServices((builder, services) =>
 // Build the DI Container
 var app = builder.Build();
 
+
+
 // Load kubernetes configuration
 var config = KubernetesClientConfiguration.BuildDefaultConfig();
+// Create the httpClient
+var httpClient = app.Services.GetService<IHttpClientFactory>().CreateClient();
 
 // Create an istance of Kubernetes client
 IKubernetes client = new Kubernetes(config);
