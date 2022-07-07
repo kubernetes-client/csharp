@@ -42,27 +42,39 @@ jobs:
       run: |
         dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }} --skip-duplicate
-        
-    - name: Delete KubernetesClient old Package Versions 
+    
+    - name: Delete KubernetesClient old Package Versions
       uses: actions/delete-package-versions@v3
       with:
+        owner: "$env:GITHUB_REPOSITORY_OWNER"
+        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
         package-name: "KubernetesClient"
         min-versions-to-keep: 10
-        
+        token: "${{ secrets.GITHUB_TOKEN }}"
+    
     - name: Delete KubernetesClient.Models old Package Versions
       uses: actions/delete-package-versions@v3
       with:
+        owner: "$env:GITHUB_REPOSITORY_OWNER"
+        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
         package-name: "KubernetesClient.Models"
         min-versions-to-keep: 10
+        token: "${{ secrets.GITHUB_TOKEN }}"
         
     - name: Delete KubernetesClient.Basic old Package Versions
       uses: actions/delete-package-versions@v3
       with:
+        owner: "$env:GITHUB_REPOSITORY_OWNER"
+        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
         package-name: "KubernetesClient.Basic"
         min-versions-to-keep: 10
+        token: "${{ secrets.GITHUB_TOKEN }}"
         
     - name: Delete KubernetesClient.Classic old Package Versions
       uses: actions/delete-package-versions@v3
       with:
+        owner: "$env:GITHUB_REPOSITORY_OWNER"
+        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
         package-name: "KubernetesClient.Classic"
         min-versions-to-keep: 10
+        token: "${{ secrets.GITHUB_TOKEN }}"
