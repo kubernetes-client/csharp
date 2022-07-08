@@ -45,7 +45,7 @@ jobs:
         
         
   ## Remove old versions of NuGet packages form github NuGet feed
-  nuget-delete-old-nuget-packages:
+  nuget-delete-old-packages:
     name: "Delete Old NuGet"
     needs: [nuget]
     strategy:
