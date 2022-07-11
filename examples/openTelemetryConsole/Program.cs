@@ -6,7 +6,8 @@ using OpenTelemetry.Trace;
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
 
-// Create the traceProvide with HttpClient instrumentation enabled
+// Create the OpenTelemetry TraceProvide with HttpClient instrumentation enabled
+// NOTE: for this example telemetry will be exported to console
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
     .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName: serviceName, serviceVersion: serviceVersion))
