@@ -43,7 +43,26 @@ jobs:
         dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }} --skip-duplicate
         
-    - name: Delete Package Versions
+        
+  ## Remove old versions of NuGet packages form github NuGet feed
+  nuget-delete-old-packages:
+    name: "Delete Old NuGet"
+    needs: [nuget]
+    strategy:
+      matrix:
+        nuget-package: 
+        - "KubernetesClient"
+        - "KubernetesClient.Models"
+        - "KubernetesClient.Basic"
+        - "KubernetesClient.Classic"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Delete old NuGet packages
       uses: actions/delete-package-versions@v3
       with:
+        owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
+        repo: ${{ github.event.repository.name }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        package-name: ${{ matrix.nuget-package }}
         min-versions-to-keep: 10
