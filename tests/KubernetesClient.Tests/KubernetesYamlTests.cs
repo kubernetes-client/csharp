@@ -326,6 +326,27 @@ metadata:
         }
 
         [Fact]
+        public void SerializeAll()
+        {
+            var pods = new List<object>
+            {
+                new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } },
+                new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "bar" } },
+            };
+            var yaml = KubernetesYaml.SerializeAll(pods);
+            Assert.Equal(
+                ToLines(@"apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bar"), ToLines(yaml));
+        }
+
+        [Fact]
         public void WriteToString()
         {
             var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod", Metadata = new V1ObjectMeta() { Name = "foo" } };
