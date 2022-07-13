@@ -201,6 +201,32 @@ namespace k8s
             return Deserializer.Deserialize<TValue>(new StreamReader(yaml));
         }
 
+        public static string SerializeAll(IEnumerable<object> values)
+        {
+            if (values == null)
+            {
+                return "";
+            }
+
+            var stringBuilder = new StringBuilder();
+            var writer = new StringWriter(stringBuilder);
+            var emitter = new Emitter(writer);
+
+            emitter.Emit(new StreamStart());
+
+            foreach (var value in values)
+            {
+                if (value != null)
+                {
+                    emitter.Emit(new DocumentStart());
+                    Serializer.SerializeValue(emitter, value, value.GetType());
+                    emitter.Emit(new DocumentEnd(true));
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
         public static string Serialize(object value)
         {
             if (value == null)
