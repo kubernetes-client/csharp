@@ -25,7 +25,7 @@ namespace workerServiceDependencyInjection
                 logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
                 // Read the list of pods contained in default namespace
-                var podList = kubernetesClient.CoreV1.ListNamespacedPod("kube-system");
+                var podList = kubernetesClient.CoreV1.ListNamespacedPod("default");
 
                 // Print pods names
                 foreach (var pod in podList.Items)
