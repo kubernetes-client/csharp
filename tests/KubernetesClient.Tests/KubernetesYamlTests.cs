@@ -571,6 +571,7 @@ kind: Pod
 metadata:
   annotations:
     custom.annotation: ""True""
+    second.custom.annotation: ""~""
   name: foo
   namespace: bar
 spec:
@@ -598,10 +599,34 @@ spec:
       value: ""y""
     - name: ""Y""
       value: ""Y""
+    - name: ""yes""
+      value: ""yes""
+    - name: ""Yes""
+      value: ""Yes""
+    - name: ""YES""
+      value: ""YES""
     - name: ""n""
       value: ""n""
     - name: ""N""
       value: ""N""
+    - name: ""no""
+      value: ""no""
+    - name: ""No""
+      value: ""No""
+    - name: ""NO""
+      value: ""NO""
+    - name: ""on""
+      value: ""on""
+    - name: ""On""
+      value: ""On""
+    - name: ""ON""
+      value: ""ON""
+    - name: ""off""
+      value: ""off""
+    - name: ""Off""
+      value: ""Off""
+    - name: ""OFF""
+      value: ""OFF""
     image: nginx
     name: foo";
 
@@ -616,6 +641,7 @@ spec:
                     Annotations = new Dictionary<string, string>
                     {
                         { "custom.annotation", "True" },
+                        { "second.custom.annotation", "~" },
                     },
                 },
                 Spec = new V1PodSpec()
@@ -684,6 +710,21 @@ spec:
                                 },
                                 new V1EnvVar
                                 {
+                                    Name = "yes",
+                                    Value = "yes",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "Yes",
+                                    Value = "Yes",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "YES",
+                                    Value = "YES",
+                                },
+                                new V1EnvVar
+                                {
                                     Name = "n",
                                     Value = "n",
                                 },
@@ -691,6 +732,51 @@ spec:
                                 {
                                     Name = "N",
                                     Value = "N",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "no",
+                                    Value = "no",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "No",
+                                    Value = "No",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "NO",
+                                    Value = "NO",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "on",
+                                    Value = "on",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "On",
+                                    Value = "On",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "ON",
+                                    Value = "ON",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "off",
+                                    Value = "off",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "Off",
+                                    Value = "Off",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "OFF",
+                                    Value = "OFF",
                                 },
                             },
                             Name = "foo",
