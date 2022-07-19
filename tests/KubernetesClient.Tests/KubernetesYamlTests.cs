@@ -564,6 +564,146 @@ spec:
         }
 
         [Fact]
+        public void CertainPatternsShouldBeSerializedWithDoubleQuotes()
+        {
+            var content = @"apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    custom.annotation: ""True""
+  name: foo
+  namespace: bar
+spec:
+  containers:
+  - env:
+    - name: NullLowerCase
+      value: ""null""
+    - name: NullCamelCase
+      value: ""Null""
+    - name: NullUpperCase
+      value: ""NULL""
+    - name: TrueLowerCase
+      value: ""true""
+    - name: TrueCamelCase
+      value: ""True""
+    - name: ""TRUE""
+      value: ""TRUE""
+    - name: ""false""
+      value: ""false""
+    - name: ""False""
+      value: ""False""
+    - name: ""FALSE""
+      value: ""FALSE""
+    - name: ""y""
+      value: ""y""
+    - name: ""Y""
+      value: ""Y""
+    - name: ""n""
+      value: ""n""
+    - name: ""N""
+      value: ""N""
+    image: nginx
+    name: foo";
+
+            var pod = new V1Pod()
+            {
+                ApiVersion = "v1",
+                Kind = "Pod",
+                Metadata = new V1ObjectMeta()
+                {
+                    Name = "foo",
+                    NamespaceProperty = "bar",
+                    Annotations = new Dictionary<string, string>
+                    {
+                        { "custom.annotation", "True" },
+                    },
+                },
+                Spec = new V1PodSpec()
+                {
+                    Containers = new[]
+                    {
+                        new V1Container()
+                        {
+                            Image = "nginx",
+                            Env = new List<V1EnvVar>
+                            {
+                                new V1EnvVar
+                                {
+                                    Name = "NullLowerCase",
+                                    Value = "null",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "NullCamelCase",
+                                    Value = "Null",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "NullUpperCase",
+                                    Value = "NULL",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "TrueLowerCase",
+                                    Value = "true",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "TrueCamelCase",
+                                    Value = "True",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "TRUE",
+                                    Value = "TRUE",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "false",
+                                    Value = "false",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "False",
+                                    Value = "False",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "FALSE",
+                                    Value = "FALSE",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "y",
+                                    Value = "y",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "Y",
+                                    Value = "Y",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "n",
+                                    Value = "n",
+                                },
+                                new V1EnvVar
+                                {
+                                    Name = "N",
+                                    Value = "N",
+                                },
+                            },
+                            Name = "foo",
+                        },
+                    },
+                },
+            };
+
+            var objStr = KubernetesYaml.Serialize(pod);
+            Assert.Equal(content.Replace("\r\n", "\n"), objStr.Replace("\r\n", "\n"));
+        }
+
+        [Fact]
         public void LoadSecret()
         {
             var kManifest = @"

@@ -10,7 +10,7 @@ namespace k8s
     {
         // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356
         private static readonly Regex QuotedRegex =
-            new Regex(@"^(\~|null|true|false|-?(0|[0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
+            new Regex(@"^(\~|null|Null|NULL|true|True|TRUE|false|False|FALSE|y|Y|n|N|-?(0|[0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
 
         public StringQuotingEmitter(IEventEmitter next)
             : base(next)
