@@ -5,7 +5,7 @@ using k8s;
 using ICSharpCode.SharpZipLib.Tar;
 using System.Threading;
 using System.Linq;
-
+using System.Text;
 
 namespace cp
 {
@@ -22,7 +22,7 @@ namespace cp
             var pods = client.CoreV1.ListNamespacedPod("default", null, null, null, $"job-name=upload-demo");
             var pod = pods.Items.First();
 
-            await CopyFileToPodAsync(pod.Metadata.Name, "default", "upload-demo", args[1], "home/demo.txt");
+            await CopyFileToPodAsync(pod.Metadata.Name, "default", "upload-demo", args[0], $"home/{args[1]}");
 
         }
 
@@ -57,7 +57,7 @@ namespace cp
                     using (var memoryStream = new MemoryStream())
                     {
                         using (var inputFileStream = File.OpenRead(sourceFilePath))
-                        using (var tarOutputStream = new TarOutputStream(memoryStream)) // optionally set encoding
+                        using (var tarOutputStream = new TarOutputStream(memoryStream, Encoding.Default)) 
                         {
                             tarOutputStream.IsStreamOwner = false;
 
