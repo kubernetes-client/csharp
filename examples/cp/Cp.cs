@@ -22,7 +22,7 @@ namespace cp
             var pods = client.CoreV1.ListNamespacedPod("default", null, null, null, $"job-name=upload-demo");
             var pod = pods.Items.First();
 
-            int res = await CopyFileToPodAsync(pod.Metadata.Name, "default", "upload-demo", "demo.txt", "home/demo.txt");
+            await CopyFileToPodAsync(pod.Metadata.Name, "default", "upload-demo", args[1], "home/demo.txt");
 
         }
 
