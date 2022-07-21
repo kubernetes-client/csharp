@@ -8,9 +8,9 @@ namespace k8s
     // adapted from https://github.com/cloudbase/powershell-yaml/blob/master/powershell-yaml.psm1
     public class StringQuotingEmitter : ChainedEventEmitter
     {
-        // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356
+        // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356 and https://yaml.org/type/bool.html (spec v1.1)
         private static readonly Regex QuotedRegex =
-            new Regex(@"^(\~|null|true|false|-?(0|[0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
+            new Regex(@"^(\~|null|Null|NULL|true|True|TRUE|false|False|FALSE|y|Y|yes|Yes|YES|on|On|ON|n|N|no|No|NO|off|Off|OFF|-?(0|[0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
 
         public StringQuotingEmitter(IEventEmitter next)
             : base(next)
