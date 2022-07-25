@@ -8,7 +8,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         var kubernetesClientConfig = KubernetesClientConfiguration.BuildDefaultConfig();
 
         // Register Kubernetes client interface as sigleton
-        services.AddSingleton<IKubernetes>(new Kubernetes(kubernetesClientConfig));
+        services.AddSingleton<IKubernetes>(_ => new Kubernetes(kubernetesClientConfig));
 
         services.AddHostedService<Worker>();
     })
