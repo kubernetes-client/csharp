@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 var kubernetesClientConfig = KubernetesClientConfiguration.BuildDefaultConfig();
 
 // Register Kubernetes client interface as sigleton
-builder.Services.AddSingleton<IKubernetes>(new Kubernetes(kubernetesClientConfig));
+builder.Services.AddSingleton<IKubernetes>(_ => new Kubernetes(kubernetesClientConfig));
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
