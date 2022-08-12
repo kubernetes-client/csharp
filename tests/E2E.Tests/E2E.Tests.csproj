@@ -8,7 +8,7 @@
 
   <ItemGroup>
 
-    <PackageReference Include="JsonPatch.Net" Version="2.0.2" />
+    <PackageReference Include="JsonPatch.Net" Version="2.0.3" />
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
 
