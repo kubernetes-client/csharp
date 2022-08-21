@@ -39,6 +39,9 @@
     <Compile Include="..\KubernetesClient\WebSocketBuilder.cs" />
     <Compile Include="..\KubernetesClient\WebSocketProtocol.cs" />
     <Compile Include="..\KubernetesClient\Utilities.cs" />
+    <Compile Include="..\KubernetesClient\ExecAsyncCallback.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.Exec.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.Exec.cs" />
 
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
