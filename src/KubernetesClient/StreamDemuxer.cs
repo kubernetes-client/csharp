@@ -21,6 +21,7 @@ namespace k8s
     /// </summary>
     public class StreamDemuxer : IStreamDemuxer
     {
+        private const int MAXFRAMESIZE = 15 * 1024 * 1024; // 15MB
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
@@ -156,15 +157,19 @@ namespace k8s
         public async Task Write(byte index, byte[] buffer, int offset, int count,
             CancellationToken cancellationToken = default)
         {
-            var writeBuffer = ArrayPool<byte>.Shared.Rent(count + 1);
+            var writeBuffer = ArrayPool<byte>.Shared.Rent(Math.Min(count, MAXFRAMESIZE) + 1);
 
             try
             {
-                writeBuffer[0] = (byte)index;
-                Array.Copy(buffer, offset, writeBuffer, 1, count);
-                var segment = new ArraySegment<byte>(writeBuffer, 0, count + 1);
-                await webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
-                    .ConfigureAwait(false);
+                writeBuffer[0] = index;
+                for (var i = 0; i < count; i += MAXFRAMESIZE)
+                {
+                    var c = Math.Min(count - i, MAXFRAMESIZE);
+                    Buffer.BlockCopy(buffer, offset + i, writeBuffer, 1, c);
+                    var segment = new ArraySegment<byte>(writeBuffer, 0, c + 1);
+                    await webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
+                        .ConfigureAwait(false);
+                }
             }
             finally
             {

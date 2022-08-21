@@ -73,17 +73,7 @@ namespace cp
 
                         memoryStream.Position = 0;
 
-                        const int bufferSize = 31 * 1024 * 1024; // must be lower than 32 * 1024 * 1024
-                        byte[] localBuffer = new byte[bufferSize];
-                        while (true)
-                        {
-                            int numRead = await memoryStream.ReadAsync(localBuffer, 0, localBuffer.Length);
-                            if (numRead <= 0)
-                            {
-                                break;
-                            }
-                            await stdIn.WriteAsync(localBuffer, 0, numRead);
-                        }
+                        await memoryStream.CopyToAsync(stdIn);
                         await stdIn.FlushAsync();
                     }
 
