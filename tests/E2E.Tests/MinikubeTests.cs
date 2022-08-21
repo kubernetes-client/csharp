@@ -16,10 +16,6 @@ using Nito.AsyncEx;
 using Xunit;
 using ICSharpCode.SharpZipLib.Tar;
 using System.Text;
-using System.ComponentModel;
-using System.Xml.Linq;
-using Newtonsoft.Json.Linq;
-using System.Net.WebSockets;
 using System.Security.Cryptography;
 
 namespace k8s.E2E
@@ -593,7 +589,6 @@ namespace k8s.E2E
                             await memoryStream.FlushAsync().ConfigureAwait(false);
                             stdIn.Close();
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -656,7 +651,7 @@ namespace k8s.E2E
                                 {
                                     Name = "container",
                                     Image = "ubuntu",
-                                    //Image = "busybox", // TODO not work with busybox
+                                    // Image = "busybox", // TODO not work with busybox
                                     Command = new[] { "sleep" },
                                     Args = new[] { "infinity" },
                                 },
@@ -701,7 +696,7 @@ namespace k8s.E2E
                     var remotemd5 = Encoding.Default.GetString(buff);
                     remotemd5 = remotemd5.Substring(0, 32);
 
-                    var md5 = new MD5CryptoServiceProvider().ComputeHash(orig);
+                    var md5 = MD5.Create().ComputeHash(orig);
                     var localmd5 = BitConverter.ToString(md5).Replace("-", string.Empty).ToLower();
 
                     Assert.Equal(localmd5, remotemd5);
@@ -724,7 +719,6 @@ namespace k8s.E2E
                     await CopyFileToPodAsync(pod.Metadata.Name, pod.Metadata.NamespaceProperty, "container", new MemoryStream(content), "/tmp/test").ConfigureAwait(false);
                     await AssertMd5sumAsync("/tmp/test", content).ConfigureAwait(false);
                 }
-
             }
             finally
             {
