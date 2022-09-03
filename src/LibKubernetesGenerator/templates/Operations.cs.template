@@ -52,19 +52,20 @@ public partial class AbstractKubernetes : I{{name}}Operations
         {{/IfListNotEmpty operation.parameters}}
 
         // Create HTTP transport
-        var httpRequest = CreateRequest(url, HttpMethods.{{Method}}, customHeaders);
         {{#IfParamContains operation "body"}}
-        var httpResponse = await SendRequest(body, httpRequest, cancellationToken);
+        var httpResponse = await SendRequest(url, HttpMethods.{{Method}}, customHeaders, body, cancellationToken);
         {{/IfParamContains operation "body"}}
         {{#IfParamDoesNotContain operation "body"}}
-        var httpResponse = await SendRequestRaw("", httpRequest, cancellationToken);
+        var httpResponse = await SendRequest<object>(url, HttpMethods.{{Method}}, customHeaders, null, cancellationToken);
         {{/IfParamDoesNotContain operation "body"}}
         // Create Result
+        var httpRequest = httpResponse.RequestMessage;
         {{#IfReturnType operation "void"}}
         HttpOperationResponse result = new HttpOperationResponse() { Request = httpRequest, Response =  httpResponse };
         {{/IfReturnType operation "void"}}
         {{#IfReturnType operation "obj"}}
-        var result = await CreateResultAsync{{GetReturnType operation "<>"}}(httpRequest,
+        var result = await CreateResultAsync{{GetReturnType operation "<>"}}(
+            httpRequest,
             httpResponse,
             {{#IfParamContains operation "watch"}}
             watch,

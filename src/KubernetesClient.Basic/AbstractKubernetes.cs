@@ -54,19 +54,6 @@ public abstract partial class AbstractKubernetes
         }
     }
 
-    private Task<HttpResponseMessage> SendRequest<T>(T body, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
-    {
-        if (body != null)
-        {
-            var requestContent = KubernetesJson.Serialize(body);
-            httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
-            httpRequest.Content.Headers.ContentType = GetHeader(body);
-            return SendRequestRaw(requestContent, httpRequest, cancellationToken);
-        }
-
-        return SendRequestRaw("", httpRequest, cancellationToken);
-    }
-
     public virtual TimeSpan HttpClientTimeout { get; set; } = TimeSpan.FromSeconds(100);
 
     protected virtual MediaTypeHeaderValue GetHeader(object body)
@@ -108,7 +95,7 @@ public abstract partial class AbstractKubernetes
 
     protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
-    protected abstract HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders);
+    protected abstract Task<HttpResponseMessage> SendRequest<T>(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders, T body, CancellationToken cancellationToken);
 
     protected abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
 }
