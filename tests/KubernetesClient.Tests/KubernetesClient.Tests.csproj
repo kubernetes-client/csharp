@@ -39,10 +39,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
+    <Compile Remove="Util\**" />
+    <Content Remove="Util\**" />
+    <EmbeddedResource Remove="Util\**" />
+    <None Remove="Util\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Util\Common" />
+    <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
   </ItemGroup>
 </Project>
