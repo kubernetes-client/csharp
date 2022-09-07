@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="System.IO.Abstractions" Version="17.1.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.0" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.0.2" />
   </ItemGroup>
     
