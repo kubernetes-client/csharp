@@ -3,7 +3,7 @@ namespace k8s.Models
     /// <summary>
     /// Describes the resource usage metrics of a node pull from metrics server API.
     /// </summary>
-    public class NodeMetrics
+    public class NodeMetrics : IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// The kubernetes standard object's metadata.
