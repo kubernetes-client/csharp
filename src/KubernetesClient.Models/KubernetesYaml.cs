@@ -7,6 +7,7 @@ using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using k8s.Models;
+using YamlDotNet.Serialization.TypeInspectors;
 
 namespace k8s
 {
@@ -21,7 +22,7 @@ namespace k8s
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
-                .WithOverridesFromJsonPropertyAttributes()
+                .WithTypeInspector(x => new JsonPropertyTypeInspector(x))
                 .IgnoreUnmatchedProperties()
                 .Build();
 
@@ -34,7 +35,7 @@ namespace k8s
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
-                .WithOverridesFromJsonPropertyAttributes()
+                .WithTypeInspector(x => new JsonPropertyTypeInspector(x))
                 .BuildValueSerializer();
 
         private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly
@@ -83,6 +84,37 @@ namespace k8s
             {
                 var obj = (byte[])value;
                 emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
+            }
+        }
+
+        /// <summary>
+        /// Applies property settings from <see cref="JsonPropertyNameAttribute"/> to YamlDotNet
+        /// </summary>
+        private sealed class JsonPropertyTypeInspector : TypeInspectorSkeleton
+        {
+            private readonly ITypeInspector innerTypeDescriptor;
+
+            public JsonPropertyTypeInspector(ITypeInspector innerTypeDescriptor)
+            {
+                this.innerTypeDescriptor = innerTypeDescriptor;
+            }
+
+            public override IEnumerable<IPropertyDescriptor> GetProperties(Type type, object container)
+            {
+                return innerTypeDescriptor.GetProperties(type, container)
+                    .Where(p => p.GetCustomAttribute<JsonIgnoreAttribute>() == null)
+                    .Select(p =>
+                    {
+                        var descriptor = new PropertyDescriptor(p);
+                        var member = p.GetCustomAttribute<JsonPropertyNameAttribute>();
+                        if (member?.Name != null)
+                        {
+                            descriptor.Name = member.Name;
+                        }
+
+                        return (IPropertyDescriptor)descriptor;
+                    })
+                    .OrderBy(p => p.Order);
             }
         }
 
@@ -243,39 +275,6 @@ namespace k8s
             Serializer.SerializeValue(emitter, value, value.GetType());
 
             return stringBuilder.ToString();
-        }
-
-        private static TBuilder WithOverridesFromJsonPropertyAttributes<TBuilder>(this TBuilder builder)
-            where TBuilder : BuilderSkeleton<TBuilder>
-        {
-            // Use VersionInfo from the model namespace as that should be stable.
-            // If this is not generated in the future we will get an obvious compiler error.
-            var targetNamespace = typeof(VersionInfo).Namespace;
-
-            // Get all the concrete model types from the code generated namespace.
-            var types = typeof(KubernetesEntityAttribute).Assembly
-                .ExportedTypes
-                .Where(type => type.Namespace == targetNamespace &&
-                               !type.IsInterface &&
-                               !type.IsAbstract);
-
-            // Map any JsonPropertyAttribute instances to YamlMemberAttribute instances.
-            foreach (var type in types)
-            {
-                foreach (var property in type.GetProperties())
-                {
-                    var jsonAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
-                    if (jsonAttribute == null)
-                    {
-                        continue;
-                    }
-
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.Name, ApplyNamingConventions = false };
-                    builder.WithAttributeOverride(type, property.Name, yamlAttribute);
-                }
-            }
-
-            return builder;
         }
     }
 }
