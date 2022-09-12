@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    public class PodMetricsList
+    public class PodMetricsList : IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// Defines the versioned schema of this representation of an object.

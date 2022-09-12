@@ -21,7 +21,7 @@ namespace customResource
         public string Namespace { get; set; }
     }
 
-    public abstract class CustomResource : KubernetesObject
+    public abstract class CustomResource : KubernetesObject, IMetadata<V1ObjectMeta>
     {
         [JsonPropertyName("metadata")]
         public V1ObjectMeta Metadata { get; set; }
