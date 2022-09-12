@@ -23,7 +23,7 @@ namespace k8s
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
-                .WithOverridesFromJsonPropertyAttributes()
+                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x))
                 .IgnoreUnmatchedProperties()
                 .Build();
 
@@ -36,8 +36,8 @@ namespace k8s
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
+                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
-                .WithOverridesFromJsonPropertyAttributes()
                 .BuildValueSerializer();
 
         private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly
@@ -246,39 +246,6 @@ namespace k8s
             Serializer.SerializeValue(emitter, value, value.GetType());
 
             return stringBuilder.ToString();
-        }
-
-        private static TBuilder WithOverridesFromJsonPropertyAttributes<TBuilder>(this TBuilder builder)
-            where TBuilder : BuilderSkeleton<TBuilder>
-        {
-            // Use VersionInfo from the model namespace as that should be stable.
-            // If this is not generated in the future we will get an obvious compiler error.
-            var targetNamespace = typeof(VersionInfo).Namespace;
-
-            // Get all the concrete model types from the code generated namespace.
-            var types = typeof(KubernetesEntityAttribute).Assembly
-                .ExportedTypes
-                .Where(type => type.Namespace == targetNamespace &&
-                               !type.IsInterface &&
-                               !type.IsAbstract);
-
-            // Map any JsonPropertyAttribute instances to YamlMemberAttribute instances.
-            foreach (var type in types)
-            {
-                foreach (var property in type.GetProperties())
-                {
-                    var jsonAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
-                    if (jsonAttribute == null)
-                    {
-                        continue;
-                    }
-
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.Name, ApplyNamingConventions = false };
-                    builder.WithAttributeOverride(type, property.Name, yamlAttribute);
-                }
-            }
-
-            return builder;
         }
     }
 }
