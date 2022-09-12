@@ -7,6 +7,7 @@ using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using k8s.Models;
+using YamlDotNet.System.Text.Json;
 
 namespace k8s
 {
@@ -21,6 +22,7 @@ namespace k8s
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
+                .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
                 .WithOverridesFromJsonPropertyAttributes()
                 .IgnoreUnmatchedProperties()
                 .Build();
@@ -33,6 +35,7 @@ namespace k8s
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
+                .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .WithOverridesFromJsonPropertyAttributes()
                 .BuildValueSerializer();
