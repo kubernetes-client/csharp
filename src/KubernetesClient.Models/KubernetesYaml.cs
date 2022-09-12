@@ -23,7 +23,7 @@ namespace k8s
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
-                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x))
+                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x, true))
                 .IgnoreUnmatchedProperties()
                 .Build();
 
@@ -36,7 +36,7 @@ namespace k8s
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .WithTypeConverter(new SystemTextJsonYamlTypeConverter())
-                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x))
+                .WithTypeInspector(x => new SystemTextJsonTypeInspector(x, true))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .BuildValueSerializer();
 
