@@ -33,8 +33,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Check if host is properly loaded, per context
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="host"></param>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="host">Host to check</param>
         [Theory]
         [InlineData("federal-context", "https://horse.org:4443")]
         [InlineData("queen-anne-context", "https://pig.org:443")]
@@ -48,6 +48,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Check if namespace is properly loaded, per context
         /// </summary>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="namespace">Namespace to check</param>
         [Theory]
         [InlineData("federal-context", "chisel-ns")]
         [InlineData("queen-anne-context", "saw-ns")]
@@ -61,8 +63,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Checks if user-based token is loaded properly from the config file, per context
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="token"></param>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="token">User authentication token</param>
         [Theory]
         [InlineData("queen-anne-context", "black-token")]
         public void ContextUserToken(string context, string token)
