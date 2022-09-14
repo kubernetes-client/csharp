@@ -113,7 +113,7 @@ Notice that this is a workaround and is not recommended for production use.
 
 ## Testing
 
-The project uses [XUnit](https://xunit.github.io) as unit testing framework.
+The project uses [XUnit](https://github.com/xunit/xunit) as unit testing framework.
 
 To run the tests:
 
