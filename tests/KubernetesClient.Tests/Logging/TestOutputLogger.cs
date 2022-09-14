@@ -56,6 +56,7 @@ namespace k8s.Tests.Logging
         /// <summary>
         ///     Emit a log entry.
         /// </summary>
+        /// <typeparam  name="TState">Type of state to log.</typeparam>
         /// <param name="level">
         ///     The log entry's level.
         /// </param>
@@ -71,7 +72,6 @@ namespace k8s.Tests.Logging
         /// <param name="formatter">
         ///     A function that creates a <c>string</c> log message from the <paramref name="state"/> and <paramref name="exception"/>.
         /// </param>
-        /// <typeparamref name="TState">Type of log entry.</typeparamref>
         public void Log<TState>(LogLevel level, EventId eventId, TState state, Exception exception,
             Func<TState, Exception, string> formatter)
         {
@@ -120,6 +120,7 @@ namespace k8s.Tests.Logging
         /// <summary>
         ///     Begin a logical operation scope.
         /// </summary>
+        /// <typeparam  name="TState">Type of state to log.</typeparam>
         /// <param name="state">
         ///     An identifier for the scope.
         /// </param>
