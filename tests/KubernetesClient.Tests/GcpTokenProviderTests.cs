@@ -1,9 +1,9 @@
+using FluentAssertions;
+using k8s.Authentication;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using FluentAssertions;
-using k8s.Authentication;
 
 namespace k8s.Tests
 {

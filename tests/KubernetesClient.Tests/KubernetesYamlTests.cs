@@ -1,9 +1,9 @@
+using k8s.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using k8s.Models;
 using Xunit;
 
 namespace k8s.Tests

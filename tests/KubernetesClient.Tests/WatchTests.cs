@@ -1,3 +1,7 @@
+using k8s.Models;
+using k8s.Tests.Mock;
+using Microsoft.AspNetCore.Http;
+using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,10 +11,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Models;
-using k8s.Tests.Mock;
-using Microsoft.AspNetCore.Http;
-using Nito.AsyncEx;
 using Xunit;
 using Xunit.Abstractions;
 

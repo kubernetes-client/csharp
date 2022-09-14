@@ -1,10 +1,10 @@
+using k8s.LeaderElection;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.LeaderElection;
-using Moq;
 using Xunit;
 using Xunit.Abstractions;
 
