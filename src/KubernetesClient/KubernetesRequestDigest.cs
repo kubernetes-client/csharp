@@ -6,7 +6,7 @@ using System.Web;
 
 namespace k8s
 {
-    public class KubernetesRequestDigest
+    internal class KubernetesRequestDigest
     {
         private static Regex resourcePattern =
             new Regex(@"^/(api|apis)(/\S+)?/v\d\w*/\S+", RegexOptions.Compiled);

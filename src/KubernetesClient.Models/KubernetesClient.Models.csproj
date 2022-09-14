@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="6.0.5" />
+    <PackageReference Include="System.Text.Json" Version="6.0.6" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Fractions" Version="7.1.0" />
     <PackageReference Include="YamlDotNet" Version="12.0.0" />

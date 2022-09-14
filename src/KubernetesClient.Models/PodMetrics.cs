@@ -1,9 +1,9 @@
 namespace k8s.Models
 {
     /// <summary>
-    /// Describes the resource usage metrics of a node pull from metrics server API.
+    /// Describes the resource usage metrics of a pod pull from metrics server API.
     /// </summary>
-    public class NodeMetrics
+    public class PodMetrics : IMetadata<V1ObjectMeta>
     {
         /// <summary>
         /// The kubernetes standard object's metadata.
@@ -24,9 +24,9 @@ namespace k8s.Models
         public string Window { get; set; }
 
         /// <summary>
-        /// The resource usage.
+        /// The list of containers metrics.
         /// </summary>
-        [JsonPropertyName("usage")]
-        public IDictionary<string, ResourceQuantity> Usage { get; set; }
+        [JsonPropertyName("containers")]
+        public List<ContainerMetrics> Containers { get; set; }
     }
 }
