@@ -1,14 +1,14 @@
+using k8s;
+using k8s.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using k8s;
-using k8s.Models;
 
 namespace yaml
 {
     internal class Program
     {
-        private async static Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var typeMap = new Dictionary<String, Type>();
             typeMap.Add("v1/Pod", typeof(V1Pod));
@@ -17,7 +17,8 @@ namespace yaml
 
             var objects = await KubernetesYaml.LoadAllFromFileAsync(args[0], typeMap);
 
-            foreach (var obj in objects) {
+            foreach (var obj in objects)
+            {
                 Console.WriteLine(obj);
             }
         }

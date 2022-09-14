@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using ICSharpCode.SharpZipLib.Tar;
 using k8s;
-using ICSharpCode.SharpZipLib.Tar;
-using System.Threading;
+using System;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace cp
 {
@@ -57,7 +57,7 @@ namespace cp
                     using (var memoryStream = new MemoryStream())
                     {
                         using (var inputFileStream = File.OpenRead(sourceFilePath))
-                        using (var tarOutputStream = new TarOutputStream(memoryStream, Encoding.Default)) 
+                        using (var tarOutputStream = new TarOutputStream(memoryStream, Encoding.Default))
                         {
                             tarOutputStream.IsStreamOwner = false;
 
