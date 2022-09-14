@@ -33,6 +33,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Check if host is properly loaded, per context
         /// </summary>
+        /// <param name="context"></param>
+        /// <param name="host"></param>
         [Theory]
         [InlineData("federal-context", "https://horse.org:4443")]
         [InlineData("queen-anne-context", "https://pig.org:443")]
@@ -92,7 +94,7 @@ namespace k8s.Tests
         /// <summary>
         ///     Checks for loading of elliptical curve keys
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Context to retreive the configuration</param>
         [Theory]
         [InlineData("elliptic-context")]
         public void ContextEllipticKey(string context)
@@ -383,11 +385,10 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationAsStreamLoaded()
         {
-            using (var stream = File.OpenRead("assets/kubeconfig.yml"))
-            {
-                var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
-                Assert.NotNull(cfg.Host);
-            }
+            using var stream = File.OpenRead("assets/kubeconfig.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
+            Assert.NotNull(cfg.Host);
         }
 
         /// <summary>
@@ -408,7 +409,7 @@ namespace k8s.Tests
         {
             var path = Path.GetFullPath("assets/kubeconfig.cluster-extensions.yml");
 
-            var cfg = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
+            _ = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
         }
 
         [Fact]

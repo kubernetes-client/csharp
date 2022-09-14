@@ -1,6 +1,6 @@
+using k8s.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Models;
 
 namespace k8s.LeaderElection.ResourceLock
 {
@@ -15,6 +15,11 @@ namespace k8s.LeaderElection.ResourceLock
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
+            if (client is null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             return client.CoreV1.ReadNamespacedConfigMapAsync(name, namespaceParameter, cancellationToken: cancellationToken);
         }
 
@@ -22,6 +27,11 @@ namespace k8s.LeaderElection.ResourceLock
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
+            if (client is null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             return client.CoreV1.CreateNamespacedConfigMapAsync(obj, namespaceParameter, cancellationToken: cancellationToken);
         }
 
@@ -29,8 +39,12 @@ namespace k8s.LeaderElection.ResourceLock
             string namespaceParameter,
             CancellationToken cancellationToken)
         {
-            return client.CoreV1.ReplaceNamespacedConfigMapAsync(obj, name, namespaceParameter,
-                cancellationToken: cancellationToken);
+            if (client is null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            return client.CoreV1.ReplaceNamespacedConfigMapAsync(obj, name, namespaceParameter, cancellationToken: cancellationToken);
         }
     }
 }

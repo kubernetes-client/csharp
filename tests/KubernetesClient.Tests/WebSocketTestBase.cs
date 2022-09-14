@@ -1,10 +1,10 @@
+using k8s.Autorest;
 using k8s.Tests.Logging;
 using k8s.Tests.Mock.Server;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using k8s.Autorest;
 using System;
 using System.IO;
 using System.Net.WebSockets;
@@ -107,7 +107,7 @@ namespace k8s.Tests
         /// <summary>
         ///     Configure logging for the test server.
         /// </summary>
-        /// <param name="services">
+        /// <param name="logging">
         ///     The logger factory to configure.
         /// </param>
         protected virtual void ConfigureTestServerLogging(ILoggingBuilder logging)
@@ -275,9 +275,6 @@ namespace k8s.Tests
         /// </summary>
         /// <param name="webSocket">
         ///     The target <see cref="WebSocket"/>.
-        /// </param>
-        /// <param name="text">
-        ///     The text to send.
         /// </param>
         /// <returns>
         ///     A tuple containing the received text, 0-based substream index, and total bytes received.

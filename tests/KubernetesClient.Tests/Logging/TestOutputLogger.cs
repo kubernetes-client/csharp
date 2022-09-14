@@ -26,11 +26,6 @@ namespace k8s.Tests.Logging
         /// </param>
         public TestOutputLogger(ITestOutputHelper testOutput, string loggerCategory, LogLevel minLogLevel)
         {
-            if (testOutput == null)
-            {
-                throw new ArgumentNullException(nameof(testOutput));
-            }
-
             if (string.IsNullOrWhiteSpace(loggerCategory))
             {
                 throw new ArgumentException(
@@ -38,7 +33,7 @@ namespace k8s.Tests.Logging
                     nameof(loggerCategory));
             }
 
-            TestOutput = testOutput;
+            TestOutput = testOutput ?? throw new ArgumentNullException(nameof(testOutput));
             LoggerCategory = loggerCategory;
             MinLogLevel = minLogLevel;
         }
@@ -76,6 +71,7 @@ namespace k8s.Tests.Logging
         /// <param name="formatter">
         ///     A function that creates a <c>string</c> log message from the <paramref name="state"/> and <paramref name="exception"/>.
         /// </param>
+        /// <typeparamref name="TState">Type of log entry.</typeparamref>
         public void Log<TState>(LogLevel level, EventId eventId, TState state, Exception exception,
             Func<TState, Exception, string> formatter)
         {
