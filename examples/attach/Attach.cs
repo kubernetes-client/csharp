@@ -1,7 +1,7 @@
-using System;
-using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace attach
 {
@@ -18,7 +18,7 @@ namespace attach
             await AttachToPod(client, pod).ConfigureAwait(false);
         }
 
-        private async static Task AttachToPod(IKubernetes client, V1Pod pod)
+        private static async Task AttachToPod(IKubernetes client, V1Pod pod)
         {
             var webSocket =
                 await client.WebSocketNamespacedPodAttachAsync(pod.Metadata.Name, "default",

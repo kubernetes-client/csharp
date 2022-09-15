@@ -1,10 +1,10 @@
+using k8s.Tests.Mock;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Tests.Mock;
 using Xunit;
 
 namespace k8s.Tests

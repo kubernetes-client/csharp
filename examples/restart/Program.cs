@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using Json.Patch;
+﻿using Json.Patch;
 using k8s;
 using k8s.Models;
+using System.Text.Json;
 
 async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes client)
 {

@@ -33,6 +33,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Check if host is properly loaded, per context
         /// </summary>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="host">Host to check</param>
         [Theory]
         [InlineData("federal-context", "https://horse.org:4443")]
         [InlineData("queen-anne-context", "https://pig.org:443")]
@@ -46,6 +48,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Check if namespace is properly loaded, per context
         /// </summary>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="namespace">Namespace to check</param>
         [Theory]
         [InlineData("federal-context", "chisel-ns")]
         [InlineData("queen-anne-context", "saw-ns")]
@@ -59,8 +63,8 @@ namespace k8s.Tests
         /// <summary>
         ///     Checks if user-based token is loaded properly from the config file, per context
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="token"></param>
+        /// <param name="context">Context to retreive the configuration</param>
+        /// <param name="token">User authentication token</param>
         [Theory]
         [InlineData("queen-anne-context", "black-token")]
         public void ContextUserToken(string context, string token)
@@ -92,7 +96,7 @@ namespace k8s.Tests
         /// <summary>
         ///     Checks for loading of elliptical curve keys
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Context to retreive the configuration</param>
         [Theory]
         [InlineData("elliptic-context")]
         public void ContextEllipticKey(string context)
@@ -383,11 +387,10 @@ namespace k8s.Tests
         [Fact]
         public void DefaultConfigurationAsStreamLoaded()
         {
-            using (var stream = File.OpenRead("assets/kubeconfig.yml"))
-            {
-                var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
-                Assert.NotNull(cfg.Host);
-            }
+            using var stream = File.OpenRead("assets/kubeconfig.yml");
+
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(stream);
+            Assert.NotNull(cfg.Host);
         }
 
         /// <summary>
@@ -408,7 +411,7 @@ namespace k8s.Tests
         {
             var path = Path.GetFullPath("assets/kubeconfig.cluster-extensions.yml");
 
-            var cfg = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
+            _ = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
         }
 
         [Fact]

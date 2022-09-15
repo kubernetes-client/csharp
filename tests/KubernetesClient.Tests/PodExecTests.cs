@@ -2,8 +2,8 @@
  * These tests are for the netcoreapp2.1 version of the client (there are separate tests for netstandard that don't actually connect to a server).
  */
 
-using k8s.Models;
 using k8s.Autorest;
+using k8s.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,8 +42,7 @@ namespace k8s.Tests
         /// <summary>
         ///     Verify that the client can request execution of a command in a pod's default container, with only the STDOUT stream enabled.
         /// </summary>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
         [Fact(DisplayName = "Can exec in pod's default container, STDOUT only")]
         public async Task ExecDefaultContainerStdOut()
         {

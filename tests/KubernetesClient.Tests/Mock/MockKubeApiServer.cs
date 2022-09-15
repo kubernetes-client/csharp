@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using k8s.Tests.Logging;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +6,10 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using Xunit.Abstractions;
 
 namespace k8s.Tests.Mock

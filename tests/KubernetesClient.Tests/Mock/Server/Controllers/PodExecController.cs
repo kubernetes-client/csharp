@@ -20,12 +20,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// </param>
         public PodExecController(WebSocketTestAdapter webSocketTestAdapter)
         {
-            if (webSocketTestAdapter == null)
-            {
-                throw new ArgumentNullException(nameof(webSocketTestAdapter));
-            }
-
-            WebSocketTestAdapter = webSocketTestAdapter;
+            WebSocketTestAdapter = webSocketTestAdapter ?? throw new ArgumentNullException(nameof(webSocketTestAdapter));
         }
 
         /// <summary>
@@ -42,8 +37,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// <param name="podName">
         ///     The target pod's name.
         /// </param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [Route("namespaces/{kubeNamespace}/pods/{podName}/exec")]
         public async Task<IActionResult> Exec(string kubeNamespace, string podName)
         {

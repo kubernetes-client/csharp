@@ -12,9 +12,9 @@ namespace k8s.Tests.Mock
         private WebSocketCloseStatus? closeStatus;
         private string closeStatusDescription;
         private WebSocketState state;
-        private string subProtocol;
-        private ConcurrentQueue<MessageData> receiveBuffers = new ConcurrentQueue<MessageData>();
-        private AsyncAutoResetEvent receiveEvent = new AsyncAutoResetEvent(false);
+        private readonly string subProtocol;
+        private readonly ConcurrentQueue<MessageData> receiveBuffers = new ConcurrentQueue<MessageData>();
+        private readonly AsyncAutoResetEvent receiveEvent = new AsyncAutoResetEvent(false);
         private bool disposedValue;
 
         public MockWebSocket(string subProtocol = null)

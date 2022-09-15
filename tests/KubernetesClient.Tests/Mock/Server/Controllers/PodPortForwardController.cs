@@ -21,12 +21,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// </param>
         public PodPortForwardController(WebSocketTestAdapter webSocketTestAdapter)
         {
-            if (webSocketTestAdapter == null)
-            {
-                throw new ArgumentNullException(nameof(webSocketTestAdapter));
-            }
-
-            WebSocketTestAdapter = webSocketTestAdapter;
+            WebSocketTestAdapter = webSocketTestAdapter ?? throw new ArgumentNullException(nameof(webSocketTestAdapter));
         }
 
         /// <summary>
@@ -46,8 +41,7 @@ namespace k8s.Tests.Mock.Server.Controllers
         /// <param name="ports">
         ///     The port(s) to forward to the pod.
         /// </param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [Route("namespaces/{kubeNamespace}/pods/{podName}/portforward")]
         public async Task<IActionResult> Exec(string kubeNamespace, string podName, IEnumerable<string> ports)
         {

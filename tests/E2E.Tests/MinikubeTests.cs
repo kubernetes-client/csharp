@@ -1,22 +1,22 @@
+using ICSharpCode.SharpZipLib.Tar;
+using Json.Patch;
+using k8s.Autorest;
+using k8s.LeaderElection;
+using k8s.LeaderElection.ResourceLock;
+using k8s.Models;
+using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Json.Patch;
-using k8s.LeaderElection;
-using k8s.LeaderElection.ResourceLock;
-using k8s.Models;
-using k8s.Autorest;
-using Nito.AsyncEx;
 using Xunit;
-using ICSharpCode.SharpZipLib.Tar;
-using System.Text;
-using System.Security.Cryptography;
 
 namespace k8s.E2E
 {

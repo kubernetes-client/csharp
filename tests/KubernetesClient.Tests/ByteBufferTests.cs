@@ -244,8 +244,7 @@ namespace k8s.Tests
         /// Tests a call to <see cref="ByteBuffer.Read(byte[], int, int)"/> when no data is available; and makes
         /// sure the call blocks until data is available.
         /// </summary>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous unit test.</placeholder></returns>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
         [Fact]
         public async Task ReadBlocksUntilDataAvailableTest()
         {
