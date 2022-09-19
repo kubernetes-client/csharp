@@ -51,10 +51,8 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'  
-      - name: Restore nugets
-        run: dotnet restore .\src\KubernetesClient.Models\
       - name: Build (msbuild)
-        run: msbuild .\src\KubernetesClient.Models\
+        run: msbuild .\src\KubernetesClient.Models\ -t:restore -p:RestorePackagesConfig=true
         
   e2e:
     runs-on: ubuntu-latest
