@@ -47,16 +47,12 @@ jobs:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
-      - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.0.x'  
       - name: Setup dotnet SDK 6
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'  
       - name: Restore nugets
-        run: dotnet restore
+        run: dotnet restore .\src\KubernetesClient.Models\
       - name: Build (msbuild)
         run: msbuild .\src\KubernetesClient.Models\
         
