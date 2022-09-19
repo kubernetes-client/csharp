@@ -27,9 +27,6 @@ jobs:
       #   # don't check formatting on Windows b/c of CRLF issues.
       #   if: matrix.os == 'ubuntu-latest'
       #   run: dotnet format --severity error --verify-no-changes --exclude ./src/KubernetesClient/generated/
-      - name: Build (msbuild)
-        if: matrix.os == 'windows-latest'
-        run: msbuild src
       - name: Build
         run: dotnet build --configuration Release -v detailed
       - name: Test
@@ -39,6 +36,28 @@ jobs:
       #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
+    
+  # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
+  codgen:
+    runs-on: windows-latest
+    name: MSBuild build
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Setup dotnet SDK 5
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0.x'  
+      - name: Setup dotnet SDK 6
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'  
+      - name: Build (msbuild)
+        run: msbuild src
+        
   e2e:
     runs-on: ubuntu-latest
     steps:
