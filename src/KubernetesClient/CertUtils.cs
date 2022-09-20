@@ -96,7 +96,15 @@ namespace k8s
             // see https://github.com/kubernetes-client/csharp/issues/737
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
+                if (config.ClientCertificateKeyStoreFlags.HasValue)
+                {
+                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), "", config.ClientCertificateKeyStoreFlags.Value);
+                }
+                else
+                {
+                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
+                }
+                
             }
 
             return cert;
