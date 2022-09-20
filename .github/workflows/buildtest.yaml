@@ -36,6 +36,26 @@ jobs:
       #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
+    
+  # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
+  codgen:
+    runs-on: windows-latest
+    name: MSBuild build
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Setup dotnet SDK 6
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'  
+      - name: Restore nugets (msbuild)
+        run: msbuild .\src\KubernetesClient.Models\ -t:restore -p:RestorePackagesConfig=true
+      - name: Build (msbuild)
+        run: msbuild .\src\KubernetesClient.Models\
+        
   e2e:
     runs-on: ubuntu-latest
     steps:
