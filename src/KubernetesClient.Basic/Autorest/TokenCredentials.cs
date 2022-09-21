@@ -98,7 +98,7 @@ namespace k8s.Autorest
         /// <returns>
         /// Task that will complete when processing has completed.
         /// </returns>
-        public async override Task ProcessHttpRequestAsync(
+        public override async Task ProcessHttpRequestAsync(
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {

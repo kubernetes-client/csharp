@@ -30,12 +30,10 @@ namespace k8s.Autorest
             this.Content = content;
             this.Method = httpRequest.Method;
             this.RequestUri = httpRequest.RequestUri;
-#pragma warning disable CS0618 // Type or member is obsolete
             if (httpRequest.Properties != null)
             {
                 Properties = new Dictionary<string, object>();
                 foreach (KeyValuePair<string, object> pair in httpRequest.Properties)
-#pragma warning restore CS0618 // Type or member is obsolete
                 {
                     this.Properties[pair.Key] = pair.Value;
                 }

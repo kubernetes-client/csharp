@@ -19,7 +19,7 @@ public abstract partial class AbstractKubernetes
 
     private sealed class QueryBuilder
     {
-        private List<string> parameters = new List<string>();
+        private readonly List<string> parameters = new List<string>();
 
         public void Append(string key, params object[] values)
         {
