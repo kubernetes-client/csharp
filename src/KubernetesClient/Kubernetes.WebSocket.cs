@@ -1,13 +1,13 @@
-using k8s.Models;
 using k8s.Autorest;
+using k8s.Models;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text;
-using System.Globalization;
 
 namespace k8s
 {
@@ -327,7 +327,7 @@ namespace k8s
                             $"The operation returned an invalid status code: {response.StatusCode}", wse)
                         {
                             Response = new HttpResponseMessageWrapper(response, content),
-                            Body = status != null ? (object)status : content,
+                            Body = status != null ? status : content,
                         };
 
                     response.Dispose();

@@ -62,7 +62,7 @@ namespace k8s.LeaderElection
         {
             unchecked
             {
-                var hashCode = (HolderIdentity != null ? HolderIdentity.GetHashCode() : 0);
+                var hashCode = HolderIdentity != null ? HolderIdentity.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ AcquireTime.GetHashCode();
                 hashCode = (hashCode * 397) ^ RenewTime.GetHashCode();
                 return hashCode;

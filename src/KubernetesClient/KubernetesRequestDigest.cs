@@ -8,7 +8,7 @@ namespace k8s
 {
     internal class KubernetesRequestDigest
     {
-        private static Regex resourcePattern =
+        private static readonly Regex resourcePattern =
             new Regex(@"^/(api|apis)(/\S+)?/v\d\w*/\S+", RegexOptions.Compiled);
 
         public string Path { get; }
