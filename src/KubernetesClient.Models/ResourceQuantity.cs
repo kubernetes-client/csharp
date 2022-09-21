@@ -1,6 +1,6 @@
+using Fractions;
 using System.Globalization;
 using System.Numerics;
-using Fractions;
 
 namespace k8s.Models
 {

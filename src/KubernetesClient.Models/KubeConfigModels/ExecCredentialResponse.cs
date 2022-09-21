@@ -13,8 +13,8 @@ namespace k8s.KubeConfigModels
 
             public bool IsValid()
             {
-                return (!string.IsNullOrEmpty(Token) ||
-                        (!string.IsNullOrEmpty(ClientCertificateData) && !string.IsNullOrEmpty(ClientKeyData)));
+                return !string.IsNullOrEmpty(Token) ||
+                        (!string.IsNullOrEmpty(ClientCertificateData) && !string.IsNullOrEmpty(ClientKeyData));
             }
         }
 
