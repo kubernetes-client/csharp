@@ -1,5 +1,5 @@
-using Xunit;
 using k8s.Models;
+using Xunit;
 
 namespace k8s.Tests;
 
