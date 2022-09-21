@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using NJsonSchema;
 using NSwag;
 using Nustache.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LibKubernetesGenerator
 {

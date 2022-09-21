@@ -12,7 +12,7 @@ namespace LibKubernetesGenerator
     [Generator]
     public class KubernetesClientSourceGenerator : ISourceGenerator
     {
-        private static object execlock = new object();
+        private static readonly object execlock = new object();
 
         public void ExecuteInner(GeneratorExecutionContext context)
         {
@@ -131,11 +131,11 @@ namespace LibKubernetesGenerator
         public void Initialize(GeneratorInitializationContext context)
         {
 #if DEBUG
-        // if (!Debugger.IsAttached)
-        // {
-        //     Debugger.Launch();
-        // }
+            // if (!Debugger.IsAttached)
+            // {
+            //     Debugger.Launch();
+            // }
 #endif
-    }
+        }
     }
 }
