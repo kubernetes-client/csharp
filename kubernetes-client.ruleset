@@ -51,9 +51,6 @@
     <!-- The opening or closing brace within a C# statement, element, or expression is not placed on its own line. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1500.md -->
     <Rule Id="SA1500" Action="Error" />
 
-    <!-- The opening and closing braces for a C# statement have been omitted. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1503.md -->
-    <Rule Id="SA1500" Action="Error" />
-
     <!-- The C# code contains multiple blank lines in a row. https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1507.md -->
     <Rule Id="SA1507" Action="None" />
 
