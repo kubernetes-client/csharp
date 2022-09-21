@@ -40,8 +40,10 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod
@@ -89,8 +91,11 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithAdditionalPropertiesAndTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
+
             var content = @"apiVersion: v1
 kind: Pod
 metadata:
@@ -150,8 +155,10 @@ metadata:
         [Fact]
         public async Task LoadAllFromFileWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod

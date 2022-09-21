@@ -10,10 +10,12 @@ namespace yaml
     {
         private static async Task Main(string[] args)
         {
-            var typeMap = new Dictionary<String, Type>();
-            typeMap.Add("v1/Pod", typeof(V1Pod));
-            typeMap.Add("v1/Service", typeof(V1Service));
-            typeMap.Add("apps/v1/Deployment", typeof(V1Deployment));
+            var typeMap = new Dictionary<String, Type>
+            {
+                { "v1/Pod", typeof(V1Pod) },
+                { "v1/Service", typeof(V1Service) },
+                { "apps/v1/Deployment", typeof(V1Deployment) }
+            };
 
             var objects = await KubernetesYaml.LoadAllFromFileAsync(args[0], typeMap);
 

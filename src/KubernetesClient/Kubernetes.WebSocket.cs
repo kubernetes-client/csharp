@@ -84,8 +84,10 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(BaseUri);
-            uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
+            var uriBuilder = new UriBuilder(BaseUri)
+            {
+                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+            };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
@@ -143,8 +145,10 @@ namespace k8s
 
 
             // Construct URL
-            var uriBuilder = new UriBuilder(BaseUri);
-            uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
+            var uriBuilder = new UriBuilder(BaseUri)
+            {
+                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+            };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
@@ -187,8 +191,10 @@ namespace k8s
             }
 
             // Construct URL
-            var uriBuilder = new UriBuilder(BaseUri);
-            uriBuilder.Scheme = BaseUri.Scheme == "https" ? "wss" : "ws";
+            var uriBuilder = new UriBuilder(BaseUri)
+            {
+                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+            };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
             {
@@ -294,8 +300,10 @@ namespace k8s
             {
                 // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
                 // class doesn't give us a lot of information about what went wrong. So, retry the connection.
-                var uriBuilder = new UriBuilder(uri);
-                uriBuilder.Scheme = uri.Scheme == "wss" ? "https" : "http";
+                var uriBuilder = new UriBuilder(uri)
+                {
+                    Scheme = uri.Scheme == "wss" ? "https" : "http",
+                };
 
                 var response = await HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
 

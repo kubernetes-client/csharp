@@ -111,8 +111,12 @@ namespace k8s.Tests
         public void TestReferences()
         {
             // test object references
-            var pod = new V1Pod() { ApiVersion = "v1", Kind = "Pod" };
-            pod.Metadata = new V1ObjectMeta() { Name = "name", NamespaceProperty = "ns", ResourceVersion = "ver", Uid = "id" };
+            var pod = new V1Pod
+            {
+                ApiVersion = "v1",
+                Kind = "Pod",
+                Metadata = new V1ObjectMeta() { Name = "name", NamespaceProperty = "ns", ResourceVersion = "ver", Uid = "id" },
+            };
 
             var objr = new V1ObjectReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), NamespaceProperty = pod.Namespace(), Uid = pod.Uid() };
             Assert.True(objr.Matches(pod));
