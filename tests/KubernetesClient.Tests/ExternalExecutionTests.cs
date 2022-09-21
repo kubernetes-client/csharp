@@ -1,6 +1,6 @@
+using k8s.KubeConfigModels;
 using System.Collections.Generic;
 using System.Text.Json;
-using k8s.KubeConfigModels;
 using Xunit;
 
 namespace k8s.Tests

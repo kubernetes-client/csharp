@@ -15,6 +15,11 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<NodeMetricsList> GetKubernetesNodesMetricsAsync(this IKubernetes kubernetes)
         {
+            if (kubernetes is null)
+            {
+                throw new ArgumentNullException(nameof(kubernetes));
+            }
+
             var customObject = (JsonElement)await kubernetes.CustomObjects.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "nodes", string.Empty).ConfigureAwait(false);
             return customObject.Deserialize<NodeMetricsList>();
         }
@@ -26,6 +31,11 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<PodMetricsList> GetKubernetesPodsMetricsAsync(this IKubernetes kubernetes)
         {
+            if (kubernetes is null)
+            {
+                throw new ArgumentNullException(nameof(kubernetes));
+            }
+
             var customObject = (JsonElement)await kubernetes.CustomObjects.GetClusterCustomObjectAsync("metrics.k8s.io", "v1beta1", "pods", string.Empty).ConfigureAwait(false);
             return customObject.Deserialize<PodMetricsList>();
         }
@@ -38,6 +48,11 @@ namespace k8s
         /// <returns>the metrics <see cref="PodMetricsList"/></returns>
         public static async Task<PodMetricsList> GetKubernetesPodsMetricsByNamespaceAsync(this IKubernetes kubernetes, string namespaceParameter)
         {
+            if (kubernetes is null)
+            {
+                throw new ArgumentNullException(nameof(kubernetes));
+            }
+
             var customObject = (JsonElement)await kubernetes.CustomObjects.GetNamespacedCustomObjectAsync("metrics.k8s.io", "v1beta1", namespaceParameter, "pods", string.Empty).ConfigureAwait(false);
             return customObject.Deserialize<PodMetricsList>();
         }

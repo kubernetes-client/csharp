@@ -1,7 +1,7 @@
-using System;
-using System.Threading.Tasks;
 using k8s;
 using k8s.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace exec
 {
@@ -18,7 +18,7 @@ namespace exec
             await ExecInPod(client, pod).ConfigureAwait(false);
         }
 
-        private async static Task ExecInPod(IKubernetes client, V1Pod pod)
+        private static async Task ExecInPod(IKubernetes client, V1Pod pod)
         {
             var webSocket =
                 await client.WebSocketNamespacedPodExecAsync(pod.Metadata.Name, "default", "ls",

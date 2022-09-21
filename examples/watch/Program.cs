@@ -1,14 +1,14 @@
+using k8s;
+using k8s.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s;
-using k8s.Models;
 
 namespace watch
 {
     internal class Program
     {
-        private async static Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 

@@ -26,11 +26,6 @@ namespace k8s.Tests.Logging
         /// </param>
         public TestOutputLogger(ITestOutputHelper testOutput, string loggerCategory, LogLevel minLogLevel)
         {
-            if (testOutput == null)
-            {
-                throw new ArgumentNullException(nameof(testOutput));
-            }
-
             if (string.IsNullOrWhiteSpace(loggerCategory))
             {
                 throw new ArgumentException(
@@ -38,7 +33,7 @@ namespace k8s.Tests.Logging
                     nameof(loggerCategory));
             }
 
-            TestOutput = testOutput;
+            TestOutput = testOutput ?? throw new ArgumentNullException(nameof(testOutput));
             LoggerCategory = loggerCategory;
             MinLogLevel = minLogLevel;
         }
@@ -61,6 +56,7 @@ namespace k8s.Tests.Logging
         /// <summary>
         ///     Emit a log entry.
         /// </summary>
+        /// <typeparam  name="TState">Type of state to log.</typeparam>
         /// <param name="level">
         ///     The log entry's level.
         /// </param>
@@ -124,6 +120,7 @@ namespace k8s.Tests.Logging
         /// <summary>
         ///     Begin a logical operation scope.
         /// </summary>
+        /// <typeparam  name="TState">Type of state to log.</typeparam>
         /// <param name="state">
         ///     An identifier for the scope.
         /// </param>

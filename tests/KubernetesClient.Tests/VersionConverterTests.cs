@@ -1,7 +1,7 @@
-using Xunit;
+using AutoMapper;
 using FluentAssertions;
 using k8s.Versioning;
-using AutoMapper;
+using Xunit;
 
 namespace k8s.Tests
 {
