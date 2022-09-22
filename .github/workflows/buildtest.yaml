@@ -37,7 +37,7 @@ jobs:
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
   
-  # Build and test netstandard 2.1 version of library
+  # Build and test netstandard 2.1 version of library with net core 5.0 and 6.0
   netstandard2_1:
     runs-on: ubuntu-latest
     name: Dotnet build netstandard2.1
@@ -53,14 +53,20 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'          
-      - name: Build
+      - name: Build libraries
         run: |
-          dotnet build .\src\KubernetesClient\KubernetesClient.csproj -f netstandard2.1 --configuration Debug -v minimal
-          dotnet build .\tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj -f net6.0 --configuration Debug -v minimal --no-dependencies
+          dotnet build -f netstandard2.1 --configuration Debug -v minimal ./src/KubernetesClient/KubernetesClient.csproj 
+          dotnet build -f netstandard2.1 --configuration Debug -v minimal ./tests/kipTestLogger/SkipTestLogger.csproj
+      - name: Build test projects
+        run: |
+          dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_1=true ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj 
+          dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_1=true ./tests/E2E.Tests/E2E.Tests.csproj
       - name: Test
         run: | 
-          dotnet test /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" --no-build .\tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj -f net6.0
-          dotnet test /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" --no-build .\tests\E2E.Tests\E2E.Tests.csproj -f net6.0
+          dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
+            --no-build ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj
+          dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
+            --no-build ./tests/E2E.Tests/E2E.Tests.csproj
     
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
