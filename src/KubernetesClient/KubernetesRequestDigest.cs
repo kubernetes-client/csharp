@@ -8,7 +8,7 @@ namespace k8s
 {
     internal class KubernetesRequestDigest
     {
-        private static readonly Regex resourcePattern =
+        private static readonly Regex ResourcePattern =
             new Regex(@"^/(api|apis)(/\S+)?/v\d\w*/\S+", RegexOptions.Compiled);
 
         public string Path { get; }
@@ -94,13 +94,13 @@ namespace k8s
 
         private static KubernetesRequestDigest NonResource(string urlPath)
         {
-            KubernetesRequestDigest digest = new KubernetesRequestDigest(urlPath, true, "nonresource", "na", "na", "na");
+            var digest = new KubernetesRequestDigest(urlPath, true, "nonresource", "na", "na", "na");
             return digest;
         }
 
         public static bool IsResourceRequest(string urlPath)
         {
-            return resourcePattern.Matches(urlPath).Count > 0;
+            return ResourcePattern.Matches(urlPath).Count > 0;
         }
 
         private static bool HasWatchParameter(HttpRequestMessage request)

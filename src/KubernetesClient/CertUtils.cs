@@ -104,7 +104,6 @@ namespace k8s
                 {
                     cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
                 }
-
             }
 
             return cert;
@@ -157,8 +156,7 @@ namespace k8s
             using (var reader = new StreamReader(new MemoryStream(keyData)))
             {
                 obj = new PemReader(reader).ReadObject();
-                var key = obj as AsymmetricCipherKeyPair;
-                if (key != null)
+                if (obj is AsymmetricCipherKeyPair key)
                 {
                     var cipherKey = key;
                     obj = cipherKey.Private;
@@ -170,18 +168,17 @@ namespace k8s
             var store = new Pkcs12StoreBuilder().Build();
             store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(keyParams), new[] { new X509CertificateEntry(cert) });
 
-            using (var pkcs = new MemoryStream())
-            {
-                store.Save(pkcs, new char[0], new SecureRandom());
+            using var pkcs = new MemoryStream();
 
-                if (config.ClientCertificateKeyStoreFlags.HasValue)
-                {
-                    return new X509Certificate2(pkcs.ToArray(), "", config.ClientCertificateKeyStoreFlags.Value);
-                }
-                else
-                {
-                    return new X509Certificate2(pkcs.ToArray());
-                }
+            store.Save(pkcs, new char[0], new SecureRandom());
+
+            if (config.ClientCertificateKeyStoreFlags.HasValue)
+            {
+                return new X509Certificate2(pkcs.ToArray(), "", config.ClientCertificateKeyStoreFlags.Value);
+            }
+            else
+            {
+                return new X509Certificate2(pkcs.ToArray());
             }
 #endif
         }

@@ -286,12 +286,11 @@ metadata:
   name: foo
 ";
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
-            {
-                var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-                Assert.Equal("foo", obj.Metadata.Name);
-            }
+            var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+
+            Assert.Equal("foo", obj.Metadata.Name);
         }
 
         [Fact]
@@ -437,18 +436,17 @@ spec:
 
         private static IEnumerable<string> ToLines(string s)
         {
-            using (var reader = new StringReader(s))
-            {
-                for (; ; )
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                    {
-                        yield break;
-                    }
+            using var reader = new StringReader(s);
 
-                    yield return line;
+            for (; ; )
+            {
+                var line = reader.ReadLine();
+                if (line == null)
+                {
+                    yield break;
                 }
+
+                yield return line;
             }
         }
 
