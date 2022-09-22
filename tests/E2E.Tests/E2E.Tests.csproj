@@ -1,33 +1,54 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-    <SignAssembly>true</SignAssembly>
-    <RootNamespace>k8s.E2E</RootNamespace>
-    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-  </PropertyGroup>
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+        <SignAssembly>true</SignAssembly>
+        <RootNamespace>k8s.E2E</RootNamespace>
+        <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    </PropertyGroup>
 
-  <ItemGroup>
+    <ItemGroup>
 
-    <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
-    <PackageReference Include="SharpZipLib" Version="1.4.0" />
+        <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
+        <PackageReference Include="SharpZipLib" Version="1.4.0" />
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
 
-    <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-  </ItemGroup>
+        <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
-    <ProjectReference Include="..\SkipTestLogger\SkipTestLogger.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SkipTestLogger\SkipTestLogger.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" />
+    </ItemGroup>
+
+    <!-- set -p:UseLibNetStandard2_1=true to force the inclusion of netstandard2.1 version of libraries, Default: false -->
+    <PropertyGroup>
+        <UseLibNetStandard2_1>false</UseLibNetStandard2_1>
+    </PropertyGroup>
+
+    <Target Name="DisplayMessages" BeforeTargets="Build" >
+        <message Importance="High" Text="[Flag] UseLibNetStandard2_1 = $(UseLibNetStandard2_1)"/>
+    </Target>
+    
+    <Choose>
+        <When Condition="'$(UseLibNetStandard2_1)' != 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj"/>
+            </ItemGroup>
+        </When>
+        <When Condition="'$(UseLibNetStandard2_1)' == 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.1"/>
+            </ItemGroup>
+        </When>
+    </Choose>
 </Project>

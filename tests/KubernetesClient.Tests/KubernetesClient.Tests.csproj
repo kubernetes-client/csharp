@@ -1,51 +1,69 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-    <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-  </PropertyGroup>
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>k8s.Tests</RootNamespace>
+        <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+    </PropertyGroup>
 
-  <ItemGroup>
-      <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
-      <PackageReference Include="FluentAssertions" Version="6.7.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-      <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
-      <PackageReference Include="System.Reactive" Version="5.0.0" />
-      <PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
-      <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
+        <PackageReference Include="FluentAssertions" Version="6.7.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+        <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
+        <PackageReference Include="System.Reactive" Version="5.0.0" />
+        <PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
+        <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+    </ItemGroup>
 
-  <ItemGroup>
+    <ItemGroup>
 
-    <PackageReference Include="coverlet.msbuild" Version="3.1.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+        <PackageReference Include="coverlet.msbuild" Version="3.1.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Xunit.StaFact" Version="1.1.11" />
-    <PackageReference Include="Moq" Version="4.18.2" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Xunit.StaFact" Version="1.1.11" />
+        <PackageReference Include="Moq" Version="4.18.2" />
 
-    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-  </ItemGroup>
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="assets/*" CopyToOutputDirectory="Always" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="assets/*" CopyToOutputDirectory="Always" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Util\**" />
-    <Content Remove="Util\**" />
-    <EmbeddedResource Remove="Util\**" />
-    <None Remove="Util\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Util\**" />
+        <Content Remove="Util\**" />
+        <EmbeddedResource Remove="Util\**" />
+        <None Remove="Util\**" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
-  </ItemGroup>
+    <!-- set -p:UseLibNetStandard2_1=true to force the inclusion of netstandard2.1 version of libraries, Default: false -->
+    <PropertyGroup>
+        <UseLibNetStandard2_1>false</UseLibNetStandard2_1>
+    </PropertyGroup>
+
+    <Target Name="DisplayMessages" BeforeTargets="Build" >
+        <message Importance="High" Text="[Flag] UseLibNetStandard2_1 = $(UseLibNetStandard2_1)"/>
+    </Target>
+    
+    <Choose>
+        <When Condition="'$(UseLibNetStandard2_1)' != 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj"/>
+            </ItemGroup>
+        </When>
+        <When Condition="'$(UseLibNetStandard2_1)' == 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.1"/>
+            </ItemGroup>
+        </When>
+    </Choose>
 </Project>
