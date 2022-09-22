@@ -56,7 +56,7 @@ jobs:
       - name: Build libraries
         run: |
           dotnet build -f netstandard2.1 --configuration Debug -v minimal ./src/KubernetesClient/KubernetesClient.csproj 
-          dotnet build -f netstandard2.1 --configuration Debug -v minimal ./tests/SkipTestLogger/SkipTestLogger.csproj
+          dotnet build -f netstandard2.0 --configuration Debug -v minimal ./tests/SkipTestLogger/SkipTestLogger.csproj
       - name: Build test projects
         run: |
           dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_1=true ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj 
