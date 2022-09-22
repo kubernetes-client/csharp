@@ -36,6 +36,31 @@ jobs:
       #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
+  
+  # Build and test netstandard 2.1 version of library
+  netstandard2_1:
+    runs-on: ubuntu-latest
+    name: Dotnet build netstandard2.1
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0     
+      - name: Setup dotnet SDK 5
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0.x'          
+      - name: Setup dotnet SDK 6
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.x'          
+      - name: Build
+        run: |
+          dotnet build .\src\KubernetesClient\KubernetesClient.csproj -f netstandard2.1 --configuration Debug -v minimal
+          dotnet build .\tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj -f net6.0 --configuration Debug -v minimal --no-dependencies
+      - name: Test
+        run: | 
+          dotnet test /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" --no-build .\tests\KubernetesClient.Tests\KubernetesClient.Tests.csproj -f net6.0
+          dotnet test /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" --no-build .\tests\E2E.Tests\E2E.Tests.csproj -f net6.0
     
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
