@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <IsPackable>false</IsPackable>
         <SignAssembly>true</SignAssembly>
@@ -30,21 +30,33 @@
         <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" />
     </ItemGroup>
 
-    <!-- set -p:UseLibNetStandard2_1=true to force the inclusion of netstandard2.1 version of libraries, Default: false -->
+    <!--
+        set -p:UseLibNetStandard2_0=true to force the inclusion of netstandard2.0 version of libraries, Default: false
+        set -p:UseLibNetStandard2_1=true to force the inclusion of netstandard2.1 version of libraries, Default: false
+        -->
     <PropertyGroup>
+        <UseLibNetStandard2_0>false</UseLibNetStandard2_0>
         <UseLibNetStandard2_1>false</UseLibNetStandard2_1>
     </PropertyGroup>
 
     <Target Name="DisplayMessages" BeforeTargets="Build" >
+        <message Importance="High" Text="[Flag] UseLibNetStandard2_0 = $(UseLibNetStandard2_0)"/>
         <message Importance="High" Text="[Flag] UseLibNetStandard2_1 = $(UseLibNetStandard2_1)"/>
     </Target>
     
     <Choose>
-        <When Condition="'$(UseLibNetStandard2_1)' != 'true'">
+        <When Condition="('$(UseLibNetStandard2_0)' != 'true') And ('$(UseLibNetStandard2_1)' != 'true')">
             <ItemGroup>
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj"/>
             </ItemGroup>
         </When>
+        
+        <When Condition="'$(UseLibNetStandard2_0)' == 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.0"/>
+            </ItemGroup>
+        </When>
+        
         <When Condition="'$(UseLibNetStandard2_1)' == 'true'">
             <ItemGroup>
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.1"/>

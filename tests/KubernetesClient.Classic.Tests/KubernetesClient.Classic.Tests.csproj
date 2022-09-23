@@ -36,7 +36,29 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj" />
-  </ItemGroup>
+
+    <!--
+        set -p:UseLibNetStandard2_0=true to force the inclusion of netstandard2.0 version of libraries, Default: false
+        -->
+    <PropertyGroup>
+        <UseLibNetStandard2_0>false</UseLibNetStandard2_0>
+    </PropertyGroup>
+
+    <Target Name="DisplayMessages" BeforeTargets="Build" >
+        <message Importance="High" Text="[Flag] UseLibNetStandard2_0 = $(UseLibNetStandard2_0)"/>
+    </Target>
+
+    <Choose>
+        <When Condition="'$(UseLibNetStandard2_0)' != 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj"/>
+            </ItemGroup>
+        </When>
+
+        <When Condition="'$(UseLibNetStandard2_0)' == 'true'">
+            <ItemGroup>
+                <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj" AdditionalProperties="TargetFramework=netstandard2.0"/>
+            </ItemGroup>
+        </When>
+    </Choose>
 </Project>
