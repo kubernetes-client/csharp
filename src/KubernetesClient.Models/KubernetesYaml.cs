@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.EventEmitters;
 using YamlDotNet.Serialization.NamingConventions;
 using k8s.Models;
 
