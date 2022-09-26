@@ -21,6 +21,7 @@ namespace k8s
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
+                .WithAttemptingUnquotedStringTypeDeserialization()
                 .WithOverridesFromJsonPropertyAttributes()
                 .IgnoreUnmatchedProperties()
                 .Build();
