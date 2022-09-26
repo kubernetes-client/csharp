@@ -7,7 +7,11 @@ namespace k8s
 {
     internal class FloatEmitter : ChainedEventEmitter
     {
-        public FloatEmitter(IEventEmitter nextEmitter) : base(nextEmitter) { }
+        public FloatEmitter(IEventEmitter nextEmitter)
+            : base(nextEmitter)
+        {
+        }
+
         public override void Emit(ScalarEventInfo eventInfo, IEmitter emitter)
         {
             switch (eventInfo.Source.Value)
