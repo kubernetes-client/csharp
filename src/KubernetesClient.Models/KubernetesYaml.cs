@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.EventEmitters;
 using YamlDotNet.Serialization.NamingConventions;
 using k8s.Models;
 
@@ -34,6 +35,7 @@ namespace k8s
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
+                .WithEventEmitter(e => new FloatEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .WithOverridesFromJsonPropertyAttributes()
                 .BuildValueSerializer();
