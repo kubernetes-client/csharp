@@ -851,8 +851,8 @@ spec:
             public const string KubeGroup = "foo.bar";
             public const string KubePluralName = "foos";
 
-            public string? ApiVersion { get; set; }
-            public string? Kind { get; set; }
+            public string ApiVersion { get; set; }
+            public string Kind { get; set; }
             public V1ObjectMeta Metadata { get; set; }
             public Dictionary<string, object> Spec { get; set; }
 
