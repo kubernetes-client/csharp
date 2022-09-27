@@ -104,7 +104,6 @@ namespace k8s
                 {
                     cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
                 }
-                
             }
 
             return cert;

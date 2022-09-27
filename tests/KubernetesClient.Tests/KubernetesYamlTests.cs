@@ -841,5 +841,56 @@ spec:
             var ver = result.Spec.Versions[0];
             Assert.Equal(true, ver?.Schema?.OpenAPIV3Schema?.XKubernetesIntOrString);
         }
+
+#pragma warning disable CA1812 // Class is used for YAML deserialization tests
+        [KubernetesEntity(Group = KubeGroup, Kind = KubeKind, ApiVersion = KubeApiVersion, PluralName = KubePluralName)]
+        private sealed class V1AlphaFoo : IKubernetesObject<V1ObjectMeta>, ISpec<Dictionary<string, object>>
+        {
+            public const string KubeApiVersion = "v1alpha";
+            public const string KubeKind = "foo";
+            public const string KubeGroup = "foo.bar";
+            public const string KubePluralName = "foos";
+
+            public string ApiVersion { get; set; }
+            public string Kind { get; set; }
+            public V1ObjectMeta Metadata { get; set; }
+            public Dictionary<string, object> Spec { get; set; }
+
+            public V1AlphaFoo()
+            {
+                Metadata = new V1ObjectMeta();
+                Spec = new Dictionary<string, object>();
+            }
+        }
+#pragma warning restore CA1812 // Class is used for YAML deserialization tests
+
+        [Fact]
+        public void LoadAllFromStringWithTypeMapGenericCRD()
+        {
+            var content = @"apiVersion: foo.bar/v1alpha
+kind: Foo
+metadata:
+  name: foo
+  namespace: ns
+spec:
+  bool: false
+  byte: 123
+  float: 12.0
+";
+
+            var objs = KubernetesYaml.LoadAllFromString(content, new Dictionary<string, Type>
+            {
+                { $"{V1AlphaFoo.KubeGroup}/{V1AlphaFoo.KubeApiVersion}/Foo", typeof(V1AlphaFoo) },
+            });
+            Assert.Single(objs);
+            var v1AlphaFoo = Assert.IsType<V1AlphaFoo>(objs[0]);
+            Assert.Equal("foo", v1AlphaFoo.Metadata.Name);
+            Assert.Equal("ns", v1AlphaFoo.Metadata.NamespaceProperty);
+            Assert.Equal(3, v1AlphaFoo.Spec.Count);
+            Assert.False(Assert.IsType<bool>(v1AlphaFoo.Spec["bool"]));
+            Assert.Equal(123, Assert.IsType<byte>(v1AlphaFoo.Spec["byte"]));
+            Assert.Equal(12.0, Assert.IsType<float>(v1AlphaFoo.Spec["float"]), 3);
+            Assert.Equal(content.Replace("\r\n", "\n"), KubernetesYaml.SerializeAll(objs).Replace("\r\n", "\n"));
+        }
     }
 }
