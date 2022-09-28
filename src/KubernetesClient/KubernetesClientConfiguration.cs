@@ -1,6 +1,6 @@
+using k8s.Autorest;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
-using k8s.Autorest;
 
 namespace k8s
 {

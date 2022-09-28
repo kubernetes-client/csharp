@@ -40,8 +40,10 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod
@@ -89,8 +91,11 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithAdditionalPropertiesAndTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
+
             var content = @"apiVersion: v1
 kind: Pod
 metadata:
@@ -150,8 +155,10 @@ metadata:
         [Fact]
         public async Task LoadAllFromFileWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod
@@ -279,12 +286,11 @@ metadata:
   name: foo
 ";
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
-            {
-                var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-                Assert.Equal("foo", obj.Metadata.Name);
-            }
+            var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+
+            Assert.Equal("foo", obj.Metadata.Name);
         }
 
         [Fact]
@@ -430,18 +436,17 @@ spec:
 
         private static IEnumerable<string> ToLines(string s)
         {
-            using (var reader = new StringReader(s))
-            {
-                for (; ; )
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                    {
-                        yield break;
-                    }
+            using var reader = new StringReader(s);
 
-                    yield return line;
+            for (; ; )
+            {
+                var line = reader.ReadLine();
+                if (line == null)
+                {
+                    yield break;
                 }
+
+                yield return line;
             }
         }
 

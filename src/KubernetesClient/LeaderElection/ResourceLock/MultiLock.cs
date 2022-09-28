@@ -5,8 +5,8 @@ namespace k8s.LeaderElection.ResourceLock
 {
     public class MultiLock : ILock
     {
-        private ILock primary;
-        private ILock secondary;
+        private readonly ILock primary;
+        private readonly ILock secondary;
 
         public MultiLock(ILock primary, ILock secondary)
         {

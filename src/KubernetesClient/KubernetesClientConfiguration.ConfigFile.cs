@@ -61,8 +61,11 @@ namespace k8s
                 return InClusterConfig();
             }
 
-            var config = new KubernetesClientConfiguration();
-            config.Host = "http://localhost:8080";
+            var config = new KubernetesClientConfiguration
+            {
+                Host = "http://localhost:8080",
+            };
+
             return config;
         }
 
@@ -274,14 +277,18 @@ namespace k8s
             {
                 if (IPAddress.Equals(IPAddress.Any, ipAddress))
                 {
-                    var builder = new UriBuilder(Host);
-                    builder.Host = $"{IPAddress.Loopback}";
+                    var builder = new UriBuilder(Host)
+                    {
+                        Host = $"{IPAddress.Loopback}",
+                    };
                     Host = builder.ToString();
                 }
                 else if (IPAddress.Equals(IPAddress.IPv6Any, ipAddress))
                 {
-                    var builder = new UriBuilder(Host);
-                    builder.Host = $"{IPAddress.IPv6Loopback}";
+                    var builder = new UriBuilder(Host)
+                    {
+                        Host = $"{IPAddress.IPv6Loopback}",
+                    };
                     Host = builder.ToString();
                 }
             }

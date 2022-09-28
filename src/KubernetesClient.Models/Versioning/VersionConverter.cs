@@ -1,8 +1,8 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
-using System.Reflection;
 using AutoMapper;
 using k8s.Models;
+using System.Reflection;
 
 namespace k8s.Versioning
 {

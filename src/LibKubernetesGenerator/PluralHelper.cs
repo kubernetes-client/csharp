@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using NJsonSchema;
 using NSwag;
 using Nustache.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LibKubernetesGenerator
 {
@@ -11,7 +11,7 @@ namespace LibKubernetesGenerator
     {
         private readonly Dictionary<string, string> _classNameToPluralMap;
         private readonly ClassNameHelper classNameHelper;
-        private HashSet<string> opblackList = new HashSet<string>()
+        private readonly HashSet<string> opblackList = new HashSet<string>()
         {
             "listClusterCustomObject",
             "listNamespacedCustomObject",

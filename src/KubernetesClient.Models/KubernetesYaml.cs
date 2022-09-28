@@ -1,3 +1,4 @@
+using k8s.Models;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -6,7 +7,6 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-using k8s.Models;
 
 namespace k8s
 {

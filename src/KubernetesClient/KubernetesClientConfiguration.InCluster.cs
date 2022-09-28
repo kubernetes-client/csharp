@@ -1,6 +1,6 @@
-using System.IO;
 using k8s.Authentication;
 using k8s.Exceptions;
+using System.IO;
 
 namespace k8s
 {
