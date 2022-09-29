@@ -504,45 +504,78 @@ namespace k8s.E2E
             {
                 Cleanup();
 
-                await genericPods.CreateNamespacedAsync(
-                    new V1Pod()
-                    {
-                        Metadata = new V1ObjectMeta { Name = podName, },
-                        Spec = new V1PodSpec
-                        {
-                            Containers = new[] { new V1Container() { Name = "k8scsharp-e2e", Image = "nginx", }, },
-                        },
-                    },
-                    namespaceParameter).ConfigureAwait(false);
-
-                var pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
-                Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
-
-                int retry = 5;
-                while (retry-- > 0)
+                // create + list
                 {
-                    try
-                    {
-                        await genericPods.DeleteNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
-                    }
-                    catch (HttpOperationException e)
-                    {
-                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    await genericPods.CreateNamespacedAsync(
+                        new V1Pod()
                         {
-                            return;
-                        }
-                    }
+                            Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
+                            Spec = new V1PodSpec
+                            {
+                                Containers = new[] { new V1Container() { Name = "k8scsharp-e2e", Image = "nginx", }, },
+                            },
+                        },
+                        namespaceParameter).ConfigureAwait(false);
 
-                    pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
-                    if (!pods.Items.Any(p => p.Metadata.Name == podName))
-                    {
-                        break;
-                    }
-
-                    await Task.Delay(TimeSpan.FromSeconds(2.5)).ConfigureAwait(false);
+                    var pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
+                    Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
                 }
 
-                Assert.DoesNotContain(pods.Items, p => p.Metadata.Name == podName);
+                // replace + get
+                {
+                    var pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                    var old = JsonSerializer.SerializeToDocument(pod);
+
+                    var newlabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "generic-test-jsonpatch" };
+                    pod.Metadata.Labels = newlabels;
+
+                    var expected = JsonSerializer.SerializeToDocument(pod);
+                    var patch = old.CreatePatch(expected);
+
+                    await genericPods.PatchNamespacedAsync<V1Pod>(new V1Patch(patch, V1Patch.PatchType.JsonPatch), namespaceParameter, podName).ConfigureAwait(false);
+                    var pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
+                    Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "generic-test-jsonpatch")));
+                }
+
+                // replace + get
+                {
+                    var pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                    pod.Spec.Containers[0].Image = "httpd";
+                    await genericPods.ReplaceNamespacedAsync(pod, namespaceParameter, podName).ConfigureAwait(false);
+
+                    pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                }
+
+                // delete + list
+                {
+                    V1PodList pods = new V1PodList();
+                    int retry = 5;
+                    while (retry-- > 0)
+                    {
+                        try
+                        {
+                            await genericPods.DeleteNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                        }
+                        catch (HttpOperationException e)
+                        {
+                            if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                            {
+                                return;
+                            }
+                        }
+
+                        pods = await genericPods.ListNamespacedAsync<V1PodList>(namespaceParameter).ConfigureAwait(false);
+                        if (!pods.Items.Any(p => p.Metadata.Name == podName))
+                        {
+                            break;
+                        }
+
+                        await Task.Delay(TimeSpan.FromSeconds(2.5)).ConfigureAwait(false);
+                    }
+
+                    Assert.DoesNotContain(pods.Items, p => p.Metadata.Name == podName);
+                }
             }
             finally
             {
