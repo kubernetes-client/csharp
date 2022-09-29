@@ -1,3 +1,4 @@
+using k8s.Models;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -83,6 +84,34 @@ namespace k8s
         where T : IKubernetesObject
         {
             var resp = await kubernetes.CustomObjects.DeleteNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> PatchAsync<T>(V1Patch patch, string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.CustomObjects.PatchClusterCustomObjectWithHttpMessagesAsync(patch, group, version, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> PatchNamespacedAsync<T>(V1Patch patch, string ns, string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.CustomObjects.PatchNamespacedCustomObjectWithHttpMessagesAsync(patch, group, version, ns, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> ReplaceAsync<T>(T obj, string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.CustomObjects.ReplaceClusterCustomObjectWithHttpMessagesAsync(obj, group, version, plural, name, cancellationToken: cancel).ConfigureAwait(false);
+            return KubernetesJson.Deserialize<T>(resp.Body.ToString());
+        }
+
+        public async Task<T> ReplaceNamespacedAsync<T>(T obj, string ns, string name, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var resp = await kubernetes.CustomObjects.ReplaceNamespacedCustomObjectWithHttpMessagesAsync(obj, group, version, ns, plural, name, cancellationToken: cancel).ConfigureAwait(false);
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
