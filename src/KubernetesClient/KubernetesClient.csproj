@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--TODO merge util folder -->
-    <Compile Remove="Util\**" />
-    <EmbeddedResource Remove="Util\**" />
-    <None Remove="Util\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="prometheus-net" Version="6.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
     <PackageReference Include="System.IO.Abstractions" Version="17.2.3" />
