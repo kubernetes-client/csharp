@@ -218,6 +218,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]
@@ -233,6 +234,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]
