@@ -1,64 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-    <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net6</TargetFramework>
-    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6;net48</TargetFrameworks>
-  </PropertyGroup>
-
-  <ItemGroup>
-      <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
-      <PackageReference Include="FluentAssertions" Version="6.7.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-      <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
-      <PackageReference Include="System.Reactive" Version="5.0.0" />
-      <PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
-      <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-
-    <PackageReference Include="coverlet.msbuild" Version="3.1.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Xunit.StaFact" Version="1.1.11" />
-    <PackageReference Include="Moq" Version="4.18.2" />
-
-    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-  </ItemGroup>
-
-
-    <!--
-        set -p:UseLibNetStandard2_0=true to force the inclusion of netstandard2.0 version of libraries, Default: false
-        -->
     <PropertyGroup>
-        <UseLibNetStandard2_0>false</UseLibNetStandard2_0>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>k8s.Tests</RootNamespace>
+        <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net6</TargetFramework>
+        <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6;net48</TargetFrameworks>
     </PropertyGroup>
 
-    <Target Name="DisplayMessages" BeforeTargets="Build" >
-        <message Importance="High" Text="[Flag] UseLibNetStandard2_0 = $(UseLibNetStandard2_0)"/>
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
+        <PackageReference Include="FluentAssertions" Version="6.7.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+        <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
+        <PackageReference Include="System.Reactive" Version="5.0.0" />
+        <PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
+        <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+    </ItemGroup>
 
-    <Choose>
-        <When Condition="'$(UseLibNetStandard2_0)' != 'true'">
-            <ItemGroup>
-                <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj"/>
-            </ItemGroup>
-        </When>
+    <ItemGroup>
 
-        <When Condition="'$(UseLibNetStandard2_0)' == 'true'">
-            <ItemGroup>
-                <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj" AdditionalProperties="TargetFramework=netstandard2.0"/>
-            </ItemGroup>
-        </When>
-    </Choose>
+        <PackageReference Include="coverlet.msbuild" Version="3.1.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Xunit.StaFact" Version="1.1.11" />
+        <PackageReference Include="Moq" Version="4.18.2" />
+
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj" AdditionalProperties="TargetFramework=netstandard2.0"/>
+    </ItemGroup>
+    
 </Project>

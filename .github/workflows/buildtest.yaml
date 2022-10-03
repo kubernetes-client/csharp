@@ -59,7 +59,7 @@ jobs:
           dotnet build -f netstandard2.0 --configuration Debug -v minimal ./tests/SkipTestLogger/SkipTestLogger.csproj
       - name: Build test projects
         run: |
-          dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_0=true ./tests/KubernetesClient.Classic.Tests/KubernetesClient.Classic.Tests.csproj 
+          dotnet build --configuration Debug -v minimal --no-dependencies ./tests/KubernetesClient.Classic.Tests/KubernetesClient.Classic.Tests.csproj 
       - name: Test
         run: | 
           dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
