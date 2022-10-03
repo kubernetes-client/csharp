@@ -12,11 +12,11 @@ namespace LibKubernetesGenerator
     [Generator]
     public class KubernetesClientSourceGenerator : ISourceGenerator
     {
-        private static object execlock = new object();
+        private static readonly object Execlock = new object();
 
         public void ExecuteInner(GeneratorExecutionContext context)
         {
-            lock (execlock)
+            lock (Execlock)
             {
                 var swaggerfile = context.AdditionalFiles.First(f => f.Path.EndsWith("swagger.json"));
                 var swagger = OpenApiDocument.FromJsonAsync(swaggerfile.GetText().ToString()).GetAwaiter().GetResult();
@@ -131,11 +131,11 @@ namespace LibKubernetesGenerator
         public void Initialize(GeneratorInitializationContext context)
         {
 #if DEBUG
-        // if (!Debugger.IsAttached)
-        // {
-        //     Debugger.Launch();
-        // }
+            // if (!Debugger.IsAttached)
+            // {
+            //     Debugger.Launch();
+            // }
 #endif
-    }
+        }
     }
 }

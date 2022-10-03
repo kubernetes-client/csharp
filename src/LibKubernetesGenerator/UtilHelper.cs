@@ -1,8 +1,8 @@
+using NSwag;
+using Nustache.Core;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using NSwag;
-using Nustache.Core;
 
 namespace LibKubernetesGenerator
 {

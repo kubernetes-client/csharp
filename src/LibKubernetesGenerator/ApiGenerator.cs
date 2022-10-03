@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using CaseExtensions;
 using Microsoft.CodeAnalysis;
 using NSwag;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LibKubernetesGenerator
 {

@@ -1,9 +1,9 @@
+using k8s.Autorest;
+using k8s.Exceptions;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Exceptions;
-using k8s.Autorest;
 
 namespace k8s.Authentication
 {

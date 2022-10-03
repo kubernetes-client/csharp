@@ -1,6 +1,6 @@
 using IdentityModel.OidcClient;
-using k8s.Exceptions;
 using k8s.Autorest;
+using k8s.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -10,7 +10,7 @@ namespace k8s.Authentication
 {
     public class OidcTokenProvider : ITokenProvider
     {
-        private OidcClient _oidcClient;
+        private readonly OidcClient _oidcClient;
         private string _idToken;
         private string _refreshToken;
         private DateTimeOffset _expiry;

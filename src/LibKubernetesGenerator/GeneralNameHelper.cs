@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using CaseExtensions;
 using NJsonSchema;
 using NSwag;
 using Nustache.Core;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace LibKubernetesGenerator
 {
@@ -91,7 +91,7 @@ namespace LibKubernetesGenerator
                 var parameter = arguments[0] as OpenApiParameter;
                 context.Write(GetDotNetName(parameter.Name));
 
-                if (arguments.Count > 1 && arguments[1] as string == "true" && !parameter.IsRequired)
+                if (arguments.Count > 1 && (arguments[1] as string) == "true" && !parameter.IsRequired)
                 {
                     context.Write(" = null");
                 }

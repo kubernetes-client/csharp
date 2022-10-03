@@ -1,5 +1,5 @@
-using k8s.Models;
 using k8s.Autorest;
+using k8s.Models;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,31 +19,31 @@ namespace k8s
 
             try
             {
-                using (var muxedStream = await MuxedStreamNamespacedPodExecAsync(
+                using var muxedStream = await MuxedStreamNamespacedPodExecAsync(
                     name,
                     @namespace, command, container, tty: tty,
-                    cancellationToken: cancellationToken).ConfigureAwait(false))
-                using (var stdIn = muxedStream.GetStream(null, ChannelIndex.StdIn))
-                using (var stdOut = muxedStream.GetStream(ChannelIndex.StdOut, null))
-                using (var stdErr = muxedStream.GetStream(ChannelIndex.StdErr, null))
-                using (var error = muxedStream.GetStream(ChannelIndex.Error, null))
-                using (var errorReader = new StreamReader(error))
-                {
-                    muxedStream.Start();
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                    await action(stdIn, stdOut, stdErr).ConfigureAwait(false);
+                using var stdIn = muxedStream.GetStream(null, ChannelIndex.StdIn);
+                using var stdOut = muxedStream.GetStream(ChannelIndex.StdOut, null);
+                using var stdErr = muxedStream.GetStream(ChannelIndex.StdErr, null);
+                using var error = muxedStream.GetStream(ChannelIndex.Error, null);
+                using var errorReader = new StreamReader(error);
 
-                    var errors = await errorReader.ReadToEndAsync().ConfigureAwait(false);
+                muxedStream.Start();
 
-                    // StatusError is defined here:
-                    // https://github.com/kubernetes/kubernetes/blob/068e1642f63a1a8c48c16c18510e8854a4f4e7c5/staging/src/k8s.io/apimachinery/pkg/api/errors/errors.go#L37
-                    var returnMessage = KubernetesJson.Deserialize<V1Status>(errors);
-                    return GetExitCodeOrThrow(returnMessage);
-                }
+                await action(stdIn, stdOut, stdErr).ConfigureAwait(false);
+
+                var errors = await errorReader.ReadToEndAsync().ConfigureAwait(false);
+
+                // StatusError is defined here:
+                // https://github.com/kubernetes/kubernetes/blob/068e1642f63a1a8c48c16c18510e8854a4f4e7c5/staging/src/k8s.io/apimachinery/pkg/api/errors/errors.go#L37
+                var returnMessage = KubernetesJson.Deserialize<V1Status>(errors);
+                return GetExitCodeOrThrow(returnMessage);
             }
-            catch (HttpOperationException httpEx) when (httpEx.Body is V1Status)
+            catch (HttpOperationException httpEx) when (httpEx.Body is V1Status status)
             {
-                throw new KubernetesException((V1Status)httpEx.Body, httpEx);
+                throw new KubernetesException(status, httpEx);
             }
         }
 

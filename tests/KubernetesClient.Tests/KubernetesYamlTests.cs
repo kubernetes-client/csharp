@@ -40,8 +40,10 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod
@@ -89,8 +91,11 @@ metadata:
         [Fact]
         public void LoadAllFromStringWithAdditionalPropertiesAndTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
+
             var content = @"apiVersion: v1
 kind: Pod
 metadata:
@@ -150,8 +155,10 @@ metadata:
         [Fact]
         public async Task LoadAllFromFileWithTypes()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("v1/Pod", typeof(MyPod));
+            var types = new Dictionary<string, Type>
+            {
+                { "v1/Pod", typeof(MyPod) },
+            };
 
             var content = @"apiVersion: v1
 kind: Pod
@@ -279,12 +286,11 @@ metadata:
   name: foo
 ";
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
-            {
-                var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-                Assert.Equal("foo", obj.Metadata.Name);
-            }
+            var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+
+            Assert.Equal("foo", obj.Metadata.Name);
         }
 
         [Fact]
@@ -430,18 +436,17 @@ spec:
 
         private static IEnumerable<string> ToLines(string s)
         {
-            using (var reader = new StringReader(s))
-            {
-                for (; ; )
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                    {
-                        yield break;
-                    }
+            using var reader = new StringReader(s);
 
-                    yield return line;
+            for (; ; )
+            {
+                var line = reader.ReadLine();
+                if (line == null)
+                {
+                    yield break;
                 }
+
+                yield return line;
             }
         }
 
@@ -840,6 +845,57 @@ spec:
             Assert.Single(result?.Spec?.Versions);
             var ver = result.Spec.Versions[0];
             Assert.Equal(true, ver?.Schema?.OpenAPIV3Schema?.XKubernetesIntOrString);
+        }
+
+#pragma warning disable CA1812 // Class is used for YAML deserialization tests
+        [KubernetesEntity(Group = KubeGroup, Kind = KubeKind, ApiVersion = KubeApiVersion, PluralName = KubePluralName)]
+        private sealed class V1AlphaFoo : IKubernetesObject<V1ObjectMeta>, ISpec<Dictionary<string, object>>
+        {
+            public const string KubeApiVersion = "v1alpha";
+            public const string KubeKind = "foo";
+            public const string KubeGroup = "foo.bar";
+            public const string KubePluralName = "foos";
+
+            public string ApiVersion { get; set; }
+            public string Kind { get; set; }
+            public V1ObjectMeta Metadata { get; set; }
+            public Dictionary<string, object> Spec { get; set; }
+
+            public V1AlphaFoo()
+            {
+                Metadata = new V1ObjectMeta();
+                Spec = new Dictionary<string, object>();
+            }
+        }
+#pragma warning restore CA1812 // Class is used for YAML deserialization tests
+
+        [Fact]
+        public void LoadAllFromStringWithTypeMapGenericCRD()
+        {
+            var content = @"apiVersion: foo.bar/v1alpha
+kind: Foo
+metadata:
+  name: foo
+  namespace: ns
+spec:
+  bool: false
+  byte: 123
+  float: 12.0
+";
+
+            var objs = KubernetesYaml.LoadAllFromString(content, new Dictionary<string, Type>
+            {
+                { $"{V1AlphaFoo.KubeGroup}/{V1AlphaFoo.KubeApiVersion}/Foo", typeof(V1AlphaFoo) },
+            });
+            Assert.Single(objs);
+            var v1AlphaFoo = Assert.IsType<V1AlphaFoo>(objs[0]);
+            Assert.Equal("foo", v1AlphaFoo.Metadata.Name);
+            Assert.Equal("ns", v1AlphaFoo.Metadata.NamespaceProperty);
+            Assert.Equal(3, v1AlphaFoo.Spec.Count);
+            Assert.False(Assert.IsType<bool>(v1AlphaFoo.Spec["bool"]));
+            Assert.Equal(123, Assert.IsType<byte>(v1AlphaFoo.Spec["byte"]));
+            Assert.Equal(12.0, Assert.IsType<float>(v1AlphaFoo.Spec["float"]), 3);
+            Assert.Equal(content.Replace("\r\n", "\n"), KubernetesYaml.SerializeAll(objs).Replace("\r\n", "\n"));
         }
     }
 }

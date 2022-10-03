@@ -1,9 +1,9 @@
+using k8s.Autorest;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using k8s.Autorest;
 
 namespace k8s
 {
@@ -101,9 +101,12 @@ namespace k8s
 
         protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
         {
-            var httpRequest = new HttpRequestMessage();
-            httpRequest.Method = method;
-            httpRequest.RequestUri = new Uri(BaseUri, relativeUri);
+            var httpRequest = new HttpRequestMessage
+            {
+                Method = method,
+                RequestUri = new Uri(BaseUri, relativeUri),
+            };
+
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             httpRequest.Version = HttpVersion.Version20;
 #endif
