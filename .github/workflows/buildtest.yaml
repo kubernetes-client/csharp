@@ -56,7 +56,6 @@ jobs:
           dotnet build --configuration Debug -v minimal --no-dependencies -p:KubernetesClientVersion="${{ matrix.netstandard-version }}" ./tests/E2E.Tests/E2E.Tests.csproj
       # Run compiled KubernetesClient.Tests and E2E.Tests
       - name: Run test projects with ${{ matrix.netstandard-version }} version of KubernetesClient
-        if: matrix.netstandard-version == 'netstandard2.1'
         run: |
           # Run KubernetesClient.Tests.csproj
           dotnet test ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj \
