@@ -37,34 +37,6 @@ jobs:
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 0
   
-  # Build and test netstandard 2.0
-  netstandard2_0:
-    runs-on: ubuntu-latest
-    name: Dotnet build netstandard2.0
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0     
-      - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.0.x'          
-      - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '6.0.x'          
-      - name: Build libraries
-        run: |
-          dotnet build -f netstandard2.0 --configuration Debug -v minimal ./src/KubernetesClient.Classic/KubernetesClient.Classic.csproj 
-          dotnet build -f netstandard2.0 --configuration Debug -v minimal ./tests/SkipTestLogger/SkipTestLogger.csproj
-      - name: Build test projects
-        run: |
-          dotnet build --configuration Debug -v minimal --no-dependencies ./tests/KubernetesClient.Classic.Tests/KubernetesClient.Classic.Tests.csproj 
-      - name: Test
-        run: | 
-          dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
-            --no-build ./tests/KubernetesClient.Classic.Tests/KubernetesClient.Classic.Tests.csproj
-  
   # Build and test netstandard 2.1 version of library with net core 5.0 and 6.0
   netstandard2_1:
     runs-on: ubuntu-latest
