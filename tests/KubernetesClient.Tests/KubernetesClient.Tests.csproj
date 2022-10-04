@@ -71,7 +71,7 @@
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
             <PropertyGroup>
-                <DefineConstants>KUBERNETESCLIENT_STANDARD2_0</DefineConstants>
+                <DefineConstants>KUBERNETESCLIENT_NETSTANDARD2_0</DefineConstants>
             </PropertyGroup>
         </When>
 
@@ -82,7 +82,7 @@
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
             <PropertyGroup>
-                <DefineConstants>KUBERNETESCLIENT_STANDARD2_1</DefineConstants>
+                <DefineConstants>KUBERNETESCLIENT_NETSTANDARD2_1</DefineConstants>
             </PropertyGroup>
         </When>
         

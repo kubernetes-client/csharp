@@ -50,24 +50,24 @@
             </ItemGroup>
         </When>
 
-        <!-- include nestandard2.0 version of KubernetesClient project and define USELIBNETSTANDARD2_0 constant for #if preprocessor directives (used for tests exclusion) -->
+        <!-- include nestandard2.0 version of KubernetesClient project and define KUBERNETESCLIENT_NETSTANDARD2_0 constant for #if preprocessor directives (used for tests exclusion) -->
         <When Condition="'$(KubernetesClientVersion)' == 'netstandard2.0'">
             <ItemGroup>
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
             <PropertyGroup>
-                <DefineConstants>USELIBNETSTANDARD2_0</DefineConstants>
+                <DefineConstants>KUBERNETESCLIENT_NETSTANDARD2_0</DefineConstants>
             </PropertyGroup>
         </When>
 
 
-        <!-- include nestandard2.1 version of KubernetesClient project and define USELIBNETSTANDARD2_1 constant for #if preprocessor directives (used for tests exclusion) -->
+        <!-- include nestandard2.1 version of KubernetesClient project and define KUBERNETESCLIENT_NETSTANDARD2_1 constant for #if preprocessor directives (used for tests exclusion) -->
         <When Condition="'$(KubernetesClientVersion)' == 'netstandard2.1'">
             <ItemGroup>
                 <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
             <PropertyGroup>
-                <DefineConstants>USELIBNETSTANDARD2_1</DefineConstants>
+                <DefineConstants>KUBERNETESCLIENT_NETSTANDARD2_1</DefineConstants>
             </PropertyGroup>
         </When>
 

@@ -1,5 +1,5 @@
 // Exclusion of watch tests on netstandard2.0 version of KubernetesClient because the feature is unsupported
-#if !KUBERNETESCLIENT_STANDARD2_0
+#if !KUBERNETESCLIENT_NETSTANDARD2_0
 
 using k8s.Models;
 using k8s.Tests.Mock;
