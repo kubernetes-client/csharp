@@ -27,10 +27,13 @@ jobs:
       - name: Test
         run: dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura"
   
-  # Build and test netstandard 2.1 version of library with net core 5.0 and 6.0
-  netstandard2_1:
+  # Build and test netstandard2.0/2.1 version of library with .NET Core 6.0
+  netstandard:
     runs-on: ubuntu-latest
-    name: Dotnet build netstandard2.1
+    name: Dotnet build
+    strategy:
+      matrix:
+        netstandard-version: [netstandard2.0, netstandard2.1]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -39,22 +42,28 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-           5.0.x
-           6.0.x                
+            5.0.x
+            6.0.x
+      # Build KubernetesClient with specific netstandard version
       - name: Build libraries
         run: |
-          dotnet build -f netstandard2.1 --configuration Debug -v minimal ./src/KubernetesClient/KubernetesClient.csproj 
+          dotnet build -f ${{ matrix.netstandard-version }} --configuration Debug -v minimal ./src/KubernetesClient/KubernetesClient.csproj 
           dotnet build -f netstandard2.0 --configuration Debug -v minimal ./tests/SkipTestLogger/SkipTestLogger.csproj
-      - name: Build test projects
+      # Build KubernetesClient.Tests and E2E.Tests
+      - name: Build test projects with ${{ matrix.netstandard-version }} version of KubernetesClient
         run: |
-          dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_1=true ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj 
-          dotnet build --configuration Debug -v minimal --no-dependencies -p:UseLibNetStandard2_1=true ./tests/E2E.Tests/E2E.Tests.csproj
-      - name: Test
-        run: | 
-          dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
-            --no-build ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj
-          dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" \
-            --no-build ./tests/E2E.Tests/E2E.Tests.csproj
+          dotnet build --configuration Debug -v minimal --no-dependencies -p:KubernetesClientVersion="${{ matrix.netstandard-version }}" ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj 
+          dotnet build --configuration Debug -v minimal --no-dependencies -p:KubernetesClientVersion="${{ matrix.netstandard-version }}" ./tests/E2E.Tests/E2E.Tests.csproj
+      # Run compiled KubernetesClient.Tests and E2E.Tests
+      - name: Run test projects with ${{ matrix.netstandard-version }} version of KubernetesClient
+        if: matrix.netstandard-version == 'netstandard2.1'
+        run: |
+          # Run KubernetesClient.Tests.csproj
+          dotnet test ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj \
+            /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" --no-build /p:KubernetesClientVersion="${{ matrix.netstandard-version }}"
+          # Run E2E.Tests.csproj
+          dotnet test ./tests/E2E.Tests/E2E.Tests.csproj \
+            /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura" --no-build /p:KubernetesClientVersion="${{ matrix.netstandard-version }}"
     
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
