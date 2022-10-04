@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <IsPackable>false</IsPackable>
         <SignAssembly>true</SignAssembly>
@@ -30,37 +30,46 @@
         <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" />
     </ItemGroup>
 
-    <!--
-        set -p:UseLibNetStandard2_0=true to force the inclusion of netstandard2.0 version of libraries, Default: false
-        set -p:UseLibNetStandard2_1=true to force the inclusion of netstandard2.1 version of libraries, Default: false
-        -->
+    <!-- set -p:KubernetesClientVersion=targetmoniker to force the inclusion of specific version of libraries-->
+    <!-- example: dotnet build -p:KubernetesClientVersion="netstandard2.0" ./tests/KubernetesClient.Tests/KubernetesClient.Tests.csproj -->
     <PropertyGroup>
-        <UseLibNetStandard2_0>false</UseLibNetStandard2_0>
-        <UseLibNetStandard2_1>false</UseLibNetStandard2_1>
+        <KubernetesClientVersion></KubernetesClientVersion>
     </PropertyGroup>
 
-    <Target Name="DisplayMessages" BeforeTargets="Build" >
-        <message Importance="High" Text="[Flag] UseLibNetStandard2_0 = $(UseLibNetStandard2_0)"/>
-        <message Importance="High" Text="[Flag] UseLibNetStandard2_1 = $(UseLibNetStandard2_1)"/>
+    <!-- Display version used in compilation output when is forced-->
+    <Target Name="DisplayMessages" BeforeTargets="Build" Condition="'$(KubernetesClientVersion)' != ''">
+        <message Importance="High" Text="[Flag] KubernetesClient used version = '$(KubernetesClientVersion)'" />
     </Target>
-    
+
     <Choose>
-        <When Condition="('$(UseLibNetStandard2_0)' != 'true') And ('$(UseLibNetStandard2_1)' != 'true')">
+
+        <!-- include standard version of KubernetesClient project (auto selected by compiler) -->
+        <When Condition="'$(KubernetesClientVersion)' == ''">
             <ItemGroup>
-                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj"/>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
             </ItemGroup>
         </When>
-        
-        <When Condition="'$(UseLibNetStandard2_0)' == 'true'">
+
+        <!-- include nestandard2.0 version of KubernetesClient project and define USELIBNETSTANDARD2_0 constant for #if preprocessor directives (used for tests exclusion) -->
+        <When Condition="'$(KubernetesClientVersion)' == 'netstandard2.0'">
             <ItemGroup>
-                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.0"/>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
+            <PropertyGroup>
+                <DefineConstants>USELIBNETSTANDARD2_0</DefineConstants>
+            </PropertyGroup>
         </When>
-        
-        <When Condition="'$(UseLibNetStandard2_1)' == 'true'">
+
+
+        <!-- include nestandard2.1 version of KubernetesClient project and define USELIBNETSTANDARD2_1 constant for #if preprocessor directives (used for tests exclusion) -->
+        <When Condition="'$(KubernetesClientVersion)' == 'netstandard2.1'">
             <ItemGroup>
-                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=netstandard2.1"/>
+                <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" AdditionalProperties="TargetFramework=$(KubernetesClientVersion)" />
             </ItemGroup>
+            <PropertyGroup>
+                <DefineConstants>USELIBNETSTANDARD2_1</DefineConstants>
+            </PropertyGroup>
         </When>
+
     </Choose>
 </Project>
