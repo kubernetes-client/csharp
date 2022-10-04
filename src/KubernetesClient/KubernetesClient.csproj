@@ -1,29 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net5.0;net6.0</TargetFrameworks>
-    <RootNamespace>k8s</RootNamespace>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+        <RootNamespace>k8s</RootNamespace>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <!--TODO merge util folder -->
-    <Compile Remove="Util\**" />
-    <EmbeddedResource Remove="Util\**" />
-    <None Remove="Util\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <!--TODO merge util folder -->
+        <Compile Remove="Util\**" />
+        <EmbeddedResource Remove="Util\**" />
+        <None Remove="Util\**" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="prometheus-net" Version="6.0.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
-    <PackageReference Include="System.IO.Abstractions" Version="17.2.3" />
-    <PackageReference Include="IdentityModel.OidcClient" Version="5.0.2" />
+    <ItemGroup>
+        <PackageReference Include="prometheus-net" Version="6.0.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
+        <PackageReference Include="System.IO.Abstractions" Version="17.2.3" />
+        <PackageReference Include="IdentityModel.OidcClient" Version="5.0.2" />
 
-    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
-  </ItemGroup>
+        <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" Condition="('$(TargetFramework)' == 'netstandard2.0') or ('$(TargetFramework)' == 'netstandard2.1')" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
-    <ProjectReference Include="..\KubernetesClient.Basic\KubernetesClient.Basic.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
+        <ProjectReference Include="..\KubernetesClient.Basic\KubernetesClient.Basic.csproj" />
+    </ItemGroup>
 
 </Project>
