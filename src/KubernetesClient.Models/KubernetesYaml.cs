@@ -106,6 +106,7 @@ namespace k8s
         /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
         /// be used.
         /// </param>
+        /// <param name="strict">true if a strict deserializer should be used (throwing exception on unknown properties), false otherwise</param>
         /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, IDictionary<string, Type> typeMap = null, bool strict = false)
         {
@@ -123,6 +124,7 @@ namespace k8s
         /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
         /// be used.
         /// </param>
+        /// <param name="strict">true if a strict deserializer should be used (throwing exception on unknown properties), false otherwise</param>
         /// <returns>collection of objects</returns>
         public static async Task<List<object>> LoadAllFromFileAsync(string fileName, IDictionary<string, Type> typeMap = null, bool strict = false)
         {
