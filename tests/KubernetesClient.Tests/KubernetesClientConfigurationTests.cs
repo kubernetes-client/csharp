@@ -540,6 +540,7 @@ namespace k8s.Tests
         public void LoadKubeConfigWithAdditionalProperties()
         {
             var txt = File.ReadAllText("assets/kubeconfig.additional-properties.yml");
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<K8SConfiguration>(txt, strict: true));
             var expectedCfg = KubernetesYaml.Deserialize<K8SConfiguration>(txt);
 
             var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.additional-properties.yml"));

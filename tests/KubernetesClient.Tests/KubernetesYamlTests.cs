@@ -79,6 +79,7 @@ metadata:
   name: ns
   youDontKnow: Me";
 
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.LoadAllFromString(content, strict: true));
             var objs = KubernetesYaml.LoadAllFromString(content);
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
@@ -109,6 +110,7 @@ metadata:
   name: ns
   youDontKnow: Me";
 
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.LoadAllFromString(content, strict: true));
             var objs = KubernetesYaml.LoadAllFromString(content, types);
             Assert.Equal(2, objs.Count);
             Assert.IsType<MyPod>(objs[0]);
@@ -218,6 +220,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]
@@ -233,6 +236,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]

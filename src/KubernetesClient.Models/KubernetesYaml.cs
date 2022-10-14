@@ -15,16 +15,22 @@ namespace k8s
     /// </summary>
     public static class KubernetesYaml
     {
-        private static readonly IDeserializer Deserializer =
+        private static readonly DeserializerBuilder CommonDeserializerBuilder =
             new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
-                .WithOverridesFromJsonPropertyAttributes()
-                .IgnoreUnmatchedProperties()
-                .Build();
+                .WithOverridesFromJsonPropertyAttributes();
+        private static readonly IDeserializer StrictDeserializer =
+            CommonDeserializerBuilder
+            .Build();
+        private static readonly IDeserializer Deserializer =
+            CommonDeserializerBuilder
+            .IgnoreUnmatchedProperties()
+            .Build();
+        private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
 
         private static readonly IValueSerializer Serializer =
             new SerializerBuilder()
@@ -100,8 +106,9 @@ namespace k8s
         /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
         /// be used.
         /// </param>
+        /// <param name="strict">true if a strict deserializer should be used (throwing exception on unknown properties), false otherwise</param>
         /// <returns>collection of objects</returns>
-        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, IDictionary<string, Type> typeMap = null)
+        public static async Task<List<object>> LoadAllFromStreamAsync(Stream stream, IDictionary<string, Type> typeMap = null, bool strict = false)
         {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
@@ -117,8 +124,9 @@ namespace k8s
         /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
         /// be used.
         /// </param>
+        /// <param name="strict">true if a strict deserializer should be used (throwing exception on unknown properties), false otherwise</param>
         /// <returns>collection of objects</returns>
-        public static async Task<List<object>> LoadAllFromFileAsync(string fileName, IDictionary<string, Type> typeMap = null)
+        public static async Task<List<object>> LoadAllFromFileAsync(string fileName, IDictionary<string, Type> typeMap = null, bool strict = false)
         {
             using (var fileStream = File.OpenRead(fileName))
             {
@@ -136,8 +144,9 @@ namespace k8s
         /// A map from apiVersion/kind to Type. For example "v1/Pod" -> typeof(V1Pod). If null, a default mapping will
         /// be used.
         /// </param>
+        /// <param name="strict">true if a strict deserializer should be used (throwing exception on unknown properties), false otherwise</param>
         /// <returns>collection of objects</returns>
-        public static List<object> LoadAllFromString(string content, IDictionary<string, Type> typeMap = null)
+        public static List<object> LoadAllFromString(string content, IDictionary<string, Type> typeMap = null, bool strict = false)
         {
             var mergedTypeMap = new Dictionary<string, Type>(ModelTypeMap);
             // merge in KVPs from typeMap, overriding any in ModelTypeMap
@@ -148,7 +157,7 @@ namespace k8s
             parser.Consume<StreamStart>();
             while (parser.Accept<DocumentStart>(out _))
             {
-                var obj = Deserializer.Deserialize<KubernetesObject>(parser);
+                var obj = GetDeserializer(strict).Deserialize<KubernetesObject>(parser);
                 types.Add(mergedTypeMap[obj.ApiVersion + "/" + obj.Kind]);
             }
 
@@ -159,32 +168,32 @@ namespace k8s
             while (parser.Accept<DocumentStart>(out _))
             {
                 var objType = types[ix++];
-                var obj = Deserializer.Deserialize(parser, objType);
+                var obj = GetDeserializer(strict).Deserialize(parser, objType);
                 results.Add(obj);
             }
 
             return results;
         }
 
-        public static async Task<T> LoadFromStreamAsync<T>(Stream stream)
+        public static async Task<T> LoadFromStreamAsync<T>(Stream stream, bool strict = false)
         {
             var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
-            return Deserialize<T>(content);
+            return Deserialize<T>(content, strict);
         }
 
-        public static async Task<T> LoadFromFileAsync<T>(string file)
+        public static async Task<T> LoadFromFileAsync<T>(string file, bool strict = false)
         {
             using (var fs = File.OpenRead(file))
             {
-                return await LoadFromStreamAsync<T>(fs).ConfigureAwait(false);
+                return await LoadFromStreamAsync<T>(fs, strict).ConfigureAwait(false);
             }
         }
 
         [Obsolete("use Deserialize")]
-        public static T LoadFromString<T>(string content)
+        public static T LoadFromString<T>(string content, bool strict = false)
         {
-            return Deserialize<T>(content);
+            return Deserialize<T>(content, strict);
         }
 
         [Obsolete("use Serialize")]
@@ -193,14 +202,14 @@ namespace k8s
             return Serialize(value);
         }
 
-        public static TValue Deserialize<TValue>(string yaml)
+        public static TValue Deserialize<TValue>(string yaml, bool strict = false)
         {
-            return Deserializer.Deserialize<TValue>(yaml);
+            return GetDeserializer(strict).Deserialize<TValue>(yaml);
         }
 
-        public static TValue Deserialize<TValue>(Stream yaml)
+        public static TValue Deserialize<TValue>(Stream yaml, bool strict = false)
         {
-            return Deserializer.Deserialize<TValue>(new StreamReader(yaml));
+            return GetDeserializer(strict).Deserialize<TValue>(new StreamReader(yaml));
         }
 
         public static string SerializeAll(IEnumerable<object> values)
