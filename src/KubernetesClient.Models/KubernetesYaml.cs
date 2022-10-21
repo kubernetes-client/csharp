@@ -157,8 +157,8 @@ namespace k8s
             parser.Consume<StreamStart>();
             while (parser.Accept<DocumentStart>(out _))
             {
-                var obj = GetDeserializer(strict).Deserialize<KubernetesObject>(parser);
-                types.Add(mergedTypeMap[obj.ApiVersion + "/" + obj.Kind]);
+                var dict = GetDeserializer(strict).Deserialize<Dictionary<object, object>>(parser);
+                types.Add(mergedTypeMap[dict["apiVersion"] + "/" + dict["kind"]]);
             }
 
             parser = new Parser(new StringReader(content));
