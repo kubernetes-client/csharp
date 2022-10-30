@@ -11,18 +11,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Setup dotnet SDK 3.1
-        uses: actions/setup-dotnet@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '3.1.x'          
-      - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.0.x'          
-      - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '6.0.x'          
+          dotnet-version: |
+           3.1.x
+           5.0.x
+           6.0.x             
       # - name: Check Format
       #   # don't check formatting on Windows b/c of CRLF issues.
       #   if: matrix.os == 'ubuntu-latest'
@@ -31,11 +26,6 @@ jobs:
         run: dotnet build --configuration Release -v detailed
       - name: Test
         run: dotnet test /p:CollectCoverage=true /p:ExcludeByFile=\"**/KubernetesClient/generated/**/*.cs\" /p:CoverletOutputFormat="cobertura"
-      # - uses: 5monkeys/cobertura-action@master
-      #   with:
-      #     path: tests/KubernetesClient.Tests/coverage.netcoreapp2.1.cobertura.xml
-      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #     minimum_coverage: 0
     
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
@@ -48,7 +38,7 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'  
       - name: Restore nugets (msbuild)
@@ -62,18 +52,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Setup dotnet SDK 3.1
-        uses: actions/setup-dotnet@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '3.1.x'          
-      - name: Setup dotnet SDK 5
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.0.x'                
-      - name: Setup dotnet SDK 6
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '6.0.x'          
+          dotnet-version: |
+           3.1.x
+           5.0.x
+           6.0.x        
       - name: Minikube
         run: minikube start
       - name: Test

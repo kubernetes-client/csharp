@@ -2,13 +2,13 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net6</TargetFramework>
-    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6;net48</TargetFrameworks>
+    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net6.0</TargetFramework>
+    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6.0;net48</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
       <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
-      <PackageReference Include="FluentAssertions" Version="6.7.0" />
+      <PackageReference Include="FluentAssertions" Version="6.8.0" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
       <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="17.2.3" />
       <PackageReference Include="System.Reactive" Version="5.0.0" />

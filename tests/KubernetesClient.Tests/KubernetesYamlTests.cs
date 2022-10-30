@@ -79,6 +79,7 @@ metadata:
   name: ns
   youDontKnow: Me";
 
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.LoadAllFromString(content, strict: true));
             var objs = KubernetesYaml.LoadAllFromString(content);
             Assert.Equal(2, objs.Count);
             Assert.IsType<V1Pod>(objs[0]);
@@ -109,6 +110,7 @@ metadata:
   name: ns
   youDontKnow: Me";
 
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.LoadAllFromString(content, strict: true));
             var objs = KubernetesYaml.LoadAllFromString(content, types);
             Assert.Equal(2, objs.Count);
             Assert.IsType<MyPod>(objs[0]);
@@ -218,6 +220,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]
@@ -233,6 +236,7 @@ metadata:
             var obj = KubernetesYaml.Deserialize<V1Pod>(content);
 
             Assert.Equal("foo", obj.Metadata.Name);
+            Assert.Throws<YamlDotNet.Core.YamlException>(() => KubernetesYaml.Deserialize<V1Pod>(content, strict: true));
         }
 
         [Fact]
@@ -271,7 +275,7 @@ spec:
         readOnly: false
 ";
 
-            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content, true);
 
             Assert.True(obj.Spec.Containers[0].VolumeMounts[0].ReadOnlyProperty);
             Assert.False(obj.Spec.Containers[0].VolumeMounts[1].ReadOnlyProperty);
@@ -472,7 +476,7 @@ spec:
             - -cpus
             - ""2""";
 
-            var obj = KubernetesYaml.Deserialize<V1Pod>(content);
+            var obj = KubernetesYaml.Deserialize<V1Pod>(content, true);
 
             Assert.NotNull(obj?.Spec?.Containers);
             var container = Assert.Single(obj.Spec.Containers);
@@ -807,7 +811,7 @@ data:
   password: Mzk1MjgkdmRnN0pi
 ";
 
-            var result = KubernetesYaml.Deserialize<V1Secret>(kManifest);
+            var result = KubernetesYaml.Deserialize<V1Secret>(kManifest, true);
             Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
             Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
         }
@@ -886,7 +890,7 @@ spec:
             var objs = KubernetesYaml.LoadAllFromString(content, new Dictionary<string, Type>
             {
                 { $"{V1AlphaFoo.KubeGroup}/{V1AlphaFoo.KubeApiVersion}/Foo", typeof(V1AlphaFoo) },
-            });
+            }, true);
             Assert.Single(objs);
             var v1AlphaFoo = Assert.IsType<V1AlphaFoo>(objs[0]);
             Assert.Equal("foo", v1AlphaFoo.Metadata.Name);
