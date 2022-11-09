@@ -17,7 +17,8 @@ jobs:
           dotnet-version: |
            3.1.x
            5.0.x
-           6.0.x             
+           6.0.x
+           7.0.x
       # - name: Check Format
       #   # don't check formatting on Windows b/c of CRLF issues.
       #   if: matrix.os == 'ubuntu-latest'
