@@ -37,10 +37,10 @@ jobs:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
-      - name: Setup dotnet SDK 6
+      - name: Setup dotnet SDK 7
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'  
+          dotnet-version: '7.0.x'  
       - name: Restore nugets (msbuild)
         run: msbuild .\src\KubernetesClient.Models\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
@@ -57,8 +57,8 @@ jobs:
         with:
           dotnet-version: |
            3.1.x
-           5.0.x
-           6.0.x        
+           6.0.x
+           7.0.x
       - name: Minikube
         run: minikube start
       - name: Test
