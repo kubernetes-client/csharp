@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="prometheus-net" Version="7.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
-    <PackageReference Include="System.IO.Abstractions" Version="17.2.3" />
+    <PackageReference Include="System.IO.Abstractions" Version="17.2.26" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.1.0" />
 
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
