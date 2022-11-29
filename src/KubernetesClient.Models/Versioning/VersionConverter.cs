@@ -1,7 +1,9 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
 using AutoMapper;
+#if NET7_0_OR_GREATER
 using AutoMapper.Internal;
+#endif
 using k8s.Models;
 using System.Reflection;
 
