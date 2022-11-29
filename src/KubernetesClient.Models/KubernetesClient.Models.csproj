@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
     <RootNamespace>k8s.Models</RootNamespace>
   </PropertyGroup>
 
@@ -12,7 +12,8 @@
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="6.0.6" />
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" Condition="'$(TargetFramework)' == 'net7.0'" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
     <PackageReference Include="Fractions" Version="7.1.0" />
     <PackageReference Include="YamlDotNet" Version="12.0.2" />
   </ItemGroup>

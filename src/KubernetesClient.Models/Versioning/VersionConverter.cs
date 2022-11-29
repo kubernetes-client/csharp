@@ -1,6 +1,7 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
 using AutoMapper;
+using AutoMapper.Internal;
 using k8s.Models;
 using System.Reflection;
 
@@ -41,8 +42,15 @@ namespace k8s.Versioning
                 GetConfigurations(cfg);
                 configuration(cfg);
             });
-            Mapper = MapperConfiguration.CreateMapper();
+            Mapper = MapperConfiguration
+#if NET7_0_OR_GREATER
+                .Internal()
+#endif
+                .CreateMapper();
             KindVersionsMap = MapperConfiguration
+#if NET7_0_OR_GREATER
+                .Internal()
+#endif
                 .GetAllTypeMaps()
                 .SelectMany(x => new[] { x.Types.SourceType, x.Types.DestinationType })
                 .Where(x => x.GetCustomAttribute<KubernetesEntityAttribute>() != null)
@@ -78,7 +86,12 @@ namespace k8s.Versioning
                 throw new InvalidOperationException($"Version converter does not have any registered types for Kind `{attr.Kind}`");
             }
 
-            if (!kindVersions.TryGetValue(apiVersion, out var targetType) || !kindVersions.TryGetValue(attr.ApiVersion, out var sourceType) || MapperConfiguration.FindTypeMapFor(sourceType, targetType) == null)
+            if (!kindVersions.TryGetValue(apiVersion, out var targetType) || !kindVersions.TryGetValue(attr.ApiVersion, out var sourceType) ||
+                MapperConfiguration
+#if NET7_0_OR_GREATER
+                .Internal()
+#endif
+                .FindTypeMapFor(sourceType, targetType) == null)
             {
                 throw new InvalidOperationException($"There is no conversion mapping registered for Kind `{attr.Kind}` from ApiVersion {attr.ApiVersion} to {apiVersion}");
             }
@@ -112,7 +125,11 @@ namespace k8s.Versioning
         {
             cfg.AllowNullCollections = true;
             cfg.DisableConstructorMapping();
-            cfg.ForAllMaps((typeMap, opt) =>
+            cfg
+#if NET7_0_OR_GREATER
+                .Internal()
+#endif
+                .ForAllMaps((typeMap, opt) =>
             {
                 if (!typeof(IKubernetesObject).IsAssignableFrom(typeMap.Types.DestinationType))
                 {
