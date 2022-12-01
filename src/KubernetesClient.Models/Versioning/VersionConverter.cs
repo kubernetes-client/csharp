@@ -1,7 +1,7 @@
 // WARNING: DO NOT LEAVE COMMENTED CODE IN THIS FILE. IT GETS SCANNED BY GEN PROJECT SO IT CAN EXCLUDE ANY MANUALLY DEFINED MAPS
 
 using AutoMapper;
-#if NET7_0_OR_GREATER
+#if NET6_0_OR_GREATER
 using AutoMapper.Internal;
 #endif
 using k8s.Models;
@@ -45,12 +45,12 @@ namespace k8s.Versioning
                 configuration(cfg);
             });
             Mapper = MapperConfiguration
-#if NET7_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 .Internal()
 #endif
                 .CreateMapper();
             KindVersionsMap = MapperConfiguration
-#if NET7_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 .Internal()
 #endif
                 .GetAllTypeMaps()
@@ -90,7 +90,7 @@ namespace k8s.Versioning
 
             if (!kindVersions.TryGetValue(apiVersion, out var targetType) || !kindVersions.TryGetValue(attr.ApiVersion, out var sourceType) ||
                 MapperConfiguration
-#if NET7_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 .Internal()
 #endif
                 .FindTypeMapFor(sourceType, targetType) == null)
@@ -128,7 +128,7 @@ namespace k8s.Versioning
             cfg.AllowNullCollections = true;
             cfg.DisableConstructorMapping();
             cfg
-#if NET7_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 .Internal()
 #endif
                 .ForAllMaps((typeMap, opt) =>
