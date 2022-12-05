@@ -99,7 +99,7 @@ namespace k8s
             return result;
         }
 
-        protected override HttpRequestMessage CreateRequest(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders)
+        protected override Task<HttpResponseMessage> SendRequest<T>(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders, T body, CancellationToken cancellationToken)
         {
             var httpRequest = new HttpRequestMessage
             {
@@ -120,7 +120,15 @@ namespace k8s
                 }
             }
 
-            return httpRequest;
+            if (body != null)
+            {
+                var requestContent = KubernetesJson.Serialize(body);
+                httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
+                httpRequest.Content.Headers.ContentType = GetHeader(body);
+                return SendRequestRaw(requestContent, httpRequest, cancellationToken);
+            }
+
+            return SendRequestRaw("", httpRequest, cancellationToken);
         }
 
         protected override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
