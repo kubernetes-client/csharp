@@ -92,6 +92,13 @@ namespace k8s
             {
 #if NET5_0_OR_GREATER
                 HttpClientHandler.SslOptions.ClientCertificates.Add(clientCert);
+
+                // TODO this is workaround for net7.0, remove it when the issue is fixed
+                // seems the client certificate is cached and cannot be updated
+                HttpClientHandler.SslOptions.LocalCertificateSelectionCallback = (sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) =>
+                {
+                    return clientCert;
+                };
 #else
                 HttpClientHandler.ClientCertificates.Add(clientCert);
 #endif
