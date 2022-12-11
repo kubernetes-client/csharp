@@ -27,6 +27,7 @@ namespace k8s
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
+            DisableHttp2 = config.DisableHttp2;
         }
 
         private void ValidateConfig(KubernetesClientConfiguration config)

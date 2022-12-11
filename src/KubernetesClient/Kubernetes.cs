@@ -47,6 +47,8 @@ namespace k8s
         private HttpClientHandler HttpClientHandler { get; set; }
 #endif
 
+        private bool DisableHttp2 { get; set; }
+
         /// <summary>
         /// Initializes client properties.
         /// </summary>
@@ -108,7 +110,10 @@ namespace k8s
             };
 
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
-            httpRequest.Version = HttpVersion.Version20;
+            if (!DisableHttp2)
+            {
+                httpRequest.Version = HttpVersion.Version20;
+            }
 #endif
             // Set Headers
             if (customHeaders != null)
