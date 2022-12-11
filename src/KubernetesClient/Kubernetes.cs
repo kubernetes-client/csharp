@@ -132,7 +132,7 @@ namespace k8s
             return SendRequestRaw("", httpRequest, cancellationToken);
         }
 
-        protected override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        protected virtual async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
         {
             if (httpRequest == null)
             {
