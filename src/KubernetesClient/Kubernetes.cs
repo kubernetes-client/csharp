@@ -47,7 +47,9 @@ namespace k8s
         private HttpClientHandler HttpClientHandler { get; set; }
 #endif
 
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
         private bool DisableHttp2 { get; set; }
+#endif
 
         /// <summary>
         /// Initializes client properties.
