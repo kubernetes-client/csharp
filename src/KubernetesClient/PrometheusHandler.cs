@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace k8s.Monitoring
+namespace k8s
 {
     public class PrometheusHandler : DelegatingHandler
     {

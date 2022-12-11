@@ -1,5 +1,4 @@
 using IdentityModel.OidcClient;
-using k8s.Autorest;
 using k8s.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;

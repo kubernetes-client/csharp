@@ -1,3 +1,4 @@
+using k8s.Authentication;
 using k8s.Autorest;
 using System.IO;
 using System.Net;

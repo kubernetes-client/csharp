@@ -2,8 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace k8s.Autorest
+namespace k8s.Authentication
 {
     /// <summary>
     /// A simple token provider that always provides a static access token.

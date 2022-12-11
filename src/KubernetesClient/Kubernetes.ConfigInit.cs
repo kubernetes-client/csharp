@@ -1,4 +1,4 @@
-using k8s.Autorest;
+using k8s.Authentication;
 using k8s.Exceptions;
 using System.Net.Http;
 using System.Net.Security;

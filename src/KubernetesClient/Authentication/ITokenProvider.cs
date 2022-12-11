@@ -2,10 +2,12 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 
 #pragma warning disable SA1606
 #pragma warning disable SA1614
-namespace k8s.Autorest
+namespace k8s.Authentication
 {
     /// <summary>
     /// Interface to a source of access tokens.

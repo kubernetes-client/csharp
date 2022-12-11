@@ -1,4 +1,3 @@
-using k8s.Autorest;
 using k8s.Exceptions;
 using System.Diagnostics;
 using System.Net.Http.Headers;

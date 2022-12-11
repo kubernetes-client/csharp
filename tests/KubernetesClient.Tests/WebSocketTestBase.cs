@@ -1,4 +1,4 @@
-using k8s.Autorest;
+using k8s.Authentication;
 using k8s.Tests.Logging;
 using k8s.Tests.Mock.Server;
 using Microsoft.AspNetCore;

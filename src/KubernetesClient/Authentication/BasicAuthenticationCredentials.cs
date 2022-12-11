@@ -5,8 +5,10 @@ using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace k8s.Autorest
+namespace k8s.Authentication
 {
     /// <summary>
     /// Basic Auth credentials for use with a REST Service Client.
