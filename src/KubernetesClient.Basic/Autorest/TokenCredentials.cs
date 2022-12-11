@@ -73,7 +73,7 @@ namespace k8s.Autorest
                 throw new ArgumentNullException("tokenProvider");
             }
 
-            this.TokenProvider = tokenProvider;
+            TokenProvider = tokenProvider;
         }
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace k8s.Autorest
         public TokenCredentials(ITokenProvider tokenProvider, string tenantId, string callerId)
             : this(tokenProvider)
         {
-            this.TenantId = tenantId;
-            this.CallerId = callerId;
+            TenantId = tenantId;
+            CallerId = callerId;
         }
 
         /// <summary>
