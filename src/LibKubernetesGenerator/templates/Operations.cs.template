@@ -17,7 +17,7 @@ public partial class AbstractKubernetes : I{{name}}Operations
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
         CancellationToken cancellationToken)
     {
-        var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         cts.CancelAfter(HttpClientTimeout);
         {{#IfParamContains operation "watch"}}
         if (watch == true)
