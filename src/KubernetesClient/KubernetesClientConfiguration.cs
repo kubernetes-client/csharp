@@ -103,5 +103,10 @@ namespace k8s
 #else
         public Action<HttpClientHandler> FirstMessageHandlerSetup { get; set; }
 #endif
+
+        /// <summary>
+        /// Do not use http2 even it is available
+        /// </summary>
+        public bool DisableHttp2 { get; set; } = false;
     }
 }
