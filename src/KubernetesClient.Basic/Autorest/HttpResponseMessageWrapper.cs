@@ -25,12 +25,12 @@ namespace k8s.Autorest
                 throw new ArgumentNullException("httpResponse");
             }
 
-            this.CopyHeaders(httpResponse.Headers);
-            this.CopyHeaders(httpResponse.GetContentHeaders());
+            CopyHeaders(httpResponse.Headers);
+            CopyHeaders(httpResponse.GetContentHeaders());
 
-            this.Content = content;
-            this.StatusCode = httpResponse.StatusCode;
-            this.ReasonPhrase = httpResponse.ReasonPhrase;
+            Content = content;
+            StatusCode = httpResponse.StatusCode;
+            ReasonPhrase = httpResponse.ReasonPhrase;
         }
 
         /// <summary>

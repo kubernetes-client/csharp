@@ -50,6 +50,11 @@
     <Compile Include="..\KubernetesClient\Authentication\GcpTokenProvider.cs" />
     <Compile Include="..\KubernetesClient\Authentication\OidcTokenProvider.cs" />
     <Compile Include="..\KubernetesClient\Authentication\TokenFileAuth.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\BasicAuthenticationCredentials.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\ITokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\ServiceClientCredentials.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\StringTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\TokenCredentials.cs" />
   </ItemGroup>
     
   <ItemGroup>

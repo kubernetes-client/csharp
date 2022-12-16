@@ -2,7 +2,7 @@ using System.IO.Abstractions;
 
 namespace k8s
 {
-    public static class FileUtils
+    internal static class FileUtils
     {
         private static readonly IFileSystem RealFileSystem = new FileSystem();
         private static IFileSystem currentFileSystem = null;

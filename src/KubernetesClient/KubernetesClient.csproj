@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
   </PropertyGroup>
 
@@ -10,8 +10,6 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
     <PackageReference Include="System.IO.Abstractions" Version="18.0.1" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.2.0" />
-
-    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
   </ItemGroup>
 
   <ItemGroup>

@@ -24,20 +24,12 @@ namespace k8s.Autorest
                 throw new ArgumentNullException("httpRequest");
             }
 
-            this.CopyHeaders(httpRequest.Headers);
-            this.CopyHeaders(httpRequest.GetContentHeaders());
+            CopyHeaders(httpRequest.Headers);
+            CopyHeaders(httpRequest.GetContentHeaders());
 
-            this.Content = content;
-            this.Method = httpRequest.Method;
-            this.RequestUri = httpRequest.RequestUri;
-            if (httpRequest.Properties != null)
-            {
-                Properties = new Dictionary<string, object>();
-                foreach (KeyValuePair<string, object> pair in httpRequest.Properties)
-                {
-                    this.Properties[pair.Key] = pair.Value;
-                }
-            }
+            Content = content;
+            Method = httpRequest.Method;
+            RequestUri = httpRequest.RequestUri;
         }
 
         /// <summary>
@@ -49,10 +41,5 @@ namespace k8s.Autorest
         /// Gets or sets the Uri used for the HTTP request.
         /// </summary>
         public Uri RequestUri { get; protected set; }
-
-        /// <summary>
-        /// Gets a set of properties for the HTTP request.
-        /// </summary>
-        public IDictionary<string, object> Properties { get; private set; }
     }
 }

@@ -1,3 +1,4 @@
+using k8s.Authentication;
 using k8s.Autorest;
 using System.IO;
 using System.Net;
@@ -138,7 +139,7 @@ namespace k8s
             return SendRequestRaw("", httpRequest, cancellationToken);
         }
 
-        protected override async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+        protected virtual async Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
         {
             if (httpRequest == null)
             {

@@ -14,7 +14,13 @@ public abstract partial class AbstractKubernetes
         public static readonly HttpMethod Post = HttpMethod.Post;
         public static readonly HttpMethod Put = HttpMethod.Put;
         public static readonly HttpMethod Trace = HttpMethod.Trace;
+
+#if NETSTANDARD2_0
         public static readonly HttpMethod Patch = new HttpMethod("PATCH");
+#else
+        public static readonly HttpMethod Patch = HttpMethod.Patch;
+#endif
+
     }
 
     private sealed class QueryBuilder
@@ -96,6 +102,4 @@ public abstract partial class AbstractKubernetes
     protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
     protected abstract Task<HttpResponseMessage> SendRequest<T>(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders, T body, CancellationToken cancellationToken);
-
-    protected abstract Task<HttpResponseMessage> SendRequestRaw(string requestContent, HttpRequestMessage httpRequest, CancellationToken cancellationToken);
 }

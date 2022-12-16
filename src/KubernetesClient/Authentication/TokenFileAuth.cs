@@ -1,4 +1,3 @@
-using k8s.Autorest;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading;

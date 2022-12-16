@@ -9,7 +9,7 @@ namespace k8s.Autorest
     /// Exception thrown for an invalid response with custom error information.
     /// </summary>
     [Serializable]
-    public class HttpOperationException : RestException
+    public class HttpOperationException : Exception
     {
         /// <summary>
         /// Gets information about the associated HTTP request.

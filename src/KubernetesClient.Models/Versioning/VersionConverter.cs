@@ -148,21 +148,17 @@ namespace k8s.Versioning
                     obj.Kind = metadata.Kind;
                 });
             });
-            cfg.CreateMap<V1Subject, V1beta1Subject>()
-                .ForMember(dest => dest.Group, opt => opt.Ignore())
-                .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
-                .ForMember(dest => dest.User, opt => opt.Ignore())
-                .ReverseMap();
+
             cfg.CreateMap<V1Subject, V1beta2Subject>()
                 .ForMember(dest => dest.Group, opt => opt.Ignore())
                 .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ReverseMap();
 
-
-            cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2beta2HorizontalPodAutoscalerSpec>()
-                .ForMember(dest => dest.Metrics, opt => opt.Ignore())
-                .ForMember(dest => dest.Behavior, opt => opt.Ignore())
+            cfg.CreateMap<V1Subject, V1beta3Subject>()
+                .ForMember(dest => dest.Group, opt => opt.Ignore())
+                .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ReverseMap();
 
             cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>()
@@ -171,13 +167,17 @@ namespace k8s.Versioning
                 .ReverseMap();
 
 
-            cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2beta2HorizontalPodAutoscalerStatus>()
-                .ForMember(dest => dest.Conditions, opt => opt.Ignore())
-                .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
-                .ReverseMap();
             cfg.CreateMap<V1HorizontalPodAutoscalerStatus, V2HorizontalPodAutoscalerStatus>()
                 .ForMember(dest => dest.Conditions, opt => opt.Ignore())
                 .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
+                .ReverseMap();
+
+            cfg.CreateMap<V1alpha1ResourceClaim, V1ResourceClaim>()
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .ReverseMap();
+
+            cfg.CreateMap<V1beta2LimitedPriorityLevelConfiguration, V1beta3LimitedPriorityLevelConfiguration>()
+                .ForMember(dest => dest.NominalConcurrencyShares, opt => opt.Ignore())
                 .ReverseMap();
         }
     }
