@@ -115,6 +115,34 @@ namespace k8s
             return KubernetesJson.Deserialize<T>(resp.Body.ToString());
         }
 
+        public IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T>(Action<Exception> onError = null, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var respTask = kubernetes.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync(group, version, plural, watch: true, cancellationToken: cancel);
+            return respTask.WatchAsync<T, object>();
+        }
+
+        public IAsyncEnumerable<(WatchEventType, T)> WatchNamespacedAsync<T>(string ns, Action<Exception> onError = null, CancellationToken cancel = default)
+        where T : IKubernetesObject
+        {
+            var respTask = kubernetes.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, watch: true, cancellationToken: cancel);
+            return respTask.WatchAsync<T, object>();
+        }
+
+        public Watcher<T> Watch<T>(Action<WatchEventType, T> onEvent, Action<Exception> onError = null, Action onClosed = null)
+        where T : IKubernetesObject
+        {
+            var respTask = kubernetes.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync(group, version, plural, watch: true);
+            return respTask.Watch(onEvent, onError, onClosed);
+        }
+
+        public Watcher<T> WatchNamespaced<T>(string ns, Action<WatchEventType, T> onEvent, Action<Exception> onError = null, Action onClosed = null)
+        where T : IKubernetesObject
+        {
+            var respTask = kubernetes.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync(group, version, ns, plural, watch: true);
+            return respTask.Watch(onEvent, onError, onClosed);
+        }
+
         public void Dispose()
         {
             Dispose(true);
