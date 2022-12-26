@@ -19,7 +19,6 @@ namespace k8s
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
-        /// <param name="cancellationToken">cancellation token</param>
         /// <returns>a watch object</returns>
         public static Watcher<T> Watch<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
