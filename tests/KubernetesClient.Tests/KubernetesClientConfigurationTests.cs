@@ -4,6 +4,7 @@ using k8s.KubeConfigModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -694,6 +695,31 @@ namespace k8s.Tests
             }
         }
 
+        private class FileSystemAdapter : FileSystem.IFileSystem
+        {
+            private readonly IFileSystem io;
+
+            public FileSystemAdapter(System.IO.Abstractions.IFileSystem io)
+            {
+                this.io = io;
+            }
+
+            public bool Exists(string path)
+            {
+                return io.File.Exists(path);
+            }
+
+            public Stream OpenRead(string path)
+            {
+                return io.File.OpenRead(path);
+            }
+
+            public string ReadAllText(string path)
+            {
+                return io.File.ReadAllText(path);
+            }
+        }
+
         /// <summary>
         ///    Test in cluster configuration.
         /// </summary>
@@ -713,7 +739,7 @@ namespace k8s.Tests
                 { tokenPath, new MockFileData("foo") },
                 { certPath, new MockFileData("bar") },
             });
-            using (new FileUtils.InjectedFileSystem(fileSystem))
+            using (FileSystem.With(new FileSystemAdapter(fileSystem)))
             {
                 Assert.True(KubernetesClientConfiguration.IsInCluster());
             }
@@ -737,7 +763,7 @@ namespace k8s.Tests
                 { certPath, new MockFileData("bar") },
             });
 
-            using (new FileUtils.InjectedFileSystem(fileSystem))
+            using (FileSystem.With(new FileSystemAdapter(fileSystem)))
             {
                 var config = KubernetesClientConfiguration.InClusterConfig();
                 Assert.Equal("https://other.default.svc:443/", config.Host);
@@ -764,7 +790,7 @@ namespace k8s.Tests
                 { namespacePath, new MockFileData("some namespace") },
             });
 
-            using (new FileUtils.InjectedFileSystem(fileSystem))
+            using (FileSystem.With(new FileSystemAdapter(fileSystem)))
             {
                 var config = KubernetesClientConfiguration.InClusterConfig();
                 Assert.Equal("https://kubernetes.default.svc:443/", config.Host);
