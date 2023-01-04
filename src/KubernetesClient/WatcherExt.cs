@@ -1,6 +1,7 @@
 using k8s.Autorest;
 using k8s.Exceptions;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace k8s
@@ -72,12 +73,14 @@ namespace k8s
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="responseTask">the api response</param>
         /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="cancellationToken">cancellation token</param>
         /// <returns>IAsyncEnumerable of watch events</returns>
         public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
-            Action<Exception> onError = null)
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default)
         {
-            return Watcher<T>.CreateWatchEventEnumerator(MakeStreamReaderCreator<T, L>(responseTask), onError);
+            return Watcher<T>.CreateWatchEventEnumerator(MakeStreamReaderCreator<T, L>(responseTask), onError, cancellationToken);
         }
     }
 }
