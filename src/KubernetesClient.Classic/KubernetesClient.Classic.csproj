@@ -10,6 +10,7 @@
     <PackageReference Include="System.IO.Abstractions" Version="19.1.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
   </ItemGroup>
     
   <ItemGroup>
@@ -42,6 +43,10 @@
     <Compile Include="..\KubernetesClient\ExecAsyncCallback.cs" />
     <Compile Include="..\KubernetesClient\IKubernetes.Exec.cs" />
     <Compile Include="..\KubernetesClient\Kubernetes.Exec.cs" />
+
+    <Compile Include="..\KubernetesClient\Watcher.cs" />
+    <Compile Include="..\KubernetesClient\WatcherExt.cs" />
+    <Compile Include="..\KubernetesClient\LineSeparatedHttpContent.cs" />
 
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
