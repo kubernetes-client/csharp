@@ -76,11 +76,7 @@ namespace k8s
 
             if (watch == true)
             {
-#if NETSTANDARD2_0 || NET48
-                throw new KubernetesException("watch not supported");
-#else
                 httpResponse.Content = new LineSeparatedHttpContent(httpResponse.Content, cancellationToken);
-#endif
             }
 
             try
