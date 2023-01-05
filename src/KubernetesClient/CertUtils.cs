@@ -24,7 +24,7 @@ namespace k8s
         public static X509Certificate2Collection LoadPemFileCert(string file)
         {
             var certCollection = new X509Certificate2Collection();
-            using (var stream = FileUtils.FileSystem().File.OpenRead(file))
+            using (var stream = FileSystem.Current.OpenRead(file))
             {
 #if NET5_0_OR_GREATER
                 certCollection.ImportFromPem(new StreamReader(stream).ReadToEnd());

@@ -30,13 +30,13 @@ namespace k8s
             }
 
             var tokenPath = Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName);
-            if (!FileUtils.FileSystem().File.Exists(tokenPath))
+            if (!FileSystem.Current.Exists(tokenPath))
             {
                 return false;
             }
 
             var certPath = Path.Combine(ServiceAccountPath, ServiceAccountRootCAKeyFileName);
-            return FileUtils.FileSystem().File.Exists(certPath);
+            return FileSystem.Current.Exists(certPath);
         }
 
         public static KubernetesClientConfiguration InClusterConfig()
@@ -68,9 +68,9 @@ namespace k8s
             };
 
             var namespaceFile = Path.Combine(ServiceAccountPath, ServiceAccountNamespaceFileName);
-            if (FileUtils.FileSystem().File.Exists(namespaceFile))
+            if (FileSystem.Current.Exists(namespaceFile))
             {
-                result.Namespace = FileUtils.FileSystem().File.ReadAllText(namespaceFile);
+                result.Namespace = FileSystem.Current.ReadAllText(namespaceFile);
             }
 
             return result;
