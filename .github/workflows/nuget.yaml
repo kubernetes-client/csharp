@@ -51,7 +51,7 @@ jobs:
     
     steps:
     - name: Delete old NuGet packages
-      uses: actions/delete-package-versions@v3
+      uses: actions/delete-package-versions@v4
       with:
         owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
         repo: ${{ github.event.repository.name }}
