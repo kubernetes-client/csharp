@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release -v detailed
       - name: Test
-        run: dotnet test /collect:"Code Coverage;Format=Cobertura"
+        run: dotnet test --collect:"Code Coverage;Format=Cobertura"
     
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
