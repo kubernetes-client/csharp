@@ -9,6 +9,7 @@ namespace k8s.Models
     /// <summary>
     /// {{ToXmlDoc def.description}}
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("LibKubernetesGenerator")]
     public partial class {{clz}}
     {
         /// <summary>
