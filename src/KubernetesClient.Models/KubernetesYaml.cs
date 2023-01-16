@@ -25,6 +25,7 @@ namespace k8s
                 .WithOverridesFromJsonPropertyAttributes();
         private static readonly IDeserializer StrictDeserializer =
             CommonDeserializerBuilder
+            .WithDuplicateKeyChecking()
             .Build();
         private static readonly IDeserializer Deserializer =
             CommonDeserializerBuilder
