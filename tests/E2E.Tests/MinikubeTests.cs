@@ -28,7 +28,7 @@ namespace k8s.E2E
             var namespaceParameter = "default";
             var podName = "k8scsharp-e2e-pod";
 
-            var client = CreateClient();
+            using var client = CreateClient();
 
             void Cleanup()
             {
@@ -79,7 +79,7 @@ namespace k8s.E2E
             var namespaceParameter = "default";
             var podName = "k8scsharp-e2e-patch-pod";
 
-            var client = CreateClient();
+            using var client = CreateClient();
 
             void Cleanup()
             {
@@ -183,7 +183,7 @@ namespace k8s.E2E
         [MinikubeFact]
         public async Task WatcherIntegrationTest()
         {
-            var kubernetes = CreateClient();
+            using var kubernetes = CreateClient();
 
             var job = await kubernetes.BatchV1.CreateNamespacedJobAsync(
                 new V1Job()
@@ -251,7 +251,7 @@ namespace k8s.E2E
         [MinikubeFact]
         public void LeaderIntegrationTest()
         {
-            var client = CreateClient();
+            using var client = CreateClient();
             var namespaceParameter = "default";
 
             void Cleanup()
@@ -350,7 +350,7 @@ namespace k8s.E2E
             var namespaceParameter = "default";
             var podName = "k8scsharp-e2e-logstream-pod";
 
-            var client = CreateClient();
+            using var client = CreateClient();
 
             void Cleanup()
             {
@@ -446,7 +446,7 @@ namespace k8s.E2E
         [MinikubeFact]
         public async Task DatetimeFieldTest()
         {
-            var kubernetes = CreateClient();
+            using var kubernetes = CreateClient();
 
             await kubernetes.CoreV1.CreateNamespacedEventAsync(
                 new Corev1Event(
@@ -478,7 +478,7 @@ namespace k8s.E2E
             var namespaceParameter = "default";
             var podName = "k8scsharp-e2e-generic-pod";
 
-            var client = CreateClient();
+            using var client = CreateClient();
             var genericPods = new GenericClient(client, "", "v1", "pods");
 
             void Cleanup()
@@ -590,7 +590,7 @@ namespace k8s.E2E
             var namespaceParameter = "default";
             var podName = "k8scsharp-e2e-cp-pod";
 
-            var client = CreateClient();
+            using var client = CreateClient();
 
             async Task<int> CopyFileToPodAsync(string name, string @namespace, string container, Stream inputFileStream, string destinationFilePath, CancellationToken cancellationToken = default(CancellationToken))
             {

@@ -90,27 +90,27 @@ namespace k8s
             // set credentails for the kubernetes client
             SetCredentials(config);
 
-            var clientCert = CertUtils.GetClientCert(config);
-            if (clientCert != null)
+            ClientCert = CertUtils.GetClientCert(config);
+            if (ClientCert != null)
             {
 #if NET5_0_OR_GREATER
-                HttpClientHandler.SslOptions.ClientCertificates.Add(clientCert);
+                HttpClientHandler.SslOptions.ClientCertificates.Add(ClientCert);
 
                 // TODO this is workaround for net7.0, remove it when the issue is fixed
                 // seems the client certificate is cached and cannot be updated
                 HttpClientHandler.SslOptions.LocalCertificateSelectionCallback = (sender, targetHost, localCertificates, remoteCertificate, acceptableIssuers) =>
                 {
-                    return clientCert;
+                    return ClientCert;
                 };
 #else
-                HttpClientHandler.ClientCertificates.Add(clientCert);
+                HttpClientHandler.ClientCertificates.Add(ClientCert);
 #endif
             }
         }
 
         private X509Certificate2Collection CaCerts { get; }
 
-        private X509Certificate2 ClientCert { get; }
+        private X509Certificate2 ClientCert { get; set; }
 
         private bool SkipTlsVerify { get; }
 
