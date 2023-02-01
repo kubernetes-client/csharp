@@ -29,7 +29,7 @@ namespace k8s.Tests
                 useRelativePaths: false);
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = CertUtils.GeneratePfx(cfg);
+            using var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
@@ -44,7 +44,7 @@ namespace k8s.Tests
                 "federal-context");
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = CertUtils.GeneratePfx(cfg);
+            using var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
@@ -58,7 +58,7 @@ namespace k8s.Tests
                 useRelativePaths: false);
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = CertUtils.GeneratePfx(cfg);
+            using var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
@@ -73,7 +73,7 @@ namespace k8s.Tests
                 "victorian-context");
 
             // Just validate that this doesn't throw and private key is non-null
-            var cert = CertUtils.GeneratePfx(cfg);
+            using var cert = CertUtils.GeneratePfx(cfg);
             Assert.NotNull(cert.GetRSAPrivateKey());
         }
 
@@ -85,8 +85,8 @@ namespace k8s.Tests
         {
             var certCollection = CertUtils.LoadPemFileCert("assets/ca-bundle.crt");
 
-            var intermediateCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
-            var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
+            using var intermediateCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
+            using var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
 
             Assert.Equal(2, certCollection.Count);
 

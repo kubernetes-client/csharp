@@ -1,4 +1,5 @@
 using k8s.E2E;
+using k8s.kubectl.beta;
 using System.Text.Json;
 using Xunit;
 
@@ -9,7 +10,8 @@ public partial class KubectlTests
     [MinikubeFact]
     public void Version()
     {
-        var client = CreateClient();
+        using var kubernetes = MinikubeTests.CreateClient();
+        var client = new Kubectl(kubernetes);
         var version = client.Version();
         var serverobj = version.ServerVersion;
 
