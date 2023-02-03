@@ -36,7 +36,7 @@ public static partial class {{name}}OperationsExtensions
 {{/operation.parameters}}
              CancellationToken.None
         ).GetAwaiter().GetResult();
-    }
+    } 
 
     /// <summary>
     /// {{ToXmlDoc operation.description}}

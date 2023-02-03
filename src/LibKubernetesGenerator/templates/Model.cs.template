@@ -70,7 +70,7 @@ namespace k8s.Models
             {{#isRequired}}
             if ({{GetDotNetName name "field"}} == null)
             {
-                throw new ArgumentNullException("{{GetDotNetName name "field"}}");
+                throw new ArgumentNullException("{{GetDotNetName name "field"}}");    
             }
             {{/isRequired}}
             {{/IfType . "object"}}
