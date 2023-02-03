@@ -24,8 +24,19 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release -v detailed
       - name: Test
-        run: dotnet test --collect:"Code Coverage;Format=Cobertura"
-    
+        run: dotnet test --configuration Release --collect:"Code Coverage;Format=Cobertura" --logger trx --results-directory TestResults --settings CodeCoverage.runsettings --no-build
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./TestResults
+          files: '*.cobertura.xml'
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: ./TestResults
+        if: ${{ always() }} # Always run this step even on failure
+
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
     runs-on: windows-latest
@@ -39,12 +50,12 @@ jobs:
       - name: Setup dotnet SDK 7
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'  
+          dotnet-version: '7.0.x'
       - name: Restore nugets (msbuild)
         run: msbuild .\src\KubernetesClient.Models\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
         run: msbuild .\src\KubernetesClient.Models\
-        
+
   e2e:
     runs-on: ubuntu-latest
     steps:
@@ -67,7 +78,7 @@ jobs:
             cat skip.log
             echo "CASES MUST NOT BE SKIPPED"
             exit 1
-          fi      
+          fi
 
 on:
   pull_request:

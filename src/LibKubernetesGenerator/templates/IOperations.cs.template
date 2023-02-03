@@ -8,7 +8,6 @@ namespace k8s;
 
 /// <summary>
 /// </summary>
-[System.CodeDom.Compiler.GeneratedCode("LibKubernetesGenerator")]
 public partial interface I{{name}}Operations
 {
     {{#apis}}
