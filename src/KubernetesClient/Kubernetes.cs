@@ -202,12 +202,27 @@ namespace k8s
         /// <param name="disposing">True to release both managed and unmanaged resources; false to releases only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            if (disposing && !_disposed)
             {
                 _disposed = true;
 
                 // Dispose the client
                 HttpClient?.Dispose();
+
+                // Dispose the certificates
+                if (CaCerts is not null)
+                {
+                    foreach (var caCert in CaCerts)
+                    {
+                        caCert.Dispose();
+                    }
+
+                    CaCerts.Clear();
+                }
+
+
+                ClientCert?.Dispose();
+
                 HttpClient = null;
                 FirstMessageHandler = null;
                 HttpClientHandler = null;

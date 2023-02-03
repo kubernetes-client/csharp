@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="prometheus-net" Version="7.0.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.26.0" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
   </ItemGroup>
 

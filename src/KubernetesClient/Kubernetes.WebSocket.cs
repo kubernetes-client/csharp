@@ -239,11 +239,6 @@ namespace k8s
             }
 
             // Set Credentials
-            if (this.ClientCert != null)
-            {
-                webSocketBuilder.AddClientCertificate(this.ClientCert);
-            }
-
             if (this.HttpClientHandler != null)
             {
 #if NET5_0_OR_GREATER
