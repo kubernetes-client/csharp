@@ -63,7 +63,7 @@ namespace k8s
             JsonSerializerOptions.Converters.Add(new KubernetesDateTimeConverter());
             JsonSerializerOptions.Converters.Add(new KubernetesDateTimeOffsetConverter());
             JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
-            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
         }
 
         public static TValue Deserialize<TValue>(string json)
