@@ -35,5 +35,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
+    <ProjectReference Include="..\..\src\KubernetesClient.ModelConverter\KubernetesClient.ModelConverter.csproj" />
   </ItemGroup>
 </Project>

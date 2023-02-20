@@ -66,7 +66,8 @@ namespace LibKubernetesGenerator
                 builder.RegisterType<ModelExtGenerator>();
                 builder.RegisterType<ModelGenerator>();
                 builder.RegisterType<ApiGenerator>();
-                builder.RegisterType<VersionConverterGenerator>();
+                builder.RegisterType<VersionConverterStubGenerator>();
+                builder.RegisterType<VersionConverterAutoMapperGenerator>();
                 builder.RegisterType<VersionGenerator>();
 
                 var container = builder.Build();
@@ -97,9 +98,14 @@ namespace LibKubernetesGenerator
                     container.Resolve<ModelExtGenerator>().Generate(swagger, context);
                 }
 
-                if (generators.Contains("versionconverter"))
+                if (generators.Contains("versionconverterstub"))
                 {
-                    container.Resolve<VersionConverterGenerator>().Generate(swagger, context);
+                    container.Resolve<VersionConverterStubGenerator>().Generate(swagger, context);
+                }
+
+                if (generators.Contains("versionconverterautomap"))
+                {
+                    container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, context);
                 }
 
                 if (generators.Contains("version"))

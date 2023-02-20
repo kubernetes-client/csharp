@@ -6,14 +6,12 @@
 
   <ItemGroup>
    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-   <AdditionalFiles Include="..\..\swagger.json" Generator="model,modelext,versionconverter,version" />
+   <AdditionalFiles Include="..\..\swagger.json" Generator="model,modelext,version,versionconverterstub" />
    <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="7.0.1" />
-    <PackageReference Include="AutoMapper" Version="12.0.0" Condition="'$(TargetFramework)' != 'netstandard2.0'"  />
-    <PackageReference Include="AutoMapper" Version="10.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
     <PackageReference Include="Fractions" Version="7.2.1" />
     <PackageReference Include="YamlDotNet" Version="13.0.0" />
   </ItemGroup>
