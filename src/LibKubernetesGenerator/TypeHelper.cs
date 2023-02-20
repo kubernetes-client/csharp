@@ -129,6 +129,13 @@ namespace LibKubernetesGenerator
                         case "byte":
                             return "byte[]";
                         case "date-time":
+
+                            // eventTime is required but should be optional, see https://github.com/kubernetes-client/csharp/issues/1197
+                            if (name == "eventTime")
+                            {
+                                return "System.DateTime?";
+                            }
+
                             if (required)
                             {
                                 return "System.DateTime";
