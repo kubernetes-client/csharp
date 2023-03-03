@@ -12,6 +12,6 @@
 
   <ItemGroup>
       <ProjectReference Include="..\KubernetesClient.Models\KubernetesClient.Models.csproj" />
-      <PackageReference Include="AutoMapper" Version="12.0.0"  />
+      <PackageReference Include="AutoMapper" Version="12.0.1"  />
   </ItemGroup>
 </Project>
