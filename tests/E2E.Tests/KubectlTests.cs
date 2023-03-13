@@ -4,6 +4,7 @@ using Xunit;
 
 namespace k8s.E2E;
 
+[Collection(nameof(Onebyone))]
 public class KubectlTests
 {
     [MinikubeFact]
