@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
+    <ProjectReference Include="..\..\src\KubernetesClient.Kubectl\KubernetesClient.Kubectl.csproj" />
     <ProjectReference Include="..\SkipTestLogger\SkipTestLogger.csproj" />
   </ItemGroup>
 
