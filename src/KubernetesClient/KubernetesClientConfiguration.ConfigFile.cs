@@ -523,7 +523,8 @@ namespace k8s
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
-
+            process.StartInfo.CreateNoWindow = true;
+            
             return process;
         }
 
