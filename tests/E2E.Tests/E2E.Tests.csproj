@@ -8,10 +8,10 @@
 
   <ItemGroup>
 
-    <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
+    <PackageReference Include="JsonPatch.Net" Version="2.0.6" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
 
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
 
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
+    <ProjectReference Include="..\..\src\KubernetesClient.Kubectl\KubernetesClient.Kubectl.csproj" />
     <ProjectReference Include="..\SkipTestLogger\SkipTestLogger.csproj" />
   </ItemGroup>
 

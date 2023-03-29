@@ -1,11 +1,12 @@
 using AutoMapper;
 using FluentAssertions;
-using k8s.Versioning;
+using k8s.ModelConverter.AutoMapper;
+using k8s.Models;
 using Xunit;
 
 namespace k8s.Tests
 {
-    public class VersionConverterTests
+    public class AutoMapperVersionConverterTests
     {
         [Fact]
         public void ConfigurationsAreValid()
@@ -30,6 +31,17 @@ namespace k8s.Tests
         public void KubernetesVersionCompare(string x, string y, int expected)
         {
             KubernetesVersionComparer.Instance.Compare(x, y).Should().Be(expected);
+        }
+
+        [Fact]
+        public void ObjectMapAreValid()
+        {
+            ModelVersionConverter.Converter = AutoMapperModelVersionConverter.Instance;
+            var from = new V2HorizontalPodAutoscalerSpec(); // TODO shuold auto load all objects
+            from.MaxReplicas = 234;
+            var to = (V1HorizontalPodAutoscalerSpec)from;
+
+            Assert.Equal(from.MaxReplicas, to.MaxReplicas);
         }
     }
 }
