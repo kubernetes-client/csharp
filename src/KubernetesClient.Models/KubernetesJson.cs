@@ -66,20 +66,20 @@ namespace k8s
             JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 
-        public static TValue Deserialize<TValue>(string json)
+        public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
-        public static TValue Deserialize<TValue>(Stream json)
+        public static TValue Deserialize<TValue>(Stream json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
 
-        public static string Serialize(object value)
+        public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Serialize(value, JsonSerializerOptions);
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
         }
     }
 }
