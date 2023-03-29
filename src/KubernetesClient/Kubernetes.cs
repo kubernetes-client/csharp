@@ -87,7 +87,7 @@ namespace k8s
                 using (Stream stream = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false))
 #endif
                 {
-                    result.Body = KubernetesJson.Deserialize<T>(stream);
+                    result.Body = KubernetesJson.Deserialize<T>(stream, JsonSerializerOptions);
                 }
             }
             catch (JsonException)
@@ -126,7 +126,7 @@ namespace k8s
 
             if (body != null)
             {
-                var requestContent = KubernetesJson.Serialize(body);
+                var requestContent = KubernetesJson.Serialize(body, JsonSerializerOptions);
                 httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
                 httpRequest.Content.Headers.ContentType = GetHeader(body);
                 return SendRequestRaw(requestContent, httpRequest, cancellationToken);

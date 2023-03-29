@@ -27,6 +27,7 @@ namespace k8s
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
+            JsonSerializerOptions = config.JsonSerializerOptions;
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             DisableHttp2 = config.DisableHttp2;
 #endif
@@ -113,6 +114,8 @@ namespace k8s
         private X509Certificate2 ClientCert { get; set; }
 
         private bool SkipTlsVerify { get; }
+
+        private JsonSerializerOptions JsonSerializerOptions { get; }
 
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
