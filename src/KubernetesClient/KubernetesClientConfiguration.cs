@@ -108,5 +108,10 @@ namespace k8s
         /// Do not use http2 even it is available
         /// </summary>
         public bool DisableHttp2 { get; set; } = false;
+
+        /// <summary>
+        /// Options for the JsonSerializer to be used when serializing or deserializing.
+        /// </summary>
+        public JsonSerializerOptions JsonSerializerOptions { get; set; }
     }
 }
