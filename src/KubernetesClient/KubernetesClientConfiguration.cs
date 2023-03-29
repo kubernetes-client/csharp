@@ -110,7 +110,7 @@ namespace k8s
         public bool DisableHttp2 { get; set; } = false;
 
         /// <summary>
-        /// Options for the JsonSerializer to be used when serializing or deserializing.
+        /// Options for the JsonSerializer to override the default ones.
         /// </summary>
         public JsonSerializerOptions JsonSerializerOptions { get; set; }
     }
