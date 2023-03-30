@@ -3,6 +3,8 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>k8s.Tests</RootNamespace>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\kubernetes-client.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
