@@ -524,7 +524,7 @@ namespace k8s
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
-            
+
             return process;
         }
 
