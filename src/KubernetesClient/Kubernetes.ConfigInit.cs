@@ -15,10 +15,13 @@ namespace k8s
         /// <param name='config'>
         ///     The kube config to use.
         /// </param>
+        /// <param name="configure">
+        ///     Optional. An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.
+        /// </param>
         /// <param name="handlers">
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
+        public Kubernetes(KubernetesClientConfiguration config, Action<JsonSerializerOptions> configure = null, params DelegatingHandler[] handlers)
         {
             Initialize();
             ValidateConfig(config);
@@ -27,7 +30,7 @@ namespace k8s
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
-            JsonSerializerOptions = config.JsonSerializerOptions;
+            KubernetesJson.AddJsonOptions(configure);
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             DisableHttp2 = config.DisableHttp2;
 #endif
@@ -115,8 +118,6 @@ namespace k8s
 
         private bool SkipTlsVerify { get; }
 
-        private JsonSerializerOptions JsonSerializerOptions { get; }
-
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
         // of what requests have failed. it considers everything outside 2xx to be failed, including 1xx (e.g. 101 Switching Protocols) and
@@ -157,8 +158,6 @@ namespace k8s
                 Timeout = Timeout.InfiniteTimeSpan,
             };
         }
-
-
 
         /// <summary>
         ///     Set credentials for the Client
