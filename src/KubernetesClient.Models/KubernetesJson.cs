@@ -70,8 +70,9 @@ namespace k8s
         /// Configures <see cref="JsonSerializerOptions"/> for the <see cref="JsonSerializer"/>.
         /// The <see cref="JsonSerializerOptions"/> can only be modified before the first serialization or deserialization takes place.
         /// To override existing converters, add them to the top of the <see cref="JsonSerializerOptions.Converters"/> list
-        /// e.g. as follows: <code>options.Converters.Insert(index: 0, new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));</code>.
+        /// e.g. as follows: <code>options.Converters.Insert(index: 0, new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));</code>
         /// </summary>
+        /// <param name="configure">An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.</param>
         public static void AddJsonOptions(Action<JsonSerializerOptions> configure)
         {
             if (configure is not null)
