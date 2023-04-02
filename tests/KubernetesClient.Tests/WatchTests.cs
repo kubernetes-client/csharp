@@ -446,10 +446,7 @@ namespace k8s.Tests
                 var handler2 = new DummyHandler();
 
                 var client = new Kubernetes(
-                    new KubernetesClientConfiguration { Host = server.Uri.ToString() },
-                    configure: null,
-                    handler1,
-                    handler2);
+                    new KubernetesClientConfiguration { Host = server.Uri.ToString() }, handler1, handler2);
 
                 Assert.False(handler1.Called);
                 Assert.False(handler2.Called);
@@ -737,9 +734,7 @@ namespace k8s.Tests
 
             var handler = new CheckHeaderDelegatingHandler();
             var client = new Kubernetes(
-                new KubernetesClientConfiguration { Host = server.Uri.ToString() },
-                configure: null,
-                handler);
+                new KubernetesClientConfiguration { Host = server.Uri.ToString() }, handler);
 
             Assert.Null(handler.Version);
             await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(false);

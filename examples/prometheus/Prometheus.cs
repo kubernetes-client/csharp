@@ -11,7 +11,7 @@ namespace prom
         {
             var config = KubernetesClientConfiguration.BuildDefaultConfig();
             var handler = new PrometheusHandler();
-            IKubernetes client = new Kubernetes(config, configure: null, handler);
+            IKubernetes client = new Kubernetes(config, handler);
 
             var server = new MetricServer(hostname: "localhost", port: 1234);
             server.Start();

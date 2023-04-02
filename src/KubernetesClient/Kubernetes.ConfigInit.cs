@@ -15,13 +15,10 @@ namespace k8s
         /// <param name='config'>
         ///     The kube config to use.
         /// </param>
-        /// <param name="configure">
-        ///     Optional. An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.
-        /// </param>
         /// <param name="handlers">
         ///     Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public Kubernetes(KubernetesClientConfiguration config, Action<JsonSerializerOptions> configure = null, params DelegatingHandler[] handlers)
+        public Kubernetes(KubernetesClientConfiguration config, params DelegatingHandler[] handlers)
         {
             Initialize();
             ValidateConfig(config);
@@ -30,7 +27,6 @@ namespace k8s
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
-            KubernetesJson.AddJsonOptions(configure);
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             DisableHttp2 = config.DisableHttp2;
 #endif
