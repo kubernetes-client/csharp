@@ -108,5 +108,11 @@ namespace k8s
         /// Do not use http2 even it is available
         /// </summary>
         public bool DisableHttp2 { get; set; } = false;
+
+        /// <inheritdoc cref="KubernetesJson.AddJsonOptions(Action{JsonSerializerOptions})"/>
+        public void AddJsonOptions(Action<JsonSerializerOptions> configure)
+        {
+            KubernetesJson.AddJsonOptions(configure);
+        }
     }
 }
