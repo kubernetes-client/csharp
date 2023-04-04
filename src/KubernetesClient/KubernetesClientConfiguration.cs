@@ -136,6 +136,11 @@ namespace k8s
         /// <inheritdoc cref="KubernetesJson.AddJsonOptions(Action{JsonSerializerOptions})"/>
         public void AddJsonOptions(Action<JsonSerializerOptions> configure)
         {
+            if (configure is null)
+            {
+                throw new ArgumentNullException(nameof(configure));
+            }
+
             configure(JsonSerializerOptions);
         }
     }

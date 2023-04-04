@@ -74,10 +74,12 @@ namespace k8s
         /// <param name="configure">An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.</param>
         public static void AddJsonOptions(Action<JsonSerializerOptions> configure)
         {
-            if (configure is not null)
+            if (configure is null)
             {
-                configure(JsonSerializerOptions);
+                throw new ArgumentNullException(nameof(configure));
             }
+
+            configure(JsonSerializerOptions);
         }
 
         public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
