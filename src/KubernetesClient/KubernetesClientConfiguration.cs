@@ -9,6 +9,8 @@ namespace k8s
     /// </summary>
     public partial class KubernetesClientConfiguration
     {
+        private JsonSerializerOptions jsonSerializerOptions;
+
         /// <summary>
         ///     Gets current namespace
         /// </summary>
@@ -108,5 +110,38 @@ namespace k8s
         /// Do not use http2 even it is available
         /// </summary>
         public bool DisableHttp2 { get; set; } = false;
+
+        /// <summary>
+        /// Options for the <see cref="JsonSerializer"/> to override the default ones.
+        /// </summary>
+        public JsonSerializerOptions JsonSerializerOptions
+        {
+            get
+            {
+                // If not yet set, use defaults from KubernetesJson.
+                if (jsonSerializerOptions is null)
+                {
+                    KubernetesJson.AddJsonOptions(options =>
+                    {
+                        jsonSerializerOptions = new JsonSerializerOptions(options);
+                    });
+                }
+
+                return jsonSerializerOptions;
+            }
+
+            private set => jsonSerializerOptions = value;
+        }
+
+        /// <inheritdoc cref="KubernetesJson.AddJsonOptions(Action{JsonSerializerOptions})"/>
+        public void AddJsonOptions(Action<JsonSerializerOptions> configure)
+        {
+            if (configure is null)
+            {
+                throw new ArgumentNullException(nameof(configure));
+            }
+
+            configure(JsonSerializerOptions);
+        }
     }
 }

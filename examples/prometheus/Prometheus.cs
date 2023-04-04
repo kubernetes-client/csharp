@@ -1,7 +1,6 @@
 using k8s;
 using Prometheus;
 using System;
-using System.Net.Http;
 using System.Threading;
 
 namespace prom
@@ -12,7 +11,7 @@ namespace prom
         {
             var config = KubernetesClientConfiguration.BuildDefaultConfig();
             var handler = new PrometheusHandler();
-            IKubernetes client = new Kubernetes(config, new DelegatingHandler[] { handler });
+            IKubernetes client = new Kubernetes(config, handler);
 
             var server = new MetricServer(hostname: "localhost", port: 1234);
             server.Start();

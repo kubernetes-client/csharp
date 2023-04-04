@@ -9,6 +9,8 @@ namespace k8s
 {
     public partial class Kubernetes
     {
+        private readonly JsonSerializerOptions jsonSerializerOptions;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Kubernetes" /> class.
         /// </summary>
@@ -27,6 +29,7 @@ namespace k8s
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
+            jsonSerializerOptions = config.JsonSerializerOptions;
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             DisableHttp2 = config.DisableHttp2;
 #endif
@@ -154,8 +157,6 @@ namespace k8s
                 Timeout = Timeout.InfiniteTimeSpan,
             };
         }
-
-
 
         /// <summary>
         ///     Set credentials for the Client

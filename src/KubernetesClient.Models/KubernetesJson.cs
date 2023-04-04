@@ -66,20 +66,36 @@ namespace k8s
             JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 
-        public static TValue Deserialize<TValue>(string json)
+        /// <summary>
+        /// Configures <see cref="JsonSerializerOptions"/> for the <see cref="JsonSerializer"/>.
+        /// To override existing converters, add them to the top of the <see cref="JsonSerializerOptions.Converters"/> list
+        /// e.g. as follows: <code>options.Converters.Insert(index: 0, new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));</code>
+        /// </summary>
+        /// <param name="configure">An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.</param>
+        public static void AddJsonOptions(Action<JsonSerializerOptions> configure)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            if (configure is null)
+            {
+                throw new ArgumentNullException(nameof(configure));
+            }
+
+            configure(JsonSerializerOptions);
         }
 
-        public static TValue Deserialize<TValue>(Stream json)
+        public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static TValue Deserialize<TValue>(Stream json, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
 
-        public static string Serialize(object value)
+        public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Serialize(value, JsonSerializerOptions);
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
         }
     }
 }
