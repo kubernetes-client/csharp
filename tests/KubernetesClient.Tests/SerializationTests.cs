@@ -39,7 +39,7 @@ namespace k8s.Tests
             var customObject = Animals.Dog;
 
             var result = await client.CustomObjects.CreateNamespacedCustomObjectWithHttpMessagesAsync(customObject, "TestGroup", "TestVersion", "TestNamespace", "TestPlural").ConfigureAwait(false);
-            var content = await result.Request.Content.ReadAsStringAsync();
+            var content = await result.Request.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert that the client serializes using the default options.
             Assert.Equal(@"""Dog""", content);
@@ -66,7 +66,7 @@ namespace k8s.Tests
             var customObject = Animals.Dog;
 
             var result = await client.CustomObjects.CreateNamespacedCustomObjectWithHttpMessagesAsync(customObject, "TestGroup", "TestVersion", "TestNamespace", "TestPlural").ConfigureAwait(false);
-            var content = await result.Request.Content.ReadAsStringAsync();
+            var content = await result.Request.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert that the client serializes using the specified options.
             Assert.Equal(@"""dog""", content);
