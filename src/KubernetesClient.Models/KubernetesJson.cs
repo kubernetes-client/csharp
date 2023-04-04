@@ -68,7 +68,6 @@ namespace k8s
 
         /// <summary>
         /// Configures <see cref="JsonSerializerOptions"/> for the <see cref="JsonSerializer"/>.
-        /// The <see cref="JsonSerializerOptions"/> can only be modified before the first serialization or deserialization takes place.
         /// To override existing converters, add them to the top of the <see cref="JsonSerializerOptions.Converters"/> list
         /// e.g. as follows: <code>options.Converters.Insert(index: 0, new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));</code>
         /// </summary>
@@ -81,20 +80,20 @@ namespace k8s
             }
         }
 
-        public static TValue Deserialize<TValue>(string json)
+        public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
-        public static TValue Deserialize<TValue>(Stream json)
+        public static TValue Deserialize<TValue>(Stream json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, JsonSerializerOptions);
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
 
-        public static string Serialize(object value)
+        public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Serialize(value, JsonSerializerOptions);
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
         }
     }
 }
