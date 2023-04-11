@@ -139,6 +139,20 @@ namespace k8s.Tests
         }
 
         /// <summary>
+        ///     Checks that a KubeConfigException is not thrown when no certificate-authority-data is set and user do not require tls
+        ///     skip
+        /// </summary>
+        [Fact]
+        public void CheckClusterTlsNoSkipCorrectness()
+        {
+            var fi = new FileInfo("assets/kubeconfig.tls-no-skip.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
+            Assert.NotNull(cfg.Host);
+            Assert.Null(cfg.SslCaCerts);
+            Assert.False(cfg.SkipTlsVerify);
+        }
+
+        /// <summary>
         ///     Checks that a KubeConfigException is thrown when the cluster defined in clusters and contexts do not match
         /// </summary>
         [Fact]

@@ -74,19 +74,33 @@ namespace k8s
                 {
                     if (CaCerts == null)
                     {
-                        throw new KubeConfigException("A CA must be set when SkipTlsVerify === false");
-                    }
-
+                        var store = new X509Store(
+                            StoreName.CertificateAuthority,
+                            StoreLocation.CurrentUser);
 #if NET5_0_OR_GREATER
-                    HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
+                        HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
+#else
+                        HttpClientHandler.ServerCertificateCustomValidationCallback =
+#endif
+                            (sender, certificate, chain, sslPolicyErrors) =>
+                            {
+                                return CertificateValidationCallBack(sender, store.Certificates, certificate, chain,
+                                    sslPolicyErrors);
+                            };
+                    }
+                    else
+                    {
+#if NET5_0_OR_GREATER
+                        HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback =
 #endif
-                        (sender, certificate, chain, sslPolicyErrors) =>
-                        {
-                            return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
-                                sslPolicyErrors);
-                        };
+                            (sender, certificate, chain, sslPolicyErrors) =>
+                            {
+                                return CertificateValidationCallBack(sender, CaCerts, certificate, chain,
+                                    sslPolicyErrors);
+                            };
+                    }
                 }
             }
 
