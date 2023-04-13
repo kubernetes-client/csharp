@@ -72,28 +72,12 @@ namespace k8s
                 }
                 else
                 {
-                    if (CaCerts == null)
+                    if (CaCerts != null)
                     {
-                        var store = new X509Store(
-                            StoreName.CertificateAuthority,
-                            StoreLocation.CurrentUser);
 #if NET5_0_OR_GREATER
                         HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
 #else
                         HttpClientHandler.ServerCertificateCustomValidationCallback =
-#endif
-                            (sender, certificate, chain, sslPolicyErrors) =>
-                            {
-                                return CertificateValidationCallBack(sender, store.Certificates, certificate, chain,
-                                    sslPolicyErrors);
-                            };
-                    }
-                    else
-                    {
-#if NET5_0_OR_GREATER
-                        HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
-#else
-                    HttpClientHandler.ServerCertificateCustomValidationCallback =
 #endif
                             (sender, certificate, chain, sslPolicyErrors) =>
                             {
