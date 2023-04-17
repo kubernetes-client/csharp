@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace k8s
@@ -557,7 +558,30 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var stderr = process.StandardError.ReadLine();
+            var sb = new StringBuilder();
+            var buffer = new char[1];
+            while (true)
+            {
+                var readTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length);
+
+                if (readTask.Wait(TimeSpan.FromSeconds(2)))
+                {
+                    var bytesRead = readTask.Result;
+                    if (bytesRead == 0)
+                    {
+                        break; // end of stream reached
+                    }
+
+                    sb.Append(buffer, 0, bytesRead);
+                }
+                else
+                {
+                    // timeout occurred
+                    break;
+                }
+            }
+
+            var stderr = sb.ToString();
 
             if (!string.IsNullOrWhiteSpace(stderr))
             {
