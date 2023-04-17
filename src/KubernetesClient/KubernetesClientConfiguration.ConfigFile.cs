@@ -557,12 +557,14 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var stdout = process.StandardOutput.ReadToEnd();
-            var stderr = process.StandardError.ReadToEnd();
-            if (string.IsNullOrWhiteSpace(stderr) == false)
+            var stderr = process.StandardError.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(stderr))
             {
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
             }
+
+            var stdout = process.StandardOutput.ReadToEnd();
 
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
             process.WaitForExit(5);
