@@ -559,7 +559,7 @@ namespace k8s
             }
 
             var sb = new StringBuilder();
-            var buffer = new char[1];
+            var buffer = new char[1024];
             while (true)
             {
                 var readTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length);
