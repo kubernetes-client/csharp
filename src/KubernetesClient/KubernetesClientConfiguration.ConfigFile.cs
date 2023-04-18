@@ -567,43 +567,41 @@ namespace k8s
             }
 
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            if (process.WaitForExitAsync().Wait(TimeSpan.FromSeconds(5)))
+            if (!process.WaitForExitAsync().Wait(TimeSpan.FromSeconds(5)))
             {
-                try
-                {
-                    var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
-                    if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
-                    {
-                        throw new KubeConfigException(
-                            $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
-                    }
+                throw new KubeConfigException("external exec failed due to timeout");
+            }
 
-                    if (responseObject.Status.IsValid())
-                    {
-                        return responseObject;
-                    }
-                    else
-                    {
-                        throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
-                    }
-                }
-                catch (JsonException ex)
+            if (!string.IsNullOrWhiteSpace(stderr))
+            {
+                throw new KubeConfigException($"external exec failed due to: {stderr}");
+            }
+
+            try
+            {
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
+                if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
-                    throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
+                    throw new KubeConfigException(
+                        $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                 }
-                catch (Exception ex)
+
+                if (responseObject.Status.IsValid())
                 {
-                    throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
+                    return responseObject;
+                }
+                else
+                {
+                    throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
                 }
             }
-            else
+            catch (JsonException ex)
             {
-                if (!string.IsNullOrWhiteSpace(stderr))
-                {
-                    throw new KubeConfigException($"external exec failed due to: {stderr}");
-                }
-
-                throw new KubeConfigException("external exec failed due to timeout");
+                throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
+            }
+            catch (Exception ex)
+            {
+                throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
             }
         }
 
