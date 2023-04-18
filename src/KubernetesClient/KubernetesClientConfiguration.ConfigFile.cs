@@ -569,6 +569,11 @@ namespace k8s
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
             if (!process.WaitForExitAsync().Wait(TimeSpan.FromSeconds(5)))
             {
+                if (!string.IsNullOrWhiteSpace(stderr))
+                {
+                    throw new KubeConfigException($"external exec failed due to: {stderr}");
+                }
+
                 throw new KubeConfigException("external exec failed due to timeout");
             }
 
