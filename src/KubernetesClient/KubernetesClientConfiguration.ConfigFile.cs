@@ -6,7 +6,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace k8s
@@ -567,7 +566,7 @@ namespace k8s
             }
 
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            if (!process.WaitForExitAsync().Wait(TimeSpan.FromSeconds(5)))
+            if (!process.WaitForExit(5000))
             {
                 if (!string.IsNullOrWhiteSpace(stderr))
                 {
