@@ -588,14 +588,23 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to: {stderr}");
             }
 
-            var stdout = process.StandardOutput.ReadToEnd();
-
             // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            process.WaitForExit(5);
+            var stdOutTask = process.StandardOutput.ReadToEndAsync();
+
+            string stdOut;
+
+            if (stdOutTask.Wait(TimeSpan.FromSeconds(5)))
+            {
+                stdOut = stdOutTask.Result;
+            }
+            else
+            {
+                throw new KubeConfigException("external exec failed due to timeout");
+            }
 
             try
             {
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdOut);
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
