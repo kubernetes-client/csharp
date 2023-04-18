@@ -549,84 +549,61 @@ namespace k8s
 
             var process = CreateRunnableExternalProcess(config);
 
+            var stdout = "";
+            var stderr = "";
+
+            process.OutputDataReceived += (sender, args) => stdout += args.Data;
+            process.ErrorDataReceived += (sender, args) => stderr += args.Data;
+
             try
             {
                 process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
             }
             catch (Exception ex)
             {
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var sb = new StringBuilder();
-            var buffer = new char[1024];
-            while (true)
+            // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
+            if (process.WaitForExitAsync().Wait(TimeSpan.FromSeconds(5)))
             {
-                var readTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length);
-
-                if (readTask.Wait(TimeSpan.FromSeconds(2)))
+                try
                 {
-                    var bytesRead = readTask.Result;
-                    if (bytesRead == 0)
+                    var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
+                    if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                     {
-                        break; // end of stream reached
+                        throw new KubeConfigException(
+                            $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
                     }
 
-                    sb.Append(buffer, 0, bytesRead);
+                    if (responseObject.Status.IsValid())
+                    {
+                        return responseObject;
+                    }
+                    else
+                    {
+                        throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
+                    }
                 }
-                else
+                catch (JsonException ex)
                 {
-                    // timeout occurred
-                    break;
+                    throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
                 }
-            }
-
-            var stderr = sb.ToString();
-
-            if (!string.IsNullOrWhiteSpace(stderr))
-            {
-                throw new KubeConfigException($"external exec failed due to: {stderr}");
-            }
-
-            // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            var stdOutTask = process.StandardOutput.ReadToEndAsync();
-
-            string stdOut;
-
-            if (stdOutTask.Wait(TimeSpan.FromSeconds(5)))
-            {
-                stdOut = stdOutTask.Result;
+                catch (Exception ex)
+                {
+                    throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
+                }
             }
             else
             {
+                if (!string.IsNullOrWhiteSpace(stderr))
+                {
+                    throw new KubeConfigException($"external exec failed due to: {stderr}");
+                }
+
                 throw new KubeConfigException("external exec failed due to timeout");
-            }
-
-            try
-            {
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdOut);
-                if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
-                {
-                    throw new KubeConfigException(
-                        $"external exec failed because api version {responseObject.ApiVersion} does not match {config.ApiVersion}");
-                }
-
-                if (responseObject.Status.IsValid())
-                {
-                    return responseObject;
-                }
-                else
-                {
-                    throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
-                }
-            }
-            catch (JsonException ex)
-            {
-                throw new KubeConfigException($"external exec failed due to failed deserialization process: {ex}");
-            }
-            catch (Exception ex)
-            {
-                throw new KubeConfigException($"external exec failed due to uncaught exception: {ex}");
             }
         }
 
