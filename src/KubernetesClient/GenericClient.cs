@@ -11,6 +11,7 @@ namespace k8s
         private readonly string group;
         private readonly string version;
         private readonly string plural;
+        private readonly bool disposeClient;
 
         [Obsolete]
         public GenericClient(KubernetesClientConfiguration config, string group, string version, string plural)
@@ -18,17 +19,18 @@ namespace k8s
         {
         }
 
-        public GenericClient(IKubernetes kubernetes, string version, string plural)
-            : this(kubernetes, "", version, plural)
+        public GenericClient(IKubernetes kubernetes, string version, string plural, bool disposeClient = true)
+            : this(kubernetes, "", version, plural, disposeClient)
         {
         }
 
-        public GenericClient(IKubernetes kubernetes, string group, string version, string plural)
+        public GenericClient(IKubernetes kubernetes, string group, string version, string plural, bool disposeClient = true)
         {
             this.group = group;
             this.version = version;
             this.plural = plural;
             this.kubernetes = kubernetes;
+            this.disposeClient = disposeClient;
         }
 
         public async Task<T> CreateAsync<T>(T obj, CancellationToken cancel = default)
@@ -151,7 +153,10 @@ namespace k8s
 
         protected virtual void Dispose(bool disposing)
         {
-            kubernetes.Dispose();
+            if (disposeClient)
+            {
+                kubernetes.Dispose();
+            }
         }
     }
 }
