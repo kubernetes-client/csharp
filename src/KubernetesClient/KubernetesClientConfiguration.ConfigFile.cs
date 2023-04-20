@@ -558,46 +558,27 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var stderrBuilder = new StringBuilder();
 
             var stdOutTask = process.StandardOutput.ReadToEndAsync(); // Assumes process exits
 
-            var buffer = new char[1024];
+            var buffer = new char[4096];
+            var stdErrorTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length); // Assumes process will continue
 
-            var stopwatch = Stopwatch.StartNew();
+            var result = Task.WaitAny(new Task[] { stdErrorTask, stdOutTask }, TimeSpan.FromSeconds(10));
 
-            // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            while (!stdOutTask.IsCompleted && stopwatch.Elapsed < TimeSpan.FromSeconds(5))
-            {
-                var readTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length);
-
-                if (readTask.Wait(TimeSpan.FromMilliseconds(500)))
-                {
-                    var bytesRead = readTask.Result;
-                    if (bytesRead == 0)
-                    {
-                        break; // end of stream reached
-                    }
-
-                    stderrBuilder.Append(buffer, 0, bytesRead);
-                }
-                else
-                {
-                    // timeout occurred
-                    break;
-                }
-            }
-
-            var stdError = stderrBuilder.ToString();
-
-            if (!string.IsNullOrWhiteSpace(stdError))
-            {
-                throw new KubeConfigException($"external exec failed due to: {stdError}");
-            }
-
-            if (!stdOutTask.IsCompleted)
+            if (result == -1)
             {
                 throw new KubeConfigException("external exec failed due to timeout");
+            }
+            else if (result == 0)
+            {
+                var stderrBuilder = new StringBuilder();
+                stderrBuilder.Append(buffer, 0, stdErrorTask.Result);
+
+                if (stderrBuilder.Length > 0)
+                {
+                    throw new KubeConfigException($"external exec failed due to: {stderrBuilder}");
+                }
             }
 
             try
