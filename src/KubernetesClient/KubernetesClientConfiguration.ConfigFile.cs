@@ -30,6 +30,11 @@ namespace k8s
         internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
 
         /// <summary>
+        /// Exec process timeout in seconds
+        /// </summary>
+        public static int ExecTimeout { get; set; } = 10;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
         ///     Next, it looks for a config file at <see cref="KubeConfigDefaultLocation"/>.
@@ -563,7 +568,7 @@ namespace k8s
             var buffer = new char[4096];
             var stdErrorTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length); // Assumes process will continue
 
-            var result = Task.WaitAny(new Task[] { stdErrorTask, stdOutTask }, TimeSpan.FromSeconds(10));
+            var result = Task.WaitAny(new Task[] { stdErrorTask, stdOutTask }, TimeSpan.FromSeconds(ExecTimeout));
 
             if (result == -1)
             {
