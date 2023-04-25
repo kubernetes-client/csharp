@@ -558,7 +558,6 @@ namespace k8s
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-
             var stdOutTask = process.StandardOutput.ReadToEndAsync(); // Assumes process exits
 
             var buffer = new char[4096];
@@ -573,7 +572,7 @@ namespace k8s
             else if (result == 0)
             {
                 var stderrBuilder = new StringBuilder();
-                stderrBuilder.Append(buffer, 0, stdErrorTask.Result);
+                stderrBuilder.Append(buffer, 0, stdErrorTask.GetAwaiter().GetResult());
 
                 if (stderrBuilder.Length > 0)
                 {
@@ -583,7 +582,7 @@ namespace k8s
 
             try
             {
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdOutTask.Result);
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdOutTask.GetAwaiter().GetResult());
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
