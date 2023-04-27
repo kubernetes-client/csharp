@@ -342,6 +342,17 @@ namespace k8s.Tests
         }
 
         /// <summary>
+        ///     Make sure that TlsServerName is present
+        /// </summary>
+        [Fact]
+        public void TlsServerName()
+        {
+            var fi = new FileInfo("assets/kubeconfig.tls-servername.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi);
+            Assert.Equal("pony", cfg.TlsServerName);
+        }
+
+        /// <summary>
         ///     Checks config could work well when current-context is not set but masterUrl is set. #issue 24
         /// </summary>
         [Fact]
