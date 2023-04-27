@@ -149,6 +149,11 @@ namespace k8s
                 await Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
             }
 
+            if (!string.IsNullOrWhiteSpace(TlsServerName))
+            {
+                httpRequest.Headers.Host = TlsServerName;
+            }
+
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();
             var httpResponse = await HttpClient.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);

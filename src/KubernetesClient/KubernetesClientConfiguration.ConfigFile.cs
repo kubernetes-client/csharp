@@ -267,6 +267,7 @@ namespace k8s
 
             Host = clusterDetails.ClusterEndpoint.Server;
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
+            TlsServerName = clusterDetails.ClusterEndpoint.TlsServerName;
 
             if (!Uri.TryCreate(Host, UriKind.Absolute, out var uri))
             {
