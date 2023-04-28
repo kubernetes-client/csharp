@@ -26,6 +26,12 @@ namespace k8s.KubeConfigModels
         public string Server { get; set; }
 
         /// <summary>
+        /// Gets or sets a value to override the TLS server name.
+        /// </summary>
+        [YamlMember(Alias = "tls-server-name", ApplyNamingConventions = false)]
+        public string TlsServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether to skip the validity check for the server's certificate.
         /// This will make your HTTPS connections insecure.
         /// </summary>

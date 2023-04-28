@@ -57,6 +57,11 @@ namespace k8s
         public bool SkipTlsVerify { get; set; }
 
         /// <summary>
+        ///     Option to override the TLS server name
+        /// </summary>
+        public string TlsServerName { get; set; }
+
+        /// <summary>
         ///     Gets or sets the HTTP user agent.
         /// </summary>
         /// <value>Http user agent.</value>

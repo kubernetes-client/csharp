@@ -26,6 +26,7 @@ namespace k8s
             ValidateConfig(config);
             CaCerts = config.SslCaCerts;
             SkipTlsVerify = config.SkipTlsVerify;
+            TlsServerName = config.TlsServerName;
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
@@ -114,6 +115,8 @@ namespace k8s
         private X509Certificate2 ClientCert { get; set; }
 
         private bool SkipTlsVerify { get; }
+
+        private string TlsServerName { get; }
 
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition
