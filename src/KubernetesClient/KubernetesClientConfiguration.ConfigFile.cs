@@ -29,9 +29,9 @@ namespace k8s
         internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
 
         /// <summary>
-        ///     Exec process timeout in seconds
+        ///     Exec process timeout
         /// </summary>
-        public static int ExecTimeout { get; set; } = 120;
+        public static TimeSpan ExecTimeout { get; set; } = TimeSpan.FromMinutes(2);
 
         /// <summary>
         ///     Exec process Standard Errors
@@ -574,7 +574,7 @@ namespace k8s
 
             try
             {
-                if (!process.WaitForExit((int)TimeSpan.FromSeconds(ExecTimeout).TotalMilliseconds))
+                if (!process.WaitForExit((int)(ExecTimeout.TotalMilliseconds)))
                 {
                     throw new KubeConfigException("external exec failed due to timeout");
                 }
