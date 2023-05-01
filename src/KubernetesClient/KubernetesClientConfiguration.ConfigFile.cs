@@ -6,7 +6,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace k8s
@@ -32,7 +31,12 @@ namespace k8s
         /// <summary>
         /// Exec process timeout in seconds
         /// </summary>
-        public static int ExecTimeout { get; set; } = 10;
+        public static int ExecTimeout { get; set; } = 120;
+
+        /// <summary>
+        ///     Exec process Standard Errors
+        /// </summary>
+        public static event EventHandler<DataReceivedEventArgs> ExecStdError;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
@@ -557,37 +561,22 @@ namespace k8s
             try
             {
                 process.Start();
+                process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
+                process.BeginErrorReadLine();
             }
             catch (Exception ex)
             {
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var stdOutTask = process.StandardOutput.ReadToEndAsync(); // Assumes process exits
-
-            var buffer = new char[4096];
-            var stdErrorTask = process.StandardError.ReadAsync(buffer, 0, buffer.Length); // Assumes process will continue
-
-            var result = Task.WaitAny(new Task[] { stdErrorTask, stdOutTask }, TimeSpan.FromSeconds(ExecTimeout));
-
-            if (result == -1)
-            {
-                throw new KubeConfigException("external exec failed due to timeout");
-            }
-            else if (result == 0)
-            {
-                var stderrBuilder = new StringBuilder();
-                stderrBuilder.Append(buffer, 0, stdErrorTask.GetAwaiter().GetResult());
-
-                if (stderrBuilder.Length > 0)
-                {
-                    throw new KubeConfigException($"external exec failed due to: {stderrBuilder}");
-                }
-            }
-
             try
             {
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdOutTask.GetAwaiter().GetResult());
+                if (!process.WaitForExit((int)TimeSpan.FromSeconds(ExecTimeout).TotalMilliseconds))
+                {
+                    throw new KubeConfigException("external exec failed due to timeout");
+                }
+
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
