@@ -29,6 +29,16 @@ namespace k8s
         internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
 
         /// <summary>
+        ///     Exec process timeout
+        /// </summary>
+        public static TimeSpan ExecTimeout { get; set; } = TimeSpan.FromMinutes(2);
+
+        /// <summary>
+        ///     Exec process Standard Errors
+        /// </summary>
+        public static event EventHandler<DataReceivedEventArgs> ExecStdError;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
         ///     Next, it looks for a config file at <see cref="KubeConfigDefaultLocation"/>.
@@ -552,25 +562,25 @@ namespace k8s
             try
             {
                 process.Start();
+                if (ExecStdError != null)
+                {
+                    process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
+                    process.BeginErrorReadLine();
+                }
             }
             catch (Exception ex)
             {
                 throw new KubeConfigException($"external exec failed due to: {ex.Message}");
             }
 
-            var stdout = process.StandardOutput.ReadToEnd();
-            var stderr = process.StandardError.ReadToEnd();
-            if (string.IsNullOrWhiteSpace(stderr) == false)
-            {
-                throw new KubeConfigException($"external exec failed due to: {stderr}");
-            }
-
-            // Wait for a maximum of 5 seconds, if a response takes longer probably something went wrong...
-            process.WaitForExit(5);
-
             try
             {
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(stdout);
+                if (!process.WaitForExit((int)(ExecTimeout.TotalMilliseconds)))
+                {
+                    throw new KubeConfigException("external exec failed due to timeout");
+                }
+
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
