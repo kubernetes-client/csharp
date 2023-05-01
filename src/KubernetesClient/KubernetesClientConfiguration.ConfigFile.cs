@@ -561,8 +561,11 @@ namespace k8s
             try
             {
                 process.Start();
-                process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
-                process.BeginErrorReadLine();
+                if (ExecStdError != null)
+                {
+                    process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
+                    process.BeginErrorReadLine();
+                }
             }
             catch (Exception ex)
             {
