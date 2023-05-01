@@ -29,7 +29,7 @@ namespace k8s
         internal static string KubeConfigEnvironmentVariable { get; set; } = "KUBECONFIG";
 
         /// <summary>
-        /// Exec process timeout in seconds
+        ///     Exec process timeout in seconds
         /// </summary>
         public static int ExecTimeout { get; set; } = 120;
 
