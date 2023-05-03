@@ -48,13 +48,15 @@ jobs:
         - "KubernetesClient.Basic"
         - "KubernetesClient.Classic"
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     
     steps:
     - name: Delete old NuGet packages
       uses: actions/delete-package-versions@v4
       with:
         owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
-        repo: ${{ github.event.repository.name }}
         token: ${{ secrets.GITHUB_TOKEN }}
         package-name: ${{ matrix.nuget-package }}
+        package-type: nuget
         min-versions-to-keep: 10
