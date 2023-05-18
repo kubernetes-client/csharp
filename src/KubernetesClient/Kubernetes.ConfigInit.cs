@@ -130,6 +130,7 @@ namespace k8s
                 KeepAlivePingPolicy = HttpKeepAlivePingPolicy.WithActiveRequests,
                 KeepAlivePingDelay = TimeSpan.FromMinutes(3),
                 KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
+                EnableMultipleHttp2Connections = true,
             };
 
             HttpClientHandler.SslOptions.ClientCertificates = new X509Certificate2Collection();
