@@ -15,20 +15,23 @@ namespace k8s
     /// </summary>
     public static class KubernetesYaml
     {
-        private static readonly DeserializerBuilder CommonDeserializerBuilder =
-            new DeserializerBuilder()
+        private static DeserializerBuilder CommonDeserializerBuilder()
+        {
+            return new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
                 .WithOverridesFromJsonPropertyAttributes();
+        }
+
         private static readonly IDeserializer StrictDeserializer =
-            CommonDeserializerBuilder
+            CommonDeserializerBuilder()
             .WithDuplicateKeyChecking()
             .Build();
         private static readonly IDeserializer Deserializer =
-            CommonDeserializerBuilder
+            CommonDeserializerBuilder()
             .IgnoreUnmatchedProperties()
             .Build();
         private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
@@ -154,7 +157,7 @@ namespace k8s
             typeMap?.ToList().ForEach(x => mergedTypeMap[x.Key] = x.Value);
 
             var types = new List<Type>();
-            var parser = new Parser(new StringReader(content));
+            var parser = new MergingParser(new Parser(new StringReader(content)));
             parser.Consume<StreamStart>();
             while (parser.Accept<DocumentStart>(out _))
             {
@@ -162,7 +165,7 @@ namespace k8s
                 types.Add(mergedTypeMap[dict["apiVersion"] + "/" + dict["kind"]]);
             }
 
-            parser = new Parser(new StringReader(content));
+            parser = new MergingParser(new Parser(new StringReader(content)));
             parser.Consume<StreamStart>();
             var ix = 0;
             var results = new List<object>();
@@ -205,12 +208,14 @@ namespace k8s
 
         public static TValue Deserialize<TValue>(string yaml, bool strict = false)
         {
-            return GetDeserializer(strict).Deserialize<TValue>(yaml);
+            using var reader = new StringReader(yaml);
+            return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
         }
 
         public static TValue Deserialize<TValue>(Stream yaml, bool strict = false)
         {
-            return GetDeserializer(strict).Deserialize<TValue>(new StreamReader(yaml));
+            using var reader = new StreamReader(yaml);
+            return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
         }
 
         public static string SerializeAll(IEnumerable<object> values)
