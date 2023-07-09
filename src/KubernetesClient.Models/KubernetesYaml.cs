@@ -26,10 +26,12 @@ namespace k8s
         private static readonly IDeserializer StrictDeserializer =
             CommonDeserializerBuilder
             .WithDuplicateKeyChecking()
+            .AddDeserializerAction()
             .Build();
         private static readonly IDeserializer Deserializer =
             CommonDeserializerBuilder
             .IgnoreUnmatchedProperties()
+            .AddDeserializerAction()
             .Build();
         private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
 
@@ -44,7 +46,28 @@ namespace k8s
                 .WithEventEmitter(e => new FloatEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .WithOverridesFromJsonPropertyAttributes()
+                .AddSerializerAction()
                 .BuildValueSerializer();
+
+        private static DeserializerBuilder AddDeserializerAction(this DeserializerBuilder builder)
+        {
+            if (KubernetesYamlConfiguration.DeseralizerAction is not null)
+            {
+                KubernetesYamlConfiguration.DeseralizerAction(builder);
+            }
+
+            return builder;
+        }
+
+        private static SerializerBuilder AddSerializerAction(this SerializerBuilder builder)
+        {
+            if (KubernetesYamlConfiguration.SeralizerAction is not null)
+            {
+                KubernetesYamlConfiguration.SeralizerAction(builder);
+            }
+
+            return builder;
+        }
 
         private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly
             .GetTypes()
