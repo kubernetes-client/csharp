@@ -36,7 +36,10 @@ namespace k8s
                 //
                 foreach (Org.BouncyCastle.X509.X509Certificate cert in certs)
                 {
-                    certCollection.Add(new X509Certificate2(cert.GetEncoded()));
+                    // This null password is to change the constructor to fix this KB:
+                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                    string nullPassword = null;
+                    certCollection.Add(new X509Certificate2(cert.GetEncoded(), nullPassword));
                 }
 #endif
             }
@@ -96,13 +99,17 @@ namespace k8s
             // see https://github.com/kubernetes-client/csharp/issues/737
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
+                // This null password is to change the constructor to fix this KB:
+                // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                string nullPassword = null;
+
                 if (config.ClientCertificateKeyStoreFlags.HasValue)
                 {
-                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), "", config.ClientCertificateKeyStoreFlags.Value);
+                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), nullPassword, config.ClientCertificateKeyStoreFlags.Value);
                 }
                 else
                 {
-                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12));
+                    cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), nullPassword);
                 }
             }
 
@@ -172,13 +179,17 @@ namespace k8s
 
             store.Save(pkcs, new char[0], new SecureRandom());
 
+            // This null password is to change the constructor to fix this KB:
+            // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+            string nullPassword = null;
+
             if (config.ClientCertificateKeyStoreFlags.HasValue)
             {
-                return new X509Certificate2(pkcs.ToArray(), "", config.ClientCertificateKeyStoreFlags.Value);
+                return new X509Certificate2(pkcs.ToArray(), nullPassword, config.ClientCertificateKeyStoreFlags.Value);
             }
             else
             {
-                return new X509Certificate2(pkcs.ToArray());
+                return new X509Certificate2(pkcs.ToArray(), nullPassword);
             }
 #endif
         }
