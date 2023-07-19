@@ -308,8 +308,11 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
+                    // This null password is to change the constructor to fix this KB:
+                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                    string nullPassword = null;
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data)));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
