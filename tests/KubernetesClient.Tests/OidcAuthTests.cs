@@ -32,7 +32,7 @@ namespace k8s.Tests
                 result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
                 result.Scheme.Should().Be("Bearer");
                 result.Parameter.Should().Be(expiredIdToken);
-                Assert.True(false, "should not be here");
+                Assert.Fail("should not be here");
             }
             catch (KubernetesClientException e)
             {
@@ -46,7 +46,7 @@ namespace k8s.Tests
                 result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
                 result.Scheme.Should().Be("Bearer");
                 result.Parameter.Should().Be(expiredIdToken);
-                Assert.True(false, "should not be here");
+                Assert.Fail("should not be here");
             }
             catch (KubernetesClientException e)
             {
