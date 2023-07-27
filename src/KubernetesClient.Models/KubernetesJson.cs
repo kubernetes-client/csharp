@@ -26,18 +26,19 @@ namespace k8s
 
         private sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
-            private const string SerializeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
-            private const string Iso8601Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
+            private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
+            private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
+            private const string RFC3339Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
 
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var str = reader.GetString();
-                return DateTimeOffset.ParseExact(str, new[] { Iso8601Format, SerializeFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
+                return DateTimeOffset.ParseExact(str, new[] { RFC3339Format, RFC3339MicroFormat, RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
             }
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
-                writer.WriteStringValue(value.ToString(SerializeFormat));
+                writer.WriteStringValue(value.ToString(RFC3339MicroFormat));
             }
         }
 
