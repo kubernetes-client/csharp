@@ -49,7 +49,7 @@ namespace k8s.Tests
                 var listTask = ExecuteListPods(client);
 
                 Assert.True(listTask.Response.IsSuccessStatusCode);
-                Assert.Equal(1, listTask.Body.Items.Count);
+                Assert.Single(listTask.Body.Items);
             }
 
             using (var server = new MockKubeApiServer(testOutput, cxt =>
@@ -114,7 +114,7 @@ namespace k8s.Tests
 
                     var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -224,7 +224,7 @@ namespace k8s.Tests
 
                     Assert.True(clientCertificateValidationCalled);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -241,7 +241,7 @@ namespace k8s.Tests
 
                     Assert.True(clientCertificateValidationCalled);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -324,7 +324,7 @@ namespace k8s.Tests
                     var client = new Kubernetes(clientConfig);
                     var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -368,7 +368,7 @@ namespace k8s.Tests
                     var client = new Kubernetes(clientConfig);
                     var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -410,7 +410,7 @@ namespace k8s.Tests
 
                     var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -478,7 +478,7 @@ namespace k8s.Tests
 
                     var listTask = ExecuteListPods(client);
                     Assert.True(listTask.Response.IsSuccessStatusCode);
-                    Assert.Equal(1, listTask.Body.Items.Count);
+                    Assert.Single(listTask.Body.Items);
                 }
 
                 {
@@ -493,7 +493,7 @@ namespace k8s.Tests
                     try
                     {
                         PeelAggregate(() => ExecuteListPods(client));
-                        Assert.True(false, "should not be here");
+                        Assert.Fail("should not be here");
                     }
                     catch (KubernetesClientException e)
                     {
@@ -513,7 +513,7 @@ namespace k8s.Tests
                     try
                     {
                         PeelAggregate(() => ExecuteListPods(client));
-                        Assert.True(false, "should not be here");
+                        Assert.Fail("should not be here");
                     }
                     catch (KubernetesClientException e)
                     {
@@ -528,7 +528,7 @@ namespace k8s.Tests
             try
             {
                 PeelAggregate(() => ExecuteListPods(client));
-                Assert.True(false, "should not be here");
+                Assert.Fail("should not be here");
             }
             catch (HttpOperationException e)
             {
