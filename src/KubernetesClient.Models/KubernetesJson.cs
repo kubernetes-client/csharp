@@ -26,18 +26,41 @@ namespace k8s
 
         private sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
-            private const string SerializeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
-            private const string Iso8601Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
+            private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
+
+            private static string FormatDateTimeOffsetToSevenDigitsNanoseconds(string dateTime)
+            {
+                var isUTC = dateTime.EndsWith("Z");
+                var dateTimeWithoutZ = isUTC ? dateTime.Substring(0, dateTime.Length - 1) : dateTime;
+
+                var nanoSecondsDelimiterIndex = dateTimeWithoutZ.LastIndexOf(".", StringComparison.Ordinal);
+                var withoutNanoseconds = nanoSecondsDelimiterIndex > -1 ? dateTimeWithoutZ.Substring(0, nanoSecondsDelimiterIndex) : dateTimeWithoutZ;
+
+                var sevenDigitNanoseconds = "0000000";
+                if (nanoSecondsDelimiterIndex > -1)
+                {
+                    var nanoSecondsAsString = dateTimeWithoutZ.Substring(nanoSecondsDelimiterIndex + 1);
+                    var leadingZeroes = nanoSecondsAsString.TakeWhile(c => c == '0').Count();
+                    var nanoSecondsWithoutLeadingZeroesAsString = nanoSecondsAsString.Substring(leadingZeroes);
+                    sevenDigitNanoseconds = nanoSecondsAsString.Length > 7
+                                                ? nanoSecondsAsString.Substring(0, 7)
+                                                : new string('0', leadingZeroes)
+                                                    + (int.Parse(nanoSecondsWithoutLeadingZeroesAsString)
+                                                         * (int)Math.Pow(10, 7 - leadingZeroes - nanoSecondsWithoutLeadingZeroesAsString.Length));
+                }
+
+                return withoutNanoseconds + "." + sevenDigitNanoseconds + (isUTC ? "Z" : "");
+            }
 
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var str = reader.GetString();
-                return DateTimeOffset.ParseExact(str, new[] { Iso8601Format, SerializeFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
+                return DateTimeOffset.ParseExact(FormatDateTimeOffsetToSevenDigitsNanoseconds(str), new[] { RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
             }
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
-                writer.WriteStringValue(value.ToString(SerializeFormat));
+                writer.WriteStringValue(value.ToString(RFC3339NanoFormat));
             }
         }
 
