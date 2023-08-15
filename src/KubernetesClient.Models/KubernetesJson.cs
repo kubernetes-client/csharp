@@ -40,13 +40,21 @@ namespace k8s
                 if (nanoSecondsDelimiterIndex > -1)
                 {
                     var nanoSecondsAsString = dateTimeWithoutZ.Substring(nanoSecondsDelimiterIndex + 1);
+
+                    if (nanoSecondsAsString.Length > 9)
+                    {
+                        throw new ArgumentException("Invalid format for nanoseconds, too many digits.");
+                    }
+
                     var leadingZeroes = nanoSecondsAsString.TakeWhile(c => c == '0').Count();
                     var nanoSecondsWithoutLeadingZeroesAsString = nanoSecondsAsString.Substring(leadingZeroes);
                     sevenDigitNanoseconds = nanoSecondsAsString.Length > 7
                                                 ? nanoSecondsAsString.Substring(0, 7)
                                                 : new string('0', leadingZeroes)
-                                                    + (int.Parse(nanoSecondsWithoutLeadingZeroesAsString)
-                                                         * (int)Math.Pow(10, 7 - leadingZeroes - nanoSecondsWithoutLeadingZeroesAsString.Length));
+                                                    + (string.IsNullOrEmpty(nanoSecondsWithoutLeadingZeroesAsString)
+                                                         ? new string('0', 7 - leadingZeroes)
+                                                         : int.Parse(nanoSecondsWithoutLeadingZeroesAsString)
+                                                             * (int)Math.Pow(10, 7 - leadingZeroes - nanoSecondsWithoutLeadingZeroesAsString.Length));
                 }
 
                 return withoutNanoseconds + "." + sevenDigitNanoseconds + (isUTC ? "Z" : "");
