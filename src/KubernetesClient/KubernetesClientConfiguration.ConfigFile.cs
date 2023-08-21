@@ -494,7 +494,7 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
-        public static Process CreateRunnableExternalProcess(ExternalExecution config)
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
         {
             if (config == null)
             {
@@ -535,7 +535,7 @@ namespace k8s
             }
 
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardError = captureStdError != null;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
 
@@ -560,14 +560,15 @@ namespace k8s
                 throw new ArgumentNullException(nameof(config));
             }
 
-            var process = CreateRunnableExternalProcess(config);
+            var captureStdError = ExecStdError;
+            var process = CreateRunnableExternalProcess(config, captureStdError);
 
             try
             {
                 process.Start();
-                if (ExecStdError != null)
+                if (captureStdError != null)
                 {
-                    process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
+                    process.ErrorDataReceived += captureStdError.Invoke;
                     process.BeginErrorReadLine();
                 }
             }
