@@ -1,6 +1,7 @@
 using k8s.Models;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace k8s
@@ -33,7 +34,21 @@ namespace k8s
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var str = reader.GetString();
-                return DateTimeOffset.ParseExact(str, new[] { RFC3339Format, RFC3339MicroFormat, RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339Format, RFC3339MicroFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var result))
+                {
+                    return result;
+                }
+
+                // try RFC3339NanoFormat by trimming 9 digits to 7 digits
+                var originalstr = str;
+                str = Regex.Replace(str, @"(?<=\.\d{7})\d{2}", "");
+                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                {
+                    return result;
+                }
+
+                throw new FormatException($"Unable to parse {originalstr} as RFC3339 RFC3339Micro or RFC3339Nano");
             }
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
