@@ -1,6 +1,7 @@
 using k8s.Models;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace k8s
@@ -30,16 +31,24 @@ namespace k8s
 
             private static string FormatDateTimeOffsetToSevenDigitsNanoseconds(string dateTime)
             {
-                var isUTC = dateTime.EndsWith("Z");
-                var dateTimeWithoutZ = isUTC ? dateTime.Substring(0, dateTime.Length - 1) : dateTime;
+                var isUtcWithZ = dateTime.EndsWith("Z");
+                var isUtcWithZeroes = Regex.IsMatch(dateTime, "^*[+-]\\d{2}\\:\\d{2}$");
 
-                var nanoSecondsDelimiterIndex = dateTimeWithoutZ.LastIndexOf(".", StringComparison.Ordinal);
-                var withoutNanoseconds = nanoSecondsDelimiterIndex > -1 ? dateTimeWithoutZ.Substring(0, nanoSecondsDelimiterIndex) : dateTimeWithoutZ;
+                var cleanedDateTime = isUtcWithZ
+                                          ? dateTime.Substring(0, dateTime.Length - 1)
+                                          : isUtcWithZeroes
+                                                ? dateTime.Substring(0, dateTime.Length - 6)
+                                                : dateTime;
+
+                var nanoSecondsDelimiterIndex = cleanedDateTime.LastIndexOf(".", StringComparison.Ordinal);
+                var withoutNanoseconds = nanoSecondsDelimiterIndex > -1
+                                                   ? cleanedDateTime.Substring(0, nanoSecondsDelimiterIndex)
+                                                   : cleanedDateTime;
 
                 var sevenDigitNanoseconds = "0000000";
                 if (nanoSecondsDelimiterIndex > -1)
                 {
-                    var nanoSecondsAsString = dateTimeWithoutZ.Substring(nanoSecondsDelimiterIndex + 1);
+                    var nanoSecondsAsString = cleanedDateTime.Substring(nanoSecondsDelimiterIndex + 1);
 
                     if (nanoSecondsAsString.Length > 9)
                     {
@@ -57,7 +66,7 @@ namespace k8s
                                                              * (int)Math.Pow(10, 7 - leadingZeroes - nanoSecondsWithoutLeadingZeroesAsString.Length));
                 }
 
-                return withoutNanoseconds + "." + sevenDigitNanoseconds + (isUTC ? "Z" : "");
+                return withoutNanoseconds + "." + sevenDigitNanoseconds + (isUtcWithZ ? "Z" : "") + (isUtcWithZeroes ? dateTime.Substring(dateTime.Length - 6) : "");
             }
 
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
