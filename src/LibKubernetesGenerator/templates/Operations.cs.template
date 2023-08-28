@@ -83,5 +83,72 @@ public partial class AbstractKubernetes : I{{name}}Operations
         {{/IfReturnType operation "stream"}}
         return result;
     }
+
+    {{#IfReturnType operation "object"}}
+    /// <inheritdoc/>
+    async Task<HttpOperationResponse<T>> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
+{{#operation.parameters}}
+        {{GetDotNetType .}} {{GetDotNetName .}},
+{{/operation.parameters}}
+        IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
+        CancellationToken cancellationToken)
+    {
+        using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        cts.CancelAfter(HttpClientTimeout);
+        {{#IfParamContains operation "watch"}}
+        if (watch == true)
+        {
+            cts.CancelAfter(Timeout.InfiniteTimeSpan);
+        }
+        {{/IfParamContains operation "watch"}}
+        cancellationToken = cts.Token;
+
+        {{#operation.parameters}}
+        {{#isRequired}}
+        if ({{GetDotNetName name}} == null)
+        {
+            throw new ArgumentNullException("{{GetDotNetName name}}");
+        }
+        {{/isRequired}}
+        {{/operation.parameters}}
+
+        // Construct URL
+        var url = $"{{ToInterpolationPathString path}}";
+        {{#IfGroupPathParamContainsGroup path}}
+        url = url.Replace("apis//", "api/");
+        {{/IfGroupPathParamContainsGroup}}
+        {{#IfListNotEmpty operation.parameters}}
+        var q = new QueryBuilder();
+        {{#operation.parameters}}
+        {{#IfKindIs . "query"}}
+        q.Append("{{name}}", {{GetDotNetName name}});
+        {{/IfKindIs . "query"}}
+        {{/operation.parameters}}
+        url += q.ToString();
+        {{/IfListNotEmpty operation.parameters}}
+
+        // Create HTTP transport
+        {{#IfParamContains operation "body"}}
+        var httpResponse = await SendRequest(url, HttpMethods.{{Method}}, customHeaders, body, cancellationToken);
+        {{/IfParamContains operation "body"}}
+        {{#IfParamDoesNotContain operation "body"}}
+        var httpResponse = await SendRequest<object>(url, HttpMethods.{{Method}}, customHeaders, null, cancellationToken);
+        {{/IfParamDoesNotContain operation "body"}}
+        // Create Result
+        var httpRequest = httpResponse.RequestMessage;
+        var result = await CreateResultAsync<T>(
+            httpRequest,
+            httpResponse,
+            {{#IfParamContains operation "watch"}}
+            watch,
+            {{/IfParamContains operation "watch"}}
+            {{#IfParamDoesNotContain operation "watch"}}
+            false,
+            {{/IfParamDoesNotContain operation "watch"}}
+            cancellationToken);
+        return result;
+    }
+    {{/IfReturnType operation "object"}}
+
     {{/apis}}
 }
