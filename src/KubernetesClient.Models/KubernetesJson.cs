@@ -40,9 +40,9 @@ namespace k8s
                     return result;
                 }
 
-                // try RFC3339NanoFormat by trimming 9 digits to 7 digits
+                // try RFC3339NanoLenient by trimming 1-9 digits to 7 digits
                 var originalstr = str;
-                str = Regex.Replace(str, @"(?<=\.\d{7})\d{2}", "");
+                str = Regex.Replace(str, @"\.\d+", m => (m.Value + "000000000").Substring(0, 7 + 1)); // 7 digits + 1 for the dot
                 if (DateTimeOffset.TryParseExact(str, new[] { RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
                 {
                     return result;
