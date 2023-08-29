@@ -1,4 +1,3 @@
-using FluentAssertions.Extensions;
 using System;
 using Xunit;
 
