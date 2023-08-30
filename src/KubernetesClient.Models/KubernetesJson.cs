@@ -92,7 +92,6 @@ namespace k8s
             return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
-
         public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
             return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
