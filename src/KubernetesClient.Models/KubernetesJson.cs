@@ -1,6 +1,7 @@
 using k8s.Models;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace k8s
@@ -26,18 +27,33 @@ namespace k8s
 
         private sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
-            private const string SerializeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
-            private const string Iso8601Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
+            private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
+            private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
+            private const string RFC3339Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
 
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var str = reader.GetString();
-                return DateTimeOffset.ParseExact(str, new[] { Iso8601Format, SerializeFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339Format, RFC3339MicroFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var result))
+                {
+                    return result;
+                }
+
+                // try RFC3339NanoLenient by trimming 1-9 digits to 7 digits
+                var originalstr = str;
+                str = Regex.Replace(str, @"\.\d+", m => (m.Value + "000000000").Substring(0, 7 + 1)); // 7 digits + 1 for the dot
+                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                {
+                    return result;
+                }
+
+                throw new FormatException($"Unable to parse {originalstr} as RFC3339 RFC3339Micro or RFC3339Nano");
             }
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
-                writer.WriteStringValue(value.ToString(SerializeFormat));
+                writer.WriteStringValue(value.ToString(RFC3339MicroFormat));
             }
         }
 
