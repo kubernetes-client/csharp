@@ -1,4 +1,6 @@
 using k8s.Exceptions;
+using Org.BouncyCastle.Asn1.BC;
+using Org.BouncyCastle.Asn1.Nist;
 using Org.BouncyCastle.Asn1.Pkcs;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.OpenSsl;
@@ -108,7 +110,7 @@ namespace k8s
             var keyParams = (AsymmetricKeyParameter)obj;
 
             var store = new Pkcs12StoreBuilder()
-                .SetCertAlgorithm(PkcsObjectIdentifiers.PbeWithShaAnd3KeyTripleDesCbc)
+                .SetKeyAlgorithm(NistObjectIdentifiers.IdAes128Cbc, PkcsObjectIdentifiers.IdHmacWithSha1)
                 .Build();
             store.SetKeyEntry("K8SKEY", new AsymmetricKeyEntry(keyParams), new[] { new X509CertificateEntry(cert) });
 
