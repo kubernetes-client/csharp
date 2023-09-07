@@ -1,5 +1,6 @@
 using k8s.Models;
 using System;
+using System.Collections.Generic;
 using Xunit;
 using static k8s.Models.ResourceQuantity.SuffixFormat;
 
@@ -200,7 +201,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void Serialize()
+        public void SerializeJson()
         {
             {
                 ResourceQuantity quantity = 12000;
@@ -209,10 +210,25 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void DeserializeYaml()
+        public void DeserializeJson()
         {
-            var value = KubernetesYaml.Deserialize<ResourceQuantity>("\"1\"");
-            Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
+            // str
+            {
+                var value = KubernetesJson.Deserialize<Dictionary<string, ResourceQuantity>>(@"{""cpu"": ""1.1""}");
+                Assert.Equal(new ResourceQuantity(11, -1, DecimalSI), value["cpu"]);
+            }
+            
+            // int
+            {
+                var value = KubernetesJson.Deserialize<Dictionary<string, ResourceQuantity>>(@"{""cpu"": 1}");
+                Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value["cpu"]);
+            }
+
+            // double
+            {
+                var value = KubernetesJson.Deserialize<Dictionary<string, ResourceQuantity>>(@"{""cpu"": 1.1}");
+                Assert.Equal(new ResourceQuantity(11, -1, DecimalSI), value["cpu"]);
+            }
         }
 
         [Fact]
@@ -220,6 +236,28 @@ namespace k8s.Tests
         {
             var value = KubernetesYaml.Serialize(new ResourceQuantity(1, -1, DecimalSI));
             Assert.Equal("100m", value);
+        }
+
+        [Fact]
+        public void DeserializeYaml()
+        {
+            // str
+            {
+                var value = KubernetesYaml.Deserialize<ResourceQuantity>("\"1\"");
+                Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
+            }
+
+            // int
+            {
+                var value = KubernetesYaml.Deserialize<ResourceQuantity>("1");
+                Assert.Equal(new ResourceQuantity(1, 0, DecimalSI), value);
+            }
+
+            // double
+            {
+                var value = KubernetesYaml.Deserialize<ResourceQuantity>("1.1");
+                Assert.Equal(new ResourceQuantity(11, -1, DecimalSI), value);
+            }
         }
     }
 }
