@@ -99,7 +99,7 @@ namespace k8s.Models
 
         protected bool Equals(ResourceQuantity other)
         {
-            return Format == other?.Format && _unitlessValue.Equals(other._unitlessValue);
+            return _unitlessValue.Equals(other?._unitlessValue);
         }
 
         public override bool Equals(object obj)
