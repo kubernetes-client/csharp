@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.2.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
   </ItemGroup>
@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\KubernetesClient\CertUtils.cs" />
     <Compile Include="..\KubernetesClient\FileSystem.cs" />
     <Compile Include="..\KubernetesClient\IKubernetes.cs" />
     <Compile Include="..\KubernetesClient\Kubernetes.ConfigInit.cs" />
