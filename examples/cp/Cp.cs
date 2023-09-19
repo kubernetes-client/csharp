@@ -1,4 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Tar;
+using ICSharpCode.SharpZipLib.Tar;
 using k8s;
 using System;
 using System.IO;
@@ -25,9 +25,6 @@ namespace cp
             await CopyFileToPodAsync(pod.Metadata.Name, "default", "upload-demo", args[0], $"home/{args[1]}");
 
         }
-
-
-
 
         private static void ValidatePathParameters(string sourcePath, string destinationPath)
         {
@@ -103,14 +100,12 @@ namespace cp
                 cancellationToken);
         }
 
-
         private static string GetFolderName(string filePath)
         {
             var folderName = Path.GetDirectoryName(filePath);
 
             return string.IsNullOrEmpty(folderName) ? "." : folderName;
         }
-
 
     }
 }
