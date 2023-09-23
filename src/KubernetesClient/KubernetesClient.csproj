@@ -13,7 +13,7 @@
         <PackageReference Include="YamlDotNet" Version="13.3.1" />
     </ItemGroup>
 
-    <ItemGroup >
+    <ItemGroup>
         <Compile Include="..\KubernetesClient.Models\ContainerMetrics.cs" />
         <Compile Include="..\KubernetesClient.Models\Extensions.cs" />
         <Compile Include="..\KubernetesClient.Models\FloatEmitter.cs" />

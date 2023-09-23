@@ -15,7 +15,7 @@ public abstract partial class AbstractKubernetes
         public static readonly HttpMethod Put = HttpMethod.Put;
         public static readonly HttpMethod Trace = HttpMethod.Trace;
 
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET48
         public static readonly HttpMethod Patch = new HttpMethod("PATCH");
 #else
         public static readonly HttpMethod Patch = HttpMethod.Patch;
