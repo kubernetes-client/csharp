@@ -1,7 +1,4 @@
-using k8s.Autorest;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s.LeaderElection
 {

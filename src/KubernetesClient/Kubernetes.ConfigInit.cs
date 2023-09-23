@@ -3,7 +3,6 @@ using k8s.Exceptions;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 
 namespace k8s
 {

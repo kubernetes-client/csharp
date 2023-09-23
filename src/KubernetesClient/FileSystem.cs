@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace k8s
 {
     internal static class FileSystem

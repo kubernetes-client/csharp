@@ -1,8 +1,4 @@
-using k8s.Autorest;
 using k8s.Exceptions;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s
 {

@@ -1,7 +1,3 @@
-using k8s.Models;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace k8s.LeaderElection.ResourceLock
 {
     public class LeaseLock : MetaObjectLock<V1Lease>
