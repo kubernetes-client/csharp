@@ -217,7 +217,7 @@ namespace k8s.Tests
                 var value = KubernetesJson.Deserialize<Dictionary<string, ResourceQuantity>>(@"{""cpu"": ""1.1""}");
                 Assert.Equal(new ResourceQuantity(11, -1, DecimalSI), value["cpu"]);
             }
-            
+
             // int
             {
                 var value = KubernetesJson.Deserialize<Dictionary<string, ResourceQuantity>>(@"{""cpu"": 1}");
