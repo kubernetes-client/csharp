@@ -1,6 +1,5 @@
 using System.Buffers;
 using System.Diagnostics;
-using System.Threading;
 
 namespace k8s
 {

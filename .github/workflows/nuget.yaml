@@ -44,8 +44,6 @@ jobs:
       matrix:
         nuget-package: 
         - "KubernetesClient"
-        - "KubernetesClient.Models"
-        - "KubernetesClient.Basic"
         - "KubernetesClient.Classic"
     runs-on: ubuntu-latest
     permissions:
