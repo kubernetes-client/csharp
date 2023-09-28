@@ -9,8 +9,15 @@ namespace k8s;
 public partial class AbstractKubernetes : I{{name}}Operations
 {
     {{#apis}}
-    /// <inheritdoc/>
-    async Task<HttpOperationResponse{{GetReturnType operation "<>"}}> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
+    {{#IfReturnType operation "void"}}
+    private async Task<HttpOperationResponse> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
+    {{/IfReturnType operation "void"}}
+    {{#IfReturnType operation "obj"}}
+    private async Task<HttpOperationResponse<T>> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
+    {{/IfReturnType operation "obj"}}
+    {{#IfReturnType operation "stream"}}
+    private async Task<HttpOperationResponse<Stream>> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
+    {{/IfReturnType operation "stream"}}
 {{#operation.parameters}}
         {{GetDotNetType .}} {{GetDotNetName .}},
 {{/operation.parameters}}
@@ -64,7 +71,7 @@ public partial class AbstractKubernetes : I{{name}}Operations
         HttpOperationResponse result = new HttpOperationResponse() { Request = httpRequest, Response =  httpResponse };
         {{/IfReturnType operation "void"}}
         {{#IfReturnType operation "obj"}}
-        var result = await CreateResultAsync{{GetReturnType operation "<>"}}(
+        var result = await CreateResultAsync<T>(
             httpRequest,
             httpResponse,
             {{#IfParamContains operation "watch"}}
@@ -76,12 +83,64 @@ public partial class AbstractKubernetes : I{{name}}Operations
             cancellationToken);
         {{/IfReturnType operation "obj"}}
         {{#IfReturnType operation "stream"}}
-        var result = new HttpOperationResponse{{GetReturnType operation "<>"}}() {
+        var result = new HttpOperationResponse<Stream>() {
                             Request = httpRequest,
                             Response = httpResponse,
                             Body = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
         {{/IfReturnType operation "stream"}}
         return result;
     }
+
+    /// <inheritdoc/>
+    async Task<HttpOperationResponse{{GetReturnType operation "<>"}}> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
+{{#operation.parameters}}
+        {{GetDotNetType .}} {{GetDotNetName .}},
+{{/operation.parameters}}
+        IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
+        CancellationToken cancellationToken)
+    {
+        {{#IfReturnType operation "void"}}
+        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
+        {{#operation.parameters}}
+            {{GetDotNetName .}},
+        {{/operation.parameters}}
+            customHeaders,
+            cancellationToken).ConfigureAwait(false);
+        {{/IfReturnType operation "void"}}
+        {{#IfReturnType operation "obj"}}
+        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}{{GetReturnType operation "<>"}}(
+        {{#operation.parameters}}
+            {{GetDotNetName .}},
+        {{/operation.parameters}}
+            customHeaders,
+            cancellationToken).ConfigureAwait(false);
+        {{/IfReturnType operation "obj"}}
+        {{#IfReturnType operation "stream"}}
+        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
+        {{#operation.parameters}}
+            {{GetDotNetName .}},
+        {{/operation.parameters}}
+            customHeaders,
+            cancellationToken).ConfigureAwait(false);
+        {{/IfReturnType operation "stream"}}
+    }
+
+    {{#IfReturnType operation "object"}}
+    /// <inheritdoc/>
+    async Task<HttpOperationResponse<T>> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
+{{#operation.parameters}}
+        {{GetDotNetType .}} {{GetDotNetName .}},
+{{/operation.parameters}}
+        IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
+        CancellationToken cancellationToken)
+    {
+        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
+        {{#operation.parameters}}
+            {{GetDotNetName .}},
+        {{/operation.parameters}}
+            customHeaders,
+            cancellationToken).ConfigureAwait(false);
+    }
+    {{/IfReturnType operation "object"}}
     {{/apis}}
 }

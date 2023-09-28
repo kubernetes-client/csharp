@@ -1,6 +1,3 @@
-using k8s.Models;
-
-
 namespace k8s.LeaderElection.ResourceLock
 {
     public abstract class MetaObjectAnnotationLock<T> : MetaObjectLock<T>

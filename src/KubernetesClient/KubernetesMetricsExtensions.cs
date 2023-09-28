@@ -1,6 +1,3 @@
-using k8s.Models;
-using System.Threading.Tasks;
-
 namespace k8s
 {
     /// <summary>

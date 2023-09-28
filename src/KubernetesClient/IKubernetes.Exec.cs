@@ -1,6 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace k8s
 {
     public partial interface IKubernetes

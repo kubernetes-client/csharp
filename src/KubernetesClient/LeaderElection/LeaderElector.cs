@@ -1,7 +1,4 @@
-using k8s.Autorest;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s.LeaderElection
 {
@@ -27,6 +24,11 @@ namespace k8s.LeaderElection
         /// leader when the client starts.
         /// </summary>
         public event Action<string> OnNewLeader;
+
+        /// <summary>
+        /// OnError is called when there is an error trying to determine leadership.
+        /// </summary>
+        public event Action<Exception> OnError;
 
         private volatile LeaderElectionRecord observedRecord;
         private DateTimeOffset observedTime = DateTimeOffset.MinValue;
@@ -69,8 +71,9 @@ namespace k8s.LeaderElection
                                 MaybeReportTransition();
                             }
                         }
-                        catch
+                        catch (Exception e)
                         {
+                            OnError?.Invoke(e);
                             // ignore
                             return false;
                         }
@@ -129,6 +132,8 @@ namespace k8s.LeaderElection
                 {
                     return false;
                 }
+
+                OnError?.Invoke(e);
             }
 
             if (oldLeaderElectionRecord?.AcquireTime == null ||

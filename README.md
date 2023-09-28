@@ -149,6 +149,8 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
 | SDK Version | Kubernetes Version | .NET Targeting                                       |
 |-------------|--------------------|------------------------------------------------------|
+| 12.0        | 1.28               | net6.0;net7.0;net48*;netstandard2.0*                 |
+| 11.0        | 1.27               | net6.0;net7.0;net48*;netstandard2.0*                 |
 | 10.0        | 1.26               | net6.0;net7.0;net48*;netstandard2.0*                 |
 | 9.1         | 1.25               | netstandard2.1;net6.0;net7.0;net48*;netstandard2.0*  |
 | 9.0         | 1.25               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
@@ -166,7 +168,7 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
  * Starting from `2.0`, [dotnet sdk versioning](https://github.com/kubernetes-client/csharp/issues/400) adopted
  * `Kubernetes Version` here means the version sdk models and apis were generated from
- * Kubernetes api server guarantees the compatibility with `n-2` version. for exmaple, 1.19 based sdk should work with 1.21 cluster, but no guarantee works with 1.22 cluster. see also <https://kubernetes.io/releases/version-skew-policy/>
+ * Kubernetes api server guarantees the compatibility with `n-2` (`n-3` after 1.28) version. for exmaple, 1.19 based sdk should work with 1.21 cluster, but no guarantee works with 1.22 cluster. see also <https://kubernetes.io/releases/version-skew-policy/>
  * `*` `KubernetesClient.Classic`: netstandard2.0 and net48 are supported with limited features
 
 

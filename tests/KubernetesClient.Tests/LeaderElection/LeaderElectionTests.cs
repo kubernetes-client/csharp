@@ -313,7 +313,7 @@ namespace k8s.Tests.LeaderElection
                 return;
             }
 
-            Assert.True(false, "exception not thrown");
+            Assert.Fail("exception not thrown");
         }
 
         [Fact]

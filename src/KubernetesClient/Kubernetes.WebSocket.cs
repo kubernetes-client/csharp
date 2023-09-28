@@ -1,13 +1,9 @@
-using k8s.Autorest;
-using k8s.Models;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s
 {

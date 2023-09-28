@@ -2,11 +2,9 @@ using k8s.Authentication;
 using k8s.Exceptions;
 using k8s.KubeConfigModels;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace k8s
 {
@@ -308,8 +306,11 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
+                    // This null password is to change the constructor to fix this KB:
+                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                    string nullPassword = null;
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data)));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
@@ -491,7 +492,7 @@ namespace k8s
             throw new KubeConfigException("Refresh not supported.");
         }
 
-        public static Process CreateRunnableExternalProcess(ExternalExecution config)
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
         {
             if (config == null)
             {
@@ -532,7 +533,7 @@ namespace k8s
             }
 
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardError = captureStdError != null;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
 
@@ -557,14 +558,15 @@ namespace k8s
                 throw new ArgumentNullException(nameof(config));
             }
 
-            var process = CreateRunnableExternalProcess(config);
+            var captureStdError = ExecStdError;
+            var process = CreateRunnableExternalProcess(config, captureStdError);
 
             try
             {
                 process.Start();
-                if (ExecStdError != null)
+                if (captureStdError != null)
                 {
-                    process.ErrorDataReceived += (s, e) => ExecStdError.Invoke(s, e);
+                    process.ErrorDataReceived += captureStdError.Invoke;
                     process.BeginErrorReadLine();
                 }
             }
