@@ -22,16 +22,15 @@ namespace k8s
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
-                .WithOverridesFromJsonPropertyAttributes();
+                .WithOverridesFromJsonPropertyAttributes()
+                .ExecuteDeserializerEvent();
         private static readonly IDeserializer StrictDeserializer =
             CommonDeserializerBuilder
             .WithDuplicateKeyChecking()
-            .AddDeserializerAction()
             .Build();
         private static readonly IDeserializer Deserializer =
             CommonDeserializerBuilder
             .IgnoreUnmatchedProperties()
-            .AddDeserializerAction()
             .Build();
         private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
 
@@ -46,27 +45,17 @@ namespace k8s
                 .WithEventEmitter(e => new FloatEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
                 .WithOverridesFromJsonPropertyAttributes()
-                .AddSerializerAction()
+                .ExecuteSerializerEvent()
                 .BuildValueSerializer();
 
-        private static DeserializerBuilder AddDeserializerAction(this DeserializerBuilder builder)
+        private static DeserializerBuilder ExecuteDeserializerEvent(this DeserializerBuilder builder)
         {
-            if (KubernetesYamlConfiguration.DeseralizerAction is not null)
-            {
-                KubernetesYamlConfiguration.DeseralizerAction(builder);
-            }
-
-            return builder;
+            return KubernetesYamlConfiguration.ExecuteDeserializerOptions(builder);
         }
 
-        private static SerializerBuilder AddSerializerAction(this SerializerBuilder builder)
+        private static SerializerBuilder ExecuteSerializerEvent(this SerializerBuilder builder)
         {
-            if (KubernetesYamlConfiguration.SeralizerAction is not null)
-            {
-                KubernetesYamlConfiguration.SeralizerAction(builder);
-            }
-
-            return builder;
+            return KubernetesYamlConfiguration.ExecuteSerializerOptions(builder);
         }
 
         private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly

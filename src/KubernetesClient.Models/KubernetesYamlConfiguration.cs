@@ -7,35 +7,28 @@ namespace k8s
     /// </summary>
     public static class KubernetesYamlConfiguration
     {
-        internal static Action<DeserializerBuilder> DeseralizerAction { get; set; }
-        internal static Action<SerializerBuilder> SeralizerAction { get; set; }
+        /// <summary>
+        /// Configures <see cref="DeserializerBuilder"/> for <see cref="YamlDotNet"/>.
+        /// </summary>
+        public static event EventHandler<DeserializerBuilder> DeseralizerEvent;
 
         /// <summary>
         /// Configures <see cref="SerializerBuilder"/> for <see cref="YamlDotNet"/>.
         /// </summary>
-        /// <param name="configure">An <see cref="Action"/> to configure the <see cref="SerializerBuilder"/>.</param>
-        public static void AddSerializerOptions(Action<SerializerBuilder> configure)
-        {
-            if (configure is null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
+        public static event EventHandler<SerializerBuilder> SeralizerEvent;
 
-            SeralizerAction = configure;
+        internal static SerializerBuilder ExecuteSerializerOptions(SerializerBuilder builder)
+        {
+            SeralizerEvent?.Invoke(null, builder);
+
+            return builder;
         }
 
-        /// <summary>
-        /// Configures <see cref="DeserializerBuilder"/> for <see cref="YamlDotNet"/>.
-        /// </summary>
-        /// <param name="configure">An <see cref="Action"/> to configure the <see cref="DeserializerBuilder"/>.</param>
-        public static void AddDeserializerOptions(Action<DeserializerBuilder> configure)
+        internal static DeserializerBuilder ExecuteDeserializerOptions(DeserializerBuilder builder)
         {
-            if (configure is null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
+            DeseralizerEvent?.Invoke(null, builder);
 
-            DeseralizerAction = configure;
+            return builder;
         }
     }
 }
