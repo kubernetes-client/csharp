@@ -451,6 +451,7 @@ namespace k8s
                     $"User: {userDetails.Name} does not have appropriate auth credentials in kubeconfig");
             }
         }
+
         public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
         {
             if (config == null)
