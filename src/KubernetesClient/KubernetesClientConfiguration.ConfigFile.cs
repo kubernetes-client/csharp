@@ -384,45 +384,10 @@ namespace k8s
                     switch (userDetails.UserCredentials.AuthProvider.Name)
                     {
                         case "azure":
-                            {
-                                var config = userDetails.UserCredentials.AuthProvider.Config;
-                                if (config.ContainsKey("expires-on"))
-                                {
-                                    var expiresOn = int.Parse(config["expires-on"]);
-                                    DateTimeOffset expires;
-                                    expires = DateTimeOffset.FromUnixTimeSeconds(expiresOn);
-
-                                    if (DateTimeOffset.Compare(
-                                        expires,
-                                        DateTimeOffset.Now)
-                                        <= 0)
-                                    {
-                                        var tenantId = config["tenant-id"];
-                                        var clientId = config["client-id"];
-                                        var apiServerId = config["apiserver-id"];
-                                        var refresh = config["refresh-token"];
-                                        var newToken = RenewAzureToken(
-                                            tenantId,
-                                            clientId,
-                                            apiServerId,
-                                            refresh);
-                                        config["access-token"] = newToken;
-                                    }
-                                }
-
-                                AccessToken = config["access-token"];
-                                userCredentialsFound = true;
-                                break;
-                            }
+                            throw new Exception("Please use the https://github.com/Azure/kubelogin credential plugin instead. See https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins for further details`");
 
                         case "gcp":
-                            {
-                                // config
-                                var config = userDetails.UserCredentials.AuthProvider.Config;
-                                TokenProvider = new GcpTokenProvider(config["cmd-path"]);
-                                userCredentialsFound = true;
-                                break;
-                            }
+                            throw new Exception("Please use the \"gke-gcloud-auth-plugin\" credential plugin instead. See https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke for further details");
 
                         case "oidc":
                             {
@@ -486,12 +451,6 @@ namespace k8s
                     $"User: {userDetails.Name} does not have appropriate auth credentials in kubeconfig");
             }
         }
-
-        public static string RenewAzureToken(string tenantId, string clientId, string apiServerId, string refresh)
-        {
-            throw new KubeConfigException("Refresh not supported.");
-        }
-
         public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
         {
             if (config == null)
