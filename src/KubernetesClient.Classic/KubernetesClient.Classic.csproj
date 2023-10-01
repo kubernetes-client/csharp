@@ -124,9 +124,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-    <AdditionalFiles Include="..\..\swagger.json"
-      Generator="model,modelext,api,version,versionconverterstub" />
     <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
       OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>

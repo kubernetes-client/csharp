@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <RootNamespace>k8s</RootNamespace>
+        <PublishAot Condition="'$(TargetFramework)' == 'net8.0'">true</PublishAot>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     </PropertyGroup>
 
     <ItemGroup>
@@ -75,9 +77,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Generator" />
-        <AdditionalFiles Include="..\..\swagger.json"
-            Generator="model,modelext,api,version,versionconverterstub" />
         <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
             OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
