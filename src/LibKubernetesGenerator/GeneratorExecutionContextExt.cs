@@ -9,7 +9,7 @@ namespace LibKubernetesGenerator
     {
         public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, object data, string generatedfile)
         {
-            var template = EmbedResource.GetResource("templates."+templatefile);
+            var template = EmbedResource.GetResource("templates." + templatefile);
             var generated = Render.StringToString(template, data);
             context.AddSource(generatedfile, SourceText.From(generated, Encoding.UTF8));
         }
