@@ -109,7 +109,6 @@
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
 
     <Compile Include="..\KubernetesClient\Authentication\ExecTokenProvider.cs" />
-    <Compile Include="..\KubernetesClient\Authentication\GcpTokenProvider.cs" />
     <Compile Include="..\KubernetesClient\Authentication\OidcTokenProvider.cs" />
     <Compile Include="..\KubernetesClient\Authentication\TokenFileAuth.cs" />
     <Compile Include="..\KubernetesClient\Authentication\BasicAuthenticationCredentials.cs" />
