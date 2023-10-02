@@ -124,7 +124,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
+    <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
       OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 </Project>

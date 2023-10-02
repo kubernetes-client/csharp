@@ -6,8 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="../../swagger.json" WithCulture="false" Visible="false" />
-        <EmbeddedResource Include="templates/*" WithCulture="false" />
+        <Compile Include="$(MSBuildThisFileDirectory)/*.cs" />
+        <EmbeddedResource Include="$(MSBuildThisFileDirectory)/../../swagger.json" WithCulture="false" Visible="false" />
+        <EmbeddedResource Include="$(MSBuildThisFileDirectory)/templates/*" WithCulture="false" />
     </ItemGroup>
 
     <ItemGroup>

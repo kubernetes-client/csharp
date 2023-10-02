@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-   <ProjectReference Include="..\LibKubernetesGenerator\LibKubernetesGenerator.Automapper.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+   <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator.Automapper\LibKubernetesGenerator.Automapper.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
