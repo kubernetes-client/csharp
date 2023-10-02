@@ -3,6 +3,6 @@
         <DefineConstants>$(DefineConstants);GENERATE_BASIC;</DefineConstants>
     </PropertyGroup>
 
-    <Import Project="LibKubernetesGenerator.target" /> 
+    <Import Project="../../LibKubernetesGenerator.target" /> 
 
 </Project>
