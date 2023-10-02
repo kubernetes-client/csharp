@@ -9,7 +9,7 @@ internal static class EmbedResource
     {
         var assembly = Assembly.GetExecutingAssembly();
 
-        var resourceName = nameof(LibKubernetesGenerator) + "." + name;
+        var resourceName = assembly.GetName().Name + "." + name;
 
         using var stream = assembly.GetManifestResourceStream(resourceName);
         using var reader = new StreamReader(stream ?? throw new FileNotFoundException(resourceName));
