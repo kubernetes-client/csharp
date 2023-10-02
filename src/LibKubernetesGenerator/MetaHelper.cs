@@ -28,9 +28,9 @@ namespace LibKubernetesGenerator
         private static string GetKind(JsonSchema definition)
         {
            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
-            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
+           var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
-            return groupVersionKind["kind"] as string;
+           return groupVersionKind["kind"] as string;
         }
 
         public static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,

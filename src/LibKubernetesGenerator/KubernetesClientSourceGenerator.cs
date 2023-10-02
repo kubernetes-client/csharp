@@ -111,7 +111,7 @@ namespace LibKubernetesGenerator
 
 #if GENERATE_AUTOMAPPER
             var automappersrc = generatorContext.CompilationProvider.Select((c, _) => c.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "AutoMapper/VersionConverter.cs")));
-            generatorContext.RegisterSourceOutput(automappersrc ,(ctx, srctree) =>
+            generatorContext.RegisterSourceOutput(automappersrc, (ctx, srctree) =>
             {
                 lock (Execlock)
                 {
