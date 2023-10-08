@@ -214,7 +214,7 @@ namespace k8s.LeaderElection
                     else
                     {
                         // else timeout
-                        _ = acq.ContinueWith(t => _ = t.Exception /* prevent UnobservedTaskException */, TaskContinuationOptions.OnlyOnFaulted);
+                        _ = acq.ContinueWith(t => OnError?.Invoke(t.Exception), TaskContinuationOptions.OnlyOnFaulted);
                     }
                 }
                 finally
