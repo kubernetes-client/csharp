@@ -89,8 +89,6 @@ namespace LibKubernetesGenerator
 
         public void Initialize(IncrementalGeneratorInitializationContext generatorContext)
         {
-            // System.Diagnostics.Debugger.Launch();
-
 #if GENERATE_BASIC
             generatorContext.RegisterPostInitializationOutput(ctx =>
             {
