@@ -12,7 +12,7 @@ namespace LibKubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
+        public void Generate(OpenApiDocument swagger, IncrementalGeneratorPostInitializationContext context)
         {
             foreach (var kv in swagger.Definitions)
             {
