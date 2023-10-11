@@ -39,7 +39,7 @@ jobs:
     - name: Build
       run: dotnet build
 
-    - uses: nikeee/docfx-action@v1.0.0
+    - uses: nunit/docfx-action@v2.10.0
       name: Build Documentation
       with:
         args: doc/docfx.json

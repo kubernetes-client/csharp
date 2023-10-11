@@ -8,7 +8,7 @@ namespace LibKubernetesGenerator
 {
     internal class ApiGenerator
     {
-        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
+        public void Generate(OpenApiDocument swagger, IncrementalGeneratorPostInitializationContext context)
         {
             var data = swagger.Operations
                 .Where(o => o.Method != OpenApiOperationMethod.Options)
