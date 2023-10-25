@@ -31,6 +31,8 @@ namespace k8s
                 {
                     caCerts.Add(new X509Certificate2(cert));
                 }
+
+                CaCerts = caCerts;
             }
 
             SkipTlsVerify = config.SkipTlsVerify;
