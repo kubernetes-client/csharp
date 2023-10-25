@@ -26,7 +26,11 @@ namespace k8s
 
             if (config.SslCaCerts != null)
             {
-                CaCerts = new X509Certificate2Collection(config.SslCaCerts.Select(c => new X509Certificate2(c)).ToArray());
+                var caCerts = new X509Certificate2Collection();
+                foreach (var cert in config.SslCaCerts)
+                {
+                    caCerts.Add(new X509Certificate2(cert));
+                }
             }
 
             SkipTlsVerify = config.SkipTlsVerify;
@@ -35,9 +39,9 @@ namespace k8s
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
             jsonSerializerOptions = config.JsonSerializerOptions;
-        #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
             DisableHttp2 = config.DisableHttp2;
-        #endif
+#endif
         }
 
         private void ValidateConfig(KubernetesClientConfiguration config)
