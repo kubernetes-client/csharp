@@ -92,11 +92,11 @@ namespace customResource
             // deleting the custom resource
             try
             {
-                myCr = await generic.DeleteNamespacedAsync<CResource>(
+                var status = await generic.DeleteNamespacedAsync<V1Status>(
                    myCr.Metadata.NamespaceProperty ?? "default",
                    myCr.Metadata.Name).ConfigureAwait(false);
 
-                Console.WriteLine("Deleted the CR");
+                Console.WriteLine($"Deleted the CR status: {status}");
             }
             catch (Exception exception)
             {
