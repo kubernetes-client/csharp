@@ -9,6 +9,8 @@ namespace k8s
     /// </summary>
     public partial class KubernetesClientConfiguration
     {
+        private string caCertificateFullFilePath;
+        private byte[] caCertificateData;
         private JsonSerializerOptions jsonSerializerOptions;
 
         /// <summary>
@@ -24,7 +26,60 @@ namespace k8s
         /// <summary>
         ///     Gets SslCaCerts
         /// </summary>
-        public X509Certificate2Collection SslCaCerts { get; set; }
+        /// <remarks>The user of this property is responsible to dispose all elements in the returned <see cref="X509Certificate2Collection"/></remarks>
+        /// <exception cref="CryptographicException">An error with the certificate occurs. For example: - The certificate file does not exist. - The certificate is invalid. - The certificate's password is incorrect</exception>
+        [Obsolete("Use LoadSslCaCerts() instead.")]
+        public X509Certificate2Collection SslCaCerts => LoadSslCaCerts();
+
+        /// <summary>
+        ///     Gets or sets absolute to to a cluster ca certificate
+        /// </summary>
+        /// <exception cref="ArgumentException">Thrown if assigned path is not rooted.</exception>
+        public string CaCertificateFullFilePath
+        {
+            get
+            {
+                return caCertificateFullFilePath;
+            }
+
+            set
+            {
+                if (value != null && !Path.IsPathRooted(value))
+                {
+                    throw new ArgumentException("Path is not rooted!", nameof(value));
+                }
+
+                caCertificateFullFilePath = value;
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets ClientCertificateData
+        /// </summary>
+        /// <exception cref="CryptographicException">An error with the certificate occurs. For example: - The certificate file does not exist. - The certificate is invalid. - The certificate's password is incorrect</exception>
+        public ReadOnlySpan<byte> CaCertificateData
+        {
+            get
+            {
+                return caCertificateData;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    caCertificateData = null;
+                    return;
+                }
+
+                var data = value.ToArray();
+
+                // Load once to ensure validity assigned data
+                using var certificate = new X509Certificate2(data);
+
+                caCertificateData = value.ToArray();
+            }
+        }
 
         /// <summary>
         ///     Gets ClientCertificateData
@@ -147,6 +202,32 @@ namespace k8s
             }
 
             configure(JsonSerializerOptions);
+        }
+
+        /// <summary>
+        ///     Returns a <see cref="X509Certificate2Collection"/> of <see cref="X509Certificate2"/> instances.
+        /// </summary>
+        /// <remarks>
+        ///     The caller is responsible to dispose all elements in the returned <see cref="X509Certificate2Collection"/>.
+        /// </remarks>
+        /// <exception cref="CryptographicException">An error with the certificate occurs. For example: - The certificate file does not exist. - The certificate is invalid. - The certificate's password is incorrect</exception>
+        /// <returns>A <see cref="X509Certificate2Collection"/> of <see cref="X509Certificate2"/> instances.</returns>
+        public X509Certificate2Collection LoadSslCaCerts()
+        {
+            if (CaCertificateData != null)
+            {
+                // This null password is to change the constructor to fix this KB:
+                // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                string nullPassword = null;
+                return new X509Certificate2Collection(new X509Certificate2(CaCertificateData, nullPassword));
+            }
+
+            if (!string.IsNullOrEmpty(CaCertificateFullFilePath))
+            {
+                return new X509Certificate2Collection(new X509Certificate2(caCertificateFullFilePath));
+            }
+
+            return new X509Certificate2Collection();
         }
     }
 }

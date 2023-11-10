@@ -63,7 +63,7 @@ namespace k8s
             {
                 Host = new UriBuilder("https", host, Convert.ToInt32(port)).ToString(),
                 TokenProvider = new TokenFileAuth(Path.Combine(ServiceAccountPath, ServiceAccountTokenKeyFileName)),
-                SslCaCerts = CertUtils.LoadPemFileCert(rootCAFile),
+                CaCertificateFullFilePath = rootCAFile,
             };
 
             var namespaceFile = Path.Combine(ServiceAccountPath, ServiceAccountNamespaceFileName);
