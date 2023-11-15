@@ -21,7 +21,7 @@
         <PackageReference Include="NSwag.Core" Version="13.20.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Nustache" Version="1.16.0.10" GeneratePathProperty="true" PrivateAssets="all" NoWarn="NU1701" />
         <PackageReference Include="NJsonSchema" Version="10.9.0" GeneratePathProperty="true" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Namotion.Reflection" Version="3.0.1" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.2" GeneratePathProperty="true" PrivateAssets="all" />

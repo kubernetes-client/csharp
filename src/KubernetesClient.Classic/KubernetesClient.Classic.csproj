@@ -9,7 +9,7 @@
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.2.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
     <PackageReference Include="Fractions" Version="7.3.0" />
     <PackageReference Include="YamlDotNet" Version="13.7.1" />
     <PackageReference Include="System.Text.Json" Version="7.0.3" />
