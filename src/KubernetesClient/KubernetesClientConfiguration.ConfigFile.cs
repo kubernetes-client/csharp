@@ -537,12 +537,13 @@ namespace k8s
 
             try
             {
-                if (!process.WaitForExit((int)(ExecTimeout.TotalMilliseconds)))
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
+
+                if (!process.WaitForExit((int)ExecTimeout.TotalMilliseconds))
                 {
                     throw new KubeConfigException("external exec failed due to timeout");
                 }
 
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
