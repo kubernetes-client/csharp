@@ -14,7 +14,7 @@ namespace LibKubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
+        public void Generate(OpenApiDocument swagger, IncrementalGeneratorPostInitializationContext context)
         {
             // Generate the interface declarations
             var skippedTypes = new HashSet<string> { "V1WatchEvent" };

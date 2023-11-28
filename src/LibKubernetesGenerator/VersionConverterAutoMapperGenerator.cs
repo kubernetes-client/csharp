@@ -1,9 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 using NSwag;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,7 +17,7 @@ namespace LibKubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void Generate(OpenApiDocument swagger, GeneratorExecutionContext context)
+        public void Generate(OpenApiDocument swagger, SourceProductionContext context, SyntaxTree manualconverter)
         {
             var allGeneratedModelClassNames = new List<string>();
 
@@ -32,7 +30,6 @@ namespace LibKubernetesGenerator
 
             var manualMaps = new List<(string, string)>();
 
-            var manualconverter = context.Compilation.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "AutoMapper/VersionConverter.cs"));
             manualMaps = Regex.Matches(manualconverter.GetText().ToString(), @"\.CreateMap<(?<T1>.+?),\s?(?<T2>.+?)>")
                 .OfType<Match>()
                 .Select(x => (x.Groups["T1"].Value, x.Groups["T2"].Value))
@@ -80,23 +77,6 @@ internal static partial class VersionConverter
             sbversion.AppendLine("}}");
 
             context.AddSource($"VersionConverter.g.cs", SourceText.From(sbversion.ToString(), Encoding.UTF8));
-        }
-
-        private IEnumerable<string> PathSplit(string path)
-        {
-            var p = path;
-
-            while (!string.IsNullOrEmpty(p))
-            {
-                yield return Path.GetFileName(p);
-                p = Path.GetDirectoryName(p);
-            }
-        }
-
-        private bool PathSuffixMath(string path, string suffix)
-        {
-            var s = PathSplit(suffix).ToList();
-            return PathSplit(path).Take(s.Count).SequenceEqual(s);
         }
     }
 }

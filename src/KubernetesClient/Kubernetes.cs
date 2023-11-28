@@ -1,10 +1,6 @@
 using k8s.Authentication;
-using k8s.Autorest;
-using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s
 {
@@ -163,7 +159,6 @@ namespace k8s
             if (!httpResponse.IsSuccessStatusCode)
             {
                 string responseContent = null;
-                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
                 if (httpResponse.Content != null)
                 {
                     responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -173,6 +168,7 @@ namespace k8s
                     responseContent = string.Empty;
                 }
 
+                var ex = new HttpOperationException($"Operation returned an invalid status code '{statusCode}', response body {responseContent}");
                 ex.Request = new HttpRequestMessageWrapper(httpRequest, requestContent);
                 ex.Response = new HttpResponseMessageWrapper(httpResponse, responseContent);
                 httpRequest.Dispose();

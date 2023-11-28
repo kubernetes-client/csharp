@@ -1,9 +1,6 @@
 using System.Buffers;
 using System.Diagnostics;
-using System.IO;
 using System.Net.WebSockets;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace k8s
 {

@@ -8,7 +8,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     name: Dotnet build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup dotnet
@@ -42,7 +42,7 @@ jobs:
     runs-on: windows-latest
     name: MSBuild build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Add msbuild to PATH
@@ -52,14 +52,14 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Restore nugets (msbuild)
-        run: msbuild .\src\KubernetesClient.Models\ -t:restore -p:RestorePackagesConfig=true
+        run: msbuild .\src\KubernetesClient\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
-        run: msbuild .\src\KubernetesClient.Models\
+        run: msbuild .\src\KubernetesClient\
 
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup dotnet

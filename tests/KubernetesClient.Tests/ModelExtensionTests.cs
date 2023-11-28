@@ -82,8 +82,8 @@ namespace k8s.Tests
             // test annotations and labels
             pod.SetAnnotation("x", "y");
             pod.SetLabel("a", "b");
-            Assert.Equal(1, pod.Annotations().Count);
-            Assert.Equal(1, pod.Labels().Count);
+            Assert.Single(pod.Annotations());
+            Assert.Single(pod.Labels());
             Assert.Equal("y", pod.GetAnnotation("x"));
             Assert.Equal("y", pod.Metadata.Annotations["x"]);
             Assert.Null(pod.GetAnnotation("a"));
@@ -91,9 +91,9 @@ namespace k8s.Tests
             Assert.Equal("b", pod.Metadata.Labels["a"]);
             Assert.Null(pod.GetLabel("x"));
             pod.SetAnnotation("x", null);
-            Assert.Equal(0, pod.Annotations().Count);
+            Assert.Empty(pod.Annotations());
             pod.SetLabel("a", null);
-            Assert.Equal(0, pod.Labels().Count);
+            Assert.Empty(pod.Labels());
 
             // test finalizers
             Assert.False(pod.HasFinalizer("abc"));
@@ -153,7 +153,7 @@ namespace k8s.Tests
             svc.OwnerReferences()[0].Controller = true;
             Assert.Same(ownr, svc.GetController());
             Assert.Same(ownr, svc.RemoveOwnerReference(pod));
-            Assert.Equal(0, svc.OwnerReferences().Count);
+            Assert.Empty(svc.OwnerReferences());
             svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid(), Controller = true });
             svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid(), Controller = false });
             svc.AddOwnerReference(new V1OwnerReference() { ApiVersion = pod.ApiVersion, Kind = pod.Kind, Name = pod.Name(), Uid = pod.Uid() });
@@ -161,7 +161,7 @@ namespace k8s.Tests
             Assert.NotNull(svc.RemoveOwnerReference(pod));
             Assert.Equal(2, svc.OwnerReferences().Count);
             Assert.True(svc.RemoveOwnerReferences(pod));
-            Assert.Equal(0, svc.OwnerReferences().Count);
+            Assert.Empty(svc.OwnerReferences());
         }
 
         [Fact]
