@@ -32,12 +32,12 @@ namespace k8s.Authentication
 
         private DateTime getExpiryFromToken()
         {
-            int expiry;
+            long expiry;
             var handler = new JwtSecurityTokenHandler();
             try
             {
                 var token = handler.ReadJwtToken(_idToken);
-                expiry = token.Payload.Exp ?? 0;
+                expiry = token.Payload.Expiration ?? 0;
             }
             catch
             {

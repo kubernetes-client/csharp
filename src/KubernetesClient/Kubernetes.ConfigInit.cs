@@ -23,7 +23,18 @@ namespace k8s
         {
             Initialize();
             ValidateConfig(config);
-            CaCerts = config.SslCaCerts;
+
+            if (config.SslCaCerts != null)
+            {
+                var caCerts = new X509Certificate2Collection();
+                foreach (var cert in config.SslCaCerts)
+                {
+                    caCerts.Add(new X509Certificate2(cert));
+                }
+
+                CaCerts = caCerts;
+            }
+
             SkipTlsVerify = config.SkipTlsVerify;
             TlsServerName = config.TlsServerName;
             CreateHttpClient(handlers, config);

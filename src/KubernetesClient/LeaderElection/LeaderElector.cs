@@ -211,8 +211,11 @@ namespace k8s.LeaderElection
                         // wait RetryPeriod since acq return immediately
                         await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
                     }
-
-                    // else timeout
+                    else
+                    {
+                        // else timeout
+                        _ = acq.ContinueWith(t => OnError?.Invoke(t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+                    }
                 }
                 finally
                 {
