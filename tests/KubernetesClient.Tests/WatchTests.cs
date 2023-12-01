@@ -409,7 +409,12 @@ namespace k8s.Tests
                 await Task.WhenAny(waitForClosed.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(false);
                 Assert.True(waitForClosed.IsSet);
                 Assert.False(watcher.Watching);
+
+#if NET8_0_OR_GREATER
+                Assert.IsType<HttpIOException>(exceptionCatched);
+#else
                 Assert.IsType<IOException>(exceptionCatched);
+#endif
             }
         }
 

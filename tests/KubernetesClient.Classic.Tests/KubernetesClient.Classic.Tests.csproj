@@ -2,8 +2,8 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace>k8s.Tests</RootNamespace>
-    <TargetFramework Condition="'$(OS)' != 'Windows_NT'">net6.0</TargetFramework>
-    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6.0;net48</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net6.0;net7.0;net8.0;net48</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

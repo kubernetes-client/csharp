@@ -17,6 +17,7 @@ jobs:
           dotnet-version: |
            6.0.x
            7.0.x
+           8.0.x
       # - name: Check Format
       #   # don't check formatting on Windows b/c of CRLF issues.
       #   if: matrix.os == 'ubuntu-latest'
@@ -68,6 +69,7 @@ jobs:
           dotnet-version: |
            6.0.x
            7.0.x
+           8.0.x
       - name: Minikube
         run: minikube start
       - name: Test
