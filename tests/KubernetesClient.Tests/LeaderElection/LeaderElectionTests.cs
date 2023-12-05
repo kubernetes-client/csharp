@@ -71,7 +71,7 @@ namespace k8s.Tests.LeaderElection
                     countdown.Signal();
                 };
 
-                leaderElector.RunAsync().Wait();
+                leaderElector.RunUntilLeadershipLostAsync().Wait();
             });
 
             countdown.Wait(TimeSpan.FromSeconds(10));
@@ -164,7 +164,7 @@ namespace k8s.Tests.LeaderElection
                     lockAStopLeading.Set();
                 };
 
-                leaderElector.RunAsync().Wait();
+                leaderElector.RunUntilLeadershipLostAsync().Wait();
             });
 
 
@@ -186,7 +186,7 @@ namespace k8s.Tests.LeaderElection
                     testLeaderElectionLatch.Signal();
                 };
 
-                leaderElector.RunAsync().Wait();
+                leaderElector.RunUntilLeadershipLostAsync().Wait();
             });
 
             testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(15));
@@ -272,7 +272,7 @@ namespace k8s.Tests.LeaderElection
                     countdown.Signal();
                 };
 
-                leaderElector.RunAsync().Wait();
+                leaderElector.RunUntilLeadershipLostAsync().Wait();
             });
 
             countdown.Wait(TimeSpan.FromSeconds(15));
@@ -305,7 +305,7 @@ namespace k8s.Tests.LeaderElection
 
             try
             {
-                leaderElector.RunAsync().Wait();
+                leaderElector.RunUntilLeadershipLostAsync().Wait();
             }
             catch (Exception e)
             {
@@ -362,7 +362,7 @@ namespace k8s.Tests.LeaderElection
                 countdown.Signal();
             };
 
-            Task.Run(() => leaderElector.RunAsync());
+            Task.Run(() => leaderElector.RunUntilLeadershipLostAsync());
             countdown.Wait(TimeSpan.FromSeconds(10));
 
             Assert.True(notifications.SequenceEqual(new[]
@@ -403,7 +403,7 @@ namespace k8s.Tests.LeaderElection
                 countdown.Signal();
             };
 
-            Task.Run(() => leaderElector.RunAsync());
+            Task.Run(() => leaderElector.RunUntilLeadershipLostAsync());
             countdown.Wait(TimeSpan.FromSeconds(10));
 
             Assert.True(notifications.SequenceEqual(new[] { "foo1" }));

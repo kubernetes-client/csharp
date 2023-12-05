@@ -49,7 +49,12 @@ namespace k8s.LeaderElection
             return observedRecord?.HolderIdentity;
         }
 
-        public async Task RunAsync(CancellationToken cancellationToken = default)
+        /// <summary>
+        /// Tries to acquire and hold leadership once via a Kubernetes Lease resource.
+        /// Will complete the returned Task and not retry to acquire leadership again after leadership is lost once.
+        /// </summary>
+        /// <param name="cancellationToken">A token to cancel the operation.</param>
+        public async Task RunUntilLeadershipLostAsync(CancellationToken cancellationToken = default)
         {
             await AcquireAsync(cancellationToken).ConfigureAwait(false);
 
@@ -105,6 +110,32 @@ namespace k8s.LeaderElection
             {
                 OnStoppedLeading?.Invoke();
             }
+        }
+
+        /// <summary>
+        /// Tries to acquire leadership via a Kubernetes Lease resource.
+        /// Will retry to acquire leadership again after leadership was lost.
+        /// </summary>
+        /// <returns>A Task which completes only on cancellation</returns>
+        /// <param name="cancellationToken">A token to cancel the operation.</param>
+        public async Task RunAndTryToHoldLeadershipForeverAsync(CancellationToken cancellationToken = default)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await RunUntilLeadershipLostAsync(cancellationToken);
+            }
+        }
+
+        /// <summary>
+        /// Tries to acquire leadership once via a Kubernetes Lease resource.
+        /// Will complete the returned Task and not retry to acquire leadership again after leadership is lost once.
+        /// </summary>
+        /// <seealso cref="RunUntilLeadershipLostAsync"/>
+        /// <param name="cancellationToken">A token to cancel the operation.</param>
+        [Obsolete("Replaced by RunUntilLeadershipLostAsync to encode behavior in method name.")]
+        public Task RunAsync(CancellationToken cancellationToken = default)
+        {
+            return RunUntilLeadershipLostAsync(cancellationToken);
         }
 
         private async Task<bool> TryAcquireOrRenew(CancellationToken cancellationToken)
