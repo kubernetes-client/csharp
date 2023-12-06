@@ -122,7 +122,7 @@ namespace k8s.LeaderElection
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                await RunUntilLeadershipLostAsync(cancellationToken);
+                await RunUntilLeadershipLostAsync(cancellationToken).ConfigureAwait(false);
             }
         }
 
