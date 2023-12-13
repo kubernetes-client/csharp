@@ -541,7 +541,7 @@ namespace k8s.Tests
             var store = new Pkcs12Store();
             store.Load(stream, new char[] { });
 
-            var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(a => store.IsKeyEntry(a));
+            var keyAlias = store.Aliases.Cast<string>().SingleOrDefault(store.IsKeyEntry);
 
             var key = (RsaPrivateCrtKeyParameters)store.GetKey(keyAlias).Key;
             var bouncyCertificate = store.GetCertificate(keyAlias).Certificate;

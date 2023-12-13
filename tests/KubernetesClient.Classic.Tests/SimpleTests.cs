@@ -52,6 +52,9 @@ public class BasicTests
             {
                 running = false;
                 server.Stop();
+#if NET8_0_OR_GREATER
+                server.Dispose();
+#endif
                 loop.Wait();
                 loop.Dispose();
             }
@@ -74,7 +77,7 @@ public class BasicTests
         });
         var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Addr });
 
-        var pod = await client.CoreV1.ReadNamespacedPodAsync("pod", "default").ConfigureAwait(false);
+        var pod = await client.CoreV1.ReadNamespacedPodAsync("pod", "default").ConfigureAwait(true);
 
         Assert.Equal("pod0", pod.Metadata.Name);
     }

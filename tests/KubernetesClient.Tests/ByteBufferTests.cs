@@ -255,7 +255,7 @@ namespace k8s.Tests
 
             // Kick off a read operation
             var readTask = Task.Run(() => read = buffer.Read(readData, 0, readData.Length));
-            await Task.Delay(250).ConfigureAwait(false);
+            await Task.Delay(250).ConfigureAwait(true);
             Assert.False(readTask.IsCompleted, "Read task completed before data was available.");
 
             // Write data to the buffer
@@ -264,7 +264,7 @@ namespace k8s.Tests
             await TaskAssert.Completed(
                 readTask,
                 TimeSpan.FromMilliseconds(1000),
-                "Timed out waiting for read task to complete.").ConfigureAwait(false);
+                "Timed out waiting for read task to complete.").ConfigureAwait(true);
 
             Assert.Equal(3, read);
             Assert.Equal(0xF0, readData[0]);
@@ -411,10 +411,10 @@ namespace k8s.Tests
             var output = new byte[buffer.Size + 1];
 
             var readTask = Task.Run(() => buffer.Read(output, 0, output.Length));
-            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(true);
 
             buffer.Write(data, 0, data.Length);
-            await readTask.ConfigureAwait(false);
+            await readTask.ConfigureAwait(true);
         }
 
 #if NETCOREAPP2_0

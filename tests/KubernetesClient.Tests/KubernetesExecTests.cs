@@ -51,7 +51,7 @@ namespace k8s.Tests
                 {
                     { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
-                cancellationToken: CancellationToken.None).ConfigureAwait(false);
+                cancellationToken: CancellationToken.None).ConfigureAwait(true);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
@@ -91,7 +91,7 @@ namespace k8s.Tests
                 {
                     { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
-                cancellationToken: CancellationToken.None).ConfigureAwait(false);
+                cancellationToken: CancellationToken.None).ConfigureAwait(true);
 
             var expectedHeaders = new Dictionary<string, string>()
             {
@@ -137,7 +137,7 @@ namespace k8s.Tests
                 {
                     { "X-My-Header", new List<string>() { "myHeaderValue", "myHeaderValue2" } },
                 },
-                cancellationToken: CancellationToken.None).ConfigureAwait(false);
+                cancellationToken: CancellationToken.None).ConfigureAwait(true);
 
             var expectedHeaders = new Dictionary<string, string>()
             {

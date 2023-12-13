@@ -29,7 +29,7 @@ namespace k8s.Tests
 
                 // Send 100 bytes, expect 1 (channel index) + 100 (payload) = 101 bytes
                 Assert.True(
-                    await WaitForAsync(() => sentBuffer.Count == 101).ConfigureAwait(false),
+                    await WaitForAsync(() => sentBuffer.Count == 101).ConfigureAwait(true),
                     $"Demuxer error: expect to send 101 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "Incorrect payload!");
@@ -56,7 +56,7 @@ namespace k8s.Tests
 
                 // Send 300 bytes in 2 messages, expect 1 (channel index) * 2 + 300 (payload) = 302 bytes
                 Assert.True(
-                    await WaitForAsync(() => sentBuffer.Count == 302).ConfigureAwait(false),
+                    await WaitForAsync(() => sentBuffer.Count == 302).ConfigureAwait(true),
                     $"Demuxer error: expect to send 302 bytes, but actually send {sentBuffer.Count} bytes.");
                 Assert.True(sentBuffer[0] == channelIndex, "The first sent byte is not channel index!");
                 Assert.True(sentBuffer[1] == 0xEF, "The first part of payload incorrect!");
@@ -84,21 +84,21 @@ namespace k8s.Tests
                 {
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xAA, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xAB, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xAC, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(false);
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(false);
+                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(true);
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var buffer = new byte[50];
                 while (true)
                 {
-                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                     if (cRead == 0)
                     {
                         break;
@@ -110,7 +110,7 @@ namespace k8s.Tests
                     }
                 }
 
-                await t.ConfigureAwait(false);
+                await t.ConfigureAwait(true);
 
                 Assert.True(
                     receivedBuffer.Count == expectedCount,
@@ -144,21 +144,21 @@ namespace k8s.Tests
                 {
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xB1, true)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex, 0xB2, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xB3, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(false);
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(false);
+                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(true);
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var buffer = new byte[50];
                 while (true)
                 {
-                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                     if (cRead == 0)
                     {
                         break;
@@ -170,7 +170,7 @@ namespace k8s.Tests
                     }
                 }
 
-                await t.ConfigureAwait(false);
+                await t.ConfigureAwait(true);
 
                 Assert.True(
                     receivedBuffer.Count == expectedCount,
@@ -204,21 +204,21 @@ namespace k8s.Tests
                 {
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(2, channelIndex, 0xC1, true)),
-                        WebSocketMessageType.Binary, false).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, false).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex, 0xC2, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xC3, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(false);
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(false);
+                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(true);
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var buffer = new byte[50];
                 while (true)
                 {
-                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                     if (cRead == 0)
                     {
                         break;
@@ -230,7 +230,7 @@ namespace k8s.Tests
                     }
                 }
 
-                await t.ConfigureAwait(false);
+                await t.ConfigureAwait(true);
 
                 Assert.True(
                     receivedBuffer.Count == expectedCount,
@@ -268,24 +268,24 @@ namespace k8s.Tests
                     // Simulate WebSocket received remote data to multiple streams
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xD1, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xD2, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xD3, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer1.Count == expectedCount1).ConfigureAwait(false);
-                    await WaitForAsync(() => receivedBuffer2.Count == expectedCount2).ConfigureAwait(false);
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(false);
+                    await WaitForAsync(() => receivedBuffer1.Count == expectedCount1).ConfigureAwait(true);
+                    await WaitForAsync(() => receivedBuffer2.Count == expectedCount2).ConfigureAwait(true);
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var t2 = Task.Run(async () =>
                 {
                     var buffer = new byte[50];
                     while (true)
                     {
-                        var cRead = await stream1.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                        var cRead = await stream1.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                         if (cRead == 0)
                         {
                             break;
@@ -302,7 +302,7 @@ namespace k8s.Tests
                     var buffer = new byte[50];
                     while (true)
                     {
-                        var cRead = await stream2.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                        var cRead = await stream2.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                         if (cRead == 0)
                         {
                             break;
@@ -314,7 +314,7 @@ namespace k8s.Tests
                         }
                     }
                 });
-                await Task.WhenAll(t1, t2, t3).ConfigureAwait(false);
+                await Task.WhenAll(t1, t2, t3).ConfigureAwait(true);
 
                 Assert.True(
                     receivedBuffer1.Count == expectedCount1,
@@ -359,24 +359,24 @@ namespace k8s.Tests
                     // Simulate WebSocket received remote data to multiple streams
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(100, channelIndex1, 0xE1, true)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(200, channelIndex2, 0xE2, true)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
                     await ws.InvokeReceiveAsync(
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex1, 0xE3, false)),
-                        WebSocketMessageType.Binary, true).ConfigureAwait(false);
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer1.Count == expectedCount1).ConfigureAwait(false);
-                    await WaitForAsync(() => receivedBuffer2.Count == expectedCount2).ConfigureAwait(false);
-                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(false);
+                    await WaitForAsync(() => receivedBuffer1.Count == expectedCount1).ConfigureAwait(true);
+                    await WaitForAsync(() => receivedBuffer2.Count == expectedCount2).ConfigureAwait(true);
+                    await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var t2 = Task.Run(async () =>
                 {
                     var buffer = new byte[50];
                     while (true)
                     {
-                        var cRead = await stream1.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                        var cRead = await stream1.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                         if (cRead == 0)
                         {
                             break;
@@ -393,7 +393,7 @@ namespace k8s.Tests
                     var buffer = new byte[50];
                     while (true)
                     {
-                        var cRead = await stream2.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                        var cRead = await stream2.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
                         if (cRead == 0)
                         {
                             break;
@@ -405,7 +405,7 @@ namespace k8s.Tests
                         }
                     }
                 });
-                await Task.WhenAll(t1, t2, t3).ConfigureAwait(false);
+                await Task.WhenAll(t1, t2, t3).ConfigureAwait(true);
 
                 Assert.True(
                     receivedBuffer1.Count == expectedCount1,
