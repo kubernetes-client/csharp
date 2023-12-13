@@ -136,9 +136,9 @@ metadata:
             var tempFileName = Path.GetTempFileName();
             try
             {
-                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(true);
 
-                var objs = await KubernetesYaml.LoadAllFromFileAsync(tempFileName).ConfigureAwait(false);
+                var objs = await KubernetesYaml.LoadAllFromFileAsync(tempFileName).ConfigureAwait(true);
                 Assert.Equal(2, objs.Count);
                 Assert.IsType<V1Pod>(objs[0]);
                 Assert.IsType<V1Namespace>(objs[1]);
@@ -175,9 +175,9 @@ metadata:
             var tempFileName = Path.GetTempFileName();
             try
             {
-                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(true);
 
-                var objs = await KubernetesYaml.LoadAllFromFileAsync(tempFileName, types).ConfigureAwait(false);
+                var objs = await KubernetesYaml.LoadAllFromFileAsync(tempFileName, types).ConfigureAwait(true);
                 Assert.Equal(2, objs.Count);
                 Assert.IsType<MyPod>(objs[0]);
                 Assert.IsType<V1Namespace>(objs[1]);
@@ -309,9 +309,9 @@ metadata:
             var tempFileName = Path.GetTempFileName();
             try
             {
-                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(false);
+                await File.WriteAllTextAsync(tempFileName, content).ConfigureAwait(true);
 
-                var obj = await KubernetesYaml.LoadFromFileAsync<V1Pod>(tempFileName).ConfigureAwait(false);
+                var obj = await KubernetesYaml.LoadFromFileAsync<V1Pod>(tempFileName).ConfigureAwait(true);
                 Assert.Equal("foo", obj.Metadata.Name);
             }
             finally

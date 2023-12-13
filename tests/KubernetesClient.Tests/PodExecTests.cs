@@ -52,7 +52,7 @@ namespace k8s.Tests
                     TimeSpan.FromSeconds(5));
             }
 
-            await Host.StartAsync(TestCancellation).ConfigureAwait(false);
+            await Host.StartAsync(TestCancellation).ConfigureAwait(true);
 
             using (Kubernetes client = CreateTestClient())
             {
@@ -67,7 +67,7 @@ namespace k8s.Tests
                     false,
                     true,
                     webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
-                    cancellationToken: TestCancellation).ConfigureAwait(false);
+                    cancellationToken: TestCancellation).ConfigureAwait(true);
                 Assert.Equal(
                     WebSocketProtocol.ChannelWebSocketProtocol,
                     clientSocket.SubProtocol); // For WebSockets, the Kubernetes API defaults to the binary channel (v1) protocol.
@@ -204,8 +204,8 @@ namespace k8s.Tests
                 {
                     await Assert.ThrowsAsync<ArgumentNullException>(() => client.NamespacedPodExecAsync(
                         "pod-name",
-                        "pod-namespace", "my-container", command, false, null, CancellationToken.None))
-                        .ConfigureAwait(false);
+                        "pod-namespace", "my-container", command, false, null, CancellationToken.None)).ConfigureAwait(true)
+;
                 }
             }
         }
@@ -229,8 +229,8 @@ namespace k8s.Tests
             {
                 var ex = await Assert.ThrowsAsync<KubernetesException>(() => client.NamespacedPodExecAsync(
                     "pod-name",
-                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
-                    .ConfigureAwait(false);
+                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None)).ConfigureAwait(true)
+;
                 Assert.Same(status, ex.Status);
             }
         }
@@ -254,7 +254,7 @@ namespace k8s.Tests
             {
                 var ex = await Assert.ThrowsAsync<HttpOperationException>(() =>
                     client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container", command, false, handler,
-                        CancellationToken.None)).ConfigureAwait(false);
+                        CancellationToken.None)).ConfigureAwait(true);
                 Assert.Same(exception, ex);
             }
         }
@@ -278,8 +278,8 @@ namespace k8s.Tests
             {
                 var ex = await Assert.ThrowsAsync<Exception>(() => client.NamespacedPodExecAsync(
                     "pod-name",
-                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None))
-                    .ConfigureAwait(false);
+                    "pod-namespace", "my-container", command, false, handler, CancellationToken.None)).ConfigureAwait(true)
+;
                 Assert.Same(exception, ex);
             }
         }
@@ -330,7 +330,7 @@ namespace k8s.Tests
                 using (Kubernetes client = kubernetesMock.Object)
                 {
                     var exitCode = await client.NamespacedPodExecAsync("pod-name", "pod-namespace", "my-container",
-                        command, false, handler, CancellationToken.None).ConfigureAwait(false);
+                        command, false, handler, CancellationToken.None).ConfigureAwait(true);
                     Assert.Equal(1, exitCode);
                 }
             }
