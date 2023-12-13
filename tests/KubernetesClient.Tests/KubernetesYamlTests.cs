@@ -282,7 +282,7 @@ spec:
         }
 
         [Fact]
-        public void LoadFromStream()
+        public async Task LoadFromStream()
         {
             var content = @"apiVersion: v1
 kind: Pod
@@ -292,7 +292,7 @@ metadata:
 
             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-            var obj = KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).Result;
+            var obj = await KubernetesYaml.LoadFromStreamAsync<V1Pod>(stream).ConfigureAwait(true);
 
             Assert.Equal("foo", obj.Metadata.Name);
         }
