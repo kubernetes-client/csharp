@@ -82,10 +82,10 @@ namespace k8s.Tests
                 const int STDOUT = 1;
                 const string expectedOutput = "This is text send to STDOUT.";
 
-                int bytesSent = await SendMultiplexed(serverSocket, STDOUT, expectedOutput).ConfigureAwait(false);
+                int bytesSent = await SendMultiplexed(serverSocket, STDOUT, expectedOutput).ConfigureAwait(true);
                 testOutput.WriteLine($"Sent {bytesSent} bytes to server socket; receiving from client socket...");
 
-                (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket).ConfigureAwait(false);
+                (string receivedText, byte streamIndex, int bytesReceived) = await ReceiveTextMultiplexed(clientSocket).ConfigureAwait(true);
                 testOutput.WriteLine(
                     $"Received {bytesReceived} bytes from client socket ('{receivedText}', stream {streamIndex}).");
 
@@ -94,7 +94,7 @@ namespace k8s.Tests
 
                 await Disconnect(clientSocket, serverSocket,
                     WebSocketCloseStatus.NormalClosure,
-                    "Normal Closure").ConfigureAwait(false);
+                    "Normal Closure").ConfigureAwait(true);
 
                 WebSocketTestAdapter.CompleteTest();
             }
