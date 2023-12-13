@@ -52,6 +52,9 @@ public class BasicTests
             {
                 running = false;
                 server.Stop();
+#if NET8_0_OR_GREATER
+                server.Dispose();
+#endif
                 loop.Wait();
                 loop.Dispose();
             }
