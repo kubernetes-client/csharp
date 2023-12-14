@@ -5,7 +5,7 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Contains information about how to communicate with a kubernetes cluster
     /// </summary>
-    [YamlSerializable] 
+    [YamlSerializable]
     public class ClusterEndpoint
     {
         /// <summary>

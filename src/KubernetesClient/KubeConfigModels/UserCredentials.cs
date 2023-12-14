@@ -5,7 +5,7 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Contains information that describes identity information.  This is use to tell the kubernetes cluster who you are.
     /// </summary>
-    [YamlSerializable] 
+    [YamlSerializable]
     public class UserCredentials
     {
         /// <summary>

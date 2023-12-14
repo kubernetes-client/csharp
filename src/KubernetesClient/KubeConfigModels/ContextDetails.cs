@@ -6,7 +6,7 @@ namespace k8s.KubeConfigModels
     /// Represents a tuple of references to a cluster (how do I communicate with a kubernetes cluster),
     /// a user (how do I identify myself), and a namespace (what subset of resources do I want to work with)
     /// </summary>
-    [YamlSerializable] 
+    [YamlSerializable]
     public class ContextDetails
     {
         /// <summary>
