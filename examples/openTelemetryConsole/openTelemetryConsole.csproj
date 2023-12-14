@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.7.0" />
-        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.6.0-rc.1" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.7.0" />
     </ItemGroup>
     
 </Project>
