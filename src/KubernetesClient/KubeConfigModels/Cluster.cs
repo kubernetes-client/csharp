@@ -5,6 +5,7 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Relates nicknames to cluster information.
     /// </summary>
+    [YamlSerializable] 
     public class Cluster
     {
         /// <summary>

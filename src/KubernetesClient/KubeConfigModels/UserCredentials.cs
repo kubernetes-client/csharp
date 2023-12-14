@@ -5,6 +5,7 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Contains information that describes identity information.  This is use to tell the kubernetes cluster who you are.
     /// </summary>
+    [YamlSerializable] 
     public class UserCredentials
     {
         /// <summary>
@@ -73,11 +74,11 @@ namespace k8s.KubeConfigModels
         [YamlMember(Alias = "auth-provider", ApplyNamingConventions = false)]
         public AuthProvider AuthProvider { get; set; }
 
-        /// <summary>
-        /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.
-        /// </summary>
-        [YamlMember(Alias = "extensions")]
-        public IEnumerable<NamedExtension> Extensions { get; set; }
+        // /// <summary>
+        // /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.
+        // /// </summary>
+        // [YamlMember(Alias = "extensions")]
+        // public IEnumerable<NamedExtension> Extensions { get; set; }
 
         /// <summary>
         /// Gets or sets external command and its arguments to receive user credentials

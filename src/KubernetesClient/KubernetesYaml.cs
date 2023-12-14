@@ -12,14 +12,15 @@ namespace k8s
     /// </summary>
     public static class KubernetesYaml
     {
-        private static DeserializerBuilder CommonDeserializerBuilder =>
-            new DeserializerBuilder()
+        private static StaticDeserializerBuilder CommonDeserializerBuilder =>
+            new StaticDeserializerBuilder(new k8s.KubeConfigModels.StaticContext())
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
-                .WithOverridesFromJsonPropertyAttributes();
+                // .WithOverridesFromJsonPropertyAttributes()
+                ;
 
         private static readonly IDeserializer StrictDeserializer =
             CommonDeserializerBuilder

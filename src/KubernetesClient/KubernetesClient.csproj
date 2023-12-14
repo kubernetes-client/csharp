@@ -14,6 +14,7 @@
         <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
         <PackageReference Include="Fractions" Version="7.3.0" />
         <PackageReference Include="YamlDotNet" Version="13.7.1" />
+        <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false"  />
     </ItemGroup>
 
     <ItemGroup>

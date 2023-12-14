@@ -6,6 +6,7 @@ namespace k8s.KubeConfigModels
     /// Represents a tuple of references to a cluster (how do I communicate with a kubernetes cluster),
     /// a user (how do I identify myself), and a namespace (what subset of resources do I want to work with)
     /// </summary>
+    [YamlSerializable] 
     public class ContextDetails
     {
         /// <summary>
@@ -26,10 +27,10 @@ namespace k8s.KubeConfigModels
         [YamlMember(Alias = "namespace")]
         public string Namespace { get; set; }
 
-        /// <summary>
-        /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.
-        /// </summary>
-        [YamlMember(Alias = "extensions")]
-        public IEnumerable<NamedExtension> Extensions { get; set; }
+        // /// <summary>
+        // /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.
+        // /// </summary>
+        // [YamlMember(Alias = "extensions")]
+        // public List<NamedExtension> Extensions { get; set; }
     }
 }
