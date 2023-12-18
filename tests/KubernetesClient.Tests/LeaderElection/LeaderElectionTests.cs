@@ -309,7 +309,7 @@ namespace k8s.Tests.LeaderElection
             }
             catch (Exception e)
             {
-                Assert.Equal("noxu", e.InnerException?.Message);
+                Assert.Equal("noxu", e.Message);
                 return;
             }
 
