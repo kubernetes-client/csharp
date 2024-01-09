@@ -152,18 +152,6 @@ internal static partial class VersionConverter
             });
         });
 
-        cfg.CreateMap<V1Subject, V1beta2Subject>()
-            .ForMember(dest => dest.Group, opt => opt.Ignore())
-            .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
-            .ForMember(dest => dest.User, opt => opt.Ignore())
-            .ReverseMap();
-
-        cfg.CreateMap<V1Subject, V1beta3Subject>()
-            .ForMember(dest => dest.Group, opt => opt.Ignore())
-            .ForMember(dest => dest.ServiceAccount, opt => opt.Ignore())
-            .ForMember(dest => dest.User, opt => opt.Ignore())
-            .ReverseMap();
-
         cfg.CreateMap<V1HorizontalPodAutoscalerSpec, V2HorizontalPodAutoscalerSpec>()
             .ForMember(dest => dest.Metrics, opt => opt.Ignore())
             .ForMember(dest => dest.Behavior, opt => opt.Ignore())
@@ -179,8 +167,8 @@ internal static partial class VersionConverter
             .ForMember(dest => dest.Name, opt => opt.Ignore())
             .ReverseMap();
 
-        cfg.CreateMap<V1beta2LimitedPriorityLevelConfiguration, V1beta3LimitedPriorityLevelConfiguration>()
-            .ForMember(dest => dest.NominalConcurrencyShares, opt => opt.Ignore())
+        cfg.CreateMap<V1beta3PolicyRulesWithSubjects, V1PolicyRulesWithSubjects>()
+            .ForMember(dest => dest.Subjects, opt => opt.Ignore())
             .ReverseMap();
     }
 }
