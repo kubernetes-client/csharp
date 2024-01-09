@@ -437,7 +437,7 @@ namespace k8s.Tests
         {
             var path = Path.GetFullPath("assets/kubeconfig.cluster-extensions.yml");
 
-            _ = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(false);
+            _ = await KubernetesClientConfiguration.BuildConfigFromConfigFileAsync(new FileInfo(path)).ConfigureAwait(true);
         }
 
         [Fact]

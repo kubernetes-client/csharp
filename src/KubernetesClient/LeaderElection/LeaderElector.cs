@@ -54,6 +54,7 @@ namespace k8s.LeaderElection
         /// Will complete the returned Task and not retry to acquire leadership again after leadership is lost once.
         /// </summary>
         /// <param name="cancellationToken">A token to cancel the operation.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task RunUntilLeadershipLostAsync(CancellationToken cancellationToken = default)
         {
             await AcquireAsync(cancellationToken).ConfigureAwait(false);
@@ -132,6 +133,7 @@ namespace k8s.LeaderElection
         /// </summary>
         /// <seealso cref="RunUntilLeadershipLostAsync"/>
         /// <param name="cancellationToken">A token to cancel the operation.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         [Obsolete("Replaced by RunUntilLeadershipLostAsync to encode behavior in method name.")]
         public Task RunAsync(CancellationToken cancellationToken = default)
         {

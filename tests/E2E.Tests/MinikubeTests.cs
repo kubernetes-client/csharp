@@ -303,7 +303,7 @@ namespace k8s.E2E
                     le.OnStartedLeading += () => leader1acq.Set();
                     le.OnStoppedLeading += () => leader1lose.Set();
 
-                    tasks.Add(le.RunAsync(cts.Token));
+                    tasks.Add(le.RunUntilLeadershipLostAsync(cts.Token));
                 }
 
                 // wait 1 become leader
@@ -325,7 +325,7 @@ namespace k8s.E2E
                         leader2init.Set();
                     };
 
-                    tasks.Add(le.RunAsync());
+                    tasks.Add(le.RunUntilLeadershipLostAsync());
                     Assert.True(leader2init.WaitOne(TimeSpan.FromSeconds(30)));
 
                     Assert.Equal("leader1", le.GetLeader());

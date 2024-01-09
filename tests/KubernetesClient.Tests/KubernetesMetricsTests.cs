@@ -35,7 +35,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var nodesMetricsList = await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(false);
+                var nodesMetricsList = await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(true);
 
                 Assert.Single(nodesMetricsList.Items);
 
@@ -56,7 +56,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // Should not throw with timespan optional property
-                var exception = await Record.ExceptionAsync(async () => await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                var exception = await Record.ExceptionAsync(client.GetKubernetesNodesMetricsAsync).ConfigureAwait(true);
 
                 Assert.Null(exception);
             }
@@ -69,7 +69,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var podsMetricsList = await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(false);
+                var podsMetricsList = await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(true);
 
                 Assert.Single(podsMetricsList.Items);
 
@@ -94,7 +94,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // Should not throw with timespan optional property
-                var exception = await Record.ExceptionAsync(async () => await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                var exception = await Record.ExceptionAsync(client.GetKubernetesPodsMetricsAsync).ConfigureAwait(true);
 
                 Assert.Null(exception);
             }
@@ -107,7 +107,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync("empty").ConfigureAwait(false);
+                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync("empty").ConfigureAwait(true);
 
                 Assert.Empty(podsMetricsList.Items);
             }
@@ -122,7 +122,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync(namespaceName).ConfigureAwait(false);
+                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync(namespaceName).ConfigureAwait(true);
 
                 Assert.Single(podsMetricsList.Items);
 
@@ -147,7 +147,7 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync("nonexisting").ConfigureAwait(false);
+                var podsMetricsList = await client.GetKubernetesPodsMetricsByNamespaceAsync("nonexisting").ConfigureAwait(true);
 
                 Assert.Empty(podsMetricsList.Items);
             }

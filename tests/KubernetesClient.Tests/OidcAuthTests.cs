@@ -21,7 +21,7 @@ namespace k8s.Tests
 
             // use unexpired id token as bearer, do not attempt to refresh
             var auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, unexpiredIdToken, refreshToken);
-            var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
+            var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
             result.Scheme.Should().Be("Bearer");
             result.Parameter.Should().Be(unexpiredIdToken);
 
@@ -29,7 +29,7 @@ namespace k8s.Tests
             {
                 // attempt to refresh id token when expired
                 auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, expiredIdToken, refreshToken);
-                result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
+                result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
                 result.Scheme.Should().Be("Bearer");
                 result.Parameter.Should().Be(expiredIdToken);
                 Assert.Fail("should not be here");
@@ -43,7 +43,7 @@ namespace k8s.Tests
             {
                 // attempt to refresh id token when null
                 auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, null, refreshToken);
-                result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
+                result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
                 result.Scheme.Should().Be("Bearer");
                 result.Parameter.Should().Be(expiredIdToken);
                 Assert.Fail("should not be here");
