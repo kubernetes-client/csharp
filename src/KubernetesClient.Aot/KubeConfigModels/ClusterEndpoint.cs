@@ -38,11 +38,5 @@ namespace k8s.KubeConfigModels
         /// </summary>
         [YamlMember(Alias = "insecure-skip-tls-verify", ApplyNamingConventions = false)]
         public bool SkipTlsVerify { get; set; }
-
-        // /// <summary>
-        // /// Gets or sets additional information. This is useful for extenders so that reads and writes don't clobber unknown fields.
-        // /// </summary>
-        // [YamlMember(Alias = "extensions")]
-        // public List<NamedExtension> Extensions { get; set; }
     }
 }
