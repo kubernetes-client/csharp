@@ -1,5 +1,5 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ProjectReference Include="$(MSBuildThisFileDirectory)\..\src\KubernetesClient\KubernetesClient.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)\..\src\KubernetesClient\KubernetesClient.csproj" Condition="'$(PublishAot)' != 'true'" />
   </ItemGroup>
 </Project>

@@ -3,8 +3,9 @@
     <PropertyGroup>
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <RootNamespace>k8s</RootNamespace>
-        <PublishAot Condition="'$(TargetFramework)' == 'net8.0'">true</PublishAot>
-        <IsAotCompatible Condition="'$(TargetFramework)' == 'net8.0'">true</IsAotCompatible>
+        <!-- seems bug in net7 json generator, some types missing in its result
+            net8 is still in preview, will enable it after net8 release -->
+        <!-- <PublishAot Condition="'$(TargetFramework)' == 'net8.0'">true</PublishAot> -->
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     </PropertyGroup>
 
@@ -14,7 +15,6 @@
         <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
         <PackageReference Include="Fractions" Version="7.3.0" />
         <PackageReference Include="YamlDotNet" Version="13.7.1" />
-        <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false"  />
     </ItemGroup>
 
     <ItemGroup>

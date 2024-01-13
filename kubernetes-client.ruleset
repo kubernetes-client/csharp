@@ -268,7 +268,7 @@
     <Rule Id="CA1802" Action="Error" />
 
     <!-- Avoid uninstantiated internal classes https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1812 -->
-    <Rule Id="CA1812" Action="Error" />
+    <Rule Id="CA1812" Action="None" />
 
     <!-- Mark members as static https://docs.microsoft.com/en-us/visualstudio/code-quality/CA1822 -->
     <Rule Id="CA1822" Action="None" />

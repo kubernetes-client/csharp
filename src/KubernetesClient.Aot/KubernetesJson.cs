@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace k8s
 {
-    public static class KubernetesJson
+    internal static class KubernetesJson
     {
         private static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
 
@@ -78,6 +78,10 @@ namespace k8s
             JsonSerializerOptions.Converters.Add(new KubernetesDateTimeOffsetConverter());
             JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
             JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+#if NET8_0_OR_GREATER
+            JsonSerializerOptions.TypeInfoResolver = JsonSerializer.IsReflectionEnabledByDefault ? new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver() : SourceGenerationContext.Default;
+#endif
         }
 
         /// <summary>

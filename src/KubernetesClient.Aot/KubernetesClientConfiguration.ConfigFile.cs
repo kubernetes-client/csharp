@@ -388,29 +388,6 @@ namespace k8s
 
                         case "gcp":
                             throw new Exception("Please use the \"gke-gcloud-auth-plugin\" credential plugin instead. See https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke for further details");
-
-                        case "oidc":
-                            {
-                                var config = userDetails.UserCredentials.AuthProvider.Config;
-                                AccessToken = config["id-token"];
-                                if (config.ContainsKey("client-id")
-                                    && config.ContainsKey("idp-issuer-url")
-                                    && config.ContainsKey("id-token")
-                                    && config.ContainsKey("refresh-token"))
-                                {
-                                    string clientId = config["client-id"];
-                                    string clientSecret = config.ContainsKey("client-secret") ? config["client-secret"] : null;
-                                    string idpIssuerUrl = config["idp-issuer-url"];
-                                    string idToken = config["id-token"];
-                                    string refreshToken = config["refresh-token"];
-
-                                    TokenProvider = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, idToken, refreshToken);
-
-                                    userCredentialsFound = true;
-                                }
-
-                                break;
-                            }
                     }
                 }
             }
@@ -459,16 +436,9 @@ namespace k8s
                 throw new ArgumentNullException(nameof(config));
             }
 
-            var execInfo = new Dictionary<string, dynamic>
-            {
-                { "apiVersion", config.ApiVersion },
-                { "kind", "ExecCredentials" },
-                { "spec", new Dictionary<string, bool> { { "interactive", Environment.UserInteractive } } },
-            };
-
             var process = new Process();
 
-            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonSerializer.Serialize(execInfo));
+            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", $"{{ \"apiVersion\":\"{config.ApiVersion}\",\"kind\":\"ExecCredentials\",\"spec\":{{ \"interactive\":{Environment.UserInteractive.ToString().ToLower()} }} }}");
             if (config.EnvironmentVariables != null)
             {
                 foreach (var configEnvironmentVariable in config.EnvironmentVariables)
@@ -753,23 +723,12 @@ namespace k8s
                     $"kubeconfig \"kind\" are different between {basek8SConfig.FileName} and {mergek8SConfig.FileName}");
             }
 
-            if (mergek8SConfig.Preferences != null)
-            {
-                foreach (var preference in mergek8SConfig.Preferences)
-                {
-                    if (basek8SConfig.Preferences?.ContainsKey(preference.Key) == false)
-                    {
-                        basek8SConfig.Preferences[preference.Key] = preference.Value;
-                    }
-                }
-            }
-
             // Note, Clusters, Contexts, and Extensions are map-like in config despite being represented as a list here:
             // https://github.com/kubernetes/client-go/blob/ede92e0fe62deed512d9ceb8bf4186db9f3776ff/tools/clientcmd/api/types.go#L238
-            basek8SConfig.Extensions = MergeLists(basek8SConfig.Extensions, mergek8SConfig.Extensions, (s) => s.Name);
-            basek8SConfig.Clusters = MergeLists(basek8SConfig.Clusters, mergek8SConfig.Clusters, (s) => s.Name);
-            basek8SConfig.Users = MergeLists(basek8SConfig.Users, mergek8SConfig.Users, (s) => s.Name);
-            basek8SConfig.Contexts = MergeLists(basek8SConfig.Contexts, mergek8SConfig.Contexts, (s) => s.Name);
+            // basek8SConfig.Extensions = MergeLists(basek8SConfig.Extensions, mergek8SConfig.Extensions, (s) => s.Name).ToList();
+            basek8SConfig.Clusters = MergeLists(basek8SConfig.Clusters, mergek8SConfig.Clusters, (s) => s.Name).ToList();
+            basek8SConfig.Users = MergeLists(basek8SConfig.Users, mergek8SConfig.Users, (s) => s.Name).ToList();
+            basek8SConfig.Contexts = MergeLists(basek8SConfig.Contexts, mergek8SConfig.Contexts, (s) => s.Name).ToList();
         }
 
         private static IEnumerable<T> MergeLists<T>(IEnumerable<T> baseList, IEnumerable<T> mergeList,

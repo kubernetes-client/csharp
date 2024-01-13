@@ -2,6 +2,7 @@ using YamlDotNet.Serialization;
 
 namespace k8s.KubeConfigModels
 {
+    [YamlSerializable]
     public class ExternalExecution
     {
         [YamlMember(Alias = "apiVersion")]

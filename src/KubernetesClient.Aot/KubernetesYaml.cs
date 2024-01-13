@@ -10,29 +10,25 @@ namespace k8s
     /// <summary>
     /// This is a utility class that helps you load objects from YAML files.
     /// </summary>
-    public static class KubernetesYaml
+    internal static class KubernetesYaml
     {
-        private static DeserializerBuilder CommonDeserializerBuilder =>
-            new DeserializerBuilder()
+        private static StaticDeserializerBuilder CommonDeserializerBuilder =>
+            new StaticDeserializerBuilder(new k8s.KubeConfigModels.StaticContext())
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
-                .WithOverridesFromJsonPropertyAttributes();
+                ;
 
-        private static readonly IDeserializer StrictDeserializer =
-            CommonDeserializerBuilder
-            .WithDuplicateKeyChecking()
-            .Build();
         private static readonly IDeserializer Deserializer =
             CommonDeserializerBuilder
             .IgnoreUnmatchedProperties()
             .Build();
-        private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
+        private static IDeserializer GetDeserializer(bool strict) => Deserializer;
 
         private static readonly IValueSerializer Serializer =
-            new SerializerBuilder()
+            new StaticSerializerBuilder(new k8s.KubeConfigModels.StaticContext())
                 .DisableAliases()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .WithTypeConverter(new IntOrStringYamlConverter())
@@ -41,7 +37,6 @@ namespace k8s
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .WithEventEmitter(e => new FloatEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
-                .WithOverridesFromJsonPropertyAttributes()
                 .BuildValueSerializer();
 
         private static readonly IDictionary<string, Type> ModelTypeMap = typeof(KubernetesEntityAttribute).Assembly
@@ -255,39 +250,6 @@ namespace k8s
             Serializer.SerializeValue(emitter, value, value.GetType());
 
             return stringBuilder.ToString();
-        }
-
-        private static TBuilder WithOverridesFromJsonPropertyAttributes<TBuilder>(this TBuilder builder)
-            where TBuilder : BuilderSkeleton<TBuilder>
-        {
-            // Use VersionInfo from the model namespace as that should be stable.
-            // If this is not generated in the future we will get an obvious compiler error.
-            var targetNamespace = typeof(VersionInfo).Namespace;
-
-            // Get all the concrete model types from the code generated namespace.
-            var types = typeof(KubernetesEntityAttribute).Assembly
-                .ExportedTypes
-                .Where(type => type.Namespace == targetNamespace &&
-                               !type.IsInterface &&
-                               !type.IsAbstract);
-
-            // Map any JsonPropertyAttribute instances to YamlMemberAttribute instances.
-            foreach (var type in types)
-            {
-                foreach (var property in type.GetProperties())
-                {
-                    var jsonAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
-                    if (jsonAttribute == null)
-                    {
-                        continue;
-                    }
-
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.Name, ApplyNamingConventions = false };
-                    builder.WithAttributeOverride(type, property.Name, yamlAttribute);
-                }
-            }
-
-            return builder;
         }
     }
 }

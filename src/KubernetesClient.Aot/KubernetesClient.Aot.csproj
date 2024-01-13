@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <RootNamespace>k8s</RootNamespace>
+    <PublishAot>true</PublishAot>
+    <IsAotCompatible>true</IsAotCompatible>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <DefineConstants>AOT_ENABLED</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fractions" Version="7.3.0" />
+    <PackageReference Include="YamlDotNet" Version="13.7.1" />
+    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false"  />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\KubernetesClient\Models\ContainerMetrics.cs" />
+    <Compile Include="..\KubernetesClient\Extensions.cs" />
+    <Compile Include="..\KubernetesClient\FloatEmitter.cs" />
+    <Compile Include="..\KubernetesClient\Models\GeneratedModelVersion.cs" />
+    <Compile Include="..\KubernetesClient\IItems.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetesObject.cs" />
+    <Compile Include="..\KubernetesClient\IMetadata.cs" />
+    <Compile Include="..\KubernetesClient\Models\IntOrStringJsonConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\IntOrStringYamlConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\IntstrIntOrString.cs" />
+    <Compile Include="..\KubernetesClient\ISpec.cs" />
+    <Compile Include="..\KubernetesClient\IStatus.cs" />
+    <Compile Include="..\KubernetesClient\IValidate.cs" />
+    <Compile Include="..\KubernetesClient\Models\KubernetesEntityAttribute.cs" />
+    <Compile Include="..\KubernetesClient\Models\KubernetesList.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesObject.cs" />
+    <Compile Include="..\KubernetesClient\Models\ModelExtensions.cs" />
+    <Compile Include="..\KubernetesClient\Models\ModelVersionConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\NodeMetrics.cs" />
+    <Compile Include="..\KubernetesClient\Models\NodeMetricsList.cs" />
+    <Compile Include="..\KubernetesClient\Models\PodMetrics.cs" />
+    <Compile Include="..\KubernetesClient\Models\PodMetricsList.cs" />
+    <Compile Include="..\KubernetesClient\Models\ResourceQuantity.cs" />
+    <Compile Include="..\KubernetesClient\Models\ResourceQuantityJsonConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\ResourceQuantityYamlConverter.cs" />
+    <Compile Include="..\KubernetesClient\StringQuotingEmitter.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1Patch.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1PatchJsonConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1PodTemplateSpec.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\KubernetesClient\AbstractKubernetes.cs" />
+    <Compile Include="..\KubernetesClient\GeneratedApiVersion.cs" />
+
+    <Compile Include="..\KubernetesClient\Autorest\HttpExtensions.cs" />
+    <Compile Include="..\KubernetesClient\Autorest\HttpMessageWrapper.cs" />
+    <Compile Include="..\KubernetesClient\Autorest\HttpOperationException.cs" />
+    <Compile Include="..\KubernetesClient\Autorest\HttpOperationResponse.cs" />
+    <Compile Include="..\KubernetesClient\Autorest\HttpRequestMessageWrapper.cs" />
+    <Compile Include="..\KubernetesClient\Autorest\HttpResponseMessageWrapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\KubernetesClient\CertUtils.cs" />
+
+    <Compile Include="..\KubernetesClient\FileSystem.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.ConfigInit.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.InCluster.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.cs" />
+    <Compile Include="..\KubernetesClient\KubernetesException.cs" />
+
+    <Compile Include="..\KubernetesClient\ChannelIndex.cs" />
+    <Compile Include="..\KubernetesClient\IStreamDemuxer.cs" />
+    <Compile Include="..\KubernetesClient\ByteBuffer.cs" />
+    <Compile Include="..\KubernetesClient\StreamDemuxer.cs" />
+    <Compile Include="..\KubernetesClient\MuxedStream.cs" />
+    <Compile Include="..\KubernetesClient\StreamType.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.WebSocket.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.WebSocket.cs" />
+    <Compile Include="..\KubernetesClient\WebSocketBuilder.cs" />
+    <Compile Include="..\KubernetesClient\WebSocketProtocol.cs" />
+    <Compile Include="..\KubernetesClient\Utilities.cs" />
+    <Compile Include="..\KubernetesClient\ExecAsyncCallback.cs" />
+    <Compile Include="..\KubernetesClient\IKubernetes.Exec.cs" />
+    <Compile Include="..\KubernetesClient\Kubernetes.Exec.cs" />
+
+    <Compile Include="..\KubernetesClient\Watcher.cs" />
+    <Compile Include="..\KubernetesClient\WatcherExt.cs" />
+    <Compile Include="..\KubernetesClient\LineSeparatedHttpContent.cs" />
+
+    <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
+    <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
+
+    <Compile Include="..\KubernetesClient\Authentication\ExecTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\TokenFileAuth.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\BasicAuthenticationCredentials.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\ITokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\ServiceClientCredentials.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\StringTokenProvider.cs" />
+    <Compile Include="..\KubernetesClient\Authentication\TokenCredentials.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http" Condition="'$(TargetFramework)' == 'net48'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
+      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

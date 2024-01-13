@@ -1,5 +1,8 @@
+using YamlDotNet.Serialization;
+
 namespace k8s.KubeConfigModels
 {
+    [YamlSerializable]
     public class ExecCredentialResponse
     {
         public class ExecStatus

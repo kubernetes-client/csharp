@@ -5,6 +5,7 @@ namespace k8s.KubeConfigModels
     /// <summary>
     /// Relates nicknames to auth information.
     /// </summary>
+    [YamlSerializable]
     public class User
     {
         /// <summary>
