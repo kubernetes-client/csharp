@@ -54,7 +54,6 @@ namespace k8s.Models
         /// {{ToXmlDoc description}}
         /// </summary>
         [JsonPropertyName("{{name}}")]
-        {{GetFieldAnnotation .}}
         public {{GetDotNetType .}} {{GetDotNetName name "field"}} { get; set; }
         {{/properties}}
 
