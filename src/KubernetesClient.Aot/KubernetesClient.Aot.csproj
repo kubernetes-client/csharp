@@ -6,7 +6,6 @@
     <PublishAot>true</PublishAot>
     <IsAotCompatible>true</IsAotCompatible>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-    <DefineConstants>AOT_ENABLED</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -43,10 +42,8 @@
     <Compile Include="..\KubernetesClient\Models\ResourceQuantityYamlConverter.cs" />
     <Compile Include="..\KubernetesClient\StringQuotingEmitter.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Patch.cs" />
-    <Compile Include="..\KubernetesClient\Models\V1PatchJsonConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\V1PodTemplateSpec.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
-    <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
 
   </ItemGroup>
   <ItemGroup>

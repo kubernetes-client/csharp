@@ -19,6 +19,7 @@ namespace LibKubernetesGenerator
         public void RegisterHelper()
         {
             Helpers.Register(nameof(GetDotNetType), GetDotNetType);
+            Helpers.Register(nameof(GetFieldAnnotation), GetFieldAnnotation);
             Helpers.Register(nameof(GetReturnType), GetReturnType);
             Helpers.Register(nameof(IfReturnType), IfReturnType);
             Helpers.Register(nameof(IfType), IfType);
@@ -202,6 +203,19 @@ namespace LibKubernetesGenerator
             }
 
             return GetDotNetType(p.Type, p.Name, p.IsRequired, p.Format);
+        }
+
+        public void GetFieldAnnotation(RenderContext context, IList<object> arguments,
+            IDictionary<string, object> options,
+            RenderBlock fn, RenderBlock inverse)
+        {
+            var property = arguments[0] as JsonSchemaProperty;
+            var nettype = GetDotNetType(property);
+
+            if (nettype.StartsWith("System.DateTime"))
+            {
+                context.Write("[JsonConverter(typeof(KubernetesJson.KubernetesDateTimeConverter))]");
+            }
         }
 
         public void GetReturnType(RenderContext context, IList<object> arguments,

@@ -6,9 +6,7 @@ namespace k8s
 {
     internal static class KubernetesJson
     {
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
-
-        private sealed class Iso8601TimeSpanConverter : JsonConverter<TimeSpan>
+        internal sealed class Iso8601TimeSpanConverter : JsonConverter<TimeSpan>
         {
             public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
@@ -23,7 +21,7 @@ namespace k8s
             }
         }
 
-        private sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+        internal sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
             private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
             private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
@@ -55,7 +53,7 @@ namespace k8s
             }
         }
 
-        private sealed class KubernetesDateTimeConverter : JsonConverter<DateTime>
+        internal sealed class KubernetesDateTimeConverter : JsonConverter<DateTime>
         {
             private static readonly JsonConverter<DateTimeOffset> UtcConverter = new KubernetesDateTimeOffsetConverter();
             public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -69,21 +67,6 @@ namespace k8s
             }
         }
 
-        static KubernetesJson()
-        {
-            JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            JsonSerializerOptions.Converters.Add(new Iso8601TimeSpanConverter());
-            JsonSerializerOptions.Converters.Add(new KubernetesDateTimeConverter());
-            JsonSerializerOptions.Converters.Add(new KubernetesDateTimeOffsetConverter());
-            JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
-            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
-#if NET8_0_OR_GREATER
-            JsonSerializerOptions.TypeInfoResolver = JsonSerializer.IsReflectionEnabledByDefault ? new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver() : SourceGenerationContext.Default;
-#endif
-        }
-
         /// <summary>
         /// Configures <see cref="JsonSerializerOptions"/> for the <see cref="JsonSerializer"/>.
         /// To override existing converters, add them to the top of the <see cref="JsonSerializerOptions.Converters"/> list
@@ -92,27 +75,24 @@ namespace k8s
         /// <param name="configure">An <see cref="Action"/> to configure the <see cref="JsonSerializerOptions"/>.</param>
         public static void AddJsonOptions(Action<JsonSerializerOptions> configure)
         {
-            if (configure is null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
-
-            configure(JsonSerializerOptions);
         }
 
         public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+            var info = SourceGenerationContext.Default.GetTypeInfo(typeof(TValue));
+            return (TValue)JsonSerializer.Deserialize(json, info);
         }
 
         public static TValue Deserialize<TValue>(Stream json, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+            var info = SourceGenerationContext.Default.GetTypeInfo(typeof(TValue));
+            return (TValue)JsonSerializer.Deserialize(json, info);
         }
 
         public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+            var info = SourceGenerationContext.Default.GetTypeInfo(value.GetType());
+            return JsonSerializer.Serialize(value, info);
         }
     }
 }

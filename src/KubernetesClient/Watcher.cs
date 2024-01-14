@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 namespace k8s
 {
     /// <summary>Describes the type of a watch event.</summary>
+    [JsonConverter(typeof(JsonStringEnumConverter<WatchEventType>))]
     public enum WatchEventType
     {
         /// <summary>Emitted when an object is created, modified to match a watch's filter, or when a watch is first opened.</summary>
