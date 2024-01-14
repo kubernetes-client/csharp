@@ -1,17 +1,12 @@
 using ICSharpCode.SharpZipLib.Tar;
-using Json.Patch;
 using k8s.Autorest;
 using k8s.Models;
-using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
