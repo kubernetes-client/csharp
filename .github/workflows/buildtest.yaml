@@ -80,7 +80,16 @@ jobs:
             cat skip.log
             echo "CASES MUST NOT BE SKIPPED"
             exit 1
-          fi
+          fi    
+      - name: AOT Test
+        run: |
+          true > skip.log
+          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Aot.Tests --logger "SkipTestLogger;file=$PWD/skip.log"
+          if [ -s skip.log ]; then
+            cat skip.log
+            echo "CASES MUST NOT BE SKIPPED"
+            exit 1
+          fi              
 
 on:
   pull_request:
