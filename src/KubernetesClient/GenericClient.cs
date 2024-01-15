@@ -116,14 +116,14 @@ namespace k8s
         where T : IKubernetesObject
         {
             var respTask = kubernetes.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync<T>(group, version, plural, watch: true, cancellationToken: cancel);
-            return respTask.WatchAsync<T, T>();
+            return respTask.WatchAsync<T, T>(onError, cancel);
         }
 
         public IAsyncEnumerable<(WatchEventType, T)> WatchNamespacedAsync<T>(string ns, Action<Exception> onError = null, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
             var respTask = kubernetes.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync<T>(group, version, ns, plural, watch: true, cancellationToken: cancel);
-            return respTask.WatchAsync<T, T>();
+            return respTask.WatchAsync<T, T>(onError, cancel);
         }
 
         public Watcher<T> Watch<T>(Action<WatchEventType, T> onEvent, Action<Exception> onError = null, Action onClosed = null)
