@@ -281,8 +281,7 @@ namespace k8s
             try
             {
                 BeforeRequest();
-                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, CancellationToken.None)
-                    .ConfigureAwait(false);
+                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, cancellationToken).ConfigureAwait(false);
             }
             catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
                                                  (wse.InnerException is WebSocketException &&
