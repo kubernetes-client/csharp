@@ -10,6 +10,12 @@
 dotnet add package KubernetesClient
 ```
 
+## Generate with Visual Studio
+
+```
+dotnet msbuild /t:slngen
+```
+
 ## Authentication/Configuration
 You should be able to use a standard KubeConfig file with this library,
 see the `BuildConfigFromConfigFile` function below. Most authentication

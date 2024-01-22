@@ -36,4 +36,8 @@
   <ItemGroup>
     <None Include="../../logo.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.SlnGen" Version="11.1.0" />
+  </ItemGroup>  
 </Project>

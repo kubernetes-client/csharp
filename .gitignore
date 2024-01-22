@@ -16,3 +16,5 @@ bin/
 
 launchSettings.json
 *.DotSettings
+
+*.sln
