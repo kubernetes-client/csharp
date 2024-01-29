@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace>k8s.E2E</RootNamespace>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 
     <PackageReference Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
-    <PackageReference Include="xunit" Version="2.6.6" />
+    <PackageReference Include="xunit" Version="2.6.5" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,12 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KubernetesClient\KubernetesClient.csproj" />
-    <ProjectReference Include="..\..\src\KubernetesClient.Kubectl\KubernetesClient.Kubectl.csproj" />
+    <ProjectReference Include="..\..\src\KubernetesClient.Aot\KubernetesClient.Aot.csproj" />
     <ProjectReference Include="..\SkipTestLogger\SkipTestLogger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\E2E.Tests\MinikubeFactAttribute.cs" />
+    <Compile Include="..\E2E.Tests\Onebyone.cs" />
   </ItemGroup>
 </Project>
