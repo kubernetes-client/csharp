@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace k8s
 {
@@ -537,12 +538,29 @@ namespace k8s
 
             try
             {
-                if (!process.WaitForExit((int)(ExecTimeout.TotalMilliseconds)))
+                var output = new StringBuilder();
+                process.OutputDataReceived += (_, args) =>
+                {
+                    if (args.Data != null)
+                    {
+                        output.Append(args.Data);
+                    }
+                };
+                process.BeginOutputReadLine();
+
+                if (!process.WaitForExit((int)ExecTimeout.TotalMilliseconds))
                 {
                     throw new KubeConfigException("external exec failed due to timeout");
                 }
 
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
+                // Force flush the output buffer to avoid case of missing data
+                if (ExecTimeout != Timeout.InfiniteTimeSpan)
+                {
+                    process.WaitForExit();
+                }
+
+                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(output.ToString());
+
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
@@ -553,10 +571,8 @@ namespace k8s
                 {
                     return responseObject;
                 }
-                else
-                {
-                    throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
-                }
+
+                throw new KubeConfigException($"external exec failed missing token or clientCertificateData field in plugin output");
             }
             catch (JsonException ex)
             {
