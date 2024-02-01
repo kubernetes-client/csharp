@@ -27,7 +27,7 @@ jobs:
       - name: Test
         run: dotnet test --configuration Release --collect:"Code Coverage;Format=Cobertura" --logger trx --results-directory TestResults --settings CodeCoverage.runsettings --no-build
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           directory: ./TestResults
           files: '*.cobertura.xml'
