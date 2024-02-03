@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
@@ -10,8 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="Fractions" Version="7.3.0" />
-    <PackageReference Include="YamlDotNet" Version="13.7.1" />
-    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false"  />
+    <PackageReference Include="YamlDotNet" Version="15.1.0" />
+    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,7 +105,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator\LibKubernetesGenerator.csproj"
-      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator\LibKubernetesGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 </Project>
