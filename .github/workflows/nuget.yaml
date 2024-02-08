@@ -52,7 +52,7 @@ jobs:
     
     steps:
     - name: Delete old NuGet packages
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       with:
         owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
         token: ${{ secrets.GITHUB_TOKEN }}
