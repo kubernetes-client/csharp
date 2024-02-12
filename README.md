@@ -102,7 +102,7 @@ var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 var client = new Kubernetes(config);
 ```
 
-Not all auth providers are supported at moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478). You can still connect to a cluster by starting the proxy command:
+Not all auth providers are supported at the moment [#91](https://github.com/kubernetes-client/csharp/issues/91#issuecomment-362920478). You can still connect to a cluster by starting the proxy command:
 
 ```bash
 $ kubectl proxy
@@ -153,28 +153,37 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
 # Version Compatibility
 
-| SDK Version | Kubernetes Version | .NET Targeting                                       |
-|-------------|--------------------|------------------------------------------------------|
-| 12.0        | 1.28               | net6.0;net7.0;net48*;netstandard2.0*                 |
-| 11.0        | 1.27               | net6.0;net7.0;net48*;netstandard2.0*                 |
-| 10.0        | 1.26               | net6.0;net7.0;net48*;netstandard2.0*                 |
-| 9.1         | 1.25               | netstandard2.1;net6.0;net7.0;net48*;netstandard2.0*  |
-| 9.0         | 1.25               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
-| 8.0         | 1.24               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
-| 7.2         | 1.23               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0*  |
-| 7.0         | 1.23               | netstandard2.1;net5.0;net6.0                         |
-| 6.0         | 1.22               | netstandard2.1;net5.0                                |
-| 5.0         | 1.21               | netstandard2.1;net5                                  |
-| 4.0         | 1.20               | netstandard2.0;netstandard2.1                        |
-| 3.0         | 1.19               | netstandard2.0;net452                                |
-| 2.0         | 1.18               | netstandard2.0;net452                                |
-| 1.6         | 1.16               | netstandard1.4;netstandard2.0;net452;                |
-| 1.4         | 1.13               | netstandard1.4;net451                                |
-| 1.3         | 1.12               | netstandard1.4;net452                                |
+| SDK Version | Kubernetes Version | .NET Targeting                                      |
+|-------------|--------------------|-----------------------------------------------------|
+| 13.0        | 1.29               | net6.0;net7.0;net8.0;net48*;netstandard2.0*         |
+| 12.0        | 1.28               | net6.0;net7.0;net48*;netstandard2.0*                |
+| 11.0        | 1.27               | net6.0;net7.0;net48*;netstandard2.0*                |
+| 10.0        | 1.26               | net6.0;net7.0;net48*;netstandard2.0*                |
+| 9.1         | 1.25               | netstandard2.1;net6.0;net7.0;net48*;netstandard2.0* |
+| 9.0         | 1.25               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0* |
+| 8.0         | 1.24               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0* |
+| 7.2         | 1.23               | netstandard2.1;net5.0;net6.0;net48*;netstandard2.0* |
+| 7.0         | 1.23               | netstandard2.1;net5.0;net6.0                        |
+| 6.0         | 1.22               | netstandard2.1;net5.0                               |
+| 5.0         | 1.21               | netstandard2.1;net5                                 |
+| 4.0         | 1.20               | netstandard2.0;netstandard2.1                       |
+| 3.0         | 1.19               | netstandard2.0;net452                               |
+| 2.0         | 1.18               | netstandard2.0;net452                               |
+| 1.6         | 1.16               | netstandard1.4;netstandard2.0;net452;               |
+| 1.4         | 1.13               | netstandard1.4;net451                               |
+| 1.3         | 1.12               | netstandard1.4;net452                               |
 
  * Starting from `2.0`, [dotnet sdk versioning](https://github.com/kubernetes-client/csharp/issues/400) adopted
  * `Kubernetes Version` here means the version sdk models and apis were generated from
- * Kubernetes api server guarantees the compatibility with `n-2` (`n-3` after 1.28) version. for exmaple, 1.19 based sdk should work with 1.21 cluster, but no guarantee works with 1.22 cluster. see also <https://kubernetes.io/releases/version-skew-policy/>
+ * Kubernetes api server guarantees the compatibility with `n-2` (`n-3` after 1.28) version. for example:
+   - 1.19 based sdk should work with 1.21 cluster, but not guaranteed to work with 1.22 cluster.<br>
+
+    and vice versa:
+   - 1.21 based sdk should work with 1.19 cluster, but not guaranteed to work with 1.18 cluster.<br>
+Note: in practice, the sdk might work with much older clusters, at least for the more stable functionality. However, it is not guaranteed past the `n-2` (or `n-3` after 1.28 ) version. See [#1511](https://github.com/kubernetes-client/csharp/issues/1511) for additional details.<br>
+
+    see also <https://kubernetes.io/releases/version-skew-policy/>
+ * Fixes (including security fixes) are not back-ported automatically to older sdk versions. However, contributions from the community are welcomed 😊; See [Contributing](#contributing) for instructions on how to contribute.
  * `*` `KubernetesClient.Classic`: netstandard2.0 and net48 are supported with limited features
 
 
