@@ -5,7 +5,7 @@ using System.Text;
 
 var server = "https://example.hcp.eastus.azmk8s.io"; // the server url of your aks
 var clientid = "00000000-0000-0000-0000-000000000000"; // the client id of the your msi
-var kubeconfig = @"C:\bin\kubelogin.exe"; // the path to the kubelogin.exe
+var kubelogin = @"C:\bin\kubelogin.exe"; // the path to the kubelogin.exe
 
 using var configstream = new MemoryStream(Encoding.ASCII.GetBytes($"""
 apiVersion: v1
@@ -34,7 +34,7 @@ users:
       - 6dae42f8-4368-4678-94ff-3960e28e3630
       - --client-id
       - {clientid}
-      command: {kubeconfig}
+      command: {kubelogin}
       env: null
 """));
 
