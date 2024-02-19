@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.Build.Traversal">
     <ItemGroup>
         <ProjectReference Include="src/**/*.csproj" />
-        <ProjectReference Include="tests/**/*..proj" />
-        <ProjectReference Include="examples/**/*..proj" />
+        <ProjectReference Include="tests/**/*.csproj" />
+        <ProjectReference Include="examples/**/*.csproj" />
     </ItemGroup>
 </Project>
   
