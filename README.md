@@ -26,14 +26,11 @@ You should also be able to authenticate with the in-cluster service
 account using the `InClusterConfig` function shown below.
 
 ## Monitoring
-There is optional built-in metric generation for prometheus client metrics.
-The exported metrics are:
+Metrics are built in to HttpClient using System.Diagnostics.DiagnosticsSource.
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/built-in-metrics-system-net
 
-* `k8s_dotnet_request_total` - Counter of request, broken down by HTTP Method
-* `k8s_dotnet_response_code_total` - Counter of responses, broken down by HTTP Method and response code
-* `k8s_request_latency_seconds` - Latency histograms broken down by method, api group, api version and resource kind
-
-There is an example integrating these monitors in the examples/prometheus directory.
+There are many ways these metrics can be consumed/exposed but that decision is up to the application, not KubernetesClient itself.
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-collection
 
 ## Sample Code
 
