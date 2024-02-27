@@ -4,7 +4,8 @@
 [![Client Support Level](https://img.shields.io/badge/kubernetes%20client-beta-green.svg?style=flat&colorA=306CE8)](http://bit.ly/kubernetes-client-support-badge)
 
 # Usage
-[Nuget Package](https://www.nuget.org/packages/KubernetesClient/)
+
+[![KubernetesClient](https://img.shields.io/nuget/v/KubernetesClient)](https://www.nuget.org/packages/KubernetesClient/)
 
 ```sh
 dotnet add package KubernetesClient
