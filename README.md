@@ -14,7 +14,7 @@ dotnet add package KubernetesClient
 ## Generate with Visual Studio
 
 ```
-dotnet msbuild /t:slngen
+dotnet msbuild /Restore /t:SlnGen kubernetes-client.proj
 ```
 
 ## Authentication/Configuration
