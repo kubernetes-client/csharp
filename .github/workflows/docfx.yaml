@@ -38,7 +38,7 @@ jobs:
           8.0.x
 
     - name: Build
-      run: dotnet build
+      run: dotnet build -c Release
 
     - uses: nunit/docfx-action@v3.1.0
       name: Build Documentation
