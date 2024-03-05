@@ -12,6 +12,27 @@ namespace k8s
     /// </summary>
     public static class KubernetesYaml
     {
+        //private static DeserializerBuilder GetCommonDeserializerBuilder() =>
+        //    new DeserializerBuilder()
+        //        .WithNamingConvention(CamelCaseNamingConvention.Instance)
+        //        .WithTypeConverter(new IntOrStringYamlConverter())
+        //        .WithTypeConverter(new ByteArrayStringYamlConverter())
+        //        .WithTypeConverter(new ResourceQuantityYamlConverter())
+        //        .WithAttemptingUnquotedStringTypeDeserialization()
+        //        .WithOverridesFromJsonPropertyAttributes();
+
+        //private static IDeserializer GetStrictDeserializer() =>
+        //    GetCommonDeserializerBuilder()
+        //    .WithDuplicateKeyChecking()
+        //    .Build();
+
+        //private static IDeserializer GetDeserializer() =>
+        //    GetCommonDeserializerBuilder()
+        //    .IgnoreUnmatchedProperties()
+        //    .Build();
+
+        //private static IDeserializer GetDeserializer(bool strict) => strict ? GetStrictDeserializer() : GetDeserializer();
+
         private static DeserializerBuilder CommonDeserializerBuilder =>
             new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
@@ -23,12 +44,12 @@ namespace k8s
 
         private static readonly IDeserializer StrictDeserializer =
             CommonDeserializerBuilder
-            .WithDuplicateKeyChecking()
-            .Build();
+                .WithDuplicateKeyChecking()
+                .Build();
         private static readonly IDeserializer Deserializer =
             CommonDeserializerBuilder
-            .IgnoreUnmatchedProperties()
-            .Build();
+                .IgnoreUnmatchedProperties()
+                .Build();
         private static IDeserializer GetDeserializer(bool strict) => strict ? StrictDeserializer : Deserializer;
 
         private static readonly IValueSerializer Serializer =

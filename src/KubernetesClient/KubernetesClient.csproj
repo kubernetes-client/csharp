@@ -14,6 +14,8 @@
         <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
         <PackageReference Include="Fractions" Version="7.3.0" />
         <PackageReference Include="YamlDotNet" Version="15.1.0" />
+        <!--Same issue with the latest version of YamlDotNet-->
+        <!--<PackageReference Include="YamlDotNet" Version="15.1.2" />-->
     </ItemGroup>
 
     <ItemGroup>
