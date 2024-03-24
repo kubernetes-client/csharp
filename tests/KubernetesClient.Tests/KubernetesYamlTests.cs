@@ -1,8 +1,10 @@
 using k8s.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -1094,6 +1096,22 @@ spec:
             Assert.Equal("pingsources.sources.knative.dev", crd.Metadata.Name);
             Assert.Equal("v1beta2", crd.Spec.Versions[0].Name);
             Assert.Equal("v1", crd.Spec.Versions[1].Name);
+        }
+
+        [Fact]
+        public void NoGlobalization()
+        {
+            var old = CultureInfo.CurrentCulture;
+            try
+            {
+                CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-fr");
+                var yaml = KubernetesYaml.Serialize(new Dictionary<string, double>() { ["hello"] = 10.01 });
+                Assert.Equal("hello: 10.01", yaml);
+            }
+            finally
+            {
+                CultureInfo.CurrentCulture = old;
+            }
         }
     }
 }
