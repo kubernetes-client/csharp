@@ -1,7 +1,5 @@
-using k8s.Authentication;
-using k8s.Exceptions;
-using k8s.KubeConfigModels;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
@@ -10,6 +8,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
+using k8s.Authentication;
+using k8s.Exceptions;
+using k8s.KubeConfigModels;
 using Xunit;
 
 namespace k8s.Tests
@@ -636,6 +638,65 @@ namespace k8s.Tests
 
             Assert.Single(cfg.Extensions);
             Assert.Single(cfg.Preferences);
+        }
+
+        [Fact]
+        public void LoadKubeConfigShouldBeThreadSafe()
+        {
+            // This is not guaranteed to fail but it usual throws the follow exception
+            // - System.InvalidOperationException: Operations that change non-concurrent collections must have exclusive access.
+            // A concurrent update was performed on this collection and corrupted its state. The collection's state is no longer correct.
+            // at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
+            // at System.Collections.Generic.Dictionary`2.set_Item(TKey key, TValue value)
+            // at YamlDotNet.Serialization.ObjectFactories.DefaultObjectFactory.GetStateMethods(Type attributeType, Type valueType)
+            // at YamlDotNet.Serialization.ObjectFactories.DefaultObjectFactory.ExecuteState(Type attributeType, Object value)
+            // at YamlDotNet.Serialization.ObjectFactories.DefaultObjectFactory.ExecuteOnDeserializing(Object value)
+            // at YamlDotNet.Serialization.NodeDeserializers.ObjectNodeDeserializer.Deserialize(IParser parser, Type expectedType, Func`3 nestedObjectDeserializer, Object& value)
+            // at YamlDotNet.Serialization.ValueDeserializers.NodeValueDeserializer.DeserializeValue(IParser parser, Type expectedType, SerializerState state, IValueDeserializer nestedObjectDeserializer)}.
+
+            // YamlDotNet Deserializer does not seems to be thread safe, changing KubernetesYaml to not use a static serializer makes this test pass.
+
+            var exceptions = new ConcurrentStack<Exception>();
+
+            // Run it many times for a better failure rate
+            Run(exceptions);
+            Run(exceptions);
+            Run(exceptions);
+            Run(exceptions);
+            Run(exceptions);
+
+            exceptions.Should().HaveCount(0, "No exceptions should have been recorded");
+
+            static void Run(ConcurrentStack<Exception> exceptions)
+            {
+                var threadCount = 100;
+                var threads = new List<Thread>();
+                var control = new SemaphoreSlim(0, threadCount); 
+
+                for (var i = 0; i < threadCount; i++)
+                {
+                    threads.Add(new Thread(LoadKubeConfig));
+                }
+
+                threads.ForEach(t => t.Start());
+                control.Release(threadCount);
+                threads.ForEach(t => t.Join());
+
+                void LoadKubeConfig()
+                {
+                    control.Wait();
+
+                    try
+                    {
+                        var fileInfo = new FileInfo(Path.GetFullPath("assets/kubeconfig.yml"));
+                        KubernetesClientConfiguration.LoadKubeConfig(new [] { fileInfo });
+                    }
+                    catch (Exception e)
+                    {
+                        exceptions.Push(e.InnerException ?? e);
+                    }
+                }
+            }
         }
 
         /// <summary>
