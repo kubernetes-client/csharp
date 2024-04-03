@@ -12,6 +12,9 @@ namespace k8s
     /// </summary>
     public static class KubernetesYaml
     {
+        private static readonly object DeserializerLockObject = new object();
+        private static readonly object SerializerLockObject = new object();
+
         private static DeserializerBuilder CommonDeserializerBuilder =>
             new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
@@ -156,8 +159,11 @@ namespace k8s
             parser.Consume<StreamStart>();
             while (parser.Accept<DocumentStart>(out _))
             {
-                var dict = GetDeserializer(strict).Deserialize<Dictionary<object, object>>(parser);
-                types.Add(mergedTypeMap[dict["apiVersion"] + "/" + dict["kind"]]);
+                lock (DeserializerLockObject)
+                {
+                    var dict = GetDeserializer(strict).Deserialize<Dictionary<object, object>>(parser);
+                    types.Add(mergedTypeMap[dict["apiVersion"] + "/" + dict["kind"]]);
+                }
             }
 
             parser = new MergingParser(new Parser(new StringReader(content)));
@@ -167,8 +173,11 @@ namespace k8s
             while (parser.Accept<DocumentStart>(out _))
             {
                 var objType = types[ix++];
-                var obj = GetDeserializer(strict).Deserialize(parser, objType);
-                results.Add(obj);
+                lock (DeserializerLockObject)
+                {
+                    var obj = GetDeserializer(strict).Deserialize(parser, objType);
+                    results.Add(obj);
+                }
             }
 
             return results;
@@ -204,13 +213,19 @@ namespace k8s
         public static TValue Deserialize<TValue>(string yaml, bool strict = false)
         {
             using var reader = new StringReader(yaml);
-            return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
+            lock (DeserializerLockObject)
+            {
+                return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
+            }
         }
 
         public static TValue Deserialize<TValue>(Stream yaml, bool strict = false)
         {
             using var reader = new StreamReader(yaml);
-            return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
+            lock (DeserializerLockObject)
+            {
+                return GetDeserializer(strict).Deserialize<TValue>(new MergingParser(new Parser(reader)));
+            }
         }
 
         public static string SerializeAll(IEnumerable<object> values)
@@ -231,7 +246,11 @@ namespace k8s
                 if (value != null)
                 {
                     emitter.Emit(new DocumentStart());
-                    Serializer.SerializeValue(emitter, value, value.GetType());
+                    lock (SerializerLockObject)
+                    {
+                        Serializer.SerializeValue(emitter, value, value.GetType());
+                    }
+
                     emitter.Emit(new DocumentEnd(true));
                 }
             }
@@ -252,7 +271,10 @@ namespace k8s
 
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
-            Serializer.SerializeValue(emitter, value, value.GetType());
+            lock (SerializerLockObject)
+            {
+                Serializer.SerializeValue(emitter, value, value.GetType());
+            }
 
             return stringBuilder.ToString();
         }
