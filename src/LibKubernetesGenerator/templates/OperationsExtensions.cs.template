@@ -11,148 +11,148 @@ namespace k8s;
 /// </summary>
 public static partial class {{name}}OperationsExtensions
 {
-    {{#apis}}
+    {{for api in apis }}
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+     {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc api.description}}
     /// </param>
-    {{/operation.parameters}}
-    public static {{GetReturnType operation "void"}} {{GetMethodName operation ""}}(
+     {{ end }}
+    public static {{GetReturnType api.operation "void"}} {{GetMethodName api.operation ""}}(
         this I{{name}}Operations operations
-{{#operation.parameters}}
-        ,{{GetDotNetType .}} {{GetDotNetName . "true"}}
-{{/operation.parameters}}
+{{ for parameter in api.operation.parameters}}
+        ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
+{{end}}
         )
    {
-         {{GetReturnType operation "return"}}  operations.{{GetMethodName operation "Async"}}(
-{{#operation.parameters}}
-            {{GetDotNetName .}},
-{{/operation.parameters}}
+         {{GetReturnType api.operation "return"}}  operations.{{GetMethodName api.operation "Async"}}(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
              CancellationToken.None
         ).GetAwaiter().GetResult();
     }
 
-    {{#IfReturnType operation "object"}}
+    {{if IfReturnType api.operation "object"}}
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+    {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
-    {{/operation.parameters}}
-    public static T {{GetMethodName operation ""}}<T>(
+    {{end}}
+    public static T {{GetMethodName api.operation ""}}<T>(
         this I{{name}}Operations operations
-{{#operation.parameters}}
-        ,{{GetDotNetType .}} {{GetDotNetName . "true"}}
-{{/operation.parameters}}
+{{ for parameter in api.operation.parameters}}
+        ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
+{{end}}
         )
    {
-         return operations.{{GetMethodName operation "Async"}}<T>(
-{{#operation.parameters}}
-            {{GetDotNetName .}},
-{{/operation.parameters}}
+         return operations.{{GetMethodName api.operation "Async"}}<T>(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
              CancellationToken.None
         ).GetAwaiter().GetResult();
     }
-    {{/IfReturnType operation "object"}}
+    {{end}}
 
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+    {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
-    {{/operation.parameters}}
+    {{end}}
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public static async Task{{GetReturnType operation "<>"}} {{GetMethodName operation "Async"}}(
+    public static async Task{{GetReturnType api.operation "<>"}} {{GetMethodName api.operation "Async"}}(
         this I{{name}}Operations operations,
-        {{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName . "true"}},
-        {{/operation.parameters}}
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+{{ end }}
         CancellationToken cancellationToken = default(CancellationToken))
     {
-        {{#IfReturnType operation "stream"}}
-        var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
-            {{#operation.parameters}}
-            {{GetDotNetName .}},
-            {{/operation.parameters}}
+        {{if IfReturnType api.operation "stream"}}
+        var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             null,
             cancellationToken);
         _result.Request.Dispose();
-        {{GetReturnType operation "_result.Body"}};
-        {{/IfReturnType operation "stream"}}
-        {{#IfReturnType operation "obj"}}
-        using (var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
-            {{#operation.parameters}}
-            {{GetDotNetName .}},
-            {{/operation.parameters}}
+        {{GetReturnType api.operation "_result.Body"}};
+        {{end}}
+        {{if IfReturnType api.operation "obj"}}
+        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             null,
             cancellationToken).ConfigureAwait(false))
         {
-            {{GetReturnType operation "_result.Body"}};
+            {{GetReturnType api.operation "_result.Body"}};
         }
-        {{/IfReturnType operation "obj"}}
-        {{#IfReturnType operation "void"}}
-        using (var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
-            {{#operation.parameters}}
-            {{GetDotNetName .}},
-            {{/operation.parameters}}
+        {{end}}
+        {{if IfReturnType api.operation "void"}}
+        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             null,
             cancellationToken).ConfigureAwait(false))
         {
         }
-        {{/IfReturnType operation "void"}}
+        {{end}}
     }
 
-    {{#IfReturnType operation "object"}}
+    {{if IfReturnType api.operation "object"}}
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+    {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
-    {{/operation.parameters}}
+    {{end}}
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public static async Task<T> {{GetMethodName operation "Async"}}<T>(
+    public static async Task<T> {{GetMethodName api.operation "Async"}}<T>(
         this I{{name}}Operations operations,
-        {{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName . "true"}},
-        {{/operation.parameters}}
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+{{ end }}
         CancellationToken cancellationToken = default(CancellationToken))
     {
-        using (var _result = await operations.{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
-            {{#operation.parameters}}
-            {{GetDotNetName .}},
-            {{/operation.parameters}}
+        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+{{ for parameter in api.operation.parameters}}
+            {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             null,
             cancellationToken).ConfigureAwait(false))
         {
             return _result.Body;
         }
     }
-    {{/IfReturnType}}
+    {{end}}
 
-    {{/apis}}
+    {{end}}
 }

@@ -22,25 +22,26 @@ namespace k8s.Models
         /// <summary>
         /// Initializes a new instance of the {{GetClassName def}} class.
         /// </summary>
-        {{#properties}}
-        {{#isRequired}}
-        /// <param name="{{GetDotNetName name "fieldctor"}}">
-        /// {{ToXmlDoc description}}
+        {{ for property in properties }}
+        {{ if property.IsRequired }}
+        /// <param name="{{GetDotNetName property.name "fieldctor"}}">
+        /// {{ToXmlDoc property.description}}
         /// </param>
-        {{/isRequired}}
-        {{/properties}}
-        {{#properties}}
-        {{^isRequired}}
-        /// <param name="{{GetDotNetName name "fieldctor"}}">
-        /// {{ToXmlDoc description}}
+        {{ end }}
+        {{ end }}
+
+        {{ for property in properties }}
+        {{ if !property.IsRequired }}
+        /// <param name="{{GetDotNetName property.name "fieldctor"}}">
+        /// {{ToXmlDoc property.description}}
         /// </param>
-        {{/isRequired}}
-        {{/properties}}
+        {{ end }}
+        {{ end }}
         public {{clz}}({{GetModelCtorParam def}})
         {
-            {{#properties}}
-            {{GetDotNetName name "field"}} = {{GetDotNetName name "fieldctor"}};
-            {{/properties}}
+            {{ for property in properties }}
+            {{GetDotNetName property.name "field"}} = {{GetDotNetName property.name "fieldctor"}};
+            {{ end }}
             CustomInit();
         }
 
@@ -48,14 +49,14 @@ namespace k8s.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-        {{#properties}}
 
+        {{ for property in properties }}
         /// <summary>
-        /// {{ToXmlDoc description}}
+        /// {{ToXmlDoc property.description}}
         /// </summary>
-        [JsonPropertyName("{{name}}")]
-        public {{GetDotNetType .}} {{GetDotNetName name "field"}} { get; set; }
-        {{/properties}}
+        [JsonPropertyName("{{property.name}}")]
+        public {{GetDotNetType property}} {{GetDotNetName property.name "field"}} { get; set; }
+        {{ end }}
 
         /// <summary>
         /// Validate the object.
@@ -65,29 +66,32 @@ namespace k8s.Models
         /// </exception>
         public virtual void Validate()
         {
-            {{#properties}}
-            {{#IfType . "object"}}
-            {{#isRequired}}
-            if ({{GetDotNetName name "field"}} == null)
+            {{ for property in properties }}
+            {{if IfType property "object" }}
+            {{ if property.IsRequired }}
+            if ({{GetDotNetName property.name "field"}} == null)
             {
-                throw new ArgumentNullException("{{GetDotNetName name "field"}}");    
+                throw new ArgumentNullException("{{GetDotNetName property.name "field"}}");    
             }
-            {{/isRequired}}
-            {{/IfType . "object"}}
-            {{/properties}}
-            {{#properties}}
-            {{#IfType . "object"}}
-            {{GetDotNetName name "field"}}?.Validate();
-            {{/IfType . "object"}}
-            {{#IfType . "objectarray"}}
-            if ({{GetDotNetName name "field"}} != null){
-                foreach(var obj in {{GetDotNetName name "field"}})
+            {{ end }}
+            {{ end }}
+            
+            {{ end }}
+
+            {{ for property in properties }}
+            {{if IfType property "object" }}
+            {{GetDotNetName property.name "field"}}?.Validate();
+            {{ end }}
+
+            {{if IfType property "objectarray" }}
+            if ({{GetDotNetName property.name "field"}} != null){
+                foreach(var obj in {{GetDotNetName property.name "field"}})
                 {
                     obj.Validate();
                 }
             }
-            {{/IfType . "objectarray"}}
-            {{/properties}}
+            {{ end }}
+            {{ end }}
         }
     }
 }

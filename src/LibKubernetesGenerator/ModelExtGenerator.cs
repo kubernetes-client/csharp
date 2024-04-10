@@ -8,10 +8,12 @@ namespace LibKubernetesGenerator
     internal class ModelExtGenerator
     {
         private readonly ClassNameHelper classNameHelper;
+        private readonly ScriptObjectFactory scriptObjectFactory;
 
-        public ModelExtGenerator(ClassNameHelper classNameHelper)
+        public ModelExtGenerator(ClassNameHelper classNameHelper, ScriptObjectFactory scriptObjectFactory)
         {
             this.classNameHelper = classNameHelper;
+            this.scriptObjectFactory = scriptObjectFactory;
         }
 
         public void Generate(OpenApiDocument swagger, IncrementalGeneratorPostInitializationContext context)
@@ -25,7 +27,10 @@ namespace LibKubernetesGenerator
                          && d.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
                          && !skippedTypes.Contains(classNameHelper.GetClassName(d)));
 
-            context.RenderToContext("ModelExtensions.cs.template", definitions, "ModelExtensions.g.cs");
+            var sc = scriptObjectFactory.CreateScriptObject();
+            sc.SetValue("definitions", definitions, true);
+
+            context.RenderToContext("ModelExtensions.cs.template", sc, "ModelExtensions.g.cs");
         }
     }
 }

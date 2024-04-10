@@ -4,25 +4,24 @@
 // </auto-generated>
 namespace k8s.Models
 {
-{{#.}}
+{{ for definition in definitions }}
     [KubernetesEntity(Group=KubeGroup, Kind=KubeKind, ApiVersion=KubeApiVersion, PluralName=KubePluralName)]
-    public partial class {{GetClassName . }} : {{GetInterfaceName . }}
+    public partial class {{ GetClassName definition }} : {{ GetInterfaceName definition }}
     {
-        public const string KubeApiVersion = "{{GetApiVersion . }}";
-        public const string KubeKind = "{{GetKind . }}";
-        public const string KubeGroup = "{{GetGroup . }}";
-        public const string KubePluralName = {{GetPlural . }};
+        public const string KubeApiVersion = "{{ GetApiVersion definition }}";
+        public const string KubeKind = "{{ GetKind definition }}";
+        public const string KubeGroup = "{{ GetGroup definition }}";
+        public const string KubePluralName = "{{ GetPlural definition }}";
     }
-
-{{/.}}
+{{ end }}
 }
 
 #if NET8_0_OR_GREATER
 namespace k8s 
 {
-    {{#.}}
-    [JsonSerializable(typeof({{GetClassName . }}))]
-    {{/.}}
+    {{ for definition in definitions }}
+    [JsonSerializable(typeof({{ GetClassName definition }}))]
+    {{ end }}
     internal partial class SourceGenerationContext : JsonSerializerContext
     {
     }

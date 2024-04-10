@@ -10,50 +10,50 @@ namespace k8s;
 /// </summary>
 public partial interface I{{name}}Operations
 {
-    {{#apis}}
+    {{for api in apis }}
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+    {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
-    {{/operation.parameters}}
+    {{ end }}
     /// <param name="customHeaders">
     /// The headers that will be added to request.
     /// </param>
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    Task<HttpOperationResponse{{GetReturnType operation "<>"}}> {{GetMethodName operation "WithHttpMessagesAsync"}}(
-{{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName . "true"}},
-{{/operation.parameters}}
+    Task<HttpOperationResponse{{GetReturnType api.operation "<>"}}> {{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+{{ end }}
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders = null,
         CancellationToken cancellationToken = default);
 
-    {{#IfReturnType operation "object"}}
+    {{if IfReturnType api.operation "object"}}
     /// <summary>
-    /// {{ToXmlDoc operation.description}}
+    /// {{ToXmlDoc api.operation.description}}
     /// </summary>
-    {{#operation.parameters}}
-    /// <param name="{{GetDotNetName .}}">
-    /// {{ToXmlDoc description}}
+    {{ for parameter in api.operation.parameters}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
-    {{/operation.parameters}}
+    {{ end }}
     /// <param name="customHeaders">
     /// The headers that will be added to request.
     /// </param>
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    Task<HttpOperationResponse<T>> {{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
-{{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName . "true"}},
-{{/operation.parameters}}
+    Task<HttpOperationResponse<T>> {{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+{{ end }}
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders = null,
         CancellationToken cancellationToken = default);
-    {{/IfReturnType operation "object"}}
+    {{ end }}
 
-    {{/apis}}
+    {{ end }}
 }

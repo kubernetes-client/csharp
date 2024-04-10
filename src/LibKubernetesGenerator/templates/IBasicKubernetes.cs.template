@@ -10,7 +10,7 @@ namespace k8s;
 /// </summary>
 public partial interface IBasicKubernetes
 {
-    {{#.}}
-    I{{.}}Operations {{.}} { get; }
-    {{/.}}
+    {{for group in groups}}
+    I{{group}}Operations {{group}} { get; }
+    {{end}}
 }

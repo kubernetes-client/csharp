@@ -1,16 +1,29 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using Nustache.Core;
+using Scriban;
+using Scriban.Runtime;
 using System.Text;
 
 namespace LibKubernetesGenerator
 {
     internal static class GeneratorExecutionContextExt
     {
-        public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, object data, string generatedfile)
+        public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, object sc, string generatedfile)
         {
-            var template = EmbedResource.GetResource(templatefile);
-            var generated = Render.StringToString(template, data);
+            // TODO remove
+        }
+
+        public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, ScriptObject sc, string generatedfile)
+        {
+            var tc = new TemplateContext();
+            tc.PushGlobal(sc);
+            context.RenderToContext(templatefile, tc, generatedfile);
+        }
+
+        public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, TemplateContext tc, string generatedfile)
+        {
+            var template = Template.Parse(EmbedResource.GetResource(templatefile));
+            var generated = template.Render(tc);
             context.AddSource(generatedfile, SourceText.From(generated, Encoding.UTF8));
         }
     }

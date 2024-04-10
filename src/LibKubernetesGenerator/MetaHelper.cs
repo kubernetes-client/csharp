@@ -1,45 +1,27 @@
 using NJsonSchema;
 using NSwag;
-using Nustache.Core;
+using Scriban.Runtime;
 using System;
 using System.Collections.Generic;
 
 namespace LibKubernetesGenerator
 {
-    internal class MetaHelper : INustacheHelper
+    internal class MetaHelper : IScriptObjectHelper
     {
-        public void RegisterHelper()
+        public void RegisterHelper(ScriptObject scriptObject)
         {
-            Helpers.Register(nameof(GetGroup), GetGroup);
-            Helpers.Register(nameof(GetApiVersion), GetApiVersion);
-            Helpers.Register(nameof(GetKind), GetKind);
-            Helpers.Register(nameof(GetPathExpression), GetPathExpression);
-        }
-
-        public static void GetKind(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-            {
-                context.Write(GetKind(arguments[0] as JsonSchema));
-            }
+            scriptObject.Import(nameof(GetGroup), GetGroup);
+            scriptObject.Import(nameof(GetApiVersion), GetApiVersion);
+            scriptObject.Import(nameof(GetKind), GetKind);
+            scriptObject.Import(nameof(GetPathExpression), GetPathExpression);
         }
 
         private static string GetKind(JsonSchema definition)
         {
-           var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
-           var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
+            var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
+            var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
-           return groupVersionKind["kind"] as string;
-        }
-
-        public static void GetGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-            {
-                context.Write(GetGroup(arguments[0] as JsonSchema));
-            }
+            return groupVersionKind["kind"] as string;
         }
 
         private static string GetGroup(JsonSchema definition)
@@ -50,33 +32,12 @@ namespace LibKubernetesGenerator
             return groupVersionKind["group"] as string;
         }
 
-        public static void GetApiVersion(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-            {
-                context.Write(GetApiVersion(arguments[0] as JsonSchema));
-            }
-        }
-
         private static string GetApiVersion(JsonSchema definition)
         {
             var groupVersionKindElements = (object[])definition.ExtensionData["x-kubernetes-group-version-kind"];
             var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements[0];
 
             return groupVersionKind["version"] as string;
-        }
-
-        public static void GetPathExpression(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null &&
-                arguments[0] is OpenApiOperationDescription)
-            {
-                var operation = arguments[0] as OpenApiOperationDescription;
-                context.Write(GetPathExpression(operation));
-            }
         }
 
         private static string GetPathExpression(OpenApiOperationDescription operation)

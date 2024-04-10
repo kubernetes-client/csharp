@@ -3,6 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <NoWarn>CA1812</NoWarn>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,10 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Scriban" Version="5.9.1" IncludeAssets="Build"/>
         <PackageReference Include="Autofac" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="CaseExtensions" Version="1.1.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="NSwag.Core" Version="13.20.0" GeneratePathProperty="true" PrivateAssets="all" />
-        <PackageReference Include="Nustache" Version="1.16.0.10" GeneratePathProperty="true" PrivateAssets="all" NoWarn="NU1701" />
         <PackageReference Include="NJsonSchema" Version="10.9.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" PrivateAssets="all" />
@@ -36,7 +37,6 @@
             <TargetPathWithTargetPlatformMoniker Include="$(PKGAutofac)\lib\netstandard2.0\Autofac.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGCaseExtensions)\lib\netstandard2.0\CaseExtensions.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNSwag_Core)\lib\netstandard2.0\NSwag.Core.dll" IncludeRuntimeDependency="false" />
-            <TargetPathWithTargetPlatformMoniker Include="$(PKGNustache)\lib\net20\Nustache.Core.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema)\lib\netstandard2.0\NJsonSchema.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGMicrosoft_Bcl_AsyncInterfaces)\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNewtonsoft_Json)\lib\netstandard1.0\Newtonsoft.Json.dll" IncludeRuntimeDependency="false" />
