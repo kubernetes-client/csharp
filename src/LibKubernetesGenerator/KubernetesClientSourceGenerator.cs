@@ -13,8 +13,6 @@ namespace LibKubernetesGenerator
     [Generator]
     public class KubernetesClientSourceGenerator : IIncrementalGenerator
     {
-        private static readonly object Execlock = new object();
-
         private static (OpenApiDocument, IContainer) BuildContainer()
         {
             var swagger = OpenApiDocument.FromJsonAsync(EmbedResource.GetResource("swagger.json")).GetAwaiter().GetResult();
@@ -81,17 +79,14 @@ namespace LibKubernetesGenerator
 #if GENERATE_BASIC
             generatorContext.RegisterPostInitializationOutput(ctx =>
             {
-                lock (Execlock)
-                {
-                    var (swagger, container) = BuildContainer();
+                var (swagger, container) = BuildContainer();
 
-                    container.Resolve<VersionGenerator>().Generate(swagger, ctx);
+                container.Resolve<VersionGenerator>().Generate(swagger, ctx);
 
-                    container.Resolve<ModelGenerator>().Generate(swagger, ctx);
-                    container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
-                    container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
-                    container.Resolve<ApiGenerator>().Generate(swagger, ctx);
-                }
+                container.Resolve<ModelGenerator>().Generate(swagger, ctx);
+                container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
+                container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
+                container.Resolve<ApiGenerator>().Generate(swagger, ctx);
             });
 #endif
 
@@ -99,12 +94,8 @@ namespace LibKubernetesGenerator
             var automappersrc = generatorContext.CompilationProvider.Select((c, _) => c.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "AutoMapper/VersionConverter.cs")));
             generatorContext.RegisterSourceOutput(automappersrc, (ctx, srctree) =>
             {
-                lock (Execlock)
-                {
-                    var (swagger, container) = BuildContainer();
-
-                    container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, ctx, srctree);
-                }
+                var (swagger, container) = BuildContainer();
+                container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, ctx, srctree);
             });
 #endif
         }
