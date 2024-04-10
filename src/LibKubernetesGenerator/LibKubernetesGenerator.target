@@ -1,7 +1,6 @@
 <Project>
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <NoWarn>CA1812</NoWarn>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
     </PropertyGroup>
@@ -17,15 +16,22 @@
     </ItemGroup>
 
     <ItemGroup>
+        <!-- Scriban No Dependency -->
         <PackageReference Include="Scriban" Version="5.9.1" IncludeAssets="Build"/>
-        <PackageReference Include="Autofac" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+
+        <!-- CaseExtensions No Dependency -->
         <PackageReference Include="CaseExtensions" Version="1.1.0" GeneratePathProperty="true" PrivateAssets="all" />
+
+        <!-- Autofac -->
+        <PackageReference Include="Autofac" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+
+        <!-- NSwag -->
         <PackageReference Include="NSwag.Core" Version="13.20.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="NJsonSchema" Version="10.9.0" GeneratePathProperty="true" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Namotion.Reflection" Version="3.0.1" GeneratePathProperty="true" PrivateAssets="all" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
     </ItemGroup>
 
     <PropertyGroup>
