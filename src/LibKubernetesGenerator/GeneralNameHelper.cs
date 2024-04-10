@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace LibKubernetesGenerator
 {
-    internal class GeneralNameHelper: IScriptObjectHelper
+    internal class GeneralNameHelper : IScriptObjectHelper
     {
         private readonly ClassNameHelper classNameHelper;
 
@@ -18,13 +18,6 @@ namespace LibKubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        // public void RegisterHelper()
-        // {
-        //     Helpers.Register(nameof(GetInterfaceName), GetInterfaceName);
-        //     Helpers.Register(nameof(GetMethodName), GetMethodName);
-        //     Helpers.Register(nameof(GetDotNetName), GetDotNetName);
-        // }
-
         public void RegisterHelper(ScriptObject scriptObject)
         {
             scriptObject.Import(nameof(GetInterfaceName), new Func<JsonSchema, string>(GetInterfaceName));
@@ -32,16 +25,6 @@ namespace LibKubernetesGenerator
             scriptObject.Import(nameof(GetDotNetName), new Func<string, string, string>(GetDotNetName));
             scriptObject.Import(nameof(GetDotNetNameOpenApiParameter), new Func<OpenApiParameter, string, string>(GetDotNetNameOpenApiParameter));
         }
-
-
-        //public void GetInterfaceName(RenderContext context, IList<object> arguments,
-        //    IDictionary<string, object> options, RenderBlock fn, RenderBlock inverse)
-        //{
-        //    if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-        //    {
-        //        context.Write(GetInterfaceName(arguments[0] as JsonSchema));
-        //    }
-        //}
 
         private string GetInterfaceName(JsonSchema definition)
         {
@@ -77,46 +60,6 @@ namespace LibKubernetesGenerator
 
             return string.Join(", ", interfaces);
         }
-
-        //public void GetMethodName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-        //    RenderBlock fn, RenderBlock inverse)
-        //{
-        //    if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiOperation)
-        //    {
-        //        string suffix = null;
-        //        if (arguments.Count > 1)
-        //        {
-        //            suffix = arguments[1] as string;
-        //        }
-
-        //        context.Write(GetMethodName(arguments[0] as OpenApiOperation, suffix));
-        //    }
-        //}
-
-        //public void GetDotNetName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-        //    RenderBlock fn, RenderBlock inverse)
-        //{
-        //    if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiParameter)
-        //    {
-        //        var parameter = arguments[0] as OpenApiParameter;
-        //        context.Write(GetDotNetName(parameter.Name));
-
-        //        if (arguments.Count > 1 && (arguments[1] as string) == "true" && !parameter.IsRequired)
-        //        {
-        //            context.Write(" = null");
-        //        }
-        //    }
-        //    else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
-        //    {
-        //        var style = "parameter";
-        //        if (arguments.Count > 1)
-        //        {
-        //            style = arguments[1] as string;
-        //        }
-
-        //        context.Write(GetDotNetName((string)arguments[0], style));
-        //    }
-        //}
 
         public string GetDotNetNameOpenApiParameter(OpenApiParameter parameter, string init)
         {

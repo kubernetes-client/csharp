@@ -23,33 +23,10 @@ namespace LibKubernetesGenerator
             _classNameToPluralMap = InitClassNameToPluralMap(swagger);
         }
 
-        //public void RegisterHelper()
-        //{
-        //    Helpers.Register(nameof(GetPlural), GetPlural);
-        //}
-
         public void RegisterHelper(ScriptObject scriptObject)
         {
             scriptObject.Import(nameof(GetPlural), new Func<JsonSchema, string>(GetPlural));
         }
-
-
-        //public void GetPlural(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-        //    RenderBlock fn, RenderBlock inverse)
-        //{
-        //    if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-        //    {
-        //        var plural = GetPlural(arguments[0] as JsonSchema);
-        //        if (plural != null)
-        //        {
-        //            context.Write($"\"{plural}\"");
-        //        }
-        //        else
-        //        {
-        //            context.Write("null");
-        //        }
-        //    }
-        //}
 
         public string GetPlural(JsonSchema definition)
         {

@@ -88,9 +88,9 @@ namespace LibKubernetesGenerator
                     container.Resolve<VersionGenerator>().Generate(swagger, ctx);
 
                     container.Resolve<ModelGenerator>().Generate(swagger, ctx);
-                     container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
-                     container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
-                     container.Resolve<ApiGenerator>().Generate(swagger, ctx);
+                    container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
+                    container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
+                    container.Resolve<ApiGenerator>().Generate(swagger, ctx);
                 }
             });
 #endif

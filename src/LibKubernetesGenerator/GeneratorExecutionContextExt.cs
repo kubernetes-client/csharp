@@ -8,11 +8,6 @@ namespace LibKubernetesGenerator
 {
     internal static class GeneratorExecutionContextExt
     {
-        public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, object sc, string generatedfile)
-        {
-            // TODO remove
-        }
-
         public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, ScriptObject sc, string generatedfile)
         {
             var tc = new TemplateContext();
