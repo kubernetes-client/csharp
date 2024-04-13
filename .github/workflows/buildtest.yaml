@@ -47,7 +47,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.3
+        uses: microsoft/setup-msbuild@v2
       - name: Setup dotnet SDK 7
         uses: actions/setup-dotnet@v4
         with:
