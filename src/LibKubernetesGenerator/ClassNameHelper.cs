@@ -1,13 +1,14 @@
 using CaseExtensions;
 using NJsonSchema;
 using NSwag;
-using Nustache.Core;
+using Scriban.Runtime;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LibKubernetesGenerator
 {
-    internal class ClassNameHelper : INustacheHelper
+    internal class ClassNameHelper : IScriptObjectHelper
     {
         private readonly Dictionary<string, string> classNameMap;
         private readonly Dictionary<JsonSchema, string> schemaToNameMapCooked;
@@ -18,9 +19,10 @@ namespace LibKubernetesGenerator
             schemaToNameMapCooked = GenerateSchemaToNameMapCooked(swagger);
         }
 
-        public void RegisterHelper()
+
+        public void RegisterHelper(ScriptObject scriptObject)
         {
-            Helpers.Register(nameof(GetClassName), GetClassName);
+            scriptObject.Import(nameof(GetClassName), new Func<JsonSchema, string>(GetClassNameForSchemaDefinition));
         }
 
         private static Dictionary<JsonSchema, string> GenerateSchemaToNameMapCooked(OpenApiDocument swagger)
@@ -50,27 +52,7 @@ namespace LibKubernetesGenerator
             return map;
         }
 
-        public void GetClassName(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiOperation)
-            {
-                context.Write(GetClassName(arguments[0] as OpenApiOperation));
-            }
-            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchema)
-            {
-                context.Write(GetClassNameForSchemaDefinition(arguments[0] as JsonSchema));
-            }
-        }
-
-        public string GetClassName(OpenApiOperation operation)
-        {
-            var groupVersionKind =
-                (Dictionary<string, object>)operation.ExtensionData["x-kubernetes-group-version-kind"];
-            return GetClassName(groupVersionKind);
-        }
-
-        public string GetClassName(Dictionary<string, object> groupVersionKind)
+        private string GetClassName(Dictionary<string, object> groupVersionKind)
         {
             var group = (string)groupVersionKind["group"];
             var kind = (string)groupVersionKind["kind"];
@@ -97,11 +79,6 @@ namespace LibKubernetesGenerator
 
 
             return schemaToNameMapCooked[definition];
-        }
-
-        private static Dictionary<JsonSchema, string> InitSchemaToNameCooked(OpenApiDocument swagger)
-        {
-            return swagger.Definitions.ToDictionary(x => x.Value, x => x.Key.Replace(".", "").ToPascalCase());
         }
     }
 }

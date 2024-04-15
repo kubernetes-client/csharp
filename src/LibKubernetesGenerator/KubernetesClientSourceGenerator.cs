@@ -1,38 +1,22 @@
 using Autofac;
 using Microsoft.CodeAnalysis;
 using NSwag;
-using Nustache.Core;
 #if GENERATE_AUTOMAPPER
+using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Linq;
 #endif
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace LibKubernetesGenerator
 {
     [Generator]
     public class KubernetesClientSourceGenerator : IIncrementalGenerator
     {
-        private static readonly object Execlock = new object();
-
         private static (OpenApiDocument, IContainer) BuildContainer()
         {
             var swagger = OpenApiDocument.FromJsonAsync(EmbedResource.GetResource("swagger.json")).GetAwaiter().GetResult();
             var container = BuildContainer(swagger);
-            // TODO move to Handlebars.Net
-            // here is to clean up the custom helpers in static Nustache.Core.Helpers
-            {
-                var ch = typeof(Helpers).GetField("CustomHelpers", BindingFlags.Static | BindingFlags.NonPublic);
-                ((Dictionary<string, Helper>)ch.GetValue(null)).Clear();
-            }
-
-            foreach (var helper in container.Resolve<IEnumerable<INustacheHelper>>())
-            {
-                helper.RegisterHelper();
-            }
-
             return (swagger, container);
         }
 
@@ -77,6 +61,9 @@ namespace LibKubernetesGenerator
                 .AsImplementedInterfaces()
                 ;
 
+            builder.RegisterType<ScriptObjectFactory>()
+                ;
+
             builder.RegisterType<ModelExtGenerator>();
             builder.RegisterType<ModelGenerator>();
             builder.RegisterType<ApiGenerator>();
@@ -92,18 +79,14 @@ namespace LibKubernetesGenerator
 #if GENERATE_BASIC
             generatorContext.RegisterPostInitializationOutput(ctx =>
             {
-                lock (Execlock)
-                {
-                    var (swagger, container) = BuildContainer();
+                var (swagger, container) = BuildContainer();
 
-                    container.Resolve<VersionGenerator>().Generate(swagger, ctx);
+                container.Resolve<VersionGenerator>().Generate(swagger, ctx);
 
-                    container.Resolve<ModelGenerator>().Generate(swagger, ctx);
-                    container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
-                    container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
-
-                    container.Resolve<ApiGenerator>().Generate(swagger, ctx);
-                }
+                container.Resolve<ModelGenerator>().Generate(swagger, ctx);
+                container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
+                container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
+                container.Resolve<ApiGenerator>().Generate(swagger, ctx);
             });
 #endif
 
@@ -111,12 +94,8 @@ namespace LibKubernetesGenerator
             var automappersrc = generatorContext.CompilationProvider.Select((c, _) => c.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "AutoMapper/VersionConverter.cs")));
             generatorContext.RegisterSourceOutput(automappersrc, (ctx, srctree) =>
             {
-                lock (Execlock)
-                {
-                    var (swagger, container) = BuildContainer();
-
-                    container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, ctx, srctree);
-                }
+                var (swagger, container) = BuildContainer();
+                container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, ctx, srctree);
             });
 #endif
         }

@@ -8,139 +8,137 @@ namespace k8s;
 
 public partial class AbstractKubernetes : I{{name}}Operations
 {
-    {{#apis}}
-    {{#IfReturnType operation "void"}}
-    private async Task<HttpOperationResponse> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
-    {{/IfReturnType operation "void"}}
-    {{#IfReturnType operation "obj"}}
-    private async Task<HttpOperationResponse<T>> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
-    {{/IfReturnType operation "obj"}}
-    {{#IfReturnType operation "stream"}}
-    private async Task<HttpOperationResponse<Stream>> I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
-    {{/IfReturnType operation "stream"}}
-{{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName .}},
-{{/operation.parameters}}
+    {{for api in apis }}
+    {{if IfReturnType api.operation "void"}}
+    private async Task<HttpOperationResponse> I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+    {{end}}
+    {{if IfReturnType api.operation "obj"}}
+    private async Task<HttpOperationResponse<T>> I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+    {{end}}
+    {{if IfReturnType api.operation "stream"}}
+    private async Task<HttpOperationResponse<Stream>> I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+    {{end}}
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
         CancellationToken cancellationToken)
     {
         using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         cts.CancelAfter(HttpClientTimeout);
-        {{#IfParamContains operation "watch"}}
+        {{if IfParamContains api.operation "watch"}}
         if (watch == true)
         {
             cts.CancelAfter(Timeout.InfiniteTimeSpan);
         }
-        {{/IfParamContains operation "watch"}}
+        {{end}}
         cancellationToken = cts.Token;
 
-        {{#operation.parameters}}
-        {{#isRequired}}
-        if ({{GetDotNetName name}} == null)
+        {{ for parameter in api.operation.parameters}}
+        {{ if parameter.IsRequired}}
+        if ({{GetDotNetName parameter.name}} == null)
         {
-            throw new ArgumentNullException("{{GetDotNetName name}}");
+            throw new ArgumentNullException("{{GetDotNetName parameter.name}}");
         }
-        {{/isRequired}}
-        {{/operation.parameters}}
+        {{end}}
+        {{end}}
 
         // Construct URL
-        var url = $"{{ToInterpolationPathString path}}";
-        {{#IfGroupPathParamContainsGroup path}}
+        var url = $"{{ToInterpolationPathString api.path}}";
+        {{if IfGroupPathParamContainsGroup api.path}}
         url = url.Replace("apis//", "api/");
-        {{/IfGroupPathParamContainsGroup}}
-        {{#IfListNotEmpty operation.parameters}}
+        {{end}}
+        {{if (array.size api.operation.parameters) > 0}}
         var q = new QueryBuilder();
-        {{#operation.parameters}}
-        {{#IfKindIs . "query"}}
-        q.Append("{{name}}", {{GetDotNetName name}});
-        {{/IfKindIs . "query"}}
-        {{/operation.parameters}}
+        {{ for parameter in api.operation.parameters}}
+        {{if IfKindIs parameter "query"}}
+        q.Append("{{parameter.name}}", {{GetDotNetName parameter.name}});
+        {{end}}
+        {{end}}
         url += q.ToString();
-        {{/IfListNotEmpty operation.parameters}}
+        {{end}}
 
         // Create HTTP transport
-        {{#IfParamContains operation "body"}}
-        var httpResponse = await SendRequest(url, HttpMethods.{{Method}}, customHeaders, body, cancellationToken);
-        {{/IfParamContains operation "body"}}
-        {{#IfParamDoesNotContain operation "body"}}
-        var httpResponse = await SendRequest<object>(url, HttpMethods.{{Method}}, customHeaders, null, cancellationToken);
-        {{/IfParamDoesNotContain operation "body"}}
+        {{if IfParamContains api.operation "body"}}
+        var httpResponse = await SendRequest(url, HttpMethods.{{api.method}}, customHeaders, body, cancellationToken);
+        {{ else }}
+        var httpResponse = await SendRequest<object>(url, HttpMethods.{{api.method}}, customHeaders, null, cancellationToken);
+        {{end}}
         // Create Result
         var httpRequest = httpResponse.RequestMessage;
-        {{#IfReturnType operation "void"}}
+        {{if IfReturnType api.operation "void"}}
         HttpOperationResponse result = new HttpOperationResponse() { Request = httpRequest, Response =  httpResponse };
-        {{/IfReturnType operation "void"}}
-        {{#IfReturnType operation "obj"}}
+        {{end}}
+        {{if IfReturnType api.operation "obj"}}
         var result = await CreateResultAsync<T>(
             httpRequest,
             httpResponse,
-            {{#IfParamContains operation "watch"}}
+            {{if IfParamContains api.operation "watch"}}
             watch,
-            {{/IfParamContains operation "watch"}}
-            {{#IfParamDoesNotContain operation "watch"}}
+            {{else}}
             false,
-            {{/IfParamDoesNotContain operation "watch"}}
+            {{end}}
             cancellationToken);
-        {{/IfReturnType operation "obj"}}
-        {{#IfReturnType operation "stream"}}
+        {{end}}
+        {{if IfReturnType api.operation "stream"}}
         var result = new HttpOperationResponse<Stream>() {
                             Request = httpRequest,
                             Response = httpResponse,
                             Body = await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false) };
-        {{/IfReturnType operation "stream"}}
+        {{end}}
         return result;
     }
 
     /// <inheritdoc/>
-    async Task<HttpOperationResponse{{GetReturnType operation "<>"}}> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}(
-{{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName .}},
-{{/operation.parameters}}
+    async Task<HttpOperationResponse{{GetReturnType api.operation "<>"}}> I{{name}}Operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
         CancellationToken cancellationToken)
     {
-        {{#IfReturnType operation "void"}}
-        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
-        {{#operation.parameters}}
-            {{GetDotNetName .}},
-        {{/operation.parameters}}
+        {{if IfReturnType api.operation "void"}}
+        return await I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+           {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             customHeaders,
             cancellationToken).ConfigureAwait(false);
-        {{/IfReturnType operation "void"}}
-        {{#IfReturnType operation "obj"}}
-        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}{{GetReturnType operation "<>"}}(
-        {{#operation.parameters}}
-            {{GetDotNetName .}},
-        {{/operation.parameters}}
+        {{end}}
+        {{if IfReturnType api.operation "obj"}}
+        return await I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}{{GetReturnType api.operation "<>"}}(
+{{ for parameter in api.operation.parameters}}
+           {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             customHeaders,
             cancellationToken).ConfigureAwait(false);
-        {{/IfReturnType operation "obj"}}
-        {{#IfReturnType operation "stream"}}
-        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}(
-        {{#operation.parameters}}
-            {{GetDotNetName .}},
-        {{/operation.parameters}}
+        {{end}}
+        {{if IfReturnType api.operation "stream"}}
+        return await I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+{{ for parameter in api.operation.parameters}}
+           {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             customHeaders,
             cancellationToken).ConfigureAwait(false);
-        {{/IfReturnType operation "stream"}}
+        {{end}}
     }
 
-    {{#IfReturnType operation "object"}}
+    {{if IfReturnType api.operation "object"}}
     /// <inheritdoc/>
-    async Task<HttpOperationResponse<T>> I{{name}}Operations.{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
-{{#operation.parameters}}
-        {{GetDotNetType .}} {{GetDotNetName .}},
-{{/operation.parameters}}
+    async Task<HttpOperationResponse<T>> I{{name}}Operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+{{ for parameter in api.operation.parameters}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
         IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders,
         CancellationToken cancellationToken)
     {
-        return await I{{name}}Operations_{{GetMethodName operation "WithHttpMessagesAsync"}}<T>(
-        {{#operation.parameters}}
-            {{GetDotNetName .}},
-        {{/operation.parameters}}
+        return await I{{name}}Operations_{{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+{{ for parameter in api.operation.parameters}}
+           {{GetDotNetNameOpenApiParameter parameter "false"}},
+{{end}}
             customHeaders,
             cancellationToken).ConfigureAwait(false);
     }
-    {{/IfReturnType operation "object"}}
-    {{/apis}}
+    {{end}}
+    {{end}}
 }

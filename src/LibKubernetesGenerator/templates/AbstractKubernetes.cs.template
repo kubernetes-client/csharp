@@ -10,7 +10,7 @@ namespace k8s;
 /// </summary>
 public abstract partial class AbstractKubernetes
 {
-    {{#.}}
-    public I{{.}}Operations {{.}} => this;
-    {{/.}}
+    {{for group in groups}}
+    public I{{group}}Operations {{group}} => this;
+    {{end}}
 }

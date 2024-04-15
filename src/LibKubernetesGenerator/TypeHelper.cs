@@ -1,13 +1,11 @@
 using NJsonSchema;
 using NSwag;
-using Nustache.Core;
+using Scriban.Runtime;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace LibKubernetesGenerator
 {
-    internal class TypeHelper : INustacheHelper
+    internal class TypeHelper : IScriptObjectHelper
     {
         private readonly ClassNameHelper classNameHelper;
 
@@ -16,57 +14,13 @@ namespace LibKubernetesGenerator
             this.classNameHelper = classNameHelper;
         }
 
-        public void RegisterHelper()
+        public void RegisterHelper(ScriptObject scriptObject)
         {
-            Helpers.Register(nameof(GetDotNetType), GetDotNetType);
-            Helpers.Register(nameof(GetReturnType), GetReturnType);
-            Helpers.Register(nameof(IfReturnType), IfReturnType);
-            Helpers.Register(nameof(IfType), IfType);
-        }
-
-        public void GetDotNetType(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is OpenApiParameter)
-            {
-                var parameter = arguments[0] as OpenApiParameter;
-
-                if (parameter.Schema?.Reference != null)
-                {
-                    context.Write(classNameHelper.GetClassNameForSchemaDefinition(parameter.Schema.Reference));
-                }
-                else if (parameter.Schema != null)
-                {
-                    context.Write(GetDotNetType(parameter.Schema.Type, parameter.Name, parameter.IsRequired,
-                        parameter.Schema.Format));
-                }
-                else
-                {
-                    context.Write(GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired,
-                        parameter.Format));
-                }
-            }
-            else if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is JsonSchemaProperty)
-            {
-                var property = arguments[0] as JsonSchemaProperty;
-                context.Write(GetDotNetType(property));
-            }
-            else if (arguments != null && arguments.Count > 2 && arguments[0] != null && arguments[1] != null &&
-                     arguments[2] != null && arguments[0] is JsonObjectType && arguments[1] is string &&
-                     arguments[2] is bool)
-            {
-                context.Write(GetDotNetType((JsonObjectType)arguments[0], (string)arguments[1], (bool)arguments[2],
-                    (string)arguments[3]));
-            }
-            else if (arguments != null && arguments.Count > 0 && arguments[0] != null)
-            {
-                context.Write($"ERROR: Expected OpenApiParameter but got {arguments[0].GetType().FullName}");
-            }
-            else
-            {
-                context.Write("ERROR: Expected a OpenApiParameter argument but got none.");
-            }
+            scriptObject.Import(nameof(GetDotNetType), new Func<JsonSchemaProperty, string>(GetDotNetType));
+            scriptObject.Import(nameof(GetDotNetTypeOpenApiParameter), new Func<OpenApiParameter, string>(GetDotNetTypeOpenApiParameter));
+            scriptObject.Import(nameof(GetReturnType), new Func<OpenApiOperation, string, string>(GetReturnType));
+            scriptObject.Import(nameof(IfReturnType), new Func<OpenApiOperation, string, bool>(IfReturnType));
+            scriptObject.Import(nameof(IfType), new Func<JsonSchemaProperty, string, bool>(IfType));
         }
 
         private string GetDotNetType(JsonObjectType jsonType, string name, bool required, string format)
@@ -204,20 +158,21 @@ namespace LibKubernetesGenerator
             return GetDotNetType(p.Type, p.Name, p.IsRequired, p.Format);
         }
 
-        public void GetReturnType(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public string GetDotNetTypeOpenApiParameter(OpenApiParameter parameter)
         {
-            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
-            if (operation != null)
+            if (parameter.Schema?.Reference != null)
             {
-                string style = null;
-                if (arguments.Count > 1)
-                {
-                    style = arguments[1] as string;
-                }
-
-                context.Write(GetReturnType(operation, style));
+                return classNameHelper.GetClassNameForSchemaDefinition(parameter.Schema.Reference);
+            }
+            else if (parameter.Schema != null)
+            {
+                return (GetDotNetType(parameter.Schema.Type, parameter.Name, parameter.IsRequired,
+                    parameter.Schema.Format));
+            }
+            else
+            {
+                return (GetDotNetType(parameter.Type, parameter.Name, parameter.IsRequired,
+                    parameter.Format));
             }
         }
 
@@ -295,57 +250,38 @@ namespace LibKubernetesGenerator
             return t;
         }
 
-        public void IfReturnType(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public bool IfReturnType(OpenApiOperation operation, string type)
         {
-            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
-            if (operation != null)
+            var rt = GetReturnType(operation, "void");
+            if (type == "any" && rt != "void")
             {
-                string type = null;
-                if (arguments.Count > 1)
-                {
-                    type = arguments[1] as string;
-                }
-
-                var rt = GetReturnType(operation, "void");
-                if (type == "any" && rt != "void")
-                {
-                    fn(null);
-                }
-                else if (string.Equals(type, rt.ToLower(), StringComparison.OrdinalIgnoreCase))
-                {
-                    fn(null);
-                }
-                else if (type == "obj" && rt != "void" && rt != "Stream")
-                {
-                    fn(null);
-                }
+                return true;
             }
+            else if (string.Equals(type, rt.ToLower(), StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            else if (type == "obj" && rt != "void" && rt != "Stream")
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public static void IfType(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public static bool IfType(JsonSchemaProperty property, string type)
         {
-            var property = arguments?.FirstOrDefault() as JsonSchemaProperty;
-            if (property != null)
+            if (type == "object" && property.Reference != null && !property.IsArray &&
+                property.AdditionalPropertiesSchema == null)
             {
-                string type = null;
-                if (arguments.Count > 1)
-                {
-                    type = arguments[1] as string;
-                }
-
-                if (type == "object" && property.Reference != null && !property.IsArray &&
-                    property.AdditionalPropertiesSchema == null)
-                {
-                    fn(null);
-                }
-                else if (type == "objectarray" && property.IsArray && property.Item?.Reference != null)
-                {
-                    fn(null);
-                }
+                return true;
             }
+            else if (type == "objectarray" && property.IsArray && property.Item?.Reference != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

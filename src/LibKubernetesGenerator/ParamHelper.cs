@@ -1,12 +1,12 @@
 using NJsonSchema;
 using NSwag;
-using Nustache.Core;
-using System.Collections.Generic;
+using Scriban.Runtime;
+using System;
 using System.Linq;
 
 namespace LibKubernetesGenerator
 {
-    internal class ParamHelper : INustacheHelper
+    internal class ParamHelper : IScriptObjectHelper
     {
         private readonly GeneralNameHelper generalNameHelper;
         private readonly TypeHelper typeHelper;
@@ -17,84 +17,31 @@ namespace LibKubernetesGenerator
             this.typeHelper = typeHelper;
         }
 
-        public void RegisterHelper()
+        public void RegisterHelper(ScriptObject scriptObject)
         {
-            Helpers.Register(nameof(IfParamContains), IfParamContains);
-            Helpers.Register(nameof(IfParamDoesNotContain), IfParamDoesNotContain);
-            Helpers.Register(nameof(GetModelCtorParam), GetModelCtorParam);
+            scriptObject.Import(nameof(GetModelCtorParam), new Func<JsonSchema, string>(GetModelCtorParam));
+            scriptObject.Import(nameof(IfParamContains), IfParamContains);
         }
 
-        public static void IfParamContains(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public static bool IfParamContains(OpenApiOperation operation, string name)
         {
-            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
-            if (operation != null)
+            var found = false;
+
+            foreach (var param in operation.Parameters)
             {
-                string name = null;
-                if (arguments.Count > 1)
+                if (param.Name == name)
                 {
-                    name = arguments[1] as string;
-                }
-
-                var found = false;
-
-                foreach (var param in operation.Parameters)
-                {
-                    if (param.Name == name)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (found)
-                {
-                    fn(null);
+                    found = true;
+                    break;
                 }
             }
+
+            return found;
         }
 
-        public static void IfParamDoesNotContain(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public string GetModelCtorParam(JsonSchema schema)
         {
-            var operation = arguments?.FirstOrDefault() as OpenApiOperation;
-            if (operation != null)
-            {
-                string name = null;
-                if (arguments.Count > 1)
-                {
-                    name = arguments[1] as string;
-                }
-
-                var found = false;
-
-                foreach (var param in operation.Parameters)
-                {
-                    if (param.Name == name)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (!found)
-                {
-                    fn(null);
-                }
-            }
-        }
-
-        public void GetModelCtorParam(RenderContext context, IList<object> arguments,
-            IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
-        {
-            var schema = arguments[0] as JsonSchema;
-
-            if (schema != null)
-            {
-                context.Write(string.Join(", ", schema.Properties.Values
+            return string.Join(", ", schema.Properties.Values
                     .OrderBy(p => !p.IsRequired)
                     .Select(p =>
                     {
@@ -107,8 +54,7 @@ namespace LibKubernetesGenerator
                         }
 
                         return sp;
-                    })));
-            }
+                    }));
         }
     }
 }

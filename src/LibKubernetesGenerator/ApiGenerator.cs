@@ -8,6 +8,13 @@ namespace LibKubernetesGenerator
 {
     internal class ApiGenerator
     {
+        private readonly ScriptObjectFactory scriptObjectFactory;
+
+        public ApiGenerator(ScriptObjectFactory scriptObjectFactory)
+        {
+            this.scriptObjectFactory = scriptObjectFactory;
+        }
+
         public void Generate(OpenApiDocument swagger, IncrementalGeneratorPostInitializationContext context)
         {
             var data = swagger.Operations
@@ -42,6 +49,8 @@ namespace LibKubernetesGenerator
                 })
                 .ToArray();
 
+            var sc = scriptObjectFactory.CreateScriptObject();
+
             var groups = new List<string>();
 
             foreach (var grouped in data.GroupBy(d => d.Operation.Tags.First()))
@@ -50,14 +59,20 @@ namespace LibKubernetesGenerator
                 groups.Add(name);
 
                 var apis = grouped.ToArray();
-                var gctx = new { name, apis };
-                context.RenderToContext($"IOperations.cs.template", gctx, $"I{name}Operations.g.cs");
-                context.RenderToContext("Operations.cs.template", gctx, $"{name}Operations.g.cs");
-                context.RenderToContext("OperationsExtensions.cs.template", gctx, $"{name}OperationsExtensions.g.cs");
+
+                sc.SetValue("name", name, true);
+                sc.SetValue("apis", apis, true);
+
+                context.RenderToContext($"IOperations.cs.template", sc, $"I{name}Operations.g.cs");
+                context.RenderToContext("Operations.cs.template", sc, $"{name}Operations.g.cs");
+                context.RenderToContext("OperationsExtensions.cs.template", sc, $"{name}OperationsExtensions.g.cs");
             }
 
-            context.RenderToContext($"IBasicKubernetes.cs.template", groups, $"IBasicKubernetes.g.cs");
-            context.RenderToContext($"AbstractKubernetes.cs.template", groups, $"AbstractKubernetes.g.cs");
+            sc = scriptObjectFactory.CreateScriptObject();
+            sc.SetValue("groups", groups, true);
+
+            context.RenderToContext($"IBasicKubernetes.cs.template", sc, $"IBasicKubernetes.g.cs");
+            context.RenderToContext($"AbstractKubernetes.cs.template", sc, $"AbstractKubernetes.g.cs");
         }
     }
 }

@@ -1,15 +1,16 @@
 using NJsonSchema;
-using Nustache.Core;
+using Scriban.Runtime;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace LibKubernetesGenerator
 {
-    internal class StringHelpers : INustacheHelper
+    internal class StringHelpers : IScriptObjectHelper
     {
         private readonly GeneralNameHelper generalNameHelper;
 
@@ -18,42 +19,46 @@ namespace LibKubernetesGenerator
             this.generalNameHelper = generalNameHelper;
         }
 
-        public void RegisterHelper()
+        public void RegisterHelper(ScriptObject scriptObject)
         {
-            Helpers.Register(nameof(ToXmlDoc), ToXmlDoc);
-            Helpers.Register(nameof(ToInterpolationPathString), ToInterpolationPathString);
-            Helpers.Register(nameof(IfGroupPathParamContainsGroup), IfGroupPathParamContainsGroup);
+            scriptObject.Import(nameof(ToXmlDoc), new Func<string, string>(ToXmlDoc));
+            scriptObject.Import(nameof(ToInterpolationPathString), ToInterpolationPathString);
+            scriptObject.Import(nameof(IfGroupPathParamContainsGroup), IfGroupPathParamContainsGroup);
         }
 
-        private void ToXmlDoc(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public static string ToXmlDoc(string arg)
         {
-            if (arguments != null && arguments.Count > 0 && arguments[0] != null && arguments[0] is string)
+            if (arg == null)
             {
-                var first = true;
+                return "";
+            }
 
-                using (var reader = new StringReader(arguments[0] as string))
+            var first = true;
+            var sb = new StringBuilder();
+
+            using (var reader = new StringReader(arg))
+            {
+                string line = null;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    string line = null;
-                    while ((line = reader.ReadLine()) != null)
+                    foreach (var wline in WordWrap(line, 80))
                     {
-                        foreach (var wline in WordWrap(line, 80))
+                        if (!first)
                         {
-                            if (!first)
-                            {
-                                context.Write("\n");
-                                context.Write("        /// ");
-                            }
-                            else
-                            {
-                                first = false;
-                            }
-
-                            context.Write(SecurityElement.Escape(wline));
+                            sb.Append("\n");
+                            sb.Append("        /// ");
                         }
+                        else
+                        {
+                            first = false;
+                        }
+
+                        sb.Append(SecurityElement.Escape(wline));
                     }
                 }
             }
+
+            return sb.ToString();
         }
 
         private static IEnumerable<string> WordWrap(string text, int width)
@@ -91,24 +96,14 @@ namespace LibKubernetesGenerator
             }
         }
 
-        public void ToInterpolationPathString(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public string ToInterpolationPathString(string arg)
         {
-            var p = arguments?.FirstOrDefault() as string;
-            if (p != null)
-            {
-                context.Write(Regex.Replace(p, "{(.+?)}", (m) => "{" + generalNameHelper.GetDotNetName(m.Groups[1].Value) + "}"));
-            }
+            return Regex.Replace(arg, "{(.+?)}", (m) => "{" + generalNameHelper.GetDotNetName(m.Groups[1].Value) + "}");
         }
 
-        public void IfGroupPathParamContainsGroup(RenderContext context, IList<object> arguments, IDictionary<string, object> options,
-            RenderBlock fn, RenderBlock inverse)
+        public static bool IfGroupPathParamContainsGroup(string arg)
         {
-            var p = arguments?.FirstOrDefault() as string;
-            if (p?.StartsWith("apis/{group}") == true)
-            {
-                fn(null);
-            }
+            return arg.StartsWith("apis/{group}");
         }
     }
 }
