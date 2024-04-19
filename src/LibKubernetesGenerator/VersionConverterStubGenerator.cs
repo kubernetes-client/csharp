@@ -54,11 +54,11 @@ namespace k8s.Models;
             foreach (var (t0, t1) in typePairs)
             {
                 sbmodel.AppendLine($@"
-    public partial class {t0}
+    public partial record {t0}
     {{
         public static explicit operator {t0}({t1} s) => ModelVersionConverter.Convert<{t1}, {t0}>(s);
     }}
-    public partial class {t1}
+    public partial record {t1}
     {{
         public static explicit operator {t1}({t0} s) => ModelVersionConverter.Convert<{t0}, {t1}>(s);
     }}");

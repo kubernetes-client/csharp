@@ -6,7 +6,7 @@ namespace k8s.Models
 {
 {{ for definition in definitions }}
     [KubernetesEntity(Group=KubeGroup, Kind=KubeKind, ApiVersion=KubeApiVersion, PluralName=KubePluralName)]
-    public partial class {{ GetClassName definition }} : {{ GetInterfaceName definition }}
+    public partial record {{ GetClassName definition }} : {{ GetInterfaceName definition }}
     {
         public const string KubeApiVersion = "{{ GetApiVersion definition }}";
         public const string KubeKind = "{{ GetKind definition }}";

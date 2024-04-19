@@ -9,7 +9,7 @@ namespace k8s.Models
     /// <summary>
     /// {{ToXmlDoc def.description}}
     /// </summary>
-    public partial class {{clz}}
+    public partial record {{clz}}
     {
         /// <summary>
         /// Initializes a new instance of the {{GetClassName def}} class.
