@@ -33,7 +33,7 @@ metadata:
         }
 
 #pragma warning disable CA1812 // Class is used for YAML deserialization tests
-        private class MyPod : V1Pod
+        private record MyPod : V1Pod
         {
         }
 #pragma warning restore CA1812

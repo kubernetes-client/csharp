@@ -25,7 +25,7 @@ namespace customResource
         public string CityName { get; set; }
     }
 
-    public class CResourceStatus : V1Status
+    public record CResourceStatus : V1Status
     {
         [JsonPropertyName("temperature")]
         public string Temperature { get; set; }
