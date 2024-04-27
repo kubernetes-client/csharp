@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
         <RootNamespace>k8s</RootNamespace>
         <!-- seems bug in net7 json generator, some types missing in its result
             net8 is still in preview, will enable it after net8 release -->

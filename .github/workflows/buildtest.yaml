@@ -16,7 +16,6 @@ jobs:
         with:
           dotnet-version: |
            6.0.x
-           7.0.x
            8.0.x
       # - name: Check Format
       #   # don't check formatting on Windows b/c of CRLF issues.
@@ -48,10 +47,10 @@ jobs:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
-      - name: Setup dotnet SDK 7
+      - name: Setup dotnet SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
       - name: Restore nugets (msbuild)
         run: msbuild .\src\KubernetesClient\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
@@ -68,7 +67,6 @@ jobs:
         with:
           dotnet-version: |
            6.0.x
-           7.0.x
            8.0.x
       - name: Minikube
         run: minikube start
