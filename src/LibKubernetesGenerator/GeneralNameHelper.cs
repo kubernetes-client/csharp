@@ -78,57 +78,51 @@ namespace LibKubernetesGenerator
             switch (style)
             {
                 case "parameter":
-                    if (jsonName == "namespace")
+                    switch (jsonName)
                     {
-                        return "namespaceParameter";
-                    }
-                    else if (jsonName == "continue")
-                    {
-                        return "continueParameter";
+                        case "namespace":
+                            return "namespaceParameter";
+                        case "continue":
+                            return "continueParameter";
+                        default:
+                            break;
                     }
 
                     break;
 
                 case "fieldctor":
-                    if (jsonName == "namespace")
+
+                    switch (jsonName)
                     {
-                        return "namespaceProperty";
-                    }
-                    else if (jsonName == "continue")
-                    {
-                        return "continueProperty";
-                    }
-                    else if (jsonName == "$ref")
-                    {
-                        return "refProperty";
-                    }
-                    else if (jsonName == "default")
-                    {
-                        return "defaultProperty";
-                    }
-                    else if (jsonName == "operator")
-                    {
-                        return "operatorProperty";
-                    }
-                    else if (jsonName == "$schema")
-                    {
-                        return "schema";
-                    }
-                    else if (jsonName == "enum")
-                    {
-                        return "enumProperty";
-                    }
-                    else if (jsonName == "object")
-                    {
-                        return "objectProperty";
-                    }
-                    else if (jsonName == "readOnly")
-                    {
-                        return "readOnlyProperty";
-                    }
-                    else if (jsonName == "from")
-                    {
-                        return "fromProperty";
+                        case "namespace":
+                            return "namespaceProperty";
+                        case "continue":
+                            return "continueProperty";
+                        case "$ref":
+                            return "refProperty";
+                        case "default":
+                            return "defaultProperty";
+                        case "operator":
+                            return "operatorProperty";
+                        case "$schema":
+                            return "schema";
+                        case "enum":
+                            return "enumProperty";
+                        case "object":
+                            return "objectProperty";
+                        case "readOnly":
+                            return "readOnlyProperty";
+                        case "from":
+                            return "fromProperty";
+                        case "int":
+                            return "intValue";
+                        case "bool":
+                            return "boolValue";
+                        case "string":
+                            return "stringValue";
+
+                        default:
+                            break;
                     }
 
                     if (jsonName.Contains("-"))
