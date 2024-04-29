@@ -209,6 +209,7 @@ namespace k8s
 
                 // Dispose the client
                 HttpClient?.Dispose();
+                HttpClient = null;
 
                 // Dispose the certificates
                 if (CaCerts is not null)
@@ -221,11 +222,13 @@ namespace k8s
                     CaCerts.Clear();
                 }
 
-
                 ClientCert?.Dispose();
+                ClientCert = null;
 
-                HttpClient = null;
+                FirstMessageHandler?.Dispose();
                 FirstMessageHandler = null;
+
+                HttpClientHandler?.Dispose();
                 HttpClientHandler = null;
             }
         }
