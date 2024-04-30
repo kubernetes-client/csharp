@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net48;netstandard2.1;net6.0</TargetFrameworks>
     <RootNamespace>k8s</RootNamespace>
   </PropertyGroup>
 
@@ -12,6 +12,9 @@
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
     <PackageReference Include="Fractions" Version="7.3.0" />
     <PackageReference Include="YamlDotNet" Version="15.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
     <PackageReference Include="System.Text.Json" Version="7.0.3" />
   </ItemGroup>
 
@@ -116,8 +119,8 @@
     <Compile Include="..\KubernetesClient\Authentication\TokenCredentials.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Net.Http" Condition="'$(TargetFramework)' == 'net48'" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>

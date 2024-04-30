@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="7.0.0" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
         <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
         <PackageReference Include="Fractions" Version="7.3.0" />
