@@ -1,0 +1,54 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AutoMapper" Version="12.0.1" />
+    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.3.1" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="Fractions" Version="7.3.0" />
+    <PackageVersion Include="IdentityModel.OidcClient" Version="5.2.1" />
+    <PackageVersion Include="JsonPatch.Net" Version="2.1.0" />
+    <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.3.0" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageVersion Include="Microsoft.TestPlatform.ObjectModel" Version="17.8.0" />
+    <PackageVersion Include="Moq" Version="4.20.70" />
+    <PackageVersion Include="Nito.AsyncEx" Version="5.1.2" />
+    <PackageVersion Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.7.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.8.1" />
+    <PackageVersion Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageVersion Include="SharpZipLib" Version="1.4.2" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
+    <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="20.0.15" />
+    <PackageVersion Include="System.Reactive" Version="6.0.0" />
+    <PackageVersion Include="System.Text.Json" Version="7.0.3" />
+    <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" />
+    <PackageVersion Include="xunit" Version="2.6.6" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.6" />
+    <PackageVersion Include="Xunit.StaFact" Version="1.1.11" />
+    <PackageVersion Include="YamlDotNet" Version="15.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="Autofac" Version="8.0.0" />
+    <PackageVersion Include="CaseExtensions" Version="1.1.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.4.0" />
+    <PackageVersion Include="Namotion.Reflection" Version="3.0.1" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="NJsonSchema" Version="10.9.0" />
+    <PackageVersion Include="NSwag.Core" Version="13.20.0" />
+    <PackageVersion Include="Scriban" Version="5.9.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="11.2.6" />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.6.133" />
+    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+  </ItemGroup>
+</Project>

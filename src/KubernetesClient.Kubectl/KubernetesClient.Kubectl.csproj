@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JsonPatch.Net" Version="2.1.0" />
+    <PackageReference Include="JsonPatch.Net" />
   </ItemGroup>
   <ItemGroup>
      <ProjectReference Include="..\KubernetesClient\KubernetesClient.csproj" />

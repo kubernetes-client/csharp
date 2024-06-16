@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fractions" Version="7.3.0" />
-    <PackageReference Include="YamlDotNet" Version="15.1.0" />
-    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Fractions" />
+    <PackageReference Include="YamlDotNet" />
+    <PackageReference Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
