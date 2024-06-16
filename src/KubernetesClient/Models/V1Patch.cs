@@ -1,7 +1,7 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(V1PatchJsonConverter))]
-    public partial class V1Patch
+    public partial record V1Patch
     {
         public enum PatchType
         {
