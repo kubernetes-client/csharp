@@ -54,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(ResourceQuantityJsonConverter))]
-    public partial class ResourceQuantity
+    public partial record ResourceQuantity
     {
         public enum SuffixFormat
         {
@@ -97,30 +97,30 @@ namespace k8s.Models
             return CanonicalizeString();
         }
 
-        protected bool Equals(ResourceQuantity other)
-        {
-            return _unitlessValue.Equals(other?._unitlessValue);
-        }
+        //protected bool Equals(ResourceQuantity other)
+        //{
+        //    return _unitlessValue.Equals(other?._unitlessValue);
+        //}
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
+        //public override bool Equals(object obj)
+        //{
+        //    if (ReferenceEquals(null, obj))
+        //    {
+        //        return false;
+        //    }
 
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
+        //    if (ReferenceEquals(this, obj))
+        //    {
+        //        return true;
+        //    }
 
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
+        //    if (obj.GetType() != GetType())
+        //    {
+        //        return false;
+        //    }
 
-            return Equals((ResourceQuantity)obj);
-        }
+        //    return Equals((ResourceQuantity)obj);
+        //}
 
         public override int GetHashCode()
         {

@@ -1,7 +1,7 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
-    public partial class IntstrIntOrString
+    public partial record IntstrIntOrString
     {
         public static implicit operator IntstrIntOrString(int v)
         {
@@ -23,30 +23,30 @@ namespace k8s.Models
             return new IntstrIntOrString(v);
         }
 
-        protected bool Equals(IntstrIntOrString other)
-        {
-            return string.Equals(Value, other?.Value);
-        }
+        //protected bool Equals(IntstrIntOrString other)
+        //{
+        //    return string.Equals(Value, other?.Value);
+        //}
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
+        //public override bool Equals(object obj)
+        //V1Status{
+        //    if (ReferenceEquals(null, obj))
+        //    {
+        //        return false;
+        //    }
 
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
+        //    if (ReferenceEquals(this, obj))
+        //    {
+        //        return true;
+        //    }
 
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
+        //    if (obj.GetType() != GetType())
+        //    {
+        //        return false;
+        //    }
 
-            return Equals((IntstrIntOrString)obj);
-        }
+        //    return Equals((IntstrIntOrString)obj);
+        //}
 
         public override int GetHashCode()
         {
