@@ -39,7 +39,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release
 
-    - uses: nunit/docfx-action@v3.4.0
+    - uses: nunit/docfx-action@v3.4.1
       name: Build Documentation
       with:
         args: doc/docfx.json
