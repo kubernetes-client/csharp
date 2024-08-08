@@ -10,7 +10,7 @@ namespace k8s.Models
             return type == typeof(ResourceQuantity);
         }
 
-        public object ReadYaml(IParser parser, Type type)
+        public object ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer)
         {
             if (parser?.Current is YamlDotNet.Core.Events.Scalar scalar)
             {
@@ -32,8 +32,7 @@ namespace k8s.Models
             throw new InvalidOperationException(parser?.Current?.ToString());
         }
 
-
-        public void WriteYaml(IEmitter emitter, object value, Type type)
+        public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
         {
             var obj = (ResourceQuantity)value;
             emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj?.ToString()));
