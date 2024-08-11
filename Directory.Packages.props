@@ -28,11 +28,11 @@
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="20.0.15" />
     <PackageVersion Include="System.Reactive" Version="6.0.0" />
     <PackageVersion Include="System.Text.Json" Version="7.0.3" />
-    <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="13.7.0" />
+    <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="16.0.0" />
     <PackageVersion Include="xunit" Version="2.6.6" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.6" />
     <PackageVersion Include="Xunit.StaFact" Version="1.1.11" />
-    <PackageVersion Include="YamlDotNet" Version="15.1.0" />
+    <PackageVersion Include="YamlDotNet" Version="16.0.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="Autofac" Version="8.0.0" />
