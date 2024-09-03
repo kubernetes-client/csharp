@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-   <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator.Automapper\LibKubernetesGenerator.Automapper.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\LibKubernetesGenerator\generators\LibKubernetesGenerator.Automapper\LibKubernetesGenerator.Automapper.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
-      <ProjectReference Include="..\KubernetesClient\KubernetesClient.csproj" />
-      <PackageReference Include="AutoMapper" />
+    <ProjectReference Include="..\KubernetesClient\KubernetesClient.csproj" />
+    <PackageReference Include="AutoMapper" />
   </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="KubernetesClient.Tests" />
+  </ItemGroup>
+
 </Project>

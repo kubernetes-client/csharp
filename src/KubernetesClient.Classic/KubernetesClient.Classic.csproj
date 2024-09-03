@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="KubernetesClient.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\KubernetesClient\Models\ContainerMetrics.cs" />
     <Compile Include="..\KubernetesClient\Extensions.cs" />
     <Compile Include="..\KubernetesClient\FloatEmitter.cs" />
