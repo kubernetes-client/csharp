@@ -163,7 +163,7 @@ internal static partial class VersionConverter
             .ForMember(dest => dest.CurrentMetrics, opt => opt.Ignore())
             .ReverseMap();
 
-        cfg.CreateMap<V1alpha2ResourceClaim, V1ResourceClaim>()
+        cfg.CreateMap<V1alpha3ResourceClaim, V1ResourceClaim>()
             .ForMember(dest => dest.Name, opt => opt.Ignore())
             .ReverseMap();
 
