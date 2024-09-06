@@ -165,6 +165,7 @@ internal static partial class VersionConverter
 
         cfg.CreateMap<V1alpha3ResourceClaim, V1ResourceClaim>()
             .ForMember(dest => dest.Name, opt => opt.Ignore())
+            .ForMember(dest => dest.Request, opt => opt.Ignore())
             .ReverseMap();
 
         cfg.CreateMap<V1beta3PolicyRulesWithSubjects, V1PolicyRulesWithSubjects>()
