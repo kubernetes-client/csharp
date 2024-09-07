@@ -45,10 +45,10 @@
     <PackageVersion Include="Scriban" Version="5.9.1" />
   </ItemGroup>
   <ItemGroup>
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
-    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="11.2.6" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.6.133" />
-    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.VisualStudio.SlnGen" Version="11.2.6" />
+    <PackageVersion Include="Nerdbank.GitVersioning" Version="3.6.133" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
 </Project>
