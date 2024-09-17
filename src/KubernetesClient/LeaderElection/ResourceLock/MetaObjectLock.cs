@@ -10,9 +10,9 @@ namespace k8s.LeaderElection.ResourceLock
         private T metaObjCache;
 
         /// <summary>
-        /// OnError is called when there is a http operation error.
+        /// OnHttpError is called when there is a http operation error.
         /// </summary>
-        public event Action<HttpOperationException> OnError;
+        public event Action<HttpOperationException> OnHttpError;
 
         protected MetaObjectLock(IKubernetes client, string @namespace, string name, string identity)
         {
@@ -54,7 +54,7 @@ namespace k8s.LeaderElection.ResourceLock
             }
             catch (HttpOperationException e)
             {
-                OnError?.Invoke(e);
+                OnHttpError?.Invoke(e);
                 // ignore
             }
 
@@ -87,7 +87,7 @@ namespace k8s.LeaderElection.ResourceLock
             }
             catch (HttpOperationException e)
             {
-                OnError?.Invoke(e);
+                OnHttpError?.Invoke(e);
                 // ignore
             }
 
