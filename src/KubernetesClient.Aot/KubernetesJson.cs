@@ -91,6 +91,11 @@ namespace k8s
 
         public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
+            if (value is V1Patch { Content: string jsonValue })
+            {
+                return jsonValue;
+            }
+
             var info = SourceGenerationContext.Default.GetTypeInfo(value.GetType());
             return JsonSerializer.Serialize(value, info);
         }
