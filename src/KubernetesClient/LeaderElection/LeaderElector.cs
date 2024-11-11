@@ -163,10 +163,9 @@ namespace k8s.LeaderElection
             {
                 if (e.Response.StatusCode != HttpStatusCode.NotFound)
                 {
+                    OnError?.Invoke(e);
                     return false;
                 }
-
-                OnError?.Invoke(e);
             }
 
             if (oldLeaderElectionRecord?.AcquireTime == null ||
