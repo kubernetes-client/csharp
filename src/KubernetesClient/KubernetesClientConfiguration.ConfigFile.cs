@@ -305,22 +305,24 @@ namespace k8s
 
             if (uri.Scheme == "https")
             {
-                string nullPassword = null;
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
-                    // This null password is to change the constructor to fix this KB:
-                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
 #if NET9_0_OR_GREATER
-                    SslCaCerts = X509CertificateLoader.LoadPkcs12Collection(Convert.FromBase64String(data), nullPassword);
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(data)));
 #else
+                    string nullPassword = null;
+                    // This null password is to change the constructor to fix this KB:
+                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
                     SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
 #endif
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
 #if NET9_0_OR_GREATER
-                    SslCaCerts = X509CertificateLoader.LoadPkcs12CollectionFromFile(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority), nullPassword);
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(GetFullPath(
+                        k8SConfig,
+                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
 #else
                     SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(
                         k8SConfig,
