@@ -6,7 +6,7 @@
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.5.0" />
     <PackageVersion Include="FluentAssertions" Version="7.0.0" />
-    <PackageVersion Include="Fractions" Version="8.1.1" />
+    <PackageVersion Include="Fractions" Version="7.3.0" />
     <PackageVersion Include="IdentityModel.OidcClient" Version="6.0.0" />
     <PackageVersion Include="JsonPatch.Net" Version="2.1.0" />
     <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.5.1" />
