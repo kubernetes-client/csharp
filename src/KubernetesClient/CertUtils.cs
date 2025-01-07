@@ -80,11 +80,20 @@ namespace k8s
 
                 if (config.ClientCertificateKeyStoreFlags.HasValue)
                 {
+#if NET9_0_OR_GREATER
+                    X509CertificateLoader.LoadPkcs12(cert.Export(X509ContentType.Pkcs12), nullPassword, config.ClientCertificateKeyStoreFlags.Value);
+#else
                     cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), nullPassword, config.ClientCertificateKeyStoreFlags.Value);
+#endif
+
                 }
                 else
                 {
+#if NET9_0_OR_GREATER
+                    X509CertificateLoader.LoadPkcs12(cert.Export(X509ContentType.Pkcs12), nullPassword);
+#else
                     cert = new X509Certificate2(cert.Export(X509ContentType.Pkcs12), nullPassword);
+#endif
                 }
             }
 

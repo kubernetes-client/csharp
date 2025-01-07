@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <RootNamespace>k8s</RootNamespace>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Condition="'$(TargetFramework)'=='net6.0'" Include="System.Diagnostics.DiagnosticSource" VersionOverride="7.0.0" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
         <PackageReference Include="IdentityModel.OidcClient" />
         <PackageReference Include="Fractions" />

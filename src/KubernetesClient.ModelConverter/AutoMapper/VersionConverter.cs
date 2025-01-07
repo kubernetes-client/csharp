@@ -168,8 +168,9 @@ internal static partial class VersionConverter
             .ForMember(dest => dest.Request, opt => opt.Ignore())
             .ReverseMap();
 
-        cfg.CreateMap<V1beta3PolicyRulesWithSubjects, V1PolicyRulesWithSubjects>()
-            .ForMember(dest => dest.Subjects, opt => opt.Ignore())
+        cfg.CreateMap<V1beta1ResourceClaim, V1ResourceClaim>()
+            .ForMember(dest => dest.Name, opt => opt.Ignore())
+            .ForMember(dest => dest.Request, opt => opt.Ignore())
             .ReverseMap();
     }
 }
