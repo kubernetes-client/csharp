@@ -167,8 +167,8 @@ namespace k8s.Tests
             }
         }
 
-        // this test doesn't work on OSX and is inconsistent on windows
-        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX | OperatingSystems.Windows)]
+        // this test doesn't work on OSX
+        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX)]
         public void Cert()
         {
             var serverCertificateData = File.ReadAllText("assets/apiserver-pfx-data.txt");
@@ -273,7 +273,7 @@ namespace k8s.Tests
             }
         }
 
-        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX | OperatingSystems.Windows)]
+        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX)]
         public void ExternalCertificate()
         {
             const string name = "testing_irrelevant";
