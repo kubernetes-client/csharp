@@ -73,7 +73,7 @@ jobs:
       - name: Test
         run: |
           true > skip.log
-          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests --logger "SkipTestLogger;file=$PWD/skip.log"
+          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Tests --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
           if [ -s skip.log ]; then
             cat skip.log
             echo "CASES MUST NOT BE SKIPPED"
@@ -82,7 +82,7 @@ jobs:
       - name: AOT Test
         run: |
           true > skip.log
-          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Aot.Tests --logger "SkipTestLogger;file=$PWD/skip.log"
+          env K8S_E2E_MINIKUBE=1 dotnet test tests/E2E.Aot.Tests --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
           if [ -s skip.log ]; then
             cat skip.log
             echo "CASES MUST NOT BE SKIPPED"
