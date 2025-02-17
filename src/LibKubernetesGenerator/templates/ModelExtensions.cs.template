@@ -22,6 +22,7 @@ namespace k8s
     {{ for definition in definitions }}
     [JsonSerializable(typeof({{ GetClassName definition }}))]
     {{ end }}
+    [JsonSerializable(typeof(k8s.KubeConfigModels.ExecCredentialResponse))]
     internal partial class SourceGenerationContext : JsonSerializerContext
     {
     }
