@@ -22,11 +22,7 @@ namespace k8s.Authentication
             _idpIssuerUrl = idpIssuerUrl;
             _idToken = idToken;
             _refreshToken = refreshToken;
-
-            if (!string.IsNullOrEmpty(_idToken))
-            {
-                _expiry = GetExpiryFromToken();
-            }
+            _expiry = GetExpiryFromToken();
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
@@ -44,24 +40,28 @@ namespace k8s.Authentication
             var parts = _idToken.Split('.');
             if (parts.Length != 3)
             {
-                throw new ArgumentException("Invalid JWT token format.");
+                return default;
             }
 
-            var payload = parts[1];
-            var jsonBytes = Base64UrlDecode(payload);
-            var json = Encoding.UTF8.GetString(jsonBytes);
+            try
+            {
+                var payload = parts[1];
+                var jsonBytes = Base64UrlDecode(payload);
+                var json = Encoding.UTF8.GetString(jsonBytes);
 
-            using var document = JsonDocument.Parse(json);
-            if (document.RootElement.TryGetProperty("exp", out var expElement))
-            {
-                var exp = expElement.GetInt64();
-                var expiryDateTime = DateTimeOffset.FromUnixTimeSeconds(exp);
-                return expiryDateTime;
+                using var document = JsonDocument.Parse(json);
+                if (document.RootElement.TryGetProperty("exp", out var expElement))
+                {
+                    var exp = expElement.GetInt64();
+                    return DateTimeOffset.FromUnixTimeSeconds(exp);
+                }
             }
-            else
+            catch
             {
-                throw new ArgumentException("JWT token does not contain 'exp' claim.");
+                // ignore to default
             }
+
+            return default;
         }
 
         private static byte[] Base64UrlDecode(string input)
