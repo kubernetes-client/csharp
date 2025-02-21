@@ -37,14 +37,9 @@ namespace k8s.Authentication
 
         private DateTimeOffset GetExpiryFromToken()
         {
-            var parts = _idToken.Split('.');
-            if (parts.Length != 3)
-            {
-                return default;
-            }
-
             try
             {
+                var parts = _idToken.Split('.');
                 var payload = parts[1];
                 var jsonBytes = Base64UrlDecode(payload);
                 var json = Encoding.UTF8.GetString(jsonBytes);
