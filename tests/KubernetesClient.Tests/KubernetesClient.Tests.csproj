@@ -13,6 +13,7 @@
       <PackageReference Include="System.Reactive" />
       <PackageReference Include="Nito.AsyncEx" />
       <PackageReference Include="Portable.BouncyCastle" />
+      <PackageReference Include="Wiremock.Net" />
   </ItemGroup>
 
   <ItemGroup>
