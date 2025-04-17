@@ -1,23 +1,28 @@
-using IdentityModel.OidcClient;
 using k8s.Exceptions;
-using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace k8s.Authentication
 {
     public class OidcTokenProvider : ITokenProvider
     {
-        private readonly OidcClient _oidcClient;
+        private readonly string _clientId;
+        private readonly string _clientSecret;
+        private readonly string _idpIssuerUrl;
+
         private string _idToken;
         private string _refreshToken;
         private DateTimeOffset _expiry;
 
         public OidcTokenProvider(string clientId, string clientSecret, string idpIssuerUrl, string idToken, string refreshToken)
         {
+            _clientId = clientId;
+            _clientSecret = clientSecret;
+            _idpIssuerUrl = idpIssuerUrl;
             _idToken = idToken;
             _refreshToken = refreshToken;
-            _oidcClient = getClient(clientId, clientSecret, idpIssuerUrl);
-            _expiry = getExpiryFromToken();
+            _expiry = GetExpiryFromToken();
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
@@ -30,49 +35,77 @@ namespace k8s.Authentication
             return new AuthenticationHeaderValue("Bearer", _idToken);
         }
 
-        private DateTime getExpiryFromToken()
+        private DateTimeOffset GetExpiryFromToken()
         {
-            long expiry;
-            var handler = new JwtSecurityTokenHandler();
             try
             {
-                var token = handler.ReadJwtToken(_idToken);
-                expiry = token.Payload.Expiration ?? 0;
+                var parts = _idToken.Split('.');
+                var payload = parts[1];
+                var jsonBytes = Base64UrlDecode(payload);
+                var json = Encoding.UTF8.GetString(jsonBytes);
+
+                using var document = JsonDocument.Parse(json);
+                if (document.RootElement.TryGetProperty("exp", out var expElement))
+                {
+                    var exp = expElement.GetInt64();
+                    return DateTimeOffset.FromUnixTimeSeconds(exp);
+                }
             }
             catch
             {
-                expiry = 0;
+                // ignore to default
             }
 
-            return DateTimeOffset.FromUnixTimeSeconds(expiry).UtcDateTime;
+            return default;
         }
 
-        private OidcClient getClient(string clientId, string clientSecret, string idpIssuerUrl)
+        private static byte[] Base64UrlDecode(string input)
         {
-            OidcClientOptions options = new OidcClientOptions
+            var output = input.Replace('-', '+').Replace('_', '/');
+            switch (output.Length % 4)
             {
-                ClientId = clientId,
-                ClientSecret = clientSecret ?? "",
-                Authority = idpIssuerUrl,
-            };
+                case 2: output += "=="; break;
+                case 3: output += "="; break;
+            }
 
-            return new OidcClient(options);
+            return Convert.FromBase64String(output);
         }
 
         private async Task RefreshToken()
         {
             try
             {
-                var result = await _oidcClient.RefreshTokenAsync(_refreshToken).ConfigureAwait(false);
+                using var httpClient = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, _idpIssuerUrl);
+                request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                    {
+                        { "grant_type", "refresh_token" },
+                        { "client_id", _clientId },
+                        { "client_secret", _clientSecret },
+                        { "refresh_token", _refreshToken },
+                    });
 
-                if (result.IsError)
+                var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
+
+                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var jsonDocument = JsonDocument.Parse(responseContent);
+
+                if (jsonDocument.RootElement.TryGetProperty("id_token", out var idTokenElement))
                 {
-                    throw new Exception(result.Error);
+                    _idToken = idTokenElement.GetString();
                 }
 
-                _idToken = result.IdentityToken;
-                _refreshToken = result.RefreshToken;
-                _expiry = result.AccessTokenExpiration;
+                if (jsonDocument.RootElement.TryGetProperty("refresh_token", out var refreshTokenElement))
+                {
+                    _refreshToken = refreshTokenElement.GetString();
+                }
+
+                if (jsonDocument.RootElement.TryGetProperty("expires_in", out var expiresInElement))
+                {
+                    var expiresIn = expiresInElement.GetInt32();
+                    _expiry = DateTimeOffset.UtcNow.AddSeconds(expiresIn);
+                }
             }
             catch (Exception e)
             {
