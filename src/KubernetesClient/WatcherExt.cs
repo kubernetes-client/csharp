@@ -11,7 +11,7 @@ namespace k8s
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="responseTask">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
@@ -47,7 +47,7 @@ namespace k8s
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="response">the api response</param>
         /// <param name="onEvent">a callback when any event raised from api server</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="onClosed">
         /// The action to invoke when the server closes the connection.
         /// </param>
@@ -68,7 +68,7 @@ namespace k8s
         /// <typeparam name="T">type of the event object</typeparam>
         /// <typeparam name="L">type of the HttpOperationResponse object</typeparam>
         /// <param name="responseTask">the api response</param>
-        /// <param name="onError">a callbak when any exception was caught during watching</param>
+        /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="cancellationToken">cancellation token</param>
         /// <returns>IAsyncEnumerable of watch events</returns>
         public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
