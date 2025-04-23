@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net48</TargetFrameworks>
@@ -7,8 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="BouncyCastle.Cryptography" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-    <PackageReference Include="IdentityModel.OidcClient" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
     <PackageReference Include="Fractions" />
     <PackageReference Include="YamlDotNet" />
