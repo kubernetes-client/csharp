@@ -86,7 +86,7 @@ namespace k8s.Tests
             var auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, expiredIdToken, refreshToken);
 
             // Act
-            var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(false);
+            var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None);
 
             // Assert
             result.Scheme.Should().Be("Bearer");
@@ -133,7 +133,7 @@ namespace k8s.Tests
 
             // Act & Assert
             var exception = await Assert.ThrowsAsync<KubernetesClientException>(
-                () => auth.GetAuthenticationHeaderAsync(CancellationToken.None)).ConfigureAwait(false);
+                () => auth.GetAuthenticationHeaderAsync(CancellationToken.None));
             exception.Message.Should().StartWith("Unable to refresh OIDC token.");
             exception.InnerException.Message.Should().Contain("500");
 
