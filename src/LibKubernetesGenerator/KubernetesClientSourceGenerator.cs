@@ -1,12 +1,6 @@
 using Autofac;
 using Microsoft.CodeAnalysis;
 using NSwag;
-#if GENERATE_AUTOMAPPER
-using System.Collections.Generic;
-using System;
-using System.IO;
-using System.Linq;
-#endif
 
 namespace LibKubernetesGenerator
 {
@@ -68,7 +62,6 @@ namespace LibKubernetesGenerator
             builder.RegisterType<ModelGenerator>();
             builder.RegisterType<ApiGenerator>();
             builder.RegisterType<VersionConverterStubGenerator>();
-            builder.RegisterType<VersionConverterAutoMapperGenerator>();
             builder.RegisterType<VersionGenerator>();
 
             return builder.Build();
@@ -90,33 +83,6 @@ namespace LibKubernetesGenerator
             });
 #endif
 
-#if GENERATE_AUTOMAPPER
-            var automappersrc = generatorContext.CompilationProvider.Select((c, _) => c.SyntaxTrees.First(s => PathSuffixMath(s.FilePath, "AutoMapper/VersionConverter.cs")));
-            generatorContext.RegisterSourceOutput(automappersrc, (ctx, srctree) =>
-            {
-                var (swagger, container) = BuildContainer();
-                container.Resolve<VersionConverterAutoMapperGenerator>().Generate(swagger, ctx, srctree);
-            });
-#endif
         }
-
-#if GENERATE_AUTOMAPPER
-        private IEnumerable<string> PathSplit(string path)
-        {
-            var p = path;
-
-            while (!string.IsNullOrEmpty(p))
-            {
-                yield return Path.GetFileName(p);
-                p = Path.GetDirectoryName(p);
-            }
-        }
-
-        private bool PathSuffixMath(string path, string suffix)
-        {
-            var s = PathSplit(suffix).ToList();
-            return PathSplit(path).Take(s.Count).SequenceEqual(s);
-        }
-#endif
     }
 }

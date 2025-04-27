@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <DefineConstants>$(DefineConstants);GENERATE_AUTOMAPPER;</DefineConstants>
-    </PropertyGroup>
-
-    <Import Project="../../LibKubernetesGenerator.target" /> 
-
-</Project>
