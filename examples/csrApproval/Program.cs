@@ -1,4 +1,4 @@
-﻿using Json.Patch;
+using Json.Patch;
 using k8s;
 using k8s.Models;
 using System.Net;
@@ -44,34 +44,34 @@ var request = new V1CertificateSigningRequest
     Kind = "CertificateSigningRequest",
     Metadata = new V1ObjectMeta
     {
-        Name = name
+        Name = name,
     },
     Spec = new V1CertificateSigningRequestSpec
     {
         Request = encodedCsr,
         SignerName = "kubernetes.io/kube-apiserver-client",
         Usages = new List<string> { "client auth" },
-        ExpirationSeconds = 600 // minimum should be 10 minutes
-    }
+        ExpirationSeconds = 600, // minimum should be 10 minutes
+    },
 };
 
-await client.CertificatesV1.CreateCertificateSigningRequestAsync(request);
+await client.CertificatesV1.CreateCertificateSigningRequestAsync(request).ConfigureAwait(false);
 
 var serializeOptions = new JsonSerializerOptions
 {
     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-    WriteIndented = true
+    WriteIndented = true,
 };
-var readCert = await client.CertificatesV1.ReadCertificateSigningRequestAsync(name);
+var readCert = await client.CertificatesV1.ReadCertificateSigningRequestAsync(name).ConfigureAwait(false);
 var old = JsonSerializer.SerializeToDocument(readCert, serializeOptions);
 
 var replace = new List<V1CertificateSigningRequestCondition>
 {
-    new("True", "Approved", DateTime.UtcNow, DateTime.UtcNow, "This certificate was approved by k8s client", "Approve")
+    new("True", "Approved", DateTime.UtcNow, DateTime.UtcNow, "This certificate was approved by k8s client", "Approve"),
 };
 readCert.Status.Conditions = replace;
 
 var expected = JsonSerializer.SerializeToDocument(readCert, serializeOptions);
 
 var patch = old.CreatePatch(expected);
-await client.CertificatesV1.PatchCertificateSigningRequestApprovalAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name);
+await client.CertificatesV1.PatchCertificateSigningRequestApprovalAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name).ConfigureAwait(false);

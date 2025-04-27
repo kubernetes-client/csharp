@@ -1,4 +1,5 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\Directory.Build.targets" />
   <ItemGroup>
     <ProjectReference Include="$(MSBuildThisFileDirectory)\..\src\KubernetesClient\KubernetesClient.csproj" Condition="'$(PublishAot)' != 'true'" />
   </ItemGroup>

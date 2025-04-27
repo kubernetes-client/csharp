@@ -28,5 +28,6 @@ static void PrintLabels(V1Pod pod)
     {
         Console.WriteLine($"{k} : {v}");
     }
+
     Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=");
 }
