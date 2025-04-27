@@ -35,7 +35,7 @@
   <ItemGroup>
     <PackageVersion Include="Autofac" Version="8.2.1" />
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.13.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.13.0" />
     <PackageVersion Include="Namotion.Reflection" Version="3.3.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="NJsonSchema" Version="11.2.0" />
