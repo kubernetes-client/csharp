@@ -10,7 +10,7 @@ namespace yaml
     {
         private static async Task Main(string[] args)
         {
-            var typeMap = new Dictionary<String, Type>
+            var typeMap = new Dictionary<string, Type>
             {
                 { "v1/Pod", typeof(V1Pod) },
                 { "v1/Service", typeof(V1Service) },

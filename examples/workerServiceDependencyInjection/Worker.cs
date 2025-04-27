@@ -8,10 +8,11 @@ namespace workerServiceDependencyInjection
         private readonly IKubernetes kubernetesClient;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Worker"/> class.
         /// Inject in the constructor the IKubernetes interface.
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="kubernetesClient"></param>
+        /// <param name="logger">The logger instance used for logging information.</param>
+        /// <param name="kubernetesClient">The Kubernetes client used to interact with the Kubernetes API.</param>
         public Worker(ILogger<Worker> logger, IKubernetes kubernetesClient)
         {
             this.logger = logger;
