@@ -33,7 +33,7 @@ namespace workerServiceDependencyInjection
                     Console.WriteLine(pod.Metadata.Name);
                 }
 
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(1000, stoppingToken).ConfigureAwait(false);
             }
         }
     }

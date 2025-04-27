@@ -14,10 +14,10 @@ namespace yaml
             {
                 { "v1/Pod", typeof(V1Pod) },
                 { "v1/Service", typeof(V1Service) },
-                { "apps/v1/Deployment", typeof(V1Deployment) }
+                { "apps/v1/Deployment", typeof(V1Deployment) },
             };
 
-            var objects = await KubernetesYaml.LoadAllFromFileAsync(args[0], typeMap);
+            var objects = await KubernetesYaml.LoadAllFromFileAsync(args[0], typeMap).ConfigureAwait(false);
 
             foreach (var obj in objects)
             {

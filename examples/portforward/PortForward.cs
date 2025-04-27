@@ -18,13 +18,13 @@ namespace portforward
 
             var list = client.CoreV1.ListNamespacedPod("default");
             var pod = list.Items[0];
-            await Forward(client, pod);
+            await Forward(client, pod).ConfigureAwait(false);
         }
 
         private static async Task Forward(IKubernetes client, V1Pod pod)
         {
             // Note this is single-threaded, it won't handle concurrent requests well...
-            var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(pod.Metadata.Name, "default", new int[] { 80 }, "v4.channel.k8s.io");
+            var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(pod.Metadata.Name, "default", new int[] { 80 }, "v4.channel.k8s.io").ConfigureAwait(false);
             var demux = new StreamDemuxer(webSocket, StreamType.PortForward);
             demux.Start();
 
@@ -67,12 +67,13 @@ namespace portforward
                 }
             });
 
-            await accept;
-            await copy;
+            await accept.ConfigureAwait(false);
+            await copy.ConfigureAwait(false);
             if (handler != null)
             {
                 handler.Close();
             }
+
             listener.Close();
         }
     }

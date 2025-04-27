@@ -29,6 +29,7 @@ foreach (var item in list.Items)
 {
     Console.WriteLine(item.Metadata.Name);
 }
+
 // Or empty if there are no pods
 if (list.Items.Count == 0)
 {
