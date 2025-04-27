@@ -12,10 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
         <!-- Scriban No Dependency -->
         <PackageReference Include="Scriban" IncludeAssets="Build" />
 
@@ -33,6 +29,7 @@
         <PackageReference Include="NJsonSchema.Annotations" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Newtonsoft.Json" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="Namotion.Reflection" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="System.Text.Json" GeneratePathProperty="true" PrivateAssets="all" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -52,6 +49,7 @@
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNJsonSchema_Annotations)\lib\netstandard2.0\NJsonSchema.Annotations.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNewtonsoft_Json)\lib\netstandard1.0\Newtonsoft.Json.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGNamotion_Reflection)\lib\netstandard2.0\Namotion.Reflection.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_Text_Json)\lib\netstandard2.0\System.Text.Json.dll" IncludeRuntimeDependency="false" />
         </ItemGroup>
     </Target>
 
