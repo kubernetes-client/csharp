@@ -10,11 +10,13 @@ namespace webApiDependencyInjection.Controllers
         /// <summary>
         /// Example using the kubernetes client injected directly into the method ([FromServices] IKubernetes kubernetesClient).
         /// </summary>
-        /// <param name="kubernetes"></param>
-        /// <returns></returns>
-        [HttpGet()]
+        /// <param name="kubernetesClient">The Kubernetes client instance injected via dependency injection.</param>
+        /// <returns>A collection of pod names in the default namespace.</returns>
+        [HttpGet]
         public IEnumerable<string> GetPods([FromServices] IKubernetes kubernetesClient)
         {
+            ArgumentNullException.ThrowIfNull(kubernetesClient);
+
             // Read the list of pods contained in default namespace
             var podList = kubernetesClient.CoreV1.ListNamespacedPod("default");
 

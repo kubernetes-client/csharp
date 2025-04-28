@@ -21,7 +21,7 @@ string GenerateCertificate(string name)
     var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
     request.CertificateExtensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
-    request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(new OidCollection { new("1.3.6.1.5.5.7.3.1") }, false));
+    request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension([new ("1.3.6.1.5.5.7.3.1")], false));
     request.CertificateExtensions.Add(sanBuilder.Build());
     var csr = request.CreateSigningRequest();
     var pemKey = "-----BEGIN CERTIFICATE REQUEST-----\r\n" +
@@ -67,7 +67,7 @@ var old = JsonSerializer.SerializeToDocument(readCert, serializeOptions);
 
 var replace = new List<V1CertificateSigningRequestCondition>
 {
-    new("True", "Approved", DateTime.UtcNow, DateTime.UtcNow, "This certificate was approved by k8s client", "Approve"),
+    new ("True", "Approved", DateTime.UtcNow, DateTime.UtcNow, "This certificate was approved by k8s client", "Approve"),
 };
 readCert.Status.Conditions = replace;
 

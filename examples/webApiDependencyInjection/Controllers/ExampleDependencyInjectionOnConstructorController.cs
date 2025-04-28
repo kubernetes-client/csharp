@@ -10,22 +10,23 @@ namespace webApiDependencyInjection.Controllers
         private readonly IKubernetes kubernetesClient;
 
         /// <summary>
-        /// Inject the kubernets class in the constructor.
+        /// Initializes a new instance of the <see cref="ExampleDependencyInjectionOnConstructorController"/> class.
+        /// Injects the Kubernetes client into the controller.
         /// </summary>
-        /// <param name="kubernetesClient"></param>
+        /// <param name="kubernetesClient">The Kubernetes client to interact with the Kubernetes API.</param>
         public ExampleDependencyInjectionOnConstructorController(IKubernetes kubernetesClient)
         {
             this.kubernetesClient = kubernetesClient;
         }
 
         /// <summary>
-        /// Example using the kubernetes client obtained from the constructor (this.kubernetesClient).
+        /// Retrieves the names of all pods in the default namespace using the injected Kubernetes client.
         /// </summary>
-        /// <returns></returns>
-        [HttpGet()]
+        /// <returns>A collection of pod names in the default namespace.</returns>
+        [HttpGet]
         public IEnumerable<string> GetPods()
         {
-            // Read the list of pods contained in default namespace
+            // Read the list of pods contained in the default namespace
             var podList = this.kubernetesClient.CoreV1.ListNamespacedPod("default");
 
             // Return names of pods
