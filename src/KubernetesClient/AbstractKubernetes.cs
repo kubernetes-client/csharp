@@ -5,7 +5,7 @@ namespace k8s;
 
 public abstract partial class AbstractKubernetes
 {
-    private static class HttpMethods
+    internal static class HttpMethods
     {
         public static readonly HttpMethod Delete = HttpMethod.Delete;
         public static readonly HttpMethod Get = HttpMethod.Get;
@@ -23,7 +23,7 @@ public abstract partial class AbstractKubernetes
 
     }
 
-    private sealed class QueryBuilder
+    internal sealed class QueryBuilder
     {
         private readonly List<string> parameters = new List<string>();
 
@@ -99,7 +99,7 @@ public abstract partial class AbstractKubernetes
         }
     }
 
-    protected abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
+    internal abstract Task<HttpOperationResponse<T>> CreateResultAsync<T>(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse, bool? watch, CancellationToken cancellationToken);
 
-    protected abstract Task<HttpResponseMessage> SendRequest<T>(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders, T body, CancellationToken cancellationToken);
+    internal abstract Task<HttpResponseMessage> SendRequest<T>(string relativeUri, HttpMethod method, IReadOnlyDictionary<string, IReadOnlyList<string>> customHeaders, T body, CancellationToken cancellationToken);
 }

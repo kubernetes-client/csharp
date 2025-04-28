@@ -66,7 +66,7 @@ namespace k8s.Tests
                     false,
                     false,
                     true,
-                    webSocketSubProtol: WebSocketProtocol.ChannelWebSocketProtocol,
+                    webSocketSubProtocol: WebSocketProtocol.ChannelWebSocketProtocol,
                     cancellationToken: TestCancellation).ConfigureAwait(true);
                 Assert.Equal(
                     WebSocketProtocol.ChannelWebSocketProtocol,
