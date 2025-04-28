@@ -26,6 +26,10 @@
     <PackageReference Include="Xunit.StaFact" />
     <PackageReference Include="Moq" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Net.Http" Condition="'$(TargetFramework)' == 'net48'" />
+  </ItemGroup>  
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\KubernetesClient.Classic\KubernetesClient.Classic.csproj" />

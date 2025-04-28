@@ -1,17 +1,17 @@
-﻿using Json.Patch;
+using Json.Patch;
 using k8s;
 using k8s.Models;
 using System.Text.Json;
 
 async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes client)
 {
-    var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace);
+    var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace).ConfigureAwait(false);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(daemonSet, options);
     var now = DateTimeOffset.Now.ToUnixTimeSeconds();
     var restart = new Dictionary<string, string>
     {
-        ["date"] = now.ToString()
+        ["date"] = now.ToString(),
     };
 
     daemonSet.Spec.Template.Metadata.Annotations = restart;
@@ -19,18 +19,18 @@ async Task RestartDaemonSetAsync(string name, string @namespace, IKubernetes cli
     var expected = JsonSerializer.SerializeToDocument(daemonSet);
 
     var patch = old.CreatePatch(expected);
-    await client.AppsV1.PatchNamespacedDaemonSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
+    await client.AppsV1.PatchNamespacedDaemonSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace).ConfigureAwait(false);
 }
 
 async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes client)
 {
-    var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace);
+    var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace).ConfigureAwait(false);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
     var now = DateTimeOffset.Now.ToUnixTimeSeconds();
     var restart = new Dictionary<string, string>
     {
-        ["date"] = now.ToString()
+        ["date"] = now.ToString(),
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
@@ -38,18 +38,18 @@ async Task RestartDeploymentAsync(string name, string @namespace, IKubernetes cl
     var expected = JsonSerializer.SerializeToDocument(deployment);
 
     var patch = old.CreatePatch(expected);
-    await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
+    await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace).ConfigureAwait(false);
 }
 
 async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes client)
 {
-    var deployment = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace);
+    var deployment = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace).ConfigureAwait(false);
     var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true };
     var old = JsonSerializer.SerializeToDocument(deployment, options);
     var now = DateTimeOffset.Now.ToUnixTimeSeconds();
     var restart = new Dictionary<string, string>
     {
-        ["date"] = now.ToString()
+        ["date"] = now.ToString(),
     };
 
     deployment.Spec.Template.Metadata.Annotations = restart;
@@ -57,12 +57,12 @@ async Task RestartStatefulSetAsync(string name, string @namespace, IKubernetes c
     var expected = JsonSerializer.SerializeToDocument(deployment);
 
     var patch = old.CreatePatch(expected);
-    await client.AppsV1.PatchNamespacedStatefulSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace);
+    await client.AppsV1.PatchNamespacedStatefulSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace).ConfigureAwait(false);
 }
 
 var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 IKubernetes client = new Kubernetes(config);
 
-await RestartDeploymentAsync("event-exporter", "monitoring", client);
-await RestartDaemonSetAsync("prometheus-exporter", "monitoring", client);
-await RestartStatefulSetAsync("argocd-application-controlle", "argocd", client);
+await RestartDeploymentAsync("event-exporter", "monitoring", client).ConfigureAwait(false);
+await RestartDaemonSetAsync("prometheus-exporter", "monitoring", client).ConfigureAwait(false);
+await RestartStatefulSetAsync("argocd-application-controlle", "argocd", client).ConfigureAwait(false);
