@@ -9,15 +9,19 @@ namespace clientset
     {
         private static async Task Main(string[] args)
         {
+
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(config);
 
             ClientSet clientSet = new ClientSet(client);
-            var list = await clientSet.CoreV1.Pod.ListNamespacedPodAsync("default").ConfigureAwait(false);
+            var list = await clientSet.CoreV1.Pods.ListAsync("default").ConfigureAwait(false);
             foreach (var item in list)
             {
                 System.Console.WriteLine(item.Metadata.Name);
             }
+
+            var pod = await clientSet.CoreV1.Pods.GetAsync("test","default").ConfigureAwait(false);
+            System.Console.WriteLine(pod?.Metadata?.Name);
         }
     }
 

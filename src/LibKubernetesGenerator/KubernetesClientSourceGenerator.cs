@@ -21,33 +21,42 @@ namespace LibKubernetesGenerator
             builder.RegisterType<ClassNameHelper>()
                 .WithParameter(new NamedParameter(nameof(swagger), swagger))
                 .AsSelf()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<StringHelpers>()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<MetaHelper>()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<PluralHelper>()
                 .WithParameter(new TypedParameter(typeof(OpenApiDocument), swagger))
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<GeneralNameHelper>()
                 .AsSelf()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<TypeHelper>()
                 .AsSelf()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<ParamHelper>()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
             builder.RegisterType<UtilHelper>()
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces()
+                ;
 
-            builder.RegisterType<ScriptObjectFactory>();
+            builder.RegisterType<ScriptObjectFactory>()
+                ;
 
             builder.RegisterType<ModelExtGenerator>();
             builder.RegisterType<ModelGenerator>();

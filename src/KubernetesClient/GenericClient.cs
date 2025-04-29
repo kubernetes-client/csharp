@@ -31,7 +31,6 @@ namespace k8s
         public async Task<T> CreateAsync<T>(T obj, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-
             var resp = await kubernetes.CustomObjects.CreateClusterCustomObjectWithHttpMessagesAsync<T>(obj, group, version, plural, cancellationToken: cancel).ConfigureAwait(false);
             return resp.Body;
         }

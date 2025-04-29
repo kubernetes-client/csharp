@@ -16,11 +16,15 @@
     </ItemGroup>
 
     <ItemGroup>
+
         <!-- Scriban No Dependency -->
         <PackageReference Include="Scriban" IncludeAssets="Build" />
 
         <!-- CaseExtensions No Dependency -->
         <PackageReference Include="CaseExtensions" GeneratePathProperty="true" PrivateAssets="all" />
+
+        <!-- Humanizer -->
+        <PackageReference Include="Humanizer.Core" GeneratePathProperty="true" PrivateAssets="all"/>
 
         <!-- Autofac -->
         <PackageReference Include="Autofac" GeneratePathProperty="true" PrivateAssets="all" />
@@ -43,6 +47,7 @@
     <Target Name="GetDependencyTargetPaths">
         <ItemGroup>
             <TargetPathWithTargetPlatformMoniker Include="$(PKGCaseExtensions)\lib\netstandard2.0\CaseExtensions.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PKGHumanizer_Core)\lib\netstandard2.0\Humanizer.dll" IncludeRuntimeDependency="false" />
 
             <TargetPathWithTargetPlatformMoniker Include="$(PKGAutofac)\lib\netstandard2.0\Autofac.dll" IncludeRuntimeDependency="false" />
             <TargetPathWithTargetPlatformMoniker Include="$(PKGMicrosoft_Bcl_AsyncInterfaces)\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll" IncludeRuntimeDependency="false" />

@@ -33,6 +33,7 @@
     <PackageVersion Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
   <ItemGroup>
+    <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
     <PackageVersion Include="Autofac" Version="8.2.1" />
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.13.0" />

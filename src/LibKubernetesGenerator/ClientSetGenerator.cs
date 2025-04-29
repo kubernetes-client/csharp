@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis;
 using NSwag;
 using System.Collections.Generic;
 using System.Linq;
+using Humanizer;
 
 namespace LibKubernetesGenerator
 {
@@ -65,13 +66,12 @@ namespace LibKubernetesGenerator
                     var groupVersionKindElements = x.Operation?.ExtensionData?["x-kubernetes-group-version-kind"];
                     var groupVersionKind = (Dictionary<string, object>)groupVersionKindElements;
 
-                    return new { Kind = groupVersionKind?["kind"], Api = x };
-
+                    return new { Kind = groupVersionKind?["kind"] as string, Api = x };
                 });
 
                 foreach (var item in apis.GroupBy(x => x.Kind))
                 {
-                    var kind = item.Key as string;
+                    var kind = item.Key.Pluralize();
                     apiGroups[kind] = item.Select(x => x.Api).ToArray();
                     clients.Add(kind);
                 }
@@ -85,11 +85,11 @@ namespace LibKubernetesGenerator
             {
                 var name = apiGroup.Key;
                 var apis = apiGroup.Value.ToArray();
-
+                var group = apis.Select(x => x.Operation.Tags[0]).First();
                 sc.SetValue("apis", apis, true);
                 sc.SetValue("name", name, true);
+                sc.SetValue("group", group.ToPascalCase(), true);
                 context.RenderToContext("Client.cs.template", sc, $"{name}Client.g.cs");
-                context.RenderToContext("ClientExtensions.cs.template", sc, $"{name}ClientExtensions.g.cs");
             }
 
             sc = _scriptObjectFactory.CreateScriptObject();

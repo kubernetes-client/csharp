@@ -22,8 +22,11 @@ namespace LibKubernetesGenerator
         {
             scriptObject.Import(nameof(GetInterfaceName), new Func<JsonSchema, string>(GetInterfaceName));
             scriptObject.Import(nameof(GetMethodName), new Func<OpenApiOperation, string, string>(GetMethodName));
+            scriptObject.Import(nameof(GetActionName),
+                new Func<OpenApiOperationDescription, string, string, string>(GetActionName));
             scriptObject.Import(nameof(GetDotNetName), new Func<string, string, string>(GetDotNetName));
-            scriptObject.Import(nameof(GetDotNetNameOpenApiParameter), new Func<OpenApiParameter, string, string>(GetDotNetNameOpenApiParameter));
+            scriptObject.Import(nameof(GetDotNetNameOpenApiParameter),
+                new Func<OpenApiParameter, string, string>(GetDotNetNameOpenApiParameter));
         }
 
         private string GetInterfaceName(JsonSchema definition)
@@ -161,6 +164,61 @@ namespace LibKubernetesGenerator
             }
 
             return methodName;
+        }
+
+        public static string GetActionName(OpenApiOperationDescription apiOperation, string resource, string suffix)
+        {
+            var actionType = apiOperation.Operation?.ExtensionData?["x-kubernetes-action"] as string;
+
+            if (string.IsNullOrEmpty(actionType))
+            {
+                return $"{apiOperation.Method.ToPascalCase()}{suffix}";
+            }
+
+            var resourceNamespace = ParsePathSegmentAfterParameter(apiOperation.Path, "namespace").ToPascalCase();
+            var resourceName = ParsePathSegmentAfterParameter(apiOperation.Path, "name").ToPascalCase();
+            var actionMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "get", "Get" },
+                { "list", "List" },
+                { "put", "Put" },
+                { "patch", "Patch" },
+                { "post", "Post" },
+                { "delete", "Delete" },
+                { "deletecollection", "DeleteCollection" },
+                { "watch", "Watch" },
+                { "watchlist", "WatchList" },
+                { "proxy", "Proxy" },
+            };
+
+            if (actionMappings.TryGetValue(actionType, out var actionPrefix))
+            {
+                return Regex.Replace($"{actionPrefix}{resourceNamespace}{resourceName}{suffix}", resource, string.Empty,
+                    RegexOptions.IgnoreCase);
+            }
+
+            if (string.Equals("connect", actionType, StringComparison.OrdinalIgnoreCase))
+            {
+                return Regex.Replace($"Connect{apiOperation.Method}{resourceNamespace}{resourceName}{suffix}", resource,
+                    string.Empty,
+                    RegexOptions.IgnoreCase);
+            }
+
+            return $"{actionType.ToPascalCase()}{suffix}";
+        }
+
+        private static string ParsePathSegmentAfterParameter(string path, string variableName = "namespace")
+        {
+            var pattern = $@"/\{{{variableName}\}}/([^/]+)/?";
+
+            var match = Regex.Match(path, pattern);
+
+            if (match.Success && match.Groups.Count > 1)
+            {
+                return match.Groups[1].Value;
+            }
+
+            return string.Empty;
         }
     }
 }
