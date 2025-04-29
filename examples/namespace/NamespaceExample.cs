@@ -4,52 +4,37 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace @namespace
+void ListNamespaces(IKubernetes client)
 {
-    internal class NamespaceExample
+    var list = client.CoreV1.ListNamespace();
+    foreach (var item in list.Items)
     {
-        private static void ListNamespaces(IKubernetes client)
-        {
-            var list = client.CoreV1.ListNamespace();
-            foreach (var item in list.Items)
-            {
-                Console.WriteLine(item.Metadata.Name);
-            }
+        Console.WriteLine(item.Metadata.Name);
+    }
 
-            if (list.Items.Count == 0)
-            {
-                Console.WriteLine("Empty!");
-            }
+    if (list.Items.Count == 0)
+    {
+        Console.WriteLine("Empty!");
+    }
+}
+
+async Task DeleteAsync(IKubernetes client, string name, int delayMillis)
+{
+    while (true)
+    {
+        await Task.Delay(delayMillis).ConfigureAwait(false);
+        try
+        {
+            await client.CoreV1.ReadNamespaceAsync(name).ConfigureAwait(false);
         }
-
-        private static async Task DeleteAsync(IKubernetes client, string name, int delayMillis)
+        catch (AggregateException ex)
         {
-            while (true)
+            foreach (var innerEx in ex.InnerExceptions)
             {
-                await Task.Delay(delayMillis).ConfigureAwait(false);
-                try
+                if (innerEx is k8s.Autorest.HttpOperationException exception)
                 {
-                    await client.CoreV1.ReadNamespaceAsync(name).ConfigureAwait(false);
-                }
-                catch (AggregateException ex)
-                {
-                    foreach (var innerEx in ex.InnerExceptions)
-                    {
-                        if (innerEx is k8s.Autorest.HttpOperationException exception)
-                        {
-                            var code = exception.Response.StatusCode;
-                            if (code == HttpStatusCode.NotFound)
-                            {
-                                return;
-                            }
-
-                            throw;
-                        }
-                    }
-                }
-                catch (k8s.Autorest.HttpOperationException ex)
-                {
-                    if (ex.Response.StatusCode == HttpStatusCode.NotFound)
+                    var code = exception.Response.StatusCode;
+                    if (code == HttpStatusCode.NotFound)
                     {
                         return;
                     }
@@ -58,41 +43,47 @@ namespace @namespace
                 }
             }
         }
-
-        private static void Delete(IKubernetes client, string name, int delayMillis)
+        catch (k8s.Autorest.HttpOperationException ex)
         {
-            DeleteAsync(client, name, delayMillis).Wait();
-        }
-
-        private static void Main(string[] args)
-        {
-            var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            IKubernetes client = new Kubernetes(k8SClientConfig);
-
-            ListNamespaces(client);
-
-            var ns = new V1Namespace { Metadata = new V1ObjectMeta { Name = "test" } };
-
-            var result = client.CoreV1.CreateNamespace(ns);
-            Console.WriteLine(result);
-
-            ListNamespaces(client);
-
-            var status = client.CoreV1.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
-
-            if (status.HasObject)
+            if (ex.Response.StatusCode == HttpStatusCode.NotFound)
             {
-                var obj = status.ObjectView<V1Namespace>();
-                Console.WriteLine(obj.Status.Phase);
-
-                Delete(client, ns.Metadata.Name, 3 * 1000);
-            }
-            else
-            {
-                Console.WriteLine(status.Message);
+                return;
             }
 
-            ListNamespaces(client);
+            throw;
         }
     }
 }
+
+void Delete(IKubernetes client, string name, int delayMillis)
+{
+    DeleteAsync(client, name, delayMillis).Wait();
+}
+
+var k8SClientConfig = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+IKubernetes client = new Kubernetes(k8SClientConfig);
+
+ListNamespaces(client);
+
+var ns = new V1Namespace { Metadata = new V1ObjectMeta { Name = "test" } };
+
+var result = client.CoreV1.CreateNamespace(ns);
+Console.WriteLine(result);
+
+ListNamespaces(client);
+
+var status = client.CoreV1.DeleteNamespace(ns.Metadata.Name, new V1DeleteOptions());
+
+if (status.HasObject)
+{
+    var obj = status.ObjectView<V1Namespace>();
+    Console.WriteLine(obj.Status.Phase);
+
+    Delete(client, ns.Metadata.Name, 3 * 1000);
+}
+else
+{
+    Console.WriteLine(status.Message);
+}
+
+ListNamespaces(client);

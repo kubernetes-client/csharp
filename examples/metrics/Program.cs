@@ -3,58 +3,49 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace metrics
+async Task NodesMetrics(IKubernetes client)
 {
-    internal class Program
+    var nodesMetrics = await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(false);
+
+    foreach (var item in nodesMetrics.Items)
     {
-        private static async Task NodesMetrics(IKubernetes client)
+        Console.WriteLine(item.Metadata.Name);
+
+        foreach (var metric in item.Usage)
         {
-            var nodesMetrics = await client.GetKubernetesNodesMetricsAsync().ConfigureAwait(false);
-
-            foreach (var item in nodesMetrics.Items)
-            {
-                Console.WriteLine(item.Metadata.Name);
-
-                foreach (var metric in item.Usage)
-                {
-                    Console.WriteLine($"{metric.Key}: {metric.Value}");
-                }
-            }
-        }
-
-        private static async Task PodsMetrics(IKubernetes client)
-        {
-            var podsMetrics = await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(false);
-
-            if (!podsMetrics.Items.Any())
-            {
-                Console.WriteLine("Empty");
-            }
-
-            foreach (var item in podsMetrics.Items)
-            {
-                foreach (var container in item.Containers)
-                {
-                    Console.WriteLine(container.Name);
-
-                    foreach (var metric in container.Usage)
-                    {
-                        Console.WriteLine($"{metric.Key}: {metric.Value}");
-                    }
-                }
-
-                Console.Write(Environment.NewLine);
-            }
-        }
-
-        private static async Task Main(string[] args)
-        {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            var client = new Kubernetes(config);
-
-            await NodesMetrics(client).ConfigureAwait(false);
-            Console.WriteLine(Environment.NewLine);
-            await PodsMetrics(client).ConfigureAwait(false);
+            Console.WriteLine($"{metric.Key}: {metric.Value}");
         }
     }
 }
+
+async Task PodsMetrics(IKubernetes client)
+{
+    var podsMetrics = await client.GetKubernetesPodsMetricsAsync().ConfigureAwait(false);
+
+    if (!podsMetrics.Items.Any())
+    {
+        Console.WriteLine("Empty");
+    }
+
+    foreach (var item in podsMetrics.Items)
+    {
+        foreach (var container in item.Containers)
+        {
+            Console.WriteLine(container.Name);
+
+            foreach (var metric in container.Usage)
+            {
+                Console.WriteLine($"{metric.Key}: {metric.Value}");
+            }
+        }
+
+        Console.Write(Environment.NewLine);
+    }
+}
+
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+var client = new Kubernetes(config);
+
+await NodesMetrics(client).ConfigureAwait(false);
+Console.WriteLine(Environment.NewLine);
+await PodsMetrics(client).ConfigureAwait(false);
