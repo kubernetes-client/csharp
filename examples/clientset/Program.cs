@@ -9,7 +9,6 @@ namespace clientset
     {
         private static async Task Main(string[] args)
         {
-
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             IKubernetes client = new Kubernetes(config);
 
@@ -24,5 +23,4 @@ namespace clientset
             System.Console.WriteLine(pod?.Metadata?.Name);
         }
     }
-
 }
