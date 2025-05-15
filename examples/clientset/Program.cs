@@ -10,7 +10,7 @@ namespace clientset
         private static async Task Main(string[] args)
         {
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            IKubernetes client = new Kubernetes(config);
+            var client = new Kubernetes(config);
 
             ClientSet clientSet = new ClientSet(client);
             var list = await clientSet.CoreV1.Pods.ListAsync("default").ConfigureAwait(false);

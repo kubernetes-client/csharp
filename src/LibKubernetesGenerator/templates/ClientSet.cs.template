@@ -11,10 +11,10 @@ namespace k8s.ClientSets;
 public partial class ClientSet
 {
     {{for group in groups}}
-    public {{group}}GroupClient {{group}};
+    public {{group}}GroupClient {{group}} { get; }
     {{end}}
 
-    public ClientSet(IKubernetes kubernetes)
+    public ClientSet(Kubernetes kubernetes)
     {
       {{for group in groups}}
           {{group}} = new {{group}}GroupClient(kubernetes);

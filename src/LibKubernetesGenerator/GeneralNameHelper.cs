@@ -22,7 +22,7 @@ namespace LibKubernetesGenerator
         {
             scriptObject.Import(nameof(GetInterfaceName), new Func<JsonSchema, string>(GetInterfaceName));
             scriptObject.Import(nameof(GetMethodName), new Func<OpenApiOperation, string, string>(GetMethodName));
-            scriptObject.Import(nameof(GetActionName), new Func<OpenApiOperationDescription, string, string, string>(GetActionName));
+            scriptObject.Import(nameof(GetActionTypeName), new Func<OpenApiOperationDescription, string, string, string>(GetActionTypeName));
             scriptObject.Import(nameof(GetDotNetName), new Func<string, string, string>(GetDotNetName));
             scriptObject.Import(nameof(GetDotNetNameOpenApiParameter), new Func<OpenApiParameter, string, string>(GetDotNetNameOpenApiParameter));
         }
@@ -164,7 +164,7 @@ namespace LibKubernetesGenerator
             return methodName;
         }
 
-        public static string GetActionName(OpenApiOperationDescription apiOperation, string resource, string suffix)
+        public static string GetActionTypeName(OpenApiOperationDescription apiOperation, string resource, string suffix)
         {
             var actionType = apiOperation.Operation?.ExtensionData?["x-kubernetes-action"] as string;
 
