@@ -589,7 +589,7 @@ namespace k8s.E2E
         public async Task ClientSetTest()
         {
             var namespaceParameter = "default";
-            var podName = "k8scsharp-e2e-clinetset-pod";
+            var podName = "k8scsharp-e2e-clientset-pod";
 
             using var kubernetes = CreateClient();
 
@@ -639,7 +639,7 @@ namespace k8s.E2E
                     var pod = await clientSet.CoreV1.Pods.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     var old = JsonSerializer.SerializeToDocument(pod);
 
-                    var newLabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "clinetset-test-jsonpatch" };
+                    var newLabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "clientset-test-jsonpatch" };
                     pod.Metadata.Labels = newLabels;
 
                     var expected = JsonSerializer.SerializeToDocument(pod);
@@ -649,7 +649,7 @@ namespace k8s.E2E
                         .PatchAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), podName, namespaceParameter)
                         .ConfigureAwait(false);
                     var pods = await clientSet.CoreV1.Pods.ListAsync(namespaceParameter).ConfigureAwait(false);
-                    Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "clinetset-test-jsonpatch")));
+                    Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "clientset-test-jsonpatch")));
                 }
 
                 // replace + get

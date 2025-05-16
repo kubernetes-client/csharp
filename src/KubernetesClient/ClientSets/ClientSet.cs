@@ -1,5 +1,10 @@
-namespace k8s.ClientSets;
-
-public partial class ClientSet
+namespace k8s.ClientSets
 {
+    /// <summary>
+    /// Represents a base class for clients that interact with Kubernetes resources.
+    /// Provides shared functionality for derived resource-specific clients.
+    /// </summary>
+    public partial class ClientSet
+    {
+    }
 }

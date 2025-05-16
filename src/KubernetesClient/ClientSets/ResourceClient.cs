@@ -1,10 +1,16 @@
-namespace k8s.ClientSets;
-
-public abstract class ResourceClient
+namespace k8s.ClientSets
 {
-    protected Kubernetes Client { get; }
-    public ResourceClient(Kubernetes kubernetes)
+    /// <summary>
+    /// Represents a set of Kubernetes clients for interacting with the Kubernetes API.
+    /// This class provides access to various client implementations for managing Kubernetes resources.
+    /// </summary>
+    public abstract class ResourceClient
     {
-        Client = kubernetes;
+        protected Kubernetes Client { get; }
+
+        public ResourceClient(Kubernetes kubernetes)
+        {
+            Client = kubernetes;
+        }
     }
 }
