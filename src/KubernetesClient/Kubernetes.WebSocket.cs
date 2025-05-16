@@ -18,11 +18,11 @@ namespace k8s
         /// <inheritdoc/>
         public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true,
-            bool tty = true, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
+            bool tty = true, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default)
         {
             return WebSocketNamespacedPodExecAsync(name, @namespace, new string[] { command }, container, stderr, stdin,
-                stdout, tty, webSocketSubProtol, customHeaders, cancellationToken);
+                stdout, tty, webSocketSubProtocol, customHeaders, cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -30,7 +30,7 @@ namespace k8s
             string name,
             string @namespace = "default", IEnumerable<string> command = null, string container = null,
             bool stderr = true, bool stdin = true, bool stdout = true, bool tty = true,
-            string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
+            string webSocketSubProtocol = WebSocketProtocol.V4BinaryWebsocketProtocol,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default)
         {
@@ -45,7 +45,7 @@ namespace k8s
         public virtual Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             IEnumerable<string> command = null, string container = null, bool stderr = true, bool stdin = true,
             bool stdout = true, bool tty = true,
-            string webSocketSubProtol = WebSocketProtocol.V4BinaryWebsocketProtocol,
+            string webSocketSubProtocol = WebSocketProtocol.V4BinaryWebsocketProtocol,
             Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default)
         {
@@ -114,7 +114,7 @@ namespace k8s
             uriBuilder.Query =
                 query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtocol, customHeaders,
                 cancellationToken);
         }
 
@@ -173,7 +173,7 @@ namespace k8s
         /// <inheritdoc/>
         public Task<WebSocket> WebSocketNamespacedPodAttachAsync(string name, string @namespace,
             string container = default, bool stderr = true, bool stdin = false, bool stdout = true,
-            bool tty = false, string webSocketSubProtol = null, Dictionary<string, List<string>> customHeaders = null,
+            bool tty = false, string webSocketSubProtocol = null, Dictionary<string, List<string>> customHeaders = null,
             CancellationToken cancellationToken = default)
         {
             if (name == null)
@@ -208,7 +208,7 @@ namespace k8s
             uriBuilder.Query =
                 query.ToString(1, query.Length - 1); // UriBuilder.Query doesn't like leading '?' chars, so trim it
 
-            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtol, customHeaders,
+            return StreamConnectAsync(uriBuilder.Uri, webSocketSubProtocol, customHeaders,
                 cancellationToken);
         }
 

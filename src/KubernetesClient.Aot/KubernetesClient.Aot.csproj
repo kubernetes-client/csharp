@@ -47,6 +47,10 @@
 
   </ItemGroup>
   <ItemGroup>
+      <Compile Include="..\KubernetesClient\ClientSets\ClientSet.cs" />
+      <Compile Include="..\KubernetesClient\ClientSets\ResourceClient.cs"/>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="..\KubernetesClient\AbstractKubernetes.cs" />
     <Compile Include="..\KubernetesClient\GeneratedApiVersion.cs" />
 

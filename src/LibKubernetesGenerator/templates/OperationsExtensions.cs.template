@@ -23,14 +23,14 @@ public static partial class {{name}}OperationsExtensions
     /// {{ToXmlDoc api.description}}
     /// </param>
      {{ end }}
-    public static {{GetReturnType api.operation "void"}} {{GetMethodName api.operation ""}}(
+    public static {{GetReturnType api.operation "void"}} {{GetOperationId api.operation ""}}(
         this I{{name}}Operations operations
 {{ for parameter in api.operation.parameters}}
         ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
 {{end}}
         )
    {
-         {{GetReturnType api.operation "return"}}  operations.{{GetMethodName api.operation "Async"}}(
+         {{GetReturnType api.operation "return"}}  operations.{{GetOperationId api.operation "Async"}}(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
@@ -50,14 +50,14 @@ public static partial class {{name}}OperationsExtensions
     /// {{ToXmlDoc parameter.description}}
     /// </param>
     {{end}}
-    public static T {{GetMethodName api.operation ""}}<T>(
+    public static T {{GetOperationId api.operation ""}}<T>(
         this I{{name}}Operations operations
 {{ for parameter in api.operation.parameters}}
         ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
 {{end}}
         )
    {
-         return operations.{{GetMethodName api.operation "Async"}}<T>(
+         return operations.{{GetOperationId api.operation "Async"}}<T>(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
@@ -80,7 +80,7 @@ public static partial class {{name}}OperationsExtensions
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public static async Task{{GetReturnType api.operation "<>"}} {{GetMethodName api.operation "Async"}}(
+    public static async Task{{GetReturnType api.operation "<>"}} {{GetOperationId api.operation "Async"}}(
         this I{{name}}Operations operations,
 {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
@@ -88,7 +88,7 @@ public static partial class {{name}}OperationsExtensions
         CancellationToken cancellationToken = default(CancellationToken))
     {
         {{if IfReturnType api.operation "stream"}}
-        var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+        var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
@@ -98,7 +98,7 @@ public static partial class {{name}}OperationsExtensions
         {{GetReturnType api.operation "_result.Body"}};
         {{end}}
         {{if IfReturnType api.operation "obj"}}
-        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+        using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
@@ -109,7 +109,7 @@ public static partial class {{name}}OperationsExtensions
         }
         {{end}}
         {{if IfReturnType api.operation "void"}}
-        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+        using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
@@ -135,14 +135,14 @@ public static partial class {{name}}OperationsExtensions
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public static async Task<T> {{GetMethodName api.operation "Async"}}<T>(
+    public static async Task<T> {{GetOperationId api.operation "Async"}}<T>(
         this I{{name}}Operations operations,
 {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
 {{ end }}
         CancellationToken cancellationToken = default(CancellationToken))
     {
-        using (var _result = await operations.{{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+        using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}<T>(
 {{ for parameter in api.operation.parameters}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
