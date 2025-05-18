@@ -6,5 +6,11 @@ namespace k8s.ClientSets
     /// </summary>
     public partial class ClientSet
     {
+        private readonly Kubernetes _kubernetes;
+
+        public ClientSet(Kubernetes kubernetes)
+        {
+            _kubernetes = kubernetes;
+        }
     }
 }
