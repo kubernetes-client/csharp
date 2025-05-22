@@ -169,9 +169,8 @@ namespace LibKubernetesGenerator
             var operationId = apiOperation.OperationId.ToPascalCase();
             var replacements = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                { "Replace", "Put" },
+                { "Replace", "Update" },
                 { "Read", "Get" },
-                { "Create", "Post" },
             };
 
             foreach (var replacement in replacements)

@@ -619,7 +619,7 @@ namespace k8s.E2E
 
                 // create + list
                 {
-                    await clientSet.CoreV1.Pod.PostAsync(
+                    await clientSet.CoreV1.Pod.CreateAsync(
                         new V1Pod()
                         {
                             Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
@@ -656,7 +656,7 @@ namespace k8s.E2E
                 {
                     var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     pod.Spec.Containers[0].Image = "httpd";
-                    await clientSet.CoreV1.Pod.PutAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                    await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
 
                     pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     Assert.Equal("httpd", pod.Spec.Containers[0].Image);
