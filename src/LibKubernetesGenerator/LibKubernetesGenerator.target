@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+
         <!-- Scriban No Dependency -->
         <PackageReference Include="Scriban" IncludeAssets="Build" />
 

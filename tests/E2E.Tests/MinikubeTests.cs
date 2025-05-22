@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using k8s.ClientSets;
 using Xunit;
 
 namespace k8s.E2E
@@ -584,6 +585,118 @@ namespace k8s.E2E
             }
         }
 
+        [MinikubeFact]
+        public async Task ClientSetTest()
+        {
+            var namespaceParameter = "default";
+            var podName = "k8scsharp-e2e-clientset-pod";
+
+            using var kubernetes = CreateClient();
+
+            var clientSet = new ClientSet((Kubernetes)kubernetes);
+            async Task Cleanup()
+            {
+                var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
+                while (pods.Items.Any(p => p.Metadata.Name == podName))
+                {
+                    try
+                    {
+                        await clientSet.CoreV1.Pod.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    }
+                    catch (HttpOperationException e)
+                    {
+                        if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                await Cleanup().ConfigureAwait(false);
+
+                // create + list
+                {
+                    await clientSet.CoreV1.Pod.CreateAsync(
+                        new V1Pod()
+                        {
+                            Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
+                            Spec = new V1PodSpec
+                            {
+                                Containers = new[] { new V1Container() { Name = "k8scsharp-e2e", Image = "nginx", }, },
+                            },
+                        },
+                        namespaceParameter).ConfigureAwait(false);
+
+                    var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
+                    Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
+                }
+
+                // replace + get
+                {
+                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    var old = JsonSerializer.SerializeToDocument(pod);
+
+                    var newLabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "clientset-test-jsonpatch" };
+                    pod.Metadata.Labels = newLabels;
+
+                    var expected = JsonSerializer.SerializeToDocument(pod);
+                    var patch = old.CreatePatch(expected);
+
+                    await clientSet.CoreV1.Pod
+                        .PatchAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), podName, namespaceParameter)
+                        .ConfigureAwait(false);
+                    var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
+                    Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "clientset-test-jsonpatch")));
+                }
+
+                // replace + get
+                {
+                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    pod.Spec.Containers[0].Image = "httpd";
+                    await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+
+                    pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                }
+
+                // delete + list
+                {
+                    var pods = new V1PodList();
+                    var retry = 5;
+                    while (retry-- > 0)
+                    {
+                        try
+                        {
+                            await clientSet.CoreV1.Pod.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
+                        }
+                        catch (HttpOperationException e)
+                        {
+                            if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                            {
+                                return;
+                            }
+                        }
+
+                        pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
+                        if (pods.Items.All(p => p.Metadata.Name != podName))
+                        {
+                            break;
+                        }
+
+                        await Task.Delay(TimeSpan.FromSeconds(2.5)).ConfigureAwait(false);
+                    }
+
+                    Assert.DoesNotContain(pods.Items, p => p.Metadata.Name == podName);
+                }
+            }
+            finally
+            {
+                await Cleanup().ConfigureAwait(false);
+            }
+        }
 
         [MinikubeFact]
         public async Task CopyToPodTestAsync()

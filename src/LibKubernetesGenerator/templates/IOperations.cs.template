@@ -25,7 +25,7 @@ public partial interface I{{name}}Operations
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    Task<HttpOperationResponse{{GetReturnType api.operation "<>"}}> {{GetMethodName api.operation "WithHttpMessagesAsync"}}(
+    Task<HttpOperationResponse{{GetReturnType api.operation "<>"}}> {{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
 {{ end }}
@@ -47,7 +47,7 @@ public partial interface I{{name}}Operations
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    Task<HttpOperationResponse<T>> {{GetMethodName api.operation "WithHttpMessagesAsync"}}<T>(
+    Task<HttpOperationResponse<T>> {{GetOperationId api.operation "WithHttpMessagesAsync"}}<T>(
 {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
 {{ end }}

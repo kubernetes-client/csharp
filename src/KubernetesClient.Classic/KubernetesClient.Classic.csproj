@@ -75,7 +75,10 @@
     <Compile Include="..\KubernetesClient\Autorest\HttpRequestMessageWrapper.cs" />
     <Compile Include="..\KubernetesClient\Autorest\HttpResponseMessageWrapper.cs" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="..\KubernetesClient\ClientSets\ClientSet.cs" />
+    <Compile Include="..\KubernetesClient\ClientSets\ResourceClient.cs"/>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\KubernetesClient\FileSystem.cs" />
     <Compile Include="..\KubernetesClient\IKubernetes.cs" />
