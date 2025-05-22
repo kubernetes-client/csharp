@@ -22,7 +22,7 @@ namespace LibKubernetesGenerator
         {
             scriptObject.Import(nameof(GetInterfaceName), new Func<JsonSchema, string>(GetInterfaceName));
             scriptObject.Import(nameof(GetOperationId), new Func<OpenApiOperation, string, string>(GetOperationId));
-            scriptObject.Import(nameof(GetActionName), new Func<OpenApiOperationDescription, string, string, string>(GetActionName));
+            scriptObject.Import(nameof(GetActionName), new Func<OpenApiOperation, string, string, string>(GetActionName));
             scriptObject.Import(nameof(GetDotNetName), new Func<string, string, string>(GetDotNetName));
             scriptObject.Import(nameof(GetDotNetNameOpenApiParameter), new Func<OpenApiParameter, string, string>(GetDotNetNameOpenApiParameter));
         }
@@ -164,59 +164,28 @@ namespace LibKubernetesGenerator
             return methodName;
         }
 
-        public static string GetActionName(OpenApiOperationDescription apiOperation, string resource, string suffix)
+        public static string GetActionName(OpenApiOperation apiOperation, string resource, string suffix)
         {
-            var actionType = apiOperation.Operation?.ExtensionData?["x-kubernetes-action"] as string;
-
-            if (string.IsNullOrEmpty(actionType))
+            var operationId = apiOperation.OperationId.ToPascalCase();
+            var replacements = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                return $"{apiOperation.Method.ToPascalCase()}{suffix}";
-            }
-
-            var resourceNamespace = ParsePathSegmentAfterParameter(apiOperation.Path, "namespace").ToPascalCase();
-            var resourceName = ParsePathSegmentAfterParameter(apiOperation.Path, "name").ToPascalCase();
-            var actionMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "get", "Get" },
-                { "list", "List" },
-                { "put", "Put" },
-                { "patch", "Patch" },
-                { "post", "Post" },
-                { "delete", "Delete" },
-                { "deletecollection", "DeleteCollection" },
-                { "watch", "Watch" },
-                { "watchlist", "WatchList" },
-                { "proxy", "Proxy" },
+                { "Replace", "Put" },
+                { "Read", "Get" },
+                { "Create", "Post" },
             };
 
-            if (actionMappings.TryGetValue(actionType, out var actionPrefix))
+            foreach (var replacement in replacements)
             {
-                return Regex.Replace($"{actionPrefix}{resourceNamespace}{resourceName}{suffix}", resource, string.Empty,
-                    RegexOptions.IgnoreCase);
+                operationId = Regex.Replace(operationId, replacement.Key, replacement.Value, RegexOptions.IgnoreCase);
             }
 
-            if (string.Equals("connect", actionType, StringComparison.OrdinalIgnoreCase))
-            {
-                return Regex.Replace($"Connect{apiOperation.Method}{resourceNamespace}{resourceName}{suffix}", resource,
-                    string.Empty,
-                    RegexOptions.IgnoreCase);
-            }
+            var resources = new[] { resource, "ForAllNamespaces", "Namespaced" };
+            var pattern = string.Join("|", Array.ConvertAll(resources, Regex.Escape));
+            var actionName = pattern.Length > 0
+                ? Regex.Replace(operationId, pattern, string.Empty, RegexOptions.IgnoreCase)
+                : operationId;
 
-            return $"{actionType.ToPascalCase()}{suffix}";
-        }
-
-        private static string ParsePathSegmentAfterParameter(string path, string variableName = "namespace")
-        {
-            var pattern = $@"/\{{{variableName}\}}/([^/]+)/?";
-
-            var match = Regex.Match(path, pattern);
-
-            if (match.Success && match.Groups.Count > 1)
-            {
-                return match.Groups[1].Value;
-            }
-
-            return string.Empty;
+            return $"{actionName}{suffix}";
         }
     }
 }

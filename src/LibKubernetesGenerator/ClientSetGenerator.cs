@@ -3,7 +3,6 @@ using Microsoft.CodeAnalysis;
 using NSwag;
 using System.Collections.Generic;
 using System.Linq;
-using Humanizer;
 
 namespace LibKubernetesGenerator
 {
@@ -71,7 +70,7 @@ namespace LibKubernetesGenerator
 
                 foreach (var item in apis.GroupBy(x => x.Kind))
                 {
-                    var kind = item.Key.Pluralize();
+                    var kind = item.Key;
                     apiGroups[kind] = item.Select(x => x.Api).ToArray();
                     clients.Add(kind);
                 }

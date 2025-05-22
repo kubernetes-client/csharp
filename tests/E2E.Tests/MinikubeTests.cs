@@ -596,12 +596,12 @@ namespace k8s.E2E
             var clientSet = new ClientSet((Kubernetes)kubernetes);
             async Task Cleanup()
             {
-                var pods = await clientSet.CoreV1.Pods.ListAsync(namespaceParameter).ConfigureAwait(false);
+                var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
                 while (pods.Items.Any(p => p.Metadata.Name == podName))
                 {
                     try
                     {
-                        await clientSet.CoreV1.Pods.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
+                        await clientSet.CoreV1.Pod.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
                     }
                     catch (HttpOperationException e)
                     {
@@ -619,7 +619,7 @@ namespace k8s.E2E
 
                 // create + list
                 {
-                    await clientSet.CoreV1.Pods.PostAsync(
+                    await clientSet.CoreV1.Pod.PostAsync(
                         new V1Pod()
                         {
                             Metadata = new V1ObjectMeta { Name = podName, Labels = new Dictionary<string, string> { { "place", "holder" }, }, },
@@ -630,13 +630,13 @@ namespace k8s.E2E
                         },
                         namespaceParameter).ConfigureAwait(false);
 
-                    var pods = await clientSet.CoreV1.Pods.ListAsync(namespaceParameter).ConfigureAwait(false);
+                    var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
                     Assert.Contains(pods.Items, p => p.Metadata.Name == podName);
                 }
 
                 // replace + get
                 {
-                    var pod = await clientSet.CoreV1.Pods.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     var old = JsonSerializer.SerializeToDocument(pod);
 
                     var newLabels = new Dictionary<string, string>(pod.Metadata.Labels) { ["test"] = "clientset-test-jsonpatch" };
@@ -645,20 +645,20 @@ namespace k8s.E2E
                     var expected = JsonSerializer.SerializeToDocument(pod);
                     var patch = old.CreatePatch(expected);
 
-                    await clientSet.CoreV1.Pods
+                    await clientSet.CoreV1.Pod
                         .PatchAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), podName, namespaceParameter)
                         .ConfigureAwait(false);
-                    var pods = await clientSet.CoreV1.Pods.ListAsync(namespaceParameter).ConfigureAwait(false);
+                    var pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
                     Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "clientset-test-jsonpatch")));
                 }
 
                 // replace + get
                 {
-                    var pod = await clientSet.CoreV1.Pods.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     pod.Spec.Containers[0].Image = "httpd";
-                    await clientSet.CoreV1.Pods.PutAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                    await clientSet.CoreV1.Pod.PutAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
 
-                    pod = await clientSet.CoreV1.Pods.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     Assert.Equal("httpd", pod.Spec.Containers[0].Image);
                 }
 
@@ -670,7 +670,7 @@ namespace k8s.E2E
                     {
                         try
                         {
-                            await clientSet.CoreV1.Pods.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
+                            await clientSet.CoreV1.Pod.DeleteAsync(podName, namespaceParameter).ConfigureAwait(false);
                         }
                         catch (HttpOperationException e)
                         {
@@ -680,7 +680,7 @@ namespace k8s.E2E
                             }
                         }
 
-                        pods = await clientSet.CoreV1.Pods.ListAsync(namespaceParameter).ConfigureAwait(false);
+                        pods = await clientSet.CoreV1.Pod.ListAsync(namespaceParameter).ConfigureAwait(false);
                         if (pods.Items.All(p => p.Metadata.Name != podName))
                         {
                             break;

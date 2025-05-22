@@ -13,13 +13,13 @@ namespace clientset
             var client = new Kubernetes(config);
 
             ClientSet clientSet = new ClientSet(client);
-            var list = await clientSet.CoreV1.Pods.ListAsync("default").ConfigureAwait(false);
+            var list = await clientSet.CoreV1.Pod.ListAsync("default").ConfigureAwait(false);
             foreach (var item in list)
             {
                 System.Console.WriteLine(item.Metadata.Name);
             }
 
-            var pod = await clientSet.CoreV1.Pods.GetAsync("test","default").ConfigureAwait(false);
+            var pod = await clientSet.CoreV1.Pod.GetAsync("test","default").ConfigureAwait(false);
             System.Console.WriteLine(pod?.Metadata?.Name);
         }
     }

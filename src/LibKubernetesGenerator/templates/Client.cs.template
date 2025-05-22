@@ -28,7 +28,7 @@ public partial class {{name}}Client : ResourceClient
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public async Task{{GetReturnType api.operation "<>"}} {{GetActionName api name "Async"}}(
+    public async Task{{GetReturnType api.operation "<>"}} {{GetActionName api.operation name "Async"}}(
         {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
         {{ end }}
@@ -79,7 +79,7 @@ public partial class {{name}}Client : ResourceClient
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    public async Task<T> {{GetActionName api name "Async"}}<T>(
+    public async Task<T> {{GetActionName api.operation name "Async"}}<T>(
         {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "false"}},
         {{ end }}
