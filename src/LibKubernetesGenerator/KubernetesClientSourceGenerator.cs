@@ -59,6 +59,7 @@ namespace LibKubernetesGenerator
                 ;
 
             builder.RegisterType<ModelExtGenerator>();
+            builder.RegisterType<SourceGenerationContextGenerator>();
             builder.RegisterType<ModelGenerator>();
             builder.RegisterType<ApiGenerator>();
             builder.RegisterType<ClientSetGenerator>();
@@ -79,6 +80,7 @@ namespace LibKubernetesGenerator
 
                 container.Resolve<ModelGenerator>().Generate(swagger, ctx);
                 container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
+                container.Resolve<SourceGenerationContextGenerator>().Generate(swagger, ctx);
                 container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
                 container.Resolve<ApiGenerator>().Generate(swagger, ctx);
                 container.Resolve<ClientSetGenerator>().Generate(swagger, ctx);
