@@ -370,6 +370,15 @@ namespace k8s.E2E
             }
         }
 
+        
+        [MinikubeFact]
+        public async Task VersionTestAsync()
+        {
+            using var client = CreateClient();
+            var version = await client.Version.GetCodeAsync().ConfigureAwait(false);
+            Assert.NotNull(version);
+        }        
+
         public static IKubernetes CreateClient()
         {
             return new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
