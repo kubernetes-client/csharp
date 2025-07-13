@@ -15,15 +15,3 @@ namespace k8s.Models
     }
 {{ end }}
 }
-
-#if NET8_0_OR_GREATER
-namespace k8s 
-{
-    {{ for definition in definitions }}
-    [JsonSerializable(typeof({{ GetClassName definition }}))]
-    {{ end }}
-    internal partial class SourceGenerationContext : JsonSerializerContext
-    {
-    }
-}
-#endif
