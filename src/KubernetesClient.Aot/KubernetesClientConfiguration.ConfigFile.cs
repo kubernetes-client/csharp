@@ -523,7 +523,10 @@ namespace k8s
                     throw new KubeConfigException("external exec failed due to timeout");
                 }
 
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
+                var responseObject = JsonSerializer.Deserialize(
+                    process.StandardOutput.ReadToEnd(),
+                    ExecCredentialResponseContext.Default.ExecCredentialResponse);
+
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(
