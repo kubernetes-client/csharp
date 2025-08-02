@@ -8,9 +8,13 @@ namespace k8s.KubeConfigModels
         public class ExecStatus
         {
 #nullable enable
+            [JsonPropertyName("expirationTimestamp")]
             public DateTime? ExpirationTimestamp { get; set; }
+            [JsonPropertyName("token")]
             public string? Token { get; set; }
+            [JsonPropertyName("clientCertificateData")]
             public string? ClientCertificateData { get; set; }
+            [JsonPropertyName("clientKeyData")]
             public string? ClientKeyData { get; set; }
 #nullable disable
 
