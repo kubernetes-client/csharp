@@ -92,7 +92,14 @@ namespace k8s
             public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
             {
                 var obj = (byte[])value;
-                emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
+                emitter.Emit(new Scalar(
+                    AnchorName.Empty,
+                    TagName.Empty,
+                    Encoding.UTF8.GetString(obj),
+                    ScalarStyle.Literal,  // renders as |
+                    true,
+                    true
+                ));
             }
         }
 
