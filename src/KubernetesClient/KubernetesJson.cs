@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -106,7 +107,37 @@ namespace k8s
             return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
         }
 
+        public static TValue Deserialize<TValue>(JsonDocument json, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static TValue Deserialize<TValue>(JsonElement json, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static TValue Deserialize<TValue>(JsonNode json, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
         public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static string Serialize(JsonDocument value, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static string Serialize(JsonElement value, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+        }
+
+        public static string Serialize(JsonNode value, JsonSerializerOptions jsonSerializerOptions = null)
         {
             return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
         }
