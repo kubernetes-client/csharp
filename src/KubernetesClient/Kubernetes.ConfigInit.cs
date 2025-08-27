@@ -218,7 +218,7 @@ namespace k8s
                 chain.ChainPolicy.CustomTrustStore.AddRange(caCerts);
                 chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
 #else
-                throw new NotSupportedException("Custom trust store is not supported on this platform.");
+                throw new NotSupportedException("Custom trust store requires .NET 5.0 or later. Current platform does not support this feature.");
 #endif
                 var isValid = chain.Build((X509Certificate2)certificate);
 
