@@ -818,6 +818,30 @@ data:
         }
 
         [Fact]
+        public void WriteSecret()
+        {
+            var kManifest = """
+apiVersion: v1
+data:
+  username: bXktYXBw
+  tls2.crt: |
+    -----BEGIN CERTIFICATE-----
+    FAKE CERT
+    FAKE CERT
+    FAKE CERT
+    -----END CERTIFICATE-----
+kind: Secret
+metadata:
+  name: test-secret
+""";
+
+            var result = KubernetesYaml.Deserialize<V1Secret>(kManifest, true);
+            var yaml = KubernetesYaml.Serialize(result);
+
+            Assert.Equal(kManifest, yaml);
+        }
+
+        [Fact]
         public void DeserializeWithJsonPropertyName()
         {
             var kManifest = @"
