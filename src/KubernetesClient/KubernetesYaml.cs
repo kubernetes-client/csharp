@@ -92,7 +92,18 @@ namespace k8s
             public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
             {
                 var obj = (byte[])value;
-                emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
+                var strValue = Encoding.UTF8.GetString(obj);
+
+                // Check if the string is multi-line by looking for a newline character.
+                var scalarStyle = strValue.Contains('\n') ? ScalarStyle.Literal : ScalarStyle.Any;
+
+                emitter.Emit(new Scalar(
+                    AnchorName.Empty,
+                    TagName.Empty,
+                    strValue,
+                    scalarStyle,
+                    true,
+                    true));
             }
         }
 
