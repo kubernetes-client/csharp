@@ -98,8 +98,7 @@ namespace k8s
                     Encoding.UTF8.GetString(obj),
                     ScalarStyle.Literal,  // renders as |
                     true,
-                    true
-                ));
+                    true));
             }
         }
 
