@@ -15,26 +15,27 @@ namespace k8s.Tests
             var trustedCaCert = CertUtils.LoadPemFileCert("assets/ca.crt");
 
             // Generate a completely different CA and server cert in memory
-            var differentCA = CreateSelfSignedCA("CN=Different CA");
-            var untrustedServerCert = CreateServerCert(differentCA, "CN=fake-server.com");
+            using (var differentCA = CreateSelfSignedCA("CN=Different CA"))
+            using (var untrustedServerCert = CreateServerCert(differentCA, "CN=fake-server.com"))
+            {
+                var chain = new X509Chain();
 
-            var chain = new X509Chain();
+                // Pre-populate the chain like SSL validation would do
+                // This will likely succeed because we allow unknown CAs in the validation
+                chain.Build(untrustedServerCert);
 
-            // Pre-populate the chain like SSL validation would do
-            // This will likely succeed because we allow unknown CAs in the validation
-            chain.Build(untrustedServerCert);
+                var errors = SslPolicyErrors.RemoteCertificateChainErrors;
 
-            var errors = SslPolicyErrors.RemoteCertificateChainErrors;
+                var result = Kubernetes.CertificateValidationCallBack(this, trustedCaCert, untrustedServerCert, chain, errors);
 
-            var result = Kubernetes.CertificateValidationCallBack(this, trustedCaCert, untrustedServerCert, chain, errors);
-
-            // This SHOULD be false because the server cert wasn't signed by our trusted CA
-            // But the current K8s validation logic might incorrectly return true
-            Assert.False(result, "Should reject certificates not signed by trusted CA");
+                // This SHOULD be false because the server cert wasn't signed by our trusted CA
+                // But the current K8s validation logic might incorrectly return true
+                Assert.False(result, "Should reject certificates not signed by trusted CA");
+            }
 
             // Cleanup
-            differentCA.Dispose();
-            untrustedServerCert.Dispose();
+            // differentCA.Dispose();
+            // untrustedServerCert.Dispose();
         }
 
         // Helper methods to create test certificates
