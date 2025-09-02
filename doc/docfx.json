@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "KubernetesClient/KubernetesClient.csproj"
+            "KubernetesClient/bin/Release/net8.0/KubernetesClient.dll"
           ],
           "src": "../src"
         }
