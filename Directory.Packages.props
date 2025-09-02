@@ -47,8 +47,8 @@
   <ItemGroup>
     <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="12.0.3" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.7.112" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="12.0.23" />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
 </Project>
