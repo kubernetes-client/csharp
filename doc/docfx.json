@@ -20,6 +20,7 @@
         "files": [
           "api/**.yml",
           "index.md",
+          "CONTRIBUTING.md",
           "toc.yml"
         ]
       }
