@@ -208,7 +208,7 @@ namespace k8s.Models
         /// reference could be found.
         /// </summary>
         /// <param name="obj">the object meta<see cref="V1ObjectMeta"/></param>
-        /// <param name="predicate">a <see cref="Predicate"/> to test owner reference</param>
+        /// <param name="predicate">a <see cref="System.Predicate{V1OwnerReference}"/> to test owner reference</param>
         /// <returns>the index of the <see cref="V1OwnerReference"/> that matches the given object, or -1 if no such
         /// reference could be found.</returns>
         public static int FindOwnerReference(this IMetadata<V1ObjectMeta> obj, Predicate<V1OwnerReference> predicate)
@@ -300,7 +300,7 @@ namespace k8s.Models
 
         /// <summary>Gets the <see cref="V1OwnerReference"/> that matches the given predicate, or null if no matching reference exists.</summary>
         /// <param name="obj">the object meta<see cref="V1ObjectMeta"/></param>
-        /// <param name="predicate">a <see cref="Predicate"/> to test owner reference</param>
+        /// <param name="predicate">a <see cref="System.Predicate{V1OwnerReference}"/> to test owner reference</param>
         /// <returns>the <see cref="V1OwnerReference"/> that matches the given object, or null if no matching reference exists.</returns>
         public static V1OwnerReference GetOwnerReference(
             this IMetadata<V1ObjectMeta> obj,
@@ -400,7 +400,7 @@ namespace k8s.Models
         /// any were removed.
         /// </summary>
         /// <param name="obj">the object meta<see cref="V1ObjectMeta"/></param>
-        /// <param name="predicate">a <see cref="Predicate"/> to test owner reference</param>
+        /// <param name="predicate">a <see cref="System.Predicate{V1OwnerReference}"/> to test owner reference</param>
         /// <returns>true if any were removed</returns>
         public static bool RemoveOwnerReferences(
             this IMetadata<V1ObjectMeta> obj,

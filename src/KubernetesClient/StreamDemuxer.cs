@@ -7,13 +7,13 @@ namespace k8s
     /// <summary>
     /// <para>
     ///     The <see cref="StreamDemuxer"/> allows you to interact with processes running in a container in a Kubernetes pod. You can start an exec or attach command
-    ///     by calling <see cref="Kubernetes.WebSocketNamespacedPodExecAsync(string, string, IEnumerable{string}, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>
-    ///     or <see cref="Kubernetes.WebSocketNamespacedPodAttachAsync(string, string, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>. These methods
-    ///     will return you a <see cref="WebSocket"/> connection.
+    ///     by calling <see cref="Kubernetes.WebSocketNamespacedPodExecAsync(string, string, IEnumerable{string}, string, bool, bool, bool, bool, string, Dictionary{string, List{string}}, CancellationToken)"/>
+    ///     or <see cref="Kubernetes.WebSocketNamespacedPodAttachAsync(string, string, string, bool, bool, bool, bool, string, Dictionary{string, List{string}}, CancellationToken)"/>. These methods
+    ///     will return you a <see cref="System.Net.WebSockets.WebSocket"/> connection.
     /// </para>
     /// <para>
-    ///     Kubernetes 'multiplexes' multiple channels over this <see cref="WebSocket"/> connection, such as standard input, standard output and standard error. The <see cref="StreamDemuxer"/>
-    ///     allows you to extract individual <see cref="Stream"/>s from this <see cref="WebSocket"/> class. You can then use these streams to send/receive data from that process.
+    ///     Kubernetes 'multiplexes' multiple channels over this <see cref="System.Net.WebSockets.WebSocket"/> connection, such as standard input, standard output and standard error. The <see cref="StreamDemuxer"/>
+    ///     allows you to extract individual <see cref="Stream"/>s from this <see cref="System.Net.WebSockets.WebSocket"/>. You can then use these streams to send/receive data from that process.
     /// </para>
     /// </summary>
     public class StreamDemuxer : IStreamDemuxer
