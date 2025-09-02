@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using Microsoft.CodeAnalysis.CSharp;
 using Scriban;
 using Scriban.Runtime;
 using System.Text;
@@ -19,7 +20,10 @@ namespace LibKubernetesGenerator
         {
             var template = Template.Parse(EmbedResource.GetResource(templatefile));
             var generated = template.Render(tc);
-            context.AddSource(generatedfile, SourceText.From(generated, Encoding.UTF8));
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(generated);
+            var normalized = syntaxTree.GetRoot().NormalizeWhitespace().ToFullString();
+            context.AddSource(generatedfile, SourceText.From(normalized, Encoding.UTF8));
         }
     }
 }
