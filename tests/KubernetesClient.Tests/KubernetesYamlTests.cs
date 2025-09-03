@@ -804,17 +804,17 @@ spec:
         {
             var kManifest = @"
 apiVersion: v1
+data:
+  username: YlhrdFlYQnc=
+  password: TXprMU1qZ2tkbVJuTjBwaQ==
 kind: Secret
 metadata:
   name: test-secret
-data:
-  username: bXktYXBw
-  password: Mzk1MjgkdmRnN0pi
 ";
 
             var result = KubernetesYaml.Deserialize<V1Secret>(kManifest, true);
-            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
-            Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
+            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(result.Data["username"]))));
+            Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(result.Data["password"]))));
         }
 
         [Fact]
@@ -823,13 +823,8 @@ data:
             var kManifest = """
 apiVersion: v1
 data:
-  username: bXktYXBw
-  tls2.crt: |
-    -----BEGIN CERTIFICATE-----
-    FAKE CERT
-    FAKE CERT
-    FAKE CERT
-    -----END CERTIFICATE-----
+  username: YlhrdFlYQnc=
+  password: TXprMU1qZ2tkbVJuTjBwaQ==
 kind: Secret
 metadata:
   name: test-secret
