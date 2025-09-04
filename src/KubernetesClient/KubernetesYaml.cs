@@ -91,6 +91,12 @@ namespace k8s
 
             public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
             {
+                if (value == null)
+                {
+                    emitter.Emit(new Scalar(string.Empty));
+                    return;
+                }
+
                 var obj = (byte[])value;
                 var encoded = Convert.ToBase64String(obj);
                 emitter.Emit(new Scalar(encoded));
