@@ -813,8 +813,8 @@ metadata:
 ";
 
             var result = KubernetesYaml.Deserialize<V1Secret>(kManifest, true);
-            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(result.Data["username"]))));
-            Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(Convert.FromBase64String(Encoding.UTF8.GetString(result.Data["password"]))));
+            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.Data["username"]));
+            Assert.Equal("Mzk1MjgkdmRnN0pi", Encoding.UTF8.GetString(result.Data["password"]));
         }
 
         [Fact]

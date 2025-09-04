@@ -78,7 +78,7 @@ namespace k8s
                             return null;
                         }
 
-                        return Encoding.UTF8.GetBytes(scalar.Value);
+                        return Convert.FromBase64String(scalar.Value);
                     }
                     finally
                     {
