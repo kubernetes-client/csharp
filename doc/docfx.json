@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "KubernetesClient/KubernetesClient.csproj"
+            "KubernetesClient/bin/Release/net8.0/KubernetesClient.dll"
           ],
           "src": "../src"
         }
@@ -20,6 +20,7 @@
         "files": [
           "api/**.yml",
           "index.md",
+          "CONTRIBUTING.md",
           "toc.yml"
         ]
       }
