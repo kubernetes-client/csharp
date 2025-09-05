@@ -837,6 +837,45 @@ metadata:
         }
 
         [Fact]
+        public void LoadConfigMap()
+        {
+            var kManifest = @"
+apiVersion: v1
+binaryData:
+  username: YlhrdFlYQnc=
+data:
+  password: Mzk1MjgkdmRnN0pi
+kind: ConfigMap
+metadata:
+  name: test-configmap
+";
+
+            var result = KubernetesYaml.Deserialize<V1ConfigMap>(kManifest, true);
+            Assert.Equal("bXktYXBw", Encoding.UTF8.GetString(result.BinaryData["username"]));
+            Assert.Equal("Mzk1MjgkdmRnN0pi", result.Data["password"]);
+        }
+
+        [Fact]
+        public void WriteConfigMap()
+        {
+            var kManifest = """
+apiVersion: v1
+binaryData:
+  username: YlhrdFlYQnc=
+data:
+  password: Mzk1MjgkdmRnN0pi
+kind: ConfigMap
+metadata:
+  name: test-configmap
+""";
+
+            var result = KubernetesYaml.Deserialize<V1ConfigMap>(kManifest, true);
+            var yaml = KubernetesYaml.Serialize(result);
+
+            Assert.Equal(kManifest, yaml);
+        }
+
+        [Fact]
         public void DeserializeWithJsonPropertyName()
         {
             var kManifest = @"
