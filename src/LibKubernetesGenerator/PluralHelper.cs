@@ -11,11 +11,12 @@ namespace LibKubernetesGenerator
     {
         private readonly Dictionary<string, string> _classNameToPluralMap;
         private readonly ClassNameHelper classNameHelper;
-        private readonly HashSet<string> opblackList = new HashSet<string>()
-        {
+        private readonly HashSet<string> opblackList =
+        [
             "listClusterCustomObject",
             "listNamespacedCustomObject",
-        };
+            "listCustomObjectForAllNamespaces",
+        ];
 
         public PluralHelper(ClassNameHelper classNameHelper, OpenApiDocument swagger)
         {

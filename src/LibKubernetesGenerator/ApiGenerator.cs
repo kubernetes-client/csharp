@@ -71,7 +71,7 @@ namespace LibKubernetesGenerator
             sc = scriptObjectFactory.CreateScriptObject();
             sc.SetValue("groups", groups, true);
 
-            context.RenderToContext($"IBasicKubernetes.cs.template", sc, $"IBasicKubernetes.g.cs");
+            context.RenderToContext($"IKubernetes.cs.template", sc, $"IKubernetes.g.cs");
             context.RenderToContext($"AbstractKubernetes.cs.template", sc, $"AbstractKubernetes.g.cs");
         }
     }
