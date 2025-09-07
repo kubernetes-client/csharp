@@ -85,8 +85,13 @@ namespace k8s.Tests
         {
             var certCollection = CertUtils.LoadPemFileCert("assets/ca-bundle.crt");
 
+#if NET9_0_OR_GREATER
+            using var intermediateCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca-bundle-intermediate.crt");
+            using var rootCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca-bundle-root.crt");
+#else
             using var intermediateCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
             using var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
+#endif
 
             Assert.Equal(2, certCollection.Count);
 
