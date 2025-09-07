@@ -19,7 +19,7 @@ namespace clientset
                 System.Console.WriteLine(item.Metadata.Name);
             }
 
-            var pod = await clientSet.CoreV1.Pod.GetAsync("test","default").ConfigureAwait(false);
+            var pod = await clientSet.CoreV1.Pod.GetAsync("test", "default").ConfigureAwait(false);
             System.Console.WriteLine(pod?.Metadata?.Name);
         }
     }
