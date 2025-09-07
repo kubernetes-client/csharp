@@ -78,7 +78,7 @@ namespace k8s
                             return null;
                         }
 
-                        return Encoding.UTF8.GetBytes(scalar.Value);
+                        return Convert.FromBase64String(scalar.Value);
                     }
                     finally
                     {
@@ -91,19 +91,15 @@ namespace k8s
 
             public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
             {
+                if (value == null)
+                {
+                    emitter.Emit(new Scalar(string.Empty));
+                    return;
+                }
+
                 var obj = (byte[])value;
-                var strValue = Encoding.UTF8.GetString(obj);
-
-                // Check if the string is multi-line by looking for a newline character.
-                var scalarStyle = strValue.Contains('\n') ? ScalarStyle.Literal : ScalarStyle.Any;
-
-                emitter.Emit(new Scalar(
-                    AnchorName.Empty,
-                    TagName.Empty,
-                    strValue,
-                    scalarStyle,
-                    true,
-                    true));
+                var encoded = Convert.ToBase64String(obj);
+                emitter.Emit(new Scalar(encoded));
             }
         }
 
