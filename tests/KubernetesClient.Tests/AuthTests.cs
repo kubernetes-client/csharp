@@ -196,7 +196,7 @@ namespace k8s.Tests
             }
 
 #if NET9_0_OR_GREATER
-            var clientCertificate = X509CertificateLoader.LoadPkcs12(Convert.FromBase64String(clientCertificateData), "");
+            var clientCertificate = X509CertificateLoader.LoadCertificate(Convert.FromBase64String(clientCertificateData));
 #else
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
 #endif
@@ -310,7 +310,7 @@ namespace k8s.Tests
             }
 
 #if NET9_0_OR_GREATER
-            var clientCertificate = X509CertificateLoader.LoadPkcs12(clientCertificateData, "");
+            var clientCertificate = X509CertificateLoader.LoadCertificate(clientCertificateData);
 #else
             var clientCertificate = new X509Certificate2(clientCertificateData, "");
 #endif
