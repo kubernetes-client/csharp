@@ -3,7 +3,7 @@ namespace k8s.Models
     [JsonConverter(typeof(IntOrStringJsonConverter))]
     public struct IntOrString
     {
-        public string Value { get; private init; }
+        public string? Value { get; private init; }
 
         public static implicit operator IntOrString(int v)
         {
