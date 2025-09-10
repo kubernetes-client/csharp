@@ -21,7 +21,7 @@ namespace k8s.Models
                         return null;
                     }
 
-                    return new IntOrString { Value = scalar?.Value };
+                    return scalar?.Value;
                 }
                 finally
                 {

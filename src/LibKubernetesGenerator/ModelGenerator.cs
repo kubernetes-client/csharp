@@ -19,6 +19,13 @@ namespace LibKubernetesGenerator
         {
             var sc = scriptObjectFactory.CreateScriptObject();
 
+            var genSkippedTypes = new HashSet<string>
+            {
+                "IntOrString",
+                "ResourceQuantity",
+                "V1Patch",
+            };
+
             var extSkippedTypes = new HashSet<string>
             {
                 "V1WatchEvent",
@@ -26,17 +33,22 @@ namespace LibKubernetesGenerator
 
             var typeOverrides = new Dictionary<string, string>
             {
-                { "IntOrString", "class" },
-                { "ResourceQuantity", "class" },
+                // not used at the moment
             };
 
             foreach (var kv in swagger.Definitions)
             {
                 var def = kv.Value;
                 var clz = classNameHelper.GetClassNameForSchemaDefinition(def);
+
+                if (genSkippedTypes.Contains(clz))
+                {
+                    continue;
+                }
+
                 var hasExt = def.ExtensionData != null
                      && def.ExtensionData.ContainsKey("x-kubernetes-group-version-kind")
-                     && !extSkippedTypes.Contains(classNameHelper.GetClassName(def));
+                     && !extSkippedTypes.Contains(clz);
 
 
                 var typ = "record";
@@ -50,7 +62,6 @@ namespace LibKubernetesGenerator
                 sc.SetValue("properties", def.Properties.Values, true);
                 sc.SetValue("typ", typ, true);
                 sc.SetValue("hasExt", hasExt, true);
-
 
                 context.RenderToContext("Model.cs.template", sc, $"Models_{clz}.g.cs");
             }

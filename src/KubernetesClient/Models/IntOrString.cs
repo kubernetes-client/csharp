@@ -1,16 +1,19 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
-    public partial class IntOrString
+    public record IntOrString
     {
+        [JsonPropertyName("value")]
+        public string Value { get; init; }
+
         public static implicit operator IntOrString(int v)
         {
-            return new IntOrString { Value = Convert.ToString(v) };
+            return new IntOrString(Convert.ToString(v));
         }
 
         public static implicit operator IntOrString(long v)
         {
-            return new IntOrString { Value = Convert.ToString(v) };
+            return new IntOrString(Convert.ToString(v));
         }
 
         public static implicit operator string(IntOrString v)
@@ -20,37 +23,12 @@ namespace k8s.Models
 
         public static implicit operator IntOrString(string v)
         {
-            return new IntOrString { Value = v };
+            return new IntOrString(v);
         }
 
-        protected bool Equals(IntOrString other)
+        public override string ToString()
         {
-            return string.Equals(Value, other?.Value);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((IntOrString)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return Value != null ? Value.GetHashCode() : 0;
+            return Value;
         }
     }
 }

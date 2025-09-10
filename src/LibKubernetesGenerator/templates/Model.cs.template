@@ -21,25 +21,12 @@ public partial {{typ}} {{clz}} {{ if hasExt }} : {{ GetInterfaceName def }} {{ e
     public const string KubePluralName = "{{ GetPlural def }}";
     {{ end }}
 
-    /// <summary>
-    /// Initializes a new instance of the {{GetClassName def}} class.
-    /// </summary>
-    public {{clz}}()
-    {
-        CustomInit();
-    }
-
-    /// <summary>
-    /// An initialization method that performs custom operations like setting defaults
-    /// </summary>
-    partial void CustomInit();
-
     {{ for property in properties }}
     /// <summary>
     /// {{ToXmlDoc property.description}}
     /// </summary>
     [JsonPropertyName("{{property.name}}")]
-    public {{ if property.IsRequired }} required  {{ end }} {{GetDotNetType property}} {{GetDotNetName property.name "field"}} { get; set; }
+    public {{ if property.IsRequired }} required {{ end }} {{GetDotNetType property}} {{GetDotNetName property.name "field"}} { get; set; }
     {{ end }}
 }
 

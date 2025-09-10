@@ -1,7 +1,7 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(V1PatchJsonConverter))]
-    public partial record class V1Patch
+    public record V1Patch
     {
         public enum PatchType
         {
@@ -31,17 +31,17 @@ namespace k8s.Models
             ApplyPatch,
         }
 
+        [JsonPropertyName("content")]
+        [JsonInclude]
+        public object Content { get; private set; }
+
         public PatchType Type { get; private set; }
 
         public V1Patch(object body, PatchType type)
         {
             Content = body;
             Type = type;
-            CustomInit();
-        }
 
-        partial void CustomInit()
-        {
             if (Content == null)
             {
                 throw new ArgumentNullException(nameof(Content), "object must be set");
