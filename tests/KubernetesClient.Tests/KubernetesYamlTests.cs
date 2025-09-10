@@ -33,7 +33,7 @@ metadata:
         }
 
 #pragma warning disable CA1812 // Class is used for YAML deserialization tests
-        private class MyPod : V1Pod
+        private record MyPod : V1Pod
         {
         }
 #pragma warning restore CA1812
@@ -531,7 +531,7 @@ spec:
             var obj = new V1Service
             {
                 Kind = "Service",
-                Metadata = new V1ObjectMeta(labels: labels, name: "test-svc"),
+                Metadata = new V1ObjectMeta { Name = "test-svc", Labels = labels },
                 ApiVersion = "v1",
                 Spec = new V1ServiceSpec
                 {

@@ -36,7 +36,6 @@
     <Compile Include="..\KubernetesClient\KubernetesObject.cs" />
     <Compile Include="..\KubernetesClient\KubernetesYaml.cs" />
     <Compile Include="..\KubernetesClient\Models\ModelExtensions.cs" />
-    <Compile Include="..\KubernetesClient\Models\ModelVersionConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\NodeMetrics.cs" />
     <Compile Include="..\KubernetesClient\Models\NodeMetricsList.cs" />
     <Compile Include="..\KubernetesClient\Models\PodMetrics.cs" />

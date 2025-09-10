@@ -85,6 +85,12 @@ namespace k8s.Models
             Format = format;
         }
 
+        public ResourceQuantity(string s)
+        {
+            Value = s;
+            CustomInit();
+        }
+
         public SuffixFormat Format { get; private set; }
 
         public string CanonicalizeString()

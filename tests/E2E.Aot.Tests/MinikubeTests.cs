@@ -172,27 +172,33 @@ namespace k8s.E2E
             using var kubernetes = CreateClient();
 
             await kubernetes.CoreV1.CreateNamespacedEventAsync(
-                new Corev1Event(
-                    new V1ObjectReference(
-                        "v1alpha1",
-                        kind: "Test",
-                        name: "test",
-                        namespaceProperty: "default",
-                        resourceVersion: "1",
-                        uid: "1"),
-                    new V1ObjectMeta()
+                new Corev1Event
+                {
+                    InvolvedObject = new V1ObjectReference
+                    {
+                        ApiVersion = "v1alpha1",
+                        Kind = "Test",
+                        Name = "test",
+                        NamespaceProperty = "default",
+                        ResourceVersion = "1",
+                        Uid = "1",
+                    },
+                    Metadata = new V1ObjectMeta
                     {
                         GenerateName = "started-",
                     },
-                    action: "STARTED",
-                    type: "Normal",
-                    reason: "STARTED",
-                    message: "Started",
-                    eventTime: DateTime.Now,
-                    firstTimestamp: DateTime.Now,
-                    lastTimestamp: DateTime.Now,
-                    reportingComponent: "37",
-                    reportingInstance: "38"), "default").ConfigureAwait(false);
+                    Action = "STARTED",
+                    Type = "Normal",
+                    Reason = "STARTED",
+                    Message = "Started",
+                    EventTime = DateTime.Now,
+                    FirstTimestamp = DateTime.Now,
+                    LastTimestamp = DateTime.Now,
+                    ReportingComponent = "37",
+                    ReportingInstance = "38",
+                },
+                "default"
+            ).ConfigureAwait(false);
         }
 
         [MinikubeFact]

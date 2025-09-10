@@ -22,8 +22,6 @@ namespace LibKubernetesGenerator
             var extSkippedTypes = new HashSet<string>
             {
                 "V1WatchEvent",
-                "V1Status",
-                "V1Patch",
             };
 
             var typeOverrides = new Dictionary<string, string>

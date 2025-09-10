@@ -67,7 +67,15 @@ var old = JsonSerializer.SerializeToDocument(readCert, serializeOptions);
 
 var replace = new List<V1CertificateSigningRequestCondition>
 {
-    new ("True", "Approved", DateTime.UtcNow, DateTime.UtcNow, "This certificate was approved by k8s client", "Approve"),
+    new V1CertificateSigningRequestCondition
+    {
+        Type = "Approved",
+        Status = "True",
+        Reason = "Approve",
+        Message = "This certificate was approved by k8s client",
+        LastUpdateTime = DateTime.UtcNow,
+        LastTransitionTime = DateTime.UtcNow,
+    },
 };
 readCert.Status.Conditions = replace;
 
