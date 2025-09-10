@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
@@ -34,7 +32,7 @@ namespace k8s.Models
 
         public int ToInt()
         {
-            return int.Parse(Value, CultureInfo.InvariantCulture);
+            return int.Parse(Value);
         }
     }
 }
