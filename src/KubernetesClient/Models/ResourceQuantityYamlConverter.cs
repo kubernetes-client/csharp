@@ -21,7 +21,7 @@ namespace k8s.Models
                         return null;
                     }
 
-                    return new ResourceQuantity(scalar?.Value);
+                    return new ResourceQuantity { Value = scalar?.Value };
                 }
                 finally
                 {

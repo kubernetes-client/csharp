@@ -1,8 +1,8 @@
 namespace k8s.Models
 {
-    internal sealed class IntOrStringJsonConverter : JsonConverter<IntstrIntOrString>
+    internal sealed class IntOrStringJsonConverter : JsonConverter<IntOrString>
     {
-        public override IntstrIntOrString Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override IntOrString Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             switch (reader.TokenType)
             {
@@ -17,7 +17,7 @@ namespace k8s.Models
             throw new NotSupportedException();
         }
 
-        public override void Write(Utf8JsonWriter writer, IntstrIntOrString value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, IntOrString value, JsonSerializerOptions options)
         {
             if (writer == null)
             {

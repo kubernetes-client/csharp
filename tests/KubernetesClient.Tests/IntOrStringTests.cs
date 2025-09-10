@@ -10,13 +10,13 @@ namespace k8s.Tests
         {
             {
                 var v = 123;
-                IntstrIntOrString intorstr = v;
+                IntOrString intorstr = v;
 
                 Assert.Equal("123", KubernetesJson.Serialize(intorstr));
             }
 
             {
-                IntstrIntOrString intorstr = "12%";
+                IntOrString intorstr = "12%";
                 Assert.Equal("\"12%\"", KubernetesJson.Serialize(intorstr));
             }
         }
@@ -25,12 +25,12 @@ namespace k8s.Tests
         public void Deserialize()
         {
             {
-                var v = KubernetesJson.Deserialize<IntstrIntOrString>("1234");
+                var v = KubernetesJson.Deserialize<IntOrString>("1234");
                 Assert.Equal("1234", v.Value);
             }
 
             {
-                var v = KubernetesJson.Deserialize<IntstrIntOrString>("\"12%\"");
+                var v = KubernetesJson.Deserialize<IntOrString>("\"12%\"");
                 Assert.Equal("12%", v.Value);
             }
         }

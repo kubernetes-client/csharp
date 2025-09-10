@@ -7,7 +7,7 @@ namespace k8s.Models
     {
         public bool Accepts(Type type)
         {
-            return type == typeof(IntstrIntOrString);
+            return type == typeof(IntOrString);
         }
 
         public object ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer)
@@ -21,7 +21,7 @@ namespace k8s.Models
                         return null;
                     }
 
-                    return new IntstrIntOrString(scalar?.Value);
+                    return new IntOrString { Value = scalar?.Value };
                 }
                 finally
                 {
@@ -34,7 +34,7 @@ namespace k8s.Models
 
         public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
         {
-            var obj = (IntstrIntOrString)value;
+            var obj = (IntOrString)value;
             emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj?.Value));
         }
     }

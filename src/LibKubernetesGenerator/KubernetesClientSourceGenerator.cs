@@ -58,12 +58,10 @@ namespace LibKubernetesGenerator
             builder.RegisterType<ScriptObjectFactory>()
                 ;
 
-            builder.RegisterType<ModelExtGenerator>();
             builder.RegisterType<SourceGenerationContextGenerator>();
             builder.RegisterType<ModelGenerator>();
             builder.RegisterType<ApiGenerator>();
             builder.RegisterType<ClientSetGenerator>();
-            builder.RegisterType<VersionConverterStubGenerator>();
             builder.RegisterType<VersionGenerator>();
 
             return builder.Build();
@@ -79,9 +77,7 @@ namespace LibKubernetesGenerator
                 container.Resolve<VersionGenerator>().Generate(swagger, ctx);
 
                 container.Resolve<ModelGenerator>().Generate(swagger, ctx);
-                container.Resolve<ModelExtGenerator>().Generate(swagger, ctx);
                 container.Resolve<SourceGenerationContextGenerator>().Generate(swagger, ctx);
-                container.Resolve<VersionConverterStubGenerator>().Generate(swagger, ctx);
                 container.Resolve<ApiGenerator>().Generate(swagger, ctx);
                 container.Resolve<ClientSetGenerator>().Generate(swagger, ctx);
             });

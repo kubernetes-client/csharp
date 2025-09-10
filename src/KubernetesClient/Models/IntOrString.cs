@@ -1,29 +1,29 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
-    public partial class IntstrIntOrString
+    public partial class IntOrString
     {
-        public static implicit operator IntstrIntOrString(int v)
+        public static implicit operator IntOrString(int v)
         {
-            return new IntstrIntOrString(Convert.ToString(v));
+            return new IntOrString { Value = Convert.ToString(v) };
         }
 
-        public static implicit operator IntstrIntOrString(long v)
+        public static implicit operator IntOrString(long v)
         {
-            return new IntstrIntOrString(Convert.ToString(v));
+            return new IntOrString { Value = Convert.ToString(v) };
         }
 
-        public static implicit operator string(IntstrIntOrString v)
+        public static implicit operator string(IntOrString v)
         {
             return v?.Value;
         }
 
-        public static implicit operator IntstrIntOrString(string v)
+        public static implicit operator IntOrString(string v)
         {
-            return new IntstrIntOrString(v);
+            return new IntOrString { Value = v };
         }
 
-        protected bool Equals(IntstrIntOrString other)
+        protected bool Equals(IntOrString other)
         {
             return string.Equals(Value, other?.Value);
         }
@@ -45,7 +45,7 @@ namespace k8s.Models
                 return false;
             }
 
-            return Equals((IntstrIntOrString)obj);
+            return Equals((IntOrString)obj);
         }
 
         public override int GetHashCode()

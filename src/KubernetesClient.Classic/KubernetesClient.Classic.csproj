@@ -27,10 +27,9 @@
     <Compile Include="..\KubernetesClient\IMetadata.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringJsonConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringYamlConverter.cs" />
-    <Compile Include="..\KubernetesClient\Models\IntstrIntOrString.cs" />
+    <Compile Include="..\KubernetesClient\Models\IntOrString.cs" />
     <Compile Include="..\KubernetesClient\ISpec.cs" />
     <Compile Include="..\KubernetesClient\IStatus.cs" />
-    <Compile Include="..\KubernetesClient\IValidate.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesEntityAttribute.cs" />
     <Compile Include="..\KubernetesClient\KubernetesJson.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesList.cs" />
