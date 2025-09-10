@@ -54,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(ResourceQuantityJsonConverter))]
-    public record ResourceQuantity
+    public struct ResourceQuantity
     {
         public enum SuffixFormat
         {
@@ -171,7 +171,7 @@ namespace k8s.Models
 
         public static implicit operator decimal(ResourceQuantity v)
         {
-            return v?.ToDecimal() ?? 0;
+            return v.ToDecimal();
         }
 
         public static implicit operator ResourceQuantity(decimal v)

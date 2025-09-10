@@ -24,7 +24,7 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            var s = value?.Value;
+            var s = value.Value;
 
             if (long.TryParse(s, out var intv))
             {

@@ -28,7 +28,7 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            writer.WriteStringValue(value?.ToString());
+            writer.WriteStringValue(value.ToString());
         }
     }
 }
