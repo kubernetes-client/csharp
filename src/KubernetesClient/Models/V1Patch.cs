@@ -39,18 +39,13 @@ namespace k8s.Models
 
         public V1Patch(object body, PatchType type)
         {
-            Content = body;
+            if (type == PatchType.Unknown)
+            {
+                throw new ArgumentException("patch type must be set", nameof(type));
+            }
+
+            Content = body ?? throw new ArgumentNullException(nameof(body), "object must be set");
             Type = type;
-
-            if (Content == null)
-            {
-                throw new ArgumentNullException(nameof(Content), "object must be set");
-            }
-
-            if (Type == PatchType.Unknown)
-            {
-                throw new ArgumentException("patch type must be set", nameof(Type));
-            }
         }
     }
 }
