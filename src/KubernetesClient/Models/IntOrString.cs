@@ -1,9 +1,10 @@
+using System.Globalization;
+
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
     public struct IntOrString
     {
-        [JsonPropertyName("value")]
         public string Value { get; private init; }
 
         public static implicit operator IntOrString(int v)
@@ -29,6 +30,11 @@ namespace k8s.Models
         public override string ToString()
         {
             return Value;
+        }
+
+        public int ToInt()
+        {
+            return int.Parse(Value, CultureInfo.InvariantCulture);
         }
     }
 }
