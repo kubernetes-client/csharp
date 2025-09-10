@@ -171,6 +171,12 @@ namespace k8s.Models
 
         public static implicit operator decimal(ResourceQuantity v)
         {
+            // Handle default/uninitialized struct by returning zero
+            // Fraction is a struct, so check if _unitlessValue is zero
+            if (v._unitlessValue.IsZero)
+            {
+                return 0m;
+            }
             return v.ToDecimal();
         }
 
