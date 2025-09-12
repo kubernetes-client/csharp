@@ -38,7 +38,7 @@ public partial class {{name}}Client : ResourceClient
         {{if IfReturnType api.operation "stream"}}
         var _result = await Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
             {{end}}
             null,
             cancellationToken);
@@ -48,7 +48,7 @@ public partial class {{name}}Client : ResourceClient
         {{if IfReturnType api.operation "obj"}}
         using (var _result = await Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
             {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -59,7 +59,7 @@ public partial class {{name}}Client : ResourceClient
         {{if IfReturnType api.operation "void"}}
         using (var _result = await Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
             {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -88,7 +88,7 @@ public partial class {{name}}Client : ResourceClient
     {
         using (var _result = await Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}<T>(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
             {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -122,7 +122,7 @@ public partial class {{name}}Client : ResourceClient
 
         var responseTask = Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter true}},
             {{ end }}
             null,
             CancellationToken.None);
@@ -150,7 +150,7 @@ public partial class {{name}}Client : ResourceClient
     {
         var responseTask = Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
             {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter true}},
             {{ end }}
             null,
             cancellationToken);

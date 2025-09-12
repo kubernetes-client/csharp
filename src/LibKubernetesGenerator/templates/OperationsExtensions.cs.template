@@ -91,7 +91,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "stream"}}
         var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
 {{end}}
             null,
             cancellationToken);
@@ -101,7 +101,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "obj"}}
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -112,7 +112,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "void"}}
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -145,7 +145,7 @@ public static partial class {{name}}OperationsExtensions
     {
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}<T>(
 {{ for parameter in api.operation.parameters}}
-            {{GetParameterValueForWatch parameter}},
+            {{GetParameterValueForWatch parameter false}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -184,7 +184,7 @@ public static Watcher<{{GetReturnType api.operation "T"}}> Watch{{GetOperationId
 
     var responseTask = operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-        {{GetParameterValueForWatch parameter}},
+        {{GetParameterValueForWatch parameter true}},
 {{end}}
         null,
         CancellationToken.None);
@@ -216,7 +216,7 @@ public static IAsyncEnumerable<(WatchEventType, {{GetReturnType api.operation "T
 {
     var responseTask = operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-        {{GetParameterValueForWatch parameter}},
+        {{GetParameterValueForWatch parameter true}},
 {{end}}
         null,
         cancellationToken);
