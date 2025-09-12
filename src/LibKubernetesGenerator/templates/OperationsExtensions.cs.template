@@ -12,26 +12,27 @@ namespace k8s;
 public static partial class {{name}}OperationsExtensions
 {
     {{for api in apis }}
+    {{~ $filteredParams = FilterParameters api.operation "watch" ~}}
     /// <summary>
     /// {{ToXmlDoc api.operation.description}}
     /// </summary>
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-     {{ for parameter in api.operation.parameters}}
+     {{ for parameter in $filteredParams}}
     /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
-    /// {{ToXmlDoc api.description}}
+    /// {{ToXmlDoc parameter.description}}
     /// </param>
      {{ end }}
     public static {{GetReturnType api.operation "void"}} {{GetOperationId api.operation ""}}(
         this I{{name}}Operations operations
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
         ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
 {{end}}
         )
    {
          {{GetReturnType api.operation "return"}}  operations.{{GetOperationId api.operation "Async"}}(
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
              CancellationToken.None
@@ -45,20 +46,20 @@ public static partial class {{name}}OperationsExtensions
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{ for parameter in api.operation.parameters}}
+    {{ for parameter in $filteredParams}}
     /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
     /// {{ToXmlDoc parameter.description}}
     /// </param>
     {{end}}
     public static T {{GetOperationId api.operation ""}}<T>(
         this I{{name}}Operations operations
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
         ,{{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}}
 {{end}}
         )
    {
          return operations.{{GetOperationId api.operation "Async"}}<T>(
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
             {{GetDotNetNameOpenApiParameter parameter "false"}},
 {{end}}
              CancellationToken.None
@@ -72,7 +73,7 @@ public static partial class {{name}}OperationsExtensions
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{ for parameter in api.operation.parameters}}
+    {{ for parameter in $filteredParams}}
     /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
     /// {{ToXmlDoc parameter.description}}
     /// </param>
@@ -82,7 +83,7 @@ public static partial class {{name}}OperationsExtensions
     /// </param>
     public static async Task{{GetReturnType api.operation "<>"}} {{GetOperationId api.operation "Async"}}(
         this I{{name}}Operations operations,
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
 {{ end }}
         CancellationToken cancellationToken = default(CancellationToken))
@@ -90,7 +91,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "stream"}}
         var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetDotNetNameOpenApiParameter parameter "false"}},
+            {{GetParameterValueForWatch parameter}},
 {{end}}
             null,
             cancellationToken);
@@ -100,7 +101,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "obj"}}
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetDotNetNameOpenApiParameter parameter "false"}},
+            {{GetParameterValueForWatch parameter}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -111,7 +112,7 @@ public static partial class {{name}}OperationsExtensions
         {{if IfReturnType api.operation "void"}}
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-            {{GetDotNetNameOpenApiParameter parameter "false"}},
+            {{GetParameterValueForWatch parameter}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
@@ -127,7 +128,7 @@ public static partial class {{name}}OperationsExtensions
     /// <param name='operations'>
     /// The operations group for this extension method.
     /// </param>
-    {{ for parameter in api.operation.parameters}}
+    {{ for parameter in $filteredParams}}
     /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
     /// {{ToXmlDoc parameter.description}}
     /// </param>
@@ -137,14 +138,14 @@ public static partial class {{name}}OperationsExtensions
     /// </param>
     public static async Task<T> {{GetOperationId api.operation "Async"}}<T>(
         this I{{name}}Operations operations,
-{{ for parameter in api.operation.parameters}}
+{{ for parameter in $filteredParams}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
 {{ end }}
         CancellationToken cancellationToken = default(CancellationToken))
     {
         using (var _result = await operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}<T>(
 {{ for parameter in api.operation.parameters}}
-            {{GetDotNetNameOpenApiParameter parameter "false"}},
+            {{GetParameterValueForWatch parameter}},
 {{end}}
             null,
             cancellationToken).ConfigureAwait(false))
