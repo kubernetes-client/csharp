@@ -183,7 +183,7 @@ public static Watcher<{{GetReturnType api.operation "T"}}> Watch{{GetOperationId
 
     var responseTask = operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-        {{GetParameterValueForWatchCall parameter}},
+        {{GetParameterValueForWatch parameter}},
 {{end}}
         null,
         CancellationToken.None);
@@ -215,7 +215,7 @@ public static IAsyncEnumerable<(WatchEventType, {{GetReturnType api.operation "T
 {
     var responseTask = operations.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
-        {{GetParameterValueForWatchCall parameter}},
+        {{GetParameterValueForWatch parameter}},
 {{end}}
         null,
         cancellationToken);

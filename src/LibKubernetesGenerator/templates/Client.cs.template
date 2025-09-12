@@ -96,5 +96,69 @@ public partial class {{name}}Client : ResourceClient
         }
     }
     {{end}}
+
+    {{if IfParamContains api.operation "watch"}}
+    {{~ $filteredParams = FilterParameters api.operation "watch" ~}}
+    /// <summary>
+    /// Watch {{ToXmlDoc api.operation.description}}
+    /// </summary>
+    {{ for parameter in $filteredParams}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
+    /// </param>
+    {{ end }}
+    /// <param name="onEvent">Callback when any event raised from api server</param>
+    /// <param name="onError">Callback when any exception was caught during watching</param>
+    /// <param name="onClosed">Callback when the server closes the connection</param>
+    public Watcher<{{GetReturnType api.operation "T"}}> Watch{{GetActionName api.operation name ""}}(
+        {{ for parameter in $filteredParams}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+        {{ end }}
+        Action<WatchEventType, {{GetReturnType api.operation "T"}}> onEvent = null,
+        Action<Exception> onError = null,
+        Action onClosed = null)
+    {
+        if (onEvent == null) throw new ArgumentNullException(nameof(onEvent));
+
+        var responseTask = Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
+            {{ for parameter in api.operation.parameters}}
+            {{GetParameterValueForWatch parameter}},
+            {{ end }}
+            null,
+            CancellationToken.None);
+
+        return responseTask.Watch<{{GetReturnType api.operation "T"}}, {{GetReturnType api.operation "TList"}}>(
+            onEvent, onError, onClosed);
+    }
+
+    /// <summary>
+    /// Watch {{ToXmlDoc api.operation.description}} as async enumerable
+    /// </summary>
+    {{ for parameter in $filteredParams}}
+    /// <param name="{{GetDotNetNameOpenApiParameter parameter "false"}}">
+    /// {{ToXmlDoc parameter.description}}
+    /// </param>
+    {{ end }}
+    /// <param name="onError">Callback when any exception was caught during watching</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    public IAsyncEnumerable<(WatchEventType, {{GetReturnType api.operation "T"}})> Watch{{GetActionName api.operation name "Async"}}(
+        {{ for parameter in $filteredParams}}
+        {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
+        {{ end }}
+        Action<Exception> onError = null,
+        CancellationToken cancellationToken = default)
+    {
+        var responseTask = Client.{{group}}.{{GetOperationId api.operation "WithHttpMessagesAsync"}}(
+            {{ for parameter in api.operation.parameters}}
+            {{GetParameterValueForWatch parameter}},
+            {{ end }}
+            null,
+            cancellationToken);
+
+        return responseTask.WatchAsync<{{GetReturnType api.operation "T"}}, {{GetReturnType api.operation "TList"}}>(
+            onError, cancellationToken);
+    }
     {{end}}
+
+    {{end}} 
 }
