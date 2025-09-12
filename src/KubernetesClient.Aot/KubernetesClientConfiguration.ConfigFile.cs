@@ -306,20 +306,31 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
+                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+#if NET9_0_OR_GREATER
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(data)));
+#else
+                    string nullPassword = null;
                     // This null password is to change the constructor to fix this KB:
                     // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
-                    string nullPassword = null;
-                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
                     SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
+#endif
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
+#if NET9_0_OR_GREATER
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(GetFullPath(
+                        k8SConfig,
+                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
+#else
                     SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(
                         k8SConfig,
                         clusterDetails.ClusterEndpoint.CertificateAuthority)));
+#endif
                 }
             }
         }
+
 
         private void SetUserDetails(K8SConfiguration k8SConfig, Context activeContext)
         {
@@ -512,7 +523,10 @@ namespace k8s
                     throw new KubeConfigException("external exec failed due to timeout");
                 }
 
-                var responseObject = KubernetesJson.Deserialize<ExecCredentialResponse>(process.StandardOutput.ReadToEnd());
+                var responseObject = JsonSerializer.Deserialize(
+                    process.StandardOutput.ReadToEnd(),
+                    ExecCredentialResponseContext.Default.ExecCredentialResponse);
+
                 if (responseObject == null || responseObject.ApiVersion != config.ApiVersion)
                 {
                     throw new KubeConfigException(

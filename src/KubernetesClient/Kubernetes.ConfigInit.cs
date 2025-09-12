@@ -213,11 +213,13 @@ namespace k8s
             {
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
-                // Added our trusted certificates to the chain
-                //
-                chain.ChainPolicy.ExtraStore.AddRange(caCerts);
-
-                chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllowUnknownCertificateAuthority;
+#if NET5_0_OR_GREATER
+                // Use custom trust store only, ignore system root CA
+                chain.ChainPolicy.CustomTrustStore.AddRange(caCerts);
+                chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+#else
+                throw new NotSupportedException("Custom trust store requires .NET 5.0 or later. Current platform does not support this feature.");
+#endif
                 var isValid = chain.Build((X509Certificate2)certificate);
 
                 var isTrusted = false;

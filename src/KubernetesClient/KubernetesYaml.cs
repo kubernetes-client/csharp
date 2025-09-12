@@ -78,7 +78,7 @@ namespace k8s
                             return null;
                         }
 
-                        return Encoding.UTF8.GetBytes(scalar.Value);
+                        return Convert.FromBase64String(scalar.Value);
                     }
                     finally
                     {
@@ -91,8 +91,15 @@ namespace k8s
 
             public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
             {
+                if (value == null)
+                {
+                    emitter.Emit(new Scalar(string.Empty));
+                    return;
+                }
+
                 var obj = (byte[])value;
-                emitter?.Emit(new Scalar(Encoding.UTF8.GetString(obj)));
+                var encoded = Convert.ToBase64String(obj);
+                emitter.Emit(new Scalar(encoded));
             }
         }
 

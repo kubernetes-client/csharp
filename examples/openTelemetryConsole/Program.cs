@@ -24,7 +24,7 @@ IKubernetes client = new Kubernetes(config);
 // Read the list of pods contained in default namespace
 var list = client.CoreV1.ListNamespacedPod("default");
 
-// Print the name of pods 
+// Print the name of pods
 foreach (var item in list.Items)
 {
     Console.WriteLine(item.Metadata.Name);
