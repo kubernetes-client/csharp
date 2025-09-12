@@ -21,6 +21,8 @@ namespace LibKubernetesGenerator
         {
             scriptObject.Import(nameof(GetModelCtorParam), new Func<JsonSchema, string>(GetModelCtorParam));
             scriptObject.Import(nameof(IfParamContains), IfParamContains);
+            scriptObject.Import(nameof(FilterParameters), FilterParameters);
+            scriptObject.Import(nameof(GetParameterValueForWatchCall), new Func<OpenApiParameter, string>(GetParameterValueForWatchCall));
         }
 
         public static bool IfParamContains(OpenApiOperation operation, string name)
@@ -37,6 +39,23 @@ namespace LibKubernetesGenerator
             }
 
             return found;
+        }
+
+        public static System.Collections.Generic.IEnumerable<OpenApiParameter> FilterParameters(OpenApiOperation operation, string excludeParam)
+        {
+            return operation.Parameters.Where(p => p.Name != excludeParam);
+        }
+
+        public string GetParameterValueForWatchCall(OpenApiParameter parameter)
+        {
+            if (parameter.Name == "watch")
+            {
+                return "true";
+            }
+            else
+            {
+                return generalNameHelper.GetDotNetNameOpenApiParameter(parameter, "false");
+            }
         }
 
         public string GetModelCtorParam(JsonSchema schema)
