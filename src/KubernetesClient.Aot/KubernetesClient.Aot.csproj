@@ -89,8 +89,8 @@
     <Compile Include="..\KubernetesClient\IKubernetes.Exec.cs" />
     <Compile Include="..\KubernetesClient\Kubernetes.Exec.cs" />
 
-    <!-- <Compile Include="..\KubernetesClient\Watcher.cs" /> -->
-    <!-- <Compile Include="..\KubernetesClient\WatcherExt.cs" /> -->
+    <Compile Include="..\KubernetesClient\Watcher.cs" />
+    <Compile Include="..\KubernetesClient\WatcherExt.cs" />
     <Compile Include="..\KubernetesClient\LineSeparatedHttpContent.cs" />
 
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
