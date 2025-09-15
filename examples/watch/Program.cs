@@ -1,5 +1,4 @@
 using k8s;
-using k8s.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,9 +7,10 @@ var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
 
 IKubernetes client = new Kubernetes(config);
 
-var podlistResp = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+var podlistResp = client.CoreV1.WatchListNamespacedPodAsync("default");
+
 // C# 8 required https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8
-await foreach (var (type, item) in podlistResp.WatchAsync<V1Pod, V1PodList>().ConfigureAwait(false))
+await foreach (var (type, item) in podlistResp.ConfigureAwait(false))
 {
     Console.WriteLine("==on watch event==");
     Console.WriteLine(type);
@@ -22,14 +22,24 @@ await foreach (var (type, item) in podlistResp.WatchAsync<V1Pod, V1PodList>().Co
 void WatchUsingCallback(IKubernetes client)
 #pragma warning restore CS8321 // Remove unused private members
 {
-    var podlistResp = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
-    using (podlistResp.Watch<V1Pod, V1PodList>((type, item) =>
+    using var podlistResp = client.CoreV1.WatchListNamespacedPod("default");
+    podlistResp.OnEvent += (type, item) =>
     {
         Console.WriteLine("==on watch event==");
         Console.WriteLine(type);
         Console.WriteLine(item.Metadata.Name);
         Console.WriteLine("==on watch event==");
-    }))
+    };
+    podlistResp.OnError += (error) =>
+    {
+        Console.WriteLine("==on watch error==");
+        Console.WriteLine(error.Message);
+        Console.WriteLine("==on watch error==");
+    };
+    podlistResp.OnClosed += () =>
+    {
+        Console.WriteLine("==on watch closed==");
+    };
     {
         Console.WriteLine("press ctrl + c to stop watching");
 

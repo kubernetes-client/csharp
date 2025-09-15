@@ -245,6 +245,14 @@ namespace LibKubernetesGenerator
                     }
 
                     break;
+                case "T":
+                    // Return single item type from list type (e.g., V1Pod from V1PodList)
+                    return !string.IsNullOrEmpty(t) && t.EndsWith("List", StringComparison.Ordinal)
+                        ? t.Substring(0, t.Length - 4)
+                        : t;
+                case "TList":
+                    // Return list type as-is
+                    return t;
             }
 
             return t;
