@@ -1,5 +1,4 @@
-﻿﻿// See https://aka.ms/new-console-template for more information
-using k8s;
+﻿﻿using k8s;
 using k8s.ClientSets;
 using System.Threading.Tasks;
 
