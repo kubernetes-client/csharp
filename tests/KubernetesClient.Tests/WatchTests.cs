@@ -555,10 +555,10 @@ namespace k8s.Tests
         {
             using var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
-               await Task.Delay(TimeSpan.FromSeconds(120)).ConfigureAwait(true); // The default timeout is 100 seconds
-               await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse).ConfigureAwait(true);
+                await Task.Delay(TimeSpan.FromSeconds(120)).ConfigureAwait(true); // The default timeout is 100 seconds
+                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse).ConfigureAwait(true);
 
-               return false;
+                return false;
             });
 
             // raw timeout
