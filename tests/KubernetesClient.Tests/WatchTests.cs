@@ -61,8 +61,7 @@ namespace k8s.Tests
                     onEvent: (type, item) => { },
                     onError: e => { onErrorCalled = true; }))
                 {
-                    // delay for onerror to be called
-                    await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(true);
+                    await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(true); // delay for onerror to be called
                 }
 
                 Assert.True(onErrorCalled);
