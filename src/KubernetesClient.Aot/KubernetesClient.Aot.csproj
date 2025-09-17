@@ -28,7 +28,6 @@
     <Compile Include="..\KubernetesClient\Models\IntOrString.cs" />
     <Compile Include="..\KubernetesClient\Models\ISpec.cs" />
     <Compile Include="..\KubernetesClient\Models\IStatus.cs" />
-    <Compile Include="..\KubernetesClient\IValidate.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesEntityAttribute.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesList.cs" />
     <Compile Include="..\KubernetesClient\KubernetesObject.cs" />
