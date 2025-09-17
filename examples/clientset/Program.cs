@@ -1,4 +1,4 @@
-﻿﻿using k8s;
+using k8s;
 using k8s.ClientSets;
 using System.Threading.Tasks;
 

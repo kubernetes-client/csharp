@@ -1,4 +1,4 @@
-namespace k8s
+namespace k8s.Models
 {
     /// <summary>
     /// Kubernetes object that exposes status
