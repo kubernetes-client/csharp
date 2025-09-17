@@ -22,13 +22,13 @@ await foreach (var (type, item) in podlistResp.ConfigureAwait(false))
 void WatchUsingCallback(IKubernetes client)
 #pragma warning restore CS8321 // Remove unused private members
 {
-    using var podlistResp = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) =>
+    using (var podlistResp = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) =>
     {
         Console.WriteLine("==on watch event==");
         Console.WriteLine(type);
         Console.WriteLine(item.Metadata.Name);
         Console.WriteLine("==on watch event==");
-    });
+    }))
     {
         Console.WriteLine("press ctrl + c to stop watching");
 
