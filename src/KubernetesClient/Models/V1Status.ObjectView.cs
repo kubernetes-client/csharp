@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    public partial class V1Status
+    public partial record V1Status
     {
         internal sealed class V1StatusObjectViewConverter : JsonConverter<V1Status>
         {

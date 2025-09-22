@@ -19,13 +19,13 @@ namespace customResource
         }
     }
 
-    public class CResourceSpec
+    public record CResourceSpec
     {
         [JsonPropertyName("cityName")]
         public string CityName { get; set; }
     }
 
-    public class CResourceStatus : V1Status
+    public record CResourceStatus : V1Status
     {
         [JsonPropertyName("temperature")]
         public string Temperature { get; set; }

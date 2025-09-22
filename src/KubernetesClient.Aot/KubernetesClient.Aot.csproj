@@ -25,15 +25,13 @@
     <Compile Include="..\KubernetesClient\Models\IMetadata.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringJsonConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringYamlConverter.cs" />
-    <Compile Include="..\KubernetesClient\Models\IntstrIntOrString.cs" />
+    <Compile Include="..\KubernetesClient\Models\IntOrString.cs" />
     <Compile Include="..\KubernetesClient\Models\ISpec.cs" />
     <Compile Include="..\KubernetesClient\Models\IStatus.cs" />
-    <Compile Include="..\KubernetesClient\IValidate.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesEntityAttribute.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesList.cs" />
     <Compile Include="..\KubernetesClient\KubernetesObject.cs" />
     <Compile Include="..\KubernetesClient\Models\ModelExtensions.cs" />
-    <Compile Include="..\KubernetesClient\Models\ModelVersionConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\NodeMetrics.cs" />
     <Compile Include="..\KubernetesClient\Models\NodeMetricsList.cs" />
     <Compile Include="..\KubernetesClient\Models\PodMetrics.cs" />

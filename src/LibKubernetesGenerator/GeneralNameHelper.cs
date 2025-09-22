@@ -57,8 +57,6 @@ namespace LibKubernetesGenerator
                 }
             }
 
-            interfaces.Add("IValidate");
-
             return string.Join(", ", interfaces);
         }
 
@@ -68,7 +66,7 @@ namespace LibKubernetesGenerator
 
             if (init == "true" && !parameter.IsRequired)
             {
-                name += " = null";
+                name += " = default";
             }
 
             return name;

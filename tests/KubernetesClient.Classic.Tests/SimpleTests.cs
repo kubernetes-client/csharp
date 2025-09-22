@@ -7,7 +7,7 @@ using Xunit;
 
 namespace k8s.tests;
 
-public class BasicTests
+public class SimpleTests
 {
     // TODO: fail to setup asp.net core 6 on net48
     private class DummyHttpServer : System.IDisposable

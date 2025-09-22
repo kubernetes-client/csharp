@@ -8,16 +8,16 @@ namespace k8s.Models
             switch (reader.TokenType)
             {
                 case JsonTokenType.Null:
-                    return new ResourceQuantity(null);
+                    return null;
                 case JsonTokenType.Number:
                     if (reader.TryGetDouble(out var val))
                     {
-                        return new ResourceQuantity(Convert.ToString(val));
+                        return Convert.ToString(val);
                     }
 
                     return reader.GetDecimal();
                 default:
-                    return new ResourceQuantity(reader.GetString());
+                    return reader.GetString();
             }
         }
 
@@ -28,7 +28,7 @@ namespace k8s.Models
                 throw new ArgumentNullException(nameof(writer));
             }
 
-            writer.WriteStringValue(value?.ToString());
+            writer.WriteStringValue(value.ToString());
         }
     }
 }
