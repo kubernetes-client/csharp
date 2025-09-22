@@ -188,10 +188,18 @@ namespace k8s.Tests
             }
             else
             {
+#if NET9_0_OR_GREATER
+                serverCertificate = X509CertificateLoader.LoadPkcs12(Convert.FromBase64String(serverCertificateData), "");
+#else
                 serverCertificate = new X509Certificate2(Convert.FromBase64String(serverCertificateData), "");
+#endif
             }
 
+#if NET9_0_OR_GREATER
+            var clientCertificate = X509CertificateLoader.LoadCertificate(Convert.FromBase64String(clientCertificateData));
+#else
             var clientCertificate = new X509Certificate2(Convert.FromBase64String(clientCertificateData), "");
+#endif
 
             var clientCertificateValidationCalled = false;
 
@@ -294,10 +302,18 @@ namespace k8s.Tests
             }
             else
             {
+#if NET9_0_OR_GREATER
+                serverCertificate = X509CertificateLoader.LoadPkcs12(serverCertificateData, "");
+#else
                 serverCertificate = new X509Certificate2(serverCertificateData, "");
+#endif
             }
 
+#if NET9_0_OR_GREATER
+            var clientCertificate = X509CertificateLoader.LoadCertificate(clientCertificateData);
+#else
             var clientCertificate = new X509Certificate2(clientCertificateData, "");
+#endif
 
             var clientCertificateValidationCalled = false;
 

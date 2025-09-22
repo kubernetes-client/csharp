@@ -68,7 +68,11 @@ namespace k8s.Tests
         public void ValidCert()
         {
             var caCert = CertUtils.LoadPemFileCert("assets/ca.crt");
+#if NET9_0_OR_GREATER
+            var testCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca.crt");
+#else
             var testCert = new X509Certificate2("assets/ca.crt");
+#endif
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
 
@@ -81,7 +85,11 @@ namespace k8s.Tests
         public void InvalidCert()
         {
             var caCert = CertUtils.LoadPemFileCert("assets/ca.crt");
+#if NET9_0_OR_GREATER
+            var testCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca2.crt");
+#else
             var testCert = new X509Certificate2("assets/ca2.crt");
+#endif
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
 
@@ -110,7 +118,11 @@ namespace k8s.Tests
         public void InvalidBundleCert()
         {
             var caCert = CertUtils.LoadPemFileCert("assets/ca-bundle.crt");
+#if NET9_0_OR_GREATER
+            var testCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca2.crt");
+#else
             var testCert = new X509Certificate2("assets/ca2.crt");
+#endif
             var chain = new X509Chain();
             var errors = SslPolicyErrors.RemoteCertificateChainErrors;
 

@@ -370,7 +370,7 @@ namespace k8s.E2E
             }
         }
 
-        
+
         [MinikubeFact]
         public async Task VersionTestAsync()
         {
