@@ -568,7 +568,7 @@ namespace k8s.Tests
                     Host = server.Uri.ToString(),
                     HttpClientTimeout = TimeSpan.FromSeconds(5),
                 });
-                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default").ConfigureAwait(true);
+                await client.CoreV1.ListNamespacedPodAsync("default").ConfigureAwait(true);
             }).ConfigureAwait(true);
 
             // cts
@@ -580,7 +580,7 @@ namespace k8s.Tests
                 {
                     Host = server.Uri.ToString(),
                 });
-                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", cancellationToken: cts.Token).ConfigureAwait(true);
+                await client.CoreV1.ListNamespacedPodAsync("default", cancellationToken: cts.Token).ConfigureAwait(true);
             }).ConfigureAwait(true);
         }
 
