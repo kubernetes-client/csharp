@@ -246,12 +246,14 @@ namespace LibKubernetesGenerator
 
                     break;
                 case "T":
-                    // Return single item type from list type (e.g., V1Pod from V1PodList)
-                    return !string.IsNullOrEmpty(t) && t.EndsWith("List", StringComparison.Ordinal)
-                        ? t.Substring(0, t.Length - 4)
-                        : t;
+                    var itemType = TryGetItemTypeFromSchema(response);
+                    if (itemType != null)
+                    {
+                        return itemType;
+                    }
+
+                    break;
                 case "TList":
-                    // Return list type as-is
                     return t;
             }
 
@@ -290,6 +292,27 @@ namespace LibKubernetesGenerator
             }
 
             return false;
+        }
+
+        private string TryGetItemTypeFromSchema(OpenApiResponse response)
+        {
+            var listSchema = response?.Schema?.Reference;
+            if (listSchema?.Properties?.TryGetValue("items", out var itemsProperty) != true)
+            {
+                return null;
+            }
+
+            if (itemsProperty.Reference != null)
+            {
+                return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Reference);
+            }
+            
+            if (itemsProperty.Item?.Reference != null)
+            {
+                return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Item.Reference);
+            }
+
+            return null;
         }
     }
 }
