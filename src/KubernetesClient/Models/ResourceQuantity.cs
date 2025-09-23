@@ -54,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(ResourceQuantityJsonConverter))]
-    public partial class ResourceQuantity
+    public struct ResourceQuantity
     {
         public enum SuffixFormat
         {
@@ -97,39 +97,6 @@ namespace k8s.Models
             return CanonicalizeString();
         }
 
-        protected bool Equals(ResourceQuantity other)
-        {
-            return _unitlessValue.Equals(other?._unitlessValue);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals((ResourceQuantity)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((int)Format * 397) ^ _unitlessValue.GetHashCode();
-            }
-        }
-
         //
         // CanonicalizeString = go version CanonicalizeBytes
         // CanonicalizeBytes returns the canonical form of q and its suffix (see comment on Quantity).
@@ -157,10 +124,9 @@ namespace k8s.Models
             return Suffixer.AppendMaxSuffix(_unitlessValue, suffixFormat);
         }
 
-        // ctor
-        partial void CustomInit()
+        public ResourceQuantity(string v)
         {
-            if (Value == null)
+            if (v == null)
             {
                 // No value has been defined, initialize to 0.
                 _unitlessValue = new Fraction(0);
@@ -168,7 +134,7 @@ namespace k8s.Models
                 return;
             }
 
-            var value = Value.Trim();
+            var value = v.Trim();
 
             var si = value.IndexOfAny(SuffixChars);
             if (si == -1)
@@ -188,6 +154,11 @@ namespace k8s.Models
             }
         }
 
+        public static implicit operator ResourceQuantity(string v)
+        {
+            return new ResourceQuantity(v);
+        }
+
         private static bool HasMantissa(Fraction value)
         {
             if (value.IsZero)
@@ -200,7 +171,7 @@ namespace k8s.Models
 
         public static implicit operator decimal(ResourceQuantity v)
         {
-            return v?.ToDecimal() ?? 0;
+            return v.ToDecimal();
         }
 
         public static implicit operator ResourceQuantity(decimal v)

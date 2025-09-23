@@ -78,6 +78,12 @@ namespace LibKubernetesGenerator
             }
 
 
+            if (definition.Format == "int-or-string")
+            {
+                return "IntOrString";
+            }
+
+
             return schemaToNameMapCooked[definition];
         }
     }

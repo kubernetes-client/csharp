@@ -21,7 +21,7 @@ namespace k8s.Models
                         return null;
                     }
 
-                    return new ResourceQuantity(scalar?.Value);
+                    return scalar?.Value;
                 }
                 finally
                 {
@@ -35,7 +35,7 @@ namespace k8s.Models
         public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
         {
             var obj = (ResourceQuantity)value;
-            emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj?.ToString()));
+            emitter?.Emit(new YamlDotNet.Core.Events.Scalar(obj.ToString()));
         }
     }
 }

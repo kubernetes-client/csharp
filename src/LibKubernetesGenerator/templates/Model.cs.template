@@ -4,92 +4,29 @@
 // regenerated.
 // </auto-generated>
 
-namespace k8s.Models
+namespace k8s.Models;
+
+/// <summary>
+/// {{ToXmlDoc def.description}}
+/// </summary>
+{{ if hasExt }}
+[KubernetesEntity(Group=KubeGroup, Kind=KubeKind, ApiVersion=KubeApiVersion, PluralName=KubePluralName)]
+{{ end }}
+public partial {{typ}} {{clz}} {{ if hasExt }} : {{ GetInterfaceName def }} {{ end  }}
 {
+    {{ if hasExt}}
+    public const string KubeApiVersion = "{{ GetApiVersion def }}";
+    public const string KubeKind = "{{ GetKind def }}";
+    public const string KubeGroup = "{{ GetGroup def }}";
+    public const string KubePluralName = "{{ GetPlural def }}";
+    {{ end }}
+
+    {{ for property in properties }}
     /// <summary>
-    /// {{ToXmlDoc def.description}}
+    /// {{ToXmlDoc property.description}}
     /// </summary>
-    public partial class {{clz}}
-    {
-        /// <summary>
-        /// Initializes a new instance of the {{GetClassName def}} class.
-        /// </summary>
-        public {{clz}}()
-        {
-            CustomInit();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the {{GetClassName def}} class.
-        /// </summary>
-        {{ for property in properties }}
-        {{ if property.IsRequired }}
-        /// <param name="{{GetDotNetName property.name "fieldctor"}}">
-        /// {{ToXmlDoc property.description}}
-        /// </param>
-        {{ end }}
-        {{ end }}
-
-        {{ for property in properties }}
-        {{ if !property.IsRequired }}
-        /// <param name="{{GetDotNetName property.name "fieldctor"}}">
-        /// {{ToXmlDoc property.description}}
-        /// </param>
-        {{ end }}
-        {{ end }}
-        public {{clz}}({{GetModelCtorParam def}})
-        {
-            {{ for property in properties }}
-            {{GetDotNetName property.name "field"}} = {{GetDotNetName property.name "fieldctor"}};
-            {{ end }}
-            CustomInit();
-        }
-
-        /// <summary>
-        /// An initialization method that performs custom operations like setting defaults
-        /// </summary>
-        partial void CustomInit();
-
-        {{ for property in properties }}
-        /// <summary>
-        /// {{ToXmlDoc property.description}}
-        /// </summary>
-        [JsonPropertyName("{{property.name}}")]
-        public {{GetDotNetType property}} {{GetDotNetName property.name "field"}} { get; set; }
-        {{ end }}
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-
-        public virtual void Validate()
-        {
-            {{ for property in properties }}
-            {{if IfType property "object" }}
-            {{ if property.IsRequired }}
-            if ({{GetDotNetName property.name "field"}} == null)
-            {
-                throw new ArgumentNullException("{{GetDotNetName property.name "field"}}");    
-            }
-            {{ end }}
-            {{ end }}
-            
-            {{ end }}
-
-            {{ for property in properties }}
-            {{if IfType property "object" }}
-            {{GetDotNetName property.name "field"}}?.Validate();
-            {{ end }}
-
-            {{if IfType property "objectarray" }}
-            if ({{GetDotNetName property.name "field"}} != null){
-                foreach(var obj in {{GetDotNetName property.name "field"}})
-                {
-                    obj.Validate();
-                }
-            }
-            {{ end }}
-            {{ end }}
-        }
-    }
+    [JsonPropertyName("{{property.name}}")]
+    public {{ if property.IsRequired }} required {{ end }} {{GetDotNetType property}} {{GetDotNetName property.name "field"}} { get; set; }
+    {{ end }}
 }
+

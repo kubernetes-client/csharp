@@ -40,24 +40,5 @@ namespace k8s.Models
         /// </summary>
         [JsonPropertyName("metadata")]
         public V1ListMeta Metadata { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        public void Validate()
-        {
-            if (Items == null)
-            {
-                throw new ArgumentNullException("Items");
-            }
-
-            if (Items != null)
-            {
-                foreach (var element in Items.OfType<IValidate>())
-                {
-                    element.Validate();
-                }
-            }
-        }
     }
 }

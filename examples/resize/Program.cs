@@ -23,7 +23,7 @@ var pod = new V1Pod
                 {
                     Requests = new Dictionary<string, ResourceQuantity>()
                     {
-                        ["cpu"] = new ResourceQuantity("100m"),
+                        ["cpu"] = "100m",
                     },
                 },
             },
