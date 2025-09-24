@@ -25,9 +25,6 @@ public partial interface I{{name}}Operations
     /// <param name="cancellationToken">
     /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
     /// </param>
-    {{if IfParamContains api.operation "watch"}}  
-    [Obsolete("This method will be deprecated in future versions. Please use the Watch method instead.")] 
-    {{end}}
     Task<HttpOperationResponse{{GetReturnType api.operation "<>"}}> {{GetOperationId api.operation "WithHttpMessagesAsync"}}(
 {{ for parameter in api.operation.parameters}}
         {{GetDotNetTypeOpenApiParameter parameter}} {{GetDotNetNameOpenApiParameter parameter "true"}},
