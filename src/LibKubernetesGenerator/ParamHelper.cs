@@ -3,6 +3,7 @@ using NSwag;
 using Scriban.Runtime;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace LibKubernetesGenerator
 {
@@ -21,6 +22,8 @@ namespace LibKubernetesGenerator
         {
             scriptObject.Import(nameof(GetModelCtorParam), new Func<JsonSchema, string>(GetModelCtorParam));
             scriptObject.Import(nameof(IfParamContains), IfParamContains);
+            scriptObject.Import(nameof(FilterParameters), FilterParameters);
+            scriptObject.Import(nameof(GetParameterValueForWatch), new Func<OpenApiParameter, bool, string, string>(GetParameterValueForWatch));
         }
 
         public static bool IfParamContains(OpenApiOperation operation, string name)
@@ -37,6 +40,23 @@ namespace LibKubernetesGenerator
             }
 
             return found;
+        }
+
+        public static IEnumerable<OpenApiParameter> FilterParameters(OpenApiOperation operation, string excludeParam)
+        {
+            return operation.Parameters.Where(p => p.Name != excludeParam);
+        }
+
+        public string GetParameterValueForWatch(OpenApiParameter parameter, bool watch, string init = "false")
+        {
+            if (parameter.Name == "watch")
+            {
+                return watch ? "true" : "false";
+            }
+            else
+            {
+                return generalNameHelper.GetDotNetNameOpenApiParameter(parameter, init);
+            }
         }
 
         public string GetModelCtorParam(JsonSchema schema)
