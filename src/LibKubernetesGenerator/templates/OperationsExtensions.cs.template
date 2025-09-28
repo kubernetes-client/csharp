@@ -155,6 +155,7 @@ public static partial class {{name}}OperationsExtensions
     }
     {{end}}
 
+#if !K8S_AOT
 {{if IfParamContains api.operation "watch"}}
 {{~ $filteredParams = FilterParameters api.operation "watch" ~}}
 /// <summary>
@@ -225,6 +226,6 @@ public static IAsyncEnumerable<(WatchEventType, {{GetReturnType api.operation "T
         onError, cancellationToken);
 }
 {{end}}
-
+#endif
     {{end}}
 }

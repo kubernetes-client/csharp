@@ -98,6 +98,7 @@ public partial class {{name}}Client : ResourceClient
     }
     {{end}}
 
+#if !K8S_AOT
     {{if IfParamContains api.operation "watch"}}
     /// <summary>
     /// Watch {{ToXmlDoc api.operation.description}}
@@ -159,6 +160,6 @@ public partial class {{name}}Client : ResourceClient
             onError, cancellationToken);
     }
     {{end}}
-
+#endif
     {{end}} 
 }
