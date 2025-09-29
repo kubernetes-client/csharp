@@ -2,7 +2,7 @@ using k8s.Exceptions;
 
 namespace k8s
 {
-    public static class WatcherExt
+    internal static class WatcherExt
     {
         /// <summary>
         /// create a watch object from a call to api server with watch=true

@@ -224,13 +224,12 @@ namespace k8s.E2E
             var started = new AsyncManualResetEvent();
             var connectionClosed = new AsyncManualResetEvent();
 
-            var watcher = kubernetes.BatchV1.ListNamespacedJobWithHttpMessagesAsync(
+            var watcher = kubernetes.BatchV1.WatchListNamespacedJob(
                 job.Metadata.NamespaceProperty,
                 fieldSelector: $"metadata.name={job.Metadata.Name}",
                 resourceVersion: job.Metadata.ResourceVersion,
                 timeoutSeconds: 30,
-                watch: true).Watch<V1Job, V1JobList>(
-                (type, source) =>
+                onEvent: (type, source) =>
                 {
                     Debug.WriteLine($"Watcher 1: {type}, {source}");
                     events.Add(new Tuple<WatchEventType, V1Job>(type, source));
@@ -243,6 +242,86 @@ namespace k8s.E2E
 
             await Task.WhenAny(connectionClosed.WaitAsync(), Task.Delay(TimeSpan.FromMinutes(3))).ConfigureAwait(false);
             Assert.True(connectionClosed.IsSet);
+
+            var st = await kubernetes.BatchV1.DeleteNamespacedJobAsync(
+                job.Metadata.Name,
+                job.Metadata.NamespaceProperty,
+                new V1DeleteOptions() { PropagationPolicy = "Foreground" }).ConfigureAwait(false);
+        }
+
+        [MinikubeFact]
+        public async Task WatcherIntegrationTestAsyncEnumerable()
+        {
+            using var kubernetes = CreateClient();
+
+            var job = await kubernetes.BatchV1.CreateNamespacedJobAsync(
+                new V1Job()
+                {
+                    ApiVersion = "batch/v1",
+                    Kind = V1Job.KubeKind,
+                    Metadata = new V1ObjectMeta() { Name = nameof(WatcherIntegrationTestAsyncEnumerable).ToLowerInvariant() },
+                    Spec = new V1JobSpec()
+                    {
+                        Template = new V1PodTemplateSpec()
+                        {
+                            Spec = new V1PodSpec()
+                            {
+                                Containers = new List<V1Container>()
+                                {
+                                    new V1Container()
+                                    {
+                                        Image = "ubuntu",
+                                        Name = "runner",
+                                        Command = new List<string>() { "/bin/bash", "-c", "--" },
+                                        Args = new List<string>()
+                                        {
+                                            "trap : TERM INT; sleep infinity & wait",
+                                        },
+                                    },
+                                },
+                                RestartPolicy = "Never",
+                            },
+                        },
+                    },
+                },
+                "default").ConfigureAwait(false);
+
+            var events = new Collection<Tuple<WatchEventType, V1Job>>();
+
+            var started = new AsyncManualResetEvent();
+            var watchCompleted = new AsyncManualResetEvent();
+
+            // Start async enumerable watch in background task to mimic callback behavior
+            var watchTask = Task.Run(async () =>
+            {
+                try
+                {
+                    await foreach (var (type, source) in kubernetes.BatchV1.WatchListNamespacedJobAsync(
+                        job.Metadata.NamespaceProperty,
+                        fieldSelector: $"metadata.name={job.Metadata.Name}",
+                        resourceVersion: job.Metadata.ResourceVersion,
+                        timeoutSeconds: 30).ConfigureAwait(false))
+                    {
+                        Debug.WriteLine($"AsyncEnumerable Watcher: {type}, {source}");
+                        events.Add(new Tuple<WatchEventType, V1Job>(type, source));
+                        job = source;
+                        started.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Watch exception: {ex.GetType().FullName}: {ex.Message}");
+                }
+                finally
+                {
+                    watchCompleted.Set();
+                }
+            });
+
+            await started.WaitAsync().ConfigureAwait(false);
+
+            await Task.WhenAny(watchCompleted.WaitAsync(), Task.Delay(TimeSpan.FromMinutes(3))).ConfigureAwait(false);
+            Assert.True(watchCompleted.IsSet);
 
             var st = await kubernetes.BatchV1.DeleteNamespacedJobAsync(
                 job.Metadata.Name,

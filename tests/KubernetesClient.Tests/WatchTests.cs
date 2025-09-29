@@ -54,24 +54,29 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // did not pass watch param
-                var listTask = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
                 var onErrorCalled = false;
 
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { }, e => { onErrorCalled = true; }))
+                using (var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) => { },
+                    onError: e => { onErrorCalled = true; }))
                 {
                     await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(true); // delay for onerror to be called
                 }
 
                 Assert.True(onErrorCalled);
 
-
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
                 {
-                    return client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
+                     using (var testWatcher = client.CoreV1.WatchListNamespacedPod(
+                        "default"))
+                    {
+                        return Task.CompletedTask;
+                    }
 
                     // this line did not throw
-                    // listTask.Watch<Corev1Pod>((type, item) => { });
+                    // using (var testWatcher = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) => { }))
                 }).ConfigureAwait(true);
             }
         }
@@ -93,8 +98,7 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
 
-                var listTask = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true);
-                using (listTask.Watch<V1Pod, V1PodList>((type, item) => { eventsReceived.Set(); }))
+                using (var watcher = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) => { eventsReceived.Set(); }))
                 {
                     // here watcher is ready to use, but http server has not responsed yet.
                     created.Set();
@@ -134,27 +138,26 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) =>
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
 
                         events.Add(type);
                         eventsReceived.Signal();
                     },
-                    error =>
+                    onError: error =>
                     {
                         testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    connectionClosed.Set);
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
@@ -195,17 +198,16 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) =>
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) =>
                     {
                         events.Add(type);
                         eventsReceived.Signal();
                     },
-                    error =>
+                    onError: error =>
                     {
                         testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
                     },
@@ -255,27 +257,26 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) =>
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
 
                         events.Add(type);
                         eventsReceived.Signal();
                     },
-                    error =>
+                    onError: error =>
                     {
                         testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    waitForClosed.Set);
+                    onClosed: waitForClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
@@ -324,27 +325,26 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) =>
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) =>
                     {
                         testOutput.WriteLine($"Watcher received '{type}' event.");
 
                         events.Add(type);
                         eventsReceived.Signal();
                     },
-                    error =>
+                    onError: error =>
                     {
                         testOutput.WriteLine($"Watcher received '{error.GetType().FullName}' error.");
 
                         errors += 1;
                         eventsReceived.Signal();
                     },
-                    connectionClosed.Set);
+                    onClosed: connectionClosed.Set);
 
                 // wait server yields all events
                 await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
@@ -386,18 +386,17 @@ namespace k8s.Tests
             {
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 waitForException.Set();
                 Watcher<V1Pod> watcher;
-                watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) => { },
-                    e =>
+                watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) => { },
+                    onError: e =>
                     {
                         exceptionCatched = e;
                         exceptionReceived.Set();
                     },
-                    waitForClosed.Set);
+                    onClosed: waitForClosed.Set);
 
                 // wait server down
                 await Task.WhenAny(exceptionReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
@@ -456,12 +455,11 @@ namespace k8s.Tests
                 Assert.False(handler1.Called);
                 Assert.False(handler2.Called);
 
-                var listTask = await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
-
                 var events = new HashSet<WatchEventType>();
 
-                var watcher = listTask.Watch<V1Pod, V1PodList>(
-                    (type, item) =>
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    onEvent: (type, item) =>
                     {
                         events.Add(type);
                         eventsReceived.Signal();
@@ -507,7 +505,9 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    fieldSelector: $"metadata.name=${"myPod"}",
                     onEvent:
                     (type, item) =>
                     {
@@ -568,7 +568,7 @@ namespace k8s.Tests
                     Host = server.Uri.ToString(),
                     HttpClientTimeout = TimeSpan.FromSeconds(5),
                 });
-                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default").ConfigureAwait(true);
+                await client.CoreV1.ListNamespacedPodAsync("default").ConfigureAwait(true);
             }).ConfigureAwait(true);
 
             // cts
@@ -580,7 +580,7 @@ namespace k8s.Tests
                 {
                     Host = server.Uri.ToString(),
                 });
-                await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", cancellationToken: cts.Token).ConfigureAwait(true);
+                await client.CoreV1.ListNamespacedPodAsync("default", cancellationToken: cts.Token).ConfigureAwait(true);
             }).ConfigureAwait(true);
         }
 
@@ -608,7 +608,9 @@ namespace k8s.Tests
                 var events = new HashSet<WatchEventType>();
                 var errors = 0;
 
-                var watcher = client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", fieldSelector: $"metadata.name=${"myPod"}", watch: true).Watch<V1Pod, V1PodList>(
+                var watcher = client.CoreV1.WatchListNamespacedPod(
+                    "default",
+                    fieldSelector: $"metadata.name=${"myPod"}",
                     onEvent:
                     (type, item) =>
                     {
@@ -656,7 +658,6 @@ namespace k8s.Tests
                 httpContext.Response.StatusCode = 200;
                 await httpContext.Response.Body.FlushAsync().ConfigureAwait(true);
                 await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(true); // The default timeout is 100 seconds
-
                 return true;
             }, resp: ""))
             {
@@ -667,8 +668,10 @@ namespace k8s.Tests
 
                 await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
                 {
-                    await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true,
-                        cancellationToken: cts.Token).ConfigureAwait(true);
+                    using var watcher = client.CoreV1.WatchListNamespacedPod(
+                        "default",
+                        onEvent: (type, item) => { });
+                    await Task.Delay(TimeSpan.FromSeconds(5), cts.Token).ConfigureAwait(true);
                 }).ConfigureAwait(true);
             }
         }
@@ -742,8 +745,288 @@ namespace k8s.Tests
                 new KubernetesClientConfiguration { Host = server.Uri.ToString() }, handler);
 
             Assert.Null(handler.Version);
-            await client.CoreV1.ListNamespacedPodWithHttpMessagesAsync("default", watch: true).ConfigureAwait(true);
+            using var watcher = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) => { });
             Assert.Equal(HttpVersion.Version20, handler.Version);
+            await Task.CompletedTask.ConfigureAwait(true);
+        }
+
+        [Fact]
+        public async Task AsyncEnumerableWatchAllEvents()
+        {
+            var eventsReceived = new AsyncCountdownEvent(4);
+            var serverShutdown = new AsyncManualResetEvent();
+            var watchCompleted = new AsyncManualResetEvent();
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockDeletedStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockModifiedStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockErrorStreamLine).ConfigureAwait(true);
+
+                // make server alive, cannot set to int.max as of it would block response
+                await serverShutdown.WaitAsync().ConfigureAwait(true);
+                return false;
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var events = new HashSet<WatchEventType>();
+                var errors = 0;
+
+                // Start async enumerable watch in background task
+                var watchTask = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await foreach (var (type, item) in client.CoreV1.WatchListNamespacedPodAsync("default").ConfigureAwait(false))
+                        {
+                            testOutput.WriteLine($"AsyncEnumerable Watcher received '{type}' event.");
+                            events.Add(type);
+                            eventsReceived.Signal();
+
+                            // Break when we have all expected events
+                            if (events.Count >= 4)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        testOutput.WriteLine($"AsyncEnumerable Watcher received exception: {ex.GetType().FullName}");
+                        errors++;
+                        eventsReceived.Signal();
+                    }
+                    finally
+                    {
+                        watchCompleted.Set();
+                    }
+                });
+
+                // wait server yields all events
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+
+                Assert.True(
+                    eventsReceived.CurrentCount == 0,
+                    "Timed out waiting for all events / errors to be received.");
+
+                Assert.Contains(WatchEventType.Added, events);
+                Assert.Contains(WatchEventType.Deleted, events);
+                Assert.Contains(WatchEventType.Modified, events);
+                Assert.Contains(WatchEventType.Error, events);
+
+                Assert.Equal(0, errors);
+
+                serverShutdown.Set();
+
+                await Task.WhenAny(watchCompleted.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+                Assert.True(watchCompleted.IsSet);
+            }
+        }
+
+        [Fact]
+        public async Task AsyncEnumerableWatchWithCancellation()
+        {
+            var eventsReceived = new AsyncCountdownEvent(2);
+            var serverShutdown = new AsyncManualResetEvent();
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockModifiedStreamLine).ConfigureAwait(true);
+
+                // Keep server alive
+                await serverShutdown.WaitAsync().ConfigureAwait(true);
+                return false;
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var events = new HashSet<WatchEventType>();
+                var cts = new CancellationTokenSource();
+
+                var watchTask = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await foreach (var (type, item) in client.CoreV1.WatchListNamespacedPodAsync("default", cancellationToken: cts.Token).ConfigureAwait(false))
+                        {
+                            testOutput.WriteLine($"AsyncEnumerable Watcher received '{type}' event.");
+                            events.Add(type);
+                            eventsReceived.Signal();
+                        }
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        testOutput.WriteLine("AsyncEnumerable Watcher was cancelled as expected.");
+                    }
+                });
+
+                // Wait for some events to be received
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+
+                Assert.True(
+                    eventsReceived.CurrentCount == 0,
+                    "Timed out waiting for events to be received.");
+
+                Assert.Contains(WatchEventType.Added, events);
+                Assert.Contains(WatchEventType.Modified, events);
+
+                // Cancel the watch
+                cts.Cancel();
+
+                // Wait for watch task to complete
+                await Task.WhenAny(watchTask, Task.Delay(TimeSpan.FromSeconds(5))).ConfigureAwait(true);
+                Assert.True(watchTask.IsCompletedSuccessfully || watchTask.IsCanceled);
+
+                serverShutdown.Set();
+            }
+        }
+
+        [Fact]
+        public async Task AsyncEnumerableWatchWithFieldSelector()
+        {
+            var eventsReceived = new AsyncCountdownEvent(3);
+            var serverShutdown = new AsyncManualResetEvent();
+            var watchCompleted = new AsyncManualResetEvent();
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockDeletedStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockModifiedStreamLine).ConfigureAwait(true);
+
+                await serverShutdown.WaitAsync().ConfigureAwait(true);
+                return false;
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var events = new List<(WatchEventType, V1Pod)>();
+
+                var watchTask = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await foreach (var (type, item) in client.CoreV1.WatchListNamespacedPodAsync(
+                            "default",
+                            fieldSelector: $"metadata.name={"testPod"}").ConfigureAwait(false))
+                        {
+                            testOutput.WriteLine($"AsyncEnumerable Watcher received '{type}' event for pod '{item?.Metadata?.Name}'.");
+                            events.Add((type, item));
+                            eventsReceived.Signal();
+
+                            if (events.Count >= 3)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        testOutput.WriteLine($"AsyncEnumerable Watcher received exception: {ex.GetType().FullName}");
+                    }
+                    finally
+                    {
+                        watchCompleted.Set();
+                    }
+                });
+
+                // Wait for events
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+
+                Assert.True(
+                    eventsReceived.CurrentCount == 0,
+                    "Timed out waiting for all events to be received.");
+
+                Assert.Equal(3, events.Count);
+                Assert.Contains(events, e => e.Item1 == WatchEventType.Added);
+                Assert.Contains(events, e => e.Item1 == WatchEventType.Deleted);
+                Assert.Contains(events, e => e.Item1 == WatchEventType.Modified);
+
+                serverShutdown.Set();
+
+                await Task.WhenAny(watchCompleted.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+                Assert.True(watchCompleted.IsSet);
+            }
+        }
+
+        [Fact]
+        public async Task AsyncEnumerableWatchErrorHandling()
+        {
+            var eventsReceived = new AsyncCountdownEvent(3);
+            var serverShutdown = new AsyncManualResetEvent();
+            var watchCompleted = new AsyncManualResetEvent();
+            var errorReceived = new AsyncManualResetEvent();
+
+            using (var server = new MockKubeApiServer(testOutput, async httpContext =>
+            {
+                await WriteStreamLine(httpContext, MockKubeApiServer.MockPodResponse).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockBadStreamLine).ConfigureAwait(true);
+                await WriteStreamLine(httpContext, MockAddedEventStreamLine).ConfigureAwait(true);
+
+                await serverShutdown.WaitAsync().ConfigureAwait(true);
+                return false;
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var events = new List<(WatchEventType, V1Pod)>();
+                var errorCaught = false;
+
+                var watchTask = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await foreach (var (type, item) in client.CoreV1.WatchListNamespacedPodAsync(
+                            "default",
+                            onError: ex =>
+                            {
+                                testOutput.WriteLine($"AsyncEnumerable Watcher onError called: {ex.GetType().FullName}");
+                                errorCaught = true;
+                                errorReceived.Set();
+                                eventsReceived.Signal();
+                            }).ConfigureAwait(false))
+                        {
+                            testOutput.WriteLine($"AsyncEnumerable Watcher received '{type}' event.");
+                            events.Add((type, item));
+                            eventsReceived.Signal();
+
+                            // Expect some valid events plus error handling
+                            if (events.Count >= 2)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        testOutput.WriteLine($"AsyncEnumerable Watcher caught exception: {ex.GetType().FullName}");
+                    }
+                    finally
+                    {
+                        watchCompleted.Set();
+                    }
+                });
+
+                // Wait for events and errors
+                await Task.WhenAny(eventsReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+
+                Assert.True(
+                    eventsReceived.CurrentCount == 0,
+                    "Timed out waiting for events and errors to be received.");
+
+                // Should have received at least one valid event and one error
+                Assert.True(events.Count >= 1, "Should have received at least one valid event");
+                Assert.True(errorCaught, "Should have caught parsing error");
+                Assert.True(errorReceived.IsSet, "Error callback should have been called");
+
+                serverShutdown.Set();
+
+                await Task.WhenAny(watchCompleted.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+                Assert.True(watchCompleted.IsSet);
+            }
         }
     }
 }
