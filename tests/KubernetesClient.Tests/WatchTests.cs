@@ -732,7 +732,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void MustHttp2VersionSet()
+        public async Task MustHttp2VersionSet()
         {
             var server = new MockKubeApiServer(testOutput, async httpContext =>
             {
@@ -747,6 +747,7 @@ namespace k8s.Tests
             Assert.Null(handler.Version);
             using var watcher = client.CoreV1.WatchListNamespacedPod("default", onEvent: (type, item) => { });
             Assert.Equal(HttpVersion.Version20, handler.Version);
+            await Task.CompletedTask.ConfigureAwait(true);
         }
 
         [Fact]

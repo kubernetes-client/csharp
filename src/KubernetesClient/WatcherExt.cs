@@ -2,7 +2,7 @@ using k8s.Exceptions;
 
 namespace k8s
 {
-    public static class WatcherExt
+    internal static class WatcherExt
     {
         /// <summary>
         /// create a watch object from a call to api server with watch=true
@@ -16,7 +16,6 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        [Obsolete("This method will be deprecated in future versions.")] 
         public static Watcher<T> Watch<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
             Action<WatchEventType, T> onEvent,
@@ -53,7 +52,6 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
-        [Obsolete("This method will be deprecated in future versions.")] 
         public static Watcher<T> Watch<T, L>(
             this HttpOperationResponse<L> response,
             Action<WatchEventType, T> onEvent,
@@ -73,7 +71,6 @@ namespace k8s
         /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="cancellationToken">cancellation token</param>
         /// <returns>IAsyncEnumerable of watch events</returns>
-        [Obsolete("This method will be deprecated in future versions.")] 
         public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
             Action<Exception> onError = null,

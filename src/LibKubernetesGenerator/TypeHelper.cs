@@ -122,7 +122,6 @@ namespace LibKubernetesGenerator
                     return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent)}>";
                 }
 
-
                 if (schema?.Reference != null)
                 {
                     return classNameHelper.GetClassNameForSchemaDefinition(schema.Reference);
@@ -306,7 +305,7 @@ namespace LibKubernetesGenerator
             {
                 return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Reference);
             }
-            
+
             if (itemsProperty.Item?.Reference != null)
             {
                 return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Item.Reference);

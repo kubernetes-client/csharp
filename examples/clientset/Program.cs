@@ -23,7 +23,7 @@ namespace clientset
             System.Console.WriteLine(pod?.Metadata?.Name);
 
             var watch = clientSet.CoreV1.Pod.WatchListAsync("default");
-            await foreach (var (_, item)in watch.ConfigureAwait(false))
+            await foreach (var (_, item) in watch.ConfigureAwait(false))
             {
                 System.Console.WriteLine(item.Metadata.Name);
             }
