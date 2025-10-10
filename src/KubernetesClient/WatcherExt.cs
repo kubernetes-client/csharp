@@ -16,6 +16,7 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
+        [Obsolete("This method will be deprecated in future versions. Please use the Watch method instead.")]
         public static Watcher<T> Watch<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
             Action<WatchEventType, T> onEvent,
@@ -52,6 +53,7 @@ namespace k8s
         /// The action to invoke when the server closes the connection.
         /// </param>
         /// <returns>a watch object</returns>
+        [Obsolete("This method will be deprecated in future versions. Please use the Watch method instead.")]
         public static Watcher<T> Watch<T, L>(
             this HttpOperationResponse<L> response,
             Action<WatchEventType, T> onEvent,
@@ -71,6 +73,7 @@ namespace k8s
         /// <param name="onError">a callback when any exception was caught during watching</param>
         /// <param name="cancellationToken">cancellation token</param>
         /// <returns>IAsyncEnumerable of watch events</returns>
+        [Obsolete("This method will be deprecated in future versions. Please use the WatchAsync method instead.")]
         public static IAsyncEnumerable<(WatchEventType, T)> WatchAsync<T, L>(
             this Task<HttpOperationResponse<L>> responseTask,
             Action<Exception> onError = null,
