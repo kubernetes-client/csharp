@@ -122,7 +122,6 @@ namespace LibKubernetesGenerator
                     return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent)}>";
                 }
 
-
                 if (schema?.Reference != null)
                 {
                     return classNameHelper.GetClassNameForSchemaDefinition(schema.Reference);
@@ -245,6 +244,16 @@ namespace LibKubernetesGenerator
                     }
 
                     break;
+                case "T":
+                    var itemType = TryGetItemTypeFromSchema(response);
+                    if (itemType != null)
+                    {
+                        return itemType;
+                    }
+
+                    break;
+                case "TList":
+                    return t;
             }
 
             return t;
@@ -282,6 +291,27 @@ namespace LibKubernetesGenerator
             }
 
             return false;
+        }
+
+        private string TryGetItemTypeFromSchema(OpenApiResponse response)
+        {
+            var listSchema = response?.Schema?.Reference;
+            if (listSchema?.Properties?.TryGetValue("items", out var itemsProperty) != true)
+            {
+                return null;
+            }
+
+            if (itemsProperty.Reference != null)
+            {
+                return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Reference);
+            }
+
+            if (itemsProperty.Item?.Reference != null)
+            {
+                return classNameHelper.GetClassNameForSchemaDefinition(itemsProperty.Item.Reference);
+            }
+
+            return null;
         }
     }
 }
