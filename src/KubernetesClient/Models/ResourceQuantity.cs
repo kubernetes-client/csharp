@@ -54,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(ResourceQuantityJsonConverter))]
-    public struct ResourceQuantity
+    public class ResourceQuantity
     {
         public enum SuffixFormat
         {
@@ -177,6 +177,46 @@ namespace k8s.Models
         public static implicit operator ResourceQuantity(decimal v)
         {
             return new ResourceQuantity(v, 0, SuffixFormat.DecimalExponent);
+        }
+
+        public bool Equals(ResourceQuantity other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return _unitlessValue.Equals(other._unitlessValue);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ResourceQuantity);
+        }
+
+        public override int GetHashCode()
+        {
+            return _unitlessValue.GetHashCode();
+        }
+
+        public static bool operator ==(ResourceQuantity left, ResourceQuantity right)
+        {
+            if (left is null)
+            {
+                return right is null;
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(ResourceQuantity left, ResourceQuantity right)
+        {
+            return !(left == right);
         }
 
         private sealed class Suffixer

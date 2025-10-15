@@ -1,9 +1,9 @@
 namespace k8s.Models
 {
     [JsonConverter(typeof(IntOrStringJsonConverter))]
-    public struct IntOrString
+    public class IntOrString
     {
-        public string? Value { get; private init; }
+        public string Value { get; private init; }
 
         public static implicit operator IntOrString(int v)
         {
@@ -17,7 +17,7 @@ namespace k8s.Models
 
         public static implicit operator string(IntOrString v)
         {
-            return v.Value;
+            return v?.Value;
         }
 
         public static implicit operator IntOrString(string v)
