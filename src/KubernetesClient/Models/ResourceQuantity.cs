@@ -54,7 +54,7 @@ namespace k8s.Models
     ///     cause implementors to also use a fixed point implementation.
     /// </summary>
     [JsonConverter(typeof(ResourceQuantityJsonConverter))]
-    public struct ResourceQuantity
+    public class ResourceQuantity
     {
         public enum SuffixFormat
         {
