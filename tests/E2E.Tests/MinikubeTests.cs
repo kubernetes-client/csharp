@@ -958,6 +958,171 @@ namespace k8s.E2E
             }
         }
 
+        [MinikubeFact]
+        public async Task V2HorizontalPodAutoscalerTestAsync()
+        {
+            var namespaceParameter = "default";
+            var deploymentName = "k8scsharp-e2e-hpa-deployment";
+            var hpaName = "k8scsharp-e2e-hpa";
+
+            using var client = CreateClient();
+
+            async Task CleanupAsync()
+            {
+                var deleteOptions = new V1DeleteOptions { PropagationPolicy = "Foreground" };
+
+                try
+                {
+                    await client.AutoscalingV2.DeleteNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter, deleteOptions).ConfigureAwait(false);
+                }
+                catch (HttpOperationException e)
+                {
+                    if (e.Response?.StatusCode != System.Net.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+                }
+
+                try
+                {
+                    await client.AppsV1.DeleteNamespacedDeploymentAsync(deploymentName, namespaceParameter, deleteOptions).ConfigureAwait(false);
+                }
+                catch (HttpOperationException e)
+                {
+                    if (e.Response?.StatusCode != System.Net.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+                }
+
+                var attempts = 10;
+                while (attempts-- > 0)
+                {
+                    var hpaList = await client.AutoscalingV2.ListNamespacedHorizontalPodAutoscalerAsync(namespaceParameter).ConfigureAwait(false);
+                    var deploymentList = await client.AppsV1.ListNamespacedDeploymentAsync(namespaceParameter).ConfigureAwait(false);
+                    if (hpaList.Items.All(item => item.Metadata.Name != hpaName) && deploymentList.Items.All(item => item.Metadata.Name != deploymentName))
+                    {
+                        break;
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(2)).ConfigureAwait(false);
+                }
+            }
+
+            try
+            {
+                await CleanupAsync().ConfigureAwait(false);
+
+                var labels = new Dictionary<string, string> { ["app"] = "k8scsharp-hpa" };
+
+                await client.AppsV1.CreateNamespacedDeploymentAsync(
+                    new V1Deployment
+                    {
+                        Metadata = new V1ObjectMeta { Name = deploymentName, Labels = new Dictionary<string, string>(labels) },
+                        Spec = new V1DeploymentSpec
+                        {
+                            Replicas = 1,
+                            Selector = new V1LabelSelector { MatchLabels = new Dictionary<string, string>(labels) },
+                            Template = new V1PodTemplateSpec
+                            {
+                                Metadata = new V1ObjectMeta { Labels = new Dictionary<string, string>(labels) },
+                                Spec = new V1PodSpec
+                                {
+                                    Containers = new[]
+                                    {
+                                        new V1Container
+                                        {
+                                            Name = "k8scsharp-hpa",
+                                            Image = "nginx",
+                                            Resources = new V1ResourceRequirements
+                                            {
+                                                Requests = new Dictionary<string, ResourceQuantity>
+                                                {
+                                                    { "cpu", new ResourceQuantity("100m") },
+                                                    { "memory", new ResourceQuantity("128Mi") },
+                                                },
+                                                Limits = new Dictionary<string, ResourceQuantity>
+                                                {
+                                                    { "cpu", new ResourceQuantity("200m") },
+                                                    { "memory", new ResourceQuantity("256Mi") },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                    namespaceParameter).ConfigureAwait(false);
+
+                var hpa = new V2HorizontalPodAutoscaler
+                {
+                    Metadata = new V1ObjectMeta { Name = hpaName },
+                    Spec = new V2HorizontalPodAutoscalerSpec
+                    {
+                        MinReplicas = 1,
+                        MaxReplicas = 3,
+                        ScaleTargetRef = new V2CrossVersionObjectReference
+                        {
+                            ApiVersion = "apps/v1",
+                            Kind = "Deployment",
+                            Name = deploymentName,
+                        },
+                        Metrics = new List<V2MetricSpec>
+                        {
+                            new V2MetricSpec
+                            {
+                                Type = "Resource",
+                                Resource = new V2ResourceMetricSource
+                                {
+                                    Name = "cpu",
+                                    Target = new V2MetricTarget
+                                    {
+                                        Type = "Utilization",
+                                        AverageUtilization = 50,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                };
+
+                await client.AutoscalingV2.CreateNamespacedHorizontalPodAutoscalerAsync(hpa, namespaceParameter).ConfigureAwait(false);
+
+                var hpaList = await client.AutoscalingV2.ListNamespacedHorizontalPodAutoscalerAsync(namespaceParameter).ConfigureAwait(false);
+                Assert.Contains(hpaList.Items, item => item.Metadata.Name == hpaName);
+
+                var created = await client.AutoscalingV2.ReadNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter).ConfigureAwait(false);
+                Assert.Equal(1, created.Spec.MinReplicas);
+
+                created.Spec.MinReplicas = 2;
+                await client.AutoscalingV2.ReplaceNamespacedHorizontalPodAutoscalerAsync(created, hpaName, namespaceParameter).ConfigureAwait(false);
+
+                var updated = await client.AutoscalingV2.ReadNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter).ConfigureAwait(false);
+                Assert.Equal(2, updated.Spec.MinReplicas);
+
+                await client.AutoscalingV2.DeleteNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter, new V1DeleteOptions { PropagationPolicy = "Foreground" }).ConfigureAwait(false);
+
+                var retries = 10;
+                while (retries-- > 0)
+                {
+                    hpaList = await client.AutoscalingV2.ListNamespacedHorizontalPodAutoscalerAsync(namespaceParameter).ConfigureAwait(false);
+                    if (hpaList.Items.All(item => item.Metadata.Name != hpaName))
+                    {
+                        break;
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(2)).ConfigureAwait(false);
+                }
+
+                Assert.DoesNotContain(hpaList.Items, item => item.Metadata.Name == hpaName);
+            }
+            finally
+            {
+                await CleanupAsync().ConfigureAwait(false);
+            }
+        }
+
         public static IKubernetes CreateClient()
         {
             return new Kubernetes(KubernetesClientConfiguration.BuildDefaultConfig());
