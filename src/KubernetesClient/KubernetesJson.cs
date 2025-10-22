@@ -8,16 +8,7 @@ namespace k8s
 {
     public static class KubernetesJson
     {
-        internal static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
-        {
-#if K8S_AOT
-            // Uses Source Generated IJsonTypeInfoResolver
-            TypeInfoResolver = SourceGenerationContext.Default,
-#else
-            // Uses Source Generated IJsonTypeInfoResolver when available and falls back to reflection
-            TypeInfoResolver = JsonTypeInfoResolver.Combine(SourceGenerationContext.Default, new DefaultJsonTypeInfoResolver()),
-#endif
-        };
+        internal static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
 
         internal sealed class Iso8601TimeSpanConverter : JsonConverter<TimeSpan>
         {
@@ -82,7 +73,12 @@ namespace k8s
 
         static KubernetesJson()
         {
-#if !K8S_AOT
+#if K8S_AOT
+            // Uses Source Generated IJsonTypeInfoResolver
+            JsonSerializerOptions.TypeInfoResolver = SourceGenerationContext.Default;
+#else
+            // Uses Source Generated IJsonTypeInfoResolver when available and falls back to reflection
+            JsonSerializerOptions.TypeInfoResolver = JsonTypeInfoResolver.Combine(SourceGenerationContext.Default, new DefaultJsonTypeInfoResolver());
             JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             JsonSerializerOptions.Converters.Add(new Iso8601TimeSpanConverter());
