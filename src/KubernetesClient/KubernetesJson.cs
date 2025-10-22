@@ -1,8 +1,11 @@
 using System.Globalization;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Xml;
+
+#if NET8_0_OR_GREATER
+using System.Text.Json.Serialization.Metadata;
+#endif
 
 namespace k8s
 {
@@ -77,8 +80,10 @@ namespace k8s
             // Uses Source Generated IJsonTypeInfoResolver
             JsonSerializerOptions.TypeInfoResolver = SourceGenerationContext.Default;
 #else
+#if NET8_0_OR_GREATER
             // Uses Source Generated IJsonTypeInfoResolver when available and falls back to reflection
             JsonSerializerOptions.TypeInfoResolver = JsonTypeInfoResolver.Combine(SourceGenerationContext.Default, new DefaultJsonTypeInfoResolver());
+#endif
             JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             JsonSerializerOptions.Converters.Add(new Iso8601TimeSpanConverter());
@@ -107,56 +112,92 @@ namespace k8s
 
         public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (JsonTypeInfo<TValue>)(jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(TValue));
             return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static TValue Deserialize<TValue>(Stream json, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (JsonTypeInfo<TValue>)(jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(TValue));
             return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static TValue Deserialize<TValue>(JsonDocument json, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (JsonTypeInfo<TValue>)(jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(TValue));
             return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static TValue Deserialize<TValue>(JsonElement json, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (JsonTypeInfo<TValue>)(jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(TValue));
             return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static TValue Deserialize<TValue>(JsonNode json, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (JsonTypeInfo<TValue>)(jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(TValue));
             return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize<TValue>(json, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static string Serialize(object value, JsonSerializerOptions jsonSerializerOptions = null)
         {
+#if NET8_0_OR_GREATER
             var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(value.GetType());
             return JsonSerializer.Serialize(value, info);
+#else
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static string Serialize(JsonDocument value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(JsonDocument));
+#if NET8_0_OR_GREATER
+            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(value.GetType());
             return JsonSerializer.Serialize(value, info);
+#else
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static string Serialize(JsonElement value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(JsonElement));
+#if NET8_0_OR_GREATER
+            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(value.GetType());
             return JsonSerializer.Serialize(value, info);
+#else
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
 
         public static string Serialize(JsonNode value, JsonSerializerOptions jsonSerializerOptions = null)
         {
-            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(typeof(JsonNode));
+#if NET8_0_OR_GREATER
+            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(value.GetType());
             return JsonSerializer.Serialize(value, info);
+#else
+            return JsonSerializer.Serialize(value, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
         }
     }
 }
