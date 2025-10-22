@@ -1,4 +1,9 @@
 name: Build and Test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'json-source-gen' # temp for testing
 
 jobs:
   build:
