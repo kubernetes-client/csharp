@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization.Metadata;
+
 namespace k8s.Models
 {
     public partial record V1Status
@@ -10,7 +12,7 @@ namespace k8s.Models
 
                 try
                 {
-                    return obj.Deserialize<V1Status>();
+                    return obj.Deserialize((JsonTypeInfo<V1Status>)options.GetTypeInfo(typeof(V1Status)));
                 }
                 catch (JsonException)
                 {
@@ -32,7 +34,7 @@ namespace k8s.Models
 
         public T ObjectView<T>()
         {
-            return _original.Deserialize<T>();
+            return _original.Deserialize<T>((JsonTypeInfo<T>)KubernetesJson.JsonSerializerOptions.GetTypeInfo(typeof(T)));
         }
     }
 }

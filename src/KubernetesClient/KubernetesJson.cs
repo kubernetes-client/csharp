@@ -8,7 +8,7 @@ namespace k8s
 {
     public static class KubernetesJson
     {
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions
         {
 #if K8S_AOT
             // Uses Source Generated IJsonTypeInfoResolver
@@ -82,8 +82,9 @@ namespace k8s
 
         static KubernetesJson()
         {
-            //JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
-            //JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+#if !K8S_AOT
+            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+#endif
         }
 
         /// <summary>

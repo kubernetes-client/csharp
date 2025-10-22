@@ -45,6 +45,7 @@
     <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
     <Compile Include="..\KubernetesClient\KubernetesJson.cs" />
     <Compile Include="..\KubernetesClient\SourceGenerationContext.cs" />
+    <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
   </ItemGroup>
   <ItemGroup>
       <Compile Include="..\KubernetesClient\ClientSets\ClientSet.cs" />
