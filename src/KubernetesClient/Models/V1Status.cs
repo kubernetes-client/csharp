@@ -2,7 +2,6 @@ using System.Net;
 
 namespace k8s.Models
 {
-    [JsonConverter(typeof(V1StatusObjectViewConverter))]
     public partial record V1Status
     {
         /// <summary>Converts a <see cref="V1Status"/> object into a short description of the status.</summary>
