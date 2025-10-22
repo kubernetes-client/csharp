@@ -1,4 +1,6 @@
+#if NET8_0_OR_GREATER
 using System.Text.Json.Serialization.Metadata;
+#endif
 
 namespace k8s.Models
 {
@@ -12,7 +14,11 @@ namespace k8s.Models
 
                 try
                 {
+#if NET8_0_OR_GREATER
                     return obj.Deserialize((JsonTypeInfo<V1Status>)options.GetTypeInfo(typeof(V1Status)));
+#else
+                    return obj.Deserialize<V1Status>();
+#endif
                 }
                 catch (JsonException)
                 {
@@ -34,7 +40,11 @@ namespace k8s.Models
 
         public T ObjectView<T>()
         {
+#if NET8_0_OR_GREATER
             return _original.Deserialize<T>((JsonTypeInfo<T>)KubernetesJson.JsonSerializerOptions.GetTypeInfo(typeof(T)));
+#else
+            return _original.Deserialize<T>();
+#endif
         }
     }
 }
