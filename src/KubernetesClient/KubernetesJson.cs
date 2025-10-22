@@ -83,6 +83,12 @@ namespace k8s
         static KubernetesJson()
         {
 #if !K8S_AOT
+            JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            JsonSerializerOptions.Converters.Add(new Iso8601TimeSpanConverter());
+            JsonSerializerOptions.Converters.Add(new KubernetesDateTimeConverter());
+            JsonSerializerOptions.Converters.Add(new KubernetesDateTimeOffsetConverter());
+            JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
             JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 #endif
         }
