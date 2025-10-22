@@ -13,7 +13,7 @@ namespace k8s
     {
         internal static readonly JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions();
 
-        internal sealed class Iso8601TimeSpanConverter : JsonConverter<TimeSpan>
+        public sealed class Iso8601TimeSpanConverter : JsonConverter<TimeSpan>
         {
             public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
@@ -28,7 +28,7 @@ namespace k8s
             }
         }
 
-        internal sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+        public sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
             private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
             private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
@@ -60,7 +60,7 @@ namespace k8s
             }
         }
 
-        internal sealed class KubernetesDateTimeConverter : JsonConverter<DateTime>
+        public sealed class KubernetesDateTimeConverter : JsonConverter<DateTime>
         {
             private static readonly JsonConverter<DateTimeOffset> UtcConverter = new KubernetesDateTimeOffsetConverter();
             public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
