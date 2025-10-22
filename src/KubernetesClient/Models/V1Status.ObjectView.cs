@@ -4,21 +4,6 @@ namespace k8s.Models
     {
         public sealed class V1StatusObjectViewConverter : JsonConverter<V1Status>
         {
-            private static JsonSerializerOptions WithoutThis(JsonSerializerOptions options)
-            {
-                var clone = new JsonSerializerOptions(options);
-
-                for (var i = clone.Converters.Count - 1; i >= 0; i--)
-                {
-                    if (clone.Converters[i] is V1StatusObjectViewConverter)
-                    {
-                        clone.Converters.RemoveAt(i);
-                    }
-                }
-
-                return clone;
-            }
-
             public override V1Status Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 using var doc = JsonDocument.ParseValue(ref reader);
@@ -27,9 +12,9 @@ namespace k8s.Models
                 try
                 {
 #if NET8_0_OR_GREATER
-                    return KubernetesJson.Deserialize<V1Status>(ele, WithoutThis(options));
+                    return JsonSerializer.Deserialize(ele, StatusSourceGenerationContext.Default.V1Status);
 #else
-                    return obj.Deserialize<V1Status>();
+                    return ele.Deserialize<V1Status>();
 #endif
                 }
                 catch (JsonException)
