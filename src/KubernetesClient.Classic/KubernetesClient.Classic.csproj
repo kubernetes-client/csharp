@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net48</TargetFrameworks>
@@ -49,7 +49,7 @@
     <Compile Include="..\KubernetesClient\Models\V1PodTemplateSpec.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
-
+    <Compile Include="..\KubernetesClient\SourceGenerationContext.cs" />
     <Compile Include="..\KubernetesClient\KubeConfigModels\ClusterEndpoint.cs" />
     <Compile Include="..\KubernetesClient\KubeConfigModels\Context.cs" />
     <Compile Include="..\KubernetesClient\KubeConfigModels\ContextDetails.cs" />

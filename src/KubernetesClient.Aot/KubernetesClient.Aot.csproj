@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
@@ -43,7 +43,8 @@
     <Compile Include="..\KubernetesClient\Models\V1Patch.cs" />
     <Compile Include="..\KubernetesClient\Models\V1PodTemplateSpec.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
-
+    <Compile Include="..\KubernetesClient\KubernetesJson.cs" />
+    <Compile Include="..\KubernetesClient\SourceGenerationContext.cs" />
   </ItemGroup>
   <ItemGroup>
       <Compile Include="..\KubernetesClient\ClientSets\ClientSet.cs" />

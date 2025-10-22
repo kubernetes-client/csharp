@@ -7,6 +7,6 @@ namespace k8s;
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
     Converters = new[] { typeof(Iso8601TimeSpanConverter), typeof(KubernetesDateTimeConverter), typeof(KubernetesDateTimeOffsetConverter) })
     ]
-internal partial class SourceGenerationContext : JsonSerializerContext
+public partial class SourceGenerationContext : JsonSerializerContext
 {
 }
