@@ -93,14 +93,14 @@ namespace k8s
             // Uses Source Generated IJsonTypeInfoResolver when available and falls back to reflection
             JsonSerializerOptions.TypeInfoResolver = JsonTypeInfoResolver.Combine(SourceGenerationContext.Default, new DefaultJsonTypeInfoResolver());
 #endif
+            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+#endif
             JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             JsonSerializerOptions.Converters.Add(new Iso8601TimeSpanConverter());
             JsonSerializerOptions.Converters.Add(new KubernetesDateTimeConverter());
             JsonSerializerOptions.Converters.Add(new KubernetesDateTimeOffsetConverter());
             JsonSerializerOptions.Converters.Add(new V1Status.V1StatusObjectViewConverter());
-            JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-#endif
         }
 
         /// <summary>
