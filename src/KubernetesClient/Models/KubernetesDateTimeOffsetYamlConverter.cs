@@ -4,6 +4,8 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
+namespace k8s.Models;
+
 public sealed class KubernetesDateTimeOffsetYamlConverter : IYamlTypeConverter
 {
     private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffff'Z'";

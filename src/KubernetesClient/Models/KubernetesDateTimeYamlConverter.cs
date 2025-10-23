@@ -1,6 +1,8 @@
 using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 
+namespace k8s.Models;
+
 public sealed class KubernetesDateTimeYamlConverter : IYamlTypeConverter
 {
     private static readonly KubernetesDateTimeOffsetYamlConverter OffsetConverter = new();
