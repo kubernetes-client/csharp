@@ -46,6 +46,8 @@
     <Compile Include="..\KubernetesClient\KubernetesJson.cs" />
     <Compile Include="..\KubernetesClient\SourceGenerationContext.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
+    <Compile Include="..\KubernetesClient\Models\KubernetesDateTimeOffsetYamlConverter.cs" />
+    <Compile Include="..\KubernetesClient\Models\KubernetesDateTimeYamlConverter.cs" />
   </ItemGroup>
   <ItemGroup>
       <Compile Include="..\KubernetesClient\ClientSets\ClientSet.cs" />
