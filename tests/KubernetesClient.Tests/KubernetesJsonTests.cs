@@ -1,5 +1,7 @@
 using System;
+using System.Text.Json;
 using Xunit;
+using k8s.Models;
 
 namespace k8s.Tests;
 
@@ -115,5 +117,29 @@ public class KubernetesJsonTests
         Assert.Equal(700, t.Rfc3339nanolenient9.Nanosecond);
 #endif
 
+    }
+
+    [Fact]
+    public void ReadWriteDatesJson()
+    {
+        var kManifest = """
+        {
+          "apiVersion": "v1",
+          "kind": "Secret",
+          "metadata": {
+            "creationTimestamp": "2025-09-03T05:15:53Z",
+            "name": "test-secret"
+          },
+          "type": "Opaque"
+        }
+        """;
+
+        var objFromJson = KubernetesJson.Deserialize<V1Secret>(kManifest);
+        var jsonFromObj = KubernetesJson.Serialize(objFromJson);
+
+        // Format Json
+        var jsonFromObj2 = JsonSerializer.Serialize(JsonSerializer.Deserialize<JsonElement>(jsonFromObj), new JsonSerializerOptions() { WriteIndented = true });
+
+        Assert.Equal(kManifest, jsonFromObj2);
     }
 }

@@ -30,9 +30,9 @@ namespace k8s
 
         public sealed class KubernetesDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         {
-            private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffK";
-            private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffK";
-            private const string RFC3339Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
+            private const string RFC3339MicroFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.ffffffZ";
+            private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffZ";
+            private const string RFC3339Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
 
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
@@ -54,9 +54,18 @@ namespace k8s
                 throw new FormatException($"Unable to parse {originalstr} as RFC3339 RFC3339Micro or RFC3339Nano");
             }
 
+
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
-                writer.WriteStringValue(value.ToString(RFC3339MicroFormat));
+                // Output as RFC3339Nano
+                var date = value.ToUniversalTime();
+
+                var basePart = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
+                var frac = date.ToString(".fffffff", CultureInfo.InvariantCulture)
+                    .TrimEnd('0')
+                    .TrimEnd('.');
+
+                writer.WriteStringValue(basePart + frac + "Z");
             }
         }
 

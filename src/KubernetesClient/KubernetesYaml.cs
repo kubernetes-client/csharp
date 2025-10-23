@@ -21,6 +21,8 @@ namespace k8s
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
+                .WithTypeConverter(new KubernetesDateTimeYamlConverter())
+                .WithTypeConverter(new KubernetesDateTimeOffsetYamlConverter())
                 .WithAttemptingUnquotedStringTypeDeserialization()
                 .WithOverridesFromJsonPropertyAttributes();
 
@@ -41,6 +43,8 @@ namespace k8s
                 .WithTypeConverter(new IntOrStringYamlConverter())
                 .WithTypeConverter(new ByteArrayStringYamlConverter())
                 .WithTypeConverter(new ResourceQuantityYamlConverter())
+                .WithTypeConverter(new KubernetesDateTimeYamlConverter())
+                .WithTypeConverter(new KubernetesDateTimeOffsetYamlConverter())
                 .WithEventEmitter(e => new StringQuotingEmitter(e))
                 .WithEventEmitter(e => new FloatEmitter(e))
                 .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull)
