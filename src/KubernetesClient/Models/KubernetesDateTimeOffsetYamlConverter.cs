@@ -51,11 +51,11 @@ public sealed class KubernetesDateTimeOffsetYamlConverter : IYamlTypeConverter
 
     public void WriteYaml(IEmitter emitter, object value, Type type, ObjectSerializer serializer)
     {
-        // Output as RFC3339Nano
+        // Output as RFC3339Micro
         var date = ((DateTimeOffset)value).ToUniversalTime();
 
         var basePart = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
-        var frac = date.ToString(".fffffff", CultureInfo.InvariantCulture)
+        var frac = date.ToString(".ffffff", CultureInfo.InvariantCulture)
             .TrimEnd('0')
             .TrimEnd('.');
 

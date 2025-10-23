@@ -57,11 +57,11 @@ namespace k8s
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
-                // Output as RFC3339Nano
+                // Output as RFC3339Micro
                 var date = value.ToUniversalTime();
 
                 var basePart = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
-                var frac = date.ToString(".fffffff", CultureInfo.InvariantCulture)
+                var frac = date.ToString(".ffffff", CultureInfo.InvariantCulture)
                     .TrimEnd('0')
                     .TrimEnd('.');
 
