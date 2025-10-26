@@ -2,22 +2,27 @@ namespace k8s.Models
 {
     public partial record V1Status
     {
-        internal sealed class V1StatusObjectViewConverter : JsonConverter<V1Status>
+        public sealed class V1StatusObjectViewConverter : JsonConverter<V1Status>
         {
             public override V1Status Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                var obj = JsonElement.ParseValue(ref reader);
+                using var doc = JsonDocument.ParseValue(ref reader);
+                var ele = doc.RootElement.Clone();
 
                 try
                 {
-                    return obj.Deserialize<V1Status>();
+#if NET8_0_OR_GREATER
+                    return JsonSerializer.Deserialize(ele, StatusSourceGenerationContext.Default.V1Status);
+#else
+                    return ele.Deserialize<V1Status>();
+#endif
                 }
                 catch (JsonException)
                 {
                     // should be an object
                 }
 
-                return new V1Status { _original = obj, HasObject = true };
+                return new V1Status { _original = ele, HasObject = true };
             }
 
             public override void Write(Utf8JsonWriter writer, V1Status value, JsonSerializerOptions options)
@@ -32,7 +37,11 @@ namespace k8s.Models
 
         public T ObjectView<T>()
         {
+#if NET8_0_OR_GREATER
+            return KubernetesJson.Deserialize<T>(_original);
+#else
             return _original.Deserialize<T>();
+#endif
         }
     }
 }

@@ -8,7 +8,7 @@ namespace k8s
     {{ for definition in definitions }}
     [JsonSerializable(typeof({{ GetClassName definition }}))]
     {{ end }}
-    internal partial class SourceGenerationContext : JsonSerializerContext
+    public partial class SourceGenerationContext : JsonSerializerContext
     {
     }
 }
