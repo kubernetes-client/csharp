@@ -26,6 +26,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
     <LangVersion>13.0</LangVersion>
   </PropertyGroup>
 
