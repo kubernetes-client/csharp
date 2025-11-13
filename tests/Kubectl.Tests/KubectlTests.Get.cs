@@ -30,17 +30,6 @@ public partial class KubectlTests
         var namespaceParameter = "default";
         var podName = "k8scsharp-e2e-get-pod";
 
-        // Cleanup any existing pod
-        try
-        {
-            kubernetes.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
-            System.Threading.Thread.Sleep(2000);
-        }
-        catch
-        {
-            // Ignore if pod doesn't exist
-        }
-
         // Create a test pod
         var pod = new V1Pod
         {
@@ -62,12 +51,9 @@ public partial class KubectlTests
             },
         };
 
-        kubernetes.CoreV1.CreateNamespacedPod(pod, namespaceParameter);
-
         try
         {
-            // Wait a moment for the pod to be created
-            System.Threading.Thread.Sleep(1000);
+            kubernetes.CoreV1.CreateNamespacedPod(pod, namespaceParameter);
 
             // Get the pod using kubectl
             var retrievedPod = client.GetPod(podName, namespaceParameter);
@@ -100,17 +86,6 @@ public partial class KubectlTests
         var namespaceParameter = "default";
         var serviceName = "k8scsharp-e2e-get-service";
 
-        // Cleanup any existing service
-        try
-        {
-            kubernetes.CoreV1.DeleteNamespacedService(serviceName, namespaceParameter);
-            System.Threading.Thread.Sleep(1000);
-        }
-        catch
-        {
-            // Ignore if service doesn't exist
-        }
-
         // Create a test service
         var service = new V1Service
         {
@@ -136,12 +111,9 @@ public partial class KubectlTests
             },
         };
 
-        kubernetes.CoreV1.CreateNamespacedService(service, namespaceParameter);
-
         try
         {
-            // Wait a moment for the service to be created
-            System.Threading.Thread.Sleep(1000);
+            kubernetes.CoreV1.CreateNamespacedService(service, namespaceParameter);
 
             // Get the service using kubectl
             var retrievedService = client.GetService(serviceName, namespaceParameter);
