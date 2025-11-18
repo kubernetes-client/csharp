@@ -60,12 +60,20 @@ namespace k8s
                 // Output as RFC3339Micro
                 var date = value.ToUniversalTime();
 
-                var basePart = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
-                var frac = date.ToString(".ffffff", CultureInfo.InvariantCulture)
-                    .TrimEnd('0')
-                    .TrimEnd('.');
-
-                writer.WriteStringValue(basePart + frac + "Z");
+                // Check if there are any fractional seconds
+                var ticks = date.Ticks % TimeSpan.TicksPerSecond;
+                if (ticks == 0)
+                {
+                    // No fractional seconds - use format without fractional part
+                    var basePart = date.ToString("yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
+                    writer.WriteStringValue(basePart + "Z");
+                }
+                else
+                {
+                    // Has fractional seconds - always use exactly 6 decimal places
+                    var formatted = date.ToString(RFC3339MicroFormat, CultureInfo.InvariantCulture);
+                    writer.WriteStringValue(formatted);
+                }
             }
         }
 
