@@ -142,4 +142,31 @@ public class KubernetesJsonTests
 
         Assert.Equal(kManifest, jsonFromObj2);
     }
+
+    [Fact]
+    public void DateTimeWithFractionalSecondsAlwaysHasSixDigits()
+    {
+        // Test that datetime fields with fractional seconds always output exactly 6 decimal places
+        // This is required by Kubernetes API which expects RFC3339Micro format
+
+        // Create a datetime with 5 digits of precision (962170 microseconds = .96217 seconds)
+        var dt = new DateTime(2025, 11, 17, 22, 52, 34, 962, DateTimeKind.Utc).AddTicks(1700);
+
+        var secret = new V1Secret
+        {
+            Metadata = new V1ObjectMeta
+            {
+                Name = "test-secret",
+                CreationTimestamp = dt,
+            },
+        };
+
+        var json = KubernetesJson.Serialize(secret);
+
+        // Verify the datetime is serialized with exactly 6 decimal places
+        Assert.Contains("2025-11-17T22:52:34.962170Z", json);
+
+        // Also verify it doesn't have 5 digits (which would fail in Kubernetes)
+        Assert.DoesNotContain("2025-11-17T22:52:34.96217Z", json);
+    }
 }
