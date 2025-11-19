@@ -14,15 +14,10 @@ public partial class AsyncKubectl
         where T : IKubernetesObject
     {
         var metadata = typeof(T).GetKubernetesTypeMetadata();
-        var genericClient = new GenericClient(client, metadata.Group, metadata.ApiVersion, metadata.PluralName, disposeClient: false);
+        using var genericClient = new GenericClient(client, metadata.Group, metadata.ApiVersion, metadata.PluralName, disposeClient: false);
 
-        if (@namespace != null)
-        {
-            return await genericClient.ReadNamespacedAsync<T>(@namespace, name, cancellationToken).ConfigureAwait(false);
-        }
-        else
-        {
-            return await genericClient.ReadAsync<T>(name, cancellationToken).ConfigureAwait(false);
-        }
+        return @namespace != null
+            ? await genericClient.ReadNamespacedAsync<T>(@namespace, name, cancellationToken).ConfigureAwait(false)
+            : await genericClient.ReadAsync<T>(name, cancellationToken).ConfigureAwait(false);
     }
 }

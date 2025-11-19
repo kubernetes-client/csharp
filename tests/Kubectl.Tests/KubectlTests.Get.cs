@@ -1,3 +1,4 @@
+using k8s.Autorest;
 using k8s.E2E;
 using k8s.kubectl.beta;
 using k8s.Models;
@@ -71,9 +72,9 @@ public partial class KubectlTests
             {
                 kubernetes.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
             }
-            catch
+            catch (HttpOperationException)
             {
-                // Ignore cleanup errors
+                // Ignore cleanup errors if pod was already deleted or doesn't exist
             }
         }
     }
@@ -131,9 +132,9 @@ public partial class KubectlTests
             {
                 kubernetes.CoreV1.DeleteNamespacedService(serviceName, namespaceParameter);
             }
-            catch
+            catch (HttpOperationException)
             {
-                // Ignore cleanup errors
+                // Ignore cleanup errors if service was already deleted or doesn't exist
             }
         }
     }
@@ -207,9 +208,9 @@ public partial class KubectlTests
             {
                 kubernetes.AppsV1.DeleteNamespacedDeployment(deploymentName, namespaceParameter);
             }
-            catch
+            catch (HttpOperationException)
             {
-                // Ignore cleanup errors
+                // Ignore cleanup errors if deployment was already deleted or doesn't exist
             }
         }
     }
