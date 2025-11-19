@@ -17,6 +17,7 @@ jobs:
           dotnet-version: |
            8.0.x
            9.0.x
+           10.0.x
       - name: Build
         run: dotnet build --configuration Release 
       - name: Test
@@ -46,7 +47,7 @@ jobs:
       - name: Setup dotnet SDK
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '10.0.x'
       - name: Restore nugets (msbuild)
         run: msbuild .\src\KubernetesClient\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
@@ -64,6 +65,7 @@ jobs:
           dotnet-version: |
            8.0.x
            9.0.x
+           10.0.x
       - name: Minikube
         run: minikube start
       - name: Test
