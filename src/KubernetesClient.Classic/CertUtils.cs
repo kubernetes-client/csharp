@@ -40,6 +40,33 @@ namespace k8s
         }
 
         /// <summary>
+        /// Load pem encoded certificates from text
+        /// </summary>
+        /// <param name="pemText">PEM encoded certificate text</param>
+        /// <returns>List of x509 instances.</returns>
+        public static X509Certificate2Collection LoadFromPemText(string pemText)
+        {
+            var certCollection = new X509Certificate2Collection();
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(pemText)))
+            {
+                var certs = new X509CertificateParser().ReadCertificates(stream);
+
+                // Convert BouncyCastle X509Certificates to the .NET cryptography implementation and add
+                // it to the certificate collection
+                //
+                foreach (Org.BouncyCastle.X509.X509Certificate cert in certs)
+                {
+                    // This null password is to change the constructor to fix this KB:
+                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
+                    string nullPassword = null;
+                    certCollection.Add(new X509Certificate2(cert.GetEncoded(), nullPassword));
+                }
+            }
+
+            return certCollection;
+        }
+
+        /// <summary>
         /// Generates pfx from client configuration
         /// </summary>
         /// <param name="config">Kubernetes Client Configuration</param>

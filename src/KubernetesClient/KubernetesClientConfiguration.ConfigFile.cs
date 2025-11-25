@@ -309,15 +309,13 @@ namespace k8s
                 {
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
                     var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(data));
-                    SslCaCerts = new X509Certificate2Collection();
-                    SslCaCerts.ImportFromPem(pemText);
+                    SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    var certPath = GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority);
-                    var pemText = File.ReadAllText(certPath, Encoding.UTF8);
-                    SslCaCerts = new X509Certificate2Collection();
-                    SslCaCerts.ImportFromPem(pemText);
+                    SslCaCerts = CertUtils.LoadPemFileCert(GetFullPath(
+                        k8SConfig,
+                        clusterDetails.ClusterEndpoint.CertificateAuthority));
                 }
             }
         }
