@@ -315,7 +315,7 @@ namespace k8s
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
                     var certPath = GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority);
-                    var pemText = File.ReadAllText(certPath);
+                    var pemText = File.ReadAllText(certPath, Encoding.UTF8);
                     SslCaCerts = new X509Certificate2Collection();
                     SslCaCerts.ImportFromPem(pemText);
                 }
