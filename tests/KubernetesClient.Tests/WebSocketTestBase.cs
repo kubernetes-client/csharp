@@ -3,10 +3,12 @@ using k8s.Tests.Logging;
 using k8s.Tests.Mock.Server;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -21,10 +23,6 @@ namespace k8s.Tests
     /// </summary>
     public abstract class WebSocketTestBase : IDisposable
     {
-        /// <summary>
-        ///     The next server port to use.
-        /// </summary>
-        private static int nextPort = 13255;
         private bool disposedValue;
         private readonly ITestOutputHelper testOutput;
 
@@ -39,32 +37,41 @@ namespace k8s.Tests
         {
             this.testOutput = testOutput;
 
-            int port = Interlocked.Increment(ref nextPort);
-
             // Useful to diagnose test timeouts.
             TestCancellation.Register(
                 () => testOutput.WriteLine("Test-level cancellation token has been canceled."));
 
-            ServerBaseAddress = new Uri($"http://localhost:{port}");
-            WebSocketBaseAddress = new Uri($"ws://localhost:{port}");
-
+            // Use port 0 to let the OS assign a free port dynamically
             Host = WebHost.CreateDefaultBuilder()
                 .UseStartup<Startup>()
                 .ConfigureServices(ConfigureTestServerServices)
                 .ConfigureLogging(ConfigureTestServerLogging)
-                .UseUrls(ServerBaseAddress.AbsoluteUri)
+                .UseUrls("http://127.0.0.1:0")
                 .Build();
+
+            // Start the host to get the actual assigned port
+            Host.Start();
+
+            // Get the actual server address after binding
+            var serverAddress = Host.ServerFeatures.Get<IServerAddressesFeature>()?.Addresses.FirstOrDefault();
+            if (serverAddress == null)
+            {
+                throw new InvalidOperationException("Failed to determine server address");
+            }
+
+            ServerBaseAddress = new Uri(serverAddress);
+            WebSocketBaseAddress = new Uri(serverAddress.Replace("http://", "ws://"));
         }
 
         /// <summary>
         ///     The test server's base address (http://).
         /// </summary>
-        protected Uri ServerBaseAddress { get; }
+        protected Uri ServerBaseAddress { get; private set; }
 
         /// <summary>
         ///     The test server's base WebSockets address (ws://).
         /// </summary>
-        protected Uri WebSocketBaseAddress { get; }
+        protected Uri WebSocketBaseAddress { get; private set; }
 
         /// <summary>
         ///     The test server's web host.
