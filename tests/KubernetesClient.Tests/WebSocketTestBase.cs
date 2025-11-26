@@ -66,12 +66,12 @@ namespace k8s.Tests
         /// <summary>
         ///     The test server's base address (http://).
         /// </summary>
-        protected Uri ServerBaseAddress { get; }
+        protected Uri ServerBaseAddress { get; private set; }
 
         /// <summary>
         ///     The test server's base WebSockets address (ws://).
         /// </summary>
-        protected Uri WebSocketBaseAddress { get; }
+        protected Uri WebSocketBaseAddress { get; private set; }
 
         /// <summary>
         ///     The test server's web host.
