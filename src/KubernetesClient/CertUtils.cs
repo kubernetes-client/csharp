@@ -24,6 +24,18 @@ namespace k8s
         }
 
         /// <summary>
+        /// Load pem encoded certificates from text
+        /// </summary>
+        /// <param name="pemText">PEM encoded certificate text</param>
+        /// <returns>List of x509 instances.</returns>
+        public static X509Certificate2Collection LoadFromPemText(string pemText)
+        {
+            var certCollection = new X509Certificate2Collection();
+            certCollection.ImportFromPem(pemText);
+            return certCollection;
+        }
+
+        /// <summary>
         /// Generates pfx from client configuration
         /// </summary>
         /// <param name="config">Kubernetes Client Configuration</param>

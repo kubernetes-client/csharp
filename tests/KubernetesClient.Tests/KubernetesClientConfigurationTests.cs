@@ -822,5 +822,31 @@ namespace k8s.Tests
                 Assert.Equal("some namespace", config.Namespace);
             }
         }
+
+        /// <summary>
+        ///     Checks that multiple certificates are loaded from certificate-authority-data
+        /// </summary>
+        [Fact]
+        public void LoadMultipleCertificatesFromCertificateAuthorityData()
+        {
+            var fi = new FileInfo("assets/kubeconfig.multi-ca.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "multi-ca-context");
+
+            Assert.NotNull(cfg.SslCaCerts);
+            Assert.Equal(2, cfg.SslCaCerts.Count);
+        }
+
+        /// <summary>
+        ///     Checks that multiple certificates are loaded from certificate-authority file
+        /// </summary>
+        [Fact]
+        public void LoadMultipleCertificatesFromCertificateAuthorityFile()
+        {
+            var fi = new FileInfo("assets/kubeconfig.multi-ca-file.yml");
+            var cfg = KubernetesClientConfiguration.BuildConfigFromConfigFile(fi, "multi-ca-file-context", useRelativePaths: false);
+
+            Assert.NotNull(cfg.SslCaCerts);
+            Assert.Equal(2, cfg.SslCaCerts.Count);
+        }
     }
 }

@@ -98,5 +98,49 @@ namespace k8s.Tests
             Assert.True(certCollection[0].RawData.SequenceEqual(intermediateCert.RawData));
             Assert.True(certCollection[1].RawData.SequenceEqual(rootCert.RawData));
         }
+
+        /// <summary>
+        /// Checks that multiple certificates can be loaded from PEM text
+        /// </summary>
+        [Fact]
+        public void LoadFromPemTextWithMultiCert()
+        {
+            // Read the PEM text from the ca-bundle file
+            var pemText = System.IO.File.ReadAllText("assets/ca-bundle.crt");
+            var certCollection = CertUtils.LoadFromPemText(pemText);
+
+#if NET9_0_OR_GREATER
+            using var intermediateCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca-bundle-intermediate.crt");
+            using var rootCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca-bundle-root.crt");
+#else
+            using var intermediateCert = new X509Certificate2("assets/ca-bundle-intermediate.crt");
+            using var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
+#endif
+
+            Assert.Equal(2, certCollection.Count);
+
+            Assert.True(certCollection[0].RawData.SequenceEqual(intermediateCert.RawData));
+            Assert.True(certCollection[1].RawData.SequenceEqual(rootCert.RawData));
+        }
+
+        /// <summary>
+        /// Checks that a single certificate can be loaded from PEM text
+        /// </summary>
+        [Fact]
+        public void LoadFromPemTextWithSingleCert()
+        {
+            // Read a single certificate PEM text
+            var pemText = System.IO.File.ReadAllText("assets/ca-bundle-root.crt");
+            var certCollection = CertUtils.LoadFromPemText(pemText);
+
+#if NET9_0_OR_GREATER
+            using var rootCert = X509CertificateLoader.LoadCertificateFromFile("assets/ca-bundle-root.crt");
+#else
+            using var rootCert = new X509Certificate2("assets/ca-bundle-root.crt");
+#endif
+
+            Assert.Single(certCollection);
+            Assert.True(certCollection[0].RawData.SequenceEqual(rootCert.RawData));
+        }
     }
 }
