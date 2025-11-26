@@ -4,7 +4,6 @@ using k8s.KubeConfigModels;
 using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace k8s
