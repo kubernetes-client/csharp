@@ -52,8 +52,6 @@ namespace k8s.Tests
                     TimeSpan.FromSeconds(5));
             }
 
-            await Host.StartAsync(TestCancellation).ConfigureAwait(true);
-
             using (Kubernetes client = CreateTestClient())
             {
                 testOutput.WriteLine("Invoking exec operation...");
