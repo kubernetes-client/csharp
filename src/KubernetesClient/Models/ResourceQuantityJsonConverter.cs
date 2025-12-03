@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal sealed class ResourceQuantityJsonConverter : JsonConverter<ResourceQuantity>
+    public sealed class ResourceQuantityJsonConverter : JsonConverter<ResourceQuantity>
     {
         // https://github.com/kubernetes/apimachinery/blob/4b14f804a0babdcc58e695d72f77ad29f536511e/pkg/api/resource/quantity.go#L683
         public override ResourceQuantity Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
