@@ -42,17 +42,17 @@ namespace k8s
             return resp.Body;
         }
 
-        public async Task<T> ListAsync<T>(CancellationToken cancel = default)
+        public async Task<T> ListAsync<T>(string labelSelector = null, string fieldSelector = null, int? limit = null, string continueToken = null, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await kubernetes.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync<T>(group, version, plural, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.CustomObjects.ListClusterCustomObjectWithHttpMessagesAsync<T>(group, version, plural, labelSelector: labelSelector, fieldSelector: fieldSelector, limit: limit, continueParameter: continueToken, cancellationToken: cancel).ConfigureAwait(false);
             return resp.Body;
         }
 
-        public async Task<T> ListNamespacedAsync<T>(string ns, CancellationToken cancel = default)
+        public async Task<T> ListNamespacedAsync<T>(string ns, string labelSelector = null, string fieldSelector = null, int? limit = null, string continueToken = null, CancellationToken cancel = default)
         where T : IKubernetesObject
         {
-            var resp = await kubernetes.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync<T>(group, version, ns, plural, cancellationToken: cancel).ConfigureAwait(false);
+            var resp = await kubernetes.CustomObjects.ListNamespacedCustomObjectWithHttpMessagesAsync<T>(group, version, ns, plural, labelSelector: labelSelector, fieldSelector: fieldSelector, limit: limit, continueParameter: continueToken, cancellationToken: cancel).ConfigureAwait(false);
             return resp.Body;
         }
 
