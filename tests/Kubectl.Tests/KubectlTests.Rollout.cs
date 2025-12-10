@@ -66,7 +66,7 @@ public partial class KubectlTests
             System.Threading.Thread.Sleep(2000);
 
             // Restart the deployment
-            client.RolloutRestartDeployment(deploymentName, namespaceParameter);
+            client.RolloutRestart<V1Deployment>(deploymentName, namespaceParameter);
 
             // Verify the restart annotation was added
             var updatedDeployment = kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
@@ -142,7 +142,7 @@ public partial class KubectlTests
             kubernetes.AppsV1.CreateNamespacedDeployment(deployment, namespaceParameter);
 
             // Get rollout status
-            var status = client.RolloutStatusDeployment(deploymentName, namespaceParameter);
+            var status = client.RolloutStatus<V1Deployment>(deploymentName, namespaceParameter);
 
             // Status should contain the deployment name
             Assert.Contains(deploymentName, status);
@@ -216,14 +216,14 @@ public partial class KubectlTests
             kubernetes.AppsV1.CreateNamespacedDeployment(deployment, namespaceParameter);
 
             // Pause the deployment
-            client.RolloutPauseDeployment(deploymentName, namespaceParameter);
+            client.RolloutPause<V1Deployment>(deploymentName, namespaceParameter);
 
             // Verify the deployment is paused
             var pausedDeployment = kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
             Assert.True(pausedDeployment.Spec.Paused);
 
             // Resume the deployment
-            client.RolloutResumeDeployment(deploymentName, namespaceParameter);
+            client.RolloutResume<V1Deployment>(deploymentName, namespaceParameter);
 
             // Verify the deployment is resumed
             var resumedDeployment = kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
@@ -305,7 +305,7 @@ public partial class KubectlTests
             System.Threading.Thread.Sleep(3000);
 
             // Get rollout history
-            var history = client.RolloutHistoryDeployment(deploymentName, namespaceParameter);
+            var history = client.RolloutHistory<V1Deployment>(deploymentName, namespaceParameter);
 
             // Should have at least one revision
             Assert.NotNull(history);
@@ -389,7 +389,7 @@ public partial class KubectlTests
             System.Threading.Thread.Sleep(2000);
 
             // Restart the daemonset
-            client.RolloutRestartDaemonSet(daemonSetName, namespaceParameter);
+            client.RolloutRestart<V1DaemonSet>(daemonSetName, namespaceParameter);
 
             // Verify the restart annotation was added
             var updatedDaemonSet = kubernetes.AppsV1.ReadNamespacedDaemonSet(daemonSetName, namespaceParameter);
@@ -471,7 +471,7 @@ public partial class KubectlTests
             kubernetes.AppsV1.CreateNamespacedDaemonSet(daemonSet, namespaceParameter);
 
             // Get rollout status
-            var status = client.RolloutStatusDaemonSet(daemonSetName, namespaceParameter);
+            var status = client.RolloutStatus<V1DaemonSet>(daemonSetName, namespaceParameter);
 
             // Status should contain the daemonset name
             Assert.Contains(daemonSetName, status);
@@ -549,7 +549,7 @@ public partial class KubectlTests
             System.Threading.Thread.Sleep(2000);
 
             // Restart the statefulset
-            client.RolloutRestartStatefulSet(statefulSetName, namespaceParameter);
+            client.RolloutRestart<V1StatefulSet>(statefulSetName, namespaceParameter);
 
             // Verify the restart annotation was added
             var updatedStatefulSet = kubernetes.AppsV1.ReadNamespacedStatefulSet(statefulSetName, namespaceParameter);
@@ -626,7 +626,7 @@ public partial class KubectlTests
             kubernetes.AppsV1.CreateNamespacedStatefulSet(statefulSet, namespaceParameter);
 
             // Get rollout status
-            var status = client.RolloutStatusStatefulSet(statefulSetName, namespaceParameter);
+            var status = client.RolloutStatus<V1StatefulSet>(statefulSetName, namespaceParameter);
 
             // Status should contain the statefulset name or status information
             Assert.NotNull(status);

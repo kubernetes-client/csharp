@@ -3,129 +3,77 @@ namespace k8s.kubectl.beta;
 public partial class Kubectl
 {
     /// <summary>
-    /// Restart a Deployment by adding a restart annotation to trigger a rollout.
+    /// Restart a workload resource by adding a restart annotation to trigger a rollout.
     /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
-    public void RolloutRestartDeployment(string name, string @namespace)
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
+    public void RolloutRestart<T>(string name, string @namespace)
+        where T : IKubernetesObject
     {
-        client.RolloutRestartDeploymentAsync(name, @namespace).GetAwaiter().GetResult();
+        client.RolloutRestartAsync<T>(name, @namespace).GetAwaiter().GetResult();
     }
 
     /// <summary>
-    /// Restart a DaemonSet by adding a restart annotation to trigger a rollout.
+    /// Get the rollout status of a workload resource.
     /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    public void RolloutRestartDaemonSet(string name, string @namespace)
-    {
-        client.RolloutRestartDaemonSetAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Restart a StatefulSet by adding a restart annotation to trigger a rollout.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    public void RolloutRestartStatefulSet(string name, string @namespace)
-    {
-        client.RolloutRestartStatefulSetAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Get the rollout status of a Deployment.
-    /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
     /// <returns>A string describing the rollout status.</returns>
-    public string RolloutStatusDeployment(string name, string @namespace)
+    public string RolloutStatus<T>(string name, string @namespace)
+        where T : IKubernetesObject
     {
-        return client.RolloutStatusDeploymentAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Get the rollout status of a DaemonSet.
-    /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    /// <returns>A string describing the rollout status.</returns>
-    public string RolloutStatusDaemonSet(string name, string @namespace)
-    {
-        return client.RolloutStatusDaemonSetAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Get the rollout status of a StatefulSet.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    /// <returns>A string describing the rollout status.</returns>
-    public string RolloutStatusStatefulSet(string name, string @namespace)
-    {
-        return client.RolloutStatusStatefulSetAsync(name, @namespace).GetAwaiter().GetResult();
+        return client.RolloutStatusAsync<T>(name, @namespace).GetAwaiter().GetResult();
     }
 
     /// <summary>
     /// Pause a Deployment rollout.
     /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
     /// <param name="name">The name of the Deployment.</param>
     /// <param name="namespace">The namespace of the Deployment.</param>
-    public void RolloutPauseDeployment(string name, string @namespace)
+    public void RolloutPause<T>(string name, string @namespace)
+        where T : IKubernetesObject
     {
-        client.RolloutPauseDeploymentAsync(name, @namespace).GetAwaiter().GetResult();
+        client.RolloutPauseAsync<T>(name, @namespace).GetAwaiter().GetResult();
     }
 
     /// <summary>
     /// Resume a paused Deployment rollout.
     /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
     /// <param name="name">The name of the Deployment.</param>
     /// <param name="namespace">The namespace of the Deployment.</param>
-    public void RolloutResumeDeployment(string name, string @namespace)
+    public void RolloutResume<T>(string name, string @namespace)
+        where T : IKubernetesObject
     {
-        client.RolloutResumeDeploymentAsync(name, @namespace).GetAwaiter().GetResult();
+        client.RolloutResumeAsync<T>(name, @namespace).GetAwaiter().GetResult();
     }
 
     /// <summary>
     /// Undo a Deployment rollout to a previous revision.
     /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
     /// <param name="name">The name of the Deployment.</param>
     /// <param name="namespace">The namespace of the Deployment.</param>
     /// <param name="toRevision">The revision to roll back to. If 0 or not specified, rolls back to the previous revision.</param>
-    public void RolloutUndoDeployment(string name, string @namespace, long? toRevision = null)
+    public void RolloutUndo<T>(string name, string @namespace, long? toRevision = null)
+        where T : IKubernetesObject
     {
-        client.RolloutUndoDeploymentAsync(name, @namespace, toRevision).GetAwaiter().GetResult();
+        client.RolloutUndoAsync<T>(name, @namespace, toRevision).GetAwaiter().GetResult();
     }
 
     /// <summary>
-    /// Get the rollout history of a Deployment.
+    /// Get the rollout history of a workload resource.
     /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
     /// <returns>A list of revision history entries.</returns>
-    public IList<RolloutHistoryEntry> RolloutHistoryDeployment(string name, string @namespace)
+    public IList<RolloutHistoryEntry> RolloutHistory<T>(string name, string @namespace)
+        where T : IKubernetesObject
     {
-        return client.RolloutHistoryDeploymentAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Get the rollout history of a DaemonSet.
-    /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    /// <returns>A list of revision history entries.</returns>
-    public IList<RolloutHistoryEntry> RolloutHistoryDaemonSet(string name, string @namespace)
-    {
-        return client.RolloutHistoryDaemonSetAsync(name, @namespace).GetAwaiter().GetResult();
-    }
-
-    /// <summary>
-    /// Get the rollout history of a StatefulSet.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    /// <returns>A list of revision history entries.</returns>
-    public IList<RolloutHistoryEntry> RolloutHistoryStatefulSet(string name, string @namespace)
-    {
-        return client.RolloutHistoryStatefulSetAsync(name, @namespace).GetAwaiter().GetResult();
+        return client.RolloutHistoryAsync<T>(name, @namespace).GetAwaiter().GetResult();
     }
 }

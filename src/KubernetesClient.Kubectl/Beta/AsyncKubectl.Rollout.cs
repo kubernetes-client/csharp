@@ -16,82 +16,188 @@ public partial class AsyncKubectl
     }
 
     /// <summary>
-    /// Restart a Deployment by adding a restart annotation to trigger a rollout.
+    /// Restart a workload resource by adding a restart annotation to trigger a rollout.
     /// </summary>
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public async Task RolloutRestartAsync<T>(string name, string @namespace, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
+    {
+        if (typeof(T) == typeof(V1Deployment))
+        {
+            var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var old = JsonSerializer.SerializeToDocument(deployment);
+
+            deployment.Spec.Template.Metadata ??= new V1ObjectMeta();
+            deployment.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
+            deployment.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
+
+            var patch = old.CreatePatch(deployment);
+            await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1DaemonSet))
+        {
+            var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var old = JsonSerializer.SerializeToDocument(daemonSet);
+
+            daemonSet.Spec.Template.Metadata ??= new V1ObjectMeta();
+            daemonSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
+            daemonSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
+
+            var patch = old.CreatePatch(daemonSet);
+            await client.AppsV1.PatchNamespacedDaemonSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1StatefulSet))
+        {
+            var statefulSet = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var old = JsonSerializer.SerializeToDocument(statefulSet);
+
+            statefulSet.Spec.Template.Metadata ??= new V1ObjectMeta();
+            statefulSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
+            statefulSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
+
+            var patch = old.CreatePatch(statefulSet);
+            await client.AppsV1.PatchNamespacedStatefulSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+        else
+        {
+            throw new ArgumentException($"Unsupported resource type: {typeof(T).Name}. Only V1Deployment, V1DaemonSet, and V1StatefulSet are supported.", nameof(T));
+        }
+    }
+
+    /// <summary>
+    /// Get the rollout status of a workload resource.
+    /// </summary>
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A string describing the rollout status.</returns>
+    public async Task<string> RolloutStatusAsync<T>(string name, string @namespace, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
+    {
+        if (typeof(T) == typeof(V1Deployment))
+        {
+            return await RolloutStatusDeploymentInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1DaemonSet))
+        {
+            return await RolloutStatusDaemonSetInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1StatefulSet))
+        {
+            return await RolloutStatusStatefulSetInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else
+        {
+            throw new ArgumentException($"Unsupported resource type: {typeof(T).Name}. Only V1Deployment, V1DaemonSet, and V1StatefulSet are supported.", nameof(T));
+        }
+    }
+
+    /// <summary>
+    /// Pause a Deployment rollout.
+    /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
     /// <param name="name">The name of the Deployment.</param>
     /// <param name="namespace">The namespace of the Deployment.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutRestartDeploymentAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    public async Task RolloutPauseAsync<T>(string name, string @namespace, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
     {
-        var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+        if (typeof(T) != typeof(V1Deployment))
+        {
+            throw new ArgumentException($"Pause is only supported for V1Deployment, not {typeof(T).Name}.", nameof(T));
+        }
 
+        var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
         var old = JsonSerializer.SerializeToDocument(deployment);
 
-        // Add or update the restart annotation to trigger a rollout
-        deployment.Spec.Template.Metadata ??= new V1ObjectMeta();
-        deployment.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        deployment.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
+        deployment.Spec.Paused = true;
 
         var patch = old.CreatePatch(deployment);
-
         await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
-    /// Restart a DaemonSet by adding a restart annotation to trigger a rollout.
+    /// Resume a paused Deployment rollout.
     /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutRestartDaemonSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
-    {
-        var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-
-        var old = JsonSerializer.SerializeToDocument(daemonSet);
-
-        // Add or update the restart annotation to trigger a rollout
-        daemonSet.Spec.Template.Metadata ??= new V1ObjectMeta();
-        daemonSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        daemonSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
-
-        var patch = old.CreatePatch(daemonSet);
-
-        await client.AppsV1.PatchNamespacedDaemonSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Restart a StatefulSet by adding a restart annotation to trigger a rollout.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutRestartStatefulSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
-    {
-        var statefulSet = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-
-        var old = JsonSerializer.SerializeToDocument(statefulSet);
-
-        // Add or update the restart annotation to trigger a rollout
-        statefulSet.Spec.Template.Metadata ??= new V1ObjectMeta();
-        statefulSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        statefulSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
-
-        var patch = old.CreatePatch(statefulSet);
-
-        await client.AppsV1.PatchNamespacedStatefulSetAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Get the rollout status of a Deployment.
-    /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
     /// <param name="name">The name of the Deployment.</param>
     /// <param name="namespace">The namespace of the Deployment.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A string describing the rollout status.</returns>
-    public async Task<string> RolloutStatusDeploymentAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public async Task RolloutResumeAsync<T>(string name, string @namespace, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
+    {
+        if (typeof(T) != typeof(V1Deployment))
+        {
+            throw new ArgumentException($"Resume is only supported for V1Deployment, not {typeof(T).Name}.", nameof(T));
+        }
+
+        var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+        var old = JsonSerializer.SerializeToDocument(deployment);
+
+        deployment.Spec.Paused = false;
+
+        var patch = old.CreatePatch(deployment);
+        await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Undo a Deployment rollout to a previous revision.
+    /// </summary>
+    /// <typeparam name="T">The type of resource (must be V1Deployment).</typeparam>
+    /// <param name="name">The name of the Deployment.</param>
+    /// <param name="namespace">The namespace of the Deployment.</param>
+    /// <param name="toRevision">The revision to roll back to. If 0 or not specified, rolls back to the previous revision.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public async Task RolloutUndoAsync<T>(string name, string @namespace, long? toRevision = null, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
+    {
+        if (typeof(T) != typeof(V1Deployment))
+        {
+            throw new ArgumentException($"Undo is only supported for V1Deployment, not {typeof(T).Name}.", nameof(T));
+        }
+
+        await RolloutUndoDeploymentInternalAsync(name, @namespace, toRevision, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Get the rollout history of a workload resource.
+    /// </summary>
+    /// <typeparam name="T">The type of workload resource (V1Deployment, V1DaemonSet, or V1StatefulSet).</typeparam>
+    /// <param name="name">The name of the resource.</param>
+    /// <param name="namespace">The namespace of the resource.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A list of revision history entries.</returns>
+    public async Task<IList<RolloutHistoryEntry>> RolloutHistoryAsync<T>(string name, string @namespace, CancellationToken cancellationToken = default)
+        where T : IKubernetesObject
+    {
+        if (typeof(T) == typeof(V1Deployment))
+        {
+            return await RolloutHistoryDeploymentInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1DaemonSet))
+        {
+            return await RolloutHistoryDaemonSetInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else if (typeof(T) == typeof(V1StatefulSet))
+        {
+            return await RolloutHistoryStatefulSetInternalAsync(name, @namespace, cancellationToken).ConfigureAwait(false);
+        }
+        else
+        {
+            throw new ArgumentException($"Unsupported resource type: {typeof(T).Name}. Only V1Deployment, V1DaemonSet, and V1StatefulSet are supported.", nameof(T));
+        }
+    }
+
+    // Internal implementation methods
+    private async Task<string> RolloutStatusDeploymentInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -126,14 +232,7 @@ public partial class AsyncKubectl
         return $"deployment \"{name}\" successfully rolled out";
     }
 
-    /// <summary>
-    /// Get the rollout status of a DaemonSet.
-    /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A string describing the rollout status.</returns>
-    public async Task<string> RolloutStatusDaemonSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task<string> RolloutStatusDaemonSetInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -162,14 +261,7 @@ public partial class AsyncKubectl
         return $"daemon set \"{name}\" successfully rolled out";
     }
 
-    /// <summary>
-    /// Get the rollout status of a StatefulSet.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A string describing the rollout status.</returns>
-    public async Task<string> RolloutStatusStatefulSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task<string> RolloutStatusStatefulSetInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var statefulSet = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -210,63 +302,13 @@ public partial class AsyncKubectl
         return $"statefulset rolling update complete {status.CurrentReplicas} pods at revision {status.CurrentRevision}...";
     }
 
-    /// <summary>
-    /// Pause a Deployment rollout.
-    /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutPauseDeploymentAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task RolloutUndoDeploymentInternalAsync(string name, string @namespace, long? toRevision, CancellationToken cancellationToken)
     {
         var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        var old = JsonSerializer.SerializeToDocument(deployment);
-
-        deployment.Spec.Paused = true;
-
-        var patch = old.CreatePatch(deployment);
-
-        await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Resume a paused Deployment rollout.
-    /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutResumeDeploymentAsync(string name, string @namespace, CancellationToken cancellationToken = default)
-    {
-        var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-
-        var old = JsonSerializer.SerializeToDocument(deployment);
-
-        deployment.Spec.Paused = false;
-
-        var patch = old.CreatePatch(deployment);
-
-        await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Undo a Deployment rollout to a previous revision.
-    /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
-    /// <param name="toRevision">The revision to roll back to. If 0 or not specified, rolls back to the previous revision.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task RolloutUndoDeploymentAsync(string name, string @namespace, long? toRevision = null, CancellationToken cancellationToken = default)
-    {
-        var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
-
-        // Get all ReplicaSets for this deployment
         var labelSelector = BuildLabelSelector(deployment.Spec.Selector.MatchLabels);
         var replicaSets = await client.AppsV1.ListNamespacedReplicaSetAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Filter ReplicaSets owned by this deployment
         var ownedReplicaSets = replicaSets.Items
             .Where(rs => rs.Metadata.OwnerReferences?.Any(or => or.Uid == deployment.Metadata.Uid) == true)
             .OrderByDescending(rs =>
@@ -289,7 +331,6 @@ public partial class AsyncKubectl
 
         if (toRevision.HasValue && toRevision.Value > 0)
         {
-            // Find specific revision
             targetReplicaSet = ownedReplicaSets.FirstOrDefault(rs =>
             {
                 if (rs.Metadata.Annotations?.TryGetValue(RevisionAnnotation, out var revisionStr) == true)
@@ -307,7 +348,6 @@ public partial class AsyncKubectl
         }
         else
         {
-            // Use previous revision (second in the list)
             if (ownedReplicaSets.Count < 2)
             {
                 throw new InvalidOperationException($"No previous revision found for deployment {name}");
@@ -316,12 +356,10 @@ public partial class AsyncKubectl
             targetReplicaSet = ownedReplicaSets[1];
         }
 
-        // Update deployment with the template from the target ReplicaSet
         var old = JsonSerializer.SerializeToDocument(deployment);
 
         deployment.Spec.Template = targetReplicaSet.Spec.Template;
 
-        // Add annotation to record the rollback
         deployment.Metadata.Annotations ??= new Dictionary<string, string>();
         deployment.Metadata.Annotations[RevisionAnnotation] =
             targetReplicaSet.Metadata.Annotations?[RevisionAnnotation] ?? "0";
@@ -331,22 +369,13 @@ public partial class AsyncKubectl
         await client.AppsV1.PatchNamespacedDeploymentAsync(new V1Patch(patch, V1Patch.PatchType.JsonPatch), name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Get the rollout history of a Deployment.
-    /// </summary>
-    /// <param name="name">The name of the Deployment.</param>
-    /// <param name="namespace">The namespace of the Deployment.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A list of revision history entries.</returns>
-    public async Task<IList<RolloutHistoryEntry>> RolloutHistoryDeploymentAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task<IList<RolloutHistoryEntry>> RolloutHistoryDeploymentInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Get all ReplicaSets for this deployment
         var labelSelector = BuildLabelSelector(deployment.Spec.Selector.MatchLabels);
         var replicaSets = await client.AppsV1.ListNamespacedReplicaSetAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Filter and process ReplicaSets owned by this deployment
         var history = replicaSets.Items
             .Where(rs => rs.Metadata.OwnerReferences?.Any(or => or.Uid == deployment.Metadata.Uid) == true)
             .Select(rs =>
@@ -376,22 +405,13 @@ public partial class AsyncKubectl
         return history;
     }
 
-    /// <summary>
-    /// Get the rollout history of a DaemonSet.
-    /// </summary>
-    /// <param name="name">The name of the DaemonSet.</param>
-    /// <param name="namespace">The namespace of the DaemonSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A list of revision history entries.</returns>
-    public async Task<IList<RolloutHistoryEntry>> RolloutHistoryDaemonSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task<IList<RolloutHistoryEntry>> RolloutHistoryDaemonSetInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Get ControllerRevisions for this DaemonSet
         var labelSelector = BuildLabelSelector(daemonSet.Spec.Selector.MatchLabels);
         var controllerRevisions = await client.AppsV1.ListNamespacedControllerRevisionAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Filter and process ControllerRevisions owned by this DaemonSet
         var history = controllerRevisions.Items
             .Where(cr => cr.Metadata.OwnerReferences?.Any(or => or.Uid == daemonSet.Metadata.Uid) == true)
             .Select(cr =>
@@ -414,22 +434,13 @@ public partial class AsyncKubectl
         return history;
     }
 
-    /// <summary>
-    /// Get the rollout history of a StatefulSet.
-    /// </summary>
-    /// <param name="name">The name of the StatefulSet.</param>
-    /// <param name="namespace">The namespace of the StatefulSet.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A list of revision history entries.</returns>
-    public async Task<IList<RolloutHistoryEntry>> RolloutHistoryStatefulSetAsync(string name, string @namespace, CancellationToken cancellationToken = default)
+    private async Task<IList<RolloutHistoryEntry>> RolloutHistoryStatefulSetInternalAsync(string name, string @namespace, CancellationToken cancellationToken)
     {
         var statefulSet = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Get ControllerRevisions for this StatefulSet
         var labelSelector = BuildLabelSelector(statefulSet.Spec.Selector.MatchLabels);
         var controllerRevisions = await client.AppsV1.ListNamespacedControllerRevisionAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-        // Filter and process ControllerRevisions owned by this StatefulSet
         var history = controllerRevisions.Items
             .Where(cr => cr.Metadata.OwnerReferences?.Any(or => or.Uid == statefulSet.Metadata.Uid) == true)
             .Select(cr =>
