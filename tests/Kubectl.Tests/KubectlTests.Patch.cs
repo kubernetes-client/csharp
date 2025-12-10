@@ -45,7 +45,7 @@ public partial class KubectlTests
             };
 
             var patch = new V1Patch(patchData, V1Patch.PatchType.StrategicMergePatch);
-            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, configMapName, namespaceParameter);
+            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, namespaceParameter, configMapName);
 
             Assert.NotNull(patchedConfigMap);
             Assert.Equal(configMapName, patchedConfigMap.Metadata.Name);
@@ -117,7 +117,7 @@ public partial class KubectlTests
             };
 
             var patch = new V1Patch(patchData, V1Patch.PatchType.MergePatch);
-            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, configMapName, namespaceParameter);
+            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, namespaceParameter, configMapName);
 
             Assert.NotNull(patchedConfigMap);
             Assert.Equal(configMapName, patchedConfigMap.Metadata.Name);
@@ -186,7 +186,7 @@ public partial class KubectlTests
             };
 
             var patch = new V1Patch(patchData, V1Patch.PatchType.JsonPatch);
-            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, configMapName, namespaceParameter);
+            var patchedConfigMap = client.PatchNamespaced<V1ConfigMap>(patch, namespaceParameter, configMapName);
 
             Assert.NotNull(patchedConfigMap);
             Assert.Equal(configMapName, patchedConfigMap.Metadata.Name);

@@ -22,12 +22,12 @@ public partial class Kubectl
     /// </summary>
     /// <typeparam name="T">The type of Kubernetes resource to patch.</typeparam>
     /// <param name="patch">The patch to apply.</param>
-    /// <param name="name">The name of the resource.</param>
     /// <param name="namespace">The namespace of the resource.</param>
+    /// <param name="name">The name of the resource.</param>
     /// <returns>The patched resource.</returns>
-    public T PatchNamespaced<T>(V1Patch patch, string name, string @namespace)
+    public T PatchNamespaced<T>(V1Patch patch, string @namespace, string name)
         where T : IKubernetesObject
     {
-        return client.PatchNamespacedAsync<T>(patch, name, @namespace).GetAwaiter().GetResult();
+        return client.PatchNamespacedAsync<T>(patch, @namespace, name).GetAwaiter().GetResult();
     }
 }
