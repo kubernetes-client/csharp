@@ -89,17 +89,31 @@ public partial class KubectlTests
         kubernetes.CoreV1.CreateNamespacedService(service, namespaceParameter);
 
         // Delete the service using kubectl
-        var deletedService = client.Delete<V1Service>(serviceName, namespaceParameter);
-
-        Assert.NotNull(deletedService);
-        Assert.Equal(serviceName, deletedService.Metadata.Name);
-        Assert.Equal(namespaceParameter, deletedService.Metadata.NamespaceProperty);
-
-        // Verify the service is deleted
-        Assert.Throws<HttpOperationException>(() =>
+        try
         {
-            kubernetes.CoreV1.ReadNamespacedService(serviceName, namespaceParameter);
-        });
+            var deletedService = client.Delete<V1Service>(serviceName, namespaceParameter);
+
+            Assert.NotNull(deletedService);
+            Assert.Equal(serviceName, deletedService.Metadata.Name);
+            Assert.Equal(namespaceParameter, deletedService.Metadata.NamespaceProperty);
+
+            // Verify the service is deleted
+            Assert.Throws<HttpOperationException>(() =>
+            {
+                kubernetes.CoreV1.ReadNamespacedService(serviceName, namespaceParameter);
+            });
+        }
+        finally
+        {
+            try
+            {
+                client.Delete<V1Service>(serviceName, namespaceParameter);
+            }
+            catch (HttpOperationException)
+            {
+                // Ignore if already deleted
+            }
+        }
     }
 
     [MinikubeFact]
