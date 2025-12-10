@@ -39,18 +39,32 @@ public partial class KubectlTests
 
         kubernetes.CoreV1.CreateNamespacedPod(pod, namespaceParameter);
 
-        // Delete the pod using kubectl
-        var deletedPod = client.Delete<V1Pod>(podName, namespaceParameter);
-
-        Assert.NotNull(deletedPod);
-        Assert.Equal(podName, deletedPod.Metadata.Name);
-        Assert.Equal(namespaceParameter, deletedPod.Metadata.NamespaceProperty);
-
-        // Verify the pod is deleted by checking it doesn't exist
-        Assert.Throws<HttpOperationException>(() =>
+        try
         {
-            kubernetes.CoreV1.ReadNamespacedPod(podName, namespaceParameter);
-        });
+            // Delete the pod using kubectl
+            var deletedPod = client.Delete<V1Pod>(podName, namespaceParameter);
+
+            Assert.NotNull(deletedPod);
+            Assert.Equal(podName, deletedPod.Metadata.Name);
+            Assert.Equal(namespaceParameter, deletedPod.Metadata.NamespaceProperty);
+
+            // Verify the pod is deleted by checking it doesn't exist
+            Assert.Throws<HttpOperationException>(() =>
+            {
+                kubernetes.CoreV1.ReadNamespacedPod(podName, namespaceParameter);
+            });
+        }
+        finally
+        {
+            try
+            {
+                kubernetes.CoreV1.DeleteNamespacedPod(podName, namespaceParameter);
+            }
+            catch (HttpOperationException)
+            {
+                // Ignore if the pod is already deleted
+            }
+        }
     }
 
     [MinikubeFact]
