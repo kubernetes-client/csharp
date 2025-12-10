@@ -71,7 +71,7 @@ public partial class KubectlTests
             // Verify the restart annotation was added
             var updatedDeployment = kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
             Assert.NotNull(updatedDeployment.Spec.Template.Metadata.Annotations);
-            Assert.True(updatedDeployment.Spec.Template.Metadata.Annotations.ContainsKey("kubectl.kubernetes.io/restartedAt"));
+            Assert.Contains("kubectl.kubernetes.io/restartedAt", updatedDeployment.Spec.Template.Metadata.Annotations.Keys);
         }
         finally
         {
@@ -394,7 +394,7 @@ public partial class KubectlTests
             // Verify the restart annotation was added
             var updatedDaemonSet = kubernetes.AppsV1.ReadNamespacedDaemonSet(daemonSetName, namespaceParameter);
             Assert.NotNull(updatedDaemonSet.Spec.Template.Metadata.Annotations);
-            Assert.True(updatedDaemonSet.Spec.Template.Metadata.Annotations.ContainsKey("kubectl.kubernetes.io/restartedAt"));
+            Assert.Contains("kubectl.kubernetes.io/restartedAt", updatedDaemonSet.Spec.Template.Metadata.Annotations.Keys);
         }
         finally
         {
@@ -554,7 +554,7 @@ public partial class KubectlTests
             // Verify the restart annotation was added
             var updatedStatefulSet = kubernetes.AppsV1.ReadNamespacedStatefulSet(statefulSetName, namespaceParameter);
             Assert.NotNull(updatedStatefulSet.Spec.Template.Metadata.Annotations);
-            Assert.True(updatedStatefulSet.Spec.Template.Metadata.Annotations.ContainsKey("kubectl.kubernetes.io/restartedAt"));
+            Assert.Contains("kubectl.kubernetes.io/restartedAt", updatedStatefulSet.Spec.Template.Metadata.Annotations.Keys);
         }
         finally
         {

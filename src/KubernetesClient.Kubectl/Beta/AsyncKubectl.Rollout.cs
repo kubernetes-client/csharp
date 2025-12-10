@@ -6,6 +6,15 @@ namespace k8s.kubectl.beta;
 
 public partial class AsyncKubectl
 {
+    private const string RestartedAtAnnotation = "kubectl.kubernetes.io/restartedAt";
+    private const string RevisionAnnotation = "deployment.kubernetes.io/revision";
+    private const string ChangeCauseAnnotation = "kubernetes.io/change-cause";
+
+    private static string BuildLabelSelector(IDictionary<string, string> matchLabels)
+    {
+        return string.Join(",", matchLabels.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+    }
+
     /// <summary>
     /// Restart a Deployment by adding a restart annotation to trigger a rollout.
     /// </summary>
@@ -22,7 +31,7 @@ public partial class AsyncKubectl
         // Add or update the restart annotation to trigger a rollout
         deployment.Spec.Template.Metadata ??= new V1ObjectMeta();
         deployment.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        deployment.Spec.Template.Metadata.Annotations["kubectl.kubernetes.io/restartedAt"] = DateTime.UtcNow.ToString("o");
+        deployment.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
 
         var patch = old.CreatePatch(deployment);
 
@@ -45,7 +54,7 @@ public partial class AsyncKubectl
         // Add or update the restart annotation to trigger a rollout
         daemonSet.Spec.Template.Metadata ??= new V1ObjectMeta();
         daemonSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        daemonSet.Spec.Template.Metadata.Annotations["kubectl.kubernetes.io/restartedAt"] = DateTime.UtcNow.ToString("o");
+        daemonSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
 
         var patch = old.CreatePatch(daemonSet);
 
@@ -68,7 +77,7 @@ public partial class AsyncKubectl
         // Add or update the restart annotation to trigger a rollout
         statefulSet.Spec.Template.Metadata ??= new V1ObjectMeta();
         statefulSet.Spec.Template.Metadata.Annotations ??= new Dictionary<string, string>();
-        statefulSet.Spec.Template.Metadata.Annotations["kubectl.kubernetes.io/restartedAt"] = DateTime.UtcNow.ToString("o");
+        statefulSet.Spec.Template.Metadata.Annotations[RestartedAtAnnotation] = DateTime.UtcNow.ToString("o");
 
         var patch = old.CreatePatch(statefulSet);
 
@@ -254,7 +263,7 @@ public partial class AsyncKubectl
         var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Get all ReplicaSets for this deployment
-        var labelSelector = string.Join(",", deployment.Spec.Selector.MatchLabels.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+        var labelSelector = BuildLabelSelector(deployment.Spec.Selector.MatchLabels);
         var replicaSets = await client.AppsV1.ListNamespacedReplicaSetAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Filter ReplicaSets owned by this deployment
@@ -262,7 +271,7 @@ public partial class AsyncKubectl
             .Where(rs => rs.Metadata.OwnerReferences?.Any(or => or.Uid == deployment.Metadata.Uid) == true)
             .OrderByDescending(rs =>
             {
-                if (rs.Metadata.Annotations?.TryGetValue("deployment.kubernetes.io/revision", out var revisionStr) == true)
+                if (rs.Metadata.Annotations?.TryGetValue(RevisionAnnotation, out var revisionStr) == true)
                 {
                     return long.TryParse(revisionStr, out var revision) ? revision : 0;
                 }
@@ -283,7 +292,7 @@ public partial class AsyncKubectl
             // Find specific revision
             targetReplicaSet = ownedReplicaSets.FirstOrDefault(rs =>
             {
-                if (rs.Metadata.Annotations?.TryGetValue("deployment.kubernetes.io/revision", out var revisionStr) == true)
+                if (rs.Metadata.Annotations?.TryGetValue(RevisionAnnotation, out var revisionStr) == true)
                 {
                     return long.TryParse(revisionStr, out var revision) && revision == toRevision.Value;
                 }
@@ -314,8 +323,8 @@ public partial class AsyncKubectl
 
         // Add annotation to record the rollback
         deployment.Metadata.Annotations ??= new Dictionary<string, string>();
-        deployment.Metadata.Annotations["deployment.kubernetes.io/revision"] =
-            targetReplicaSet.Metadata.Annotations?["deployment.kubernetes.io/revision"] ?? "0";
+        deployment.Metadata.Annotations[RevisionAnnotation] =
+            targetReplicaSet.Metadata.Annotations?[RevisionAnnotation] ?? "0";
 
         var patch = old.CreatePatch(deployment);
 
@@ -334,7 +343,7 @@ public partial class AsyncKubectl
         var deployment = await client.AppsV1.ReadNamespacedDeploymentAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Get all ReplicaSets for this deployment
-        var labelSelector = string.Join(",", deployment.Spec.Selector.MatchLabels.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+        var labelSelector = BuildLabelSelector(deployment.Spec.Selector.MatchLabels);
         var replicaSets = await client.AppsV1.ListNamespacedReplicaSetAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Filter and process ReplicaSets owned by this deployment
@@ -343,13 +352,13 @@ public partial class AsyncKubectl
             .Select(rs =>
             {
                 var revision = 0L;
-                if (rs.Metadata.Annotations?.TryGetValue("deployment.kubernetes.io/revision", out var revisionStr) == true)
+                if (rs.Metadata.Annotations?.TryGetValue(RevisionAnnotation, out var revisionStr) == true)
                 {
                     long.TryParse(revisionStr, out revision);
                 }
 
                 var changeCause = "<none>";
-                if (rs.Metadata.Annotations?.TryGetValue("kubernetes.io/change-cause", out var cause) == true && !string.IsNullOrEmpty(cause))
+                if (rs.Metadata.Annotations?.TryGetValue(ChangeCauseAnnotation, out var cause) == true && !string.IsNullOrEmpty(cause))
                 {
                     changeCause = cause;
                 }
@@ -379,7 +388,7 @@ public partial class AsyncKubectl
         var daemonSet = await client.AppsV1.ReadNamespacedDaemonSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Get ControllerRevisions for this DaemonSet
-        var labelSelector = string.Join(",", daemonSet.Spec.Selector.MatchLabels.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+        var labelSelector = BuildLabelSelector(daemonSet.Spec.Selector.MatchLabels);
         var controllerRevisions = await client.AppsV1.ListNamespacedControllerRevisionAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Filter and process ControllerRevisions owned by this DaemonSet
@@ -388,7 +397,7 @@ public partial class AsyncKubectl
             .Select(cr =>
             {
                 var changeCause = "<none>";
-                if (cr.Metadata.Annotations?.TryGetValue("kubernetes.io/change-cause", out var cause) == true && !string.IsNullOrEmpty(cause))
+                if (cr.Metadata.Annotations?.TryGetValue(ChangeCauseAnnotation, out var cause) == true && !string.IsNullOrEmpty(cause))
                 {
                     changeCause = cause;
                 }
@@ -417,7 +426,7 @@ public partial class AsyncKubectl
         var statefulSet = await client.AppsV1.ReadNamespacedStatefulSetAsync(name, @namespace, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Get ControllerRevisions for this StatefulSet
-        var labelSelector = string.Join(",", statefulSet.Spec.Selector.MatchLabels.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+        var labelSelector = BuildLabelSelector(statefulSet.Spec.Selector.MatchLabels);
         var controllerRevisions = await client.AppsV1.ListNamespacedControllerRevisionAsync(@namespace, labelSelector: labelSelector, cancellationToken: cancellationToken).ConfigureAwait(false);
 
         // Filter and process ControllerRevisions owned by this StatefulSet
@@ -426,7 +435,7 @@ public partial class AsyncKubectl
             .Select(cr =>
             {
                 var changeCause = "<none>";
-                if (cr.Metadata.Annotations?.TryGetValue("kubernetes.io/change-cause", out var cause) == true && !string.IsNullOrEmpty(cause))
+                if (cr.Metadata.Annotations?.TryGetValue(ChangeCauseAnnotation, out var cause) == true && !string.IsNullOrEmpty(cause))
                 {
                     changeCause = cause;
                 }
