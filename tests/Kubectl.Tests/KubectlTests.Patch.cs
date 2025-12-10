@@ -53,6 +53,16 @@ public partial class KubectlTests
             Assert.Equal("value1", patchedConfigMap.Data["key1"]);
             Assert.Equal("value2", patchedConfigMap.Data["key2"]);
             Assert.Equal("value3", patchedConfigMap.Data["key3"]);
+
+            // Explicitly get the resource to validate it was correctly patched
+            var retrievedConfigMap = client.Get<V1ConfigMap>(configMapName, namespaceParameter);
+
+            Assert.NotNull(retrievedConfigMap);
+            Assert.Equal(configMapName, retrievedConfigMap.Metadata.Name);
+            Assert.Equal(3, retrievedConfigMap.Data.Count);
+            Assert.Equal("value1", retrievedConfigMap.Data["key1"]);
+            Assert.Equal("value2", retrievedConfigMap.Data["key2"]);
+            Assert.Equal("value3", retrievedConfigMap.Data["key3"]);
         }
         finally
         {
@@ -127,6 +137,18 @@ public partial class KubectlTests
             Assert.Equal(2, patchedConfigMap.Data.Count);
             Assert.Equal("updatedValue1", patchedConfigMap.Data["key1"]);
             Assert.Equal("value2", patchedConfigMap.Data["key2"]);
+
+            // Explicitly get the resource to validate it was correctly patched
+            var retrievedConfigMap = client.Get<V1ConfigMap>(configMapName, namespaceParameter);
+
+            Assert.NotNull(retrievedConfigMap);
+            Assert.Equal(configMapName, retrievedConfigMap.Metadata.Name);
+            Assert.Equal(2, retrievedConfigMap.Metadata.Labels.Count);
+            Assert.Equal("test", retrievedConfigMap.Metadata.Labels["app"]);
+            Assert.Equal("testing", retrievedConfigMap.Metadata.Labels["environment"]);
+            Assert.Equal(2, retrievedConfigMap.Data.Count);
+            Assert.Equal("updatedValue1", retrievedConfigMap.Data["key1"]);
+            Assert.Equal("value2", retrievedConfigMap.Data["key2"]);
         }
         finally
         {
@@ -193,6 +215,15 @@ public partial class KubectlTests
             Assert.Equal(2, patchedConfigMap.Data.Count);
             Assert.Equal("updatedValue1", patchedConfigMap.Data["key1"]);
             Assert.Equal("value2", patchedConfigMap.Data["key2"]);
+
+            // Explicitly get the resource to validate it was correctly patched
+            var retrievedConfigMap = client.Get<V1ConfigMap>(configMapName, namespaceParameter);
+
+            Assert.NotNull(retrievedConfigMap);
+            Assert.Equal(configMapName, retrievedConfigMap.Metadata.Name);
+            Assert.Equal(2, retrievedConfigMap.Data.Count);
+            Assert.Equal("updatedValue1", retrievedConfigMap.Data["key1"]);
+            Assert.Equal("value2", retrievedConfigMap.Data["key2"]);
         }
         finally
         {
@@ -253,6 +284,15 @@ public partial class KubectlTests
             Assert.Equal(2, patchedNamespace.Metadata.Labels.Count);
             Assert.Equal("test", patchedNamespace.Metadata.Labels["app"]);
             Assert.Equal("true", patchedNamespace.Metadata.Labels["patched"]);
+
+            // Explicitly get the resource to validate it was correctly patched
+            var retrievedNamespace = client.Get<V1Namespace>(namespaceName);
+
+            Assert.NotNull(retrievedNamespace);
+            Assert.Equal(namespaceName, retrievedNamespace.Metadata.Name);
+            Assert.Equal(2, retrievedNamespace.Metadata.Labels.Count);
+            Assert.Equal("test", retrievedNamespace.Metadata.Labels["app"]);
+            Assert.Equal("true", retrievedNamespace.Metadata.Labels["patched"]);
         }
         finally
         {
