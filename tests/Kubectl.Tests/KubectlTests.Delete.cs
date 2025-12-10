@@ -175,34 +175,52 @@ public partial class KubectlTests
         var client = new Kubectl(kubernetes);
         var namespaceName = "k8scsharp-e2e-delete-ns";
 
-        // Create a test namespace
-        var ns = new V1Namespace
-        {
-            Metadata = new V1ObjectMeta
-            {
-                Name = namespaceName,
-            },
-        };
-
-        kubernetes.CoreV1.CreateNamespace(ns);
-
-        // Delete the namespace using kubectl (cluster-scoped resource, no namespace parameter)
-        var deletedNs = client.Delete<V1Namespace>(namespaceName);
-
-        Assert.NotNull(deletedNs);
-        Assert.Equal(namespaceName, deletedNs.Metadata.Name);
-
-        // Verify the namespace is being deleted or already deleted
-        // Note: Namespace deletion is async, so it might still exist in Terminating state
         try
         {
-            var readNs = kubernetes.CoreV1.ReadNamespace(namespaceName);
-            // If we can still read it, it should be in Terminating status
-            Assert.Equal("Terminating", readNs.Status?.Phase);
+            // Create a test namespace
+            var ns = new V1Namespace
+            {
+                Metadata = new V1ObjectMeta
+                {
+                    Name = namespaceName,
+                },
+            };
+
+            kubernetes.CoreV1.CreateNamespace(ns);
+
+            // Delete the namespace using kubectl (cluster-scoped resource, no namespace parameter)
+            var deletedNs = client.Delete<V1Namespace>(namespaceName);
+
+            Assert.NotNull(deletedNs);
+            Assert.Equal(namespaceName, deletedNs.Metadata.Name);
+
+            // Verify the namespace is being deleted or already deleted
+            // Note: Namespace deletion is async, so it might still exist in Terminating state
+            try
+            {
+                var readNs = kubernetes.CoreV1.ReadNamespace(namespaceName);
+                // If we can still read it, it should be in Terminating status
+                Assert.Equal("Terminating", readNs.Status?.Phase);
+            }
+            catch (HttpOperationException)
+            {
+                // If we can't read it, that's also fine - it's been deleted
+            }
         }
-        catch (HttpOperationException)
+        finally
         {
-            // If we can't read it, that's also fine - it's been deleted
+            try
+            {
+                var ns = kubernetes.CoreV1.ReadNamespace(namespaceName);
+                if (ns != null && ns.Status?.Phase != "Terminating")
+                {
+                    kubernetes.CoreV1.DeleteNamespace(namespaceName, new V1DeleteOptions());
+                }
+            }
+            catch (HttpOperationException)
+            {
+                // Ignore - already deleted or not found
+            }
         }
     }
 }
