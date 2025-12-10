@@ -183,17 +183,31 @@ public partial class KubectlTests
         kubernetes.AppsV1.CreateNamespacedDeployment(deployment, namespaceParameter);
 
         // Delete the deployment using kubectl
-        var deletedDeployment = client.Delete<V1Deployment>(deploymentName, namespaceParameter);
-
-        Assert.NotNull(deletedDeployment);
-        Assert.Equal(deploymentName, deletedDeployment.Metadata.Name);
-        Assert.Equal(namespaceParameter, deletedDeployment.Metadata.NamespaceProperty);
-
-        // Verify the deployment is deleted
-        Assert.Throws<HttpOperationException>(() =>
+        try
         {
-            kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
-        });
+            var deletedDeployment = client.Delete<V1Deployment>(deploymentName, namespaceParameter);
+
+            Assert.NotNull(deletedDeployment);
+            Assert.Equal(deploymentName, deletedDeployment.Metadata.Name);
+            Assert.Equal(namespaceParameter, deletedDeployment.Metadata.NamespaceProperty);
+
+            // Verify the deployment is deleted
+            Assert.Throws<HttpOperationException>(() =>
+            {
+                kubernetes.AppsV1.ReadNamespacedDeployment(deploymentName, namespaceParameter);
+            });
+        }
+        finally
+        {
+            try
+            {
+                kubernetes.AppsV1.DeleteNamespacedDeployment(deploymentName, namespaceParameter);
+            }
+            catch (HttpOperationException)
+            {
+                // Ignore if already deleted
+            }
+        }
     }
 
     [MinikubeFact]
