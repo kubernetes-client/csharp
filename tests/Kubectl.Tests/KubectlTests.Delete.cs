@@ -192,10 +192,8 @@ public partial class KubectlTests
         Assert.NotNull(deletedNs);
         Assert.Equal(namespaceName, deletedNs.Metadata.Name);
 
-        // Wait a bit for namespace deletion to propagate
-        Thread.Sleep(1000);
-
         // Verify the namespace is being deleted or already deleted
+        // Note: Namespace deletion is async, so it might still exist in Terminating state
         try
         {
             var readNs = kubernetes.CoreV1.ReadNamespace(namespaceName);
