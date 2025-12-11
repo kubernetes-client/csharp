@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 
 #if NET8_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization.Metadata;
 #endif
 
@@ -126,6 +127,13 @@ namespace k8s
 
             configure(JsonSerializerOptions);
         }
+
+#if NET8_0_OR_GREATER
+        [RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
+        [RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
+#endif
+        public static object Deserialize(string json, Type returnType, JsonSerializerOptions jsonSerializerOptions = null)
+            => JsonSerializer.Deserialize(json, returnType, jsonSerializerOptions ?? JsonSerializerOptions);
 
         public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
