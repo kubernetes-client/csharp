@@ -34,26 +34,34 @@ namespace k8s
             private const string RFC3339NanoFormat = "yyyy-MM-dd'T'HH':'mm':'ss.fffffffZ";
             private const string RFC3339Format = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
 
+            private static readonly string[] StandardFormats = { RFC3339Format, RFC3339MicroFormat };
+
             public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 var str = reader.GetString();
 
-                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339Format, RFC3339MicroFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out var result))
+                // Try standard formats first
+                if (DateTimeOffset.TryParseExact(str, StandardFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out var result))
                 {
                     return result;
                 }
 
-                // try RFC3339NanoLenient by trimming 1-9 digits to 7 digits
+                // Try RFC3339NanoLenient by trimming 1-9 digits to 7 digits
                 var originalstr = str;
                 str = Regex.Replace(str, @"\.\d+", m => (m.Value + "000000000").Substring(0, 7 + 1)); // 7 digits + 1 for the dot
-                if (DateTimeOffset.TryParseExact(str, new[] { RFC3339NanoFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                if (DateTimeOffset.TryParseExact(str, RFC3339NanoFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                {
+                    return result;
+                }
+
+                // Last resort: try general DateTimeOffset parsing
+                if (DateTimeOffset.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out result))
                 {
                     return result;
                 }
 
                 throw new FormatException($"Unable to parse {originalstr} as RFC3339 RFC3339Micro or RFC3339Nano");
             }
-
 
             public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
             {
