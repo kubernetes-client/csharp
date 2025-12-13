@@ -169,4 +169,36 @@ public class KubernetesJsonTests
         // Also verify it doesn't have 5 digits (which would fail in Kubernetes)
         Assert.DoesNotContain("2025-11-17T22:52:34.96217Z", json);
     }
+
+    [Fact]
+    public void DateTimeWithTimezoneOffsetParsesCorrectly()
+    {
+        // Test that datetime with explicit timezone offset (e.g., +00:00) is parsed correctly
+        // This uses the "last resort" general DateTimeOffset parsing fallback
+        var json = "{\"metadata\":{\"creationTimestamp\":\"2025-12-12T16:16:55.079293+00:00\"}}";
+
+        var secret = KubernetesJson.Deserialize<V1Secret>(json);
+
+        Assert.NotNull(secret.Metadata?.CreationTimestamp);
+        var dt = secret.Metadata.CreationTimestamp.Value;
+
+        Assert.Equal(2025, dt.Year);
+        Assert.Equal(12, dt.Month);
+        Assert.Equal(12, dt.Day);
+        Assert.Equal(16, dt.Hour);
+        Assert.Equal(16, dt.Minute);
+        Assert.Equal(55, dt.Second);
+        Assert.Equal(79, dt.Millisecond);
+#if NET7_0_OR_GREATER
+        Assert.Equal(293, dt.Microsecond);
+#endif
+    }
+
+    [Fact]
+    public void DateTimeNonRfc3339FormatIsRejected()
+    {
+        var json = "{\"metadata\":{\"creationTimestamp\":\"12/31/2023\"}}";
+
+        Assert.Throws<FormatException>(() => KubernetesJson.Deserialize<V1Secret>(json));
+    }
 }
