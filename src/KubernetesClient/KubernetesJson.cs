@@ -55,7 +55,7 @@ namespace k8s
                 }
 
                 // Last resort: try general DateTimeOffset parsing
-                if (DateTimeOffset.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out result))
+                if (DateTimeOffset.TryParse(originalstr, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out result))
                 {
                     return result;
                 }
