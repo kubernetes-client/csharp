@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal sealed class IntOrStringJsonConverter : JsonConverter<IntOrString>
+    public sealed class IntOrStringJsonConverter : JsonConverter<IntOrString>
     {
         public override IntOrString Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
