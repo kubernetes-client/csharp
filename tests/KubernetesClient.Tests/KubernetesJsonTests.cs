@@ -169,4 +169,27 @@ public class KubernetesJsonTests
         // Also verify it doesn't have 5 digits (which would fail in Kubernetes)
         Assert.DoesNotContain("2025-11-17T22:52:34.96217Z", json);
     }
+
+    [Fact]
+    public void NonGenericDeserializeReturnsInstanceOfReturnType()
+    {
+        const string json = """
+                            {
+                              "apiVersion": "v1",
+                              "kind": "Secret",
+                              "metadata": {
+                                "name": "typed-secret"
+                              },
+                              "type": "Opaque"
+                            }
+                            """;
+
+#pragma warning disable CA2263
+        var result = KubernetesJson.Deserialize(json, typeof(V1Secret));
+#pragma warning restore CA2263
+
+        var secret = Assert.IsType<V1Secret>(result);
+        Assert.Equal("typed-secret", secret.Metadata.Name);
+        Assert.Equal("Opaque", secret.Type);
+    }
 }
