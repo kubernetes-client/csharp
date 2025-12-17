@@ -1,6 +1,6 @@
 namespace k8s.Models
 {
-    internal sealed class V1PatchJsonConverter : JsonConverter<V1Patch>
+    public sealed class V1PatchJsonConverter : JsonConverter<V1Patch>
     {
         public override V1Patch Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

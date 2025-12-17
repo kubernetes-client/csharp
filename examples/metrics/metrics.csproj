@@ -4,4 +4,8 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\KubernetesClient.Kubectl\KubernetesClient.Kubectl.csproj" />
+  </ItemGroup>
+
 </Project>
