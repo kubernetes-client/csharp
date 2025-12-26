@@ -81,7 +81,8 @@ namespace k8s
                         (sender, certificate, chain, sslPolicyErrors) =>
                         {
                             // RemoteCertificateValidationCallback doesn't provide HttpRequestMessage, so pass null
-                            return config.ServerCertificateCustomValidationCallback(null, (X509Certificate2)certificate, chain, sslPolicyErrors);
+                            var cert = certificate as X509Certificate2 ?? new X509Certificate2(certificate);
+                            return config.ServerCertificateCustomValidationCallback(null, cert, chain, sslPolicyErrors);
                         };
 #else
                     HttpClientHandler.ServerCertificateCustomValidationCallback = config.ServerCertificateCustomValidationCallback;

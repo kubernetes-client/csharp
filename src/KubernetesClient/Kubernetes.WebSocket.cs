@@ -266,7 +266,8 @@ namespace k8s
                     (sender, certificate, chain, sslPolicyErrors) =>
                     {
                         // Convert to the expected signature (with HttpRequestMessage as first parameter)
-                        return this.ServerCertificateCustomValidationCallback(null, (X509Certificate2)certificate, chain, sslPolicyErrors);
+                        var cert = certificate as X509Certificate2 ?? new X509Certificate2(certificate);
+                        return this.ServerCertificateCustomValidationCallback(null, cert, chain, sslPolicyErrors);
                     });
             }
             else if (this.CaCerts != null)
