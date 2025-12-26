@@ -2,12 +2,12 @@
  * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
  */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System;
-using System.Net.Http;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -77,7 +77,9 @@ namespace k8s.Tests
                     "http://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"),
                 handler.LastRequest.RequestUri);
             Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
-            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.True(handler.LastRequest.Headers.TryGetValues("X-My-Header", out var execHeaderValues));
+            Assert.Equal("myHeaderValue myHeaderValue2", execHeaderValues.Single());
+            Assert.NotNull(handler.LastRequest.Headers.Authorization);
             Assert.Equal("Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=", handler.LastRequest.Headers.Authorization.ToString());
         }
 
@@ -113,7 +115,9 @@ namespace k8s.Tests
                 new Uri("http://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"),
                 handler.LastRequest.RequestUri); // Did we connect to the correct URL?
             Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
-            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.True(handler.LastRequest.Headers.TryGetValues("X-My-Header", out var portForwardHeaderValues));
+            Assert.Equal("myHeaderValue myHeaderValue2", portForwardHeaderValues.Single());
+            Assert.NotNull(handler.LastRequest.Headers.Authorization);
             Assert.Equal(expectedHeaders["Authorization"], handler.LastRequest.Headers.Authorization.ToString());
         }
 
@@ -157,7 +161,9 @@ namespace k8s.Tests
                     "http://localhost:80/api/v1/namespaces/mynamespace/pods/mypod/attach?stderr=1&stdin=1&stdout=1&tty=1&container=my-container"),
                 handler.LastRequest.RequestUri); // Did we connect to the correct URL?
             Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
-            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.True(handler.LastRequest.Headers.TryGetValues("X-My-Header", out var attachHeaderValues));
+            Assert.Equal("myHeaderValue myHeaderValue2", attachHeaderValues.Single());
+            Assert.NotNull(handler.LastRequest.Headers.Authorization);
             Assert.Equal(expectedHeaders["Authorization"], handler.LastRequest.Headers.Authorization.ToString());
         }
     }

@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
@@ -250,6 +251,7 @@ namespace k8s
             cancellationToken.ThrowIfCancellationRequested();
 
             HttpResponseMessage response = null;
+            Stream responseStream = null;
             try
             {
                 BeforeRequest();
@@ -281,17 +283,33 @@ namespace k8s
                 }
 
 #if NET5_0_OR_GREATER
-                var responseStream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                responseStream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 #else
-                var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
 
-                var webSocket = new Http2WebSocket(requestStream, responseStream, response);
+                var webSocket = new Http2WebSocket(requestStream, responseStream, response, webSocketSubProtocol);
+                response = null;
+                responseStream = null;
 
                 return webSocket;
             }
+            catch (Exception ex)
+            {
+                try
+                {
+                    requestStream?.Complete();
+                }
+                catch (Exception cleanupEx)
+                {
+                    throw new AggregateException(ex, cleanupEx);
+                }
+                throw;
+            }
             finally
             {
+                responseStream?.Dispose();
+                response?.Dispose();
                 AfterRequest();
             }
         }

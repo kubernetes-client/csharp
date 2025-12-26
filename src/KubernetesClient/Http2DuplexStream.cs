@@ -1,21 +1,41 @@
+using System;
+using System.Buffers;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace k8s
 {
     internal sealed class ProducerConsumerStream : Stream
     {
-        private readonly Queue<byte[]> queue = new Queue<byte[]>();
+        private readonly struct BufferSegment
+        {
+            public BufferSegment(byte[] buffer, int length, bool rented)
+            {
+                Buffer = buffer;
+                Length = length;
+                Rented = rented;
+            }
+
+            public byte[] Buffer { get; }
+            public int Length { get; }
+            public bool Rented { get; }
+        }
+
+        private readonly Queue<BufferSegment> queue = new Queue<BufferSegment>();
         private readonly SemaphoreSlim dataAvailable = new SemaphoreSlim(0);
         private readonly object gate = new object();
 
-        private byte[] currentBuffer;
+        private BufferSegment currentSegment;
+        private bool hasSegment;
         private int currentOffset;
         private bool isCompleted;
         private bool disposed;
+        private const int BufferPoolThreshold = 1024;
 
         public override bool CanRead => !disposed;
         public override bool CanSeek => false;
@@ -48,7 +68,7 @@ namespace k8s
 
         public override int Read(byte[] buffer, int offset, int count)
         {
-            return ReadAsync(buffer.AsMemory(offset, count)).GetAwaiter().GetResult();
+            return ReadAsync(buffer.AsMemory(offset, count), CancellationToken.None).GetAwaiter().GetResult();
         }
 
         public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
@@ -60,15 +80,21 @@ namespace k8s
 
             while (true)
             {
-                if (currentBuffer != null && currentOffset < currentBuffer.Length)
+                if (hasSegment && currentOffset < currentSegment.Length)
                 {
-                    var toCopy = Math.Min(buffer.Length, currentBuffer.Length - currentOffset);
-                    currentBuffer.AsMemory(currentOffset, toCopy).CopyTo(buffer);
+                    var toCopy = Math.Min(buffer.Length, currentSegment.Length - currentOffset);
+                    currentSegment.Buffer.AsMemory(currentOffset, toCopy).CopyTo(buffer);
                     currentOffset += toCopy;
 
-                    if (currentOffset >= currentBuffer.Length)
+                    if (currentOffset >= currentSegment.Length)
                     {
-                        currentBuffer = null;
+                        if (currentSegment.Rented)
+                        {
+                            ArrayPool<byte>.Shared.Return(currentSegment.Buffer);
+                        }
+
+                        currentSegment = default;
+                        hasSegment = false;
                         currentOffset = 0;
                     }
 
@@ -81,7 +107,8 @@ namespace k8s
                 {
                     if (queue.Count > 0)
                     {
-                        currentBuffer = queue.Dequeue();
+                        currentSegment = queue.Dequeue();
+                        hasSegment = true;
                         currentOffset = 0;
                     }
                     else if (isCompleted)
@@ -104,11 +131,16 @@ namespace k8s
 
         public override void Write(byte[] buffer, int offset, int count)
         {
-            WriteAsync(buffer.AsMemory(offset, count)).GetAwaiter().GetResult();
+            WriteAsync(buffer.AsMemory(offset, count), CancellationToken.None).GetAwaiter().GetResult();
         }
 
-        public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+        public override ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return ValueTask.FromCanceled(cancellationToken);
+            }
+
             if (disposed)
             {
                 throw new ObjectDisposedException(nameof(ProducerConsumerStream));
@@ -119,15 +151,31 @@ namespace k8s
                 throw new InvalidOperationException("Stream already completed.");
             }
 
-            var copy = buffer.ToArray();
-
-            lock (gate)
+            var dataLength = buffer.Length;
+            var usePool = dataLength > BufferPoolThreshold;
+            var rented = usePool ? ArrayPool<byte>.Shared.Rent(dataLength) : new byte[dataLength];
+            try
             {
-                queue.Enqueue(copy);
-            }
+                buffer.Span.CopyTo(rented.AsSpan(0, dataLength));
 
-            dataAvailable.Release();
-            await Task.CompletedTask.ConfigureAwait(false);
+                var segment = new BufferSegment(rented, dataLength, usePool);
+
+                lock (gate)
+                {
+                    queue.Enqueue(segment);
+                }
+
+                dataAvailable.Release();
+                return ValueTask.CompletedTask;
+            }
+            catch
+            {
+                if (usePool)
+                {
+                    ArrayPool<byte>.Shared.Return(rented);
+                }
+                throw;
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -135,6 +183,26 @@ namespace k8s
             if (disposed)
             {
                 return;
+            }
+
+            lock (gate)
+            {
+                if (hasSegment && currentSegment.Rented)
+                {
+                    ArrayPool<byte>.Shared.Return(currentSegment.Buffer);
+                }
+
+                hasSegment = false;
+                currentSegment = default;
+
+                while (queue.Count > 0)
+                {
+                    var segment = queue.Dequeue();
+                    if (segment.Rented)
+                    {
+                        ArrayPool<byte>.Shared.Return(segment.Buffer);
+                    }
+                }
             }
 
             disposed = true;
@@ -175,24 +243,45 @@ namespace k8s
         private readonly ProducerConsumerStream requestStream;
         private readonly Stream responseStream;
         private readonly HttpResponseMessage response;
+        private readonly string subProtocol;
+        private readonly object closeGate = new object();
         private WebSocketCloseStatus? closeStatus;
         private string closeStatusDescription;
         private WebSocketState state = WebSocketState.Open;
 
-        public Http2WebSocket(ProducerConsumerStream requestStream, Stream responseStream, HttpResponseMessage response)
+        public Http2WebSocket(ProducerConsumerStream requestStream, Stream responseStream, HttpResponseMessage response, string subProtocol)
         {
             this.requestStream = requestStream ?? throw new ArgumentNullException(nameof(requestStream));
             this.responseStream = responseStream ?? throw new ArgumentNullException(nameof(responseStream));
             this.response = response ?? throw new ArgumentNullException(nameof(response));
+            this.subProtocol = subProtocol;
         }
 
-        public override WebSocketCloseStatus? CloseStatus => closeStatus;
+        public override WebSocketCloseStatus? CloseStatus
+        {
+            get
+            {
+                lock (closeGate)
+                {
+                    return closeStatus;
+                }
+            }
+        }
 
-        public override string CloseStatusDescription => closeStatusDescription;
+        public override string CloseStatusDescription
+        {
+            get
+            {
+                lock (closeGate)
+                {
+                    return closeStatusDescription;
+                }
+            }
+        }
 
         public override WebSocketState State => state;
 
-        public override string SubProtocol => null;
+        public override string SubProtocol => subProtocol;
 
         public override void Abort()
         {
@@ -203,17 +292,48 @@ namespace k8s
 
         public override async Task CloseAsync(WebSocketCloseStatus closeStatus, string statusDescription, CancellationToken cancellationToken)
         {
-            this.closeStatus ??= closeStatus;
-            closeStatusDescription ??= statusDescription;
+            lock (closeGate)
+            {
+                if (this.closeStatus == null)
+                {
+                    this.closeStatus = closeStatus;
+                }
+
+                if (this.closeStatusDescription == null)
+                {
+                    this.closeStatusDescription = statusDescription;
+                }
+            }
             state = WebSocketState.Closed;
             requestStream.Complete();
-            await responseStream.FlushAsync(cancellationToken).ConfigureAwait(false);
-            response.Dispose();
+            try
+            {
+                await responseStream.FlushAsync(cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                response.Dispose();
+            }
         }
 
         public override Task CloseOutputAsync(WebSocketCloseStatus closeStatus, string statusDescription, CancellationToken cancellationToken)
         {
-            return CloseAsync(closeStatus, statusDescription, cancellationToken);
+            lock (closeGate)
+            {
+                if (this.closeStatus == null)
+                {
+                    this.closeStatus = closeStatus;
+                }
+
+                if (this.closeStatusDescription == null)
+                {
+                    this.closeStatusDescription = statusDescription;
+                }
+            }
+
+            requestStream.Complete();
+            state = WebSocketState.CloseSent;
+            return Task.CompletedTask;
         }
 
         public override void Dispose()
@@ -224,18 +344,24 @@ namespace k8s
             }
 
             response.Dispose();
-            responseStream.Dispose();
             state = WebSocketState.Closed;
             base.Dispose();
         }
 
         public override async Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
-            var bytesRead = await responseStream.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
+            var memory = buffer.Array == null && buffer.Count == 0 ? Memory<byte>.Empty : buffer.AsMemory();
+            var bytesRead = await responseStream.ReadAsync(memory, cancellationToken).ConfigureAwait(false);
 
             if (bytesRead == 0)
             {
-                closeStatus ??= WebSocketCloseStatus.NormalClosure;
+                lock (closeGate)
+                {
+                    if (closeStatus == null)
+                    {
+                        closeStatus = WebSocketCloseStatus.NormalClosure;
+                    }
+                }
                 state = WebSocketState.CloseReceived;
                 return new WebSocketReceiveResult(0, WebSocketMessageType.Close, true, closeStatus, closeStatusDescription);
             }
