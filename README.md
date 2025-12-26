@@ -154,6 +154,7 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
 | SDK Version | Kubernetes Version | .NET Targeting                                      |
 |-------------|--------------------|-----------------------------------------------------|
+| 19.0        | 1.35               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |
 | 18.0        | 1.34               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |
 | 17.0        | 1.33               | net8.0;net9.0;net48*;netstandard2.0*                |
 | 16.0        | 1.32               | net8.0;net9.0;net48*;netstandard2.0*                |
