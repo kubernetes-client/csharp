@@ -112,9 +112,9 @@ namespace LibKubernetesGenerator
         {
             if (schema != null)
             {
-                if (schema.IsArray)
+                if (schema.IsArray && schema.Item != null)
                 {
-                    return $"IList<{GetDotNetType(schema.Item!, parent, isCollectionItem: true)}>?";
+                    return $"IList<{GetDotNetType(schema.Item, parent, isCollectionItem: true)}>?";
                 }
 
                 if (schema.IsDictionary && schema.AdditionalPropertiesSchema != null)
@@ -122,17 +122,14 @@ namespace LibKubernetesGenerator
                     return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent, isCollectionItem: true)}>?";
                 }
 
-                if (schema?.Reference != null)
+                if (schema.Reference != null)
                 {
                     var typeName = classNameHelper.GetClassNameForSchemaDefinition(schema.Reference);
                     // Collection items are always non-nullable, unless we're at the root level
                     return (isCollectionItem || parent.IsRequired) ? typeName : typeName + "?";
                 }
 
-                if (schema != null)
-                {
-                    return GetDotNetType(schema.Type, parent.Name, isCollectionItem || parent.IsRequired, schema.Format);
-                }
+                return GetDotNetType(schema.Type, parent.Name, isCollectionItem || parent.IsRequired, schema.Format);
             }
 
             return GetDotNetType(parent.Type, parent.Name, isCollectionItem || parent.IsRequired, parent.Format);
@@ -146,10 +143,10 @@ namespace LibKubernetesGenerator
                 return p.IsRequired ? typeName : typeName + "?";
             }
 
-            if (p.IsArray)
+            if (p.IsArray && p.Item != null)
             {
                 // getType - items in arrays are non-nullable
-                return $"IList<{GetDotNetType(p.Item!, p, isCollectionItem: true)}>?";
+                return $"IList<{GetDotNetType(p.Item, p, isCollectionItem: true)}>?";
             }
 
             if (p.IsDictionary && p.AdditionalPropertiesSchema != null)
