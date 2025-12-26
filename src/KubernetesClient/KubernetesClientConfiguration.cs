@@ -64,9 +64,15 @@ namespace k8s
         ///     Takes precedence over <see cref="SkipTlsVerify"/> when set.
         /// </summary>
         /// <remarks>
+        ///     <para>
+        ///     The callback signature is: <c>Func&lt;HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool&gt;</c>.
+        ///     Note that the HttpRequestMessage parameter may be null in some contexts (e.g., WebSocket connections).
+        ///     </para>
+        ///     <para>
         ///     Example usage to disable revocation checking:
+        ///     </para>
         ///     <code>
-        ///     config.ServerCertificateCustomValidationCallback = (sender, cert, chain, errors) =>
+        ///     config.ServerCertificateCustomValidationCallback = (request, cert, chain, errors) =>
         ///     {
         ///         if (errors == SslPolicyErrors.None)
         ///             return true;
