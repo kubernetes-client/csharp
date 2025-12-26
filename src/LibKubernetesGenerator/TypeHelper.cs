@@ -23,7 +23,7 @@ namespace LibKubernetesGenerator
             scriptObject.Import(nameof(IfType), new Func<JsonSchemaProperty, string, bool>(IfType));
         }
 
-        private string GetDotNetType(JsonObjectType jsonType, string name, bool required, string format)
+        private string GetDotNetType(JsonObjectType jsonType, string name, bool required, string? format)
         {
             if (name == "pretty" && !required)
             {
@@ -108,13 +108,13 @@ namespace LibKubernetesGenerator
             }
         }
 
-        private string GetDotNetType(JsonSchema schema, JsonSchemaProperty parent, bool isCollectionItem = false)
+        private string GetDotNetType(JsonSchema? schema, JsonSchemaProperty parent, bool isCollectionItem = false)
         {
             if (schema != null)
             {
                 if (schema.IsArray)
                 {
-                    return $"IList<{GetDotNetType(schema.Item, parent, isCollectionItem: true)}>?";
+                    return $"IList<{GetDotNetType(schema.Item!, parent, isCollectionItem: true)}>?";
                 }
 
                 if (schema.IsDictionary && schema.AdditionalPropertiesSchema != null)
@@ -149,7 +149,7 @@ namespace LibKubernetesGenerator
             if (p.IsArray)
             {
                 // getType - items in arrays are non-nullable
-                return $"IList<{GetDotNetType(p.Item, p, isCollectionItem: true)}>?";
+                return $"IList<{GetDotNetType(p.Item!, p, isCollectionItem: true)}>?";
             }
 
             if (p.IsDictionary && p.AdditionalPropertiesSchema != null)
