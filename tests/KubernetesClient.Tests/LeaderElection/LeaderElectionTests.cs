@@ -409,6 +409,76 @@ namespace k8s.Tests.LeaderElection
             Assert.True(notifications.SequenceEqual(new[] { "foo1" }));
         }
 
+        [Fact]
+        public void LeaderElectionUsesActualLeaseDurationFromKubernetesObject()
+        {
+            // This test validates that the actual lease duration from the Kubernetes object
+            // is used instead of the configured lease duration when checking if a lease has expired.
+            // This is critical for graceful step-downs where a leader sets lease duration to 1 second.
+
+            var l = new Mock<ILock>();
+            l.Setup(obj => obj.Identity).Returns("client1");
+
+            var firstCallTime = DateTime.UtcNow;
+            var callCount = 0;
+
+            l.Setup(obj => obj.GetAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() =>
+                {
+                    callCount++;
+                    // Return a lease held by another client with a short 1-second duration (graceful step-down)
+                    return new LeaderElectionRecord()
+                    {
+                        HolderIdentity = "client2",
+                        AcquireTime = firstCallTime.AddSeconds(-5),
+                        RenewTime = firstCallTime,
+                        LeaderTransitions = 1,
+                        LeaseDurationSeconds = 1, // Actual lease duration is 1 second (not the configured 10 seconds)
+                    };
+                });
+
+            var updateCalled = false;
+            l.Setup(obj => obj.UpdateAsync(It.IsAny<LeaderElectionRecord>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() =>
+                {
+                    updateCalled = true;
+                    return true;
+                });
+
+            var leaderElector = new LeaderElector(new LeaderElectionConfig(l.Object)
+            {
+                LeaseDuration = TimeSpan.FromSeconds(10), // Configured for 10 seconds
+                RetryPeriod = TimeSpan.FromMilliseconds(200),
+                RenewDeadline = TimeSpan.FromSeconds(9),
+            });
+
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3));
+
+            // Run the leader election
+            var task = Task.Run(async () =>
+            {
+                try
+                {
+                    await leaderElector.RunUntilLeadershipLostAsync(cts.Token).ConfigureAwait(false);
+                }
+                catch (OperationCanceledException)
+                {
+                    // Expected when timeout occurs
+                }
+            });
+
+            // Wait for the task to complete or timeout
+            task.Wait(TimeSpan.FromSeconds(4));
+
+            // The key assertion: With the fix, the lease should be recognized as expired after ~1 second
+            // (the actual lease duration from the K8s object), not after 10 seconds (the configured duration).
+            // Therefore, UpdateAsync should have been called to attempt to acquire leadership.
+            Assert.True(updateCalled,
+                "UpdateAsync should have been called after the actual lease duration (1 second) expired, " +
+                "not after the configured lease duration (10 seconds). This test validates that the fix " +
+                "correctly uses oldLeaderElectionRecord.LeaseDurationSeconds instead of config.LeaseDuration.");
+        }
+
         private class MockResourceLock : ILock
         {
             private static LeaderElectionRecord leaderRecord;
