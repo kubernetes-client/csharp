@@ -192,7 +192,7 @@ namespace k8s.LeaderElection
             }
 
             if (!string.IsNullOrEmpty(oldLeaderElectionRecord.HolderIdentity)
-                && observedTime + config.LeaseDuration > DateTimeOffset.Now
+                && observedTime + TimeSpan.FromSeconds(oldLeaderElectionRecord.LeaseDurationSeconds) > DateTimeOffset.Now
                 && !IsLeader())
             {
                 // lock is held by %v and has not yet expired", oldLeaderElectionRecord.HolderIdentity
