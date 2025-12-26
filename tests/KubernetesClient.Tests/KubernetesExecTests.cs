@@ -2,9 +2,12 @@
  * These tests are only for the netstandard version of the client (there are separate tests for netcoreapp that connect to a local test-hosted server).
  */
 
-using k8s.Tests.Mock;
-using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System;
+using System.Net.Http;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -13,16 +16,28 @@ namespace k8s.Tests
 {
     public class KubernetesExecTests
     {
-        /// <summary>
-        /// Tests the <see cref="Kubernetes.WebSocketNamespacedPodExecWithHttpMessagesAsync(string, string, string, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>
-        /// method. Changes the <see cref="WebSocketBuilder"/> used by the client with a mock builder, so this test never hits the network.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="Task"/> which represents the asynchronous test.
-        /// </returns>
+        private class CaptureHandler : HttpMessageHandler
+        {
+            public HttpRequestMessage LastRequest { get; private set; }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                LastRequest = request;
+
+                var response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StreamContent(new MemoryStream()),
+                    Version = HttpVersion.Version20,
+                };
+
+                return Task.FromResult(response);
+            }
+        }
+
         [Fact]
         public async Task WebSocketNamespacedPodExecAsync()
         {
+            var handler = new CaptureHandler();
             var clientConfiguration = new KubernetesClientConfiguration()
             {
                 Host = "http://localhost",
@@ -30,13 +45,10 @@ namespace k8s.Tests
                 Password = "my-secret-password",
             };
 
-            var client = new Kubernetes(clientConfiguration)
+            var client = new Kubernetes(clientConfiguration, handler)
             {
                 BaseUri = new Uri("http://localhost"),
             };
-
-            MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();
-            client.CreateWebSocketBuilder = () => mockWebSocketBuilder;
 
             var webSocket = await client.WebSocketNamespacedPodExecAsync(
                 name: "mypod",
@@ -59,29 +71,26 @@ namespace k8s.Tests
                 { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
-            Assert.Equal(
-                mockWebSocketBuilder.PublicWebSocket,
-                webSocket); // Did the method return the correct web socket?
+            Assert.NotNull(webSocket);
             Assert.Equal(
                 new Uri(
-                    "ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"),
-                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
-            Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
-            Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
+                    "http://localhost/api/v1/namespaces/mynamespace/pods/mypod/exec?command=%2Fbin%2Fbash&command=-c&command=echo%20Hello%2C%20World%0Aexit%200%0A&container=mycontainer&stderr=1&stdin=1&stdout=1&tty=1"),
+                handler.LastRequest.RequestUri);
+            Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
+            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.Equal("Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=", handler.LastRequest.Headers.Authorization.ToString());
         }
 
         [Fact]
         public async Task WebSocketNamespacedPodPortForwardAsync()
         {
+            var handler = new CaptureHandler();
             Kubernetes client = new Kubernetes(new KubernetesClientConfiguration()
             {
                 Host = "http://localhost",
                 Username = "my-user",
                 Password = "my-secret-password",
-            });
-
-            MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();
-            client.CreateWebSocketBuilder = () => mockWebSocketBuilder;
+            }, handler);
 
             var webSocket = await client.WebSocketNamespacedPodPortForwardAsync(
                 name: "mypod",
@@ -99,31 +108,28 @@ namespace k8s.Tests
                 { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
+            Assert.NotNull(webSocket);
             Assert.Equal(
-                mockWebSocketBuilder.PublicWebSocket,
-                webSocket); // Did the method return the correct web socket?
-            Assert.Equal(
-                new Uri("ws://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"),
-                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
-            Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
-            Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
+                new Uri("http://localhost/api/v1/namespaces/mynamespace/pods/mypod/portforward?ports=80&ports=8080"),
+                handler.LastRequest.RequestUri); // Did we connect to the correct URL?
+            Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
+            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.Equal(expectedHeaders["Authorization"], handler.LastRequest.Headers.Authorization.ToString());
         }
 
         [Fact]
         public async Task WebSocketNamespacedPodAttachAsync()
         {
+            var handler = new CaptureHandler();
             Kubernetes client = new Kubernetes(new KubernetesClientConfiguration()
             {
                 Host = "http://localhost",
                 Username = "my-user",
                 Password = "my-secret-password",
-            })
+            }, handler)
             {
                 BaseUri = new Uri("http://localhost"),
             };
-
-            MockWebSocketBuilder mockWebSocketBuilder = new MockWebSocketBuilder();
-            client.CreateWebSocketBuilder = () => mockWebSocketBuilder;
 
             var webSocket = await client.WebSocketNamespacedPodAttachAsync(
                 name: "mypod",
@@ -145,15 +151,14 @@ namespace k8s.Tests
                 { "Authorization", "Basic bXktdXNlcjpteS1zZWNyZXQtcGFzc3dvcmQ=" },
             };
 
-            Assert.Equal(
-                mockWebSocketBuilder.PublicWebSocket,
-                webSocket); // Did the method return the correct web socket?
+            Assert.NotNull(webSocket); // Did the method return the correct web socket?
             Assert.Equal(
                 new Uri(
-                    "ws://localhost:80/api/v1/namespaces/mynamespace/pods/mypod/attach?stderr=1&stdin=1&stdout=1&tty=1&container=my-container"),
-                mockWebSocketBuilder.Uri); // Did we connect to the correct URL?
-            Assert.Empty(mockWebSocketBuilder.Certificates); // No certificates were used in this test
-            Assert.Equal(expectedHeaders, mockWebSocketBuilder.RequestHeaders); // Did we use the expected headers
+                    "http://localhost:80/api/v1/namespaces/mynamespace/pods/mypod/attach?stderr=1&stdin=1&stdout=1&tty=1&container=my-container"),
+                handler.LastRequest.RequestUri); // Did we connect to the correct URL?
+            Assert.Equal(HttpVersion.Version20, handler.LastRequest.Version);
+            Assert.Empty(handler.LastRequest.Headers.GetValues("X-My-Header").Except(new[] { "myHeaderValue myHeaderValue2" }));
+            Assert.Equal(expectedHeaders["Authorization"], handler.LastRequest.Headers.Authorization.ToString());
         }
     }
 }
