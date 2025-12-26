@@ -81,7 +81,7 @@ namespace LibKubernetesGenerator
                     switch (format)
                     {
                         case "byte":
-                            return "byte[]";
+                            return required ? "byte[]" : "byte[]?";
                         case "date-time":
 
                             // eventTime is required but should be optional, see https://github.com/kubernetes-client/csharp/issues/1197
@@ -100,58 +100,61 @@ namespace LibKubernetesGenerator
                             }
                     }
 
-                    return "string";
+                    return required ? "string" : "string?";
                 case JsonObjectType.Object:
-                    return "object";
+                    return required ? "object" : "object?";
                 default:
                     throw new NotSupportedException();
             }
         }
 
-        private string GetDotNetType(JsonSchema schema, JsonSchemaProperty parent)
+        private string GetDotNetType(JsonSchema schema, JsonSchemaProperty parent, bool isCollectionItem = false)
         {
             if (schema != null)
             {
                 if (schema.IsArray)
                 {
-                    return $"IList<{GetDotNetType(schema.Item, parent)}>";
+                    return $"IList<{GetDotNetType(schema.Item, parent, isCollectionItem: true)}>?";
                 }
 
                 if (schema.IsDictionary && schema.AdditionalPropertiesSchema != null)
                 {
-                    return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent)}>";
+                    return $"IDictionary<string, {GetDotNetType(schema.AdditionalPropertiesSchema, parent, isCollectionItem: true)}>?";
                 }
 
                 if (schema?.Reference != null)
                 {
-                    return classNameHelper.GetClassNameForSchemaDefinition(schema.Reference);
+                    var typeName = classNameHelper.GetClassNameForSchemaDefinition(schema.Reference);
+                    // Collection items are always non-nullable, unless we're at the root level
+                    return (isCollectionItem || parent.IsRequired) ? typeName : typeName + "?";
                 }
 
                 if (schema != null)
                 {
-                    return GetDotNetType(schema.Type, parent.Name, parent.IsRequired, schema.Format);
+                    return GetDotNetType(schema.Type, parent.Name, isCollectionItem || parent.IsRequired, schema.Format);
                 }
             }
 
-            return GetDotNetType(parent.Type, parent.Name, parent.IsRequired, parent.Format);
+            return GetDotNetType(parent.Type, parent.Name, isCollectionItem || parent.IsRequired, parent.Format);
         }
 
         public string GetDotNetType(JsonSchemaProperty p)
         {
             if (p.Reference != null)
             {
-                return classNameHelper.GetClassNameForSchemaDefinition(p.Reference);
+                var typeName = classNameHelper.GetClassNameForSchemaDefinition(p.Reference);
+                return p.IsRequired ? typeName : typeName + "?";
             }
 
             if (p.IsArray)
             {
-                // getType
-                return $"IList<{GetDotNetType(p.Item, p)}>";
+                // getType - items in arrays are non-nullable
+                return $"IList<{GetDotNetType(p.Item, p, isCollectionItem: true)}>?";
             }
 
             if (p.IsDictionary && p.AdditionalPropertiesSchema != null)
             {
-                return $"IDictionary<string, {GetDotNetType(p.AdditionalPropertiesSchema, p)}>";
+                return $"IDictionary<string, {GetDotNetType(p.AdditionalPropertiesSchema, p, isCollectionItem: true)}>?";
             }
 
             return GetDotNetType(p.Type, p.Name, p.IsRequired, p.Format);
@@ -161,7 +164,8 @@ namespace LibKubernetesGenerator
         {
             if (parameter.Schema?.Reference != null)
             {
-                return classNameHelper.GetClassNameForSchemaDefinition(parameter.Schema.Reference);
+                var typeName = classNameHelper.GetClassNameForSchemaDefinition(parameter.Schema.Reference);
+                return parameter.IsRequired ? typeName : typeName + "?";
             }
             else if (parameter.Schema != null)
             {
