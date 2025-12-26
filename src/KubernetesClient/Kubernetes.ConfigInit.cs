@@ -37,6 +37,7 @@ namespace k8s
 
             SkipTlsVerify = config.SkipTlsVerify;
             TlsServerName = config.TlsServerName;
+            ServerCertificateCustomValidationCallback = config.ServerCertificateCustomValidationCallback;
             CreateHttpClient(handlers, config);
             InitializeFromConfig(config);
             HttpClientTimeout = config.HttpClientTimeout;
@@ -72,7 +73,21 @@ namespace k8s
         {
             if (BaseUri.Scheme == "https")
             {
-                if (config.SkipTlsVerify)
+                // Custom validation callback takes precedence
+                if (config.ServerCertificateCustomValidationCallback != null)
+                {
+#if NET5_0_OR_GREATER
+                    HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
+                        (sender, certificate, chain, sslPolicyErrors) =>
+                        {
+                            // RemoteCertificateValidationCallback doesn't provide HttpRequestMessage, so pass null
+                            return config.ServerCertificateCustomValidationCallback(null, (X509Certificate2)certificate, chain, sslPolicyErrors);
+                        };
+#else
+                    HttpClientHandler.ServerCertificateCustomValidationCallback = config.ServerCertificateCustomValidationCallback;
+#endif
+                }
+                else if (config.SkipTlsVerify)
                 {
 #if NET5_0_OR_GREATER
                     HttpClientHandler.SslOptions.RemoteCertificateValidationCallback =
@@ -127,6 +142,8 @@ namespace k8s
         private bool SkipTlsVerify { get; }
 
         private string TlsServerName { get; }
+
+        private Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool> ServerCertificateCustomValidationCallback { get; }
 
         // NOTE: this method replicates the logic that the base ServiceClient uses except that it doesn't insert the RetryDelegatingHandler
         // and it does insert the WatcherDelegatingHandler. we don't want the RetryDelegatingHandler because it has a very broad definition

@@ -259,12 +259,21 @@ namespace k8s
                 }
             }
 
-            if (this.CaCerts != null)
+            // Custom validation callback takes precedence
+            if (this.ServerCertificateCustomValidationCallback != null)
+            {
+                webSocketBuilder.SetServerCertificateCustomValidationCallback(
+                    (sender, certificate, chain, sslPolicyErrors) =>
+                    {
+                        // Convert to the expected signature (with HttpRequestMessage as first parameter)
+                        return this.ServerCertificateCustomValidationCallback(null, (X509Certificate2)certificate, chain, sslPolicyErrors);
+                    });
+            }
+            else if (this.CaCerts != null)
             {
                 webSocketBuilder.ExpectServerCertificate(this.CaCerts);
             }
-
-            if (this.SkipTlsVerify)
+            else if (this.SkipTlsVerify)
             {
                 webSocketBuilder.SkipServerCertificateValidation();
             }
