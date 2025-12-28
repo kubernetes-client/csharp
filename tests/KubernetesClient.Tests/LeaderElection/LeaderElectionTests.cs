@@ -452,7 +452,7 @@ namespace k8s.Tests.LeaderElection
                 RenewDeadline = TimeSpan.FromSeconds(9),
             });
 
-            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3));
 
             // Run the leader election
             var task = Task.Run(async () =>
