@@ -1,20 +1,14 @@
 using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace k8s
 {
     public partial class Kubernetes
     {
-        /// <summary>
-        /// Gets a function which returns a <see cref="WebSocketBuilder"/> which <see cref="Kubernetes"/> will use to
-        /// create a new <see cref="WebSocket"/> connection to the Kubernetes cluster.
-        /// </summary>
-        public Func<WebSocketBuilder> CreateWebSocketBuilder { get; set; } = () => new WebSocketBuilder();
-
         /// <inheritdoc/>
         public Task<WebSocket> WebSocketNamespacedPodExecAsync(string name, string @namespace = "default",
             string command = null, string container = null, bool stderr = true, bool stdin = true, bool stdout = true,
@@ -82,7 +76,7 @@ namespace k8s
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri)
             {
-                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+                Scheme = BaseUri.Scheme,
             };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
@@ -143,7 +137,7 @@ namespace k8s
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri)
             {
-                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+                Scheme = BaseUri.Scheme,
             };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
@@ -189,7 +183,7 @@ namespace k8s
             // Construct URL
             var uriBuilder = new UriBuilder(BaseUri)
             {
-                Scheme = BaseUri.Scheme == "https" ? "wss" : "ws",
+                Scheme = BaseUri.Scheme,
             };
 
             if (!uriBuilder.Path.EndsWith("/", StringComparison.InvariantCulture))
@@ -222,96 +216,54 @@ namespace k8s
                 throw new ArgumentNullException(nameof(uri));
             }
 
-            // Create WebSocket transport objects
-            var webSocketBuilder = CreateWebSocketBuilder();
+            var requestStream = new ProducerConsumerStream();
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri)
+            {
+                Version = HttpVersion.Version20,
+                VersionPolicy = HttpVersionPolicy.RequestVersionExact,
+                Content = new DuplexStreamContent(requestStream),
+            };
 
-            // Set Headers
+            if (!string.IsNullOrWhiteSpace(TlsServerName))
+            {
+                requestMessage.Headers.Host = TlsServerName;
+            }
+
             if (customHeaders != null)
             {
                 foreach (var header in customHeaders)
                 {
-                    webSocketBuilder.SetRequestHeader(header.Key, string.Join(" ", header.Value));
-                }
-            }
-
-            // Set Credentials
-            if (this.HttpClientHandler != null)
-            {
-#if NET5_0_OR_GREATER
-                foreach (var cert in this.HttpClientHandler.SslOptions.ClientCertificates.OfType<X509Certificate2>())
-#else
-                foreach (var cert in this.HttpClientHandler.ClientCertificates.OfType<X509Certificate2>())
-#endif
-                {
-                    webSocketBuilder.AddClientCertificate(cert);
+                    requestMessage.Headers.Remove(header.Key);
+                    requestMessage.Headers.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }
 
             if (Credentials != null)
             {
-                // Copy the default (credential-related) request headers from the HttpClient to the WebSocket
-                var message = new HttpRequestMessage();
-                await Credentials.ProcessHttpRequestAsync(message, cancellationToken).ConfigureAwait(false);
-
-                foreach (var header in message.Headers)
-                {
-                    webSocketBuilder.SetRequestHeader(header.Key, string.Join(" ", header.Value));
-                }
+                await Credentials.ProcessHttpRequestAsync(requestMessage, cancellationToken).ConfigureAwait(false);
             }
 
-            if (this.CaCerts != null)
+            if (!string.IsNullOrEmpty(webSocketSubProtocol))
             {
-                webSocketBuilder.ExpectServerCertificate(this.CaCerts);
+                requestMessage.Headers.TryAddWithoutValidation("X-Stream-Protocol-Version", webSocketSubProtocol);
             }
 
-            if (this.SkipTlsVerify)
-            {
-                webSocketBuilder.SkipServerCertificateValidation();
-            }
-
-            if (webSocketSubProtocol != null)
-            {
-                webSocketBuilder.Options.AddSubProtocol(webSocketSubProtocol);
-            }
-
-            // Send Request
             cancellationToken.ThrowIfCancellationRequested();
 
-            WebSocket webSocket = null;
+            HttpResponseMessage response = null;
+            Stream responseStream = null;
             try
             {
                 BeforeRequest();
-                webSocket = await webSocketBuilder.BuildAndConnectAsync(uri, cancellationToken).ConfigureAwait(false);
-            }
-            catch (WebSocketException wse) when (wse.WebSocketErrorCode == WebSocketError.HeaderError ||
-                                                 (wse.InnerException is WebSocketException &&
-                                                 ((WebSocketException)wse.InnerException).WebSocketErrorCode ==
-                                                 WebSocketError.HeaderError))
-            {
-                // This usually indicates the server sent an error message, like 400 Bad Request. Unfortunately, the WebSocket client
-                // class doesn't give us a lot of information about what went wrong. So, retry the connection.
-                var uriBuilder = new UriBuilder(uri)
-                {
-                    Scheme = uri.Scheme == "wss" ? "https" : "http",
-                };
+                response = await HttpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
 
-                var response = await HttpClient.GetAsync(uriBuilder.Uri, cancellationToken).ConfigureAwait(false);
-
-                if (response.StatusCode == HttpStatusCode.SwitchingProtocols)
-                {
-                    // This should never happen - the server just allowed us to switch to WebSockets but the previous call didn't work.
-                    // Rethrow the original exception
-                    response.Dispose();
-                    throw;
-                }
-                else
+                if (!response.IsSuccessStatusCode)
                 {
 #if NET5_0_OR_GREATER
                     var content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 #else
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 #endif
-                    // Try to parse the content as a V1Status object
                     var genericObject = KubernetesJson.Deserialize<KubernetesObject>(content);
                     V1Status status = null;
 
@@ -320,29 +272,46 @@ namespace k8s
                         status = KubernetesJson.Deserialize<V1Status>(content);
                     }
 
-                    var ex =
-                        new HttpOperationException(
-                            $"The operation returned an invalid status code: {response.StatusCode}", wse)
-                        {
-                            Response = new HttpResponseMessageWrapper(response, content),
-                            Body = status != null ? status : content,
-                        };
+                    var ex = new HttpOperationException($"The operation returned an invalid status code: {response.StatusCode}")
+                    {
+                        Response = new HttpResponseMessageWrapper(response, content),
+                        Body = status != null ? status : content,
+                    };
 
                     response.Dispose();
-
                     throw ex;
                 }
+
+#if NET5_0_OR_GREATER
+                responseStream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+#else
+                responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+#endif
+
+                var webSocket = new Http2WebSocket(requestStream, responseStream, response, webSocketSubProtocol);
+                response = null;
+                responseStream = null;
+
+                return webSocket;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                try
+                {
+                    requestStream?.Complete();
+                }
+                catch (Exception cleanupEx)
+                {
+                    throw new AggregateException(ex, cleanupEx);
+                }
                 throw;
             }
             finally
             {
+                responseStream?.Dispose();
+                response?.Dispose();
                 AfterRequest();
             }
-
-            return webSocket;
         }
     }
 }
