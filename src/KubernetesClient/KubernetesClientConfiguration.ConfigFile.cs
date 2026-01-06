@@ -4,7 +4,6 @@ using k8s.KubeConfigModels;
 using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace k8s
@@ -308,26 +307,14 @@ namespace k8s
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
                     var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-#if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(data)));
-#else
-                    string nullPassword = null;
-                    // This null password is to change the constructor to fix this KB:
-                    // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
-#endif
+                    var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(data));
+                    SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-#if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(GetFullPath(
+                    SslCaCerts = CertUtils.LoadPemFileCert(GetFullPath(
                         k8SConfig,
-                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
-#else
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(
-                        k8SConfig,
-                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
-#endif
+                        clusterDetails.ClusterEndpoint.CertificateAuthority));
                 }
             }
         }
