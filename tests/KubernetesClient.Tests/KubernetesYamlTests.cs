@@ -822,12 +822,12 @@ metadata:
         {
             var kManifest = """
 apiVersion: v1
-data:
-  username: YlhrdFlYQnc=
-  password: TXprMU1qZ2tkbVJuTjBwaQ==
 kind: Secret
 metadata:
   name: test-secret
+data:
+  username: YlhrdFlYQnc=
+  password: TXprMU1qZ2tkbVJuTjBwaQ==
 """;
 
             var result = KubernetesYaml.Deserialize<V1Secret>(kManifest, true);
@@ -860,19 +860,41 @@ metadata:
         {
             var kManifest = """
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap
 binaryData:
   username: YlhrdFlYQnc=
 data:
   password: Mzk1MjgkdmRnN0pi
-kind: ConfigMap
-metadata:
-  name: test-configmap
 """;
 
             var result = KubernetesYaml.Deserialize<V1ConfigMap>(kManifest, true);
             var yaml = KubernetesYaml.Serialize(result);
 
             Assert.Equal(kManifest, yaml);
+        }
+
+        [Fact]
+        public void WriteConfigMapOrdersTypeMetaFirst()
+        {
+            var configMap = new V1ConfigMap
+            {
+                ApiVersion = "v1",
+                Kind = "ConfigMap",
+                Metadata = new V1ObjectMeta { Name = "my-configmap", NamespaceProperty = "my-namespace" },
+                Data = new Dictionary<string, string> { { "array.json", "value" } },
+            };
+
+            var yaml = KubernetesYaml.Serialize(configMap);
+
+            Assert.Equal(ToLines(@"apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+  namespace: my-namespace
+data:
+  array.json: value"), ToLines(yaml));
         }
 
         [Fact]
