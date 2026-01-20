@@ -293,6 +293,7 @@ namespace k8s
         private static TBuilder WithOverridesFromJsonPropertyAttributes<TBuilder>(this TBuilder builder)
             where TBuilder : BuilderSkeleton<TBuilder>
         {
+            var preferredPropertyOrder = new[] { "ApiVersion", "Kind", "Metadata" };
             // Use VersionInfo from the model namespace as that should be stable.
             // If this is not generated in the future we will get an obvious compiler error.
             var targetNamespace = typeof(VersionInfo).Namespace;
@@ -307,15 +308,39 @@ namespace k8s
             // Map any JsonPropertyAttribute instances to YamlMemberAttribute instances.
             foreach (var type in types)
             {
-                foreach (var property in type.GetProperties())
+                var properties = type.GetProperties()
+                    .OrderBy(property => property.MetadataToken)
+                    .ToArray();
+                var usePreferredOrder = properties.Any(property =>
+                    property.Name == "ApiVersion" ||
+                    property.Name == "Kind");
+                var nextOrder = usePreferredOrder ? preferredPropertyOrder.Length : 0;
+                foreach (var property in properties)
                 {
                     var jsonAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
-                    if (jsonAttribute == null)
+                    if (jsonAttribute == null && !usePreferredOrder)
                     {
                         continue;
                     }
 
-                    var yamlAttribute = new YamlMemberAttribute { Alias = jsonAttribute.Name, ApplyNamingConventions = false };
+                    var yamlAttribute = new YamlMemberAttribute();
+                    if (usePreferredOrder)
+                    {
+                        var order = Array.IndexOf(preferredPropertyOrder, property.Name);
+                        if (order < 0)
+                        {
+                            order = nextOrder++;
+                        }
+
+                        yamlAttribute.Order = order;
+                    }
+
+                    if (jsonAttribute != null)
+                    {
+                        yamlAttribute.Alias = jsonAttribute.Name;
+                        yamlAttribute.ApplyNamingConventions = false;
+                    }
+
                     builder.WithAttributeOverride(type, property.Name, yamlAttribute);
                 }
             }
