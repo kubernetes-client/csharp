@@ -340,6 +340,7 @@ namespace k8s
                         yamlAttribute.Alias = jsonAttribute.Name;
                         yamlAttribute.ApplyNamingConventions = false;
                     }
+
                     builder.WithAttributeOverride(type, property.Name, yamlAttribute);
                 }
             }
