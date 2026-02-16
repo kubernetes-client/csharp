@@ -14,12 +14,14 @@ namespace k8s.Tests
 {
     public class KubernetesExecTests
     {
+#if NET5_0_OR_GREATER
         [Fact]
         public void WebSocketBuilderUsesHttp2ByDefault()
         {
             var builder = new WebSocketBuilder();
             Assert.Equal(HttpVersion.Version20, builder.Options.HttpVersion);
         }
+#endif
 
         /// <summary>
         /// Tests the <see cref="Kubernetes.WebSocketNamespacedPodExecWithHttpMessagesAsync(string, string, string, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>

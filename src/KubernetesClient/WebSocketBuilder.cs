@@ -18,7 +18,7 @@ namespace k8s
         public WebSocketBuilder()
         {
 #if NET5_0_OR_GREATER
-            WebSocket.Options.HttpVersion = HttpVersion.Version20;
+            Options.HttpVersion = HttpVersion.Version20;
 #endif
         }
 
