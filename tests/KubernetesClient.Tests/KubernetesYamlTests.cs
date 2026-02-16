@@ -1312,7 +1312,6 @@ spec:
             Assert.Equal(56, t.Rfc3339nano.Second);
             Assert.Equal(123, t.Rfc3339nano.Millisecond);
 
-#if NET7_0_OR_GREATER
             Assert.Equal(456, t.Rfc3339micro.Microsecond);
             Assert.Equal(456, t.Rfc3339nano.Microsecond);
             Assert.Equal(700, t.Rfc3339nano.Nanosecond);
@@ -1332,7 +1331,6 @@ spec:
             Assert.Equal(700, t.Rfc3339nanolenient7.Nanosecond);
             Assert.Equal(700, t.Rfc3339nanolenient8.Nanosecond);
             Assert.Equal(700, t.Rfc3339nanolenient9.Nanosecond);
-#endif
 
         }
     }
