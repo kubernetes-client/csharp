@@ -11,7 +11,11 @@ namespace k8s.Models
 
                 try
                 {
+#if NET8_0_OR_GREATER
                     return JsonSerializer.Deserialize(ele, StatusSourceGenerationContext.Default.V1Status);
+#else
+                    return ele.Deserialize<V1Status>();
+#endif
                 }
                 catch (JsonException)
                 {
@@ -33,7 +37,11 @@ namespace k8s.Models
 
         public T ObjectView<T>()
         {
+#if NET8_0_OR_GREATER
             return KubernetesJson.Deserialize<T>(_original);
+#else
+            return _original.Deserialize<T>();
+#endif
         }
     }
 }
