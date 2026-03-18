@@ -70,5 +70,19 @@ namespace k8s
         /// the process' exit code.
         /// </summary>
         public const string V4Base64WebsocketProtocol = "v4." + Base64ChannelWebSocketProtocol;
+
+        /// <summary>
+        /// The V5 protocol version for streaming command execution adds support for closing individual
+        /// channels (e.g. stdin) via a dedicated close message, enabling proper EOF signalling when piping
+        /// data to a remote process.
+        /// </summary>
+        public const string V5BinaryWebsocketProtocol = "v5." + ChannelWebSocketProtocol;
+
+        /// <summary>
+        /// The V5 protocol version for streaming command execution adds support for closing individual
+        /// channels (e.g. stdin) via a dedicated close message, enabling proper EOF signalling when piping
+        /// data to a remote process.
+        /// </summary>
+        public const string V5Base64WebsocketProtocol = "v5." + Base64ChannelWebSocketProtocol;
     }
 }

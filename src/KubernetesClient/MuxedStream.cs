@@ -8,6 +8,7 @@ namespace k8s
         private readonly ByteBuffer inputBuffer;
         private readonly byte? outputIndex;
         private readonly StreamDemuxer muxer;
+        private bool disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MuxedStream"/> class.
@@ -99,6 +100,25 @@ namespace k8s
         public override void SetLength(long value)
         {
             throw new NotSupportedException();
+        }
+
+        /// <inheritdoc/>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && !disposed && outputIndex.HasValue && muxer != null && muxer.SupportsClose)
+            {
+                try
+                {
+                    muxer.CloseChannel(outputIndex.Value).GetAwaiter().GetResult();
+                }
+                catch (Exception)
+                {
+                    // Ignore errors when sending the close message - the connection may already be closed.
+                }
+            }
+
+            disposed = true;
+            base.Dispose(disposing);
         }
     }
 }
