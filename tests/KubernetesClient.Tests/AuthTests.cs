@@ -633,5 +633,48 @@ namespace k8s.Tests
                 return kubernetesConfig;
             }
         }
+
+        [Fact]
+        public void DefaultUserAgent()
+        {
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
+            {
+                var header = cxt.Request.Headers["User-Agent"].FirstOrDefault();
+                Assert.NotNull(header);
+                Assert.StartsWith("kubernetes-csharp/", header);
+                return Task.FromResult(true);
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
+
+                var listTask = ExecuteListPods(client);
+
+                Assert.True(listTask.Response.IsSuccessStatusCode);
+            }
+        }
+
+        [Fact]
+        public void CustomUserAgent()
+        {
+            const string customAgent = "my-app/1.0";
+
+            using (var server = new MockKubeApiServer(testOutput, cxt =>
+            {
+                var header = cxt.Request.Headers["User-Agent"].FirstOrDefault();
+                Assert.Equal(customAgent, header);
+                return Task.FromResult(true);
+            }))
+            {
+                var client = new Kubernetes(new KubernetesClientConfiguration
+                {
+                    Host = server.Uri.ToString(),
+                    UserAgent = customAgent,
+                });
+
+                var listTask = ExecuteListPods(client);
+
+                Assert.True(listTask.Response.IsSuccessStatusCode);
+            }
+        }
     }
 }

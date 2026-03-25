@@ -168,6 +168,11 @@ namespace k8s
             {
                 Timeout = Timeout.InfiniteTimeSpan,
             };
+
+            if (!string.IsNullOrWhiteSpace(config.UserAgent))
+            {
+                HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", config.UserAgent);
+            }
         }
 
         /// <summary>
