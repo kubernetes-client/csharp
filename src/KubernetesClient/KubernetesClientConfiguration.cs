@@ -65,7 +65,7 @@ namespace k8s
         ///     Gets or sets the HTTP user agent.
         /// </summary>
         /// <value>Http user agent.</value>
-        public string UserAgent { get; set; }
+        public string UserAgent { get; set; } = $"kubernetes-csharp/{GeneratedApiVersion.AssemblyVersion}";
 
         /// <summary>
         ///     Gets or sets the username (HTTP basic authentication).
