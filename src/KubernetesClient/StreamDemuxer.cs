@@ -22,6 +22,7 @@ namespace k8s
         private const byte ChannelCloseIndex = 255;
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
+        private readonly HashSet<byte> closedChannels = new HashSet<byte>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private readonly StreamType streamType;
         private readonly bool ownsSocket;
@@ -103,16 +104,29 @@ namespace k8s
         /// </returns>
         public Stream GetStream(byte? inputIndex, byte? outputIndex)
         {
+            ByteBuffer inputBuffer = null;
+
             lock (buffers)
             {
-                if (inputIndex != null && !buffers.ContainsKey(inputIndex.Value))
+                if (inputIndex != null)
                 {
-                    var buffer = new ByteBuffer();
-                    buffers.Add(inputIndex.Value, buffer);
+                    if (!buffers.ContainsKey(inputIndex.Value))
+                    {
+                        var buffer = new ByteBuffer();
+                        buffers.Add(inputIndex.Value, buffer);
+
+                        // If the server already sent a v5 close for this channel before GetStream was
+                        // called, signal EOF immediately so the caller doesn't block forever.
+                        if (closedChannels.Contains(inputIndex.Value))
+                        {
+                            buffer.WriteEnd();
+                        }
+                    }
+
+                    inputBuffer = buffers[inputIndex.Value];
                 }
             }
 
-            var inputBuffer = inputIndex == null ? null : buffers[inputIndex.Value];
             return new MuxedStream(this, inputBuffer, outputIndex);
         }
 
@@ -175,9 +189,10 @@ namespace k8s
                 for (var i = 0; i < count; i += MAXFRAMESIZE)
                 {
                     var c = Math.Min(count - i, MAXFRAMESIZE);
+                    var isLastChunk = i + MAXFRAMESIZE >= count;
                     Buffer.BlockCopy(buffer, offset + i, writeBuffer, 1, c);
                     var segment = new ArraySegment<byte>(writeBuffer, 0, c + 1);
-                    await webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
+                    await webSocket.SendAsync(segment, WebSocketMessageType.Binary, isLastChunk, cancellationToken)
                         .ConfigureAwait(false);
                 }
             }
@@ -258,9 +273,13 @@ namespace k8s
                         if (result.Count >= 2)
                         {
                             var channelToClose = buffer[1];
-                            if (buffers.ContainsKey(channelToClose))
+                            lock (buffers)
                             {
-                                buffers[channelToClose].WriteEnd();
+                                closedChannels.Add(channelToClose);
+                                if (buffers.ContainsKey(channelToClose))
+                                {
+                                    buffers[channelToClose].WriteEnd();
+                                }
                             }
                         }
 

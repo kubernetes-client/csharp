@@ -528,7 +528,7 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public async Task MuxedStreamDisposeV4DoesNotSendCloseChannel()
+        public void MuxedStreamDisposeV4DoesNotSendCloseChannel()
         {
             using (var ws = new MockWebSocket())
             using (var demuxer = new StreamDemuxer(ws, supportsClose: false))
@@ -547,9 +547,63 @@ namespace k8s.Tests
 
                 stream.Dispose();
 
-                // Wait a short time and confirm no message was sent.
-                await Task.Delay(50).ConfigureAwait(true);
+                // Since Dispose is synchronous and supportsClose is false, no message should be sent.
                 Assert.Empty(sentMessages);
+            }
+        }
+
+        [Fact]
+        public async Task MuxedStreamDisposeAsyncV5SendsCloseChannel()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                var sentMessages = new List<byte[]>();
+                ws.MessageSent += (sender, args) =>
+                {
+                    var data = args.Data.Buffer.ToArray();
+                    sentMessages.Add(data);
+                };
+
+                demuxer.Start();
+
+                byte channelIndex = 0; // stdin
+                var stream = demuxer.GetStream(null, channelIndex);
+
+                await stream.DisposeAsync().ConfigureAwait(true);
+
+                Assert.Single(sentMessages);
+                Assert.Equal(2, sentMessages[0].Length);
+                Assert.Equal(255, sentMessages[0][0]);
+                Assert.Equal(channelIndex, sentMessages[0][1]);
+            }
+        }
+
+        [Fact]
+        public async Task ReceiveCloseChannelV5BeforeGetStreamStillClosesBuffer()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                demuxer.Start();
+
+                byte channelIndex = 1; // stdout
+
+                // Send v5 close message BEFORE any GetStream call for this channel.
+                await ws.InvokeReceiveAsync(
+                    new ArraySegment<byte>(new byte[] { 255, channelIndex }),
+                    WebSocketMessageType.Binary, true).ConfigureAwait(true);
+
+                // Give the RunLoop time to process the close message before GetStream is called.
+                await Task.Delay(100).ConfigureAwait(true);
+
+                // Now call GetStream — the stream should return EOF immediately because the channel
+                // was already closed before this call.
+                var stream = demuxer.GetStream(channelIndex, null);
+                var buffer = new byte[50];
+                var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
+
+                Assert.Equal(0, cRead);
             }
         }
 

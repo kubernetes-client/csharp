@@ -3,7 +3,7 @@ namespace k8s
     /// <summary>
     /// A <see cref="Stream"/> which reads/writes from a specific channel using a <see cref="StreamDemuxer" />.
     /// </summary>
-    public class MuxedStream : Stream
+    public class MuxedStream : Stream, IAsyncDisposable
     {
         private readonly ByteBuffer inputBuffer;
         private readonly byte? outputIndex;
@@ -119,6 +119,29 @@ namespace k8s
 
             disposed = true;
             base.Dispose(disposing);
+        }
+
+        /// <inheritdoc/>
+        public override async ValueTask DisposeAsync()
+        {
+            if (!disposed)
+            {
+                disposed = true;
+                if (outputIndex.HasValue && muxer != null && muxer.SupportsClose)
+                {
+                    try
+                    {
+                        await muxer.CloseChannel(outputIndex.Value).ConfigureAwait(false);
+                    }
+                    catch (Exception)
+                    {
+                        // Ignore errors when sending the close message - the connection may already be closed.
+                    }
+                }
+            }
+
+            await base.DisposeAsync().ConfigureAwait(false);
+            GC.SuppressFinalize(this);
         }
     }
 }
