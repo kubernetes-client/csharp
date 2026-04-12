@@ -36,7 +36,7 @@ jobs:
 
   # Test code gen for visual studio compatibility >> https://github.com/kubernetes-client/csharp/pull/1008
   codgen:
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
     name: MSBuild build
     steps:
       - uses: actions/checkout@v6
@@ -47,7 +47,7 @@ jobs:
       - name: Setup dotnet SDK
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '10.0.1xx'
+          dotnet-version: '10.0.x'
       - name: Restore nugets (msbuild)
         run: msbuild .\src\KubernetesClient\ -t:restore -p:RestorePackagesConfig=true
       - name: Build (msbuild)
