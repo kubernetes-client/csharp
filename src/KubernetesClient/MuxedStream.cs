@@ -122,7 +122,7 @@ namespace k8s
         }
 
         /// <inheritdoc/>
-        public override async ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
             if (!disposed)
             {
@@ -140,7 +140,7 @@ namespace k8s
                 }
             }
 
-            await base.DisposeAsync().ConfigureAwait(false);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
     }
