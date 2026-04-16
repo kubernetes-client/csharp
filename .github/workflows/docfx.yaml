@@ -25,12 +25,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}    
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       with:
         fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5
       with:
         dotnet-version: |
           8.0.x
@@ -40,18 +40,18 @@ jobs:
     - name: Build
       run: dotnet build -c Release
 
-    - uses: nunit/docfx-action@v4.1.0
+    - uses: nunit/docfx-action@9748ca261118e251018cf9c98313b05b12d6cb31 # v4.1.0
       name: Build Documentation
       with:
         args: doc/docfx.json
 
     - name: Setup Pages
-      uses: actions/configure-pages@v5
+      uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
       with:
         # Upload entire repository
         path: doc/_site
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
