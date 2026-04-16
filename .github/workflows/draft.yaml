@@ -6,6 +6,14 @@ permissions:
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'Directory.Build.props'
+      - 'Directory.Build.targets'
+      - 'Directory.Packages.props'
+      - 'global.json'
+      - 'version.json'
+      - '.github/workflows/draft.yaml'
     
 jobs:
   draft:
