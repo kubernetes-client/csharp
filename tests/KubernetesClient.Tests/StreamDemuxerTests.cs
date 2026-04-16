@@ -422,6 +422,191 @@ namespace k8s.Tests
             }
         }
 
+        [Fact]
+        public async Task SendCloseChannelV5()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                var sentMessages = new List<byte[]>();
+                ws.MessageSent += (sender, args) =>
+                {
+                    var data = args.Data.Buffer.ToArray();
+                    sentMessages.Add(data);
+                };
+
+                demuxer.Start();
+
+                byte channelIndex = 0; // stdin
+                await demuxer.CloseChannel(channelIndex).ConfigureAwait(true);
+
+                Assert.True(
+                    await WaitForAsync(() => sentMessages.Count == 1).ConfigureAwait(true),
+                    "Expected exactly one close channel message to be sent.");
+                Assert.Equal(2, sentMessages[0].Length);
+                Assert.Equal(255, sentMessages[0][0]); // close indicator
+                Assert.Equal(channelIndex, sentMessages[0][1]); // channel being closed
+            }
+        }
+
+        [Fact]
+        public async Task ReceiveCloseChannelV5ClosesBuffer()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                demuxer.Start();
+
+                byte channelIndex = 1; // stdout
+                var stream = demuxer.GetStream(channelIndex, null);
+
+                // First send some data on the channel, then a v5 close message.
+                var t = Task.Run(async () =>
+                {
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(new byte[] { channelIndex, 0xAA, 0xBB }),
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
+
+                    // Send v5 close message: [255, channelIndex]
+                    await ws.InvokeReceiveAsync(
+                        new ArraySegment<byte>(new byte[] { 255, channelIndex }),
+                        WebSocketMessageType.Binary, true).ConfigureAwait(true);
+                });
+
+                var receivedBuffer = new List<byte>();
+                var buffer = new byte[50];
+                while (true)
+                {
+                    var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
+                    if (cRead == 0)
+                    {
+                        break;
+                    }
+
+                    for (var i = 0; i < cRead; i++)
+                    {
+                        receivedBuffer.Add(buffer[i]);
+                    }
+                }
+
+                await t.ConfigureAwait(true);
+
+                Assert.Equal(2, receivedBuffer.Count);
+                Assert.Equal(0xAA, receivedBuffer[0]);
+                Assert.Equal(0xBB, receivedBuffer[1]);
+            }
+        }
+
+        [Fact]
+        public async Task MuxedStreamDisposeV5SendsCloseChannel()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                var sentMessages = new List<byte[]>();
+                ws.MessageSent += (sender, args) =>
+                {
+                    var data = args.Data.Buffer.ToArray();
+                    sentMessages.Add(data);
+                };
+
+                demuxer.Start();
+
+                byte channelIndex = 0; // stdin
+                var stream = demuxer.GetStream(null, channelIndex);
+
+                // Disposing the writable stream should send a v5 close message.
+                stream.Dispose();
+
+                Assert.True(
+                    await WaitForAsync(() => sentMessages.Count == 1).ConfigureAwait(true),
+                    "Expected exactly one close channel message to be sent on dispose.");
+                Assert.Equal(2, sentMessages[0].Length);
+                Assert.Equal(255, sentMessages[0][0]);
+                Assert.Equal(channelIndex, sentMessages[0][1]);
+            }
+        }
+
+        [Fact]
+        public void MuxedStreamDisposeV4DoesNotSendCloseChannel()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: false))
+            {
+                var sentMessages = new List<byte[]>();
+                ws.MessageSent += (sender, args) =>
+                {
+                    var data = args.Data.Buffer.ToArray();
+                    sentMessages.Add(data);
+                };
+
+                demuxer.Start();
+
+                byte channelIndex = 0; // stdin
+                var stream = demuxer.GetStream(null, channelIndex);
+
+                stream.Dispose();
+
+                // Since Dispose is synchronous and supportsClose is false, no message should be sent.
+                Assert.Empty(sentMessages);
+            }
+        }
+
+        [Fact]
+        public async Task MuxedStreamDisposeAsyncV5SendsCloseChannel()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                var sentMessages = new List<byte[]>();
+                ws.MessageSent += (sender, args) =>
+                {
+                    var data = args.Data.Buffer.ToArray();
+                    sentMessages.Add(data);
+                };
+
+                demuxer.Start();
+
+                byte channelIndex = 0; // stdin
+                var stream = demuxer.GetStream(null, channelIndex);
+
+                await stream.DisposeAsync().ConfigureAwait(true);
+
+                Assert.Single(sentMessages);
+                Assert.Equal(2, sentMessages[0].Length);
+                Assert.Equal(255, sentMessages[0][0]);
+                Assert.Equal(channelIndex, sentMessages[0][1]);
+            }
+        }
+
+        [Fact]
+        public async Task ReceiveCloseChannelV5BeforeGetStreamStillClosesBuffer()
+        {
+            using (var ws = new MockWebSocket())
+            using (var demuxer = new StreamDemuxer(ws, supportsClose: true))
+            {
+                demuxer.Start();
+
+                byte channelIndex = 1; // stdout
+
+                // Send v5 close message BEFORE any GetStream call for this channel.
+                await ws.InvokeReceiveAsync(
+                    new ArraySegment<byte>(new byte[] { 255, channelIndex }),
+                    WebSocketMessageType.Binary, true).ConfigureAwait(true);
+
+                // Give the RunLoop time to process the close message before GetStream is called.
+                await Task.Delay(100).ConfigureAwait(true);
+
+                // Now call GetStream — the stream should return EOF immediately because the channel
+                // was already closed before this call.
+                var stream = demuxer.GetStream(channelIndex, null);
+                var buffer = new byte[50];
+                var cRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(true);
+
+                Assert.Equal(0, cRead);
+            }
+        }
+
         private static byte[] GenerateRandomBuffer(int length, byte channelIndex, byte content, bool portForward)
         {
             var buffer = GenerateRandomBuffer(length, content);

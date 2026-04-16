@@ -94,5 +94,35 @@ namespace k8s
         /// </returns>
         Task Write(byte index, byte[] buffer, int offset, int count,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sends a v5 close message for the specified channel, signalling that the client will no longer
+        /// write to that channel (e.g. EOF on stdin).
+        /// </summary>
+        /// <param name="index">
+        /// The <see cref="ChannelIndex"/> of the channel to close.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation.
+        /// </returns>
+        Task CloseChannel(ChannelIndex index, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sends a v5 close message for the specified channel, signalling that the client will no longer
+        /// write to that channel (e.g. EOF on stdin).
+        /// </summary>
+        /// <param name="index">
+        /// The index of the channel to close.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation.
+        /// </returns>
+        Task CloseChannel(byte index, CancellationToken cancellationToken = default);
     }
 }

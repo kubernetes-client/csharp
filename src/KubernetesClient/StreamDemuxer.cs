@@ -19,8 +19,10 @@ namespace k8s
     public class StreamDemuxer : IStreamDemuxer
     {
         private const int MAXFRAMESIZE = 15 * 1024 * 1024; // 15MB
+        private const byte ChannelCloseIndex = 255;
         private readonly WebSocket webSocket;
         private readonly Dictionary<byte, ByteBuffer> buffers = new Dictionary<byte, ByteBuffer>();
+        private readonly HashSet<byte> closedChannels = new HashSet<byte>();
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private readonly StreamType streamType;
         private readonly bool ownsSocket;
@@ -40,15 +42,27 @@ namespace k8s
         /// A value indicating whether this instance of the <see cref="StreamDemuxer"/> owns the underlying <see cref="WebSocket"/>,
         /// and should dispose of it when this instance is disposed of.
         /// </param>
+        /// <param name="supportsClose">
+        /// A value indicating whether the v5 streaming protocol is in use, which supports closing individual
+        /// channels (e.g. stdin) via a dedicated close message.
+        /// </param>
         public StreamDemuxer(WebSocket webSocket, StreamType streamType = StreamType.RemoteCommand,
-            bool ownsSocket = false)
+            bool ownsSocket = false, bool supportsClose = false)
         {
             this.streamType = streamType;
             this.webSocket = webSocket ?? throw new ArgumentNullException(nameof(webSocket));
             this.ownsSocket = ownsSocket;
+            this.SupportsClose = supportsClose;
         }
 
         public event EventHandler ConnectionClosed;
+
+        /// <summary>
+        /// Gets a value indicating whether this demuxer supports closing individual channels via the v5
+        /// streaming protocol. When <see langword="true"/>, disposing a writable <see cref="MuxedStream"/>
+        /// will send a close message to the server for that channel.
+        /// </summary>
+        public bool SupportsClose { get; }
 
         /// <summary>
         /// Starts reading the data sent by the server.
@@ -90,16 +104,29 @@ namespace k8s
         /// </returns>
         public Stream GetStream(byte? inputIndex, byte? outputIndex)
         {
+            ByteBuffer inputBuffer = null;
+
             lock (buffers)
             {
-                if (inputIndex != null && !buffers.ContainsKey(inputIndex.Value))
+                if (inputIndex != null)
                 {
-                    var buffer = new ByteBuffer();
-                    buffers.Add(inputIndex.Value, buffer);
+                    if (!buffers.ContainsKey(inputIndex.Value))
+                    {
+                        var buffer = new ByteBuffer();
+                        buffers.Add(inputIndex.Value, buffer);
+
+                        // If the server already sent a v5 close for this channel before GetStream was
+                        // called, signal EOF immediately so the caller doesn't block forever.
+                        if (closedChannels.Contains(inputIndex.Value))
+                        {
+                            buffer.WriteEnd();
+                        }
+                    }
+
+                    inputBuffer = buffers[inputIndex.Value];
                 }
             }
 
-            var inputBuffer = inputIndex == null ? null : buffers[inputIndex.Value];
             return new MuxedStream(this, inputBuffer, outputIndex);
         }
 
@@ -162,9 +189,10 @@ namespace k8s
                 for (var i = 0; i < count; i += MAXFRAMESIZE)
                 {
                     var c = Math.Min(count - i, MAXFRAMESIZE);
+                    var isLastChunk = i + MAXFRAMESIZE >= count;
                     Buffer.BlockCopy(buffer, offset + i, writeBuffer, 1, c);
                     var segment = new ArraySegment<byte>(writeBuffer, 0, c + 1);
-                    await webSocket.SendAsync(segment, WebSocketMessageType.Binary, false, cancellationToken)
+                    await webSocket.SendAsync(segment, WebSocketMessageType.Binary, isLastChunk, cancellationToken)
                         .ConfigureAwait(false);
                 }
             }
@@ -172,6 +200,44 @@ namespace k8s
             {
                 ArrayPool<byte>.Shared.Return(writeBuffer);
             }
+        }
+
+        /// <summary>
+        /// Sends a v5 close message for the specified channel, signalling that the client will no longer
+        /// write to that channel (e.g. EOF on stdin).
+        /// </summary>
+        /// <param name="index">
+        /// The <see cref="ChannelIndex"/> of the channel to close.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation.
+        /// </returns>
+        public Task CloseChannel(ChannelIndex index, CancellationToken cancellationToken = default)
+        {
+            return CloseChannel((byte)index, cancellationToken);
+        }
+
+        /// <summary>
+        /// Sends a v5 close message for the specified channel, signalling that the client will no longer
+        /// write to that channel (e.g. EOF on stdin).
+        /// </summary>
+        /// <param name="index">
+        /// The index of the channel to close.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the asynchronous operation.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> which represents the asynchronous operation.
+        /// </returns>
+        public async Task CloseChannel(byte index, CancellationToken cancellationToken = default)
+        {
+            var closeBuffer = new byte[] { ChannelCloseIndex, index };
+            await webSocket.SendAsync(new ArraySegment<byte>(closeBuffer), WebSocketMessageType.Binary, true, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         protected async Task RunLoop(CancellationToken cancellationToken)
@@ -199,6 +265,26 @@ namespace k8s
 
                     var streamIndex = buffer[0];
                     var extraByteCount = 1;
+
+                    // v5 protocol: a message with stream index 255 signals that the remote end has closed
+                    // the channel indicated by the following byte.
+                    if (SupportsClose && streamIndex == ChannelCloseIndex)
+                    {
+                        if (result.Count >= 2)
+                        {
+                            var channelToClose = buffer[1];
+                            lock (buffers)
+                            {
+                                closedChannels.Add(channelToClose);
+                                if (buffers.ContainsKey(channelToClose))
+                                {
+                                    buffers[channelToClose].WriteEnd();
+                                }
+                            }
+                        }
+
+                        continue;
+                    }
 
                     while (true)
                     {
