@@ -13,12 +13,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       with:
         fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5
+      uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
       with:
         dotnet-version: |
           8.0.x
@@ -31,7 +31,7 @@ jobs:
     - name: dotnet test
       run: dotnet test
 
-    - uses: dotnet/nbgv@b944774b6878ef950cc14d1a72bf9c0ffafbb839 # master
+    - uses: dotnet/nbgv@3cf2d96c2aa00675081b59f401356ac1fb81092f # v0.5.1
       with:
         setAllVars: true
 
