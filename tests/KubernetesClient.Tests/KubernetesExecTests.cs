@@ -5,6 +5,7 @@
 using k8s.Tests.Mock;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -13,6 +14,15 @@ namespace k8s.Tests
 {
     public class KubernetesExecTests
     {
+#if NET5_0_OR_GREATER
+        [Fact]
+        public void WebSocketBuilderUsesHttp2ByDefault()
+        {
+            var builder = new WebSocketBuilder();
+            Assert.Equal(HttpVersion.Version20, builder.Options.HttpVersion);
+        }
+#endif
+
         /// <summary>
         /// Tests the <see cref="Kubernetes.WebSocketNamespacedPodExecWithHttpMessagesAsync(string, string, string, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>
         /// method. Changes the <see cref="WebSocketBuilder"/> used by the client with a mock builder, so this test never hits the network.
