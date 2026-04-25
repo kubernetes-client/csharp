@@ -95,7 +95,6 @@ public class KubernetesJsonTests
         Assert.Equal(56, t.Rfc3339nano.Second);
         Assert.Equal(123, t.Rfc3339nano.Millisecond);
 
-#if NET7_0_OR_GREATER
         Assert.Equal(456, t.Rfc3339micro.Microsecond);
         Assert.Equal(456, t.Rfc3339nano.Microsecond);
         Assert.Equal(700, t.Rfc3339nano.Nanosecond);
@@ -115,7 +114,6 @@ public class KubernetesJsonTests
         Assert.Equal(700, t.Rfc3339nanolenient7.Nanosecond);
         Assert.Equal(700, t.Rfc3339nanolenient8.Nanosecond);
         Assert.Equal(700, t.Rfc3339nanolenient9.Nanosecond);
-#endif
 
     }
 
@@ -189,9 +187,7 @@ public class KubernetesJsonTests
         Assert.Equal(16, dt.Minute);
         Assert.Equal(55, dt.Second);
         Assert.Equal(79, dt.Millisecond);
-#if NET7_0_OR_GREATER
         Assert.Equal(293, dt.Microsecond);
-#endif
     }
 
     [Fact]
