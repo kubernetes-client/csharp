@@ -3,6 +3,11 @@
         <DefineConstants>$(DefineConstants);GENERATE_BASIC;</DefineConstants>
     </PropertyGroup>
 
-    <Import Project="../../LibKubernetesGenerator.target" /> 
+    <Import Project="../../LibKubernetesGenerator.target" />
+    <ItemGroup>
+        <PackageReference Include="Autofac" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" />
+    </ItemGroup> 
 
 </Project>
