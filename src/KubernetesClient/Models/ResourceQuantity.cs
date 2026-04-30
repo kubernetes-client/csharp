@@ -142,7 +142,14 @@ namespace k8s.Models
                 si = value.Length;
             }
 
-            var literal = Fraction.FromString(value.Substring(0, si), CultureInfo.InvariantCulture);
+            var numericPart = value.Substring(0, si);
+            var firstDot = numericPart.IndexOf('.');
+            if (firstDot != -1 && numericPart.IndexOf('.', firstDot + 1) != -1)
+            {
+                throw new FormatException($"Unable to parse quantity \"{v}\": numeric part contains multiple decimal points");
+            }
+
+            var literal = Fraction.FromString(numericPart, CultureInfo.InvariantCulture);
             var suffixer = new Suffixer(value.Substring(si));
 
             _unitlessValue = literal.Multiply(Fraction.Pow(suffixer.Base, suffixer.Exponent));
