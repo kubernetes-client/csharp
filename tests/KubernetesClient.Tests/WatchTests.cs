@@ -54,17 +54,17 @@ namespace k8s.Tests
                 var client = new Kubernetes(new KubernetesClientConfiguration { Host = server.Uri.ToString() });
 
                 // did not pass watch param
-                var onErrorCalled = false;
+                var onErrorCalled = new AsyncManualResetEvent(false);
 
                 using (var watcher = client.CoreV1.WatchListNamespacedPod(
                     "default",
                     onEvent: (type, item) => { },
-                    onError: e => { onErrorCalled = true; }))
+                    onError: e => { onErrorCalled.Set(); }))
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(true); // delay for onerror to be called
+                    await Task.WhenAny(onErrorCalled.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
                 }
 
-                Assert.True(onErrorCalled);
+                Assert.True(onErrorCalled.IsSet);
 
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
