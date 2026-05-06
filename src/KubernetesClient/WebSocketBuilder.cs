@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 
@@ -16,6 +17,9 @@ namespace k8s
 
         public WebSocketBuilder()
         {
+#if NET5_0_OR_GREATER
+            Options.HttpVersion = HttpVersion.Version20;
+#endif
         }
 
         public ClientWebSocketOptions Options => WebSocket.Options;
