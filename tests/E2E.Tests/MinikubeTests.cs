@@ -739,8 +739,8 @@ namespace k8s.E2E
 
                 // replace + get
                 {
-                    var retry = 5;
-                    while (retry-- > 0)
+                    const int maxAttempts = 5;
+                    for (var attempt = 1; attempt <= maxAttempts; attempt++)
                     {
                         var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                         pod.Spec.Containers[0].Image = "httpd";
@@ -749,7 +749,7 @@ namespace k8s.E2E
                             await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
                             break;
                         }
-                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && retry > 0)
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && attempt < maxAttempts)
                         {
                             await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
                         }
