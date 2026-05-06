@@ -739,12 +739,27 @@ namespace k8s.E2E
 
                 // replace + get
                 {
-                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    pod.Spec.Containers[0].Image = "httpd";
-                    await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                    const int maxAttempts = 5;
+                    var updated = false;
+                    for (var attempt = 1; attempt <= maxAttempts; attempt++)
+                    {
+                        var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                        pod.Spec.Containers[0].Image = "httpd";
+                        try
+                        {
+                            await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                            updated = true;
+                            break;
+                        }
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && attempt < maxAttempts)
+                        {
+                            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                        }
+                    }
 
-                    pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                    Assert.True(updated, "Failed to update pod after retries due to conflicts.");
+                    var updatedPod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    Assert.Equal("httpd", updatedPod.Spec.Containers[0].Image);
                 }
 
                 // delete + list
