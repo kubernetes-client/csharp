@@ -56,6 +56,7 @@ namespace k8s.Tests
                 // did not pass watch param
                 var onErrorCalled = false;
                 var onErrorReceived = new AsyncManualResetEvent();
+                var onErrorTimeout = TimeSpan.FromSeconds(5);
 
                 using (var watcher = client.CoreV1.WatchListNamespacedPod(
                     "default",
@@ -66,7 +67,7 @@ namespace k8s.Tests
                         onErrorReceived.Set();
                     }))
                 {
-                    await Task.WhenAny(onErrorReceived.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
+                    await Task.WhenAny(onErrorReceived.WaitAsync(), Task.Delay(onErrorTimeout)).ConfigureAwait(true);
                 }
 
                 Assert.True(onErrorCalled);
