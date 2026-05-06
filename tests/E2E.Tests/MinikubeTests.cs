@@ -739,12 +739,24 @@ namespace k8s.E2E
 
                 // replace + get
                 {
-                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    pod.Spec.Containers[0].Image = "httpd";
-                    await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                    var retry = 5;
+                    while (retry-- > 0)
+                    {
+                        var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                        pod.Spec.Containers[0].Image = "httpd";
+                        try
+                        {
+                            await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                            break;
+                        }
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && retry > 0)
+                        {
+                            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                        }
+                    }
 
-                    pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                    var updatedPod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    Assert.Equal("httpd", updatedPod.Spec.Containers[0].Image);
                 }
 
                 // delete + list
