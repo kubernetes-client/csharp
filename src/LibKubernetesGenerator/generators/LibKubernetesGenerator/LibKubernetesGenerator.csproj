@@ -8,6 +8,7 @@
         <PackageReference Include="Autofac" />
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
     <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="NJsonSchema.Annotations" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" />
     </ItemGroup> 
 

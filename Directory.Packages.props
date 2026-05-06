@@ -40,7 +40,7 @@
     <PackageVersion Include="Namotion.Reflection" Version="3.4.2" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageVersion Include="NJsonSchema" Version="11.4.0" />
-    <PackageVersion Include="NJsonSchema.Annotations" Version="11.4.0" />
+    <PackageVersion Include="NJsonSchema.Annotations" Version="11.6.1" />
     <PackageVersion Include="NSwag.Core" Version="14.5.0" />
     <PackageVersion Include="Scriban" Version="6.2.1" />
   </ItemGroup>
