@@ -740,6 +740,7 @@ namespace k8s.E2E
                 // replace + get
                 {
                     const int maxAttempts = 5;
+                    var updated = false;
                     for (var attempt = 1; attempt <= maxAttempts; attempt++)
                     {
                         var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
@@ -747,6 +748,7 @@ namespace k8s.E2E
                         try
                         {
                             await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                            updated = true;
                             break;
                         }
                         catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && attempt < maxAttempts)
@@ -755,6 +757,7 @@ namespace k8s.E2E
                         }
                     }
 
+                    Assert.True(updated, "Failed to update pod after retries due to conflicts.");
                     var updatedPod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
                     Assert.Equal("httpd", updatedPod.Spec.Containers[0].Image);
                 }
