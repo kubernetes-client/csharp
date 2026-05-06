@@ -7,7 +7,7 @@
     <PackageVersion Include="FluentAssertions" Version="8.9.0" />
     <PackageVersion Include="Fractions" Version="8.3.2" />
     <PackageVersion Include="JsonPatch.Net" Version="5.0.2" />
-    <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.6.0" />
+    <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.7.1" />
     <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.7" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.7" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.7" />
