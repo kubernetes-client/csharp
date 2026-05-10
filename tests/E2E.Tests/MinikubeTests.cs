@@ -624,14 +624,27 @@ namespace k8s.E2E
                     Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "generic-test-jsonpatch")));
                 }
 
-                // replace + get
+                // replace + get (retry on conflict due to Kubernetes optimistic concurrency)
                 {
-                    var pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
-                    pod.Spec.Containers[0].Image = "httpd";
-                    await genericPods.ReplaceNamespacedAsync(pod, namespaceParameter, podName).ConfigureAwait(false);
+                    var retries = 5;
+                    while (retries-- > 0)
+                    {
+                        try
+                        {
+                            var pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                            pod.Spec.Containers[0].Image = "httpd";
+                            await genericPods.ReplaceNamespacedAsync(pod, namespaceParameter, podName).ConfigureAwait(false);
+                            break;
+                        }
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                        {
+                            if (retries == 0) throw;
+                            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                        }
+                    }
 
-                    pod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
-                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                    var updatedPod = await genericPods.ReadNamespacedAsync<V1Pod>(namespaceParameter, podName).ConfigureAwait(false);
+                    Assert.Equal("httpd", updatedPod.Spec.Containers[0].Image);
                 }
 
                 // delete + list
@@ -737,14 +750,27 @@ namespace k8s.E2E
                     Assert.Contains(pods.Items, p => p.Labels().Contains(new KeyValuePair<string, string>("test", "clientset-test-jsonpatch")));
                 }
 
-                // replace + get
+                // replace + get (retry on conflict due to Kubernetes optimistic concurrency)
                 {
-                    var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    pod.Spec.Containers[0].Image = "httpd";
-                    await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                    var retries = 5;
+                    while (retries-- > 0)
+                    {
+                        try
+                        {
+                            var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                            pod.Spec.Containers[0].Image = "httpd";
+                            await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
+                            break;
+                        }
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                        {
+                            if (retries == 0) throw;
+                            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                        }
+                    }
 
-                    pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                    Assert.Equal("httpd", pod.Spec.Containers[0].Image);
+                    var updatedPod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                    Assert.Equal("httpd", updatedPod.Spec.Containers[0].Image);
                 }
 
                 // delete + list

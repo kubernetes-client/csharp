@@ -168,7 +168,7 @@ namespace k8s.Tests.LeaderElection
             });
 
 
-            lockAStopLeading.WaitOne(TimeSpan.FromSeconds(3));
+            Assert.True(lockAStopLeading.WaitOne(TimeSpan.FromSeconds(30)), "Timed out waiting for leader A to stop leading");
 
             Task.Run(async () =>
             {
@@ -189,8 +189,8 @@ namespace k8s.Tests.LeaderElection
                 await leaderElector.RunUntilLeadershipLostAsync().ConfigureAwait(true);
             });
 
-            testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(15));
-            electionHistoryCountdown.Wait(TimeSpan.FromSeconds(15));
+            Assert.True(testLeaderElectionLatch.Wait(TimeSpan.FromSeconds(30)), "Timed out waiting for leader election latch");
+            Assert.True(electionHistoryCountdown.Wait(TimeSpan.FromSeconds(30)), "Timed out waiting for election history countdown");
 
             Assert.Equal(7, electionHistory.Count);
 
