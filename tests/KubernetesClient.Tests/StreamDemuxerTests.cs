@@ -92,7 +92,7 @@ namespace k8s.Tests
                         new ArraySegment<byte>(GenerateRandomBuffer(300, channelIndex, 0xAC, false)),
                         WebSocketMessageType.Binary, true).ConfigureAwait(true);
 
-                    await WaitForAsync(() => receivedBuffer.Count == expectedCount).ConfigureAwait(true);
+                    await WaitForAsync(() => receivedBuffer.Count == expectedCount, waitForSeconds: 5).ConfigureAwait(true);
                     await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "normal", CancellationToken.None).ConfigureAwait(true);
                 });
                 var buffer = new byte[50];
