@@ -23,7 +23,7 @@
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.7" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.7" />
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="22.1.1" />
-    <PackageVersion Include="System.Reactive" Version="6.0.2" />
+    <PackageVersion Include="System.Reactive" Version="6.1.0" />
     <PackageVersion Include="System.Text.Json" Version="9.0.8" />
     <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="16.3.0" />
     <PackageVersion Include="Wiremock.Net" Version="1.12.0" />
