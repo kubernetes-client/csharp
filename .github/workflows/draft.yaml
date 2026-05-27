@@ -31,7 +31,7 @@ jobs:
     - name: dotnet test
       run: dotnet test
 
-    - uses: dotnet/nbgv@3cf2d96c2aa00675081b59f401356ac1fb81092f # v0.5.1
+    - uses: dotnet/nbgv@705dad19ab067f12f4e9eeaa60812e01edef5d25 # v0.5.2
       with:
         setAllVars: true
 
