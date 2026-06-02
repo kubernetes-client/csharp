@@ -7,8 +7,12 @@
     <ItemGroup>
         <PackageReference Include="Autofac" />
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
+        <PackageReference Include="Namotion.Reflection" />
     <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="NJsonSchema" />
+    <PackageReference Include="NJsonSchema.Annotations" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" />
+    <PackageReference Include="System.Text.Json" />
     </ItemGroup> 
 
 </Project>
