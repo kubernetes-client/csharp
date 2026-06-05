@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading;
 using k8s.Autorest;
 using k8s.Models;
 using Xunit;
@@ -38,7 +36,6 @@ namespace k8s.E2E
                         return;
                     }
 
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
                     maps = client.CoreV1.ListNamespacedConfigMap(namespaceParameter);
                 }
             }
