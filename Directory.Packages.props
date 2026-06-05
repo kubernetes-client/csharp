@@ -8,7 +8,7 @@
     <PackageVersion Include="Fractions" Version="8.3.2" />
     <PackageVersion Include="JsonPatch.Net" Version="5.0.2" />
     <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.7.1" />
-    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.7" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.8" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.7" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
@@ -24,7 +24,7 @@
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.8" />
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="22.1.1" />
     <PackageVersion Include="System.Reactive" Version="6.1.0" />
-    <PackageVersion Include="System.Text.Json" Version="9.0.8" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.8" />
     <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="17.0.0" />
     <PackageVersion Include="Wiremock.Net" Version="1.12.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
@@ -37,11 +37,11 @@
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
-    <PackageVersion Include="Namotion.Reflection" Version="3.4.2" />
+    <PackageVersion Include="Namotion.Reflection" Version="3.5.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageVersion Include="NJsonSchema" Version="11.4.0" />
-    <PackageVersion Include="NJsonSchema.Annotations" Version="11.4.0" />
-    <PackageVersion Include="NSwag.Core" Version="14.5.0" />
+    <PackageVersion Include="NJsonSchema" Version="11.6.1" />
+    <PackageVersion Include="NJsonSchema.Annotations" Version="11.6.1" />
+    <PackageVersion Include="NSwag.Core" Version="14.7.1" />
     <PackageVersion Include="Scriban" Version="6.2.1" />
   </ItemGroup>
   <ItemGroup>
