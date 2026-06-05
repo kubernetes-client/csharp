@@ -87,6 +87,67 @@ jobs:
             exit 1
           fi              
 
+  # Run the .NET Framework (net48) end to end tests on Windows. There is no
+  # Linux Kubernetes distribution that runs natively on a Windows runner, so a
+  # kind cluster is created inside WSL and exposed to the Windows host (which
+  # runs the net48 test process) through WSL2 localhost forwarding.
+  e2e-windows-net48:
+    runs-on: windows-latest
+    name: E2E net48 (kind in WSL)
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
+        with:
+          dotnet-version: |
+           8.0.x
+           10.0.x
+      - name: Setup WSL
+        uses: Vampire/setup-wsl@d1da7f2c0322a5ee4f24975344f67fc0f5baf364 # v7.0.0
+        with:
+          distribution: Ubuntu-24.04
+          additional-packages: docker.io curl
+      - name: Create kind cluster in WSL
+        shell: wsl-bash {0}
+        run: |
+          set -euxo pipefail
+
+          # WSL has no systemd, so start the docker daemon manually and wait for it.
+          sudo dockerd > /tmp/dockerd.log 2>&1 &
+          for i in $(seq 1 30); do
+            if sudo docker info > /dev/null 2>&1; then break; fi
+            sleep 2
+          done
+          sudo docker info > /dev/null
+
+          # Install kind and kubectl.
+          curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+          chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind
+          curl -fsSLo ./kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+          # Create the cluster. kind publishes the api server on 127.0.0.1 inside
+          # WSL, which WSL2 localhost forwarding makes reachable from Windows.
+          sudo kind create cluster --wait 120s
+
+          # Export a kubeconfig the Windows side can consume.
+          sudo kind get kubeconfig > /mnt/c/kind.kubeconfig
+      - name: E2E net48 Test
+        shell: pwsh
+        env:
+          K8S_E2E_MINIKUBE: "1"
+          KUBECONFIG: C:\kind.kubeconfig
+        run: |
+          "" | Out-File -Encoding ascii skip.log
+          dotnet test tests/E2E.Classic.Tests -f net48 --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
+          if ((Get-Item skip.log).Length -gt 0) {
+            Get-Content skip.log
+            Write-Error "CASES MUST NOT BE SKIPPED"
+            exit 1
+          }
+
 on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
