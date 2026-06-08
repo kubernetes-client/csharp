@@ -42,7 +42,7 @@
     <PackageVersion Include="NJsonSchema" Version="11.6.1" />
     <PackageVersion Include="NJsonSchema.Annotations" Version="11.6.1" />
     <PackageVersion Include="NSwag.Core" Version="14.7.1" />
-    <PackageVersion Include="Scriban" Version="6.2.1" />
+    <PackageVersion Include="Scriban" Version="7.2.3" />
   </ItemGroup>
   <ItemGroup>
     <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.300" />
