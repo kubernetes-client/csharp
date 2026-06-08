@@ -87,16 +87,16 @@ jobs:
             exit 1
           fi              
 
-  # Run the .NET Framework (net48) end to end tests on Windows. There is no
-  # Linux Kubernetes distribution that runs natively on a Windows runner, so the
-  # kindest/node image (which already bundles containerd, the kubelet and the
-  # control-plane components) is imported straight into WSL with oci-to-wsl.
+  # Run the same end to end suite as the Linux `e2e` job, but on Windows. There
+  # is no Linux Kubernetes distribution that runs natively on a Windows runner,
+  # so the kindest/node image (which already bundles containerd, the kubelet and
+  # the control-plane components) is imported straight into WSL with oci-to-wsl.
   # WSL2 is enabled by default on the runner, so no separate WSL provisioning is
   # needed, and the API server is reachable from the Windows host (which runs the
-  # net48 test process) through WSL2 localhost forwarding.
-  e2e-windows-net48:
+  # test process) through WSL2 localhost forwarding.
+  e2e-windows-wsl:
     runs-on: windows-latest
-    name: E2E net48 (kind in WSL)
+    name: E2E (kind in WSL)
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -106,6 +106,7 @@ jobs:
         with:
           dotnet-version: |
            8.0.x
+           9.0.x
            10.0.x
       - name: Install oci-to-wsl
         shell: pwsh
@@ -125,22 +126,58 @@ jobs:
           .\oci-to-wsl.exe --profile .github/e2e/kind-wsl.yaml
 
           # Reboot the distro so the systemd configuration written by the profile
-          # takes effect, then bring up the single node control plane in place.
+          # takes effect.
           wsl --shutdown
+
+          # WSL terminates the lightweight VM once its last session exits, which
+          # tears down the API server between steps and makes localhost:6443
+          # connections fail with "actively refused". Hold an idle session open in
+          # the background so the cluster (and WSL2 localhost forwarding) stay up
+          # for the duration of the host-side test steps.
+          Start-Process -FilePath wsl -ArgumentList '-d','kind','-u','root','--','sleep','infinity'
+
+          # Bring up the single node control plane in place.
           wsl -d kind -u root -- bash /usr/local/bin/bootstrap-kind.sh
 
           # Export a kubeconfig for the Windows host. kubeadm points it at the WSL
           # eth0 address; rewrite it to localhost, which WSL2 forwards into WSL.
           wsl -d kind -u root -- cat /etc/kubernetes/admin.conf | Out-File -Encoding ascii kind.kubeconfig
           (Get-Content kind.kubeconfig) -replace 'server: https://[^ ]+', 'server: https://127.0.0.1:6443' | Set-Content kind.kubeconfig
-      - name: E2E net48 Test
+
+          # Wait until the API server is reachable from the Windows host through
+          # the forwarded port before handing off to the test steps.
+          $ok = $false
+          foreach ($i in 1..60) {
+            if ((Test-NetConnection -ComputerName 127.0.0.1 -Port 6443 -WarningAction SilentlyContinue).TcpTestSucceeded) {
+              $ok = $true
+              break
+            }
+            Start-Sleep -Seconds 5
+          }
+          if (-not $ok) {
+            throw "API server on 127.0.0.1:6443 was not reachable from the Windows host"
+          }
+      - name: Test
         shell: pwsh
         env:
           K8S_E2E_MINIKUBE: "1"
           KUBECONFIG: ${{ github.workspace }}\kind.kubeconfig
         run: |
           "" | Out-File -Encoding ascii skip.log
-          dotnet test tests/E2E.Classic.Tests -f net48 --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
+          dotnet test tests/E2E.Tests --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
+          if ((Get-Item skip.log).Length -gt 0) {
+            Get-Content skip.log
+            Write-Error "CASES MUST NOT BE SKIPPED"
+            exit 1
+          }
+      - name: AOT Test
+        shell: pwsh
+        env:
+          K8S_E2E_MINIKUBE: "1"
+          KUBECONFIG: ${{ github.workspace }}\kind.kubeconfig
+        run: |
+          "" | Out-File -Encoding ascii skip.log
+          dotnet test tests/E2E.Aot.Tests --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
           if ((Get-Item skip.log).Length -gt 0) {
             Get-Content skip.log
             Write-Error "CASES MUST NOT BE SKIPPED"
