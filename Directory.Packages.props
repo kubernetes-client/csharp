@@ -30,7 +30,7 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <PackageVersion Include="Xunit.StaFact" Version="1.2.69" />
-    <PackageVersion Include="YamlDotNet" Version="16.3.0" />
+    <PackageVersion Include="YamlDotNet" Version="18.0.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="Autofac" Version="9.1.0" />
