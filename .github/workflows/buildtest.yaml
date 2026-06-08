@@ -88,9 +88,12 @@ jobs:
           fi              
 
   # Run the .NET Framework (net48) end to end tests on Windows. There is no
-  # Linux Kubernetes distribution that runs natively on a Windows runner, so a
-  # kind cluster is created inside WSL and exposed to the Windows host (which
-  # runs the net48 test process) through WSL2 localhost forwarding.
+  # Linux Kubernetes distribution that runs natively on a Windows runner, so the
+  # kindest/node image (which already bundles containerd, the kubelet and the
+  # control-plane components) is imported straight into WSL with oci-to-wsl.
+  # WSL2 is enabled by default on the runner, so no separate WSL provisioning is
+  # needed, and the API server is reachable from the Windows host (which runs the
+  # net48 test process) through WSL2 localhost forwarding.
   e2e-windows-net48:
     runs-on: windows-latest
     name: E2E net48 (kind in WSL)
@@ -104,41 +107,32 @@ jobs:
           dotnet-version: |
            8.0.x
            10.0.x
-      - name: Setup WSL
-        uses: Vampire/setup-wsl@d1da7f2c0322a5ee4f24975344f67fc0f5baf364 # v7.0.0
-        with:
-          distribution: Ubuntu-24.04
-          additional-packages: docker.io curl
-      - name: Create kind cluster in WSL
-        shell: wsl-bash {0}
+      - name: Install oci-to-wsl
+        shell: pwsh
         run: |
-          set -euxo pipefail
+          $url = "https://github.com/tg123/oci-to-wsl/releases/download/v0.0.1/oci-to-wsl_windows_x86_64.zip"
+          Invoke-WebRequest $url -OutFile oci-to-wsl.zip
+          Expand-Archive -Force oci-to-wsl.zip -DestinationPath .
+      - name: Start kind cluster in WSL
+        shell: pwsh
+        run: |
+          # Import kindest/node into WSL as a systemd-enabled distro named "kind".
+          .\oci-to-wsl.exe --profile .github/e2e/kind-wsl.yaml
 
-          # WSL has no systemd, so start the docker daemon manually and wait for it.
-          sudo dockerd > /tmp/dockerd.log 2>&1 &
-          for i in $(seq 1 30); do
-            if sudo docker info > /dev/null 2>&1; then break; fi
-            sleep 2
-          done
-          sudo docker info > /dev/null
+          # Reboot the distro so the systemd configuration written by the profile
+          # takes effect, then bring up the single node control plane in place.
+          wsl --shutdown
+          wsl -d kind -u root -- bash /usr/local/bin/bootstrap-kind.sh
 
-          # Install kind and kubectl.
-          curl -fsSLo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
-          chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind
-          curl -fsSLo ./kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
-
-          # Create the cluster. kind publishes the api server on 127.0.0.1 inside
-          # WSL, which WSL2 localhost forwarding makes reachable from Windows.
-          sudo kind create cluster --wait 120s
-
-          # Export a kubeconfig the Windows side can consume.
-          sudo kind get kubeconfig > /mnt/c/kind.kubeconfig
+          # Export a kubeconfig for the Windows host. kubeadm points it at the WSL
+          # eth0 address; rewrite it to localhost, which WSL2 forwards into WSL.
+          wsl -d kind -u root -- cat /etc/kubernetes/admin.conf | Out-File -Encoding ascii kind.kubeconfig
+          (Get-Content kind.kubeconfig) -replace 'server: https://[^ ]+', 'server: https://127.0.0.1:6443' | Set-Content kind.kubeconfig
       - name: E2E net48 Test
         shell: pwsh
         env:
           K8S_E2E_MINIKUBE: "1"
-          KUBECONFIG: C:\kind.kubeconfig
+          KUBECONFIG: ${{ github.workspace }}\kind.kubeconfig
         run: |
           "" | Out-File -Encoding ascii skip.log
           dotnet test tests/E2E.Classic.Tests -f net48 --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
