@@ -111,7 +111,12 @@ jobs:
         shell: pwsh
         run: |
           $url = "https://github.com/tg123/oci-to-wsl/releases/download/v0.0.1/oci-to-wsl_windows_x86_64.zip"
+          $expected = "79772846F1CE4A38E5B2841EA2406A070F4DB64F3DBF3EA32F04B519111FD003"
           Invoke-WebRequest $url -OutFile oci-to-wsl.zip
+          $actual = (Get-FileHash oci-to-wsl.zip -Algorithm SHA256).Hash
+          if ($actual -ne $expected) {
+            throw "oci-to-wsl checksum mismatch: expected $expected, got $actual"
+          }
           Expand-Archive -Force oci-to-wsl.zip -DestinationPath .
       - name: Start kind cluster in WSL
         shell: pwsh

@@ -16,14 +16,14 @@ sysctl -w net.ipv4.ip_forward=1 || true
 systemctl enable --now containerd
 
 # Wait for the container runtime to accept requests.
-for _ in $(seq 1 60); do
+for _ in {1..60}; do
   if ctr --namespace k8s.io version >/dev/null 2>&1; then
     break
   fi
   sleep 2
 done
 
-# Initialise the control plane. Preflight errors are ignored because the WSL
+# Initialize the control plane. Preflight errors are ignored because the WSL
 # environment intentionally differs from a vanilla node (swap on, kernel
 # modules provided by the Windows-side kernel, and so on).
 kubeadm init \
