@@ -1,0 +1,21 @@
+# oci-to-wsl profile that imports the kindest/node image into WSL as a
+# systemd-enabled distribution. Unlike the regular "kind in Docker" flow, the
+# Kubernetes node runs natively inside WSL, so no Docker daemon or nested
+# containers are required on the Windows runner.
+name: kind
+image: kindest/node:v1.32.2
+install_dir: C:\WSL\kind
+
+# kindest/node expects an init system; WSL boots systemd when configured.
+wsl_conf:
+  mode: merge
+  content: |
+    [boot]
+    systemd=true
+
+# Stage the bootstrap script that turns the imported rootfs into a running
+# single node control plane. Path is resolved relative to this profile.
+files:
+  - src: ./bootstrap-kind.sh
+    dst: /usr/local/bin/bootstrap-kind.sh
+    mode: "0755"
