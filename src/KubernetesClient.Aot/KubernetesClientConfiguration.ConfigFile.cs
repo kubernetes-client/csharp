@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Text.Json.Nodes;
 
 namespace k8s
@@ -321,12 +322,8 @@ namespace k8s
                 {
                     var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
                     CertificateAuthorityData = Convert.ToBase64String(caBytes);
-#if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(caBytes));
-#else
-                    string nullPassword = null;
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(caBytes, nullPassword));
-#endif
+                    SslCaCerts = new X509Certificate2Collection();
+                    SslCaCerts.ImportFromPem(Encoding.UTF8.GetString(caBytes));
                 }
             }
         }
