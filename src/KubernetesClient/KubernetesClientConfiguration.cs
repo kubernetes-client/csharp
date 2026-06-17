@@ -62,6 +62,12 @@ namespace k8s
         public string TlsServerName { get; set; }
 
         /// <summary>
+        ///     Gets the base64-encoded PEM certificate authority data, resolved from either
+        ///     inline data or file path during cluster configuration.
+        /// </summary>
+        public string CaData { get; set; }
+
+        /// <summary>
         ///     Gets or sets the HTTP user agent.
         /// </summary>
         /// <value>Http user agent.</value>

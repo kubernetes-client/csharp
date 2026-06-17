@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Nodes;
 
 namespace k8s
 {
@@ -306,26 +307,24 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
-                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    CaData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
 #if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(data)));
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(CaData)));
 #else
                     string nullPassword = null;
                     // This null password is to change the constructor to fix this KB:
                     // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(data), nullPassword));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(CaData), nullPassword));
 #endif
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
+                    var caPath = GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority);
+                    CaData = Convert.ToBase64String(File.ReadAllBytes(caPath));
 #if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(GetFullPath(
-                        k8SConfig,
-                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(caPath));
 #else
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(GetFullPath(
-                        k8SConfig,
-                        clusterDetails.ClusterEndpoint.CertificateAuthority)));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(caPath));
 #endif
                 }
             }
@@ -416,7 +415,19 @@ namespace k8s
                     throw new KubeConfigException("External command execution missing ApiVersion key");
                 }
 
-                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                ClusterEndpoint clusterEndpoint = null;
+                if (userDetails.UserCredentials.ExternalExecution.ProvideClusterInfo)
+                {
+                    clusterEndpoint = new ClusterEndpoint
+                    {
+                        Server = this.Host,
+                        SkipTlsVerify = this.SkipTlsVerify,
+                        TlsServerName = this.TlsServerName,
+                        CertificateAuthorityData = this.CaData,
+                    };
+                }
+
+                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution, clusterEndpoint);
                 AccessToken = response.Status.Token;
                 // When reading ClientCertificateData from a config file it will be base64 encoded, and code later in the system (see CertUtils.GeneratePfx)
                 // expects ClientCertificateData and ClientCertificateKeyData to be base64 encoded because of this. However the string returned by external
@@ -429,7 +440,7 @@ namespace k8s
                 // TODO: support client certificates here too.
                 if (AccessToken != null)
                 {
-                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution);
+                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution, clusterEndpoint);
                 }
             }
 
@@ -440,16 +451,70 @@ namespace k8s
             }
         }
 
-        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
+        /// <summary>
+        /// Converts a resolved <see cref="ClusterEndpoint"/> into the
+        /// <c>spec.cluster</c> JSON representation defined by the exec credential plugin
+        /// protocol (client.authentication.k8s.io/v1). Returns <c>null</c> if
+        /// <paramref name="cluster"/> is <c>null</c>.
+        /// </summary>
+        /// <remarks>
+        /// The AOT <see cref="ClusterEndpoint"/> does not include Extensions (dynamic types
+        /// are incompatible with AOT), so <c>spec.cluster.config</c> is not populated.
+        /// </remarks>
+        /// <seealso href="https://kubernetes.io/docs/reference/config-api/client-authentication.v1/#Cluster"/>
+        internal static JsonNode ToExecClusterInfo(ClusterEndpoint cluster)
+        {
+            if (cluster == null)
+            {
+                return null;
+            }
+
+            var node = new JsonObject
+            {
+                ["server"] = cluster.Server,
+            };
+
+            if (cluster.SkipTlsVerify)
+            {
+                node["insecure-skip-tls-verify"] = true;
+            }
+
+            if (!string.IsNullOrEmpty(cluster.CertificateAuthorityData))
+            {
+                node["certificate-authority-data"] = cluster.CertificateAuthorityData;
+            }
+
+            if (!string.IsNullOrEmpty(cluster.TlsServerName))
+            {
+                node["tls-server-name"] = cluster.TlsServerName;
+            }
+
+            return node;
+        }
+
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null, ClusterEndpoint cluster = null)
         {
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
             }
 
+            var spec = new JsonObject { ["interactive"] = Environment.UserInteractive };
+            if (config.ProvideClusterInfo)
+            {
+                spec["cluster"] = ToExecClusterInfo(cluster);
+            }
+
+            var execInfo = new JsonObject
+            {
+                ["apiVersion"] = config.ApiVersion,
+                ["kind"] = "ExecCredentials",
+                ["spec"] = spec,
+            };
+
             var process = new Process();
 
-            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", $"{{ \"apiVersion\":\"{config.ApiVersion}\",\"kind\":\"ExecCredentials\",\"spec\":{{ \"interactive\":{Environment.UserInteractive.ToString().ToLower()} }} }}");
+            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", execInfo.ToJsonString());
             if (config.EnvironmentVariables != null)
             {
                 foreach (var configEnvironmentVariable in config.EnvironmentVariables)
@@ -492,7 +557,7 @@ namespace k8s
         /// <returns>
         /// The token, client certificate data, and the client key data received from the external command execution
         /// </returns>
-        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config)
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config, ClusterEndpoint cluster = null)
         {
             if (config == null)
             {
@@ -500,7 +565,7 @@ namespace k8s
             }
 
             var captureStdError = ExecStdError;
-            var process = CreateRunnableExternalProcess(config, captureStdError);
+            var process = CreateRunnableExternalProcess(config, captureStdError, cluster);
 
             try
             {
