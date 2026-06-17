@@ -307,14 +307,14 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
-                    CaData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(CaData));
+                    CertificateAuthorityData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(CertificateAuthorityData));
                     SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
                     var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
-                    CaData = Convert.ToBase64String(caBytes);
+                    CertificateAuthorityData = Convert.ToBase64String(caBytes);
                     var pemText = Encoding.UTF8.GetString(caBytes);
                     SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
@@ -441,7 +441,7 @@ namespace k8s
                         Server = this.Host,
                         SkipTlsVerify = this.SkipTlsVerify,
                         TlsServerName = this.TlsServerName,
-                        CertificateAuthorityData = this.CaData,
+                        CertificateAuthorityData = this.CertificateAuthorityData,
                         Extensions = rawCluster?.Extensions,
                     };
                 }

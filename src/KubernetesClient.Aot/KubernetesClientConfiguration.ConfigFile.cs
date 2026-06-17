@@ -307,20 +307,20 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
-                    CaData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    CertificateAuthorityData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
 #if NET9_0_OR_GREATER
-                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(CaData)));
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(Convert.FromBase64String(CertificateAuthorityData)));
 #else
                     string nullPassword = null;
                     // This null password is to change the constructor to fix this KB:
                     // https://support.microsoft.com/en-us/topic/kb5025823-change-in-how-net-applications-import-x-509-certificates-bf81c936-af2b-446e-9f7a-016f4713b46b
-                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(CaData), nullPassword));
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(Convert.FromBase64String(CertificateAuthorityData), nullPassword));
 #endif
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
                     var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
-                    CaData = Convert.ToBase64String(caBytes);
+                    CertificateAuthorityData = Convert.ToBase64String(caBytes);
 #if NET9_0_OR_GREATER
                     SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificate(caBytes));
 #else
@@ -424,7 +424,7 @@ namespace k8s
                         Server = this.Host,
                         SkipTlsVerify = this.SkipTlsVerify,
                         TlsServerName = this.TlsServerName,
-                        CertificateAuthorityData = this.CaData,
+                        CertificateAuthorityData = this.CertificateAuthorityData,
                     };
                 }
 
