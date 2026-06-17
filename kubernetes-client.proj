@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.Build.Traversal">
     <ItemGroup>
         <ProjectReference Include="src/**/*.csproj" />
-        <ProjectReference Include="tests/**/*.csproj" />
+        <ProjectReference Include="tests/**/*.csproj" Exclude="tests/E2E.Classic.Tests/**/*.csproj" />
+        <ProjectReference Include="tests/E2E.Classic.Tests/**/*.csproj" Condition="'$(OS)' == 'Windows_NT'" />
         <ProjectReference Include="examples/**/*.csproj" />
     </ItemGroup>
 </Project>
