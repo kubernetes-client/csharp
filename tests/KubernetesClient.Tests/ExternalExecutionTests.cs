@@ -99,6 +99,7 @@ namespace k8s.Tests
                     Command = "my-credential-plugin",
                     ProvideClusterInfo = true,
                 },
+                captureStdError: null,
                 cluster: cluster);
 
             var json = JsonNode.Parse(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
@@ -121,6 +122,7 @@ namespace k8s.Tests
                     Command = "my-credential-plugin",
                     ProvideClusterInfo = false,
                 },
+                captureStdError: null,
                 cluster: cluster);
 
             var json = JsonNode.Parse(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
@@ -167,6 +169,23 @@ namespace k8s.Tests
 
             Assert.NotNull(result);
             Assert.True(result["insecure-skip-tls-verify"]?.GetValue<bool>());
+        }
+
+        [Fact]
+        public void CreateRunnableExternalProcessOmitsClusterWhenProvideClusterInfoIsTrueButClusterIsNull()
+        {
+            var actual = KubernetesClientConfiguration.CreateRunnableExternalProcess(
+                new ExternalExecution
+                {
+                    ApiVersion = "client.authentication.k8s.io/v1",
+                    Command = "my-credential-plugin",
+                    ProvideClusterInfo = true,
+                },
+                captureStdError: null,
+                cluster: null);
+
+            var json = JsonNode.Parse(actual.StartInfo.EnvironmentVariables["KUBERNETES_EXEC_INFO"]);
+            Assert.False(json["spec"].AsObject().ContainsKey("cluster"));
         }
 
         private static Dictionary<object, object> BuildNestedExtension()

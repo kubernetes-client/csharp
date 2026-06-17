@@ -9,7 +9,12 @@ namespace k8s.Authentication
         private readonly ClusterEndpoint cluster;
         private ExecCredentialResponse response;
 
-        public ExecTokenProvider(ExternalExecution exec, ClusterEndpoint cluster = null)
+        public ExecTokenProvider(ExternalExecution exec)
+            : this(exec, null)
+        {
+        }
+
+        public ExecTokenProvider(ExternalExecution exec, ClusterEndpoint cluster)
         {
             this.exec = exec;
             this.cluster = cluster;

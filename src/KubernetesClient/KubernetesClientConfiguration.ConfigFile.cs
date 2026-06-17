@@ -313,9 +313,10 @@ namespace k8s
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    var caPath = GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority);
-                    CaData = Convert.ToBase64String(File.ReadAllBytes(caPath));
-                    SslCaCerts = CertUtils.LoadPemFileCert(caPath);
+                    var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
+                    CaData = Convert.ToBase64String(caBytes);
+                    var pemText = Encoding.UTF8.GetString(caBytes);
+                    SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
             }
         }
@@ -517,7 +518,12 @@ namespace k8s
             return node;
         }
 
-        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null, ClusterEndpoint cluster = null)
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
+        {
+            return CreateRunnableExternalProcess(config, captureStdError, null);
+        }
+
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError, ClusterEndpoint cluster)
         {
             if (config == null)
             {
@@ -527,7 +533,11 @@ namespace k8s
             var spec = new JsonObject { ["interactive"] = Environment.UserInteractive };
             if (config.ProvideClusterInfo)
             {
-                spec["cluster"] = ToExecClusterInfo(cluster);
+                var clusterNode = ToExecClusterInfo(cluster);
+                if (clusterNode != null)
+                {
+                    spec["cluster"] = clusterNode;
+                }
             }
 
             var execInfo = new JsonObject
@@ -582,7 +592,12 @@ namespace k8s
         /// <returns>
         /// The token, client certificate data, and the client key data received from the external command execution
         /// </returns>
-        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config, ClusterEndpoint cluster = null)
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config)
+        {
+            return ExecuteExternalCommand(config, null);
+        }
+
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config, ClusterEndpoint cluster)
         {
             if (config == null)
             {
