@@ -45,7 +45,7 @@
     <PackageVersion Include="Scriban" Version="6.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.300" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.301" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" />
     <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="12.0.32" />
     <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.9.50" />
