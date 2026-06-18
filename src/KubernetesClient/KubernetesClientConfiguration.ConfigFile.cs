@@ -11,6 +11,8 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
+        internal const string ExecExtensionName = "client.authentication.k8s.io/exec";
+
         /// <summary>
         ///     kubeconfig Default Location
         /// </summary>
@@ -505,13 +507,13 @@ namespace k8s
             }
 
             var execExtension = cluster.Extensions?
-                .FirstOrDefault(e => e.Name == "client.authentication.k8s.io/exec");
+                .FirstOrDefault(e => e.Name == ExecExtensionName);
             if (execExtension != null)
             {
                 object extConfig = execExtension.Extension;
                 if (extConfig != null)
                 {
-                    node["config"] = JsonNode.Parse(JsonSerializer.Serialize(extConfig));
+                    node["config"] = JsonSerializer.SerializeToNode(extConfig);
                 }
             }
 

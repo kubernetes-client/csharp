@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.Json.Nodes;
 
 namespace k8s
@@ -320,10 +319,17 @@ namespace k8s
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
-                    CertificateAuthorityData = Convert.ToBase64String(caBytes);
-                    SslCaCerts = new X509Certificate2Collection();
-                    SslCaCerts.ImportFromPem(Encoding.UTF8.GetString(caBytes));
+                    var caPath = GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority);
+                    CertificateAuthorityData = Convert.ToBase64String(File.ReadAllBytes(caPath));
+
+                    // File-path loaders auto-detect cert format (PEM/DER/PFX), which the
+                    // byte-based APIs do not reliably do on pre-.NET 9. The second read is
+                    // intentional to preserve format flexibility for SslCaCerts.
+#if NET9_0_OR_GREATER
+                    SslCaCerts = new X509Certificate2Collection(X509CertificateLoader.LoadCertificateFromFile(caPath));
+#else
+                    SslCaCerts = new X509Certificate2Collection(new X509Certificate2(caPath));
+#endif
                 }
             }
         }

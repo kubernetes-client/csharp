@@ -42,7 +42,7 @@ namespace k8s.Tests
                 {
                     new NamedExtension
                     {
-                        Name = "client.authentication.k8s.io/exec",
+                        Name = KubernetesClientConfiguration.ExecExtensionName,
                         Extension = new Dictionary<object, object> { { "audience", "06e3fbd18de8" } },
                     },
                 },
@@ -139,7 +139,7 @@ namespace k8s.Tests
                 {
                     new NamedExtension
                     {
-                        Name = "client.authentication.k8s.io/exec",
+                        Name = KubernetesClientConfiguration.ExecExtensionName,
                         Extension = BuildNestedExtension(),
                     },
                 },
