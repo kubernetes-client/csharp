@@ -280,6 +280,10 @@ namespace k8s
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
             TlsServerName = clusterDetails.ClusterEndpoint.TlsServerName;
 
+            // Reset CA data so it always reflects the cluster currently being resolved
+            // and is never carried over from a prior state.
+            CertificateAuthorityData = null;
+
             if (!Uri.TryCreate(Host, UriKind.Absolute, out var uri))
             {
                 throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
