@@ -33,7 +33,7 @@
     <PackageVersion Include="YamlDotNet" Version="18.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Autofac" Version="9.1.0" />
+    <PackageVersion Include="Autofac" Version="9.2.0" />
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
