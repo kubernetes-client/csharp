@@ -752,19 +752,18 @@ namespace k8s.E2E
 
                 // replace + get (retry on conflict due to Kubernetes optimistic concurrency)
                 {
-                    var retries = 5;
-                    while (retries-- > 0)
+                    const int maxAttempts = 5;
+                    for (var attempt = 1; attempt <= maxAttempts; attempt++)
                     {
+                        var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
+                        pod.Spec.Containers[0].Image = "httpd";
                         try
                         {
-                            var pod = await clientSet.CoreV1.Pod.GetAsync(podName, namespaceParameter).ConfigureAwait(false);
-                            pod.Spec.Containers[0].Image = "httpd";
                             await clientSet.CoreV1.Pod.UpdateAsync(pod, podName, namespaceParameter).ConfigureAwait(false);
                             break;
                         }
-                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                        catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && attempt < maxAttempts)
                         {
-                            if (retries == 0) throw;
                             await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
                         }
                     }
