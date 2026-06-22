@@ -1,6 +1,7 @@
 using k8s.LeaderElection;
 using Moq;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -84,8 +85,8 @@ namespace k8s.Tests.LeaderElection
         [Fact]
         public void LeaderElection()
         {
-            var electionHistory = new List<string>();
-            var leadershipHistory = new List<string>();
+            var electionHistory = new ConcurrentQueue<string>();
+            var leadershipHistory = new ConcurrentQueue<string>();
             var electionHistoryCountdown = new CountdownEvent(7);
 
             var renewCountA = 3;
@@ -95,19 +96,19 @@ namespace k8s.Tests.LeaderElection
             {
                 renewCountA--;
 
-                electionHistory.Add("A creates record");
-                leadershipHistory.Add("A gets leadership");
+                electionHistory.Enqueue("A creates record");
+                leadershipHistory.Enqueue("A gets leadership");
                 electionHistoryCountdown.Signal();
             };
 
             mockLockA.OnUpdate += (_) =>
             {
                 renewCountA--;
-                electionHistory.Add("A updates record");
+                electionHistory.Enqueue("A updates record");
                 electionHistoryCountdown.Signal();
             };
 
-            mockLockA.OnChange += (_) => { leadershipHistory.Add("A gets leadership"); };
+            mockLockA.OnChange += (_) => { leadershipHistory.Enqueue("A gets leadership"); };
 
             var leaderElectionConfigA = new LeaderElectionConfig(mockLockA)
             {
@@ -123,19 +124,19 @@ namespace k8s.Tests.LeaderElection
             {
                 renewCountB--;
 
-                electionHistory.Add("B creates record");
+                electionHistory.Enqueue("B creates record");
                 electionHistoryCountdown.Signal();
-                leadershipHistory.Add("B gets leadership");
+                leadershipHistory.Enqueue("B gets leadership");
             };
 
             mockLockB.OnUpdate += (_) =>
             {
                 renewCountB--;
-                electionHistory.Add("B updates record");
+                electionHistory.Enqueue("B updates record");
                 electionHistoryCountdown.Signal();
             };
 
-            mockLockB.OnChange += (_) => { leadershipHistory.Add("B gets leadership"); };
+            mockLockB.OnChange += (_) => { leadershipHistory.Enqueue("B gets leadership"); };
 
             var leaderElectionConfigB = new LeaderElectionConfig(mockLockB)
             {
@@ -153,13 +154,13 @@ namespace k8s.Tests.LeaderElection
 
                 leaderElector.OnStartedLeading += () =>
                 {
-                    leadershipHistory.Add("A starts leading");
+                    leadershipHistory.Enqueue("A starts leading");
                     testLeaderElectionLatch.Signal();
                 };
 
                 leaderElector.OnStoppedLeading += () =>
                 {
-                    leadershipHistory.Add("A stops leading");
+                    leadershipHistory.Enqueue("A stops leading");
                     testLeaderElectionLatch.Signal();
                     lockAStopLeading.Set();
                 };
@@ -176,13 +177,13 @@ namespace k8s.Tests.LeaderElection
 
                 leaderElector.OnStartedLeading += () =>
                 {
-                    leadershipHistory.Add("B starts leading");
+                    leadershipHistory.Enqueue("B starts leading");
                     testLeaderElectionLatch.Signal();
                 };
 
                 leaderElector.OnStoppedLeading += () =>
                 {
-                    leadershipHistory.Add("B stops leading");
+                    leadershipHistory.Enqueue("B stops leading");
                     testLeaderElectionLatch.Signal();
                 };
 
