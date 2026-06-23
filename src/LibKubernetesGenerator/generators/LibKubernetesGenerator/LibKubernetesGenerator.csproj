@@ -12,6 +12,7 @@
     <PackageReference Include="NJsonSchema" />
     <PackageReference Include="NJsonSchema.Annotations" />
     <PackageReference Include="NSwag.Core" />
+    <PackageReference Include="Scriban" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" />
     <PackageReference Include="System.Text.Json" />
     </ItemGroup> 
