@@ -43,6 +43,11 @@
 *.fsx text=auto
 *.hs text=auto
 
+# Shell scripts must keep LF endings even when checked out on Windows; a CRLF
+# turns `set -euxo pipefail` into `pipefail\r` (invalid option) once the file is
+# copied into WSL.
+*.sh text eol=lf
+
 *.csproj text=auto
 *.vbproj text=auto
 *.fsproj text=auto

@@ -8,11 +8,11 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     name: Dotnet build
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
       - name: Setup dotnet
-        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
+        uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
         with:
           dotnet-version: |
            8.0.x
@@ -23,7 +23,7 @@ jobs:
       - name: Test
         run: dotnet test --configuration Release --collect:"Code Coverage;Format=Cobertura" --logger trx --results-directory TestResults --settings CodeCoverage.runsettings --no-build
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6.0.0
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           directory: ./TestResults
           files: '*.cobertura.xml'
@@ -39,13 +39,13 @@ jobs:
     runs-on: windows-2025-vs2026
     name: MSBuild build
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@30375c66a4eea26614e0d39710365f22f8b0af57 # v3.0.0
       - name: Setup dotnet SDK
-        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
+        uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
         with:
           dotnet-version: '10.0.1xx'
       - name: Restore nugets (msbuild)
@@ -56,11 +56,11 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
       - name: Setup dotnet
-        uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
+        uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
         with:
           dotnet-version: |
            8.0.x
@@ -86,6 +86,84 @@ jobs:
             echo "CASES MUST NOT BE SKIPPED"
             exit 1
           fi              
+
+  # Run the .NET Framework 4.8 e2e suite (KubernetesClient.Classic) against a
+  # real Kubernetes cluster on Windows. There is no native Windows Kubernetes
+  # distribution, so the kindest/node image (which bundles containerd, kubelet
+  # and the control-plane components) is imported into WSL2 with oci-to-wsl.
+  # The Linux e2e job already covers the modern (net8/9/10) client libraries.
+  # WSL2 requires windows-2025 (windows-2022 only has WSL1).
+  e2e-windows-wsl:
+    runs-on: windows-2025
+    name: e2e classic (wsl)
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@9a946fdbd5fb07b82b2f5a4466058b876ab72bb2 # v5.3.0
+        with:
+          dotnet-version: 10.0.x
+      - name: Import kindest/node into WSL
+        uses: tg123/oci-to-wsl@902e4b0d7f3e7608dbd581e9e2fd473907a279a8 # main
+        with:
+          profile: .github/e2e/kind-wsl.yaml
+      - name: Start kind cluster in WSL
+        shell: pwsh
+        run: |
+          # Reboot the distro so the systemd configuration written by the profile
+          # takes effect.
+          wsl --shutdown
+
+          # WSL terminates the lightweight VM once its last session exits, which
+          # tears down the API server between steps. Hold an idle session open in
+          # the background so the cluster stays up for the host-side test steps.
+          Start-Process -FilePath wsl -ArgumentList '-d','kind','-u','root','--','sleep','infinity'
+
+          # Bring up the single node control plane in place.
+          wsl -d kind -u root -- bash /usr/local/bin/bootstrap-kind.sh
+
+          # Get the WSL2 VM's IP address. In NAT mode the host can reach this
+          # IP directly via the virtual switch.
+          $wslIp = ((wsl -d kind -- hostname -I).Trim() -split '\s+', 0, 'RegexMatch' | Where-Object { $_ -match '^\d+\.\d+\.\d+\.\d+$' } | Select-Object -First 1)
+          if (-not $wslIp) { throw "Could not determine WSL IP" }
+          Write-Output "WSL IP: $wslIp"
+
+          # Export a kubeconfig for the Windows host, rewriting the server URL
+          # to the WSL VM's IP address reachable from Windows.
+          wsl -d kind -u root -- cat /etc/kubernetes/admin.conf | Out-File -Encoding ascii kind.kubeconfig
+          (Get-Content kind.kubeconfig) -replace 'server: https://[^ ]+', "server: https://${wslIp}:6443" | Set-Content kind.kubeconfig
+
+          # .NET Framework 4.8 does not support custom trust stores, so skip TLS
+          # verification for the self-signed K8s CA (this is a CI-only cluster).
+          (Get-Content kind.kubeconfig) -replace 'certificate-authority-data:.*', 'insecure-skip-tls-verify: true' | Set-Content kind.kubeconfig
+
+          # Wait until the API server is reachable from the Windows host.
+          $ok = $false
+          foreach ($i in 1..60) {
+            if ((Test-NetConnection -ComputerName $wslIp -Port 6443 -WarningAction SilentlyContinue).TcpTestSucceeded) {
+              $ok = $true
+              break
+            }
+            Start-Sleep -Seconds 5
+          }
+          if (-not $ok) {
+            throw "API server on ${wslIp}:6443 was not reachable from the Windows host"
+          }
+      - name: Test
+        shell: pwsh
+        env:
+          K8S_E2E_MINIKUBE: "1"
+          KUBECONFIG: ${{ github.workspace }}\kind.kubeconfig
+        run: |
+          [IO.File]::WriteAllText("$PWD/skip.log", "")
+          dotnet test tests/E2E.Classic.Tests --logger "SkipTestLogger;file=$PWD/skip.log" -p:BuildInParallel=false
+          $skipContent = [IO.File]::ReadAllText("$PWD/skip.log").Trim()
+          if ($skipContent.Length -gt 0) {
+            Write-Output $skipContent
+            Write-Error "CASES MUST NOT BE SKIPPED"
+            exit 1
+          }
 
 on:
   pull_request:

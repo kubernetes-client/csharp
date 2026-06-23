@@ -6,10 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="OpenTelemetry.Exporter.Console" />
-        <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" VersionOverride="10.0.7" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
+  </ItemGroup>
     
 </Project>
