@@ -162,6 +162,16 @@ namespace k8s
             {
                 if (!task.IsCompleted)
                 {
+                    // Observe any exception from the original task to prevent an
+                    // UnobservedTaskException when the continuation below is cancelled
+                    // before the original task faults (e.g. the transport tears down the
+                    // connection after cancellation).
+                    _ = task.ContinueWith(
+                        static t => { _ = t.Exception; },
+                        CancellationToken.None,
+                        TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+                        TaskScheduler.Default);
+
                     // here to pass cancellationToken into task
                     return task.ContinueWith(t => t.GetAwaiter().GetResult(), cancellationToken);
                 }
@@ -174,7 +184,11 @@ namespace k8s
             for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
+#if NET7_0_OR_GREATER
+                var line = await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false);
+#else
                 var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
+#endif
 
                 cancellationToken.ThrowIfCancellationRequested();
 
