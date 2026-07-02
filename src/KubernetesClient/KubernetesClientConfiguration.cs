@@ -1,5 +1,6 @@
 using k8s.Authentication;
 using System.Net.Http;
+using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 
 namespace k8s
@@ -55,6 +56,34 @@ namespace k8s
         ///     Gets a value indicating whether to skip ssl server cert validation
         /// </summary>
         public bool SkipTlsVerify { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a custom server certificate validation callback.
+        ///     This allows fine-grained control over certificate validation, such as disabling
+        ///     revocation checks while maintaining other security validations.
+        ///     Takes precedence over <see cref="SkipTlsVerify"/> when set.
+        /// </summary>
+        /// <remarks>
+        ///     <para>
+        ///     The callback signature is: <c>Func&lt;HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool&gt;</c>.
+        ///     Note that the HttpRequestMessage parameter may be null in some contexts (e.g., WebSocket connections).
+        ///     </para>
+        ///     <para>
+        ///     Example usage to disable revocation checking:
+        ///     </para>
+        ///     <code>
+        ///     config.ServerCertificateCustomValidationCallback = (request, cert, chain, errors) =>
+        ///     {
+        ///         if (errors == SslPolicyErrors.None)
+        ///             return true;
+        ///
+        ///         // Disable revocation checking
+        ///         chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
+        ///         return chain.Build((X509Certificate2)cert);
+        ///     };
+        ///     </code>
+        /// </remarks>
+        public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool> ServerCertificateCustomValidationCallback { get; set; }
 
         /// <summary>
         ///     Option to override the TLS server name

@@ -1,3 +1,4 @@
+using System.Net.Security;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 
@@ -40,6 +41,14 @@ namespace k8s
             {
                 return Kubernetes.CertificateValidationCallBack(sender, serverCertificate, certificate, chain, sslPolicyErrors);
             };
+#endif
+            return this;
+        }
+
+        public WebSocketBuilder SetServerCertificateCustomValidationCallback(RemoteCertificateValidationCallback callback)
+        {
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+            Options.RemoteCertificateValidationCallback = callback;
 #endif
             return this;
         }
