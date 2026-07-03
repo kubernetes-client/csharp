@@ -7,6 +7,8 @@
     <ItemGroup>
         <PackageReference Include="Autofac" />
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
         <PackageReference Include="Namotion.Reflection" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="NJsonSchema" />
