@@ -8,11 +8,11 @@
     <PackageVersion Include="Fractions" Version="8.3.2" />
     <PackageVersion Include="JsonPatch.Net" Version="5.0.3" />
     <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.7.1" />
-    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.10" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.9" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
-    <PackageVersion Include="Microsoft.TestPlatform.ObjectModel" Version="18.8.1" />
+    <PackageVersion Include="Microsoft.TestPlatform.ObjectModel" Version="18.6.0" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="Nito.AsyncEx" Version="5.1.2" />
     <PackageVersion Include="Nito.AsyncEx.Coordination" Version="5.1.2" />
@@ -22,9 +22,9 @@
     <PackageVersion Include="SharpZipLib" Version="1.4.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.9" />
-    <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="22.1.1" />
+    <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="22.2.0" />
     <PackageVersion Include="System.Reactive" Version="6.1.0" />
-    <PackageVersion Include="System.Text.Json" Version="10.0.9" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.10" />
     <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="18.1.0" />
     <PackageVersion Include="Wiremock.Net" Version="2.6.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
@@ -33,7 +33,7 @@
     <PackageVersion Include="YamlDotNet" Version="18.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Autofac" Version="9.3.0" />
+    <PackageVersion Include="Autofac" Version="9.3.1" />
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="5.6.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.6.0" />
@@ -45,10 +45,10 @@
     <PackageVersion Include="Scriban" Version="6.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.301" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.302" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" />
     <GlobalPackageReference Include="Microsoft.VisualStudio.SlnGen" Version="12.0.32" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.10.85" />
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.10.91" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
 </Project>
