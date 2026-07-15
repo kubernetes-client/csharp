@@ -7,5 +7,5 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*; \
     curl -fsSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh; \
     chmod +x /tmp/dotnet-install.sh; \
-    /tmp/dotnet-install.sh --channel 9.0 --quality ga --install-dir /usr/share/dotnet; \
+    /tmp/dotnet-install.sh --channel 9.0 --quality ga --install-dir /usr/share/dotnet --skip-non-versioned-files; \
     rm -f /tmp/dotnet-install.sh

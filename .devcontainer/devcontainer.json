@@ -2,6 +2,6 @@
     "name": "csharp",
     "build": {
         "dockerfile": "Dockerfile",
-        "context": ".."
+        "context": "."
     }
 }
