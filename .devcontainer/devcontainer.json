@@ -1,3 +1,7 @@
 {
-    "image": "mcr.microsoft.com/dotnet/sdk:8.0"
+    "name": "csharp",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    }
 }
