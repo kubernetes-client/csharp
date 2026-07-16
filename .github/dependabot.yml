@@ -11,6 +11,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
     # Allow up to 5 open pull requests for GitHub Actions dependencies
     open-pull-requests-limit: 5
     labels:
@@ -23,6 +27,10 @@ updates:
     directory: "/" 
     schedule:
       interval: "daily"
+    groups:
+      dotnet:
+        patterns:
+          - "*"
     # Allow up to 10 open pull requests for NuGet dependencies
     open-pull-requests-limit: 10
     labels:
