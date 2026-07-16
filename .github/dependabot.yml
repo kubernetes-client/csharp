@@ -15,8 +15,8 @@ updates:
       github-actions:
         patterns:
           - "*"
-    # Allow up to 5 open pull requests for GitHub Actions dependencies
-    open-pull-requests-limit: 5
+    # Keep a single open pull request for grouped GitHub Actions dependencies
+    open-pull-requests-limit: 1
     labels:
       - "dependencies"
     # Rebase open pull requests when changes are detected
@@ -31,8 +31,8 @@ updates:
       dotnet:
         patterns:
           - "*"
-    # Allow up to 10 open pull requests for NuGet dependencies
-    open-pull-requests-limit: 10
+    # Keep a single open pull request for grouped NuGet dependencies
+    open-pull-requests-limit: 1
     labels:
       - "dependencies"
     # Rebase open pull requests when changes are detected
