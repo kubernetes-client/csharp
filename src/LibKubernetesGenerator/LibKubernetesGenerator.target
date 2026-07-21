@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
+        <PackageScribanIncludeSource>false</PackageScribanIncludeSource>
     </PropertyGroup>
 
     <ItemGroup>
