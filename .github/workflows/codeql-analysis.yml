@@ -8,9 +8,33 @@ permissions:
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'global.json'
+      - 'nuget.config'
+      - 'swagger.json'
+      - '.github/workflows/codeql-analysis.yml'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'global.json'
+      - 'nuget.config'
+      - 'swagger.json'
+      - '.github/workflows/codeql-analysis.yml'
   schedule:
     - cron: '15 23 * * 1'
 
