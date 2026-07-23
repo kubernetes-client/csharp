@@ -168,3 +168,17 @@ jobs:
 on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '.github/e2e/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'CodeCoverage.runsettings'
+      - 'global.json'
+      - 'nuget.config'
+      - 'kubernetes-client.proj'
+      - '.github/workflows/buildtest.yaml'
