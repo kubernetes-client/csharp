@@ -158,28 +158,7 @@ namespace k8s
             Action<Exception> onError = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-            Task<TR> AttachCancellationToken<TR>(Task<TR> task)
-            {
-                if (!task.IsCompleted)
-                {
-                    // Observe any exception from the original task to prevent an
-                    // UnobservedTaskException when the continuation below is cancelled
-                    // before the original task faults (e.g. the transport tears down the
-                    // connection after cancellation).
-                    _ = task.ContinueWith(
-                        static t => { _ = t.Exception; },
-                        CancellationToken.None,
-                        TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
-
-                    // here to pass cancellationToken into task
-                    return task.ContinueWith(t => t.GetAwaiter().GetResult(), cancellationToken);
-                }
-
-                return task;
-            }
-
-            using var streamReader = await AttachCancellationToken(streamReaderCreator()).ConfigureAwait(false);
+            using var streamReader = await streamReaderCreator().WaitAsync(cancellationToken).ConfigureAwait(false);
 
             for (; ; )
             {
