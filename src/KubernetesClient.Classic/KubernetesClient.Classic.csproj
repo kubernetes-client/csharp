@@ -107,7 +107,6 @@
 
     <Compile Include="..\KubernetesClient\Watcher.cs" />
     <Compile Include="..\KubernetesClient\WatcherExt.cs" />
-    <Compile Include="..\KubernetesClient\LineSeparatedHttpContent.cs" />
 
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />

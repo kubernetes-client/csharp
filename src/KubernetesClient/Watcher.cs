@@ -184,11 +184,7 @@ namespace k8s
             for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
-#if NET7_0_OR_GREATER
                 var line = await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false);
-#else
-                var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
-#endif
 
                 cancellationToken.ThrowIfCancellationRequested();
 
