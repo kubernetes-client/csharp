@@ -169,21 +169,6 @@ namespace k8s
                 return _inner.ReadLineAsync();
             }
 
-            /// <summary>
-            /// The base <see cref="TextReader"/> implementation of this overload does not route
-            /// through <see cref="ReadLineAsync()"/>, which would both bypass the peeked line
-            /// buffer and hit the unsupported character based read members.
-            /// </summary>
-            public override ValueTask<string> ReadLineAsync(CancellationToken cancellationToken)
-            {
-                if (_buffer.Count > 0)
-                {
-                    return new ValueTask<string>(_buffer.Dequeue());
-                }
-
-                return _inner.ReadLineAsync(cancellationToken);
-            }
-
             public async Task<string> PeekLineAsync()
             {
                 var line = await ReadLineAsync().ConfigureAwait(false);
