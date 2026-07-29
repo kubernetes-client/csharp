@@ -6,6 +6,19 @@ permissions:
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'global.json'
+      - 'nuget.config'
+      - 'version.json'
+      - 'kubernetes-client.proj'
+      - '.github/workflows/draft.yaml'
     
 jobs:
   draft:
