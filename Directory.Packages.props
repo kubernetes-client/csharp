@@ -28,6 +28,7 @@
     <PackageVersion Include="Vecc.YamlDotNet.Analyzers.StaticGenerator" Version="18.1.0" />
     <PackageVersion Include="Wiremock.Net" Version="2.6.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <PackageVersion Include="Xunit.StaFact" Version="3.0.13" />
     <PackageVersion Include="YamlDotNet" Version="18.1.0" />
