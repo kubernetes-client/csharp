@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="MartinCostello.Logging.XUnit" />
       <PackageReference Include="FluentAssertions" />
       <PackageReference Include="Microsoft.Extensions.Logging" />
       <PackageReference Include="System.IO.Abstractions.TestingHelpers" />
@@ -23,7 +22,7 @@
     <PackageReference Include="NJsonSchema" />
     <PackageReference Include="NSwag.Core" />
     <PackageReference Include="System.Text.Json" />
-    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

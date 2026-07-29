@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Reactive.Disposables;
-using Xunit.Abstractions;
+using Xunit;
 
 namespace k8s.Tests.Logging
 {
