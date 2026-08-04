@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.6.2" />
+    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageVersion Include="FluentAssertions" Version="8.10.0" />
     <PackageVersion Include="Fractions" Version="8.3.2" />
     <PackageVersion Include="JsonPatch.Net" Version="5.0.2" />
