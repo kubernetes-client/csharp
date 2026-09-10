@@ -201,4 +201,27 @@ public class KubernetesJsonTests
 
         Assert.Throws<FormatException>(() => KubernetesJson.Deserialize<V1Secret>(json));
     }
+
+    [Fact]
+    public void NonGenericDeserializeReturnsInstanceOfReturnType()
+    {
+        const string json = """
+                            {
+                              "apiVersion": "v1",
+                              "kind": "Secret",
+                              "metadata": {
+                                "name": "typed-secret"
+                              },
+                              "type": "Opaque"
+                            }
+                            """;
+
+#pragma warning disable CA2263
+        var result = KubernetesJson.Deserialize(json, typeof(V1Secret));
+#pragma warning restore CA2263
+
+        var secret = Assert.IsType<V1Secret>(result);
+        Assert.Equal("typed-secret", secret.Metadata.Name);
+        Assert.Equal("Opaque", secret.Type);
+    }
 }
