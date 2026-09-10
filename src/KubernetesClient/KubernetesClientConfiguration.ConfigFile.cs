@@ -5,11 +5,14 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json.Nodes;
 
 namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
+        internal const string ExecExtensionName = "client.authentication.k8s.io/exec";
+
         /// <summary>
         ///     kubeconfig Default Location
         /// </summary>
@@ -277,6 +280,10 @@ namespace k8s
             SkipTlsVerify = clusterDetails.ClusterEndpoint.SkipTlsVerify;
             TlsServerName = clusterDetails.ClusterEndpoint.TlsServerName;
 
+            // Reset CA data so it always reflects the cluster currently being resolved
+            // and is never carried over from a prior state.
+            CertificateAuthorityData = null;
+
             if (!Uri.TryCreate(Host, UriKind.Absolute, out var uri))
             {
                 throw new KubeConfigException($"Bad server host URL `{Host}` (cannot be parsed)");
@@ -306,15 +313,16 @@ namespace k8s
             {
                 if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthorityData))
                 {
-                    var data = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
-                    var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(data));
+                    CertificateAuthorityData = clusterDetails.ClusterEndpoint.CertificateAuthorityData;
+                    var pemText = Encoding.UTF8.GetString(Convert.FromBase64String(CertificateAuthorityData));
                     SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
                 else if (!string.IsNullOrEmpty(clusterDetails.ClusterEndpoint.CertificateAuthority))
                 {
-                    SslCaCerts = CertUtils.LoadPemFileCert(GetFullPath(
-                        k8SConfig,
-                        clusterDetails.ClusterEndpoint.CertificateAuthority));
+                    var caBytes = File.ReadAllBytes(GetFullPath(k8SConfig, clusterDetails.ClusterEndpoint.CertificateAuthority));
+                    CertificateAuthorityData = Convert.ToBase64String(caBytes);
+                    var pemText = Encoding.UTF8.GetString(caBytes);
+                    SslCaCerts = CertUtils.LoadFromPemText(pemText);
                 }
             }
         }
@@ -426,7 +434,25 @@ namespace k8s
                     throw new KubeConfigException("External command execution missing ApiVersion key");
                 }
 
-                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                ClusterEndpoint clusterEndpoint = null;
+                if (userDetails.UserCredentials.ExternalExecution.ProvideClusterInfo)
+                {
+                    var clusterDetails = k8SConfig.Clusters.FirstOrDefault(c => c.Name.Equals(
+                        activeContext.ContextDetails.Cluster,
+                        StringComparison.OrdinalIgnoreCase));
+                    var rawCluster = clusterDetails?.ClusterEndpoint;
+
+                    clusterEndpoint = new ClusterEndpoint
+                    {
+                        Server = this.Host,
+                        SkipTlsVerify = this.SkipTlsVerify,
+                        TlsServerName = this.TlsServerName,
+                        CertificateAuthorityData = this.CertificateAuthorityData,
+                        Extensions = rawCluster?.Extensions,
+                    };
+                }
+
+                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution, clusterEndpoint);
                 AccessToken = response.Status.Token;
                 // When reading ClientCertificateData from a config file it will be base64 encoded, and code later in the system (see CertUtils.GeneratePfx)
                 // expects ClientCertificateData and ClientCertificateKeyData to be base64 encoded because of this. However the string returned by external
@@ -439,7 +465,7 @@ namespace k8s
                 // TODO: support client certificates here too.
                 if (AccessToken != null)
                 {
-                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution);
+                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution, clusterEndpoint);
                 }
             }
 
@@ -450,23 +476,86 @@ namespace k8s
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="ClusterEndpoint"/> (kubeconfig model) into the
+        /// <c>spec.cluster</c> JSON representation defined by the exec credential plugin
+        /// protocol (client.authentication.k8s.io/v1). Returns <c>null</c> if
+        /// <paramref name="cluster"/> is <c>null</c>.
+        /// </summary>
+        /// <seealso href="https://kubernetes.io/docs/reference/config-api/client-authentication.v1/#Cluster"/>
+        internal static JsonNode ToExecClusterInfo(ClusterEndpoint cluster)
+        {
+            if (cluster == null)
+            {
+                return null;
+            }
+
+            var node = new JsonObject
+            {
+                ["server"] = cluster.Server,
+            };
+
+            if (cluster.SkipTlsVerify)
+            {
+                node["insecure-skip-tls-verify"] = true;
+            }
+
+            if (!string.IsNullOrEmpty(cluster.CertificateAuthorityData))
+            {
+                node["certificate-authority-data"] = cluster.CertificateAuthorityData;
+            }
+
+            if (!string.IsNullOrEmpty(cluster.TlsServerName))
+            {
+                node["tls-server-name"] = cluster.TlsServerName;
+            }
+
+            var execExtension = cluster.Extensions?
+                .FirstOrDefault(e => e.Name == ExecExtensionName);
+            if (execExtension != null)
+            {
+                object extConfig = execExtension.Extension;
+                if (extConfig != null)
+                {
+                    node["config"] = JsonSerializer.SerializeToNode(extConfig);
+                }
+            }
+
+            return node;
+        }
+
         public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError = null)
+        {
+            return CreateRunnableExternalProcess(config, captureStdError, null);
+        }
+
+        public static Process CreateRunnableExternalProcess(ExternalExecution config, EventHandler<DataReceivedEventArgs> captureStdError, ClusterEndpoint cluster)
         {
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
             }
 
-            var execInfo = new Dictionary<string, dynamic>
+            var spec = new JsonObject { ["interactive"] = Environment.UserInteractive };
+            if (config.ProvideClusterInfo)
             {
-                { "apiVersion", config.ApiVersion },
-                { "kind", "ExecCredentials" },
-                { "spec", new Dictionary<string, bool> { { "interactive", Environment.UserInteractive } } },
+                var clusterNode = ToExecClusterInfo(cluster);
+                if (clusterNode != null)
+                {
+                    spec["cluster"] = clusterNode;
+                }
+            }
+
+            var execInfo = new JsonObject
+            {
+                ["apiVersion"] = config.ApiVersion,
+                ["kind"] = "ExecCredentials",
+                ["spec"] = spec,
             };
 
             var process = new Process();
 
-            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", JsonSerializer.Serialize(execInfo));
+            process.StartInfo.EnvironmentVariables.Add("KUBERNETES_EXEC_INFO", execInfo.ToJsonString());
             if (config.EnvironmentVariables != null)
             {
                 foreach (var configEnvironmentVariable in config.EnvironmentVariables)
@@ -511,13 +600,18 @@ namespace k8s
         /// </returns>
         public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config)
         {
+            return ExecuteExternalCommand(config, null);
+        }
+
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config, ClusterEndpoint cluster)
+        {
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
             }
 
             var captureStdError = ExecStdError;
-            var process = CreateRunnableExternalProcess(config, captureStdError);
+            var process = CreateRunnableExternalProcess(config, captureStdError, cluster);
 
             try
             {
