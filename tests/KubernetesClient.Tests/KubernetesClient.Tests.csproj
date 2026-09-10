@@ -19,6 +19,7 @@
   <ItemGroup>
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" />
     <PackageReference Include="Namotion.Reflection" />
     <PackageReference Include="NJsonSchema" />
     <PackageReference Include="NSwag.Core" />
