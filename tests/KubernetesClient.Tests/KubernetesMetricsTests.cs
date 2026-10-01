@@ -2,7 +2,6 @@ using k8s.Tests.Mock;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
