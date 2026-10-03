@@ -158,12 +158,20 @@ namespace k8s
             Action<Exception> onError = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
+#if NET8_0_OR_GREATER
             using var streamReader = await streamReaderCreator().WaitAsync(cancellationToken).ConfigureAwait(false);
+#else
+            using var streamReader = await AwaitWithCancellationAsync(streamReaderCreator(), cancellationToken).ConfigureAwait(false);
+#endif
 
             for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
+#if NET8_0_OR_GREATER
                 var line = await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false);
+#else
+                var line = await AwaitWithCancellationAsync(streamReader.ReadLineAsync(), cancellationToken).ConfigureAwait(false);
+#endif
 
                 cancellationToken.ThrowIfCancellationRequested();
 
@@ -202,6 +210,30 @@ namespace k8s
             }
         }
 
+#if !NET8_0_OR_GREATER
+        private static async Task<TResult> AwaitWithCancellationAsync<TResult>(Task<TResult> task, CancellationToken cancellationToken)
+        {
+            if (!task.IsCompleted && cancellationToken.CanBeCanceled)
+            {
+                var cancellation = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+                using (cancellationToken.Register(() => cancellation.TrySetResult(true)))
+                {
+                    if (await Task.WhenAny(task, cancellation.Task).ConfigureAwait(false) != task)
+                    {
+                        // Legacy readers cannot cancel an in-flight read. Observe faults even after the watcher exits.
+                        _ = task.ContinueWith(
+                            completed => _ = completed.Exception,
+                            CancellationToken.None,
+                            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+                            TaskScheduler.Default);
+                        cancellationToken.ThrowIfCancellationRequested();
+                    }
+                }
+            }
+
+            return await task.ConfigureAwait(false);
+        }
+#endif
 
         protected virtual void Dispose(bool disposing)
         {
