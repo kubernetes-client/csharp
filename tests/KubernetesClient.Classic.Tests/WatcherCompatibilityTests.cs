@@ -10,7 +10,7 @@ using Xunit;
 
 namespace k8s.Tests
 {
-    public class WatchTests
+    public class WatcherCompatibilityTests
     {
         [Theory]
         [InlineData(false)]
@@ -34,23 +34,29 @@ namespace k8s.Tests
             Assert.True(stream.IsDisposed);
         }
 
-        [Fact]
-        public async Task DisposeWatcherStopsPendingRead()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public async Task DisposeWatcherStopsPendingRead(bool useCustomReader)
         {
             using var stream = new PendingReadStream();
-            using TextReader reader = new LineSeparatedHttpContent.PeekableStreamReader(stream);
+            using var customReader = new PendingReader();
+            using TextReader reader = useCustomReader
+                ? customReader
+                : new LineSeparatedHttpContent.PeekableStreamReader(stream);
             var closed = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
             var errors = new List<Exception>();
             using var watcher = new Watcher<V1Pod>(
                 () => Task.FromResult(reader), null, errors.Add, () => closed.SetResult(true));
 
-            await WithTimeout(stream.ReadStarted.Task).ConfigureAwait(true);
+            await WithTimeout(useCustomReader ? customReader.ReadStarted.Task : stream.ReadStarted.Task).ConfigureAwait(true);
             watcher.Dispose();
             await WithTimeout(closed.Task).ConfigureAwait(true);
 
-            Assert.True(stream.IsDisposed);
+            Assert.True(useCustomReader ? customReader.IsDisposed : stream.IsDisposed);
             Assert.Empty(errors);
             Assert.False(watcher.Watching);
+            customReader.Completion.TrySetResult(null);
         }
 
         [Fact]
@@ -191,9 +197,16 @@ namespace k8s.Tests
         {
             public TaskCompletionSource<string> Completion { get; } = new TaskCompletionSource<string>();
 
+            public TaskCompletionSource<bool> ReadStarted { get; } =
+                new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
             public bool IsDisposed { get; private set; }
 
-            public override Task<string> ReadLineAsync() => Completion.Task;
+            public override Task<string> ReadLineAsync()
+            {
+                ReadStarted.SetResult(true);
+                return Completion.Task;
+            }
 
             protected override void Dispose(bool disposing)
             {
@@ -226,10 +239,11 @@ namespace k8s.Tests
                 set => throw new NotSupportedException();
             }
 
-            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            public override async Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
+                using var registration = cancellationToken.Register(() => completion.TrySetCanceled());
                 ReadStarted.SetResult(true);
-                return completion.Task;
+                return await completion.Task.ConfigureAwait(false);
             }
 
             public override void Flush() => throw new NotSupportedException();

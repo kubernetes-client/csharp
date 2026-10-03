@@ -158,17 +158,16 @@ namespace k8s
             Action<Exception> onError = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-#if NET8_0_OR_GREATER
-            using var streamReader = await streamReaderCreator().WaitAsync(cancellationToken).ConfigureAwait(false);
-#else
             using var streamReader = await AwaitWithCancellationAsync(streamReaderCreator(), cancellationToken).ConfigureAwait(false);
-#endif
 
             for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
 #if NET8_0_OR_GREATER
-                var line = await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false);
+                // Custom readers may override only the parameterless API, not the token-aware overload.
+                var line = streamReader.GetType() == typeof(StreamReader) || streamReader is LineSeparatedHttpContent.PeekableStreamReader
+                    ? await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false)
+                    : await AwaitWithCancellationAsync(streamReader.ReadLineAsync(), cancellationToken).ConfigureAwait(false);
 #else
                 var line = await AwaitWithCancellationAsync(streamReader.ReadLineAsync(), cancellationToken).ConfigureAwait(false);
 #endif
@@ -210,30 +209,39 @@ namespace k8s
             }
         }
 
-#if !NET8_0_OR_GREATER
         private static async Task<TResult> AwaitWithCancellationAsync<TResult>(Task<TResult> task, CancellationToken cancellationToken)
         {
-            if (!task.IsCompleted && cancellationToken.CanBeCanceled)
+            try
             {
-                var cancellation = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
-                using (cancellationToken.Register(() => cancellation.TrySetResult(true)))
+#if NET8_0_OR_GREATER
+                return await task.WaitAsync(cancellationToken).ConfigureAwait(false);
+#else
+                if (!task.IsCompleted && cancellationToken.CanBeCanceled)
                 {
-                    if (await Task.WhenAny(task, cancellation.Task).ConfigureAwait(false) != task)
+                    var cancellation = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+                    using (cancellationToken.Register(() => cancellation.TrySetResult(true)))
                     {
-                        // Legacy readers cannot cancel an in-flight read. Observe faults even after the watcher exits.
-                        _ = task.ContinueWith(
-                            completed => _ = completed.Exception,
-                            CancellationToken.None,
-                            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
-                            TaskScheduler.Default);
-                        cancellationToken.ThrowIfCancellationRequested();
+                        if (await Task.WhenAny(task, cancellation.Task).ConfigureAwait(false) != task)
+                        {
+                            cancellationToken.ThrowIfCancellationRequested();
+                        }
                     }
                 }
-            }
 
-            return await task.ConfigureAwait(false);
-        }
+                return await task.ConfigureAwait(false);
 #endif
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                // An uncancellable operation can still fault after the watcher exits.
+                _ = task.ContinueWith(
+                    completed => _ = completed.Exception,
+                    CancellationToken.None,
+                    TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+                    TaskScheduler.Default);
+                throw;
+            }
+        }
 
         protected virtual void Dispose(bool disposing)
         {
