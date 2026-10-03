@@ -1120,8 +1120,21 @@ namespace k8s.E2E
                 var created = await client.AutoscalingV2.ReadNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter).ConfigureAwait(false);
                 Assert.Equal(1, created.Spec.MinReplicas);
 
-                created.Spec.MinReplicas = 2;
-                await client.AutoscalingV2.ReplaceNamespacedHorizontalPodAutoscalerAsync(created, hpaName, namespaceParameter).ConfigureAwait(false);
+                const int maxAttempts = 5;
+                for (var attempt = 1; attempt <= maxAttempts; attempt++)
+                {
+                    var current = await client.AutoscalingV2.ReadNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter).ConfigureAwait(false);
+                    current.Spec.MinReplicas = 2;
+                    try
+                    {
+                        await client.AutoscalingV2.ReplaceNamespacedHorizontalPodAutoscalerAsync(current, hpaName, namespaceParameter).ConfigureAwait(false);
+                        break;
+                    }
+                    catch (HttpOperationException e) when (e.Response.StatusCode == System.Net.HttpStatusCode.Conflict && attempt < maxAttempts)
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                    }
+                }
 
                 var updated = await client.AutoscalingV2.ReadNamespacedHorizontalPodAutoscalerAsync(hpaName, namespaceParameter).ConfigureAwait(false);
                 Assert.Equal(2, updated.Spec.MinReplicas);
