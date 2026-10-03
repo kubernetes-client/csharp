@@ -159,14 +159,21 @@ namespace k8s
 
             public override string ReadLine() => throw new NotImplementedException();
 
-            public override Task<string> ReadLineAsync()
+            public override Task<string> ReadLineAsync() => ReadLineAsync(CancellationToken.None).AsTask();
+
+            public override ValueTask<string> ReadLineAsync(CancellationToken cancellationToken)
             {
-                if (_buffer.Count > 0)
+                if (cancellationToken.IsCancellationRequested)
                 {
-                    return Task.FromResult(_buffer.Dequeue());
+                    return ValueTask.FromCanceled<string>(cancellationToken);
                 }
 
-                return _inner.ReadLineAsync();
+                if (_buffer.Count > 0)
+                {
+                    return new ValueTask<string>(_buffer.Dequeue());
+                }
+
+                return _inner.ReadLineAsync(cancellationToken);
             }
 
             public async Task<string> PeekLineAsync()

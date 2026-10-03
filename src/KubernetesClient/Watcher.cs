@@ -158,23 +158,12 @@ namespace k8s
             Action<Exception> onError = null,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-            Task<TR> AttachCancellationToken<TR>(Task<TR> task)
-            {
-                if (!task.IsCompleted)
-                {
-                    // here to pass cancellationToken into task
-                    return task.ContinueWith(t => t.GetAwaiter().GetResult(), cancellationToken);
-                }
-
-                return task;
-            }
-
-            using var streamReader = await AttachCancellationToken(streamReaderCreator()).ConfigureAwait(false);
+            using var streamReader = await streamReaderCreator().WaitAsync(cancellationToken).ConfigureAwait(false);
 
             for (; ; )
             {
                 // ReadLineAsync will return null when we've reached the end of the stream.
-                var line = await AttachCancellationToken(streamReader.ReadLineAsync()).ConfigureAwait(false);
+                var line = await streamReader.ReadLineAsync(cancellationToken).ConfigureAwait(false);
 
                 cancellationToken.ThrowIfCancellationRequested();
 
