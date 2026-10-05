@@ -8,7 +8,7 @@
     <PackageVersion Include="Fractions" Version="8.3.2" />
     <PackageVersion Include="JsonPatch.Net" Version="5.0.3" />
     <PackageVersion Include="MartinCostello.Logging.XUnit" Version="0.7.1" />
-    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.11" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.12" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
@@ -21,7 +21,7 @@
     <PackageVersion Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageVersion Include="SharpZipLib" Version="1.4.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.9" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.12" />
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="22.1.1" />
     <PackageVersion Include="System.Reactive" Version="6.1.0" />
     <PackageVersion Include="System.Text.Json" Version="10.0.9" />
@@ -33,7 +33,7 @@
     <PackageVersion Include="YamlDotNet" Version="18.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Autofac" Version="9.3.2" />
+    <PackageVersion Include="Autofac" Version="9.3.4" />
     <PackageVersion Include="CaseExtensions" Version="1.1.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="5.9.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
