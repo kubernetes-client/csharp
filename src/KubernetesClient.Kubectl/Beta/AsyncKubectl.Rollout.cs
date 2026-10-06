@@ -424,7 +424,7 @@ public partial class AsyncKubectl
 
                 return new RolloutHistoryEntry
                 {
-                    Revision = cr.Revision,
+                    Revision = cr.Revision ?? 0,
                     ChangeCause = changeCause,
                 };
             })
@@ -453,7 +453,7 @@ public partial class AsyncKubectl
 
                 return new RolloutHistoryEntry
                 {
-                    Revision = cr.Revision,
+                    Revision = cr.Revision ?? 0,
                     ChangeCause = changeCause,
                 };
             })
