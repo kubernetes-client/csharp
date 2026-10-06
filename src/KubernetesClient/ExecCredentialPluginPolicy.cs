@@ -1,4 +1,5 @@
 using k8s.Exceptions;
+using k8s.KubeConfigModels;
 using System.Runtime.InteropServices;
 
 namespace k8s
@@ -37,7 +38,7 @@ namespace k8s
         /// Basenames allow that executable name in any directory, including directories searched through PATH.
         /// Absolute paths use exact textual matching, without resolving symlinks or normalizing paths.
         /// Matching is case-insensitive on Windows and case-sensitive elsewhere.
-        /// This policy does not restrict plugin arguments or environment variables.
+        /// Kubeconfig-supplied environment variables are rejected. Plugin arguments are not restricted.
         /// </remarks>
         /// <param name="commands">Approved basenames or absolute paths. Relative paths and invalid entries are rejected.</param>
         /// <returns>An immutable allowlist policy.</returns>
@@ -52,7 +53,7 @@ namespace k8s
             foreach (var command in copy)
             {
                 if (string.IsNullOrWhiteSpace(command) || command == "." || command == ".." ||
-                    command.IndexOfAny(Path.GetInvalidPathChars()) >= 0 || command.IndexOfAny(new[] { '*', '?' }) >= 0 ||
+                    HasInvalidCommandCharacters(command) || command.IndexOfAny(new[] { '*', '?' }) >= 0 ||
                     (!IsBasename(command) && !IsAbsolutePath(command)))
                 {
                     throw new ArgumentException("Exec allowlist entries must be command basenames or absolute executable paths.", nameof(commands));
@@ -69,7 +70,7 @@ namespace k8s
                 return true;
             }
 
-            if (string.IsNullOrWhiteSpace(command))
+            if (string.IsNullOrWhiteSpace(command) || HasInvalidCommandCharacters(command))
             {
                 return false;
             }
@@ -78,9 +79,9 @@ namespace k8s
                 entry, IsBasename(entry) ? Path.GetFileName(command) : command, CommandComparison));
         }
 
-        internal void Validate(string command)
+        internal void Validate(string command, ExternalExecution execution)
         {
-            if (!Allows(command))
+            if (!Allows(command) || (!allowAll && execution.EnvironmentVariables?.Count > 0))
             {
                 throw new ExecCredentialPluginDeniedException(command);
             }
@@ -89,6 +90,12 @@ namespace k8s
         private static bool IsBasename(string command)
         {
             return command.IndexOfAny(new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar, ':' }) < 0;
+        }
+
+        private static bool HasInvalidCommandCharacters(string command)
+        {
+            return command.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ||
+                command.IndexOfAny(new[] { '"', '\0', '\r', '\n' }) >= 0;
         }
 
         private static bool IsAbsolutePath(string command)
@@ -100,7 +107,8 @@ namespace k8s
 
             var root = Path.GetPathRoot(command);
             return !RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                (root.Length > 1 && root[root.Length - 1] == Path.DirectorySeparatorChar);
+                root.StartsWith(@"\\", StringComparison.Ordinal) || root.StartsWith("//", StringComparison.Ordinal) ||
+                (root.Length >= 3 && root[1] == ':' && (root[2] == '\\' || root[2] == '/'));
         }
     }
 }

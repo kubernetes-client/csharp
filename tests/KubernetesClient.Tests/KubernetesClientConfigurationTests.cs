@@ -557,8 +557,9 @@ namespace k8s.Tests
             try
             {
                 File.WriteAllText(path, KubernetesYaml.Serialize(kubeconfig));
-                Environment.SetEnvironmentVariable(environmentVariable, multipleConfigs ?
-                    string.Join(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", path, path) : path);
+                var paths = multipleConfigs ?
+                    string.Join(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", path, path) : path;
+                Environment.SetEnvironmentVariable(environmentVariable, paths);
                 KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
                 Assert.Throws<ExecCredentialPluginDeniedException>(() =>
                     KubernetesClientConfiguration.BuildDefaultConfig(ExecCredentialPluginPolicy.DenyAll));
