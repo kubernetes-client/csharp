@@ -6,11 +6,18 @@ namespace k8s.Authentication
     public class ExecTokenProvider : ITokenProvider
     {
         private readonly ExternalExecution exec;
+        private readonly ExecCredentialPluginPolicy policy;
         private ExecCredentialResponse response;
 
         public ExecTokenProvider(ExternalExecution exec)
+            : this(exec, ExecCredentialPluginPolicy.AllowAll)
+        {
+        }
+
+        public ExecTokenProvider(ExternalExecution exec, ExecCredentialPluginPolicy policy)
         {
             this.exec = exec;
+            this.policy = policy ?? ExecCredentialPluginPolicy.AllowAll;
         }
 
         private bool NeedsRefresh()
@@ -41,7 +48,7 @@ namespace k8s.Authentication
         private async Task RefreshToken()
         {
             response =
-                await Task.Run(() => KubernetesClientConfiguration.ExecuteExternalCommand(this.exec)).ConfigureAwait(false);
+                await Task.Run(() => KubernetesClientConfiguration.ExecuteExternalCommand(this.exec, policy)).ConfigureAwait(false);
         }
     }
 }

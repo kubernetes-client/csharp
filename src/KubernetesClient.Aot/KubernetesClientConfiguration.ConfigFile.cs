@@ -10,6 +10,8 @@ namespace k8s
 {
     public partial class KubernetesClientConfiguration
     {
+        private ExecCredentialPluginPolicy execCredentialPluginPolicy = ExecCredentialPluginPolicy.AllowAll;
+
         /// <summary>
         ///     kubeconfig Default Location
         /// </summary>
@@ -36,6 +38,10 @@ namespace k8s
         /// </summary>
         public static event EventHandler<DataReceivedEventArgs> ExecStdError;
 
+        /// <inheritdoc cref="BuildDefaultConfig(ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildDefaultConfig()
+            => BuildDefaultConfig(ExecCredentialPluginPolicy.AllowAll);
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
@@ -48,7 +54,8 @@ namespace k8s
         ///     merges the files, where first occurrence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
-        public static KubernetesClientConfiguration BuildDefaultConfig()
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
+        public static KubernetesClientConfiguration BuildDefaultConfig(ExecCredentialPluginPolicy execCredentialPluginPolicy)
         {
             var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
@@ -56,12 +63,12 @@ namespace k8s
                 var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':')
                     .Select((s) => new FileInfo(s.Trim('"')));
                 var k8sConfig = LoadKubeConfig(configList.ToArray());
-                return BuildConfigFromConfigObject(k8sConfig);
+                return BuildConfigFromConfigObject(k8sConfig, execCredentialPluginPolicy: execCredentialPluginPolicy);
             }
 
             if (File.Exists(KubeConfigDefaultLocation))
             {
-                return BuildConfigFromConfigFile(KubeConfigDefaultLocation);
+                return BuildConfigFromConfigFile(KubeConfigDefaultLocation, execCredentialPluginPolicy: execCredentialPluginPolicy);
             }
 
             if (IsInCluster())
@@ -77,6 +84,11 @@ namespace k8s
             return config;
         }
 
+        /// <inheritdoc cref="BuildConfigFromConfigFile(string, string, string, bool, ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            string kubeconfigPath, string currentContext, string masterUrl, bool useRelativePaths)
+            => BuildConfigFromConfigFile(kubeconfigPath, currentContext, masterUrl, useRelativePaths, ExecCredentialPluginPolicy.AllowAll);
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
         /// </summary>
@@ -85,14 +97,21 @@ namespace k8s
         /// <param name="masterUrl">kube api server endpoint</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
             string kubeconfigPath = null,
-            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
         {
             return BuildConfigFromConfigFile(new FileInfo(kubeconfigPath ?? KubeConfigDefaultLocation), currentContext,
-                masterUrl, useRelativePaths);
+                masterUrl, useRelativePaths, execCredentialPluginPolicy);
         }
+
+        /// <inheritdoc cref="BuildConfigFromConfigFile(FileInfo, string, string, bool, ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            FileInfo kubeconfig, string currentContext, string masterUrl, bool useRelativePaths)
+            => BuildConfigFromConfigFile(kubeconfig, currentContext, masterUrl, useRelativePaths, ExecCredentialPluginPolicy.AllowAll);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
@@ -102,14 +121,21 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
             FileInfo kubeconfig,
-            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
         {
-            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths).GetAwaiter()
+            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths, execCredentialPluginPolicy).GetAwaiter()
                 .GetResult();
         }
+
+        /// <inheritdoc cref="BuildConfigFromConfigFileAsync(FileInfo, string, string, bool, ExecCredentialPluginPolicy)"/>
+        public static Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
+            FileInfo kubeconfig, string currentContext, string masterUrl, bool useRelativePaths)
+            => BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, useRelativePaths, ExecCredentialPluginPolicy.AllowAll);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
@@ -119,10 +145,12 @@ namespace k8s
         /// <param name="masterUrl">override the kube api server endpoint, set null if do not want to override</param>
         /// <param name="useRelativePaths">When <see langword="true"/>, the paths in the kubeconfig file will be considered to be relative to the directory in which the kubeconfig
         /// file is located. When <see langword="false"/>, the paths will be considered to be relative to the current working directory.</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
             FileInfo kubeconfig,
-            string currentContext = null, string masterUrl = null, bool useRelativePaths = true)
+            string currentContext = null, string masterUrl = null, bool useRelativePaths = true,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
         {
             if (kubeconfig == null)
             {
@@ -130,24 +158,15 @@ namespace k8s
             }
 
             var k8SConfig = await LoadKubeConfigAsync(kubeconfig, useRelativePaths).ConfigureAwait(false);
-            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig, execCredentialPluginPolicy);
 
             return k8SConfiguration;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
-        /// </summary>
-        /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
-        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
-        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
-        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
+        /// <inheritdoc cref="BuildConfigFromConfigFile(Stream, string, string, ExecCredentialPluginPolicy)"/>
         public static KubernetesClientConfiguration BuildConfigFromConfigFile(
-            Stream kubeconfig,
-            string currentContext = null, string masterUrl = null)
-        {
-            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl).GetAwaiter().GetResult();
-        }
+            Stream kubeconfig, string currentContext, string masterUrl)
+            => BuildConfigFromConfigFile(kubeconfig, currentContext, masterUrl, ExecCredentialPluginPolicy.AllowAll);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
@@ -155,10 +174,33 @@ namespace k8s
         /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
+        /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
+        public static KubernetesClientConfiguration BuildConfigFromConfigFile(
+            Stream kubeconfig,
+            string currentContext = null, string masterUrl = null,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
+        {
+            return BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, execCredentialPluginPolicy).GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc cref="BuildConfigFromConfigFileAsync(Stream, string, string, ExecCredentialPluginPolicy)"/>
+        public static Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
+            Stream kubeconfig, string currentContext, string masterUrl)
+            => BuildConfigFromConfigFileAsync(kubeconfig, currentContext, masterUrl, ExecCredentialPluginPolicy.AllowAll);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from config file
+        /// </summary>
+        /// <param name="kubeconfig">Stream of the kubeconfig, cannot be null</param>
+        /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
+        /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static async Task<KubernetesClientConfiguration> BuildConfigFromConfigFileAsync(
             Stream kubeconfig,
-            string currentContext = null, string masterUrl = null)
+            string currentContext = null, string masterUrl = null,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
         {
             if (kubeconfig == null)
             {
@@ -173,10 +215,15 @@ namespace k8s
             kubeconfig.Position = 0;
 
             var k8SConfig = await KubernetesYaml.LoadFromStreamAsync<K8SConfiguration>(kubeconfig).ConfigureAwait(false);
-            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+            var k8SConfiguration = GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig, execCredentialPluginPolicy);
 
             return k8SConfiguration;
         }
+
+        /// <inheritdoc cref="BuildConfigFromConfigObject(K8SConfiguration, string, string, ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildConfigFromConfigObject(
+            K8SConfiguration k8SConfig, string currentContext, string masterUrl)
+            => BuildConfigFromConfigObject(k8SConfig, currentContext, masterUrl, ExecCredentialPluginPolicy.AllowAll);
 
         /// <summary>
         /// Initializes a new instance of <see cref="KubernetesClientConfiguration"/> from pre-loaded config object.
@@ -184,22 +231,27 @@ namespace k8s
         /// <param name="k8SConfig">A <see cref="K8SConfiguration"/>, for example loaded from <see cref="LoadKubeConfigAsync(string, bool)" /></param>
         /// <param name="currentContext">Override the current context in config, set null if do not want to override</param>
         /// <param name="masterUrl">Override the Kubernetes API server endpoint, set null if do not want to override</param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
         public static KubernetesClientConfiguration BuildConfigFromConfigObject(
             K8SConfiguration k8SConfig,
-            string currentContext = null, string masterUrl = null)
-            => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig);
+            string currentContext = null, string masterUrl = null,
+            ExecCredentialPluginPolicy execCredentialPluginPolicy = null)
+            => GetKubernetesClientConfiguration(currentContext, masterUrl, k8SConfig, execCredentialPluginPolicy);
 
         private static KubernetesClientConfiguration GetKubernetesClientConfiguration(
             string currentContext,
-            string masterUrl, K8SConfiguration k8SConfig)
+            string masterUrl, K8SConfiguration k8SConfig, ExecCredentialPluginPolicy execCredentialPluginPolicy)
         {
             if (k8SConfig == null)
             {
                 throw new ArgumentNullException(nameof(k8SConfig));
             }
 
-            var k8SConfiguration = new KubernetesClientConfiguration();
+            var k8SConfiguration = new KubernetesClientConfiguration
+            {
+                execCredentialPluginPolicy = execCredentialPluginPolicy ?? ExecCredentialPluginPolicy.AllowAll,
+            };
 
             currentContext = currentContext ?? k8SConfig.CurrentContext;
             // only init context if context is set
@@ -416,7 +468,7 @@ namespace k8s
                     throw new KubeConfigException("External command execution missing ApiVersion key");
                 }
 
-                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution);
+                var response = ExecuteExternalCommand(userDetails.UserCredentials.ExternalExecution, execCredentialPluginPolicy);
                 AccessToken = response.Status.Token;
                 // When reading ClientCertificateData from a config file it will be base64 encoded, and code later in the system (see CertUtils.GeneratePfx)
                 // expects ClientCertificateData and ClientCertificateKeyData to be base64 encoded because of this. However the string returned by external
@@ -429,7 +481,7 @@ namespace k8s
                 // TODO: support client certificates here too.
                 if (AccessToken != null)
                 {
-                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution);
+                    TokenProvider = new ExecTokenProvider(userDetails.UserCredentials.ExternalExecution, execCredentialPluginPolicy);
                 }
             }
 
@@ -493,15 +545,27 @@ namespace k8s
         /// The token, client certificate data, and the client key data received from the external command execution
         /// </returns>
         public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config)
+            => ExecuteExternalCommand(config, ExecCredentialPluginPolicy.AllowAll);
+
+        /// <summary>
+        /// Executes a credential plugin only if permitted by the application policy.
+        /// </summary>
+        /// <param name="config">The external command execution configuration.</param>
+        /// <param name="execCredentialPluginPolicy">Application policy. Null allows all plugins.</param>
+        /// <returns>The credentials returned by the plugin.</returns>
+        public static ExecCredentialResponse ExecuteExternalCommand(ExternalExecution config, ExecCredentialPluginPolicy execCredentialPluginPolicy)
         {
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
             }
 
+            var policy = execCredentialPluginPolicy ?? ExecCredentialPluginPolicy.AllowAll;
+            policy.Validate(config.Command, config);
             var captureStdError = ExecStdError;
             var process = CreateRunnableExternalProcess(config, captureStdError);
 
+            policy.Validate(process.StartInfo.FileName, config);
             try
             {
                 process.Start();
