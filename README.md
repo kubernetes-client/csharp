@@ -51,6 +51,35 @@ var config = KubernetesClientConfiguration.InClusterConfig()
 var client = new Kubernetes(config);
 ```
 
+### Exec credential plugin security
+
+Kubeconfig `exec` plugins start local processes, including while loading configuration.
+Only load trusted kubeconfigs with the default `AllowAll` policy. For untrusted input,
+applications can deny exec plugins or explicitly allow approved executables:
+
+```c#
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+    kubeConfigPath, execCredentialPluginPolicy: ExecCredentialPluginPolicy.DenyAll);
+
+var config = KubernetesClientConfiguration.BuildConfigFromConfigFile(
+    kubeConfigPath,
+    execCredentialPluginPolicy: ExecCredentialPluginPolicy.Allowlist(
+        "kubelogin", @"C:\Program Files\Contoso\trusted-plugin.exe"));
+```
+
+The same policy parameter is available on default, stream, async, and pre-loaded-object
+builders. Policies are supplied by the application, not read from kubeconfig, and
+apply to both initial execution and token refresh. Denials throw
+`k8s.Exceptions.ExecCredentialPluginDeniedException` before the process starts.
+An empty allowlist denies everything; null or invalid allowlist entries are rejected.
+
+Basenames allow that name in **any directory**, including `PATH` searches. Absolute
+paths match exactly (case-insensitively on Windows, case-sensitively elsewhere),
+without path normalization or symlink resolution. Prefer absolute paths to executables
+in application-controlled directories. The policy does not validate arguments,
+environment variables, or executable contents, and allowing an interpreter or other
+general-purpose launcher can permit arbitrary code execution. It is not a sandbox.
+
 ### Listing Objects
 ```c#
 var namespaces = client.CoreV1.ListNamespace();
