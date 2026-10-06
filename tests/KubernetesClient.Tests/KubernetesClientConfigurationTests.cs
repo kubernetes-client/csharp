@@ -530,6 +530,47 @@ namespace k8s.Tests
             Assert.NotNull(cfg);
         }
 
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void DefaultConfigEnforcesExecPolicy(bool multipleConfigs)
+        {
+            var kubeconfig = KubernetesClientConfiguration.LoadKubeConfig("assets/kubeconfig.yml");
+            kubeconfig.CurrentContext = "queen-anne-context";
+            foreach (var cluster in kubeconfig.Clusters)
+            {
+                cluster.ClusterEndpoint.SkipTlsVerify = true;
+            }
+
+            foreach (var user in kubeconfig.Users)
+            {
+                user.UserCredentials.ExternalExecution = new ExternalExecution
+                {
+                    Command = "policy-denied-command",
+                    ApiVersion = "client.authentication.k8s.io/v1beta1",
+                };
+            }
+
+            var path = Path.GetTempFileName();
+            var environmentVariable = "KUBECONFIG_DefaultConfigEnforcesExecPolicy";
+            var previousVariable = KubernetesClientConfiguration.KubeConfigEnvironmentVariable;
+            try
+            {
+                File.WriteAllText(path, KubernetesYaml.Serialize(kubeconfig));
+                Environment.SetEnvironmentVariable(environmentVariable, multipleConfigs ?
+                    string.Join(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":", path, path) : path);
+                KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
+                Assert.Throws<ExecCredentialPluginDeniedException>(() =>
+                    KubernetesClientConfiguration.BuildDefaultConfig(ExecCredentialPluginPolicy.DenyAll));
+            }
+            finally
+            {
+                KubernetesClientConfiguration.KubeConfigEnvironmentVariable = previousVariable;
+                Environment.SetEnvironmentVariable(environmentVariable, null);
+                File.Delete(path);
+            }
+        }
+
         [Fact]
         public void LoadKubeConfigFromEnvironmentVariableMultipleConfigs()
         {
