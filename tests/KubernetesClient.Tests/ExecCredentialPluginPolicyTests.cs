@@ -42,6 +42,9 @@ namespace k8s.Tests
         [InlineData("plugins/trusted-plugin")]
         [InlineData("*")]
         [InlineData("trusted?plugin")]
+        [InlineData("trusted\"plugin")]
+        [InlineData("trusted\rplugin")]
+        [InlineData("trusted\nplugin")]
         [InlineData("trusted\0plugin")]
         public void InvalidAllowlistEntriesAreRejected(string entry)
         {
@@ -63,6 +66,74 @@ namespace k8s.Tests
             entries[0] = "untrusted-plugin";
             Assert.True(policy.Allows("trusted-plugin"));
             Assert.False(policy.Allows("untrusted-plugin"));
+        }
+
+        [Fact]
+        public void EmbeddedQuotesCannotBypassBasenamePolicy()
+        {
+            using var plugin = new TestPlugin();
+            plugin.Exec.Command += $"\" \"{Path.Combine(Path.GetTempPath(), "unused", "trusted-plugin")}";
+            var policy = ExecCredentialPluginPolicy.Allowlist("trusted-plugin");
+            Assert.False(policy.Allows(plugin.Exec.Command));
+            Assert.Throws<ExecCredentialPluginDeniedException>(() =>
+                KubernetesClientConfiguration.ExecuteExternalCommand(plugin.Exec, policy));
+            Assert.False(File.Exists(plugin.Marker));
+        }
+
+        [Fact]
+        public void WindowsAbsolutePathsIncludeUncAndForwardSlashes()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            foreach (var path in new[] { @"\\server\share\trusted-plugin.exe", "C:/plugins/trusted-plugin.exe" })
+            {
+                var policy = ExecCredentialPluginPolicy.Allowlist(path);
+                Assert.True(policy.Allows(path));
+                Assert.False(policy.Allows("trusted-plugin.exe"));
+            }
+
+            Assert.Throws<ArgumentException>(() => ExecCredentialPluginPolicy.Allowlist(@"C:trusted-plugin.exe"));
+            Assert.Throws<ArgumentException>(() => ExecCredentialPluginPolicy.Allowlist(@"\plugins\trusted-plugin.exe"));
+        }
+
+        [Theory]
+        [InlineData("PATH")]
+        [InlineData("LD_PRELOAD")]
+        [InlineData("DYLD_INSERT_LIBRARIES")]
+        [InlineData("PLUGIN_SETTING")]
+        public async Task AllowlistRejectsKubeconfigEnvironmentOverrides(string name)
+        {
+            using var plugin = new TestPlugin();
+            plugin.Exec.EnvironmentVariables = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "name", name }, { "value", "untrusted-value" } },
+            };
+            var policy = ExecCredentialPluginPolicy.Allowlist(plugin.Exec.Command);
+            Assert.Throws<ExecCredentialPluginDeniedException>(() =>
+                KubernetesClientConfiguration.ExecuteExternalCommand(plugin.Exec, policy));
+            plugin.WriteConfig();
+            Assert.Throws<ExecCredentialPluginDeniedException>(() =>
+                KubernetesClientConfiguration.BuildConfigFromConfigObject(plugin.LoadConfig(), execCredentialPluginPolicy: policy));
+            var provider = new ExecTokenProvider(plugin.Exec, policy);
+            await Assert.ThrowsAsync<ExecCredentialPluginDeniedException>(() =>
+                provider.GetAuthenticationHeaderAsync(CancellationToken.None));
+            Assert.False(File.Exists(plugin.Marker));
+        }
+
+        [Fact]
+        public void AllowAllPreservesKubeconfigEnvironmentOverrides()
+        {
+            using var plugin = new TestPlugin();
+            plugin.Exec.EnvironmentVariables = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "name", "PLUGIN_SETTING" }, { "value", "trusted-value" } },
+            };
+            var response = KubernetesClientConfiguration.ExecuteExternalCommand(plugin.Exec);
+            Assert.Equal("test-token", response.Status.Token);
+            Assert.True(File.Exists(plugin.Marker));
         }
 
         [Theory]
@@ -211,14 +282,7 @@ namespace k8s.Tests
                     Arguments = windows ? new List<string> { "/c", $"\"{script}\"" } : new List<string> { $"\"{script}\"" },
                 };
                 KubeconfigPath = Path.Combine(directory, "config");
-                File.WriteAllText(KubeconfigPath, KubernetesYaml.Serialize(new K8SConfiguration
-                {
-                    CurrentContext = "test",
-                    Contexts = new[] { new Context { Name = "test", ContextDetails = new ContextDetails { Cluster = "test", User = "test" } } },
-                    Clusters = new[] { new Cluster { Name = "test", ClusterEndpoint = new ClusterEndpoint { Server = "https://localhost", SkipTlsVerify = true } } },
-                    Users = new[] { new User { Name = "test", UserCredentials = new UserCredentials { ExternalExecution = Exec } } },
-                    Preferences = new Dictionary<string, object> { { "execCredentialPluginPolicy", "AllowAll" } },
-                }));
+                WriteConfig();
             }
 
             public ExternalExecution Exec { get; }
@@ -228,6 +292,18 @@ namespace k8s.Tests
             public string KubeconfigPath { get; }
 
             public K8SConfiguration LoadConfig() => KubernetesClientConfiguration.LoadKubeConfig(KubeconfigPath);
+
+            public void WriteConfig()
+            {
+                File.WriteAllText(KubeconfigPath, KubernetesYaml.Serialize(new K8SConfiguration
+                {
+                    CurrentContext = "test",
+                    Contexts = new[] { new Context { Name = "test", ContextDetails = new ContextDetails { Cluster = "test", User = "test" } } },
+                    Clusters = new[] { new Cluster { Name = "test", ClusterEndpoint = new ClusterEndpoint { Server = "https://localhost", SkipTlsVerify = true } } },
+                    Users = new[] { new User { Name = "test", UserCredentials = new UserCredentials { ExternalExecution = Exec } } },
+                    Preferences = new Dictionary<string, object> { { "execCredentialPluginPolicy", "AllowAll" } },
+                }));
+            }
 
             public void Dispose() => Directory.Delete(directory, true);
         }

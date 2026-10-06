@@ -560,10 +560,12 @@ namespace k8s
                 throw new ArgumentNullException(nameof(config));
             }
 
+            var policy = execCredentialPluginPolicy ?? ExecCredentialPluginPolicy.AllowAll;
+            policy.Validate(config.Command, config);
             var captureStdError = ExecStdError;
             var process = CreateRunnableExternalProcess(config, captureStdError);
 
-            (execCredentialPluginPolicy ?? ExecCredentialPluginPolicy.AllowAll).Validate(process.StartInfo.FileName);
+            policy.Validate(process.StartInfo.FileName, config);
             try
             {
                 process.Start();

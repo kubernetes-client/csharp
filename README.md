@@ -76,8 +76,11 @@ An empty allowlist denies everything; null or invalid allowlist entries are reje
 Basenames allow that name in **any directory**, including `PATH` searches. Absolute
 paths match exactly (case-insensitively on Windows, case-sensitively elsewhere),
 without path normalization or symlink resolution. Prefer absolute paths to executables
-in application-controlled directories. The policy does not validate arguments,
-environment variables, or executable contents, and allowing an interpreter or other
+in application-controlled directories. The policy does not validate arguments
+or executable contents. Allowlist mode rejects all kubeconfig-supplied environment
+variables, which could otherwise alter command resolution or inject code through
+loader settings. Trusted environment settings can be supplied by the application
+through its own process environment. Allowing an interpreter or other
 general-purpose launcher can permit arbitrary code execution. It is not a sandbox.
 
 ### Listing Objects
