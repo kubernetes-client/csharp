@@ -37,18 +37,33 @@ namespace k8s
         public static event EventHandler<DataReceivedEventArgs> ExecStdError;
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations.
+        ///     Equivalent to calling <see cref="BuildDefaultConfig(string)"/> with a null context.
+        /// </summary>
+        /// <returns>Instance of the <see cref="KubernetesClientConfiguration"/> class</returns>
+        public static KubernetesClientConfiguration BuildDefaultConfig()
+        {
+            return BuildDefaultConfig(currentContext: null);
+        }
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
         ///     If the KUBECONFIG environment variable is set, then that will be used.
         ///     Next, it looks for a config file at <see cref="KubeConfigDefaultLocation"/>.
         ///     Then, it checks whether it is executing inside a cluster and will use <see cref="InClusterConfig()" />.
         ///     Finally, if nothing else exists, it creates a default config with localhost:8080 as host.
         /// </summary>
+        /// <param name="currentContext">
+        ///     Override the context in the resolved kubeconfig. Applies whether the config came from a single
+        ///     file, multiple files merged via the KUBECONFIG environment variable, or the default file location.
+        ///     Ignored when falling back to in-cluster config or the localhost default, since neither has contexts.
+        /// </param>
         /// <remarks>
         ///     If multiple kubeconfig files are specified in the KUBECONFIG environment variable,
         ///     merges the files, where first occurrence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
-        public static KubernetesClientConfiguration BuildDefaultConfig()
+        public static KubernetesClientConfiguration BuildDefaultConfig(string currentContext)
         {
             var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
@@ -56,12 +71,12 @@ namespace k8s
                 var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':')
                     .Select((s) => new FileInfo(s.Trim('"')));
                 var k8sConfig = LoadKubeConfig(configList.ToArray());
-                return BuildConfigFromConfigObject(k8sConfig);
+                return BuildConfigFromConfigObject(k8sConfig, currentContext);
             }
 
             if (File.Exists(KubeConfigDefaultLocation))
             {
-                return BuildConfigFromConfigFile(KubeConfigDefaultLocation);
+                return BuildConfigFromConfigFile(KubeConfigDefaultLocation, currentContext);
             }
 
             if (IsInCluster())
