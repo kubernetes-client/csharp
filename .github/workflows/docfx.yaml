@@ -45,7 +45,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release
 
-    - uses: nunit/docfx-action@9748ca261118e251018cf9c98313b05b12d6cb31 # v4.1.0
+    - uses: nunit/docfx-action@7c6774cc9986c5d3525ea79a1910f461c044b04f # v5.0.0
       name: Build Documentation
       with:
         args: doc/docfx.json
