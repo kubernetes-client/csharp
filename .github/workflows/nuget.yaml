@@ -41,7 +41,7 @@ jobs:
         dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
 
     - name: NuGet login
-      uses: NuGet/login@v1
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
       id: nuget-login
       with:
         user: ${{ secrets.NUGET_USER }}
