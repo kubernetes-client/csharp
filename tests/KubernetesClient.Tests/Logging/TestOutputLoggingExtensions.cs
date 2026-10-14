@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Logging;
 using System;
-using Xunit.Abstractions;
 
 namespace k8s.Tests.Logging
 {

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="MartinCostello.Logging.XUnit" />
+      <PackageReference Include="MartinCostello.Logging.XUnit.v3" />
       <PackageReference Include="FluentAssertions" />
       <PackageReference Include="Microsoft.Extensions.Logging" />
       <PackageReference Include="System.IO.Abstractions.TestingHelpers" />
