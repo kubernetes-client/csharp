@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="KubernetesClient.Tests" />
+    <InternalsVisibleTo Include="KubernetesClient.Classic.Tests" />
   </ItemGroup>
 
   <ItemGroup>

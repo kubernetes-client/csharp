@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <None Include="assets/*" CopyToOutputDirectory="Always" />
+    <Compile Include="..\KubernetesClient.Classic.Tests\WatcherCompatibilityTests.cs" Link="WatcherCompatibilityTests.cs" />
   </ItemGroup>
 
   <ItemGroup>

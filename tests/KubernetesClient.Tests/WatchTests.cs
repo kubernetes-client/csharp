@@ -676,6 +676,106 @@ namespace k8s.Tests
             }
         }
 
+        [Theory]
+        [InlineData(false, false)]
+        [InlineData(false, true)]
+        [InlineData(true, false)]
+        [InlineData(true, true)]
+        public async Task WatchCancellationCompletesPendingRead(bool usePeekableReader, bool faultOnCancellation)
+        {
+            using var cts = new CancellationTokenSource();
+            var readException = faultOnCancellation ? new IOException("The request was aborted.") : null;
+            using var stream = new PendingReadStream(readException);
+            using TextReader reader = usePeekableReader
+                ? new LineSeparatedHttpContent.PeekableStreamReader(
+                    new LineSeparatedHttpContent.CancelableStream(stream, CancellationToken.None))
+                : new StreamReader(stream);
+            await using var enumerator = Watcher<V1Pod>.CreateWatchEventEnumerator(
+                () => Task.FromResult(reader), cancellationToken: cts.Token).GetAsyncEnumerator();
+
+            var moveNext = enumerator.MoveNextAsync().AsTask();
+            await stream.ReadStarted.Task.WaitAsync(TimeSpan.FromSeconds(5)).ConfigureAwait(true);
+            cts.Cancel();
+
+            if (faultOnCancellation)
+            {
+                var exception = await Assert.ThrowsAsync<IOException>(
+                    () => moveNext.WaitAsync(TimeSpan.FromSeconds(5))).ConfigureAwait(true);
+                Assert.Same(readException, exception);
+            }
+            else
+            {
+                await Assert.ThrowsAnyAsync<OperationCanceledException>(
+                    () => moveNext.WaitAsync(TimeSpan.FromSeconds(5))).ConfigureAwait(true);
+            }
+
+            Assert.True(stream.ReadToken.IsCancellationRequested);
+            Assert.True(stream.ReadCompleted);
+            Assert.True(stream.IsDisposed);
+        }
+
+        [Fact]
+        public async Task DisposeWatcherCancelsPendingRead()
+        {
+            using var stream = new PendingReadStream();
+            using TextReader reader = new LineSeparatedHttpContent.PeekableStreamReader(
+                new LineSeparatedHttpContent.CancelableStream(stream, CancellationToken.None));
+            var closed = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+            var errors = new List<Exception>();
+            using var watcher = new Watcher<V1Pod>(
+                () => Task.FromResult(reader), null, errors.Add, () => closed.SetResult(true));
+
+            await stream.ReadStarted.Task.WaitAsync(TimeSpan.FromSeconds(5)).ConfigureAwait(true);
+            watcher.Dispose();
+            await closed.Task.WaitAsync(TimeSpan.FromSeconds(5)).ConfigureAwait(true);
+
+            Assert.True(stream.ReadToken.IsCancellationRequested);
+            Assert.True(stream.ReadCompleted);
+            Assert.True(stream.IsDisposed);
+            Assert.Empty(errors);
+            Assert.False(watcher.Watching);
+        }
+
+        [Fact]
+        public async Task WatchCancellationDuringReaderCreation()
+        {
+            using var cts = new CancellationTokenSource();
+            using TextReader reader = new StringReader("");
+            var readerCreated = new TaskCompletionSource<TextReader>(TaskCreationOptions.RunContinuationsAsynchronously);
+            await using var enumerator = Watcher<V1Pod>.CreateWatchEventEnumerator(
+                () => readerCreated.Task, cancellationToken: cts.Token).GetAsyncEnumerator();
+
+            var moveNext = enumerator.MoveNextAsync().AsTask();
+            cts.Cancel();
+
+            try
+            {
+                await Assert.ThrowsAnyAsync<OperationCanceledException>(
+                    () => moveNext.WaitAsync(TimeSpan.FromSeconds(5))).ConfigureAwait(true);
+            }
+            finally
+            {
+                readerCreated.SetResult(reader);
+            }
+        }
+
+        [Fact]
+        public async Task PeekableReaderCancellationPreservesBufferedLine()
+        {
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes("first\nsecond\n"));
+            using var reader = new LineSeparatedHttpContent.PeekableStreamReader(stream);
+            Assert.Equal("first", await reader.PeekLineAsync().ConfigureAwait(true));
+            using var cts = new CancellationTokenSource();
+            cts.Cancel();
+
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(
+                () => reader.ReadLineAsync(cts.Token).AsTask()).ConfigureAwait(true);
+
+            Assert.Equal("first", await reader.ReadLineAsync().ConfigureAwait(true));
+            Assert.Equal("second", await reader.ReadLineAsync(CancellationToken.None).ConfigureAwait(true));
+            Assert.Null(await reader.ReadLineAsync(CancellationToken.None).ConfigureAwait(true));
+        }
+
         [Fact]
         public void ReadError()
         {
@@ -1026,6 +1126,91 @@ namespace k8s.Tests
 
                 await Task.WhenAny(watchCompleted.WaitAsync(), Task.Delay(TestTimeout)).ConfigureAwait(true);
                 Assert.True(watchCompleted.IsSet);
+            }
+        }
+
+        private sealed class PendingReadStream : Stream
+        {
+            private readonly IOException readException;
+            private readonly TaskCompletionSource<int> readCompletion =
+                new TaskCompletionSource<int>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+            public PendingReadStream(IOException readException = null)
+            {
+                this.readException = readException;
+            }
+
+            public TaskCompletionSource<bool> ReadStarted { get; } =
+                new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+            public CancellationToken ReadToken { get; private set; }
+
+            public bool ReadCompleted { get; private set; }
+
+            public bool IsDisposed { get; private set; }
+
+            public override bool CanRead => true;
+
+            public override bool CanSeek => false;
+
+            public override bool CanWrite => false;
+
+            public override long Length => throw new NotSupportedException();
+
+            public override long Position
+            {
+                get => throw new NotSupportedException();
+                set => throw new NotSupportedException();
+            }
+
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) =>
+                ReadAsync(buffer.AsMemory(offset, count), cancellationToken).AsTask();
+
+            public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+            {
+                ReadToken = cancellationToken;
+                using var registration = cancellationToken.Register(() =>
+                {
+                    if (readException != null)
+                    {
+                        readCompletion.TrySetException(readException);
+                    }
+                    else
+                    {
+                        readCompletion.TrySetCanceled(cancellationToken);
+                    }
+                });
+                ReadStarted.SetResult(true);
+
+                try
+                {
+                    return await readCompletion.Task.ConfigureAwait(false);
+                }
+                finally
+                {
+                    ReadCompleted = true;
+                }
+            }
+
+            public override void Flush() => throw new NotSupportedException();
+
+            public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+
+            public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+
+            public override void SetLength(long value) => throw new NotSupportedException();
+
+            public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    IsDisposed = true;
+                    readCompletion.TrySetResult(0);
+                }
+
+                base.Dispose(disposing);
             }
         }
     }
