@@ -27,6 +27,10 @@ updates:
     directory: "/" 
     schedule:
       interval: "daily"
+    groups:
+      nuget:
+        patterns:
+          - "*"
     # Allow up to 10 open pull requests for NuGet dependencies
     open-pull-requests-limit: 10
     labels:
