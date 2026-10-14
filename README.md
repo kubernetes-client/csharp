@@ -57,6 +57,10 @@ Kubeconfig `exec` plugins start local processes, including while loading configu
 Only load trusted kubeconfigs with the default `AllowAll` policy. For untrusted input,
 applications can deny exec plugins or explicitly allow approved executables:
 
+This policy is a defense-in-depth measure, not a hard security boundary. Loading a
+kubeconfig from an untrusted source is inherently dangerous; handle that risk as part
+of your application's overall security model, and do not rely on this policy alone.
+
 ```c#
 var config = KubernetesClientConfiguration.BuildConfigFromConfigFile(
     kubeConfigPath, execCredentialPluginPolicy: ExecCredentialPluginPolicy.DenyAll);
