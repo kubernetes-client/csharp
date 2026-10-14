@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using System;
+using Xunit;
 
 namespace k8s.Tests.Logging
 {

@@ -26,6 +26,8 @@ namespace k8s.Tests
 {
     public class AuthTests
     {
+        public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+
         private readonly ITestOutputHelper testOutput;
 
         public AuthTests(ITestOutputHelper testOutput)
@@ -167,7 +169,7 @@ namespace k8s.Tests
         }
 
         // this test doesn't work on OSX
-        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX)]
+        [Fact(Skip = "Not compatible with current OS", SkipWhen = nameof(IsOSX))]
         public void Cert()
         {
             var serverCertificateData = File.ReadAllText("assets/apiserver-pfx-data.txt");
@@ -280,7 +282,7 @@ namespace k8s.Tests
             }
         }
 
-        [OperatingSystemDependentFact(Exclude = OperatingSystems.OSX)]
+        [Fact(Skip = "Not compatible with current OS", SkipWhen = nameof(IsOSX))]
         public void ExternalCertificate()
         {
             const string name = "testing_irrelevant";
