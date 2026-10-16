@@ -225,6 +225,7 @@ namespace k8s.Tests
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
                         SslCaCerts = new X509Certificate2Collection(serverCertificate),
+                        TlsServerName = serverCertificate.GetNameInfo(X509NameType.DnsName, false),
                         SkipTlsVerify = false,
                     });
 
