@@ -3,8 +3,10 @@
  */
 
 using k8s.Tests.Mock;
+using Moq;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -13,6 +15,64 @@ namespace k8s.Tests
 {
     public class KubernetesExecTests
     {
+        [Theory]
+        [InlineData(WebSocketProtocol.V5BinaryWebsocketProtocol, WebSocketProtocol.V5BinaryWebsocketProtocol, true)]
+        [InlineData(WebSocketProtocol.V4BinaryWebsocketProtocol, WebSocketProtocol.V4BinaryWebsocketProtocol, false)]
+        [InlineData(WebSocketProtocol.V5BinaryWebsocketProtocol, WebSocketProtocol.V4BinaryWebsocketProtocol, false)]
+        [InlineData(null, null, false)]
+        public async Task MuxedStreamNamespacedPodExecAsyncForwardsOptions(
+            string requestedProtocol, string negotiatedProtocol, bool supportsClose)
+        {
+            var config = new KubernetesClientConfiguration() { Host = "http://localhost" };
+            var clientMock = new Mock<Kubernetes>(config, Array.Empty<DelegatingHandler>()) { CallBase = true };
+            using var client = clientMock.Object;
+            using var webSocket = new MockWebSocket(negotiatedProtocol);
+            using var cts = new CancellationTokenSource();
+            var command = new[] { "/bin/sh", "-c", "echo hello" };
+            var headers = new Dictionary<string, List<string>>()
+            {
+                { "X-My-Header", new List<string>() { "myHeaderValue" } },
+            };
+            clientMock.Setup(c => c.WebSocketNamespacedPodExecAsync(
+                    "mypod", "mynamespace", command, "mycontainer", false, false, false, false,
+                    requestedProtocol, headers, cts.Token))
+                .ReturnsAsync(webSocket);
+
+            using var demuxer = await client.MuxedStreamNamespacedPodExecAsync(
+                "mypod", "mynamespace", command, "mycontainer", stderr: false, stdin: false,
+                stdout: false, tty: false, webSocketSubProtocol: requestedProtocol,
+                customHeaders: headers, cancellationToken: cts.Token).ConfigureAwait(true);
+
+            clientMock.Verify(
+                c => c.WebSocketNamespacedPodExecAsync(
+                    "mypod", "mynamespace", command, "mycontainer", false, false, false, false,
+                    requestedProtocol, headers, cts.Token), Times.Once);
+            Assert.Equal(supportsClose, Assert.IsType<StreamDemuxer>(demuxer).SupportsClose);
+        }
+
+        [Fact]
+        public async Task MuxedStreamNamespacedPodExecAsyncDefaultsToV4()
+        {
+            var config = new KubernetesClientConfiguration() { Host = "http://localhost" };
+            var clientMock = new Mock<Kubernetes>(config, Array.Empty<DelegatingHandler>()) { CallBase = true };
+            using var client = clientMock.Object;
+            using var webSocket = new MockWebSocket(WebSocketProtocol.V4BinaryWebsocketProtocol);
+            var command = new[] { "/bin/sh" };
+            clientMock.Setup(c => c.WebSocketNamespacedPodExecAsync(
+                    "mypod", "default", command, null, true, true, true, true,
+                    WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None))
+                .ReturnsAsync(webSocket);
+
+            using var demuxer = await client.MuxedStreamNamespacedPodExecAsync(
+                "mypod", command: command).ConfigureAwait(true);
+
+            clientMock.Verify(
+                c => c.WebSocketNamespacedPodExecAsync(
+                    "mypod", "default", command, null, true, true, true, true,
+                    WebSocketProtocol.V4BinaryWebsocketProtocol, null, CancellationToken.None), Times.Once);
+            Assert.False(Assert.IsType<StreamDemuxer>(demuxer).SupportsClose);
+        }
+
         /// <summary>
         /// Tests the <see cref="Kubernetes.WebSocketNamespacedPodExecWithHttpMessagesAsync(string, string, string, string, bool, bool, bool, bool, Dictionary{string, List{string}}, CancellationToken)"/>
         /// method. Changes the <see cref="WebSocketBuilder"/> used by the client with a mock builder, so this test never hits the network.
