@@ -213,8 +213,8 @@ namespace k8s
                 return true;
             }
 
-            // If there are errors in the certificate chain, look at each error to determine the cause.
-            if ((sslPolicyErrors & SslPolicyErrors.RemoteCertificateChainErrors) != 0)
+            // Custom CA validation can resolve chain errors, but not hostname or missing-certificate errors.
+            if (sslPolicyErrors == SslPolicyErrors.RemoteCertificateChainErrors)
             {
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
 
