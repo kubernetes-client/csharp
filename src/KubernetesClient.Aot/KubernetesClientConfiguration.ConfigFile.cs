@@ -565,7 +565,7 @@ namespace k8s
             var captureStdError = ExecStdError;
             var process = CreateRunnableExternalProcess(config, captureStdError);
 
-            policy.Validate(process.StartInfo.FileName, config);
+            process.StartInfo.FileName = policy.Validate(process.StartInfo.FileName, config);
             try
             {
                 process.Start();

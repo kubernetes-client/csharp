@@ -9,9 +9,6 @@ namespace k8s
     /// </summary>
     public sealed class ExecCredentialPluginPolicy
     {
-        private static readonly StringComparison CommandComparison =
-            RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
-
         private readonly bool allowAll;
         private readonly string[] commands;
 
@@ -32,12 +29,11 @@ namespace k8s
         public static ExecCredentialPluginPolicy DenyAll { get; } = new ExecCredentialPluginPolicy(false, Array.Empty<string>());
 
         /// <summary>
-        /// Allows command basenames or exact, absolute executable paths. An empty list denies all commands.
+        /// Allows command basenames or absolute executable paths. The list must not be empty.
         /// </summary>
         /// <remarks>
-        /// Basenames allow that executable name in any directory, including directories searched through PATH.
-        /// Absolute paths use exact textual matching, without resolving symlinks or normalizing paths.
-        /// Matching is case-insensitive on Windows and case-sensitive elsewhere.
+        /// Commands match if their text is identical or if both resolve to the same executable using PATH.
+        /// Resolution does not follow symlinks or support shell globs.
         /// Kubeconfig-supplied environment variables are rejected. Plugin arguments are not restricted.
         /// </remarks>
         /// <param name="commands">Approved basenames or absolute paths. Relative paths and invalid entries are rejected.</param>
@@ -50,6 +46,11 @@ namespace k8s
             }
 
             var copy = (string[])commands.Clone();
+            if (copy.Length == 0)
+            {
+                throw new ArgumentException("Exec allowlists must contain at least one command.", nameof(commands));
+            }
+
             foreach (var command in copy)
             {
                 if (string.IsNullOrWhiteSpace(command) || command == "." || command == ".." ||
@@ -64,6 +65,9 @@ namespace k8s
         }
 
         internal bool Allows(string command)
+            => Allows(command, Environment.GetEnvironmentVariable("PATH"));
+
+        internal bool Allows(string command, string path)
         {
             if (allowAll)
             {
@@ -75,15 +79,133 @@ namespace k8s
                 return false;
             }
 
-            return commands.Any(entry => string.Equals(
-                entry, IsBasename(entry) ? Path.GetFileName(command) : command, CommandComparison));
+            if (commands.Any(entry => string.Equals(entry, command, StringComparison.Ordinal)))
+            {
+                return true;
+            }
+
+            if (!TryResolveCommand(command, path, out var resolvedCommand))
+            {
+                return false;
+            }
+
+            return commands.Any(entry =>
+                TryResolveCommand(entry, path, out var resolvedEntry) &&
+                string.Equals(resolvedEntry, resolvedCommand, StringComparison.Ordinal));
         }
 
-        internal void Validate(string command, ExternalExecution execution)
+        internal string Validate(string command, ExternalExecution execution)
         {
-            if (!Allows(command) || (!allowAll && execution.EnvironmentVariables?.Count > 0))
+            if (allowAll)
+            {
+                return command;
+            }
+
+            if (execution.EnvironmentVariables?.Count > 0 || !Allows(command))
             {
                 throw new ExecCredentialPluginDeniedException(command);
+            }
+
+            return TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), out var resolvedCommand)
+                ? resolvedCommand
+                : command;
+        }
+
+        private static bool TryResolveCommand(string command, string path, out string resolvedCommand)
+        {
+            resolvedCommand = null;
+            if (string.IsNullOrWhiteSpace(command) || HasInvalidCommandCharacters(command))
+            {
+                return false;
+            }
+
+            if (Path.IsPathRooted(command) ||
+                command.IndexOf(Path.DirectorySeparatorChar) >= 0 ||
+                command.IndexOf(Path.AltDirectorySeparatorChar) >= 0)
+            {
+                foreach (var extension in GetExecutableExtensions(command))
+                {
+                    if (TryGetFullExistingPath(command + extension, out resolvedCommand))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            foreach (var directory in path.Split(Path.PathSeparator))
+            {
+                if (string.IsNullOrEmpty(directory) || !Path.IsPathRooted(directory))
+                {
+                    continue;
+                }
+
+                foreach (var extension in GetExecutableExtensions(command))
+                {
+                    if (TryGetFullExistingPath(Path.Combine(directory, command + extension), out resolvedCommand))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static bool TryGetFullExistingPath(string command, out string resolvedCommand)
+        {
+            resolvedCommand = null;
+            try
+            {
+                var fullPath = Path.GetFullPath(command);
+                if (!File.Exists(fullPath))
+                {
+                    return false;
+                }
+
+                resolvedCommand = fullPath;
+                return true;
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (NotSupportedException)
+            {
+                return false;
+            }
+            catch (PathTooLongException)
+            {
+                return false;
+            }
+        }
+
+        private static IEnumerable<string> GetExecutableExtensions(string command)
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || Path.HasExtension(command))
+            {
+                yield return string.Empty;
+                yield break;
+            }
+
+            var pathExtensions = Environment.GetEnvironmentVariable("PATHEXT");
+            if (string.IsNullOrEmpty(pathExtensions))
+            {
+                pathExtensions = ".COM;.EXE;.BAT;.CMD";
+            }
+
+            foreach (var extension in pathExtensions.Split(';'))
+            {
+                if (!string.IsNullOrEmpty(extension))
+                {
+                    yield return extension;
+                }
             }
         }
 
