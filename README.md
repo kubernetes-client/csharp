@@ -119,6 +119,8 @@ Notice that this is a workaround and is not recommended for production use.
 ## Testing
 
 The project uses [XUnit](https://github.com/xunit/xunit) as unit testing framework.
+The main client test suite uses xUnit v3; the other test projects use xUnit v2.
+VSTest integration is retained for the existing `dotnet test` and CI coverage commands.
 
 To run the tests:
 

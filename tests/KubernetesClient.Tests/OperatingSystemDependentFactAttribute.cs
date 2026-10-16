@@ -1,18 +1,15 @@
 using System.Runtime.InteropServices;
 using Xunit;
+using Xunit.v3;
 
 namespace k8s.Tests
 {
-    public class OperatingSystemDependentFactAttribute : FactAttribute
+    public class OperatingSystemDependentFactAttribute : FactAttribute, IFactAttribute
     {
         public OperatingSystems Include { get; set; } = OperatingSystems.Linux | OperatingSystems.Windows | OperatingSystems.OSX;
         public OperatingSystems Exclude { get; set; }
 
-        public override string Skip
-        {
-            get => IsOS(Include) && !IsOS(Exclude) ? null : "Not compatible with current OS";
-            set { }
-        }
+        string IFactAttribute.Skip => IsOS(Include) && !IsOS(Exclude) ? null : "Not compatible with current OS";
 
         private bool IsOS(OperatingSystems operatingSystems)
         {
