@@ -14,23 +14,41 @@ namespace k8s.Tests
     public class ExecCredentialPluginPolicyTests
     {
         [Fact]
-        public void AllowlistMatchesBasenamesAndExactPaths()
+        public void AllowlistMatchesExactCommandsAndResolvedExecutablePaths()
         {
-            var path = Path.Combine(Path.GetTempPath(), "trusted-plugin");
-            var otherPath = Path.Combine(Path.GetTempPath(), "other", "trusted-plugin");
-            var basenamePolicy = ExecCredentialPluginPolicy.Allowlist("trusted-plugin");
-            Assert.True(basenamePolicy.Allows("trusted-plugin"));
-            Assert.True(basenamePolicy.Allows(path));
-            Assert.True(basenamePolicy.Allows(otherPath));
-            Assert.False(basenamePolicy.Allows("untrusted-plugin"));
-            Assert.False(basenamePolicy.Allows("trusted-plugin-other"));
+            var directory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            var searchDirectory = Path.Combine(directory, "bin");
+            var otherDirectory = Path.Combine(directory, "other");
+            Directory.CreateDirectory(searchDirectory);
+            Directory.CreateDirectory(otherDirectory);
 
-            var pathPolicy = ExecCredentialPluginPolicy.Allowlist(path);
-            Assert.True(pathPolicy.Allows(path));
-            Assert.False(pathPolicy.Allows("trusted-plugin"));
-            Assert.False(pathPolicy.Allows(otherPath));
-            Assert.False(pathPolicy.Allows(Path.Combine(Path.GetDirectoryName(path), ".", "trusted-plugin")));
-            Assert.Equal(RuntimeInformation.IsOSPlatform(OSPlatform.Windows), pathPolicy.Allows(path.ToUpperInvariant()));
+            try
+            {
+                var extension = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ".exe" : string.Empty;
+                var commandName = "trusted-plugin";
+                var path = Path.Combine(searchDirectory, commandName + extension);
+                var otherPath = Path.Combine(otherDirectory, commandName + extension);
+                File.WriteAllText(path, string.Empty);
+                File.WriteAllText(otherPath, string.Empty);
+
+                var basenamePolicy = ExecCredentialPluginPolicy.Allowlist(commandName);
+                Assert.True(basenamePolicy.Allows(commandName, searchDirectory));
+                Assert.True(basenamePolicy.Allows(path, searchDirectory));
+                Assert.False(basenamePolicy.Allows(otherPath, searchDirectory));
+                Assert.False(basenamePolicy.Allows("untrusted-plugin", searchDirectory));
+                Assert.False(basenamePolicy.Allows("trusted-plugin-other", searchDirectory));
+
+                var pathPolicy = ExecCredentialPluginPolicy.Allowlist(path);
+                Assert.True(pathPolicy.Allows(path, searchDirectory));
+                Assert.True(pathPolicy.Allows(commandName, searchDirectory));
+                Assert.False(pathPolicy.Allows(otherPath, searchDirectory));
+                Assert.True(pathPolicy.Allows(Path.Combine(searchDirectory, ".", commandName + extension), searchDirectory));
+                Assert.False(pathPolicy.Allows(path.ToUpperInvariant(), searchDirectory));
+            }
+            finally
+            {
+                Directory.Delete(directory, true);
+            }
         }
 
         [Theory]
@@ -52,9 +70,9 @@ namespace k8s.Tests
         }
 
         [Fact]
-        public void EmptyAndNullAllowlistsFailClosed()
+        public void EmptyAndNullAllowlistsAreRejected()
         {
-            Assert.False(ExecCredentialPluginPolicy.Allowlist().Allows("trusted-plugin"));
+            Assert.Throws<ArgumentException>(() => ExecCredentialPluginPolicy.Allowlist());
             Assert.Throws<ArgumentNullException>(() => ExecCredentialPluginPolicy.Allowlist(null));
         }
 
@@ -138,13 +156,11 @@ namespace k8s.Tests
 
         [Theory]
         [InlineData("deny")]
-        [InlineData("empty")]
         [InlineData("unmatched")]
         public async Task DeniedPluginNeverStarts(string mode)
         {
             using var plugin = new TestPlugin();
             var policy = mode == "deny" ? ExecCredentialPluginPolicy.DenyAll :
-                mode == "empty" ? ExecCredentialPluginPolicy.Allowlist() :
                 ExecCredentialPluginPolicy.Allowlist("another-plugin");
 
             var exception = Assert.Throws<ExecCredentialPluginDeniedException>(() =>
@@ -167,6 +183,12 @@ namespace k8s.Tests
         public async Task AllowedPluginRunsAndRefreshes(string mode)
         {
             using var plugin = new TestPlugin();
+            if (mode == "basename")
+            {
+                plugin.Exec.Command = Path.GetFileName(plugin.Exec.Command);
+                plugin.WriteConfig();
+            }
+
             var policy = mode == "default" ? null :
                 mode == "all" ? ExecCredentialPluginPolicy.AllowAll :
                 mode == "basename" ? ExecCredentialPluginPolicy.Allowlist(Path.GetFileName(plugin.Exec.Command)) :
