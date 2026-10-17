@@ -550,6 +550,29 @@ namespace k8s.Tests
         }
 
         [Fact]
+        public void LoadKubeConfigFromEnvironmentVariableMultipleConfigsWithContextOverride()
+        {
+            // Same two-files-merged setup as LoadKubeConfigFromEnvironmentVariableMultipleConfigs,
+            // but verifies that an explicit currentContext override is honored against the merged
+            // config, not just the file's own current-context.
+
+            var filePath = Path.GetFullPath("assets/kubeconfig.relative.yml");
+            var environmentVariable = "KUBECONFIG_LoadKubeConfigFromEnvironmentVariable_MultipleConfigs_ContextOverride";
+
+            Environment.SetEnvironmentVariable(
+                environmentVariable,
+                string.Concat(filePath, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':', filePath));
+            KubernetesClientConfiguration.KubeConfigEnvironmentVariable = environmentVariable;
+
+            // kubeconfig.relative.yml's own current-context is "federal-context" (host horse.org:4443);
+            // this asserts the override picks "queen-anne-context" (host pig.org:443) instead.
+            var cfg = KubernetesClientConfiguration.BuildDefaultConfig("queen-anne-context");
+
+            Assert.NotNull(cfg);
+            Assert.Equal("https://pig.org:443", cfg.Host);
+        }
+
+        [Fact]
         public void LoadSameKubeConfigFromEnvironmentVariableUnmodified()
         {
             var txt = File.ReadAllText("assets/kubeconfig.yml");
