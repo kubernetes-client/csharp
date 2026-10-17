@@ -11,7 +11,11 @@ namespace LibKubernetesGenerator
     {
         public static void RenderToContext(this IncrementalGeneratorPostInitializationContext context, string templatefile, ScriptObject sc, string generatedfile)
         {
-            var tc = new TemplateContext();
+            var tc = new TemplateContext
+            {
+                LoopLimit = 0,
+                OutputLimit = 0,
+            };
             tc.PushGlobal(sc);
             context.RenderToContext(templatefile, tc, generatedfile);
         }
