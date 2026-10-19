@@ -82,11 +82,11 @@ when both resolve to the same executable using the application's `PATH`. Thus a
 basename does not allow a same-named executable in an arbitrary directory. Path
 resolution does not follow symlinks or support shell globs. Prefer absolute paths to
 executables in application-controlled directories. The policy does not validate
-arguments or executable contents. Allowlist mode rejects all kubeconfig-supplied
-environment variables, which could otherwise alter command resolution or inject code
-through loader settings. Trusted environment settings can be supplied by the
-application through its own process environment. Allowing an interpreter or other
-general-purpose launcher can permit arbitrary code execution. It is not a sandbox.
+arguments or executable contents. Allowlist mode rejects kubeconfig-supplied
+environment variables that can alter executable resolution or inject code, including
+`PATH`, dynamic-loader settings, and common language-runtime injection settings.
+Ordinary variables such as `AWS_PROFILE` remain allowed. Allowing an interpreter or
+other general-purpose launcher can permit arbitrary code execution. It is not a sandbox.
 
 ### Listing Objects
 ```c#

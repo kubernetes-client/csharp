@@ -119,10 +119,16 @@ namespace k8s.Tests
 
         [Theory]
         [InlineData("PATH")]
+        [InlineData("PATHEXT")]
+        [InlineData("COMSPEC")]
         [InlineData("LD_PRELOAD")]
+        [InlineData("LD_LIBRARY_PATH")]
         [InlineData("DYLD_INSERT_LIBRARIES")]
-        [InlineData("PLUGIN_SETTING")]
-        public async Task AllowlistRejectsKubeconfigEnvironmentOverrides(string name)
+        [InlineData("PYTHONPATH")]
+        [InlineData("NODE_OPTIONS")]
+        [InlineData("JAVA_TOOL_OPTIONS")]
+        [InlineData("DOTNET_STARTUP_HOOKS")]
+        public async Task AllowlistRejectsDangerousKubeconfigEnvironmentOverrides(string name)
         {
             using var plugin = new TestPlugin();
             plugin.Exec.EnvironmentVariables = new List<Dictionary<string, string>>
@@ -139,6 +145,24 @@ namespace k8s.Tests
             await Assert.ThrowsAsync<ExecCredentialPluginDeniedException>(() =>
                 provider.GetAuthenticationHeaderAsync(CancellationToken.None));
             Assert.False(File.Exists(plugin.Marker));
+        }
+
+        [Theory]
+        [InlineData("AWS_PROFILE", "test-profile")]
+        [InlineData("PLUGIN_SETTING", "trusted-value")]
+        public void AllowlistAllowsOrdinaryKubeconfigEnvironmentOverrides(string name, string value)
+        {
+            using var plugin = new TestPlugin();
+            plugin.Exec.EnvironmentVariables = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string> { { "name", name }, { "value", value } },
+            };
+            var policy = ExecCredentialPluginPolicy.Allowlist(plugin.Exec.Command);
+
+            var response = KubernetesClientConfiguration.ExecuteExternalCommand(plugin.Exec, policy);
+
+            Assert.Equal("test-token", response.Status.Token);
+            Assert.True(File.Exists(plugin.Marker));
         }
 
         [Fact]
