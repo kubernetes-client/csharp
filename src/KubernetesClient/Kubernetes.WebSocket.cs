@@ -35,9 +35,10 @@ namespace k8s
             CancellationToken cancellationToken = default)
         {
             var webSocket = await WebSocketNamespacedPodExecAsync(name, @namespace,
-                    command, container, tty: tty, cancellationToken: cancellationToken)
+                    command, container, stderr, stdin, stdout, tty, webSocketSubProtocol, customHeaders, cancellationToken)
                 .ConfigureAwait(false);
-            var muxer = new StreamDemuxer(webSocket);
+            var muxer = new StreamDemuxer(webSocket,
+                supportsClose: webSocket.SubProtocol == WebSocketProtocol.V5BinaryWebsocketProtocol);
             return muxer;
         }
 
