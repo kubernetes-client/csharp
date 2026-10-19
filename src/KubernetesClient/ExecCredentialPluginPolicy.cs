@@ -34,7 +34,8 @@ namespace k8s
         /// <remarks>
         /// Commands match if their text is identical or if both resolve to the same executable using PATH.
         /// Resolution does not follow symlinks or support shell globs.
-        /// Kubeconfig-supplied environment variables are rejected. Plugin arguments are not restricted.
+        /// Environment variables that can redirect executable resolution or inject code are rejected.
+        /// Other kubeconfig-supplied environment variables are allowed. Plugin arguments are not restricted.
         /// </remarks>
         /// <param name="commands">Approved basenames or absolute paths. Relative paths and invalid entries are rejected.</param>
         /// <returns>An immutable allowlist policy.</returns>
@@ -101,7 +102,7 @@ namespace k8s
                 return command;
             }
 
-            if (execution.EnvironmentVariables?.Count > 0 || !Allows(command))
+            if (HasDangerousEnvironmentVariable(execution.EnvironmentVariables) || !Allows(command))
             {
                 throw new ExecCredentialPluginDeniedException(command);
             }
@@ -109,6 +110,39 @@ namespace k8s
             return TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), out var resolvedCommand)
                 ? resolvedCommand
                 : command;
+        }
+
+        private static bool HasDangerousEnvironmentVariable(IList<Dictionary<string, string>> environmentVariables)
+        {
+            return environmentVariables?.Any(variable =>
+                variable != null && variable.ContainsKey("name") &&
+                IsDangerousEnvironmentVariable(variable["name"])) == true;
+        }
+
+        private static bool IsDangerousEnvironmentVariable(string name)
+        {
+            return name != null && (string.Equals(name, "PATH", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PATHEXT", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "COMSPEC", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "LIBPATH", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "SHLIB_PATH", StringComparison.OrdinalIgnoreCase) ||
+                name.StartsWith("LD_", StringComparison.OrdinalIgnoreCase) ||
+                name.StartsWith("DYLD_", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PYTHONPATH", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PYTHONHOME", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PYTHONSTARTUP", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PYTHONINSPECT", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PERL5LIB", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PERL5OPT", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "RUBYOPT", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "RUBYLIB", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "NODE_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "NODE_PATH", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "JAVA_TOOL_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "_JAVA_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "JDK_JAVA_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "CLASSPATH", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "DOTNET_STARTUP_HOOKS", StringComparison.OrdinalIgnoreCase));
         }
 
         private static bool TryResolveCommand(string command, string path, out string resolvedCommand)
