@@ -74,7 +74,7 @@ namespace k8s
                 return true;
             }
 
-            if (string.IsNullOrWhiteSpace(command) || HasInvalidCommandCharacters(command))
+            if (commands.Length == 0 || string.IsNullOrWhiteSpace(command) || HasInvalidCommandCharacters(command))
             {
                 return false;
             }
