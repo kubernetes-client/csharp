@@ -38,6 +38,40 @@ namespace k8s.Tests
             // untrustedServerCert.Dispose();
         }
 
+        [Fact]
+        public void ShouldRejectHostnameMismatchForCertFromCustomCA()
+        {
+            using (var caCert = CreateSelfSignedCA("CN=Test CA"))
+            using (var serverCert = CreateServerCert(caCert, "CN=expected-server.com"))
+            {
+                var trustedCaCerts = new X509Certificate2Collection(caCert);
+
+                using (var validChain = new X509Chain())
+                {
+                    var result = Kubernetes.CertificateValidationCallBack(
+                        this,
+                        trustedCaCerts,
+                        serverCert,
+                        validChain,
+                        SslPolicyErrors.RemoteCertificateChainErrors);
+
+                    Assert.True(result);
+                }
+
+                using (var hostnameMismatchChain = new X509Chain())
+                {
+                    var result = Kubernetes.CertificateValidationCallBack(
+                        this,
+                        trustedCaCerts,
+                        serverCert,
+                        hostnameMismatchChain,
+                        SslPolicyErrors.RemoteCertificateNameMismatch | SslPolicyErrors.RemoteCertificateChainErrors);
+
+                    Assert.False(result);
+                }
+            }
+        }
+
         // Helper methods to create test certificates
         private static X509Certificate2 CreateSelfSignedCA(string subject)
         {

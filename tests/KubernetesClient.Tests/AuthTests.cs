@@ -21,7 +21,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace k8s.Tests
 {
@@ -225,6 +224,7 @@ namespace k8s.Tests
                         ClientCertificateData = clientCertificateData,
                         ClientCertificateKeyData = clientCertificateKeyData,
                         SslCaCerts = new X509Certificate2Collection(serverCertificate),
+                        TlsServerName = serverCertificate.GetNameInfo(X509NameType.DnsName, false),
                         SkipTlsVerify = false,
                     });
 
