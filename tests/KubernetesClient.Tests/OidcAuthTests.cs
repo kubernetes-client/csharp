@@ -1,4 +1,3 @@
-using FluentAssertions;
 using k8s.Authentication;
 using k8s.Exceptions;
 using System;
@@ -27,16 +26,16 @@ namespace k8s.Tests
             // use unexpired id token as bearer, do not attempt to refresh
             var auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, unexpiredIdToken, refreshToken);
             var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-            result.Scheme.Should().Be("Bearer");
-            result.Parameter.Should().Be(unexpiredIdToken);
+            Assert.Equal("Bearer", result.Scheme);
+            Assert.Equal(unexpiredIdToken, result.Parameter);
 
             try
             {
                 // attempt to refresh id token when expired
                 auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, expiredIdToken, refreshToken);
                 result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-                result.Scheme.Should().Be("Bearer");
-                result.Parameter.Should().Be(expiredIdToken);
+                Assert.Equal("Bearer", result.Scheme);
+                Assert.Equal(expiredIdToken, result.Parameter);
                 Assert.Fail("should not be here");
             }
             catch (KubernetesClientException e)
@@ -49,8 +48,8 @@ namespace k8s.Tests
                 // attempt to refresh id token when null
                 auth = new OidcTokenProvider(clientId, clientSecret, idpIssuerUrl, null, refreshToken);
                 result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-                result.Scheme.Should().Be("Bearer");
-                result.Parameter.Should().Be(expiredIdToken);
+                Assert.Equal("Bearer", result.Scheme);
+                Assert.Equal(expiredIdToken, result.Parameter);
                 Assert.Fail("should not be here");
             }
             catch (KubernetesClientException e)
@@ -89,23 +88,23 @@ namespace k8s.Tests
             var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None);
 
             // Assert
-            result.Scheme.Should().Be("Bearer");
-            result.Parameter.Should().Be(newIdToken);
+            Assert.Equal("Bearer", result.Scheme);
+            Assert.Equal(newIdToken, result.Parameter);
 
             // Verify that the expiry is set correctly
             var expectedExpiry = DateTimeOffset.UtcNow.AddSeconds(expiresIn);
             var actualExpiry = typeof(OidcTokenProvider)
                 .GetField("_expiry", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.GetValue(auth) as DateTimeOffset?;
-            actualExpiry.Should().NotBeNull();
-            actualExpiry.Value.Should().BeCloseTo(expectedExpiry, precision: TimeSpan.FromSeconds(5));
+            Assert.NotNull(actualExpiry);
+            Assert.Equal(expectedExpiry, actualExpiry.Value, TimeSpan.FromSeconds(5));
 
             // Verify that the refresh token is set correctly
             var actualRefreshToken = typeof(OidcTokenProvider)
                 .GetField("_refreshToken", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.GetValue(auth) as string;
-            actualRefreshToken.Should().NotBeNull();
-            actualRefreshToken.Should().Be(refreshToken);
+            Assert.NotNull(actualRefreshToken);
+            Assert.Equal(refreshToken, actualRefreshToken);
 
             // Stop the server
             server.Stop();
@@ -134,8 +133,8 @@ namespace k8s.Tests
             // Act & Assert
             var exception = await Assert.ThrowsAsync<KubernetesClientException>(
                 () => auth.GetAuthenticationHeaderAsync(CancellationToken.None));
-            exception.Message.Should().StartWith("Unable to refresh OIDC token.");
-            exception.InnerException.Message.Should().Contain("500");
+            Assert.StartsWith("Unable to refresh OIDC token.", exception.Message);
+            Assert.Contains("500", exception.InnerException.Message);
 
             // Stop the server
             server.Stop();

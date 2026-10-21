@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="FluentAssertions" />
       <PackageReference Include="Microsoft.Extensions.Logging" />
       <PackageReference Include="System.IO.Abstractions.TestingHelpers" />
       <PackageReference Include="System.Reactive" />
