@@ -3,6 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
+        <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,6 +21,7 @@
 
         <!-- Scriban No Dependency -->
         <PackageReference Include="Scriban" IncludeAssets="Build" />
+        <PackageReference Include="PolySharp" PrivateAssets="all" />
 
         <!-- CaseExtensions No Dependency -->
         <PackageReference Include="CaseExtensions" GeneratePathProperty="true" PrivateAssets="all" />

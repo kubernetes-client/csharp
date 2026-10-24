@@ -3,6 +3,11 @@ name: Docfx
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'doc/**'
+      - 'src/**'
+      - 'README.md'
+      - '.github/workflows/docfx.yaml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,12 +30,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}    
     steps:
-    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         dotnet-version: |
           8.0.x
@@ -40,7 +45,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release
 
-    - uses: nunit/docfx-action@9748ca261118e251018cf9c98313b05b12d6cb31 # v4.1.0
+    - uses: nunit/docfx-action@7c6774cc9986c5d3525ea79a1910f461c044b04f # v5.0.0
       name: Build Documentation
       with:
         args: doc/docfx.json
@@ -54,4 +59,4 @@ jobs:
         path: doc/_site
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+      uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

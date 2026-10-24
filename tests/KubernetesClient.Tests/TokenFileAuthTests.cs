@@ -1,4 +1,3 @@
-using FluentAssertions;
 using k8s.Authentication;
 using System;
 using System.Threading;
@@ -14,18 +13,18 @@ namespace k8s.Tests
         {
             var auth = new TokenFileAuth("assets/token1");
             var result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-            result.Scheme.Should().Be("Bearer");
-            result.Parameter.Should().Be("token1");
+            Assert.Equal("Bearer", result.Scheme);
+            Assert.Equal("token1", result.Parameter);
 
             auth.TokenFile = "assets/token2";
             result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-            result.Scheme.Should().Be("Bearer");
-            result.Parameter.Should().Be("token1");
+            Assert.Equal("Bearer", result.Scheme);
+            Assert.Equal("token1", result.Parameter);
 
             auth.TokenExpiresAt = DateTime.UtcNow.AddSeconds(-1);
             result = await auth.GetAuthenticationHeaderAsync(CancellationToken.None).ConfigureAwait(true);
-            result.Scheme.Should().Be("Bearer");
-            result.Parameter.Should().Be("token2");
+            Assert.Equal("Bearer", result.Scheme);
+            Assert.Equal("token2", result.Parameter);
         }
     }
 }

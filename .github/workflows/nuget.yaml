@@ -9,13 +9,18 @@ jobs:
 
     runs-on: windows-latest
 
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
     steps:
-    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         dotnet-version: |
           8.0.x
@@ -31,10 +36,19 @@ jobs:
     - name: dotnet pack
       run: dotnet pack -c Release src/nuget.proj -o pkg --include-symbols
 
-    - name: dotnet nuget push
+    - name: dotnet nuget push GitHub Packages
       run: |
         dotnet nuget push pkg\*.nupkg -s https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
-        dotnet nuget push pkg\*.nupkg -s https://www.nuget.org/ -k ${{ secrets.nuget_api_key }} --skip-duplicate
+
+    - name: NuGet login
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+      id: nuget-login
+      with:
+        user: ${{ secrets.NUGET_USER }}
+
+    - name: dotnet nuget push NuGet.org
+      run: |
+        dotnet nuget push pkg\*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --skip-duplicate
         
         
   ## Remove old versions of NuGet packages form github NuGet feed

@@ -119,6 +119,8 @@ Notice that this is a workaround and is not recommended for production use.
 ## Testing
 
 The project uses [XUnit](https://github.com/xunit/xunit) as unit testing framework.
+The main client test suite uses xUnit v3; the other test projects use xUnit v2.
+VSTest integration is retained for the existing `dotnet test` and CI coverage commands.
 
 To run the tests:
 
@@ -154,6 +156,7 @@ ${GEN_DIR}/openapi/csharp.sh ${REPO_DIR}/src/KubernetesClient ${REPO_DIR}/csharp
 
 | SDK Version | Kubernetes Version | .NET Targeting                                      |
 |-------------|--------------------|-----------------------------------------------------|
+| 21.0        | 1.37               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |
 | 20.0        | 1.36               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |
 | 19.0        | 1.35               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |
 | 18.0        | 1.34               | net8.0;net9.0;net10.0;net48*;netstandard2.0*        |

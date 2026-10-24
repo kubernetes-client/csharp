@@ -8,9 +8,33 @@ permissions:
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'global.json'
+      - 'nuget.config'
+      - 'swagger.json'
+      - '.github/workflows/codeql-analysis.yml'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ master ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'examples/**'
+      - '*.props'
+      - '*.targets'
+      - '*.ruleset'
+      - 'Directory.*'
+      - 'global.json'
+      - 'nuget.config'
+      - 'swagger.json'
+      - '.github/workflows/codeql-analysis.yml'
   schedule:
     - cron: '15 23 * * 1'
 
@@ -26,12 +50,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
           fetch-depth: 0
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         dotnet-version: |
           8.0.x
@@ -40,7 +64,7 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+      uses: github/codeql-action/init@6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee # v4.39.0
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -60,4 +84,4 @@ jobs:
       run: dotnet build --configuration Debug --no-restore
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+      uses: github/codeql-action/analyze@6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee # v4.39.0

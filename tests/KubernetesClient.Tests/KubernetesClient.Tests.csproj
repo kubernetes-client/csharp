@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <IsPackable>false</IsPackable>
+    <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
     <RootNamespace>k8s.Tests</RootNamespace>
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="MartinCostello.Logging.XUnit" />
-      <PackageReference Include="FluentAssertions" />
       <PackageReference Include="Microsoft.Extensions.Logging" />
       <PackageReference Include="System.IO.Abstractions.TestingHelpers" />
       <PackageReference Include="System.Reactive" />
@@ -23,7 +22,7 @@
     <PackageReference Include="NJsonSchema" />
     <PackageReference Include="NSwag.Core" />
     <PackageReference Include="System.Text.Json" />
-    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.v3" />
     <PackageReference Include="xunit.runner.visualstudio">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -33,6 +32,7 @@
 
   <ItemGroup>
     <None Include="assets/*" CopyToOutputDirectory="Always" />
+    <Compile Include="..\KubernetesClient.Classic.Tests\WatcherCompatibilityTests.cs" Link="WatcherCompatibilityTests.cs" />
   </ItemGroup>
 
   <ItemGroup>
