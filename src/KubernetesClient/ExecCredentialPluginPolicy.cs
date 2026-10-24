@@ -95,7 +95,12 @@ namespace k8s
 
             return commands.Any(entry =>
                 TryResolveCommand(entry, path, fileExists, out var resolvedEntry) &&
-                string.Equals(resolvedEntry, resolvedCommand, StringComparison.Ordinal));
+                string.Equals(
+                    resolvedEntry,
+                    resolvedCommand,
+                    RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                        ? StringComparison.OrdinalIgnoreCase
+                        : StringComparison.Ordinal));
         }
 
         internal string Validate(string command, ExternalExecution execution)
