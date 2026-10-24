@@ -142,7 +142,9 @@ namespace k8s
                 string.Equals(name, "_JAVA_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "JDK_JAVA_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "CLASSPATH", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(name, "DOTNET_STARTUP_HOOKS", StringComparison.OrdinalIgnoreCase));
+                string.Equals(name, "DOTNET_STARTUP_HOOKS", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "BASH_ENV", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PYTHONUSERBASE", StringComparison.OrdinalIgnoreCase));
         }
 
         private static bool TryResolveCommand(string command, string path, out string resolvedCommand)
