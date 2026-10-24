@@ -117,6 +117,25 @@ namespace k8s.Tests
             Assert.Throws<ArgumentException>(() => ExecCredentialPluginPolicy.Allowlist(@"\plugins\trusted-plugin.exe"));
         }
 
+        [Fact]
+        public void DeniedUncCommandDoesNotProbeTheFileSystem()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            var policy = ExecCredentialPluginPolicy.Allowlist(@"C:\plugins\trusted-plugin.exe");
+            var fileSystemWasProbed = false;
+
+            Assert.False(policy.Allows(@"\\attacker\share\plugin.exe", @"C:\plugins", _ =>
+            {
+                fileSystemWasProbed = true;
+                return false;
+            }));
+            Assert.False(fileSystemWasProbed);
+        }
+
         [Theory]
         [InlineData("PATH")]
         [InlineData("PATHEXT")]
