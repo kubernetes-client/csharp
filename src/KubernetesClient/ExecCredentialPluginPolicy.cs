@@ -107,9 +107,12 @@ namespace k8s
                 throw new ExecCredentialPluginDeniedException(command);
             }
 
-            return TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), out var resolvedCommand)
-                ? resolvedCommand
-                : command;
+            if (!TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), out var resolvedCommand))
+            {
+                throw new ExecCredentialPluginDeniedException(command);
+            }
+
+            return resolvedCommand;
         }
 
         private static bool HasDangerousEnvironmentVariable(IList<Dictionary<string, string>> environmentVariables)
