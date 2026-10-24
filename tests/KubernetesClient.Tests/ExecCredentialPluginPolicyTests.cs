@@ -43,7 +43,14 @@ namespace k8s.Tests
                 Assert.True(pathPolicy.Allows(commandName, searchDirectory));
                 Assert.False(pathPolicy.Allows(otherPath, searchDirectory));
                 Assert.True(pathPolicy.Allows(Path.Combine(searchDirectory, ".", commandName + extension), searchDirectory));
-                Assert.False(pathPolicy.Allows(path.ToUpperInvariant(), searchDirectory));
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Assert.True(pathPolicy.Allows(path.ToUpperInvariant(), searchDirectory));
+                }
+                else
+                {
+                    Assert.False(pathPolicy.Allows(path.ToUpperInvariant(), searchDirectory));
+                }
             }
             finally
             {
