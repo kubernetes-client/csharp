@@ -69,6 +69,9 @@ namespace k8s
             => Allows(command, Environment.GetEnvironmentVariable("PATH"));
 
         internal bool Allows(string command, string path)
+            => Allows(command, path, File.Exists);
+
+        internal bool Allows(string command, string path, Func<string, bool> fileExists)
         {
             if (allowAll)
             {
@@ -85,13 +88,13 @@ namespace k8s
                 return true;
             }
 
-            if (!TryResolveCommand(command, path, out var resolvedCommand))
+            if (!TryResolveCommand(command, path, fileExists, out var resolvedCommand))
             {
                 return false;
             }
 
             return commands.Any(entry =>
-                TryResolveCommand(entry, path, out var resolvedEntry) &&
+                TryResolveCommand(entry, path, fileExists, out var resolvedEntry) &&
                 string.Equals(resolvedEntry, resolvedCommand, StringComparison.Ordinal));
         }
 
@@ -107,7 +110,7 @@ namespace k8s
                 throw new ExecCredentialPluginDeniedException(command);
             }
 
-            if (!TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), out var resolvedCommand))
+            if (!TryResolveCommand(command, Environment.GetEnvironmentVariable("PATH"), File.Exists, out var resolvedCommand))
             {
                 throw new ExecCredentialPluginDeniedException(command);
             }
@@ -150,7 +153,66 @@ namespace k8s
                 string.Equals(name, "PYTHONUSERBASE", StringComparison.OrdinalIgnoreCase));
         }
 
-        private static bool TryResolveCommand(string command, string path, out string resolvedCommand)
+        private bool IsApprovedPathCandidate(string command, string path)
+        {
+            var pathComparison = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+                StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+
+            foreach (var candidate in GetCommandCandidates(command, path))
+            {
+                if (!TryGetFullPath(candidate, out var fullCandidate))
+                {
+                    continue;
+                }
+
+                foreach (var entry in commands)
+                {
+                    foreach (var approvedCandidate in GetCommandCandidates(entry, path))
+                    {
+                        if (TryGetFullPath(approvedCandidate, out var fullApprovedCandidate) &&
+                            string.Equals(fullCandidate, fullApprovedCandidate, pathComparison))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static IEnumerable<string> GetCommandCandidates(string command, string path)
+        {
+            if (IsPathCommand(command))
+            {
+                foreach (var extension in GetExecutableExtensions(command))
+                {
+                    yield return command + extension;
+                }
+
+                yield break;
+            }
+
+            if (string.IsNullOrEmpty(path))
+            {
+                yield break;
+            }
+
+            foreach (var directory in path.Split(Path.PathSeparator))
+            {
+                if (string.IsNullOrEmpty(directory) || !Path.IsPathRooted(directory))
+                {
+                    continue;
+                }
+
+                foreach (var extension in GetExecutableExtensions(command))
+                {
+                    yield return Path.Combine(directory, command + extension);
+                }
+            }
+        }
+
+        private bool TryResolveCommand(string command, string path, Func<string, bool> fileExists, out string resolvedCommand)
         {
             resolvedCommand = null;
             if (string.IsNullOrWhiteSpace(command) || HasInvalidCommandCharacters(command))
@@ -158,13 +220,16 @@ namespace k8s
                 return false;
             }
 
-            if (Path.IsPathRooted(command) ||
-                command.IndexOf(Path.DirectorySeparatorChar) >= 0 ||
-                command.IndexOf(Path.AltDirectorySeparatorChar) >= 0)
+            if (IsPathCommand(command) && !IsApprovedPathCandidate(command, path))
             {
-                foreach (var extension in GetExecutableExtensions(command))
+                return false;
+            }
+
+            if (IsPathCommand(command))
+            {
+                foreach (var candidate in GetCommandCandidates(command, path))
                 {
-                    if (TryGetFullExistingPath(command + extension, out resolvedCommand))
+                    if (TryGetFullExistingPath(candidate, fileExists, out resolvedCommand))
                     {
                         return true;
                     }
@@ -178,37 +243,35 @@ namespace k8s
                 return false;
             }
 
-            foreach (var directory in path.Split(Path.PathSeparator))
+            foreach (var candidate in GetCommandCandidates(command, path))
             {
-                if (string.IsNullOrEmpty(directory) || !Path.IsPathRooted(directory))
+                if (TryGetFullExistingPath(candidate, fileExists, out resolvedCommand))
                 {
-                    continue;
-                }
-
-                foreach (var extension in GetExecutableExtensions(command))
-                {
-                    if (TryGetFullExistingPath(Path.Combine(directory, command + extension), out resolvedCommand))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
 
             return false;
         }
 
-        private static bool TryGetFullExistingPath(string command, out string resolvedCommand)
+        private static bool TryGetFullExistingPath(string command, Func<string, bool> fileExists, out string resolvedCommand)
         {
             resolvedCommand = null;
+            if (TryGetFullPath(command, out var fullPath) && fileExists(fullPath))
+            {
+                resolvedCommand = fullPath;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool TryGetFullPath(string command, out string fullPath)
+        {
+            fullPath = null;
             try
             {
-                var fullPath = Path.GetFullPath(command);
-                if (!File.Exists(fullPath))
-                {
-                    return false;
-                }
-
-                resolvedCommand = fullPath;
+                fullPath = Path.GetFullPath(command);
                 return true;
             }
             catch (ArgumentException)
@@ -223,6 +286,13 @@ namespace k8s
             {
                 return false;
             }
+        }
+
+        private static bool IsPathCommand(string command)
+        {
+            return Path.IsPathRooted(command) ||
+                command.IndexOf(Path.DirectorySeparatorChar) >= 0 ||
+                command.IndexOf(Path.AltDirectorySeparatorChar) >= 0;
         }
 
         private static IEnumerable<string> GetExecutableExtensions(string command)
