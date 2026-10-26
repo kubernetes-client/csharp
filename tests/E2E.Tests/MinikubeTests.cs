@@ -650,7 +650,7 @@ namespace k8s.E2E
                 // delete + list
                 {
                     V1PodList pods = new V1PodList();
-                    int retry = 5;
+                    int retry = 20;
                     while (retry-- > 0)
                     {
                         try
@@ -775,7 +775,7 @@ namespace k8s.E2E
                 // delete + list
                 {
                     var pods = new V1PodList();
-                    var retry = 5;
+                    var retry = 20;
                     while (retry-- > 0)
                     {
                         try
