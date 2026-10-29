@@ -74,6 +74,7 @@
     <Compile Include="..\KubernetesClient\Kubernetes.cs" />
     <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.InCluster.cs" />
     <Compile Include="..\KubernetesClient\KubernetesClientConfiguration.cs" />
+    <Compile Include="..\KubernetesClient\ExecCredentialPluginPolicy.cs" />
     <Compile Include="..\KubernetesClient\KubernetesException.cs" />
 
     <Compile Include="..\KubernetesClient\ChannelIndex.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="..\KubernetesClient\LineSeparatedHttpContent.cs" />
 
     <Compile Include="..\KubernetesClient\Exceptions\KubeConfigException.cs" />
+    <Compile Include="..\KubernetesClient\Exceptions\ExecCredentialPluginDeniedException.cs" />
     <Compile Include="..\KubernetesClient\Exceptions\KubernetesClientException.cs" />
 
     <Compile Include="..\KubernetesClient\Authentication\ExecTokenProvider.cs" />
