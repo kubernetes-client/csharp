@@ -132,7 +132,8 @@ namespace k8s
 
         private static bool IsDangerousEnvironmentVariable(string name)
         {
-            return name != null && (string.Equals(name, "PATH", StringComparison.OrdinalIgnoreCase) ||
+            return name != null && (string.Equals(name, "HOME", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(name, "PATH", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "PATHEXT", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "COMSPEC", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "LIBPATH", StringComparison.OrdinalIgnoreCase) ||
