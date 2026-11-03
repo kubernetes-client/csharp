@@ -155,11 +155,13 @@ namespace k8s
                 string.Equals(name, "JDK_JAVA_OPTIONS", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "CLASSPATH", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "DOTNET_STARTUP_HOOKS", StringComparison.OrdinalIgnoreCase) ||
+                name.StartsWith("DOTNET_ROOT", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "CORECLR_ENABLE_PROFILING", StringComparison.OrdinalIgnoreCase) ||
                 name.StartsWith("CORECLR_PROFILER", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "COR_ENABLE_PROFILING", StringComparison.OrdinalIgnoreCase) ||
                 name.StartsWith("COR_PROFILER", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "BASH_ENV", StringComparison.OrdinalIgnoreCase) ||
+                name.StartsWith("BASH_FUNC_", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(name, "PYTHONUSERBASE", StringComparison.OrdinalIgnoreCase));
         }
 
