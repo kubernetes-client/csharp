@@ -134,6 +134,26 @@ namespace k8s
             configure(JsonSerializerOptions);
         }
 
+        /// <summary>
+        /// Deserializes the JSON string to an object of the specified <paramref name="returnType"/>.
+        /// This method provides a non-generic alternative to <see cref="Deserialize{TValue}(string, JsonSerializerOptions)"/>.
+        /// </summary>
+        /// <param name="json">The JSON string to deserialize.</param>
+        /// <param name="returnType">The type of the object to create.</param>
+        /// <param name="jsonSerializerOptions">Optional <see cref="JsonSerializerOptions"/> to use during deserialization. If <c>null</c>, the default options are used.</param>
+        /// <returns>
+        /// An object of type <paramref name="returnType"/> deserialized from the JSON string.
+        /// </returns>
+        public static object Deserialize(string json, Type returnType, JsonSerializerOptions jsonSerializerOptions = null)
+        {
+#if NET8_0_OR_GREATER
+            var info = (jsonSerializerOptions ?? JsonSerializerOptions).GetTypeInfo(returnType);
+            return JsonSerializer.Deserialize(json, info);
+#else
+            return JsonSerializer.Deserialize(json, returnType, jsonSerializerOptions ?? JsonSerializerOptions);
+#endif
+        }
+
         public static TValue Deserialize<TValue>(string json, JsonSerializerOptions jsonSerializerOptions = null)
         {
 #if NET8_0_OR_GREATER
