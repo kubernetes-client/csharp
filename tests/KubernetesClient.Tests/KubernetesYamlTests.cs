@@ -888,13 +888,15 @@ data:
 
             var yaml = KubernetesYaml.Serialize(configMap);
 
-            Assert.Equal(ToLines(@"apiVersion: v1
+            Assert.Equal(
+                ToLines(@"apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-configmap
   namespace: my-namespace
 data:
-  array.json: value"), ToLines(yaml));
+  array.json: value"),
+                ToLines(yaml));
         }
 
         [Fact]

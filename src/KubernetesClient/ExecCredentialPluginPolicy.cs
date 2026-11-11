@@ -98,9 +98,7 @@ namespace k8s
                 string.Equals(
                     resolvedEntry,
                     resolvedCommand,
-                    RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                        ? StringComparison.OrdinalIgnoreCase
-                        : StringComparison.Ordinal));
+                    RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal));
         }
 
         internal string Validate(string command, ExternalExecution execution)
