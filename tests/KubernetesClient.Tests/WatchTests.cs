@@ -68,8 +68,8 @@ namespace k8s.Tests
                 // server did not response line by line
                 await Assert.ThrowsAnyAsync<Exception>(() =>
                 {
-                     using (var testWatcher = client.CoreV1.WatchListNamespacedPod(
-                        "default"))
+                    using (var testWatcher = client.CoreV1.WatchListNamespacedPod(
+                       "default"))
                     {
                         return Task.CompletedTask;
                     }
