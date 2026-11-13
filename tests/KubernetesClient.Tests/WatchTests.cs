@@ -69,7 +69,7 @@ namespace k8s.Tests
                 await Assert.ThrowsAnyAsync<Exception>(() =>
                 {
                     using (var testWatcher = client.CoreV1.WatchListNamespacedPod(
-                       "default"))
+                        "default"))
                     {
                         return Task.CompletedTask;
                     }
