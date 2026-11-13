@@ -20,7 +20,7 @@
     <PackageVersion Include="PolySharp" Version="1.17.0" />
     <PackageVersion Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageVersion Include="SharpZipLib" Version="1.4.2" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="11.0.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.3.1" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="23.0.0" />
     <PackageVersion Include="System.Reactive" Version="7.0.0" />

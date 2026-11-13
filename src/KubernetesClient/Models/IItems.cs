@@ -12,16 +12,3 @@ public interface IItems<T>
     /// </summary>
     IList<T> Items { get; set; }
 }
-
-public static class ItemsExt
-{
-    public static IEnumerator<T> GetEnumerator<T>(this IItems<T> items)
-    {
-        if (items is null)
-        {
-            throw new ArgumentNullException(nameof(items));
-        }
-
-        return items.Items.GetEnumerator();
-    }
-}
