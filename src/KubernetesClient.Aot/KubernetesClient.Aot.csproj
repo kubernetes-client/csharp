@@ -21,6 +21,7 @@
     <Compile Include="..\KubernetesClient\FloatEmitter.cs" />
     <Compile Include="..\KubernetesClient\Models\GeneratedModelVersion.cs" />
     <Compile Include="..\KubernetesClient\Models\IItems.cs" />
+    <Compile Include="..\KubernetesClient\Models\ItemsExt.cs" />
     <Compile Include="..\KubernetesClient\IKubernetesObject.cs" />
     <Compile Include="..\KubernetesClient\Models\IMetadata.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringJsonConverter.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="..\KubernetesClient\Models\V1Status.cs" />
     <Compile Include="..\KubernetesClient\KubernetesJson.cs" />
     <Compile Include="..\KubernetesClient\SourceGenerationContext.cs" />
+    <Compile Include="..\KubernetesClient\StatusSourceGenerationContext.cs" />
     <Compile Include="..\KubernetesClient\Models\V1Status.ObjectView.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesDateTimeOffsetYamlConverter.cs" />
     <Compile Include="..\KubernetesClient\Models\KubernetesDateTimeYamlConverter.cs" />
