@@ -24,6 +24,7 @@
     <Compile Include="..\KubernetesClient\FloatEmitter.cs" />
     <Compile Include="..\KubernetesClient\Models\GeneratedModelVersion.cs" />
     <Compile Include="..\KubernetesClient\Models\IItems.cs" />
+    <Compile Include="..\KubernetesClient\Models\ItemsExt.cs" />
     <Compile Include="..\KubernetesClient\IKubernetesObject.cs" />
     <Compile Include="..\KubernetesClient\Models\IMetadata.cs" />
     <Compile Include="..\KubernetesClient\Models\IntOrStringJsonConverter.cs" />
