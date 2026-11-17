@@ -10,6 +10,8 @@ namespace k8s.ClientSets;
 /// </summary>
 public partial class ClientSet
 {
+    private readonly Kubernetes _kubernetes;
+
     {{for group in groups}}
     public {{group}}GroupClient {{group}} => new {{group}}GroupClient(_kubernetes);
     {{end}}
