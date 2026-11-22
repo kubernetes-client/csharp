@@ -383,7 +383,7 @@ namespace k8s.E2E
             using var client = CreateClient();
             var version = await client.Version.GetCodeAsync().ConfigureAwait(false);
             Assert.NotNull(version);
-        }        
+        }
 
         public static IKubernetes CreateClient()
         {
