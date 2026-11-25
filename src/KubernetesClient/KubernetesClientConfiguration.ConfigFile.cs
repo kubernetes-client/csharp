@@ -38,9 +38,17 @@ namespace k8s
         /// </summary>
         public static event EventHandler<DataReceivedEventArgs> ExecStdError;
 
-        /// <inheritdoc cref="BuildDefaultConfig(ExecCredentialPluginPolicy)"/>
+                /// <inheritdoc cref="BuildDefaultConfig(string, ExecCredentialPluginPolicy)"/>
         public static KubernetesClientConfiguration BuildDefaultConfig()
             => BuildDefaultConfig(ExecCredentialPluginPolicy.AllowAll);
+
+        /// <inheritdoc cref="BuildDefaultConfig(string, ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildDefaultConfig(string currentContext)
+            => BuildDefaultConfig(currentContext, ExecCredentialPluginPolicy.AllowAll);
+
+        /// <inheritdoc cref="BuildDefaultConfig(string, ExecCredentialPluginPolicy)"/>
+        public static KubernetesClientConfiguration BuildDefaultConfig(ExecCredentialPluginPolicy execCredentialPluginPolicy)
+            => BuildDefaultConfig(currentContext: null, execCredentialPluginPolicy);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KubernetesClientConfiguration" /> from default locations
@@ -49,13 +57,19 @@ namespace k8s
         ///     Then, it checks whether it is executing inside a cluster and will use <see cref="InClusterConfig()" />.
         ///     Finally, if nothing else exists, it creates a default config with localhost:8080 as host.
         /// </summary>
+        /// <param name="currentContext">
+        ///     Override the context in the resolved kubeconfig. Applies whether the config came from a single
+        ///     file, multiple files merged via the KUBECONFIG environment variable, or the default file location.
+        ///     Ignored when falling back to in-cluster config or the localhost default, since neither has contexts.
+        /// </param>
+        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
         /// <remarks>
         ///     If multiple kubeconfig files are specified in the KUBECONFIG environment variable,
         ///     merges the files, where first occurrence wins. See https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#merging-kubeconfig-files.
         /// </remarks>
         /// <returns>Instance of the<see cref="KubernetesClientConfiguration"/> class</returns>
-        /// <param name="execCredentialPluginPolicy">Application policy for exec plugins. Null allows all plugins.</param>
-        public static KubernetesClientConfiguration BuildDefaultConfig(ExecCredentialPluginPolicy execCredentialPluginPolicy)
+        public static KubernetesClientConfiguration BuildDefaultConfig(
+            string currentContext, ExecCredentialPluginPolicy execCredentialPluginPolicy)
         {
             var kubeconfig = Environment.GetEnvironmentVariable(KubeConfigEnvironmentVariable);
             if (kubeconfig != null)
@@ -63,12 +77,12 @@ namespace k8s
                 var configList = kubeconfig.Split(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ';' : ':')
                     .Select((s) => new FileInfo(s.Trim('"')));
                 var k8sConfig = LoadKubeConfig(configList.ToArray());
-                return BuildConfigFromConfigObject(k8sConfig, execCredentialPluginPolicy: execCredentialPluginPolicy);
+                return BuildConfigFromConfigObject(k8sConfig, currentContext, execCredentialPluginPolicy: execCredentialPluginPolicy);
             }
 
             if (File.Exists(KubeConfigDefaultLocation))
             {
-                return BuildConfigFromConfigFile(KubeConfigDefaultLocation, execCredentialPluginPolicy: execCredentialPluginPolicy);
+                return BuildConfigFromConfigFile(KubeConfigDefaultLocation, currentContext, execCredentialPluginPolicy: execCredentialPluginPolicy);
             }
 
             if (IsInCluster())
