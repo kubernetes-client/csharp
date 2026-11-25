@@ -473,10 +473,13 @@ namespace k8s.Tests.LeaderElection
             // The key assertion: With the fix, the lease should be recognized as expired after ~1 second
             // (the actual lease duration from the K8s object), not after 10 seconds (the configured duration).
             // Therefore, UpdateAsync should have been called to attempt to acquire leadership.
-            Assert.True(updateCalled,
+            var message =
                 "UpdateAsync should have been called after the actual lease duration (1 second) expired, " +
                 "not after the configured lease duration (10 seconds). This test validates that the fix " +
-                "correctly uses oldLeaderElectionRecord.LeaseDurationSeconds instead of config.LeaseDuration.");
+                "correctly uses oldLeaderElectionRecord.LeaseDurationSeconds instead of config.LeaseDuration.";
+            Assert.True(
+                updateCalled,
+                message);
         }
 
         private class MockResourceLock : ILock
